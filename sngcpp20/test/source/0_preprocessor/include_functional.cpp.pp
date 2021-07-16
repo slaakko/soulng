@@ -7,7 +7,7 @@
                                                  
            
      
-                                                                                               
+                                                                                                                   
   
     
                                                                                               
@@ -510,7 +510,7 @@ extern uintptr_t __security_cookie;
 
  
   
- 
+
   
 
 
@@ -618,7 +618,6 @@ extern uintptr_t __security_cookie;
   
 
   
- 
  
   
  
@@ -642,7 +641,6 @@ extern uintptr_t __security_cookie;
  
  
  
- 
     
  
   
@@ -653,7 +651,6 @@ extern uintptr_t __security_cookie;
  
 
   
-
 
   
    
@@ -698,12 +695,12 @@ extern uintptr_t __security_cookie;
 
 
 
+
   
  
  
  
 
-
  
 
 
@@ -716,6 +713,24 @@ extern uintptr_t __security_cookie;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
  
 
 
@@ -2752,7 +2767,7 @@ void* __cdecl _aligned_recalloc(
 
     extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _itow_s(  int _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _itow(                     int _Value,     wchar_t *_Buffer,                      int _Radix);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _itow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _itow(                     int _Value,     wchar_t *_Buffer,                      int _Radix);
 
      
     
@@ -2765,7 +2780,7 @@ void* __cdecl _aligned_recalloc(
 
     extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltow_s(  long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ltow(                     long _Value,     wchar_t *_Buffer,                      int _Radix);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ltow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ltow(                     long _Value,     wchar_t *_Buffer,                      int _Radix);
 
     
      errno_t __cdecl _ultow_s(
@@ -2777,7 +2792,7 @@ void* __cdecl _aligned_recalloc(
 
     extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultow_s(  unsigned long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ultow(                     unsigned long _Value,     wchar_t *_Buffer,                      int _Radix);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ultow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ultow(                     unsigned long _Value,     wchar_t *_Buffer,                      int _Radix);
 
      
      double __cdecl wcstod(
@@ -3015,7 +3030,7 @@ void* __cdecl _aligned_recalloc(
 
     extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wmakepath_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _Drive,   wchar_t const* _Dir,   wchar_t const* _Filename,   wchar_t const* _Ext) throw()                  {                                                                                                                                                                     return _wmakepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wmakepath(    wchar_t *_Buffer,                wchar_t const* _Drive,                wchar_t const* _Dir,                wchar_t const* _Filename,                wchar_t const* _Ext);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wmakepath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wmakepath(    wchar_t *_Buffer,                wchar_t const* _Drive,                wchar_t const* _Dir,                wchar_t const* _Filename,                wchar_t const* _Ext);
 
      void __cdecl _wperror(
           wchar_t const* _ErrorMessage
@@ -3089,7 +3104,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
         extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wsearchenv_s(  wchar_t const* _Filename,   wchar_t const* _VarName, wchar_t (&_ResultPath)[_Size]) throw()                 {                                                                                                                                    return _wsearchenv_s(_Filename, _VarName, _ResultPath, _Size);                                                                               }                                                                                                                            }
 
-        __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wsearchenv(                   wchar_t const* _Filename,                    wchar_t const* _VarName,     wchar_t *_ResultPath);
+        __declspec(deprecated("This function or variable may be unsafe. Consider using _wsearchenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wsearchenv(                   wchar_t const* _Filename,                    wchar_t const* _VarName,     wchar_t *_ResultPath);
 
          int __cdecl _wsystem(
               wchar_t const* _Command
@@ -3223,9 +3238,9 @@ int __cdecl at_quick_exit(void (__cdecl*)(void));
 
 
 
- __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char**    __cdecl __p__pgmptr (void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  int*      __cdecl __p__fmode  (void);
+ __declspec(deprecated("This function or variable may be unsafe. Consider using _get_pgmptr instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char**    __cdecl __p__pgmptr (void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _get_wpgmptr instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _get_fmode instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  int*      __cdecl __p__fmode  (void);
 
 
  
@@ -3554,7 +3569,7 @@ typedef struct
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                errno_t __cdecl _itoa_s(  int _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _itoa(                     int _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _itoa(                     int _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3567,7 +3582,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltoa_s(  long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ltoa(                     long _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _ltoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ltoa(                     long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3580,7 +3595,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultoa_s(  unsigned long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ultoa(                     unsigned long _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _ultoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ultoa(                     unsigned long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3757,7 +3772,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl mbstowcs_s(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount) throw()                 {                                                                                                                                                    return mbstowcs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl mbstowcs(  wchar_t *_Dest,                           char const* _Source,                             size_t _MaxCount);
+__declspec(deprecated("This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl mbstowcs(  wchar_t *_Dest,                           char const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _mbstowcs_s_l(
@@ -3771,7 +3786,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _mbstowcs_s_l(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount,    _locale_t _Locale) throw()                  {                                                                                                                                                                     return _mbstowcs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _mbstowcs_l(  wchar_t *_Dest,                       char const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _mbstowcs_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _mbstowcs_l(  wchar_t *_Dest,                       char const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
@@ -3818,7 +3833,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl wcstombs_s(                      size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                          wchar_t const* _Source,                            size_t _MaxCount) throw()                 {                                                                                                                                                    return wcstombs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcstombs(  char *_Dest,                           wchar_t const* _Source,                             size_t _MaxCount);
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcstombs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcstombs(  char *_Dest,                           wchar_t const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _wcstombs_s_l(
@@ -3832,7 +3847,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wcstombs_s_l(                size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                    wchar_t const* _Source,                      size_t _MaxCount,                  _locale_t _Locale) throw()                  {                                                                                                                                                                     return _wcstombs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _wcstombs_l(  char *_Dest,                       wchar_t const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcstombs_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _wcstombs_l(  char *_Dest,                       wchar_t const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
@@ -3860,7 +3875,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _makepath_s(char (&_Buffer)[_Size],   char const* _Drive,   char const* _Dir,   char const* _Filename,   char const* _Ext) throw()                  {                                                                                                                                                                     return _makepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _makepath(    char *_Buffer,                char const* _Drive,                char const* _Dir,                char const* _Filename,                char const* _Ext);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _makepath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _makepath(    char *_Buffer,                char const* _Drive,                char const* _Dir,                char const* _Filename,                char const* _Ext);
 
 __declspec(deprecated("This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  void __cdecl _splitpath(
@@ -3957,7 +3972,7 @@ extern "C++"                                                                    
 
     extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _searchenv_s(  char const* _Filename,   char const* _VarName, char (&_Buffer)[_Size]) throw()                 {                                                                                                                                    return _searchenv_s(_Filename, _VarName, _Buffer, _Size);                                                                               }                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _searchenv(                   char const* _Filename,                    char const* _VarName,     char *_Buffer);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _searchenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _searchenv(                   char const* _Filename,                    char const* _VarName,     char *_Buffer);
 
          __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using SetErrorMode instead. See online help for details."))
      void __cdecl _seterrormode(
@@ -5790,6 +5805,28 @@ template <class _Rx, class _Callable, class... _Args>
 inline constexpr bool is_nothrow_invocable_r_v =
     _Select_invoke_traits<_Callable, _Args...>::template _Is_nothrow_invocable_r<_Rx>::value;
 
+ template <class _Ty1, class _Ty2>
+struct is_layout_compatible : bool_constant<__is_layout_compatible(_Ty1, _Ty2)> {};
+
+template <class _Ty1, class _Ty2>
+inline constexpr bool is_layout_compatible_v = __is_layout_compatible(_Ty1, _Ty2);
+
+ template <class _Base, class _Derived>
+struct is_pointer_interconvertible_base_of : bool_constant<__is_pointer_interconvertible_base_of(_Base, _Derived)> {};
+
+template <class _Base, class _Derived>
+inline constexpr bool is_pointer_interconvertible_base_of_v = __is_pointer_interconvertible_base_of(_Base, _Derived);
+
+ template <class _ClassTy, class _MemberTy>
+ constexpr bool is_pointer_interconvertible_with_class(_MemberTy _ClassTy::*_Pm) noexcept {
+    return __is_pointer_interconvertible_with_class(_ClassTy, _Pm);
+}
+
+ template <class _ClassTy1, class _ClassTy2, class _MemberTy1, class _MemberTy2>
+ constexpr bool is_corresponding_member(_MemberTy1 _ClassTy1::*_Pm1, _MemberTy2 _ClassTy2::*_Pm2) noexcept {
+    return __is_corresponding_member(_ClassTy1, _ClassTy2, _Pm1, _Pm2);
+}
+
  template <class _Ty>
 struct _Function_args {};  
 
@@ -6647,1475 +6684,6 @@ void rethrow_if_nested(const _Ty& _Arg) {      bool_constant<
   
  
   
- 
-  
-
- 
-  
- 
-  
-
-       
- 
-  
- 
-  
- 
-  
-
-       
-                 
-              
-              
-       
-
-
-         extern "C" {
-
-
-
-     int* __cdecl _errno(void);
-
-     errno_t __cdecl _set_errno(  int _Value);
-     errno_t __cdecl _get_errno(  int* _Value);
-
-     unsigned long* __cdecl __doserrno(void);
-
-     errno_t __cdecl _set_doserrno(  unsigned long _Value);
-     errno_t __cdecl _get_doserrno(  unsigned long * _Value);
-
-
-
- 
- 
- 
- 
-
-
-}                             
-
-       
-       
-
-
-         extern "C" {
-
-
-
-  
- void const* __cdecl memchr(
-      void const* _Buf,
-                                 int         _Val,
-                                 size_t      _MaxCount
-    );
-
-  
-int __cdecl memcmp(
-      void const* _Buf1,
-      void const* _Buf2,
-                         size_t      _Size
-    );
-
-
- 
-
-void* __cdecl memcpy(
-      void* _Dst,
-            void const* _Src,
-                               size_t      _Size
-    );
-
-
- void* __cdecl memmove(
-      void*       _Dst,
-            void const* _Src,
-                                   size_t      _Size
-    );
-
- 
-
-void* __cdecl memset(
-      void*  _Dst,
-                               int    _Val,
-                               size_t _Size
-    );
-
-  
- char const* __cdecl strchr(
-      char const* _Str,
-        int         _Val
-    );
-
-  
- char const* __cdecl strrchr(
-      char const* _Str,
-        int         _Ch
-    );
-
-    
- char const* __cdecl strstr(
-      char const* _Str,
-      char const* _SubStr
-    );
-
-  
-
- wchar_t const* __cdecl wcschr(
-      wchar_t const* _Str,
-        wchar_t        _Ch
-    );
-
-  
- wchar_t const* __cdecl wcsrchr(
-      wchar_t const* _Str,
-        wchar_t        _Ch
-    );
-
-    
-
- wchar_t const* __cdecl wcsstr(
-      wchar_t const* _Str,
-      wchar_t const* _SubStr
-    );
-
-
-
-}                             
-
-
-
-
-
-         extern "C" {
-
-
-
-
-     
-    
-    static __inline errno_t __cdecl memcpy_s(
-          void*       const _Destination,
-                                                              rsize_t     const _DestinationSize,
-                                 void const* const _Source,
-                                                              rsize_t     const _SourceSize
-        )
-    {
-        if (_SourceSize == 0)
-        {
-            return 0;
-        }
-
-        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        if (_Source == 0 || _DestinationSize < _SourceSize)
-        {
-            memset(_Destination, 0, _DestinationSize);
-
-            {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-            {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
-
-                         return 22;
-        }
-        memcpy(_Destination, _Source, _SourceSize);
-        return 0;
-    }
-
-    
-    static __inline errno_t __cdecl memmove_s(
-          void*       const _Destination,
-                                                              rsize_t     const _DestinationSize,
-                                 void const* const _Source,
-                                                              rsize_t     const _SourceSize
-        )
-    {
-        if (_SourceSize == 0)
-        {
-            return 0;
-        }
-
-        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
-
-        memmove(_Destination, _Source, _SourceSize);
-        return 0;
-    }
-
-
-
-
-}                             
-       
-
-
-
-         extern "C" {
-
-
-
- 
- int __cdecl _memicmp(
-      void const* _Buf1,
-      void const* _Buf2,
-                             size_t      _Size
-    );
-
- 
- int __cdecl _memicmp_l(
-      void const* _Buf1,
-      void const* _Buf2,
-                             size_t      _Size,
-                         _locale_t   _Locale
-    );
-
-
-
-
-
-
-
-
-
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memccpy. See online help for details."))
-     void* __cdecl memccpy(
-          void*       _Dst,
-            void const* _Src,
-                                   int         _Val,
-                                   size_t      _Size
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memicmp. See online help for details."))
-     int __cdecl memicmp(
-          void const* _Buf1,
-          void const* _Buf2,
-                                 size_t      _Size
-        );
-
-
-
-
-
-    extern "C++"  
-    inline void* __cdecl memchr(
-          void*  _Pv,
-                              int    _C,
-                              size_t _N
-        )
-    {
-        void const* const _Pvc = _Pv;
-        return const_cast<void*>(memchr(_Pvc, _C, _N));
-    }
-
-
-
-
-}                             
-
-
-        
-              
-
-
-
-         extern "C" {
-
-
-
-     
-    
-     errno_t __cdecl wcscat_s(
-          wchar_t* _Destination,
-          rsize_t _SizeInWords,
-          wchar_t const* _Source
-        );
-
-    
-     errno_t __cdecl wcscpy_s(
-          wchar_t* _Destination,
-          rsize_t _SizeInWords,
-          wchar_t const* _Source
-        );
-
-    
-     errno_t __cdecl wcsncat_s(
-          wchar_t*       _Destination,
-                                     rsize_t        _SizeInWords,
-               wchar_t const* _Source,
-                                     rsize_t        _MaxCount
-        );
-
-    
-     errno_t __cdecl wcsncpy_s(
-          wchar_t*       _Destination,
-                                  rsize_t        _SizeInWords,
-            wchar_t const* _Source,
-                                  rsize_t        _MaxCount
-        );
-
-     
-     wchar_t* __cdecl wcstok_s(
-                          wchar_t*       _String,
-                                 wchar_t const* _Delimiter,
-            wchar_t**      _Context
-        );
-
-
-
-
-     
- 
- __declspec(allocator) wchar_t* __cdecl _wcsdup(
-      wchar_t const* _String
-    );
-
-
-
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscat_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscat(  wchar_t *_Destination,                                                                             wchar_t const* _Source);
-
- 
- int __cdecl wcscmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscpy(  wchar_t *_Destination,                                          wchar_t const* _Source);
-
- 
- size_t __cdecl wcscspn(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
- 
- size_t __cdecl wcslen(
-      wchar_t const* _String
-    );
-
- 
-
-
- size_t __cdecl wcsnlen(
-      wchar_t const* _Source,
-                            size_t         _MaxCount
-    );
-
-
-     
-    
-    
-    static __inline size_t __cdecl wcsnlen_s(
-          wchar_t const* _Source,
-                                size_t         _MaxCount
-        )
-    {
-        return (_Source == 0) ? 0 : wcsnlen(_Source, _MaxCount);
-    }
-
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncat_s(              wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncat(  wchar_t *_Destination,      wchar_t const* _Source,                         size_t _Count);
-
- 
- int __cdecl wcsncmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncpy(    wchar_t *_Destination,               wchar_t const* _Source,                                  size_t _Count);
-
- 
- wchar_t const* __cdecl wcspbrk(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
- 
- size_t __cdecl wcsspn(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
-  __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl wcstok(
-                          wchar_t*       _String,
-                                 wchar_t const* _Delimiter,
-        wchar_t**      _Context
-    );
-
-
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    static __inline wchar_t* __cdecl _wcstok(
-          wchar_t*       const _String,
-                 wchar_t const* const _Delimiter
-        )
-    {
-        return wcstok(_String, _Delimiter, 0);
-    }
-
-
-        extern "C++"   __declspec(deprecated("wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK."))
-        inline wchar_t* __cdecl wcstok(
-              wchar_t*       _String,
-                     wchar_t const* _Delimiter
-            ) throw()
-        {
-            return wcstok(_String, _Delimiter, 0);
-        }
-
-
-
-
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl _wcserror(
-      int _ErrorNumber
-    );
-
-
- errno_t __cdecl _wcserror_s(
-      wchar_t* _Buffer,
-                                  size_t   _SizeInWords,
-                                  int      _ErrorNumber
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcserror_s(wchar_t (&_Buffer)[_Size],   int _Error) throw()                 {                                                                                                                    return _wcserror_s(_Buffer, _Size, _Error);                                                                       }                                                                                                            }
-
- 
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using __wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl __wcserror(
-      wchar_t const* _String
-    );
-
-  errno_t __cdecl __wcserror_s(
-      wchar_t*       _Buffer,
-                                  size_t         _SizeInWords,
-                                wchar_t const* _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl __wcserror_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _ErrorMessage) throw()                 {                                                                                                                    return __wcserror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
-   int __cdecl _wcsicmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
-   int __cdecl _wcsicmp_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
-   int __cdecl _wcsnicmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
-   int __cdecl _wcsnicmp_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
-  errno_t __cdecl _wcsnset_s(
-      wchar_t* _Destination,
-                                 size_t   _SizeInWords,
-                                 wchar_t  _Value,
-                                 size_t   _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wcsnset_s(  wchar_t (&_Destination)[_Size],          wchar_t _Value,           size_t _MaxCount) throw()                 {                                                                                                                                    return _wcsnset_s(_Destination, _Size, _Value, _MaxCount);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsnset(  wchar_t *_String,                            wchar_t _Value,                            size_t _MaxCount);
-
- wchar_t* __cdecl _wcsrev(
-      wchar_t* _String
-    );
-
-  errno_t __cdecl _wcsset_s(
-      wchar_t* _Destination,
-                                 size_t   _SizeInWords,
-                                 wchar_t  _Value
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsset_s(  wchar_t (&_String)[_Size],          wchar_t _Value) throw()                 {                                                                                                                    return _wcsset_s(_String, _Size, _Value);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsset(  wchar_t *_String,                       wchar_t _Value);
-
-  errno_t __cdecl _wcslwr_s(
-      wchar_t* _String,
-                                 size_t   _SizeInWords
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcslwr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcslwr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr(  wchar_t *_String);
-
-
- errno_t __cdecl _wcslwr_s_l(
-      wchar_t*  _String,
-                                 size_t    _SizeInWords,
-                             _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcslwr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcslwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr_l(  wchar_t *_String,                   _locale_t _Locale);
-
-
- errno_t __cdecl _wcsupr_s(
-      wchar_t* _String,
-                          size_t   _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcsupr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcsupr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr(  wchar_t *_String);
-
-
- errno_t __cdecl _wcsupr_s_l(
-      wchar_t*  _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsupr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcsupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr_l(  wchar_t *_String,                   _locale_t _Locale);
-
- 
-
- size_t __cdecl wcsxfrm(
-        wchar_t*       _Destination,
-                                         wchar_t const* _Source,
-                size_t         _MaxCount
-    );
-
- 
-
- size_t __cdecl _wcsxfrm_l(
-        wchar_t*       _Destination,
-                                         wchar_t const* _Source,
-                size_t         _MaxCount,
-                                       _locale_t      _Locale
-    );
-
- 
- int __cdecl wcscoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
- 
- int __cdecl _wcscoll_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsicoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
- 
- int __cdecl _wcsicoll_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsncoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
- 
- int __cdecl _wcsncoll_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsnicoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
- 
- int __cdecl _wcsnicoll_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
-
-
-     extern "C++" {
-
-     
-    
-    inline wchar_t* __cdecl wcschr(  wchar_t* _String, wchar_t _C)
-    {
-        return const_cast<wchar_t*>(wcschr(static_cast<wchar_t const*>(_String), _C));
-    }
-
-     
-    inline wchar_t* __cdecl wcspbrk(  wchar_t* _String,   wchar_t const* _Control)
-    {
-        return const_cast<wchar_t*>(wcspbrk(static_cast<wchar_t const*>(_String), _Control));
-    }
-
-     
-    inline wchar_t* __cdecl wcsrchr(  wchar_t* _String,   wchar_t _C)
-    {
-        return const_cast<wchar_t*>(wcsrchr(static_cast<wchar_t const*>(_String), _C));
-    }
-
-       
-    
-    inline wchar_t* __cdecl wcsstr(  wchar_t* _String,   wchar_t const*_SubStr)
-    {
-        return const_cast<wchar_t*>(wcsstr(static_cast<wchar_t const*>(_String), _SubStr));
-    }
-
-}
-
-
-
-     
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details."))
-     wchar_t* __cdecl wcsdup(
-          wchar_t const* _String
-        );
-
-
-     
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicmp. See online help for details."))
-     int __cdecl wcsicmp(
-          wchar_t const* _String1,
-          wchar_t const* _String2
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnicmp. See online help for details."))
-     int __cdecl wcsnicmp(
-          wchar_t const* _String1,
-          wchar_t const* _String2,
-                                size_t         _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnset. See online help for details."))
-     
-     wchar_t* __cdecl wcsnset(
-          wchar_t* _String,
-                                  wchar_t  _Value,
-                                  size_t   _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsrev. See online help for details."))
-     
-     wchar_t* __cdecl wcsrev(
-          wchar_t* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsset. See online help for details."))
-     
-     wchar_t* __cdecl wcsset(
-          wchar_t* _String,
-               wchar_t  _Value
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcslwr. See online help for details."))
-     
-     wchar_t* __cdecl wcslwr(
-          wchar_t* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsupr. See online help for details."))
-     
-     wchar_t* __cdecl wcsupr(
-          wchar_t* _String
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicoll. See online help for details."))
-     int __cdecl wcsicoll(
-          wchar_t const* _String1,
-          wchar_t const* _String2
-        );
-
-
-
-
-}                             
-
-
-       
-
-
-
-         extern "C" {
-
-
-
-
-
-    
-     errno_t __cdecl strcpy_s(
-          char*       _Destination,
-                                  rsize_t     _SizeInBytes,
-                                char const* _Source
-        );
-
-    
-     errno_t __cdecl strcat_s(
-          char*       _Destination,
-                                     rsize_t     _SizeInBytes,
-                                   char const* _Source
-        );
-
-    
-     errno_t __cdecl strerror_s(
-          char*  _Buffer,
-                                  size_t _SizeInBytes,
-                                  int    _ErrorNumber);
-
-    
-     errno_t __cdecl strncat_s(
-          char*       _Destination,
-                                     rsize_t     _SizeInBytes,
-               char const* _Source,
-                                     rsize_t     _MaxCount
-        );
-
-    
-     errno_t __cdecl strncpy_s(
-          char*       _Destination,
-                                  rsize_t     _SizeInBytes,
-            char const* _Source,
-                                  rsize_t     _MaxCount
-        );
-
-     
-     char*  __cdecl strtok_s(
-                          char*       _String,
-                                 char const* _Delimiter,
-            char**      _Context
-        );
-
-
- void* __cdecl _memccpy(
-      void*       _Dst,
-                                   void const* _Src,
-                                   int         _Val,
-                                   size_t      _MaxCount
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcat_s(char (&_Destination)[_Size],   char const* _Source) throw()                 {                                                                                                                    return strcat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcat(  char *_Destination,                                                                             char const* _Source);
-
-
- 
-int __cdecl strcmp(
-      char const* _Str1,
-      char const* _Str2
-    );
-
- 
- int __cdecl _strcmpi(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl strcoll(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _strcoll_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcpy_s(  char (&_Destination)[_Size],     char const* _Source) throw()                 {                                                                                                                    return strcpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcpy(  char *_Destination,                                          char const* _Source);
-
- 
- size_t __cdecl strcspn(
-      char const* _Str,
-      char const* _Control
-    );
-
-
- 
- __declspec(allocator) char* __cdecl _strdup(
-      char const* _Source
-    );
-
-
- 
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char*  __cdecl _strerror(
-      char const* _ErrorMessage
-    );
-
-
- errno_t __cdecl _strerror_s(
-      char*       _Buffer,
-                              size_t      _SizeInBytes,
-                        char const* _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strerror_s(char (&_Buffer)[_Size],   char const* _ErrorMessage) throw()                 {                                                                                                                    return _strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char* __cdecl strerror(
-      int _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strerror_s(char (&_Buffer)[_Size],   int _ErrorMessage) throw()                 {                                                                                                                    return strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
- 
- int __cdecl _stricmp(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _stricoll(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _stricoll_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
- 
- int __cdecl _stricmp_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
- 
-size_t __cdecl strlen(
-      char const* _Str
-    );
-
-
- errno_t __cdecl _strlwr_s(
-      char*  _String,
-                          size_t _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strlwr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strlwr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr(  char *_String);
-
-
- errno_t __cdecl _strlwr_s_l(
-      char*     _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strlwr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strlwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr_l(  char *_String,                   _locale_t _Locale);
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncat_s(              char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncat(  char *_Destination,      char const* _Source,                         size_t _Count);
-
- 
- int __cdecl strncmp(
-      char const* _Str1,
-      char const* _Str2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicmp(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicmp_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- 
- int __cdecl _strnicoll(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicoll_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- 
- int __cdecl _strncoll(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strncoll_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- size_t __cdecl __strncnt(
-      char const* _String,
-                         size_t      _Count
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncpy_s(char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncpy(    char *_Destination,               char const* _Source,                                  size_t _Count);
-
- 
-
-
- size_t __cdecl strnlen(
-      char const* _String,
-                            size_t      _MaxCount
-    );
-
-
-     
-    
-    
-    static __inline size_t __cdecl strnlen_s(
-          char const* _String,
-                                size_t      _MaxCount
-        )
-    {
-        return _String == 0 ? 0 : strnlen(_String, _MaxCount);
-    }
-
-
-
- errno_t __cdecl _strnset_s(
-      char*  _String,
-                                 size_t _SizeInBytes,
-                                 int    _Value,
-                                 size_t _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _strnset_s(  char (&_Destination)[_Size],          int _Value,          size_t _Count) throw()                 {                                                                                                                                    return _strnset_s(_Destination, _Size, _Value, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strnset(  char *_Destination,                         int _Value,                         size_t _Count);
-
- 
- char const* __cdecl strpbrk(
-      char const* _Str,
-      char const* _Control
-    );
-
- char* __cdecl _strrev(
-      char* _Str
-    );
-
-
- errno_t __cdecl _strset_s(
-      char*  _Destination,
-                                     size_t _DestinationSize,
-                                     int    _Value
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strset_s(  char (&_Destination)[_Size],          int _Value) throw()                 {                                                                                                                    return _strset_s(_Destination, _Size, _Value);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strset(  char *_Destination,         int _Value);
-
- 
- size_t __cdecl strspn(
-      char const* _Str,
-      char const* _Control
-    );
-
-  __declspec(deprecated("This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char* __cdecl strtok(
-      char*       _String,
-             char const* _Delimiter
-    );
-
-
- errno_t __cdecl _strupr_s(
-      char*  _String,
-                          size_t _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strupr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strupr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr(  char *_String);
-
-
- errno_t __cdecl _strupr_s_l(
-      char*     _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strupr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr_l(  char *_String,                   _locale_t _Locale);
-
- 
-
- size_t __cdecl strxfrm(
-        char*       _Destination,
-                                         char const* _Source,
-                 size_t      _MaxCount
-    );
-
- 
-
- size_t __cdecl _strxfrm_l(
-        char*       _Destination,
-                                         char const* _Source,
-                 size_t      _MaxCount,
-                                       _locale_t   _Locale
-    );
-
-
-
-extern "C++"
-{
-     
-    inline char* __cdecl strchr(  char* const _String,   int const _Ch)
-    {
-        return const_cast<char*>(strchr(static_cast<char const*>(_String), _Ch));
-    }
-
-     
-    inline char* __cdecl strpbrk(  char* const _String,   char const* const _Control)
-    {
-        return const_cast<char*>(strpbrk(static_cast<char const*>(_String), _Control));
-    }
-
-     
-    inline char* __cdecl strrchr(  char* const _String,   int const _Ch)
-    {
-        return const_cast<char*>(strrchr(static_cast<char const*>(_String), _Ch));
-    }
-
-       
-    inline char* __cdecl strstr(  char* const _String,   char const* const _SubString)
-    {
-        return const_cast<char*>(strstr(static_cast<char const*>(_String), _SubString));
-    }
-}
-
-
-
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details."))
-     char* __cdecl strdup(
-          char const* _String
-        );
-
-           __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details."))
-     int __cdecl strcmpi(
-          char const* _String1,
-          char const* _String2
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details."))
-     int __cdecl stricmp(
-          char const* _String1,
-          char const* _String2
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details."))
-     char* __cdecl strlwr(
-          char* _String
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details."))
-     int __cdecl strnicmp(
-          char const* _String1,
-          char const* _String2,
-                                size_t      _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnset. See online help for details."))
-     char* __cdecl strnset(
-          char*  _String,
-                                  int    _Value,
-                                  size_t _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strrev. See online help for details."))
-     char* __cdecl strrev(
-          char* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strset. See online help for details."))
-    char* __cdecl strset(
-          char* _String,
-               int   _Value);
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strupr. See online help for details."))
-     char* __cdecl strupr(
-          char* _String
-        );
-
-
-
-
-}                             
-
-
-
-
-namespace std {
-
-using :: size_t;
-using :: memchr;
-using :: memcmp;
-using :: memcpy;
-using :: memmove;
-using :: memset;
-using :: strcat;
-using :: strchr;
-using :: strcmp;
-using :: strcoll;
-using :: strcpy;
-using :: strcspn;
-using :: strerror;
-using :: strlen;
-using :: strncat;
-using :: strncmp;
-using :: strncpy;
-using :: strpbrk;
-using :: strrchr;
-using :: strspn;
-using :: strstr;
-using :: strtok;
-using :: strxfrm;
-
-}
-
-
-
- 
-  
- 
-  
- 
-  
- 
-  
-
- 
-  
- 
-  
-
- 
-  
-       
-
-
-namespace std {
-  template <class _Ty1, class _Ty2>
-concept _Same_impl =      is_same_v<_Ty1, _Ty2>;
-
-template <class _Ty1, class _Ty2>
-concept same_as = _Same_impl<_Ty1, _Ty2> && _Same_impl<_Ty2, _Ty1>;
-
- template <class _Derived, class _Base>
-concept derived_from = __is_base_of(_Base, _Derived)
-    && __is_convertible_to(const volatile _Derived*, const volatile _Base*);
-
- template <class _From, class _To>
-concept convertible_to = __is_convertible_to(_From, _To)
-    && requires(add_rvalue_reference_t<_From> (&_Fn)()) {
-        static_cast<_To>(_Fn());
-    };
-
- template <class _From, class _To>
-concept _Implicitly_convertible_to = is_convertible_v<_From, _To>;
-
- template <class _Ty1, class _Ty2>
-concept common_reference_with =
-    requires {
-        typename common_reference_t<_Ty1, _Ty2>;
-        typename common_reference_t<_Ty2, _Ty1>;
-    }
-    && same_as<common_reference_t<_Ty1, _Ty2>, common_reference_t<_Ty2, _Ty1>>
-    && convertible_to<_Ty1, common_reference_t<_Ty1, _Ty2>>
-    && convertible_to<_Ty2, common_reference_t<_Ty1, _Ty2>>;
-
- template <class _Ty1, class _Ty2>
-concept common_with =
-    requires {
-        typename common_type_t<_Ty1, _Ty2>;
-        typename common_type_t<_Ty2, _Ty1>;
-        requires same_as<common_type_t<_Ty1, _Ty2>, common_type_t<_Ty2, _Ty1>>;
-        static_cast<common_type_t<_Ty1, _Ty2>>(::std:: declval<_Ty1>());
-        static_cast<common_type_t<_Ty1, _Ty2>>(::std:: declval<_Ty2>());
-    }
-    && common_reference_with<add_lvalue_reference_t<const _Ty1>, add_lvalue_reference_t<const _Ty2>>
-    && common_reference_with<add_lvalue_reference_t<common_type_t<_Ty1, _Ty2>>,
-        common_reference_t<add_lvalue_reference_t<const _Ty1>, add_lvalue_reference_t<const _Ty2>>>;
-
- template <class _Ty>
-concept integral = is_integral_v<_Ty>;
-
- template <class _Ty>
-concept signed_integral = integral<_Ty> && static_cast<_Ty>(-1) < static_cast<_Ty>(0);
-
- template <class _Ty>
-concept unsigned_integral = integral<_Ty> && !signed_integral<_Ty>;
-
- template <class _Ty>
-concept floating_point = is_floating_point_v<_Ty>;
-
- template <class _LTy, class _RTy>
-concept assignable_from = is_lvalue_reference_v<_LTy>
-    && common_reference_with<const remove_reference_t<_LTy>&, const remove_reference_t<_RTy>&>
-    && requires(_LTy _Left, _RTy&& _Right) {
-        { _Left = static_cast<_RTy&&>(_Right) } -> same_as<_LTy>;
-    };
-
- 
- template <class _Ty>
-concept destructible = __is_nothrow_destructible(_Ty);
-
- template <class _Ty, class... _ArgTys>
-concept constructible_from = destructible<_Ty>
-    && __is_constructible(_Ty, _ArgTys...);
-
- template <class _Ty>
-concept default_initializable = constructible_from<_Ty>
-    && requires {
-        _Ty{};
-        ::new (static_cast<void*>(nullptr)) _Ty;      };
-
- template <class _Ty>
-concept move_constructible = constructible_from<_Ty, _Ty> && convertible_to<_Ty, _Ty>;
-
- template <class _Ty>
-concept _Has_class_or_enum_type = __is_class(remove_reference_t<_Ty>) || __is_enum(remove_reference_t<_Ty>)
-    || __is_union(remove_reference_t<_Ty>);
-
- namespace ranges {
-    namespace _Swap {
-        template <class _Ty>
-        void swap(_Ty&, _Ty&) = delete;
-
-        template <class _Ty1, class _Ty2>
-        concept _Use_ADL_swap = (_Has_class_or_enum_type<_Ty1> || _Has_class_or_enum_type<_Ty2>)
-            && requires(_Ty1&& __t, _Ty2&& __u) {
-                swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
-            };
-
-        struct _Cpo {
-            template <class _Ty1, class _Ty2>
-                requires _Use_ADL_swap<_Ty1, _Ty2>
-            constexpr void operator()(_Ty1&& __t, _Ty2&& __u) const
-                noexcept(noexcept(swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u)))) {
-                swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
-            }
-
-            template <class _Ty>
-                requires (!_Use_ADL_swap<_Ty&, _Ty&> && move_constructible<_Ty> && assignable_from<_Ty&, _Ty>)
-            constexpr void operator()(_Ty& __x, _Ty& __y) const
-                noexcept(is_nothrow_move_constructible_v<_Ty> && is_nothrow_move_assignable_v<_Ty>) {
-                _Ty __tmp(static_cast<_Ty&&>(__x));
-                __x = static_cast<_Ty&&>(__y);
-                __y = static_cast<_Ty&&>(__tmp);
-            }
-
-            template <class _Ty1, class _Ty2, size_t _Size>
-            constexpr void operator()(_Ty1 (&__t)[_Size], _Ty2 (&__u)[_Size]) const
-                noexcept(noexcept((*this)(__t[0], __u[0])))
-                requires requires { (*this)(__t[0], __u[0]); } {
-                for (size_t __i = 0; __i < _Size; ++__i) {
-                    (*this)(__t[__i], __u[__i]);
-                }
-            }
-        };
-    }  
-    namespace _Cpos {
-        inline constexpr _Swap::_Cpo swap;
-    }
-    using namespace _Cpos;
-}  
- template <class _Ty>
-concept swappable = requires(_Ty& __x, _Ty& __y) {
-    ::std::ranges:: swap(__x, __y);
-};
-
- template <class _Ty1, class _Ty2>
-concept swappable_with = common_reference_with<_Ty1, _Ty2>
-    && requires(_Ty1&& __t, _Ty2&& __u) {
-        ::std::ranges:: swap(static_cast<_Ty1&&>(__t), static_cast<_Ty1&&>(__t));
-        ::std::ranges:: swap(static_cast<_Ty2&&>(__u), static_cast<_Ty2&&>(__u));
-        ::std::ranges:: swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
-        ::std::ranges:: swap(static_cast<_Ty2&&>(__u), static_cast<_Ty1&&>(__t));
-    };
-
- template <class _Ty>
-concept copy_constructible = move_constructible<_Ty>
-    && constructible_from<_Ty, _Ty&> && convertible_to<_Ty&, _Ty>
-    && constructible_from<_Ty, const _Ty&> && convertible_to<const _Ty&, _Ty>
-    && constructible_from<_Ty, const _Ty> && convertible_to<const _Ty, _Ty>;
-
- template <class _Ty>
-concept _Boolean_testable_impl = convertible_to<_Ty, bool>;
-
-template <class _Ty>
-concept _Boolean_testable = _Boolean_testable_impl<_Ty>
-    && requires(_Ty&& __t) {
-        { !static_cast<_Ty&&>(__t) } -> _Boolean_testable_impl;
-    };
-
- template <class _Ty1, class _Ty2>
-concept _Half_equality_comparable =
-    requires(const remove_reference_t<_Ty1>& __x, const remove_reference_t<_Ty2>& __y) {
-        { __x == __y } -> _Boolean_testable;
-        { __x != __y } -> _Boolean_testable;
-    };
-
-template <class _Ty1, class _Ty2>
-concept _Weakly_equality_comparable_with =
-    _Half_equality_comparable<_Ty1, _Ty2> && _Half_equality_comparable<_Ty2, _Ty1>;
-
- template <class _Ty>
-concept equality_comparable = _Half_equality_comparable<_Ty, _Ty>;
-
- template <class _Ty1, class _Ty2>
-concept equality_comparable_with = equality_comparable<_Ty1> && equality_comparable<_Ty2>
-    && common_reference_with<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>
-    && equality_comparable<common_reference_t<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>>
-    && _Weakly_equality_comparable_with<_Ty1, _Ty2>;
-
- template <class _Ty1, class _Ty2>
-concept _Half_ordered = requires(const remove_reference_t<_Ty1>& __t, const remove_reference_t<_Ty2>& __u) {
-    { __t <  __u } -> _Boolean_testable;
-    { __t >  __u } -> _Boolean_testable;
-    { __t <= __u } -> _Boolean_testable;
-    { __t >= __u } -> _Boolean_testable;
-};
-
-template <class _Ty1, class _Ty2>
-concept _Partially_ordered_with = _Half_ordered<_Ty1, _Ty2> && _Half_ordered<_Ty2, _Ty1>;
-
- template <class _Ty>
-concept totally_ordered = equality_comparable<_Ty> && _Half_ordered<_Ty, _Ty>;
-
- template <class _Ty1, class _Ty2>
-concept totally_ordered_with = totally_ordered<_Ty1> && totally_ordered<_Ty2>
-    && equality_comparable_with<_Ty1, _Ty2>
-    && totally_ordered<common_reference_t<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>>
-    && _Partially_ordered_with<_Ty1, _Ty2>;
-
- template <class _Ty>
-concept movable = is_object_v<_Ty>
-    && move_constructible<_Ty>
-    && assignable_from<_Ty&, _Ty>
-    && swappable<_Ty>;
-
- template <class _Ty>
-concept copyable = copy_constructible<_Ty>
-    && movable<_Ty>
-    && assignable_from<_Ty&, _Ty&>
-    && assignable_from<_Ty&, const _Ty&>
-    && assignable_from<_Ty&, const _Ty>;
-
- template <class _Ty>
-concept semiregular = copyable<_Ty> && default_initializable<_Ty>;
-
- template <class _Ty>
-concept regular = semiregular<_Ty> && equality_comparable<_Ty>;
-
- template <class _FTy, class... _ArgTys>
-concept invocable = requires(_FTy&& _Fn, _ArgTys&&... _Args) {
-    ::std:: invoke(static_cast<_FTy&&>(_Fn), static_cast<_ArgTys&&>(_Args)...);
-};
-
- template <class _FTy, class... _ArgTys>
-concept regular_invocable = invocable<_FTy, _ArgTys...>;
-
- template <class _FTy, class... _ArgTys>
-concept predicate = regular_invocable<_FTy, _ArgTys...>
-    && _Boolean_testable<invoke_result_t<_FTy, _ArgTys...>>;
-
- template <class _FTy, class _Ty1, class _Ty2>
-concept relation =
-       predicate<_FTy, _Ty1, _Ty1>
-    && predicate<_FTy, _Ty2, _Ty2>
-    && predicate<_FTy, _Ty1, _Ty2>
-    && predicate<_FTy, _Ty2, _Ty1>;
-
- template <class _FTy, class _Ty1, class _Ty2>
-concept equivalence_relation = relation<_FTy, _Ty1, _Ty2>;
-
- template <class _FTy, class _Ty1, class _Ty2>
-concept strict_weak_order = relation<_FTy, _Ty1, _Ty2>;
-
- 
- template <class _Ty>
-struct _Choice_t {
-    _Ty _Strategy  = _Ty{};
-    bool _No_throw = false;
-};
-
-}
-
-
-
- 
-  
- 
-  
 
  
   
@@ -8148,128 +6716,135 @@ extern "C" {
 
  
 
-(void __dmb(unsigned int _Type))
+
 
 unsigned char _BitScanForward(unsigned long * _Index, unsigned long _Mask);
 unsigned char _BitScanForward64(unsigned long * _Index, unsigned __int64 _Mask);
-(unsigned char _BitScanForward64(unsigned long * _Index, unsigned __int64 _Mask))
+
 unsigned char _BitScanReverse(unsigned long * _Index, unsigned long _Mask);
 unsigned char _BitScanReverse64(unsigned long * _Index, unsigned __int64 _Mask);
-(unsigned char _BitScanReverse64(unsigned long * _Index, unsigned __int64 _Mask))
+
 unsigned char _bittest(long const *, long);
-(unsigned int _CountLeadingZeros(unsigned long))
-(unsigned int _CountLeadingZeros64(unsigned __int64))
+
+
 long _InterlockedAnd(long volatile * _Value, long _Mask);
 short _InterlockedAnd16(short volatile * _Value, short _Mask);
-(short _InterlockedAnd16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedAnd16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedAnd16_rel(short volatile * _Value, short _Mask))
+
+
+
 __int64 _InterlockedAnd64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedAnd64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedAnd64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedAnd64_rel(__int64 volatile * _Value, __int64 _Mask))
+__int64 _interlockedand64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
 char _InterlockedAnd8(char volatile * _Value, char _Mask);
-(char _InterlockedAnd8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedAnd8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedAnd8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedAnd_acq(long volatile * _Value, long _Mask))
-(long _InterlockedAnd_nf(long volatile * _Value, long _Mask))
-(long _InterlockedAnd_rel(long volatile * _Value, long _Mask))
+
+
+
+
+
+
 long  _InterlockedCompareExchange(long volatile * _Destination, long _Exchange, long _Comparand);
 
 short _InterlockedCompareExchange16(short volatile * _Destination, short _Exchange, short _Comparand);
-(short _InterlockedCompareExchange16_acq(short volatile * _Destination, short _Exchange, short _Comparand))
-(short _InterlockedCompareExchange16_nf(short volatile * _Destination, short _Exchange, short _Comparand))
-(short _InterlockedCompareExchange16_rel(short volatile * _Destination, short _Exchange, short _Comparand))
+
+
+
 __int64 _InterlockedCompareExchange64(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand);
-(__int64 _InterlockedCompareExchange64_acq(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
-(__int64 _InterlockedCompareExchange64_nf(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
-(__int64 _InterlockedCompareExchange64_rel(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
+
+
+
 char _InterlockedCompareExchange8(char volatile * _Destination, char _Exchange, char _Comparand);
-(char _InterlockedCompareExchange8_acq(char volatile * _Destination, char _Exchange, char _Comparand))
-(char _InterlockedCompareExchange8_nf(char volatile * _Destination, char _Exchange, char _Comparand))
-(char _InterlockedCompareExchange8_rel(char volatile * _Destination, char _Exchange, char _Comparand))
-(long _InterlockedCompareExchange_acq(long volatile * _Destination, long _Exchange, long _Comparand))
-(long _InterlockedCompareExchange_nf(long volatile * _Destination, long _Exchange, long _Comparand))
-(long _InterlockedCompareExchange_rel(long volatile * _Destination, long _Exchange, long _Comparand))
+
+
+
+
+
+
 unsigned char _InterlockedCompareExchange128(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult);
-(unsigned char _InterlockedCompareExchange128_acq(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
-(unsigned char _InterlockedCompareExchange128_nf(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
-(unsigned char _InterlockedCompareExchange128_rel(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
+
+
+
 long  _InterlockedDecrement(long volatile * _Addend);
 
 short _InterlockedDecrement16(short volatile * _Addend);
 __int64 _InterlockedDecrement64(__int64 volatile * _Addend);
+__int64 _interlockeddecrement64(__int64 volatile * _Addend);
 long  _InterlockedExchange(long volatile * _Target, long _Value);
 
 short _InterlockedExchange16(short volatile * _Target, short _Value);
-(short _InterlockedExchange16_acq(short volatile * _Target, short _Value))
-(short _InterlockedExchange16_nf(short volatile * _Target, short _Value))
-(short _InterlockedExchange16_rel(short volatile * _Target, short _Value))
+
+
+
 __int64 _InterlockedExchange64(__int64 volatile * _Target, __int64 _Value);
-(__int64 _InterlockedExchange64_acq(__int64 volatile * _Target, __int64 _Value))
-(__int64 _InterlockedExchange64_nf(__int64 volatile * _Target, __int64 _Value))
-(__int64 _InterlockedExchange64_rel(__int64 volatile * _Target, __int64 _Value))
+__int64 _interlockedexchange64(__int64 volatile * _Target, __int64 _Value);
+
+
+
 char _InterlockedExchange8(char volatile * _Target, char _Value);
-(char _InterlockedExchange8_acq(char volatile * _Target, char _Value))
-(char _InterlockedExchange8_nf(char volatile * _Target, char _Value))
-(char _InterlockedExchange8_rel(char volatile * _Target, char _Value))
+
+
+
 long  _InterlockedExchangeAdd(long volatile * _Addend, long _Value);
 short _InterlockedExchangeAdd16(short volatile * _Addend, short _Value);
-(short _InterlockedExchangeAdd16_acq(short volatile * _Addend, short _Value))
-(short _InterlockedExchangeAdd16_nf(short volatile * _Addend, short _Value))
-(short _InterlockedExchangeAdd16_rel(short volatile * _Addend, short _Value))
+
+
+
 __int64 _InterlockedExchangeAdd64(__int64 volatile * _Addend, __int64 _Value);
-(__int64 _InterlockedExchangeAdd64_acq(__int64 volatile * _Addend, __int64 _Value))
-(__int64 _InterlockedExchangeAdd64_nf(__int64 volatile * _Addend, __int64 _Value))
-(__int64 _InterlockedExchangeAdd64_rel(__int64 volatile * _Addend, __int64 _Value))
+__int64 _interlockedexchangeadd64(__int64 volatile * _Addend, __int64 _Value);
+
+
+
 char _InterlockedExchangeAdd8(char volatile * _Addend, char _Value);
-(char _InterlockedExchangeAdd8_acq(char volatile * _Addend, char _Value))
-(char _InterlockedExchangeAdd8_nf(char volatile * _Addend, char _Value))
-(char _InterlockedExchangeAdd8_rel(char volatile * _Addend, char _Value))
-(long _InterlockedExchangeAdd_acq(long volatile * _Addend, long _Value))
-(long _InterlockedExchangeAdd_nf(long volatile * _Addend, long _Value))
-(long _InterlockedExchangeAdd_rel(long volatile * _Addend, long _Value))
-(long _InterlockedExchange_acq(long volatile * _Target, long _Value))
-(long _InterlockedExchange_nf(long volatile * _Target, long _Value))
-(long _InterlockedExchange_rel(long volatile * _Target, long _Value))
+
+
+
+
+
+
+
+
+
 long  _InterlockedIncrement(long volatile * _Addend);
 
 short _InterlockedIncrement16(short volatile * _Addend);
 __int64 _InterlockedIncrement64(__int64 volatile * _Addend);
-(long _InterlockedIncrement_nf(long volatile * _Addend))
+__int64 _interlockedincrement64(__int64 volatile * _Addend);
+
 long _InterlockedOr(long volatile * _Value, long _Mask);
 short _InterlockedOr16(short volatile * _Value, short _Mask);
-(short _InterlockedOr16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedOr16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedOr16_rel(short volatile * _Value, short _Mask))
+
+
+
 __int64 _InterlockedOr64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedOr64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedOr64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedOr64_rel(__int64 volatile * _Value, __int64 _Mask))
+__int64 _interlockedor64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
 char _InterlockedOr8(char volatile * _Value, char _Mask);
-(char _InterlockedOr8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedOr8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedOr8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedOr_acq(long volatile * _Value, long _Mask))
-(long _InterlockedOr_nf(long volatile * _Value, long _Mask))
-(long _InterlockedOr_rel(long volatile * _Value, long _Mask))
+
+
+
+
+
+
 long _InterlockedXor(long volatile * _Value, long _Mask);
 short _InterlockedXor16(short volatile * _Value, short _Mask);
-(short _InterlockedXor16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedXor16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedXor16_rel(short volatile * _Value, short _Mask))
+
+
+
 __int64 _InterlockedXor64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedXor64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedXor64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedXor64_rel(__int64 volatile * _Value, __int64 _Mask))
+__int64 _interlockedxor64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
 char _InterlockedXor8(char volatile * _Value, char _Mask);
-(char _InterlockedXor8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedXor8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedXor8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedXor_acq(long volatile * _Value, long _Mask))
-(long _InterlockedXor_nf(long volatile * _Value, long _Mask))
-(long _InterlockedXor_rel(long volatile * _Value, long _Mask))
+
+
+
+
+
+
 void _ReadWriteBarrier(void);
 __int16 __iso_volatile_load16(const volatile __int16 *);
 __int32 __iso_volatile_load32(const volatile __int32 *);
@@ -8279,12 +6854,13 @@ void __iso_volatile_store16(volatile __int16 *, __int16);
 void __iso_volatile_store32(volatile __int32 *, __int32);
 void __iso_volatile_store64(volatile __int64 *, __int64);
 void __iso_volatile_store8(volatile __int8 *, __int8);
-(__int64 __ldrexd(const volatile __int64 *))
-(void __yield(void))
+
+
 unsigned char _interlockedbittestandset(long volatile *, long);
-(unsigned char _interlockedbittestandset_acq(long volatile *, long))
-(unsigned char _interlockedbittestandset_nf(long volatile *, long))
-(unsigned char _interlockedbittestandset_rel(long volatile *, long))
+
+
+
+void _mm_pause(void);
 unsigned int __lzcnt(unsigned int);
 unsigned short __lzcnt16(unsigned short);
 unsigned __int64 __lzcnt64(unsigned __int64);
@@ -8307,6 +6883,22 @@ double __copysign(double, double);
 float __copysignf(float, float);
 unsigned __signbitvalue(double);
 unsigned __signbitvaluef(float);
+int _cvt_ftoi_sat (float a);
+unsigned _cvt_ftoui_sat (float a);
+long long _cvt_ftoll_sat (float a);
+unsigned long long _cvt_ftoull_sat (float a);
+int _cvt_ftoi_sent (float a);
+unsigned _cvt_ftoui_sent (float a);
+long long _cvt_ftoll_sent (float a);
+unsigned long long _cvt_ftoull_sent (float a);
+int _cvt_dtoi_sat (double a);
+unsigned _cvt_dtoui_sat (double a);
+long long _cvt_dtoll_sat (double a);
+unsigned long long _cvt_dtoull_sat (double a);
+int _cvt_dtoi_sent (double a);
+unsigned _cvt_dtoui_sent (double a);
+long long _cvt_dtoll_sent (double a);
+unsigned long long _cvt_dtoull_sent (double a);
 constexpr void * __cdecl __builtin_assume_aligned(const void *, size_t, ...) noexcept;
 
  
@@ -8473,6 +7065,10 @@ enum ISA_AVAILABILITY
 
  
   
+ 
+  
+
+       
  
   
  
@@ -8689,7 +7285,7 @@ enum ISA_AVAILABILITY
 
     extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl _wtmpnam_s( wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wtmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           wchar_t* __cdecl _wtmpnam(   wchar_t *_Buffer);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _wtmpnam_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           wchar_t* __cdecl _wtmpnam(   wchar_t *_Buffer);
 
 
 
@@ -9359,7 +7955,7 @@ enum ISA_AVAILABILITY
         return _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
     }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _snwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _VFuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vsnwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, va_list _Args);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _snwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _snwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vsnwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, va_list _Args);
 
      
      __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
@@ -9627,9 +8223,9 @@ enum ISA_AVAILABILITY
         return _Result;
     }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __swprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __vswprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, va_list _Args);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using __swprintf_l_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __swprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vswprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __vswprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, va_list _Args);
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _swprintf(   wchar_t *_Buffer,         wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vswprintf(   wchar_t *_Buffer,         wchar_t const* _Format, va_list _Args);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using swprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _swprintf(   wchar_t *_Buffer,         wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using vswprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vswprintf(   wchar_t *_Buffer,         wchar_t const* _Format, va_list _Args);
 
      
     
@@ -10525,7 +9121,7 @@ typedef __int64 fpos_t;
 
     extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl tmpnam_s( char (&_Buffer)[_Size]) throw()                  {                                                                                                     return tmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           char* __cdecl tmpnam(   char *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using tmpnam_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           char* __cdecl tmpnam(   char *_Buffer);
 
      
     
@@ -11522,7 +10118,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         return _Result;
     }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl sprintf(   char *_Buffer,         char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl vsprintf(   char *_Buffer,         char const* _Format, va_list _Args);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl sprintf(   char *_Buffer,         char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl vsprintf(   char *_Buffer,         char const* _Format, va_list _Args);
 
      
     
@@ -11646,7 +10242,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         return _Result;
     }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _snprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _VFuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _vsnprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, va_list _Args);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _snprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _vsnprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, va_list _Args);
 
      
     
@@ -12069,7 +10665,186 @@ using :: vsscanf;
 
 
          
-                      
+              
+              
+       
+
+
+         extern "C" {
+
+
+
+     int* __cdecl _errno(void);
+
+     errno_t __cdecl _set_errno(  int _Value);
+     errno_t __cdecl _get_errno(  int* _Value);
+
+     unsigned long* __cdecl __doserrno(void);
+
+     errno_t __cdecl _set_doserrno(  unsigned long _Value);
+     errno_t __cdecl _get_doserrno(  unsigned long * _Value);
+
+
+
+ 
+ 
+ 
+ 
+
+
+}                             
+
+       
+       
+
+
+         extern "C" {
+
+
+
+  
+ void const* __cdecl memchr(
+      void const* _Buf,
+                                 int         _Val,
+                                 size_t      _MaxCount
+    );
+
+  
+int __cdecl memcmp(
+      void const* _Buf1,
+      void const* _Buf2,
+                         size_t      _Size
+    );
+
+
+ 
+
+void* __cdecl memcpy(
+      void* _Dst,
+            void const* _Src,
+                               size_t      _Size
+    );
+
+
+ void* __cdecl memmove(
+      void*       _Dst,
+            void const* _Src,
+                                   size_t      _Size
+    );
+
+ 
+
+void* __cdecl memset(
+      void*  _Dst,
+                               int    _Val,
+                               size_t _Size
+    );
+
+  
+ char const* __cdecl strchr(
+      char const* _Str,
+        int         _Val
+    );
+
+  
+ char const* __cdecl strrchr(
+      char const* _Str,
+        int         _Ch
+    );
+
+    
+ char const* __cdecl strstr(
+      char const* _Str,
+      char const* _SubStr
+    );
+
+  
+
+ wchar_t const* __cdecl wcschr(
+      wchar_t const* _Str,
+        wchar_t        _Ch
+    );
+
+  
+ wchar_t const* __cdecl wcsrchr(
+      wchar_t const* _Str,
+        wchar_t        _Ch
+    );
+
+    
+
+ wchar_t const* __cdecl wcsstr(
+      wchar_t const* _Str,
+      wchar_t const* _SubStr
+    );
+
+
+
+}                             
+
+
+
+
+
+         extern "C" {
+
+
+
+
+     
+    
+    static __inline errno_t __cdecl memcpy_s(
+          void*       const _Destination,
+                                                              rsize_t     const _DestinationSize,
+                                 void const* const _Source,
+                                                              rsize_t     const _SourceSize
+        )
+    {
+        if (_SourceSize == 0)
+        {
+            return 0;
+        }
+
+        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        if (_Source == 0 || _DestinationSize < _SourceSize)
+        {
+            memset(_Destination, 0, _DestinationSize);
+
+            {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+            {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
+
+                         return 22;
+        }
+        memcpy(_Destination, _Source, _SourceSize);
+        return 0;
+    }
+
+    
+    static __inline errno_t __cdecl memmove_s(
+          void*       const _Destination,
+                                                              rsize_t     const _DestinationSize,
+                                 void const* const _Source,
+                                                              rsize_t     const _SourceSize
+        )
+    {
+        if (_SourceSize == 0)
+        {
+            return 0;
+        }
+
+        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
+
+        memmove(_Destination, _Source, _SourceSize);
+        return 0;
+    }
+
+
+
+
+}                             
+        
               
 
 
@@ -12610,7 +11385,7 @@ struct _wfinddata64_t
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wmktemp_s(wchar_t (&_TemplateName)[_Size]) throw()                  {                                                                                                     return _wmktemp_s(_TemplateName, _Size);                                                                }                                                                                             }
 
  
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wmktemp(  wchar_t *_TemplateName);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wmktemp_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wmktemp(  wchar_t *_TemplateName);
 
  
  
@@ -12814,7 +11589,463 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 }                             
 
-                                 
+                         
+              
+
+
+
+         extern "C" {
+
+
+
+     
+    
+     errno_t __cdecl wcscat_s(
+          wchar_t* _Destination,
+          rsize_t _SizeInWords,
+          wchar_t const* _Source
+        );
+
+    
+     errno_t __cdecl wcscpy_s(
+          wchar_t* _Destination,
+          rsize_t _SizeInWords,
+          wchar_t const* _Source
+        );
+
+    
+     errno_t __cdecl wcsncat_s(
+          wchar_t*       _Destination,
+                                     rsize_t        _SizeInWords,
+               wchar_t const* _Source,
+                                     rsize_t        _MaxCount
+        );
+
+    
+     errno_t __cdecl wcsncpy_s(
+          wchar_t*       _Destination,
+                                  rsize_t        _SizeInWords,
+            wchar_t const* _Source,
+                                  rsize_t        _MaxCount
+        );
+
+     
+     wchar_t* __cdecl wcstok_s(
+                          wchar_t*       _String,
+                                 wchar_t const* _Delimiter,
+            wchar_t**      _Context
+        );
+
+
+
+
+     
+ 
+ __declspec(allocator) wchar_t* __cdecl _wcsdup(
+      wchar_t const* _String
+    );
+
+
+
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscat_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcscat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscat(  wchar_t *_Destination,                                                                             wchar_t const* _Source);
+
+ 
+ int __cdecl wcscmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscpy(  wchar_t *_Destination,                                          wchar_t const* _Source);
+
+ 
+ size_t __cdecl wcscspn(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+ 
+ size_t __cdecl wcslen(
+      wchar_t const* _String
+    );
+
+ 
+
+
+ size_t __cdecl wcsnlen(
+      wchar_t const* _Source,
+                            size_t         _MaxCount
+    );
+
+
+     
+    
+    
+    static __inline size_t __cdecl wcsnlen_s(
+          wchar_t const* _Source,
+                                size_t         _MaxCount
+        )
+    {
+        return (_Source == 0) ? 0 : wcsnlen(_Source, _MaxCount);
+    }
+
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncat_s(              wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcsncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncat(  wchar_t *_Destination,      wchar_t const* _Source,                         size_t _Count);
+
+ 
+ int __cdecl wcsncmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncpy(    wchar_t *_Destination,               wchar_t const* _Source,                                  size_t _Count);
+
+ 
+ wchar_t const* __cdecl wcspbrk(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+ 
+ size_t __cdecl wcsspn(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+  __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl wcstok(
+                          wchar_t*       _String,
+                                 wchar_t const* _Delimiter,
+        wchar_t**      _Context
+    );
+
+
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    static __inline wchar_t* __cdecl _wcstok(
+          wchar_t*       const _String,
+                 wchar_t const* const _Delimiter
+        )
+    {
+        return wcstok(_String, _Delimiter, 0);
+    }
+
+
+        extern "C++"   __declspec(deprecated("wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK."))
+        inline wchar_t* __cdecl wcstok(
+              wchar_t*       _String,
+                     wchar_t const* _Delimiter
+            ) throw()
+        {
+            return wcstok(_String, _Delimiter, 0);
+        }
+
+
+
+
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl _wcserror(
+      int _ErrorNumber
+    );
+
+
+ errno_t __cdecl _wcserror_s(
+      wchar_t* _Buffer,
+                                  size_t   _SizeInWords,
+                                  int      _ErrorNumber
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcserror_s(wchar_t (&_Buffer)[_Size],   int _Error) throw()                 {                                                                                                                    return _wcserror_s(_Buffer, _Size, _Error);                                                                       }                                                                                                            }
+
+ 
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using __wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl __wcserror(
+      wchar_t const* _String
+    );
+
+  errno_t __cdecl __wcserror_s(
+      wchar_t*       _Buffer,
+                                  size_t         _SizeInWords,
+                                wchar_t const* _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl __wcserror_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _ErrorMessage) throw()                 {                                                                                                                    return __wcserror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+   int __cdecl _wcsicmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+   int __cdecl _wcsicmp_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+   int __cdecl _wcsnicmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+   int __cdecl _wcsnicmp_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+  errno_t __cdecl _wcsnset_s(
+      wchar_t* _Destination,
+                                 size_t   _SizeInWords,
+                                 wchar_t  _Value,
+                                 size_t   _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wcsnset_s(  wchar_t (&_Destination)[_Size],          wchar_t _Value,           size_t _MaxCount) throw()                 {                                                                                                                                    return _wcsnset_s(_Destination, _Size, _Value, _MaxCount);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsnset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsnset(  wchar_t *_String,                            wchar_t _Value,                            size_t _MaxCount);
+
+ wchar_t* __cdecl _wcsrev(
+      wchar_t* _String
+    );
+
+  errno_t __cdecl _wcsset_s(
+      wchar_t* _Destination,
+                                 size_t   _SizeInWords,
+                                 wchar_t  _Value
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsset_s(  wchar_t (&_String)[_Size],          wchar_t _Value) throw()                 {                                                                                                                    return _wcsset_s(_String, _Size, _Value);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsset(  wchar_t *_String,                       wchar_t _Value);
+
+  errno_t __cdecl _wcslwr_s(
+      wchar_t* _String,
+                                 size_t   _SizeInWords
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcslwr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcslwr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcslwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr(  wchar_t *_String);
+
+
+ errno_t __cdecl _wcslwr_s_l(
+      wchar_t*  _String,
+                                 size_t    _SizeInWords,
+                             _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcslwr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcslwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcslwr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr_l(  wchar_t *_String,                   _locale_t _Locale);
+
+
+ errno_t __cdecl _wcsupr_s(
+      wchar_t* _String,
+                          size_t   _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcsupr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcsupr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsupr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr(  wchar_t *_String);
+
+
+ errno_t __cdecl _wcsupr_s_l(
+      wchar_t*  _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsupr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcsupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsupr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr_l(  wchar_t *_String,                   _locale_t _Locale);
+
+ 
+
+ size_t __cdecl wcsxfrm(
+        wchar_t*       _Destination,
+                                         wchar_t const* _Source,
+                size_t         _MaxCount
+    );
+
+ 
+
+ size_t __cdecl _wcsxfrm_l(
+        wchar_t*       _Destination,
+                                         wchar_t const* _Source,
+                size_t         _MaxCount,
+                                       _locale_t      _Locale
+    );
+
+ 
+ int __cdecl wcscoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+ 
+ int __cdecl _wcscoll_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsicoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+ 
+ int __cdecl _wcsicoll_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsncoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+ 
+ int __cdecl _wcsncoll_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsnicoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+ 
+ int __cdecl _wcsnicoll_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+
+
+     extern "C++" {
+
+     
+    
+    inline wchar_t* __cdecl wcschr(  wchar_t* _String, wchar_t _C)
+    {
+        return const_cast<wchar_t*>(wcschr(static_cast<wchar_t const*>(_String), _C));
+    }
+
+     
+    inline wchar_t* __cdecl wcspbrk(  wchar_t* _String,   wchar_t const* _Control)
+    {
+        return const_cast<wchar_t*>(wcspbrk(static_cast<wchar_t const*>(_String), _Control));
+    }
+
+     
+    inline wchar_t* __cdecl wcsrchr(  wchar_t* _String,   wchar_t _C)
+    {
+        return const_cast<wchar_t*>(wcsrchr(static_cast<wchar_t const*>(_String), _C));
+    }
+
+       
+    
+    inline wchar_t* __cdecl wcsstr(  wchar_t* _String,   wchar_t const*_SubStr)
+    {
+        return const_cast<wchar_t*>(wcsstr(static_cast<wchar_t const*>(_String), _SubStr));
+    }
+
+}
+
+
+
+     
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details."))
+     wchar_t* __cdecl wcsdup(
+          wchar_t const* _String
+        );
+
+
+     
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicmp. See online help for details."))
+     int __cdecl wcsicmp(
+          wchar_t const* _String1,
+          wchar_t const* _String2
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnicmp. See online help for details."))
+     int __cdecl wcsnicmp(
+          wchar_t const* _String1,
+          wchar_t const* _String2,
+                                size_t         _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnset. See online help for details."))
+     
+     wchar_t* __cdecl wcsnset(
+          wchar_t* _String,
+                                  wchar_t  _Value,
+                                  size_t   _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsrev. See online help for details."))
+     
+     wchar_t* __cdecl wcsrev(
+          wchar_t* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsset. See online help for details."))
+     
+     wchar_t* __cdecl wcsset(
+          wchar_t* _String,
+               wchar_t  _Value
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcslwr. See online help for details."))
+     
+     wchar_t* __cdecl wcslwr(
+          wchar_t* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsupr. See online help for details."))
+     
+     wchar_t* __cdecl wcsupr(
+          wchar_t* _String
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicoll. See online help for details."))
+     int __cdecl wcsicoll(
+          wchar_t const* _String1,
+          wchar_t const* _String2
+        );
+
+
+
+
+}                             
+
+
+        
        
 
 
@@ -12901,7 +12132,7 @@ extern "C++"                                                                    
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrdate_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrdate_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
 
 
  errno_t __cdecl _wstrtime_s(
@@ -12911,7 +12142,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrtime_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrtime_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
 
 
 
@@ -13183,7 +12414,7 @@ typedef wchar_t _Wint_t;
 
     extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl mbsrtowcs_s(                          size_t* _Retval,                            wchar_t (&_Dest)[_Size],     char const** _PSource,                                size_t _Count,                             mbstate_t* _State) throw()                  {                                                                                                                                                                     return mbsrtowcs_s(_Retval, _Dest, _Size, _PSource, _Count, _State);                                                                                                }                                                                                                                                                             }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    size_t __cdecl mbsrtowcs(  wchar_t *_Dest,                   char const** _PSrc,                                size_t _Count,                             mbstate_t* _State);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using mbsrtowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    size_t __cdecl mbsrtowcs(  wchar_t *_Dest,                   char const** _PSrc,                                size_t _Count,                             mbstate_t* _State);
 
      
      errno_t __cdecl wcrtomb_s(
@@ -13196,7 +12427,7 @@ typedef wchar_t _Wint_t;
 
     extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    errno_t __cdecl wcrtomb_s(                  size_t* _Retval,   char (&_Dest)[_Size],                        wchar_t _Source,                 mbstate_t* _State) throw()                 {                                                                                                                                                    return wcrtomb_s(_Retval, _Dest, _Size, _Source, _State);                                                                                       }                                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcrtomb(    char *_Dest,                        wchar_t _Source,                mbstate_t* _State);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcrtomb_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcrtomb(    char *_Dest,                        wchar_t _Source,                mbstate_t* _State);
 
      
      errno_t __cdecl wcsrtombs_s(
@@ -13210,7 +12441,7 @@ typedef wchar_t _Wint_t;
 
     extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl wcsrtombs_s(                  size_t* _Retval,   char (&_Dest)[_Size],     wchar_t const** _PSrc,                        size_t _Count,                 mbstate_t* _State) throw()                  {                                                                                                                                                                     return wcsrtombs_s(_Retval, _Dest, _Size, _PSrc, _Count, _State);                                                                                                }                                                                                                                                                             }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcsrtombs(    char *_Dest,     wchar_t const** _PSource,                        size_t _Count,                 mbstate_t* _State);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcsrtombs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcsrtombs(    char *_Dest,     wchar_t const** _PSource,                        size_t _Count,                 mbstate_t* _State);
 
      int __cdecl wctob(
           wint_t _WCh
@@ -14399,9 +13630,11 @@ template <class _Ty>
     constexpr int _Digits = numeric_limits<_Ty>::digits;
     constexpr _Ty _Max    = (numeric_limits<_Ty>::max)();
 
-    const bool _Definitely_have_tzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
-    if (!_Definitely_have_tzcnt && _Val == 0) {
-        return _Digits;
+                   if constexpr (_Digits > 16) {
+        const bool _Definitely_have_tzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
+        if (!_Definitely_have_tzcnt && _Val == 0) {
+            return _Digits;
+        }
     }
 
     if constexpr (_Digits <= 32) {
@@ -14560,7 +13793,7 @@ template <class _Ty>
 
 template <class _Ty>
  int _Checked_x86_x64_popcount(const _Ty _Val) noexcept {
-    constexpr int _Digits              = numeric_limits<_Ty>::digits;
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
     const bool _Definitely_have_popcnt = __isa_available >= __ISA_AVAILABLE_SSE42;
     if (!_Definitely_have_popcnt) {
         return _Popcount_fallback(_Val);
@@ -14579,11 +13812,11 @@ template <class _Ty>
 
 template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled>
  constexpr int countl_zero(const _Ty _Val) noexcept {
-    if (::std:: is_constant_evaluated()) {
-        return _Countl_zero_fallback(_Val);
-    } else {
+    if (!::std:: is_constant_evaluated()) {
         return _Checked_x86_x64_countl_zero(_Val);
     }
+
+    return _Countl_zero_fallback(_Val);
 }
 
 template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
@@ -14615,6 +13848,262 @@ enum class endian { little = 0, big = 1, native = little };
 
  
   
+ 
+  
+
+ 
+  
+       
+
+
+namespace std {
+  template <class _Ty1, class _Ty2>
+concept _Same_impl =      is_same_v<_Ty1, _Ty2>;
+
+template <class _Ty1, class _Ty2>
+concept same_as = _Same_impl<_Ty1, _Ty2> && _Same_impl<_Ty2, _Ty1>;
+
+ template <class _Derived, class _Base>
+concept derived_from = __is_base_of(_Base, _Derived)
+    && __is_convertible_to(const volatile _Derived*, const volatile _Base*);
+
+ template <class _From, class _To>
+concept convertible_to = __is_convertible_to(_From, _To)
+    && requires(add_rvalue_reference_t<_From> (&_Fn)()) {
+        static_cast<_To>(_Fn());
+    };
+
+ template <class _From, class _To>
+concept _Implicitly_convertible_to = is_convertible_v<_From, _To>;
+
+ template <class _Ty1, class _Ty2>
+concept common_reference_with =
+    requires {
+        typename common_reference_t<_Ty1, _Ty2>;
+        typename common_reference_t<_Ty2, _Ty1>;
+    }
+    && same_as<common_reference_t<_Ty1, _Ty2>, common_reference_t<_Ty2, _Ty1>>
+    && convertible_to<_Ty1, common_reference_t<_Ty1, _Ty2>>
+    && convertible_to<_Ty2, common_reference_t<_Ty1, _Ty2>>;
+
+ template <class _Ty1, class _Ty2>
+concept common_with =
+    requires {
+        typename common_type_t<_Ty1, _Ty2>;
+        typename common_type_t<_Ty2, _Ty1>;
+        requires same_as<common_type_t<_Ty1, _Ty2>, common_type_t<_Ty2, _Ty1>>;
+        static_cast<common_type_t<_Ty1, _Ty2>>(::std:: declval<_Ty1>());
+        static_cast<common_type_t<_Ty1, _Ty2>>(::std:: declval<_Ty2>());
+    }
+    && common_reference_with<add_lvalue_reference_t<const _Ty1>, add_lvalue_reference_t<const _Ty2>>
+    && common_reference_with<add_lvalue_reference_t<common_type_t<_Ty1, _Ty2>>,
+        common_reference_t<add_lvalue_reference_t<const _Ty1>, add_lvalue_reference_t<const _Ty2>>>;
+
+ template <class _Ty>
+concept integral = is_integral_v<_Ty>;
+
+ template <class _Ty>
+concept signed_integral = integral<_Ty> && static_cast<_Ty>(-1) < static_cast<_Ty>(0);
+
+ template <class _Ty>
+concept unsigned_integral = integral<_Ty> && !signed_integral<_Ty>;
+
+ template <class _Ty>
+concept floating_point = is_floating_point_v<_Ty>;
+
+ template <class _LTy, class _RTy>
+concept assignable_from = is_lvalue_reference_v<_LTy>
+    && common_reference_with<const remove_reference_t<_LTy>&, const remove_reference_t<_RTy>&>
+    && requires(_LTy _Left, _RTy&& _Right) {
+        { _Left = static_cast<_RTy&&>(_Right) } -> same_as<_LTy>;
+    };
+
+ 
+ template <class _Ty>
+concept destructible = __is_nothrow_destructible(_Ty);
+
+ template <class _Ty, class... _ArgTys>
+concept constructible_from = destructible<_Ty>
+    && __is_constructible(_Ty, _ArgTys...);
+
+ template <class _Ty>
+concept default_initializable = constructible_from<_Ty>
+    && requires {
+        _Ty{};
+        ::new (static_cast<void*>(nullptr)) _Ty;      };
+
+ template <class _Ty>
+concept move_constructible = constructible_from<_Ty, _Ty> && convertible_to<_Ty, _Ty>;
+
+ template <class _Ty>
+concept _Has_class_or_enum_type = __is_class(remove_reference_t<_Ty>) || __is_enum(remove_reference_t<_Ty>)
+    || __is_union(remove_reference_t<_Ty>);
+
+ namespace ranges {
+    namespace _Swap {
+        template <class _Ty>
+        void swap(_Ty&, _Ty&) = delete;
+
+        template <class _Ty1, class _Ty2>
+        concept _Use_ADL_swap = (_Has_class_or_enum_type<_Ty1> || _Has_class_or_enum_type<_Ty2>)
+            && requires(_Ty1&& __t, _Ty2&& __u) {
+                swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
+            };
+
+        struct _Cpo {
+            template <class _Ty1, class _Ty2>
+                requires _Use_ADL_swap<_Ty1, _Ty2>
+            constexpr void operator()(_Ty1&& __t, _Ty2&& __u) const
+                noexcept(noexcept(swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u)))) {
+                swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
+            }
+
+            template <class _Ty>
+                requires (!_Use_ADL_swap<_Ty&, _Ty&> && move_constructible<_Ty> && assignable_from<_Ty&, _Ty>)
+            constexpr void operator()(_Ty& __x, _Ty& __y) const
+                noexcept(is_nothrow_move_constructible_v<_Ty> && is_nothrow_move_assignable_v<_Ty>) {
+                _Ty __tmp(static_cast<_Ty&&>(__x));
+                __x = static_cast<_Ty&&>(__y);
+                __y = static_cast<_Ty&&>(__tmp);
+            }
+
+            template <class _Ty1, class _Ty2, size_t _Size>
+            constexpr void operator()(_Ty1 (&__t)[_Size], _Ty2 (&__u)[_Size]) const
+                noexcept(noexcept((*this)(__t[0], __u[0])))
+                requires requires { (*this)(__t[0], __u[0]); } {
+                for (size_t __i = 0; __i < _Size; ++__i) {
+                    (*this)(__t[__i], __u[__i]);
+                }
+            }
+        };
+    }  
+    inline namespace _Cpos {
+        inline constexpr _Swap::_Cpo swap;
+    }
+}  
+ template <class _Ty>
+concept swappable = requires(_Ty& __x, _Ty& __y) {
+    ::std::ranges:: swap(__x, __y);
+};
+
+ template <class _Ty1, class _Ty2>
+concept swappable_with = common_reference_with<_Ty1, _Ty2>
+    && requires(_Ty1&& __t, _Ty2&& __u) {
+        ::std::ranges:: swap(static_cast<_Ty1&&>(__t), static_cast<_Ty1&&>(__t));
+        ::std::ranges:: swap(static_cast<_Ty2&&>(__u), static_cast<_Ty2&&>(__u));
+        ::std::ranges:: swap(static_cast<_Ty1&&>(__t), static_cast<_Ty2&&>(__u));
+        ::std::ranges:: swap(static_cast<_Ty2&&>(__u), static_cast<_Ty1&&>(__t));
+    };
+
+ template <class _Ty>
+concept copy_constructible = move_constructible<_Ty>
+    && constructible_from<_Ty, _Ty&> && convertible_to<_Ty&, _Ty>
+    && constructible_from<_Ty, const _Ty&> && convertible_to<const _Ty&, _Ty>
+    && constructible_from<_Ty, const _Ty> && convertible_to<const _Ty, _Ty>;
+
+ template <class _Ty>
+concept _Boolean_testable_impl = convertible_to<_Ty, bool>;
+
+template <class _Ty>
+concept _Boolean_testable = _Boolean_testable_impl<_Ty>
+    && requires(_Ty&& __t) {
+        { !static_cast<_Ty&&>(__t) } -> _Boolean_testable_impl;
+    };
+
+ template <class _Ty1, class _Ty2>
+concept _Half_equality_comparable =
+    requires(const remove_reference_t<_Ty1>& __x, const remove_reference_t<_Ty2>& __y) {
+        { __x == __y } -> _Boolean_testable;
+        { __x != __y } -> _Boolean_testable;
+    };
+
+template <class _Ty1, class _Ty2>
+concept _Weakly_equality_comparable_with =
+    _Half_equality_comparable<_Ty1, _Ty2> && _Half_equality_comparable<_Ty2, _Ty1>;
+
+ template <class _Ty>
+concept equality_comparable = _Half_equality_comparable<_Ty, _Ty>;
+
+ template <class _Ty1, class _Ty2>
+concept equality_comparable_with = equality_comparable<_Ty1> && equality_comparable<_Ty2>
+    && common_reference_with<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>
+    && equality_comparable<common_reference_t<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>>
+    && _Weakly_equality_comparable_with<_Ty1, _Ty2>;
+
+ template <class _Ty1, class _Ty2>
+concept _Half_ordered = requires(const remove_reference_t<_Ty1>& __t, const remove_reference_t<_Ty2>& __u) {
+    { __t <  __u } -> _Boolean_testable;
+    { __t >  __u } -> _Boolean_testable;
+    { __t <= __u } -> _Boolean_testable;
+    { __t >= __u } -> _Boolean_testable;
+};
+
+template <class _Ty1, class _Ty2>
+concept _Partially_ordered_with = _Half_ordered<_Ty1, _Ty2> && _Half_ordered<_Ty2, _Ty1>;
+
+ template <class _Ty>
+concept totally_ordered = equality_comparable<_Ty> && _Half_ordered<_Ty, _Ty>;
+
+ template <class _Ty1, class _Ty2>
+concept totally_ordered_with = totally_ordered<_Ty1> && totally_ordered<_Ty2>
+    && equality_comparable_with<_Ty1, _Ty2>
+    && totally_ordered<common_reference_t<const remove_reference_t<_Ty1>&, const remove_reference_t<_Ty2>&>>
+    && _Partially_ordered_with<_Ty1, _Ty2>;
+
+ template <class _Ty>
+concept movable = is_object_v<_Ty>
+    && move_constructible<_Ty>
+    && assignable_from<_Ty&, _Ty>
+    && swappable<_Ty>;
+
+ template <class _Ty>
+concept copyable = copy_constructible<_Ty>
+    && movable<_Ty>
+    && assignable_from<_Ty&, _Ty&>
+    && assignable_from<_Ty&, const _Ty&>
+    && assignable_from<_Ty&, const _Ty>;
+
+ template <class _Ty>
+concept semiregular = copyable<_Ty> && default_initializable<_Ty>;
+
+ template <class _Ty>
+concept regular = semiregular<_Ty> && equality_comparable<_Ty>;
+
+ template <class _FTy, class... _ArgTys>
+concept invocable = requires(_FTy&& _Fn, _ArgTys&&... _Args) {
+    ::std:: invoke(static_cast<_FTy&&>(_Fn), static_cast<_ArgTys&&>(_Args)...);
+};
+
+ template <class _FTy, class... _ArgTys>
+concept regular_invocable = invocable<_FTy, _ArgTys...>;
+
+ template <class _FTy, class... _ArgTys>
+concept predicate = regular_invocable<_FTy, _ArgTys...>
+    && _Boolean_testable<invoke_result_t<_FTy, _ArgTys...>>;
+
+ template <class _FTy, class _Ty1, class _Ty2>
+concept relation =
+       predicate<_FTy, _Ty1, _Ty1>
+    && predicate<_FTy, _Ty2, _Ty2>
+    && predicate<_FTy, _Ty1, _Ty2>
+    && predicate<_FTy, _Ty2, _Ty1>;
+
+ template <class _FTy, class _Ty1, class _Ty2>
+concept equivalence_relation = relation<_FTy, _Ty1, _Ty2>;
+
+ template <class _FTy, class _Ty1, class _Ty2>
+concept strict_weak_order = relation<_FTy, _Ty1, _Ty2>;
+
+ 
+ template <class _Ty>
+struct _Choice_t {
+    _Ty _Strategy  = _Ty{};
+    bool _No_throw = false;
+};
+
+}
+
+
 
 
 
@@ -14913,6 +14402,31 @@ struct compare_three_way {
     using is_transparent = int;
 };
  
+ struct _Synth_three_way {
+         template <class _Ty1, class _Ty2>
+     constexpr auto operator()(const _Ty1& _Left, const _Ty2& _Right) const
+    requires requires {
+        { _Left < _Right } -> _Boolean_testable;
+        { _Right < _Left } -> _Boolean_testable;
+    }
+         {
+        if constexpr (three_way_comparable_with<_Ty1, _Ty2>) {
+            return _Left <=> _Right;
+        } else {
+            if (_Left < _Right) {
+                return weak_ordering::less;
+            } else if (_Right < _Left) {
+                return weak_ordering::greater;
+            } else {
+                return weak_ordering::equivalent;
+            }
+        }
+    }
+};
+
+ template <class _Ty1, class _Ty2 = _Ty1>
+using _Synth_three_way_result = decltype(_Synth_three_way{}(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()));
+
  
  namespace _Strong_order {
     void strong_order();  
@@ -14995,10 +14509,9 @@ struct compare_three_way {
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Strong_order::_Cpo strong_order;
 }
-using namespace _Cpos;
 
  namespace _Weak_order {
     void weak_order();  
@@ -15102,10 +14615,9 @@ using namespace _Cpos;
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Weak_order::_Cpo weak_order;
 }
-using namespace _Cpos;
 
  namespace _Partial_order {
     void partial_order();  
@@ -15172,10 +14684,9 @@ using namespace _Cpos;
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Partial_order::_Cpo partial_order;
 }
-using namespace _Cpos;
 
  template <class _Ty1, class _Ty2>
 concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
@@ -15201,10 +14712,9 @@ concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
                 return {_St::_Strong, noexcept(::std:: strong_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt<_Ty1, _Ty2>) {
                 return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? strong_ordering::equal
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? strong_ordering::less
-                                                                                 : strong_ordering::greater)};
+                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? strong_ordering::equal
+                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? strong_ordering::less
+                                                                             : strong_ordering::greater)};
             } else {
                 return {_St::_None};
             }
@@ -15223,17 +14733,17 @@ concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
                 return ::std:: strong_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
                 return _Left == _Right ? strong_ordering::equal
-                                       : _Left < _Right ? strong_ordering::less : strong_ordering::greater;
+                     : _Left < _Right  ? strong_ordering::less
+                                       : strong_ordering::greater;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_strong_order_fallback::_Cpo compare_strong_order_fallback;
 }
-using namespace _Cpos;
 
  namespace _Compare_weak_order_fallback {
     template <class _Ty1, class _Ty2>
@@ -15252,11 +14762,10 @@ using namespace _Cpos;
             } else if constexpr (_Can_weak_order<_Ty1, _Ty2>) {
                 return {_St::_Weak, noexcept(::std:: weak_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt<_Ty1, _Ty2>) {
-                return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? weak_ordering::equivalent
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? weak_ordering::less
-                                                                                 : weak_ordering::greater)};
+                return {
+                    _St::_Fallback, noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? weak_ordering::equivalent
+                                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? weak_ordering::less
+                                                                                             : weak_ordering::greater)};
             } else {
                 return {_St::_None};
             }
@@ -15275,17 +14784,17 @@ using namespace _Cpos;
                 return ::std:: weak_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
                 return _Left == _Right ? weak_ordering::equivalent
-                                       : _Left < _Right ? weak_ordering::less : weak_ordering::greater;
+                     : _Left < _Right  ? weak_ordering::less
+                                       : weak_ordering::greater;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_weak_order_fallback::_Cpo compare_weak_order_fallback;
 }
-using namespace _Cpos;
 
  namespace _Compare_partial_order_fallback {
     template <class _Ty1, class _Ty2>
@@ -15312,12 +14821,10 @@ using namespace _Cpos;
                 return {_St::_Partial, noexcept(::std:: partial_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt_twice<_Ty1, _Ty2>) {
                 return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? partial_ordering::equivalent
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>()
-                                       ? partial_ordering::less
-                                       : ::std:: declval<_Ty2&>() < ::std:: declval<_Ty1&>() ? partial_ordering::greater
-                                                                                       : partial_ordering::unordered)};
+                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? partial_ordering::equivalent
+                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? partial_ordering::less
+                             : ::std:: declval<_Ty2&>() < ::std:: declval<_Ty1&>() ? partial_ordering::greater
+                                                                             : partial_ordering::unordered)};
             } else {
                 return {_St::_None};
             }
@@ -15335,25 +14842,599 @@ using namespace _Cpos;
             if constexpr (_Strat == _St::_Partial) {
                 return ::std:: partial_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
-                return _Left == _Right
-                           ? partial_ordering::equivalent
-                           : _Left < _Right ? partial_ordering::less
-                                            : _Right < _Left ? partial_ordering::greater : partial_ordering::unordered;
+                return _Left == _Right ? partial_ordering::equivalent
+                     : _Left < _Right  ? partial_ordering::less
+                     : _Right < _Left  ? partial_ordering::greater
+                                       : partial_ordering::unordered;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_partial_order_fallback::_Cpo compare_partial_order_fallback;
 }
-using namespace _Cpos;
 
 }
 
 
 
+ 
+  
+ 
+  
+ 
+  
+
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+       
+                 
+                     
+
+
+
+         extern "C" {
+
+
+
+ 
+ int __cdecl _memicmp(
+      void const* _Buf1,
+      void const* _Buf2,
+                             size_t      _Size
+    );
+
+ 
+ int __cdecl _memicmp_l(
+      void const* _Buf1,
+      void const* _Buf2,
+                             size_t      _Size,
+                         _locale_t   _Locale
+    );
+
+
+
+
+
+
+
+
+
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memccpy. See online help for details."))
+     void* __cdecl memccpy(
+          void*       _Dst,
+            void const* _Src,
+                                   int         _Val,
+                                   size_t      _Size
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memicmp. See online help for details."))
+     int __cdecl memicmp(
+          void const* _Buf1,
+          void const* _Buf2,
+                                 size_t      _Size
+        );
+
+
+
+
+
+    extern "C++"  
+    inline void* __cdecl memchr(
+          void*  _Pv,
+                              int    _C,
+                              size_t _N
+        )
+    {
+        void const* const _Pvc = _Pv;
+        return const_cast<void*>(memchr(_Pvc, _C, _N));
+    }
+
+
+
+
+}                             
+
+
+               
+
+
+
+         extern "C" {
+
+
+
+
+
+    
+     errno_t __cdecl strcpy_s(
+          char*       _Destination,
+                                  rsize_t     _SizeInBytes,
+                                char const* _Source
+        );
+
+    
+     errno_t __cdecl strcat_s(
+          char*       _Destination,
+                                     rsize_t     _SizeInBytes,
+                                   char const* _Source
+        );
+
+    
+     errno_t __cdecl strerror_s(
+          char*  _Buffer,
+                                  size_t _SizeInBytes,
+                                  int    _ErrorNumber);
+
+    
+     errno_t __cdecl strncat_s(
+          char*       _Destination,
+                                     rsize_t     _SizeInBytes,
+               char const* _Source,
+                                     rsize_t     _MaxCount
+        );
+
+    
+     errno_t __cdecl strncpy_s(
+          char*       _Destination,
+                                  rsize_t     _SizeInBytes,
+            char const* _Source,
+                                  rsize_t     _MaxCount
+        );
+
+     
+     char*  __cdecl strtok_s(
+                          char*       _String,
+                                 char const* _Delimiter,
+            char**      _Context
+        );
+
+
+ void* __cdecl _memccpy(
+      void*       _Dst,
+                                   void const* _Src,
+                                   int         _Val,
+                                   size_t      _MaxCount
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcat_s(char (&_Destination)[_Size],   char const* _Source) throw()                 {                                                                                                                    return strcat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcat(  char *_Destination,                                                                             char const* _Source);
+
+
+ 
+int __cdecl strcmp(
+      char const* _Str1,
+      char const* _Str2
+    );
+
+ 
+ int __cdecl _strcmpi(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl strcoll(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _strcoll_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcpy_s(  char (&_Destination)[_Size],     char const* _Source) throw()                 {                                                                                                                    return strcpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcpy(  char *_Destination,                                          char const* _Source);
+
+ 
+ size_t __cdecl strcspn(
+      char const* _Str,
+      char const* _Control
+    );
+
+
+ 
+ __declspec(allocator) char* __cdecl _strdup(
+      char const* _Source
+    );
+
+
+ 
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char*  __cdecl _strerror(
+      char const* _ErrorMessage
+    );
+
+
+ errno_t __cdecl _strerror_s(
+      char*       _Buffer,
+                              size_t      _SizeInBytes,
+                        char const* _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strerror_s(char (&_Buffer)[_Size],   char const* _ErrorMessage) throw()                 {                                                                                                                    return _strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char* __cdecl strerror(
+      int _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strerror_s(char (&_Buffer)[_Size],   int _ErrorMessage) throw()                 {                                                                                                                    return strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+ 
+ int __cdecl _stricmp(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _stricoll(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _stricoll_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _stricmp_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+ 
+size_t __cdecl strlen(
+      char const* _Str
+    );
+
+
+ errno_t __cdecl _strlwr_s(
+      char*  _String,
+                          size_t _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strlwr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strlwr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strlwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr(  char *_String);
+
+
+ errno_t __cdecl _strlwr_s_l(
+      char*     _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strlwr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strlwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strlwr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr_l(  char *_String,                   _locale_t _Locale);
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncat_s(              char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncat(  char *_Destination,      char const* _Source,                         size_t _Count);
+
+ 
+ int __cdecl strncmp(
+      char const* _Str1,
+      char const* _Str2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicmp(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicmp_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _strnicoll(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicoll_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _strncoll(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strncoll_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ size_t __cdecl __strncnt(
+      char const* _String,
+                         size_t      _Count
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncpy_s(char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncpy(    char *_Destination,               char const* _Source,                                  size_t _Count);
+
+ 
+
+
+ size_t __cdecl strnlen(
+      char const* _String,
+                            size_t      _MaxCount
+    );
+
+
+     
+    
+    
+    static __inline size_t __cdecl strnlen_s(
+          char const* _String,
+                                size_t      _MaxCount
+        )
+    {
+        return _String == 0 ? 0 : strnlen(_String, _MaxCount);
+    }
+
+
+
+ errno_t __cdecl _strnset_s(
+      char*  _String,
+                                 size_t _SizeInBytes,
+                                 int    _Value,
+                                 size_t _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _strnset_s(  char (&_Destination)[_Size],          int _Value,          size_t _Count) throw()                 {                                                                                                                                    return _strnset_s(_Destination, _Size, _Value, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strnset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strnset(  char *_Destination,                         int _Value,                         size_t _Count);
+
+ 
+ char const* __cdecl strpbrk(
+      char const* _Str,
+      char const* _Control
+    );
+
+ char* __cdecl _strrev(
+      char* _Str
+    );
+
+
+ errno_t __cdecl _strset_s(
+      char*  _Destination,
+                                     size_t _DestinationSize,
+                                     int    _Value
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strset_s(  char (&_Destination)[_Size],          int _Value) throw()                 {                                                                                                                    return _strset_s(_Destination, _Size, _Value);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strset(  char *_Destination,         int _Value);
+
+ 
+ size_t __cdecl strspn(
+      char const* _Str,
+      char const* _Control
+    );
+
+  __declspec(deprecated("This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char* __cdecl strtok(
+      char*       _String,
+             char const* _Delimiter
+    );
+
+
+ errno_t __cdecl _strupr_s(
+      char*  _String,
+                          size_t _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strupr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strupr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strupr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr(  char *_String);
+
+
+ errno_t __cdecl _strupr_s_l(
+      char*     _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strupr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strupr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr_l(  char *_String,                   _locale_t _Locale);
+
+ 
+
+ size_t __cdecl strxfrm(
+        char*       _Destination,
+                                         char const* _Source,
+                 size_t      _MaxCount
+    );
+
+ 
+
+ size_t __cdecl _strxfrm_l(
+        char*       _Destination,
+                                         char const* _Source,
+                 size_t      _MaxCount,
+                                       _locale_t   _Locale
+    );
+
+
+
+extern "C++"
+{
+     
+    inline char* __cdecl strchr(  char* const _String,   int const _Ch)
+    {
+        return const_cast<char*>(strchr(static_cast<char const*>(_String), _Ch));
+    }
+
+     
+    inline char* __cdecl strpbrk(  char* const _String,   char const* const _Control)
+    {
+        return const_cast<char*>(strpbrk(static_cast<char const*>(_String), _Control));
+    }
+
+     
+    inline char* __cdecl strrchr(  char* const _String,   int const _Ch)
+    {
+        return const_cast<char*>(strrchr(static_cast<char const*>(_String), _Ch));
+    }
+
+       
+    inline char* __cdecl strstr(  char* const _String,   char const* const _SubString)
+    {
+        return const_cast<char*>(strstr(static_cast<char const*>(_String), _SubString));
+    }
+}
+
+
+
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details."))
+     char* __cdecl strdup(
+          char const* _String
+        );
+
+           __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details."))
+     int __cdecl strcmpi(
+          char const* _String1,
+          char const* _String2
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details."))
+     int __cdecl stricmp(
+          char const* _String1,
+          char const* _String2
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details."))
+     char* __cdecl strlwr(
+          char* _String
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details."))
+     int __cdecl strnicmp(
+          char const* _String1,
+          char const* _String2,
+                                size_t      _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnset. See online help for details."))
+     char* __cdecl strnset(
+          char*  _String,
+                                  int    _Value,
+                                  size_t _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strrev. See online help for details."))
+     char* __cdecl strrev(
+          char* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strset. See online help for details."))
+    char* __cdecl strset(
+          char* _String,
+               int   _Value);
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strupr. See online help for details."))
+     char* __cdecl strupr(
+          char* _String
+        );
+
+
+
+
+}                             
+
+
+
+
+namespace std {
+
+using :: size_t;
+using :: memchr;
+using :: memcmp;
+using :: memcpy;
+using :: memmove;
+using :: memset;
+using :: strcat;
+using :: strchr;
+using :: strcmp;
+using :: strcoll;
+using :: strcpy;
+using :: strcspn;
+using :: strerror;
+using :: strlen;
+using :: strncat;
+using :: strncmp;
+using :: strncpy;
+using :: strpbrk;
+using :: strrchr;
+using :: strspn;
+using :: strstr;
+using :: strtok;
+using :: strxfrm;
+
+}
+
+
+
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+ 
+  
+
+ 
+  
 
 
 
@@ -15548,28 +15629,12 @@ template <class _Ty1, class _Ty2>
 }
 
 template <class _Ty1, class _Ty2>
- constexpr bool operator!=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Left == _Right);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator<(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return _Left.first < _Right.first || (!(_Right.first < _Left.first) && _Left.second < _Right.second);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator>(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator<=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator>=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Left < _Right);
+ constexpr common_comparison_category_t<_Synth_three_way_result<_Ty1>, _Synth_three_way_result<_Ty2>>
+    operator<=>(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
+    if (auto _Result = _Synth_three_way{}(_Left.first, _Right.first); _Result != 0) {
+        return _Result;
+    }
+    return _Synth_three_way{}(_Left.second, _Right.second);
 }
 
  template <class _Ty>
@@ -15958,18 +16023,30 @@ struct _Get_rebind_alias<_Ty, _Other, void_t<typename _Ty::template rebind<_Othe
 };
 
  template <class _Iter>
- void* _Voidify_iter(_Iter _It) noexcept {
+ constexpr void* _Voidify_iter(_Iter _It) noexcept {
     if constexpr (is_pointer_v<_Iter>) {
         return const_cast<void*>(static_cast<const volatile void*>(_It));
-    } else
-    {
+    } else {
         return const_cast<void*>(static_cast<const volatile void*>(::std:: addressof(*_It)));
     }
 }
 
+ template <class _Ty, class... _Types,
+    class = void_t<decltype(::new (::std:: declval<void*>()) _Ty(::std:: declval<_Types>()...))>>
+constexpr _Ty* construct_at(_Ty* const _Location, _Types&&... _Args) noexcept(
+    noexcept(::new (_Voidify_iter(_Location)) _Ty(::std:: forward<_Types>(_Args)...)))   {
+    return ::new (_Voidify_iter(_Location)) _Ty(::std:: forward<_Types>(_Args)...);
+}
+
  template <class _Ty, class... _Types>
-void _Construct_in_place(_Ty& _Obj, _Types&&... _Args) noexcept(is_nothrow_constructible_v<_Ty, _Types...>) {
-    ::new (_Voidify_iter(::std:: addressof(_Obj))) _Ty(::std:: forward<_Types>(_Args)...);
+constexpr void _Construct_in_place(_Ty& _Obj, _Types&&... _Args) noexcept(
+    is_nothrow_constructible_v<_Ty, _Types...>) {
+    if (::std:: is_constant_evaluated()) {
+        ::std:: construct_at(::std:: addressof(_Obj), ::std:: forward<_Types>(_Args)...);
+    } else
+    {
+        ::new (_Voidify_iter(::std:: addressof(_Obj))) _Ty(::std:: forward<_Types>(_Args)...);
+    }
 }
 
  template <class _Ty>
@@ -16043,8 +16120,7 @@ template <class _Ptr>
 struct _Ref_fn {      template <class... _Args>
     constexpr decltype(auto) operator()(_Args&&... _Vals) {          if constexpr (is_member_pointer_v<_Fx>) {
             return ::std:: invoke(_Fn, ::std:: forward<_Args>(_Vals)...);
-        } else
-        {
+        } else {
             return _Fn(::std:: forward<_Args>(_Vals)...);
         }
     }
@@ -16477,10 +16553,9 @@ struct iterator_traits<_Ty*> {
             }
         };
              }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Iter_move::_Cpo iter_move;
     }
-    using namespace _Cpos;
 }  
  
   template <class _Ty>
@@ -16514,17 +16589,27 @@ concept indirectly_writable = requires(_It&& __i, _Ty&& __t) {
     const_cast<const iter_reference_t<_It>&&>(*static_cast<_It&&>(__i)) = static_cast<_Ty&&>(__t);
 };
 
-  template <class _Ty>
-concept _Integer_like = _Is_nonbool_integral<_Ty>;
-
  template <class _Ty>
+concept _Integer_like = _Is_nonbool_integral<remove_cv_t<_Ty>>;
+
+  template <class _Ty>
 concept _Signed_integer_like = _Integer_like<_Ty> && static_cast<_Ty>(-1) < static_cast<_Ty>(0);
  
  template <class _Ty>
 using _Make_unsigned_like_t = make_unsigned_t<_Ty>;
 
+template <_Integer_like _Ty>
+ constexpr auto _To_unsigned_like(const _Ty _Value) noexcept {
+    return static_cast<_Make_unsigned_like_t<_Ty>>(_Value);
+}
+
  template <class _Ty>
 using _Make_signed_like_t = make_signed_t<_Ty>;
+
+template <_Integer_like _Ty>
+ constexpr auto _To_signed_like(const _Ty _Value) noexcept {
+    return static_cast<_Make_signed_like_t<_Ty>>(_Value);
+}
 
   template <class _Ty>
 concept weakly_incrementable = default_initializable<_Ty> && movable<_Ty> && requires(_Ty __i) {
@@ -16697,7 +16782,8 @@ using indirect_result_t = invoke_result_t<_Fn, iter_reference_t<_Its>...>;
 template <indirectly_readable _It, indirectly_regular_unary_invocable<_It> _Proj>
 struct projected {
     using value_type = remove_cvref_t<indirect_result_t<_Proj&, _It>>;
-    indirect_result_t<_Proj&, _It> operator*() const;
+    indirect_result_t<_Proj&, _It> operator*() const {
+        :: abort();      }
 };
 
 
@@ -16799,10 +16885,9 @@ concept indirectly_copyable_storable = indirectly_copyable<_In, _Out>
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Iter_swap::_Cpo iter_swap;
     }
-    using namespace _Cpos;
 }  
   template <class _It1, class _It2 = _It1>
 concept indirectly_swappable = indirectly_readable<_It1> && indirectly_readable<_It2>
@@ -17120,8 +17205,7 @@ constexpr _BidIt _Prev_iter(_BidIt _First) {      return --_First;
     return _First;
 }
 
- 
-template <class _BidIt>
+ template <class _BidIt>
 class reverse_iterator {
 public:
     using iterator_type = _BidIt;
@@ -17566,10 +17650,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Begin::_Cpo begin;
     }
-    using namespace _Cpos;
 
          template <class _Ty>
     using iterator_t = decltype(::std::ranges:: begin(::std:: declval<_Ty&>()));
@@ -17621,10 +17704,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Unchecked_begin::_Cpo _Ubegin;
     }
-    using namespace _Cpos;
 
          namespace _End {
         template <class _Ty>
@@ -17689,10 +17771,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _End::_Cpo end;
     }
-    using namespace _Cpos;
 
          namespace _Unchecked_end {
                  template <class _Ty>
@@ -17741,10 +17822,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Unchecked_end::_Cpo _Uend;
     }
-    using namespace _Cpos;
 
          template <class _Rng>
     concept range = requires(_Rng& __r) {
@@ -17779,10 +17859,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cbegin_fn cbegin;
     }
-    using namespace _Cpos;
 
          struct _Cend_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17793,10 +17872,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cend_fn cend;
     }
-    using namespace _Cpos;
 
          namespace _Rbegin {
         template <class _Ty>
@@ -17859,10 +17937,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Rbegin::_Cpo rbegin;
     }
-    using namespace _Cpos;
 
          namespace _Rend {
         template <class _Ty>
@@ -17926,10 +18003,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Rend::_Cpo rend;
     }
-    using namespace _Cpos;
 
          struct _Crbegin_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17940,10 +18016,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Crbegin_fn crbegin;
     }
-    using namespace _Cpos;
 
          struct _Crend_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17954,10 +18029,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Crend_fn crend;
     }
-    using namespace _Cpos;
 
          template <class>
     inline constexpr bool disable_sized_range = false;
@@ -18035,10 +18109,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Size::_Cpo size;
     }
-    using namespace _Cpos;
 
          namespace _Empty {
                  template <class _Ty>
@@ -18100,10 +18173,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Empty::_Cpo empty;
     }
-    using namespace _Cpos;
 
          namespace _Data {
                  template <class _Ty>
@@ -18154,10 +18226,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Data::_Cpo data;
     }
-    using namespace _Cpos;
 
          struct _Cdata_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -18168,10 +18239,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cdata_fn cdata;
     }
-    using namespace _Cpos;
 
               template <class _Rng>
     concept sized_range = range<_Rng> && requires(_Rng& __r) {
@@ -18384,10 +18454,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Ssize_fn ssize;
     }
-    using namespace _Cpos;
 
          class _Next_fn : private _Not_quite_object {
     public:
@@ -18473,6 +18542,16 @@ namespace ranges {
             requires totally_ordered_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
             static_cast<bool>(static_cast<_Ty1&&>(_Left) < static_cast<_Ty2&&>(_Right))))   {
             return static_cast<bool>(static_cast<_Ty1&&>(_Left) < static_cast<_Ty2&&>(_Right));
+        }
+         
+        using is_transparent = int;
+    };
+
+         struct greater {
+                 template <class _Ty1, class _Ty2>
+            requires totally_ordered_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
+            static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left))))   {
+            return static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left));
         }
          
         using is_transparent = int;
@@ -18779,7 +18858,7 @@ namespace ranges {
         }
 
         constexpr subrange& advance(const iter_difference_t<_It> _Count) {
-                         if constexpr (bidirectional_iterator<_It>) {
+            if constexpr (bidirectional_iterator<_It>) {
                 if (_Count < 0) {
                     ::std::ranges:: advance(_First, _Count);
                     if constexpr (_Store_size) {
@@ -18804,7 +18883,7 @@ namespace ranges {
     subrange(_It, _Se, _Make_unsigned_like_t<iter_difference_t<_It>>) -> subrange<_It, _Se, subrange_kind::sized>;
 
     template <borrowed_range _Rng>
-    subrange(_Rng &&) -> subrange<iterator_t<_Rng>, sentinel_t<_Rng>,
+    subrange(_Rng&&) -> subrange<iterator_t<_Rng>, sentinel_t<_Rng>,
         (sized_range<_Rng> || sized_sentinel_for<sentinel_t<_Rng>, iterator_t<_Rng>>) ? subrange_kind::sized
                                                                                       : subrange_kind::unsized>;
 
@@ -18910,7 +18989,8 @@ public:
         return *this;
     }
      
-     constexpr const iterator_type& base() const& noexcept   {          return _Current;
+     constexpr const iterator_type& base() const& noexcept   {
+        return _Current;
     }
      constexpr iterator_type base() && noexcept(is_nothrow_move_constructible_v<_Iter>)   {
         return ::std:: move(_Current);
@@ -18920,7 +19000,7 @@ public:
         return ::std::ranges:: iter_move(_Current);
     }
 
-     [[deprecated("warning STL4031: std::move_iterator::operator->() is deprecated in C++20. You can define _SILENCE_CXX20_MOVE_ITERATOR_ARROW_DEPRECATION_WARNING or _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] constexpr pointer operator->() const {
+    [[deprecated("warning STL4031: std::move_iterator::operator->() is deprecated in C++20. You can define _SILENCE_CXX20_MOVE_ITERATOR_ARROW_DEPRECATION_WARNING or _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  constexpr pointer operator->() const {
         return _Current;
     }
 
@@ -19122,6 +19202,21 @@ namespace _Unreachable_sentinel_detail {
 }  struct unreachable_sentinel_t : _Unreachable_sentinel_detail::_Base {};  
  inline constexpr unreachable_sentinel_t unreachable_sentinel{};
 
+  
+ template <class _Iter>
+inline constexpr bool _Iterator_is_contiguous = contiguous_iterator<_Iter>;
+
+template <class _Iter>
+ constexpr auto _To_address(const _Iter& _Val) noexcept {
+    ;
+    return ::std:: to_address(_Val);
+}
+
+ 
+template <class _Iter1, class _Iter2>
+inline constexpr bool _Iterators_are_contiguous =
+    _Iterator_is_contiguous<_Iter1>&& _Iterator_is_contiguous<_Iter2>;
+
  template <class _Source, class _Dest>
 struct _Ptr_cat_helper {
     using _USource                        = _Unwrap_enum_t<_Source>;
@@ -19160,50 +19255,48 @@ struct _False_copy_cat {
     static constexpr bool _Trivially_copyable = false;
 };
 
-template <class _Source, class _Dest>
-struct _Ptr_copy_cat : _False_copy_cat {};  
-template <class _Source, class _Dest>
-struct _Ptr_copy_cat<_Source*, _Dest*>
-    : conditional_t<is_trivially_assignable_v<_Dest&, _Source&>,
-          _Ptr_cat_helper<remove_cv_t<_Source>, remove_cv_t<_Dest>>, _False_copy_cat> {};
+ template <class _Source, class _Dest, bool _Non_contiguous = !_Iterators_are_contiguous<_Source, _Dest>>
+struct _Ptr_move_cat : _False_copy_cat {};
 
 template <class _Source, class _Dest>
-struct _Ptr_copy_cat<move_iterator<_Source*>, _Dest*> : _Ptr_copy_cat<_Source*, _Dest*> {};
+struct _Ptr_move_cat<_Source, _Dest, false>
+    : conditional_t<is_trivially_assignable_v<_Iter_ref_t<_Dest>, remove_reference_t<_Iter_ref_t<_Source>>>,
+          _Ptr_cat_helper<_Iter_value_t<_Source>, _Iter_value_t<_Dest>>, _False_copy_cat> {};
 
 template <class _Source, class _Dest>
-struct _Ptr_move_cat : _False_copy_cat {};  
-template <class _Source, class _Dest>
-struct _Ptr_move_cat<_Source*, _Dest*>
-    : conditional_t<is_trivially_assignable_v<_Dest&, _Source>,
-          _Ptr_cat_helper<remove_cv_t<_Source>, remove_cv_t<_Dest>>, _False_copy_cat> {};
+struct _Ptr_move_cat<move_iterator<_Source>, _Dest, true> : _Ptr_move_cat<_Source, _Dest> {};
+
+template <class _Source, class _Dest, bool _Non_contiguous = !_Iterators_are_contiguous<_Source, _Dest>>
+struct _Ptr_copy_cat : _False_copy_cat {};
 
 template <class _Source, class _Dest>
-struct _Ptr_move_cat<move_iterator<_Source*>, _Dest*> : _Ptr_move_cat<_Source*, _Dest*> {};
+struct _Ptr_copy_cat<_Source, _Dest, false>
+    : conditional_t<is_trivially_assignable_v<_Iter_ref_t<_Dest>, _Iter_ref_t<_Source>>,
+          _Ptr_cat_helper<_Iter_value_t<_Source>, _Iter_value_t<_Dest>>, _False_copy_cat> {};
 
-template <class _InIt, class _OutIt>
-_OutIt _Copy_memmove(_InIt _First, _InIt _Last, _OutIt _Dest) {
-    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_First));
-    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_Last));
-    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<volatile char*>(_Dest));
+template <class _Source, class _Dest>
+struct _Ptr_copy_cat<move_iterator<_Source>, _Dest, true> : _Ptr_move_cat<_Source, _Dest> {};
+
+template <class _CtgIt, class _OutCtgIt>
+_OutCtgIt _Copy_memmove(_CtgIt _First, _CtgIt _Last, _OutCtgIt _Dest) {
+    auto _FirstPtr              = _To_address(_First);
+    auto _LastPtr               = _To_address(_Last);
+    auto _DestPtr               = _To_address(_Dest);
+    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_FirstPtr));
+    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_LastPtr));
+    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<const volatile char*>(_DestPtr));
     const auto _Count           = static_cast<size_t>(_Last_ch - _First_ch);
     :: memmove(_Dest_ch, _First_ch, _Count);
-    return reinterpret_cast<_OutIt>(_Dest_ch + _Count);
+    if constexpr (is_pointer_v<_OutCtgIt>) {
+        return reinterpret_cast<_OutCtgIt>(_Dest_ch + _Count);
+    } else {
+        return _Dest + (_LastPtr - _FirstPtr);
+    }
 }
 
 template <class _InIt, class _OutIt>
 _OutIt _Copy_memmove(move_iterator<_InIt> _First, move_iterator<_InIt> _Last, _OutIt _Dest) {
     return _Copy_memmove(_First.base(), _Last.base(), _Dest);
-}
-
-template <class _InIt, class _OutIt>
-_OutIt _Copy_memcpy_common(_InIt _IFirst, _InIt _ILast, _OutIt _OFirst, _OutIt _OLast) noexcept {
-    const auto _IFirst_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_IFirst));
-    const auto _ILast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_ILast));
-    const auto _OFirst_ch = const_cast<char*>(reinterpret_cast<volatile char*>(_OFirst));
-    const auto _OLast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_OLast));
-    const auto _Count     = static_cast<size_t>((::std:: min)(_ILast_ch - _IFirst_ch, _OLast_ch - _OFirst_ch));
-    :: memcpy(_OFirst_ch, _IFirst_ch, _Count);
-    return reinterpret_cast<_OutIt>(_OFirst_ch + _Count);
 }
 
  template <class _It, bool _RequiresMutable = false>
@@ -19241,6 +19334,74 @@ _FwdIt2 copy(_ExPo&&, _FwdIt1 _First, _FwdIt1 _Last, _FwdIt2 _Dest) noexcept   {
     return ::std:: copy(_First, _Last, _Dest);
 }
 
+namespace ranges {
+         template <class _To, class _From>
+    concept _Convertible_from = convertible_to<_From, _To>;
+
+         template <class _In, class _Out>
+    struct in_out_result {
+          _In in;
+          _Out out;
+
+        template <_Convertible_from<const _In&> _IIn, _Convertible_from<const _Out&> _OOut>
+        constexpr operator in_out_result<_IIn, _OOut>() const& {
+            return {in, out};
+        }
+
+        template <_Convertible_from<_In> _IIn, _Convertible_from<_Out> _OOut>
+        constexpr operator in_out_result<_IIn, _OOut>() && {
+            return {::std:: move(in), ::std:: move(out)};
+        }
+    };
+
+         template <class _In, class _Out>
+    using copy_result = in_out_result<_In, _Out>;
+
+              template <input_iterator _It, sentinel_for<_It> _Se, weakly_incrementable _Out>
+        requires indirectly_copyable<_It, _Out>
+     constexpr copy_result<_It, _Out> _Copy_unchecked(_It _First, _Se _Last, _Out _Result) {
+                 if constexpr (_Ptr_copy_cat<_It, _Out>::_Trivially_copyable && sized_sentinel_for<_Se, _It>) {
+            if (!::std:: is_constant_evaluated()) {
+                auto _Final = ::std::ranges:: next(_First, ::std:: move(_Last));
+                _Result     = _Copy_memmove(::std:: move(_First), _Final, ::std:: move(_Result));
+                return {::std:: move(_Final), ::std:: move(_Result)};
+            }
+        }
+
+        for (; _First != _Last; ++_First, (void) ++_Result) {
+            *_Result = *_First;
+        }
+
+        return {::std:: move(_First), ::std:: move(_Result)};
+    }
+
+    class _Copy_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It, sentinel_for<_It> _Se, weakly_incrementable _Out>
+            requires indirectly_copyable<_It, _Out>
+        constexpr copy_result<_It, _Out> operator()(_It _First, _Se _Last, _Out _Result) const {
+            _Adl_verify_range(_First, _Last);
+            auto _UResult = ::std::ranges:: _Copy_unchecked(
+                _Get_unwrapped(::std:: move(_First)), _Get_unwrapped(::std:: move(_Last)), ::std:: move(_Result));
+            _Seek_wrapped(_First, ::std:: move(_UResult.in));
+            return {::std:: move(_First), ::std:: move(_UResult.out)};
+        }
+
+        template <input_range _Rng, weakly_incrementable _Out>
+            requires indirectly_copyable<iterator_t<_Rng>, _Out>
+        constexpr copy_result<borrowed_iterator_t<_Rng>, _Out> operator()(_Rng&& _Range, _Out _Result) const {
+            auto _First = ::std::ranges:: begin(_Range);
+            auto _UResult =
+                ::std::ranges:: _Copy_unchecked(_Get_unwrapped(::std:: move(_First)), _Uend(_Range), ::std:: move(_Result));
+            _Seek_wrapped(_First, ::std:: move(_UResult.in));
+            return {::std:: move(_First), ::std:: move(_UResult.out)};
+        }
+             };
+
+    inline constexpr _Copy_fn copy{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _InIt, class _Diff, class _OutIt>
 constexpr _OutIt copy_n(_InIt _First, _Diff _Count_raw, _OutIt _Dest) {
          _Algorithm_int_t<_Diff> _Count = _Count_raw;
@@ -19272,7 +19433,6 @@ constexpr _OutIt copy_n(_InIt _First, _Diff _Count_raw, _OutIt _Dest) {
     return _Dest;
 }
 
-
 template <class _ExPo, class _FwdIt1, class _Diff, class _FwdIt2, _Enable_if_execution_policy_t<_ExPo> = 0>
 _FwdIt2 copy_n(_ExPo&&, _FwdIt1 _First, _Diff _Count_raw, _FwdIt2 _Dest) noexcept   {
               static_assert(_Is_fwd_iter_v<_Iter>, "Parallel algorithms require forward iterators or stronger.");
@@ -19280,13 +19440,21 @@ _FwdIt2 copy_n(_ExPo&&, _FwdIt1 _First, _Diff _Count_raw, _FwdIt2 _Dest) noexcep
     return ::std:: copy_n(_First, _Count_raw, _Dest);
 }
 
- template <class _BidIt1, class _BidIt2>
-_BidIt2 _Copy_backward_memmove(_BidIt1 _First, _BidIt1 _Last, _BidIt2 _Dest) {
-         const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_First));
-    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_Last));
-    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<volatile char*>(_Dest));
+ template <class _CtgIt1, class _CtgIt2>
+_CtgIt2 _Copy_backward_memmove(_CtgIt1 _First, _CtgIt1 _Last, _CtgIt2 _Dest) {
+         auto _FirstPtr              = _To_address(_First);
+    auto _LastPtr               = _To_address(_Last);
+    auto _DestPtr               = _To_address(_Dest);
+    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_FirstPtr));
+    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_LastPtr));
+    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<const volatile char*>(_DestPtr));
     const auto _Count           = static_cast<size_t>(_Last_ch - _First_ch);
-    return static_cast<_BidIt2>(:: memmove(_Dest_ch - _Count, _First_ch, _Count));
+    auto _Result                = :: memmove(_Dest_ch - _Count, _First_ch, _Count);
+    if constexpr (is_pointer_v<_CtgIt2>) {
+        return static_cast<_CtgIt2>(_Result);
+    } else {
+        return _Dest - (_LastPtr - _FirstPtr);
+    }
 }
 
 template <class _BidIt1, class _BidIt2>
@@ -19389,7 +19557,8 @@ _BidIt2 move_backward(_ExPo&&, _BidIt1 _First, _BidIt1 _Last, _BidIt2 _Dest) noe
               return ::std:: move_backward(_First, _Last, _Dest);
 }
 
- template <class _Ty>
+ 
+template <class _Ty>
 struct _Is_character : false_type {};  
 template <>
 struct _Is_character<char> : true_type {};  
@@ -19400,23 +19569,26 @@ struct _Is_character<unsigned char> : true_type {};
 template <>
 struct _Is_character<char8_t> : true_type {};  
 template <class _Ty>
-struct _Is_character_or_byte_or_bool : _Is_character<_Ty>::type {};
+struct _Is_character_or_bool : _Is_character<_Ty>::type {};
+
+template <>
+struct _Is_character_or_bool<bool> : true_type {};
+
+template <class _Ty>
+struct _Is_character_or_byte_or_bool : _Is_character_or_bool<_Ty>::type {};
 
 template <>
 struct _Is_character_or_byte_or_bool<byte> : true_type {};
 
-template <>
-struct _Is_character_or_byte_or_bool<bool> : true_type {};
-
- template <class _FwdIt, class _Ty, bool = is_pointer_v<_FwdIt>>
+  template <class _FwdIt, class _Ty, bool = _Iterator_is_contiguous<_FwdIt>>
 inline constexpr bool _Fill_memset_is_safe = conjunction_v<is_scalar<_Ty>,
     _Is_character_or_byte_or_bool<_Unwrap_enum_t<remove_reference_t<_Iter_ref_t<_FwdIt>>>>,
-    is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
+    negation<is_volatile<remove_reference_t<_Iter_ref_t<_FwdIt>>>>, is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
 
 template <class _FwdIt, class _Ty>
 inline constexpr bool _Fill_memset_is_safe<_FwdIt, _Ty, false> = false;
 
-template <class _FwdIt, class _Ty, bool = is_pointer_v<_FwdIt>>
+template <class _FwdIt, class _Ty, bool = _Iterator_is_contiguous<_FwdIt>>
 inline constexpr bool _Fill_zero_memset_is_safe =
     conjunction_v<is_scalar<_Ty>, is_scalar<_Iter_value_t<_FwdIt>>, negation<is_member_pointer<_Iter_value_t<_FwdIt>>>,
         negation<is_volatile<remove_reference_t<_Iter_ref_t<_FwdIt>>>>, is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
@@ -19424,14 +19596,15 @@ inline constexpr bool _Fill_zero_memset_is_safe =
 template <class _FwdIt, class _Ty>
 inline constexpr bool _Fill_zero_memset_is_safe<_FwdIt, _Ty, false> = false;
 
-template <class _DestTy, class _Ty>
-void _Fill_memset(_DestTy* const _Dest, const _Ty _Val, const size_t _Count) {
-    _DestTy _Dest_val = _Val;      :: memset(_Dest, static_cast<unsigned char>(_Dest_val), _Count);
+template <class _CtgIt, class _Ty>
+void _Fill_memset(_CtgIt _Dest, const _Ty _Val, const size_t _Count) {
+         _Iter_value_t<_CtgIt> _Dest_val = _Val;
+    :: memset(_To_address(_Dest), static_cast<unsigned char>(_Dest_val), _Count);
 }
 
-template <class _DestTy>
-void _Fill_zero_memset(_DestTy* const _Dest, const size_t _Count) {
-    :: memset(_Dest, 0, _Count * sizeof(_DestTy));
+template <class _CtgIt>
+void _Fill_zero_memset(_CtgIt _Dest, const size_t _Count) {
+    :: memset(_To_address(_Dest), 0, _Count * sizeof(_Iter_value_t<_CtgIt>));
 }
 
 template <class _Ty>
@@ -19509,17 +19682,50 @@ constexpr _OutIt fill_n(_OutIt _Dest, const _Diff _Count_raw, const _Ty& _Val) {
     return _Dest;
 }
 
-
 template <class _ExPo, class _FwdIt, class _Diff, class _Ty, _Enable_if_execution_policy_t<_ExPo> = 0>
 _FwdIt fill_n(_ExPo&&, _FwdIt _Dest, _Diff _Count_raw, const _Ty& _Val) noexcept   {
               static_assert(_Is_fwd_iter_v<_Iter>, "Parallel algorithms require forward iterators or stronger.");
     return ::std:: fill_n(_Dest, _Count_raw, _Val);
 }
 
+namespace ranges {
+         class _Fill_n_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+        template <class _Ty, output_iterator<const _Ty&> _It>
+        constexpr _It operator()(_It _First, iter_difference_t<_It> _Count, const _Ty& _Value) const {
+            if (_Count > 0) {
+                auto _UFirst = _Get_unwrapped_n(::std:: move(_First), _Count);
+                if (!::std:: is_constant_evaluated()) {
+                    if constexpr (_Fill_memset_is_safe<decltype(_UFirst), _Ty>) {
+                        _Fill_memset(_UFirst, _Value, static_cast<size_t>(_Count));
+                        _Seek_wrapped(_First, _UFirst + _Count);                          return _First;
+                    } else if constexpr (_Fill_zero_memset_is_safe<decltype(_UFirst), _Ty>) {
+                        if (_Is_all_bits_zero(_Value)) {
+                            _Fill_zero_memset(_UFirst, static_cast<size_t>(_Count));
+                            _Seek_wrapped(_First, _UFirst + _Count);                              return _First;
+                        }
+                    }
+                }
+
+                for (; _Count > 0; ++_UFirst, (void) --_Count) {
+                    *_UFirst = _Value;
+                }
+
+                _Seek_wrapped(_First, ::std:: move(_UFirst));
+            }
+
+            return _First;
+        }
+    };
+
+    inline constexpr _Fill_n_fn fill_n{_Not_quite_object::_Construct_tag{}};
+}  
  
   
      template <class _Elem1, class _Elem2,
-    bool = sizeof(_Elem1) == sizeof(_Elem2)             && is_integral_v<_Elem1> && !is_volatile_v<_Elem1>             && is_integral_v<_Elem2> && !is_volatile_v<_Elem2>>
+    bool = sizeof(_Elem1) == sizeof(_Elem2)          && is_integral_v<_Elem1> && !is_volatile_v<_Elem1>          && is_integral_v<_Elem2> && !is_volatile_v<_Elem2>>
 inline constexpr bool _Can_memcmp_elements =
     is_same_v<_Elem1, bool> || is_same_v<_Elem2, bool> || static_cast<_Elem1>(-1) == static_cast<_Elem2>(-1);
 
@@ -19547,10 +19753,6 @@ inline constexpr bool _Pred_is_consistent_with_memcmp<_Elem1, _Elem2, ::std::ran
    template <class _Elem1, class _Elem2, class _Pr>
 inline constexpr bool _Can_memcmp_elements_with_pred = _Can_memcmp_elements<_Elem1, _Elem2>      && _Pred_is_consistent_with_memcmp<_Elem1, _Elem2, _Pr>;
 
-  
- template <class _Iter1, class _Iter2>
-inline constexpr bool _Iterators_are_contiguous = contiguous_iterator<_Iter1>      && contiguous_iterator<_Iter2>;
-
    template <class _Iter1, class _Iter2, class _Pr>
 inline constexpr bool _Equal_memcmp_is_safe_helper = _Iterators_are_contiguous<_Iter1, _Iter2>      && _Can_memcmp_elements_with_pred<remove_const_t<remove_reference_t<_Iter_ref_t<_Iter1>>>,
         remove_const_t<remove_reference_t<_Iter_ref_t<_Iter2>>>, _Pr>;
@@ -19558,6 +19760,23 @@ inline constexpr bool _Equal_memcmp_is_safe_helper = _Iterators_are_contiguous<_
 template <class _Iter1, class _Iter2, class _Pr>
 inline constexpr bool _Equal_memcmp_is_safe =
     _Equal_memcmp_is_safe_helper<remove_const_t<_Iter1>, remove_const_t<_Iter2>, _Pr>;
+
+template <class _CtgIt1, class _CtgIt2>
+ int _Memcmp_ranges(_CtgIt1 _First1, _CtgIt1 _Last1, _CtgIt2 _First2) {
+    ;
+    const auto _First1_ch = reinterpret_cast<const char*>(_To_address(_First1));
+    const auto _Last1_ch  = reinterpret_cast<const char*>(_To_address(_Last1));
+    const auto _First2_ch = reinterpret_cast<const char*>(_To_address(_First2));
+    return :: memcmp(_First1_ch, _First2_ch, static_cast<size_t>(_Last1_ch - _First1_ch));
+}
+
+template <class _CtgIt1, class _CtgIt2>
+ int _Memcmp_count(_CtgIt1 _First1, _CtgIt2 _First2, const size_t _Count) {
+    ;
+    const auto _First1_ch = reinterpret_cast<const char*>(_To_address(_First1));
+    const auto _First2_ch = reinterpret_cast<const char*>(_To_address(_First2));
+    return :: memcmp(_First1_ch, _First2_ch, _Count * sizeof(_Iter_value_t<_CtgIt1>));
+}
 
 template <class _InIt1, class _InIt2, class _Pr>
  constexpr bool equal(const _InIt1 _First1, const _InIt1 _Last1, const _InIt2 _First2, _Pr _Pred) {
@@ -19568,10 +19787,7 @@ template <class _InIt1, class _InIt2, class _Pr>
     if constexpr (_Equal_memcmp_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
         if (!::std:: is_constant_evaluated())
         {
-            const auto _First1_ch = reinterpret_cast<const char*>(_UFirst1);
-            const auto _First2_ch = reinterpret_cast<const char*>(_UFirst2);
-            const auto _Count     = static_cast<size_t>(reinterpret_cast<const char*>(_ULast1) - _First1_ch);
-            return :: memcmp(_First1_ch, _First2_ch, _Count) == 0;
+            return _Memcmp_ranges(_UFirst1, _ULast1, _UFirst2) == 0;
         }
     }
 
@@ -19648,6 +19864,127 @@ template <class _ExPo, class _FwdIt1, class _FwdIt2, _Enable_if_execution_policy
          return ::std:: equal(::std:: forward<_ExPo>(_Exec), _First1, _Last1, _First2, _Last2, equal_to{});
 }
 
+namespace ranges {
+         template <forward_range _Rng, class _It>
+     constexpr iterator_t<_Rng> _Rewrap_iterator(_Rng&& _Range, _It&& _Val) {
+        ;
+
+        if constexpr (is_same_v<remove_cvref_t<_It>, iterator_t<_Rng>>) {
+            return ::std:: forward<_It>(_Val);
+        } else {
+            auto _Result = ::std::ranges:: begin(_Range);
+            _Result._Seek_to(::std:: forward<_It>(_Val));
+            return _Result;
+        }
+    }
+
+         template <class _In1, class _In2>
+    struct in_in_result {
+          _In1 in1;
+          _In2 in2;
+
+        template <_Convertible_from<const _In1&> _IIn1, _Convertible_from<const _In2&> _IIn2>
+        constexpr operator in_in_result<_IIn1, _IIn2>() const& {
+            return {in1, in2};
+        }
+
+        template <_Convertible_from<_In1> _IIn1, _Convertible_from<_In2> _IIn2>
+        constexpr operator in_in_result<_IIn1, _IIn2>() && {
+            return {::std:: move(in1), ::std:: move(in2)};
+        }
+    };
+
+         template <class _In1, class _In2>
+    using mismatch_result = in_in_result<_In1, _In2>;
+
+         class _Mismatch_fn : private _Not_quite_object {
+    private:
+        template <class _It1, class _It2, class _Pr, class _Pj1, class _Pj2>
+         static constexpr mismatch_result<_It1, _It2> _Mismatch_n(
+            _It1 _First1, _It2 _First2, iter_difference_t<_It1> _Count, _Pr _Pred, _Pj1 _Proj1, _Pj2 _Proj2) {
+            auto _UFirst1 = _Get_unwrapped(::std:: move(_First1));
+            auto _UFirst2 = _Get_unwrapped(::std:: move(_First2));
+
+            for (; _Count != 0; ++_UFirst1, (void) ++_UFirst2, --_Count) {
+                if (!::std:: invoke(_Pred, ::std:: invoke(_Proj1, *_UFirst1), ::std:: invoke(_Proj2, *_UFirst2))) {
+                    break;
+                }
+            }
+
+            _Seek_wrapped(_First1, ::std:: move(_UFirst1));
+            _Seek_wrapped(_First2, ::std:: move(_UFirst2));
+            return {::std:: move(_First1), ::std:: move(_First2)};
+        }
+
+        template <class _It1, class _Se1, class _It2, class _Se2, class _Pr, class _Pj1, class _Pj2>
+         static constexpr mismatch_result<_It1, _It2> _Mismatch_4(
+            _It1 _First1, _Se1 _Last1, _It2 _First2, _Se2 _Last2, _Pr _Pred, _Pj1 _Proj1, _Pj2 _Proj2) {
+            auto _UFirst1      = _Get_unwrapped(::std:: move(_First1));
+            const auto _ULast1 = _Get_unwrapped(::std:: move(_Last1));
+            auto _UFirst2      = _Get_unwrapped(::std:: move(_First2));
+            const auto _ULast2 = _Get_unwrapped(::std:: move(_Last2));
+
+            for (; _UFirst1 != _ULast1 && _UFirst2 != _ULast2; ++_UFirst1, (void) ++_UFirst2) {
+                if (!::std:: invoke(_Pred, ::std:: invoke(_Proj1, *_UFirst1), ::std:: invoke(_Proj2, *_UFirst2))) {
+                    break;
+                }
+            }
+
+            _Seek_wrapped(_First1, ::std:: move(_UFirst1));
+            _Seek_wrapped(_First2, ::std:: move(_UFirst2));
+            return {::std:: move(_First1), ::std:: move(_First2)};
+        }
+
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It1, sentinel_for<_It1> _Se1, input_iterator _It2, sentinel_for<_It2> _Se2,
+            class _Pr = ranges::equal_to, class _Pj1 = identity, class _Pj2 = identity>
+            requires indirectly_comparable<_It1, _It2, _Pr, _Pj1, _Pj2>
+         constexpr mismatch_result<_It1, _It2> operator()(_It1 _First1, _Se1 _Last1,
+            _It2 _First2, _Se2 _Last2, _Pr _Pred = {}, _Pj1 _Proj1 = {}, _Pj2 _Proj2 = {}) const {
+            _Adl_verify_range(_First1, _Last1);
+            _Adl_verify_range(_First2, _Last2);
+
+            if constexpr (sized_sentinel_for<_Se1, _It1> && sized_sentinel_for<_Se2, _It2>) {
+                iter_difference_t<_It1> _Count1 = _Last1 - _First1;
+                const iter_difference_t<_It2> _Count2 = _Last2 - _First2;
+                if (_Count1 > _Count2) {
+                    _Count1 = static_cast<decltype(_Count1)>(_Count2);
+                }
+
+                return _Mismatch_n(::std:: move(_First1), ::std:: move(_First2), _Count1,
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            } else {
+                return _Mismatch_4(::std:: move(_First1), ::std:: move(_Last1), ::std:: move(_First2), ::std:: move(_Last2),
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            }
+        }
+
+        template <input_range _Rng1, input_range _Rng2, class _Pr = ranges::equal_to, class _Pj1 = identity,
+            class _Pj2 = identity>
+            requires indirectly_comparable<iterator_t<_Rng1>, iterator_t<_Rng2>, _Pr, _Pj1, _Pj2>
+         constexpr mismatch_result<borrowed_iterator_t<_Rng1>, borrowed_iterator_t<_Rng2>> operator()(
+            _Rng1&& _Range1, _Rng2&& _Range2, _Pr _Pred = {}, _Pj1 _Proj1 = {}, _Pj2 _Proj2 = {}) const {
+            if constexpr (sized_range<_Rng1> && sized_range<_Rng2>) {
+                range_difference_t<_Rng1> _Count1 = ::std::ranges:: distance(_Range1);
+                const range_difference_t<_Rng2> _Count2 = ::std::ranges:: distance(_Range2);
+                if (_Count1 > _Count2) {
+                    _Count1 = static_cast<range_difference_t<_Rng1>>(_Count2);
+                }
+
+                return _Mismatch_n(::std::ranges:: begin(_Range1), ::std::ranges:: begin(_Range2), _Count1,
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            } else {
+                return _Mismatch_4(::std::ranges:: begin(_Range1), ::std::ranges:: end(_Range1),
+                    ::std::ranges:: begin(_Range2), ::std::ranges:: end(_Range2),
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            }
+        }
+             };
+
+    inline constexpr _Mismatch_fn mismatch{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _Elem1, class _Elem2, class _FTy>
 struct _Lex_compare_check_element_types_helper
     : bool_constant<
@@ -19671,6 +20008,8 @@ struct _Lex_compare_check_element_types_helper<byte, byte, void> : true_type {
 template <class _Memcmp_pr>
 struct _Lex_compare_optimize {
     explicit _Lex_compare_optimize() = default;
+
+    using _Pred = _Memcmp_pr;
 };  
 template <class _Memcmp_pr, class _Obj1, class _Obj2, class _FTy>
 using _Lex_compare_check_element_types = _Lex_compare_optimize<conditional_t<
@@ -19681,14 +20020,28 @@ constexpr auto _Lex_compare_memcmp_classify(const _InIt1&, const _InIt2&, const 
          return _Lex_compare_optimize<void>{};
 }
 
-template <class _Obj1, class _Obj2, class _FTy>
-constexpr auto _Lex_compare_memcmp_classify(_Obj1* const&, _Obj2* const&, const less<_FTy>&) {
-         return _Lex_compare_check_element_types<less<int>, _Obj1, _Obj2, _FTy>{};
+template <class _CtgIt1, class _CtgIt2, class _FTy, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const less<_FTy>&) {
+         return _Lex_compare_check_element_types<less<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, _FTy>{};
 }
 
-template <class _Obj1, class _Obj2, class _FTy>
-constexpr auto _Lex_compare_memcmp_classify(_Obj1* const&, _Obj2* const&, const greater<_FTy>&) {
-         return _Lex_compare_check_element_types<greater<int>, _Obj1, _Obj2, _FTy>{};
+template <class _CtgIt1, class _CtgIt2, class _FTy, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const greater<_FTy>&) {
+         return _Lex_compare_check_element_types<greater<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, _FTy>{};
+}
+
+template <class _CtgIt1, class _CtgIt2, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const ::std::ranges:: less&) {
+         return _Lex_compare_check_element_types<less<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, void>{};
+}
+
+template <class _CtgIt1, class _CtgIt2, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const ::std::ranges:: greater&) {
+         return _Lex_compare_check_element_types<greater<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, void>{};
 }
 
 template <class _InIt1, class _InIt2, class _Pr>
@@ -19704,16 +20057,16 @@ template <class _InIt1, class _InIt2, class _Pr>
     return _First1 == _Last1 && _First2 != _Last2;
 }
 
-template <class _InIt1, class _InIt2, class _Pr, class _Memcmp_pr>
+template <class _CtgIt1, class _CtgIt2, class _Pr, class _Memcmp_pr>
  constexpr bool _Lex_compare_unchecked(
-    _InIt1 _First1, _InIt1 _Last1, _InIt2 _First2, _InIt2 _Last2, _Pr _Pred, _Lex_compare_optimize<_Memcmp_pr>) {
+    _CtgIt1 _First1, _CtgIt1 _Last1, _CtgIt2 _First2, _CtgIt2 _Last2, _Pr _Pred, _Lex_compare_optimize<_Memcmp_pr>) {
          if (::std:: is_constant_evaluated()) {
         return _Lex_compare_unchecked(_First1, _Last1, _First2, _Last2, _Pred, _Lex_compare_optimize<void>{});
     }
     (void) _Pred;
     const auto _Num1 = static_cast<size_t>(_Last1 - _First1);
     const auto _Num2 = static_cast<size_t>(_Last2 - _First2);
-    const int _Ans   = :: memcmp(_First1, _First2, _Num1 < _Num2 ? _Num1 : _Num2);
+    const int _Ans   = _Memcmp_count(_First1, _First2, (::std:: min)(_Num1, _Num2));
     return _Memcmp_pr{}(_Ans, 0) || (_Ans == 0 && _Num1 < _Num2);
 }
 
@@ -19765,15 +20118,15 @@ template <class _ExPo, class _FwdIt1, class _FwdIt2, _Enable_if_execution_policy
     using _Ty1         = remove_const_t<remove_pointer_t<_UIt1>>;
     using _Ty2         = remove_const_t<remove_pointer_t<_UIt2>>;
 
-    if constexpr (conjunction_v<is_same<_Cmp, compare_three_way>, is_pointer<_UIt1>, is_pointer<_UIt2>,
-                      disjunction<
-                          conjunction<is_same<_Ty1, byte>, is_same<_Ty2, byte>>,
-                          conjunction<_Is_character<_Ty1>, is_unsigned<_Ty1>, _Is_character<_Ty2>,
-                              is_unsigned<_Ty2>>>>) {
+    if constexpr (
+        conjunction_v<is_same<_Cmp, compare_three_way>, bool_constant<_Iterators_are_contiguous<_UIt1, _UIt2>>,
+            disjunction<
+                conjunction<is_same<_Ty1, byte>, is_same<_Ty2, byte>>,
+                conjunction<_Is_character<_Ty1>, is_unsigned<_Ty1>, _Is_character<_Ty2>, is_unsigned<_Ty2>>>>) {
         if (!::std:: is_constant_evaluated()) {
             const auto _Num1 = static_cast<size_t>(_ULast1 - _UFirst1);
             const auto _Num2 = static_cast<size_t>(_ULast2 - _UFirst2);
-            const int _Ans   = :: memcmp(_UFirst1, _UFirst2, (::std:: min)(_Num1, _Num2));
+            const int _Ans   = _Memcmp_count(_UFirst1, _UFirst2, (::std:: min)(_Num1, _Num2));
             if (_Ans == 0) {
                 return _Num1 <=> _Num2;
             } else {
@@ -19807,38 +20160,57 @@ template <class _InIt1, class _InIt2>
 }
 
  template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, true_type, _Any_tag) {      return (-128) <= _Val && _Val <= 127;
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, true_type, _Any_tag, false_type) {
+         return (-128) <= _Val && _Val <= 127;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, true_type) {
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, true_type, false_type) {
          return _Val <= 127 || static_cast<_Ty>((-128)) <= _Val;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, false_type) {
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, false_type, false_type) {
          return _Val <= 127;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, false_type, true_type, _Any_tag) {
+ constexpr bool _Within_limits(const _Ty& _Val, false_type, true_type, _Any_tag, false_type) {
          return 0 <= _Val && _Val <= 0xff;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, false_type, false_type, _Any_tag) {
+ constexpr bool _Within_limits(const _Ty& _Val, false_type, false_type, _Any_tag, false_type) {
          return _Val <= 0xff;
 }
 
+template <class _Ty>
+ constexpr bool _Within_limits(const _Ty& _Val, _Any_tag, _Any_tag, _Any_tag, true_type) {
+         return _Val == true || _Val == false;
+}
+
 template <class _InIt, class _Ty>
- constexpr bool _Within_limits(_InIt, const _Ty& _Val) {      using _Elem = remove_pointer_t<_InIt>;
+ constexpr bool _Within_limits(const _InIt&, const _Ty& _Val) {
+         using _Elem = _Iter_value_t<_InIt>;
     return _Within_limits(_Val, bool_constant<is_signed_v<_Elem>>{}, bool_constant<is_signed_v<_Ty>>{},
-        bool_constant<-1 == static_cast<_Ty>(-1)>{});
+        bool_constant<-1 == static_cast<_Ty>(-1)>{}, bool_constant<is_same_v<_Elem, bool>>{});
 }
 
 template <class _InIt>
- constexpr bool _Within_limits(_InIt, const bool&) {      return true;
+ constexpr bool _Within_limits(const _InIt&, const bool&) {      return true;
 }
+
+template <class _InIt>
+ constexpr bool _Within_limits(const _InIt&, const byte&) {      return true;
+}
+
+template <class _Iter, class _Ty>
+inline constexpr bool _Memchr_in_find_is_safe =
+    _Iterator_is_contiguous<_Iter>&&
+        disjunction_v<conjunction<is_integral<_Ty>, _Is_character_or_bool<_Iter_value_t<_Iter>>>
+            ,
+            conjunction<is_same<_Ty, byte>, is_same<_Iter_value_t<_Iter>, byte>>
+            > && !is_volatile_v<remove_reference_t<_Iter_ref_t<_Iter>>>;
 
 template <class _InIt, class _Ty>
  constexpr _InIt _Find_unchecked1(_InIt _First, const _InIt _Last, const _Ty& _Val, false_type) {
@@ -19858,20 +20230,22 @@ template <class _InIt, class _Ty>
     }
 
     if (::std:: is_constant_evaluated()) {
-        using _Elem = remove_pointer_t<_InIt>;
+        using _Elem = _Iter_value_t<_InIt>;
         return _Find_unchecked1(_First, _Last, static_cast<_Elem>(_Val), false_type{});
     }
-    _First =
-        static_cast<_InIt>(:: memchr(_First, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
-    return _First ? _First : _Last;
+    const auto _First_ptr = _To_address(_First);
+    const auto _Result    = static_cast<remove_reference_t<_Iter_ref_t<_InIt>>*>(
+        :: memchr(_First_ptr, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
+    if constexpr (is_pointer_v<_InIt>) {
+        return _Result ? _Result : _Last;
+    } else {
+        return _Result ? _First + (_Result - _First_ptr) : _Last;
+    }
 }
 
 template <class _InIt, class _Ty>
  constexpr _InIt _Find_unchecked(const _InIt _First, const _InIt _Last, const _Ty& _Val) {
-              using _Memchr_opt = bool_constant<
-        is_integral_v<_Ty> && _Is_any_of_v<_InIt, char*, signed char*, unsigned char*,              const char*, const signed char*, const unsigned char*>>;
-
-    return _Find_unchecked1(_First, _Last, _Val, _Memchr_opt{});
+              return _Find_unchecked1(_First, _Last, _Val, bool_constant<_Memchr_in_find_is_safe<_InIt, _Ty>>{});
 }
 
 template <class _InIt, class _Ty>
@@ -19882,6 +20256,70 @@ template <class _InIt, class _Ty>
 
 template <class _ExPo, class _FwdIt, class _Ty, _Enable_if_execution_policy_t<_ExPo> = 0>
  _FwdIt find(_ExPo&& _Exec, _FwdIt _First, const _FwdIt _Last, const _Ty& _Val) noexcept;  
+namespace ranges {
+                   template <input_iterator _It, sentinel_for<_It> _Se, class _Ty, class _Pj = identity>
+        requires indirect_binary_predicate<ranges::equal_to, projected<_It, _Pj>, const _Ty*>
+     constexpr _It _Find_unchecked(_It _First, const _Se _Last, const _Ty& _Val, _Pj _Proj = {}) {
+                 if constexpr (_Memchr_in_find_is_safe<_It, _Ty> && sized_sentinel_for<_Se, _It> && same_as<_Pj, identity>) {
+            if (!::std:: is_constant_evaluated()) {
+                if (!_Within_limits(_First, _Val)) {
+                    return ::std::ranges:: next(::std:: move(_First), _Last);
+                }
+
+                const auto _First_ptr = ::std:: to_address(_First);
+                const auto _Result    = static_cast<remove_reference_t<_Iter_ref_t<_It>>*>(
+                    :: memchr(_First_ptr, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
+                if (_Result) {
+                    if constexpr (is_pointer_v<_It>) {
+                        return _Result;
+                    } else {
+                        return ::std::ranges:: next(::std:: move(_First), _Result - _First_ptr);
+                    }
+                } else {
+                    return ::std::ranges:: next(::std:: move(_First), _Last);
+                }
+            }
+        }
+
+        for (; _First != _Last; ++_First) {
+            if (::std:: invoke(_Proj, *_First) == _Val) {
+                break;
+            }
+        }
+
+        return _First;
+    }
+
+    class _Find_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It, sentinel_for<_It> _Se, class _Ty, class _Pj = identity>
+            requires indirect_binary_predicate<ranges::equal_to, projected<_It, _Pj>, const _Ty*>
+         constexpr _It operator()(_It _First, _Se _Last, const _Ty& _Val, _Pj _Proj = {}) const {
+            _Adl_verify_range(_First, _Last);
+            auto _UResult = ::std::ranges:: _Find_unchecked(
+                _Get_unwrapped(::std:: move(_First)), _Get_unwrapped(::std:: move(_Last)), _Val, _Pass_fn(_Proj));
+
+            _Seek_wrapped(_First, ::std:: move(_UResult));
+            return _First;
+        }
+
+        template <input_range _Rng, class _Ty, class _Pj = identity>
+            requires indirect_binary_predicate<ranges::equal_to, projected<iterator_t<_Rng>, _Pj>, const _Ty*>
+         constexpr borrowed_iterator_t<_Rng> operator()(
+            _Rng&& _Range, const _Ty& _Val, _Pj _Proj = {}) const {
+            auto _First = ::std::ranges:: begin(_Range);
+            auto _UResult =
+                ::std::ranges:: _Find_unchecked(_Get_unwrapped(::std:: move(_First)), _Uend(_Range), _Val, _Pass_fn(_Proj));
+
+            _Seek_wrapped(_First, ::std:: move(_UResult));
+            return _First;
+        }
+             };
+
+    inline constexpr _Find_fn find{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _InIt, class _Ty>
  constexpr _Iter_diff_t<_InIt> count(const _InIt _First, const _InIt _Last, const _Ty& _Val) {
          _Adl_verify_range(_First, _Last);
@@ -19925,7 +20363,6 @@ template <class _InIt, class _Ty, class _Pr>
     return _Count;
 }
 
-
 template <class _FwdIt1, class _FwdIt2, class _Pr>
  constexpr bool _Check_match_counts(
     const _FwdIt1 _First1, _FwdIt1 _Last1, const _FwdIt2 _First2, _FwdIt2 _Last2, _Pr _Pred) {
@@ -19938,6 +20375,7 @@ template <class _FwdIt1, class _FwdIt2, class _Pr>
         ++_Last1;
         ++_Last2;
     }
+
     for (_FwdIt1 _Next1 = _First1; _Next1 != _Last1; ++_Next1) {
         if (_Next1 == _Find_pr(_First1, _Next1, *_Next1, _Pred)) {              _Iter_diff_t<_FwdIt2> _Count2 = _Count_pr(_First2, _Last2, *_Next1, _Pred);
             if (_Count2 == 0) {
@@ -19957,22 +20395,22 @@ template <class _FwdIt1, class _FwdIt2, class _Pr>
 constexpr void reverse(const _BidIt _First, const _BidIt _Last) {      _Adl_verify_range(_First, _Last);
     auto _UFirst = _Get_unwrapped(_First);
     auto _ULast  = _Get_unwrapped(_Last);
-    using _Elem = remove_pointer_t<decltype(_UFirst)>;
-    constexpr bool _Allow_vectorization =
-        conjunction_v<is_pointer<decltype(_UFirst)>, _Is_trivially_swappable<_Elem>, negation<is_volatile<_Elem>>>;
-    constexpr size_t _Nx = sizeof(_Elem);
+    using _Elem                         = remove_reference_t<_Iter_ref_t<decltype(_UFirst)>>;
+    constexpr bool _Allow_vectorization = conjunction_v<bool_constant<_Iterator_is_contiguous<decltype(_UFirst)>>,
+        _Is_trivially_swappable<_Elem>, negation<is_volatile<_Elem>>>;
+    constexpr size_t _Nx                = sizeof(_Elem);
 
     if constexpr (_Allow_vectorization && _Nx <= 8 && (_Nx & (_Nx - 1)) == 0) {
         if (!::std:: is_constant_evaluated())
         {
             if constexpr (_Nx == 1) {
-                __std_reverse_trivially_swappable_1(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_1(_To_address(_UFirst), _To_address(_ULast));
             } else if constexpr (_Nx == 2) {
-                __std_reverse_trivially_swappable_2(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_2(_To_address(_UFirst), _To_address(_ULast));
             } else if constexpr (_Nx == 4) {
-                __std_reverse_trivially_swappable_4(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_4(_To_address(_UFirst), _To_address(_ULast));
             } else {
-                __std_reverse_trivially_swappable_8(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_8(_To_address(_UFirst), _To_address(_ULast));
             }
 
             return;
@@ -20157,6 +20595,8 @@ namespace ranges {
 
     inline constexpr _Find_if_not_fn find_if_not{_Not_quite_object::_Construct_tag{}};
 }  
+ template <auto>
+struct _Require_constant;                             
  template <class _FwdIt, class _Ty, class _Pr>
  constexpr _FwdIt lower_bound(_FwdIt _First, const _FwdIt _Last, const _Ty& _Val, _Pr _Pred) {
          _Adl_verify_range(_First, _Last);
@@ -20270,6 +20710,7 @@ inline constexpr allocator_arg_t allocator_arg{};
 [[noreturn]]  void __cdecl _Xout_of_range(  const char*);
 [[noreturn]]  void __cdecl _Xoverflow_error(  const char*);
 [[noreturn]]  void __cdecl _Xruntime_error(  const char*);
+[[noreturn]]  void __cdecl _XGetLastError();
 
  template <class _Ty, class _Alloc>
 struct uses_allocator : _Has_allocator_type<_Ty, _Alloc>::type {
@@ -20331,6 +20772,8 @@ struct [[deprecated(                                                            
              }
 };
 ;
+
+ struct monostate {};
 
 }
 
@@ -20495,8 +20938,8 @@ class tuple<> {  public:
         return true;
     }
 
-    constexpr bool _Less(const tuple&) const noexcept {
-        return false;
+     constexpr strong_ordering _Three_way_compare(const tuple&) const noexcept {
+        return strong_ordering::equal;
     }
 };
 
@@ -20715,10 +21158,12 @@ class tuple<_This, _Rest...> : private tuple<_Rest...> {  public:
         return _Myfirst._Val == _Right._Myfirst._Val && _Mybase::_Equals(_Right._Get_rest());
     }
 
-    template <class... _Other>
-    constexpr bool _Less(const tuple<_Other...>& _Right) const {
-        return _Myfirst._Val < _Right._Myfirst._Val
-               || (!(_Right._Myfirst._Val < _Myfirst._Val) && _Mybase::_Less(_Right._Get_rest()));
+    template <class _First, class... _Other,
+        class _Ret = common_comparison_category_t<_Synth_three_way_result<_This, _First>,              _Synth_three_way_result<_Rest, _Other>...>>       constexpr _Ret _Three_way_compare(const tuple<_First, _Other...>& _Right) const {
+        if (auto _Result = _Synth_three_way{}(_Myfirst._Val, _Right._Myfirst._Val); _Result != 0) {
+            return _Result;
+        }
+        return _Mybase::_Three_way_compare(_Right._Get_rest());
     }
 
     template <size_t _Index, class... _Types>
@@ -20772,29 +21217,10 @@ tuple(allocator_arg_t, _Alloc, tuple<_Types...>) -> tuple<_Types...>;
 }
 
 template <class... _Types1, class... _Types2>
- constexpr bool operator!=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Left == _Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator<(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
+ constexpr common_comparison_category_t<_Synth_three_way_result<_Types1, _Types2>...> operator<=>(
+    const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
     static_assert(sizeof...(_Types1) == sizeof...(_Types2), "cannot compare tuples of different sizes");
-    return _Left._Less(_Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator>=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Left < _Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator>(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return _Right < _Left;
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator<=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Right < _Left);
+    return _Left._Three_way_compare(_Right);
 }
 
 template <class... _Types, enable_if_t<conjunction_v<::std:: _Is_swappable<_Types>...>, int> = 0>
@@ -21063,10 +21489,6 @@ public:
         return __std_type_info_compare(&_Data, &_Other._Data) == 0;
     }
 
-    bool operator!=(const type_info& _Other) const noexcept
-    {
-        return __std_type_info_compare(&_Data, &_Other._Data) != 0;
-    }
 
     bool before(const type_info& _Other) const noexcept
     {
@@ -21281,12 +21703,15 @@ template <class _Integral, class _Ty>
  
   
 
+ 
+  
+
 
 
 namespace std {
  template <class _Ty>
 struct  _Tidy_guard {      _Ty* _Target;
-    ~_Tidy_guard() {
+    constexpr ~_Tidy_guard() {
         if (_Target) {
             _Target->_Tidy();
         }
@@ -21295,7 +21720,7 @@ struct  _Tidy_guard {      _Ty* _Target;
 
  template <class _Ty>
 struct  _Tidy_deallocate_guard {      _Ty* _Target;
-    ~_Tidy_deallocate_guard() {
+    constexpr ~_Tidy_deallocate_guard() {
         if (_Target) {
             _Target->_Tidy_deallocate();
         }
@@ -21324,12 +21749,16 @@ inline constexpr size_t _New_alignof = (::std:: max)(alignof(_Ty),
     static_cast<size_t>(16ull)  );
 
  struct _Default_allocate_traits {
-    __declspec(allocator) static void* _Allocate(const size_t _Bytes) {
+    __declspec(allocator) static
+        void* _Allocate(const size_t _Bytes) {
         return ::operator new(_Bytes);
     }
 
-    __declspec(allocator) static void* _Allocate_aligned(const size_t _Bytes, const size_t _Align) {
-        return ::operator new (_Bytes, align_val_t{_Align});
+    __declspec(allocator) static
+        void* _Allocate_aligned(const size_t _Bytes, const size_t _Align) {
+        {
+            return ::operator new (_Bytes, align_val_t{_Align});
+        }
     }
 };
 
@@ -21344,7 +21773,7 @@ static_assert(2 * sizeof(void*) <= _Big_allocation_alignment,
     "Big allocation alignment should at least match vector register alignment");
 static_assert(_Is_pow_2(_Big_allocation_alignment), "Big allocation alignment must be a power of two");
 
-constexpr size_t _Non_user_size           = sizeof(void*) + _Big_allocation_alignment - 1;
+constexpr size_t _Non_user_size = sizeof(void*) + _Big_allocation_alignment - 1;
 
 constexpr size_t _Big_allocation_sentinel = 0xFAFAFAFAFAFAFAFAULL;
 
@@ -21377,33 +21806,44 @@ __declspec(allocator) void* _Allocate_manually_vector_aligned(const size_t _Byte
 
  template <size_t _Align, class _Traits = _Default_allocate_traits,
     enable_if_t<(_Align > 16ull), int> = 0>
-__declspec(allocator) void* _Allocate(const size_t _Bytes) {
+__declspec(allocator) constexpr void* _Allocate(const size_t _Bytes) {
          if (_Bytes == 0) {
         return nullptr;
     }
 
-    size_t _Passed_align = _Align;
-    if (_Bytes >= _Big_allocation_threshold) {
-                 _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+    if (::std:: is_constant_evaluated()) {
+        return _Traits::_Allocate(_Bytes);
+    } else
+    {
+        size_t _Passed_align = _Align;
+        if (_Bytes >= _Big_allocation_threshold) {
+                         _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+        }
+        return _Traits::_Allocate_aligned(_Bytes, _Passed_align);
     }
-
-    return _Traits::_Allocate_aligned(_Bytes, _Passed_align);
 }
 
 template <size_t _Align, enable_if_t<(_Align > 16ull), int> = 0>
-void _Deallocate(void* _Ptr, const size_t _Bytes) noexcept {
-         size_t _Passed_align = _Align;
-    if (_Bytes >= _Big_allocation_threshold) {          _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+constexpr void _Deallocate(void* _Ptr, const size_t _Bytes) noexcept {
+         if (::std:: is_constant_evaluated()) {
+        ::operator delete(_Ptr);
+    } else
+    {
+        size_t _Passed_align = _Align;
+        if (_Bytes >= _Big_allocation_threshold) {              _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+        }
+        ::operator delete (_Ptr, _Bytes, align_val_t{_Passed_align});
     }
-
-    ::operator delete (_Ptr, _Bytes, align_val_t{_Passed_align});
 }
 
 
 template <size_t _Align, class _Traits = _Default_allocate_traits,
     enable_if_t<(!1 || _Align <= 16ull), int> = 0>
-__declspec(allocator) void* _Allocate(const size_t _Bytes) {
-         if (_Bytes >= _Big_allocation_threshold) {          return _Allocate_manually_vector_aligned<_Traits>(_Bytes);
+__declspec(allocator) constexpr void* _Allocate(const size_t _Bytes) {
+         if (!::std:: is_constant_evaluated())
+    {
+        if (_Bytes >= _Big_allocation_threshold) {              return _Allocate_manually_vector_aligned<_Traits>(_Bytes);
+        }
     }
 
     if (_Bytes != 0) {
@@ -21414,11 +21854,15 @@ __declspec(allocator) void* _Allocate(const size_t _Bytes) {
 }
 
 template <size_t _Align, enable_if_t<(!1 || _Align <= 16ull), int> = 0>
-void _Deallocate(void* _Ptr, size_t _Bytes) noexcept {
-         if (_Bytes >= _Big_allocation_threshold) {          _Adjust_manually_vector_aligned(_Ptr, _Bytes);
+constexpr void _Deallocate(void* _Ptr, size_t _Bytes) noexcept {
+         if (::std:: is_constant_evaluated()) {
+        ::operator delete(_Ptr);
+    } else
+    {
+        if (_Bytes >= _Big_allocation_threshold) {              _Adjust_manually_vector_aligned(_Ptr, _Bytes);
+        }
+        ::operator delete(_Ptr, _Bytes);
     }
-
-    ::operator delete(_Ptr, _Bytes);
 }
 
 
@@ -21441,12 +21885,12 @@ _Ty* _Global_new(_Types&&... _Args) {      struct  _Guard_type {
 using _Rebind_pointer_t = typename pointer_traits<_Ptr>::template rebind<_Ty>;
 
  template <class _Pointer, enable_if_t<!is_pointer_v<_Pointer>, int> = 0>
-_Pointer _Refancy(typename pointer_traits<_Pointer>::element_type* _Ptr) noexcept {
+constexpr _Pointer _Refancy(typename pointer_traits<_Pointer>::element_type* _Ptr) noexcept {
     return pointer_traits<_Pointer>::pointer_to(*_Ptr);
 }
 
 template <class _Pointer, enable_if_t<is_pointer_v<_Pointer>, int> = 0>
-_Pointer _Refancy(_Pointer _Ptr) noexcept {
+constexpr _Pointer _Refancy(_Pointer _Ptr) noexcept {
     return _Ptr;
 }
 
@@ -21457,9 +21901,18 @@ template <class _Ty>
 constexpr void _Destroy_in_place(_Ty& _Obj) noexcept {
     if constexpr (is_array_v<_Ty>) {
         _Destroy_range(_Obj, _Obj + extent_v<_Ty>);
+    } else {
+        _Obj.~_Ty();
+    }
+}
+
+ template <class _Ty>
+constexpr void destroy_at(_Ty* const _Location) noexcept   {
+    if constexpr (is_array_v<_Ty>) {
+        _Destroy_range(::std:: begin(*_Location), ::std:: end(*_Location));
     } else
     {
-        _Obj.~_Ty();
+        _Location->~_Ty();
     }
 }
 
@@ -21690,11 +22143,12 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
     template <class _Other>
     using rebind_traits = allocator_traits<rebind_alloc<_Other>>;
 
-     static __declspec(allocator) pointer allocate(_Alloc& _Al,  const size_type _Count) {
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count) {
         return _Al.allocate(_Count);
     }
 
-     static __declspec(allocator) pointer
+     static constexpr __declspec(allocator) pointer
         allocate(_Alloc& _Al,  const size_type _Count, const const_void_pointer _Hint) {
         if constexpr (_Has_allocate_hint<_Alloc, size_type, const_void_pointer>::value) {
             return _Al.allocate(_Count, _Hint);
@@ -21703,29 +22157,29 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
         }
     }
 
-    static void deallocate(_Alloc& _Al, pointer _Ptr, size_type _Count) {
+    static constexpr void deallocate(_Alloc& _Al, pointer _Ptr, size_type _Count) {
         _Al.deallocate(_Ptr, _Count);
     }
 
     template <class _Ty, class... _Types>
-    static void construct(_Alloc& _Al, _Ty* _Ptr, _Types&&... _Args) {
+    static constexpr void construct(_Alloc& _Al, _Ty* _Ptr, _Types&&... _Args) {
         if constexpr (_Uses_default_construct<_Alloc, _Ty*, _Types...>::value) {
-            (void) _Al;              ::new (static_cast<void*>(_Ptr)) _Ty(::std:: forward<_Types>(_Args)...);
+            (void) _Al;              ::std:: construct_at(_Ptr, ::std:: forward<_Types>(_Args)...);
         } else {
             _Al.construct(_Ptr, ::std:: forward<_Types>(_Args)...);
         }
     }
 
     template <class _Ty>
-    static void destroy(_Alloc& _Al, _Ty* _Ptr) {
+    static constexpr void destroy(_Alloc& _Al, _Ty* _Ptr) {
         if constexpr (_Uses_default_destroy<_Alloc, _Ty*>::value) {
-            _Ptr->~_Ty();
+            ::std:: destroy_at(_Ptr);
         } else {
             _Al.destroy(_Ptr);
         }
     }
 
-     static size_type max_size(const _Alloc& _Al) noexcept {
+     static constexpr size_type max_size(const _Alloc& _Al) noexcept {
         if constexpr (_Has_max_size<_Alloc>::value) {
             return _Al.max_size();
         } else {
@@ -21733,7 +22187,7 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
         }
     }
 
-     static _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
+     static constexpr _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
         if constexpr (_Has_select_on_container_copy_construction<_Alloc>::value) {
             return _Al.select_on_container_copy_construction();
         } else {
@@ -21766,34 +22220,60 @@ struct _Default_allocator_traits {      using allocator_type = _Alloc;
     template <class _Other>
     using rebind_traits = allocator_traits<allocator<_Other>>;
 
-     static __declspec(allocator) pointer allocate(_Alloc&,  const size_type _Count) {
-        return static_cast<pointer>(_Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count) {
+        if (::std:: is_constant_evaluated()) {
+            return _Al.allocate(_Count);
+        } else
+        {
+            (void) _Al;
+            return static_cast<pointer>(
+                _Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+        }
     }
 
-     static __declspec(allocator) pointer
-        allocate(_Alloc&,  const size_type _Count, const_void_pointer) {
-        return static_cast<pointer>(_Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count, const_void_pointer) {
+        if (::std:: is_constant_evaluated()) {
+            return _Al.allocate(_Count);
+        } else
+        {
+            (void) _Al;
+            return static_cast<pointer>(
+                _Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+        }
     }
 
-    static void deallocate(_Alloc&, const pointer _Ptr, const size_type _Count) {
-                 _Deallocate<_New_alignof<value_type>>(_Ptr, sizeof(value_type) * _Count);
+    static constexpr void deallocate(_Alloc& _Al, const pointer _Ptr, const size_type _Count) {
+                 if (::std:: is_constant_evaluated()) {
+            _Al.deallocate(_Ptr, _Count);
+        } else
+        {
+            (void) _Al;
+            _Deallocate<_New_alignof<value_type>>(_Ptr, sizeof(value_type) * _Count);
+        }
     }
 
     template <class _Objty, class... _Types>
-    static void construct(_Alloc&, _Objty* const _Ptr, _Types&&... _Args) {
-        ::new (const_cast<void*>(static_cast<const volatile void*>(_Ptr))) _Objty(::std:: forward<_Types>(_Args)...);
+    static constexpr void construct(_Alloc&, _Objty* const _Ptr, _Types&&... _Args) {
+        if (::std:: is_constant_evaluated()) {
+            ::std:: construct_at(_Ptr, ::std:: forward<_Types>(_Args)...);
+        } else
+        {
+            ::new (_Voidify_iter(_Ptr)) _Objty(::std:: forward<_Types>(_Args)...);
+        }
     }
 
     template <class _Uty>
-    static void destroy(_Alloc&, _Uty* const _Ptr) {
-        _Ptr->~_Uty();
+    static constexpr void destroy(_Alloc&, _Uty* const _Ptr) {
+        ::std:: destroy_at(_Ptr);
     }
 
-     static size_type max_size(const _Alloc&) noexcept {
+     static constexpr size_type max_size(const _Alloc&) noexcept {
         return static_cast<size_t>(-1) / sizeof(value_type);
     }
 
-     static _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
+     static constexpr _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
         return _Al;
     }
 };
@@ -21841,93 +22321,48 @@ public:
 
     using value_type = _Ty;
 
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef _Ty* pointer;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const _Ty* const_pointer;
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef _Ty& reference;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const _Ty& const_reference;
 
     using size_type       = size_t;
     using difference_type = ptrdiff_t;
 
-    using propagate_on_container_move_assignment                 = true_type;
-    using is_always_equal [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] = true_type;
+    using propagate_on_container_move_assignment = true_type;
 
-    template <class _Other>
-    struct [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] rebind {
-        using other = allocator<_Other>;
-    };
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  _Ty* address(_Ty& _Val) const noexcept {
-        return ::std:: addressof(_Val);
-    }
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  const _Ty* address(const _Ty& _Val) const noexcept {
-        return ::std:: addressof(_Val);
-    }
 
     constexpr allocator() noexcept {}
 
     constexpr allocator(const allocator&) noexcept = default;
     template <class _Other>
     constexpr allocator(const allocator<_Other>&) noexcept {}
+    constexpr ~allocator()       = default;
+    constexpr allocator& operator=(const allocator&) = default;
 
-    void deallocate(_Ty* const _Ptr, const size_t _Count) {
+    constexpr void deallocate(_Ty* const _Ptr, const size_t _Count) {
                  _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
     }
 
-     __declspec(allocator) _Ty* allocate( const size_t _Count) {
+     constexpr __declspec(allocator) _Ty* allocate( const size_t _Count) {
         return static_cast<_Ty*>(_Allocate<_New_alignof<_Ty>>(_Get_size_of_n<sizeof(_Ty)>(_Count)));
     }
 
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  __declspec(allocator) _Ty* allocate(
-         const size_t _Count, const void*) {
-        return allocate(_Count);
-    }
-
-    template <class _Objty, class... _Types>
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] void construct(_Objty* const _Ptr, _Types&&... _Args) {
-        ::new (const_cast<void*>(static_cast<const volatile void*>(_Ptr))) _Objty(::std:: forward<_Types>(_Args)...);
-    }
-
-    template <class _Uty>
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] void destroy(_Uty* const _Ptr) {
-        _Ptr->~_Uty();
-    }
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  size_t max_size() const noexcept {
-        return static_cast<size_t>(-1) / sizeof(_Ty);
-    }
 };
 
  template <>
 class allocator<void> {
 public:
     using value_type = void;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef void* pointer;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const void* const_pointer;
 
     using size_type       = size_t;
     using difference_type = ptrdiff_t;
 
-    using propagate_on_container_move_assignment                 = true_type;
-    using is_always_equal [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] = true_type;
+    using propagate_on_container_move_assignment = true_type;
 
-    template <class _Other>
-    struct [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] rebind {
-        using other = allocator<_Other>;
-    };
 };
 
 template <class _Ty, class _Other>
- bool operator==(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
+ constexpr bool operator==(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
     return true;
 }
 
-template <class _Ty, class _Other>
- bool operator!=(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
-    return false;
-}
 
  template <class _Alloc>
 using _Guide_size_type_t =
@@ -21940,20 +22375,20 @@ using _Alloc_ptr_t = typename allocator_traits<_Alloc>::pointer;
 using _Alloc_size_t = typename allocator_traits<_Alloc>::size_type;
 
  template <class _Alloc>
-void _Pocca(_Alloc& _Left, const _Alloc& _Right) noexcept {
+constexpr void _Pocca(_Alloc& _Left, const _Alloc& _Right) noexcept {
     if constexpr (allocator_traits<_Alloc>::propagate_on_container_copy_assignment::value) {
         _Left = _Right;
     }
 }
 
  template <class _Alloc>
-void _Pocma(_Alloc& _Left, _Alloc& _Right) noexcept {      if constexpr (allocator_traits<_Alloc>::propagate_on_container_move_assignment::value) {
+constexpr void _Pocma(_Alloc& _Left, _Alloc& _Right) noexcept {      if constexpr (allocator_traits<_Alloc>::propagate_on_container_move_assignment::value) {
         _Left = ::std:: move(_Right);
     }
 }
 
  template <class _Alloc>
-void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
+constexpr void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
     if constexpr (allocator_traits<_Alloc>::propagate_on_container_swap::value) {
         _Swap_adl(_Left, _Right);
     } else {
@@ -21962,7 +22397,8 @@ void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
 }
 
  template <class _Alloc>
-void _Destroy_range(_Alloc_ptr_t<_Alloc> _First, const _Alloc_ptr_t<_Alloc> _Last, _Alloc& _Al) noexcept {
+constexpr void _Destroy_range(
+    _Alloc_ptr_t<_Alloc> _First, const _Alloc_ptr_t<_Alloc> _Last, _Alloc& _Al) noexcept {
          using _Ty = typename _Alloc::value_type;
     if constexpr (!conjunction_v<is_trivially_destructible<_Ty>, _Uses_default_destroy<_Alloc, _Ty*>>) {
         for (; _First != _Last; ++_First) {
@@ -21995,7 +22431,7 @@ template <>
 }
 
  template <class _Alloc>
-void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
+constexpr void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
          using _Alloc_traits = allocator_traits<_Alloc>;
     if constexpr (is_same_v<_Alloc_ptr_t<_Alloc>, typename _Alloc::value_type*>) {
         _Alloc_traits::deallocate(_Al, _Ptr, 1);
@@ -22006,7 +22442,7 @@ void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noe
 }
 
  template <class _Alloc>
-void _Delete_plain_internal(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
+constexpr void _Delete_plain_internal(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
          using _Ty = typename _Alloc::value_type;
     _Ptr->~_Ty();
     _Deallocate_plain(_Al, _Ptr);
@@ -22017,15 +22453,15 @@ struct _Alloc_construct_ptr {      using pointer = _Alloc_ptr_t<_Alloc>;
     _Alloc& _Al;
     pointer _Ptr;
 
-    explicit _Alloc_construct_ptr(_Alloc& _Al_) : _Al(_Al_), _Ptr(nullptr) {}
+    constexpr explicit _Alloc_construct_ptr(_Alloc& _Al_) : _Al(_Al_), _Ptr(nullptr) {}
 
-     pointer _Release() noexcept {          return ::std:: exchange(_Ptr, nullptr);
+     constexpr pointer _Release() noexcept {          return ::std:: exchange(_Ptr, nullptr);
     }
 
-    void _Allocate() {          _Ptr = nullptr;          _Ptr = _Al.allocate(1);
+    constexpr void _Allocate() {          _Ptr = nullptr;          _Ptr = _Al.allocate(1);
     }
 
-    ~_Alloc_construct_ptr() {          if (_Ptr) {
+    constexpr ~_Alloc_construct_ptr() {          if (_Ptr) {
             _Al.deallocate(_Ptr, 1);
         }
     }
@@ -22037,15 +22473,15 @@ struct _Alloc_construct_ptr {      using pointer = _Alloc_ptr_t<_Alloc>;
  struct _Fake_allocator {};
 
 struct _Container_base0 {
-    void _Orphan_all() noexcept {}
-    void _Swap_proxy_and_iterators(_Container_base0&) noexcept {}
-    void _Alloc_proxy(const _Fake_allocator&) noexcept {}
-    void _Reload_proxy(const _Fake_allocator&, const _Fake_allocator&) noexcept {}
+    constexpr void _Orphan_all() noexcept {}
+    constexpr void _Swap_proxy_and_iterators(_Container_base0&) noexcept {}
+    constexpr void _Alloc_proxy(const _Fake_allocator&) noexcept {}
+    constexpr void _Reload_proxy(const _Fake_allocator&, const _Fake_allocator&) noexcept {}
 };
 
 struct _Iterator_base0 {
-    void _Adopt(const void*) noexcept {}
-    const _Container_base0* _Getcont() const noexcept {
+    constexpr void _Adopt(const void*) noexcept {}
+    constexpr const _Container_base0* _Getcont() const noexcept {
         return nullptr;
     }
 
@@ -22053,25 +22489,25 @@ struct _Iterator_base0 {
 };
 
  struct _Container_base12;
-struct _Container_proxy {      _Container_proxy() noexcept : _Mycont(nullptr), _Myfirstiter(nullptr) {}
-    _Container_proxy(_Container_base12* _Mycont_) noexcept : _Mycont(_Mycont_), _Myfirstiter(nullptr) {}
+struct _Container_proxy {      constexpr _Container_proxy() noexcept = default;
+    constexpr _Container_proxy(_Container_base12* _Mycont_) noexcept : _Mycont(_Mycont_) {}
 
-    const _Container_base12* _Mycont;
-    _Iterator_base12* _Myfirstiter;
+    const _Container_base12* _Mycont       = nullptr;
+    mutable _Iterator_base12* _Myfirstiter = nullptr;
 };
 
 struct _Container_base12 {
 public:
-    _Container_base12() noexcept : _Myproxy(nullptr) {}
+    constexpr _Container_base12() noexcept = default;
 
     _Container_base12(const _Container_base12&) = delete;
     _Container_base12& operator=(const _Container_base12&) = delete;
 
-    void _Orphan_all() noexcept;
-    void _Swap_proxy_and_iterators(_Container_base12&) noexcept;
+    constexpr void _Orphan_all() noexcept;
+    constexpr void _Swap_proxy_and_iterators(_Container_base12&) noexcept;
 
     template <class _Alloc>
-    void _Alloc_proxy(_Alloc&& _Al) {
+    constexpr void _Alloc_proxy(_Alloc&& _Al) {
         _Container_proxy* const _New_proxy = _Unfancy(_Al.allocate(1));
         _Construct_in_place(*_New_proxy, this);
         _Myproxy            = _New_proxy;
@@ -22079,61 +22515,73 @@ public:
     }
 
     template <class _Alloc>
-    void _Reload_proxy(_Alloc&& _Old_alloc, _Alloc&& _New_alloc) {
+    constexpr void _Reload_proxy(_Alloc&& _Old_alloc, _Alloc&& _New_alloc) {
                  _Container_proxy* const _New_proxy = _Unfancy(_New_alloc.allocate(1));
         _Construct_in_place(*_New_proxy, this);
         _New_proxy->_Mycont = this;
         _Delete_plain_internal(_Old_alloc, ::std:: exchange(_Myproxy, _New_proxy));
     }
 
-    _Container_proxy* _Myproxy;
+    _Container_proxy* _Myproxy = nullptr;
+
+private:
+    constexpr void _Orphan_all_unlocked() noexcept;
+    constexpr void _Swap_proxy_and_iterators_unlocked(_Container_base12&) noexcept;
+
+    void _Orphan_all_locked() noexcept {
+        _Lockit _Lock(3);
+        _Orphan_all_unlocked();
+    }
+
+    void _Swap_proxy_and_iterators_locked(_Container_base12& _Right) noexcept {
+        _Lockit _Lock(3);
+        _Swap_proxy_and_iterators_unlocked(_Right);
+    }
 };
 
-struct _Iterator_base12 {      _Iterator_base12() noexcept : _Myproxy(nullptr), _Mynextiter(nullptr) {}  
-    _Iterator_base12(const _Iterator_base12& _Right) noexcept : _Myproxy(nullptr), _Mynextiter(nullptr) {
+struct _Iterator_base12 {  public:
+    constexpr _Iterator_base12() noexcept = default;  
+    constexpr _Iterator_base12(const _Iterator_base12& _Right) noexcept {
         *this = _Right;
     }
 
-    _Iterator_base12& operator=(const _Iterator_base12& _Right) noexcept {
+    constexpr _Iterator_base12& operator=(const _Iterator_base12& _Right) noexcept {
         if (_Myproxy != _Right._Myproxy) {
             if (_Right._Myproxy) {
                 _Adopt(_Right._Myproxy->_Mycont);
             } else {                  _Myproxy = nullptr;
             }
         }
-
         return *this;
     }
 
-    ~_Iterator_base12() noexcept {
-    }
-
-    void _Adopt(const _Container_base12* _Parent) noexcept {
-        if (_Parent) {
-                         _Container_proxy* _Parent_proxy = _Parent->_Myproxy;
-
-            _Myproxy = _Parent_proxy;
-        } else {
-                         _Myproxy = nullptr;
+    constexpr void _Adopt(const _Container_base12* _Parent) noexcept {
+        if (_Parent) {              _Myproxy = _Parent->_Myproxy;
+        } else {              _Myproxy = nullptr;
         }
     }
 
-    const _Container_base12* _Getcont() const noexcept {
+    constexpr const _Container_base12* _Getcont() const noexcept {
         return _Myproxy ? _Myproxy->_Mycont : nullptr;
     }
 
-
     static constexpr bool _Unwrap_when_unverified = 0 == 0;
 
-    _Container_proxy* _Myproxy;
-    _Iterator_base12* _Mynextiter;
+    mutable _Container_proxy* _Myproxy    = nullptr;
+    mutable _Iterator_base12* _Mynextiter = nullptr;
+
 };
 
- inline void _Container_base12::_Orphan_all() noexcept {
+ constexpr void _Container_base12::_Orphan_all_unlocked() noexcept {
+    for (auto& _Pnext = _Myproxy->_Myfirstiter; _Pnext; _Pnext = _Pnext->_Mynextiter) {          _Pnext->_Myproxy = nullptr;
+    }
+    _Myproxy->_Myfirstiter = nullptr;
 }
 
-inline void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Right) noexcept {
+constexpr void _Container_base12::_Orphan_all() noexcept {
+}
 
+constexpr void _Container_base12::_Swap_proxy_and_iterators_unlocked(_Container_base12& _Right) noexcept {
     _Container_proxy* _Temp = _Myproxy;
     _Myproxy                = _Right._Myproxy;
     _Right._Myproxy         = _Temp;
@@ -22147,6 +22595,10 @@ inline void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Rig
     }
 }
 
+constexpr void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Right) noexcept {
+    _Swap_proxy_and_iterators_unlocked(_Right);
+}
+
 using _Container_base = _Container_base0;
 using _Iterator_base  = _Iterator_base0;
 
@@ -22155,21 +22607,21 @@ using _Iterator_base  = _Iterator_base0;
 };  
 struct _Fake_proxy_ptr_impl {      _Fake_proxy_ptr_impl(const _Fake_proxy_ptr_impl&) = delete;
     _Fake_proxy_ptr_impl& operator=(const _Fake_proxy_ptr_impl&) = delete;
-    _Fake_proxy_ptr_impl(const _Fake_allocator&, _Leave_proxy_unbound) noexcept {}
-    _Fake_proxy_ptr_impl(const _Fake_allocator&, const _Container_base0&) noexcept {}
+    constexpr _Fake_proxy_ptr_impl(const _Fake_allocator&, _Leave_proxy_unbound) noexcept {}
+    constexpr _Fake_proxy_ptr_impl(const _Fake_allocator&, const _Container_base0&) noexcept {}
 
-    void _Bind(const _Fake_allocator&, _Container_base0*) noexcept {}
-    void _Release() noexcept {}
+    constexpr void _Bind(const _Fake_allocator&, _Container_base0*) noexcept {}
+    constexpr void _Release() noexcept {}
 };
 
 struct _Basic_container_proxy_ptr12 {
-         _Container_proxy* _Ptr;
+         _Container_proxy* _Ptr = nullptr;
 
-    void _Release() noexcept {          _Ptr = nullptr;
+    constexpr void _Release() noexcept {          _Ptr = nullptr;
     }
 
 protected:
-    _Basic_container_proxy_ptr12()                                    = default;
+    constexpr _Basic_container_proxy_ptr12()             = default;
     _Basic_container_proxy_ptr12(const _Basic_container_proxy_ptr12&) = delete;
     _Basic_container_proxy_ptr12(_Basic_container_proxy_ptr12&&)      = delete;
 };
@@ -22178,28 +22630,30 @@ template <class _Alloc>
 struct _Container_proxy_ptr12 : _Basic_container_proxy_ptr12 {
          _Alloc& _Al;
 
-    _Container_proxy_ptr12(_Alloc& _Al_, _Leave_proxy_unbound) : _Al(_Al_) {          _Ptr = _Unfancy(_Al_.allocate(1));
+    constexpr _Container_proxy_ptr12(_Alloc& _Al_, _Leave_proxy_unbound) : _Al(_Al_) {
+                 _Ptr = _Unfancy(_Al_.allocate(1));
         _Construct_in_place(*_Ptr);
     }
 
-    _Container_proxy_ptr12(_Alloc& _Al_, _Container_base12& _Mycont)
-        : _Al(_Al_) {          _Ptr = _Unfancy(_Al_.allocate(1));
+    constexpr _Container_proxy_ptr12(_Alloc& _Al_, _Container_base12& _Mycont) : _Al(_Al_) {
+                 _Ptr = _Unfancy(_Al_.allocate(1));
         _Construct_in_place(*_Ptr, ::std:: addressof(_Mycont));
         _Mycont._Myproxy = _Ptr;
     }
 
-    void _Bind(_Alloc& _Old_alloc, _Container_base12* _Mycont) noexcept {
+    constexpr void _Bind(_Alloc& _Old_alloc, _Container_base12* _Mycont) noexcept {
                           _Ptr->_Mycont = _Mycont;
         _Delete_plain_internal(_Old_alloc, ::std:: exchange(_Mycont->_Myproxy, ::std:: exchange(_Ptr, nullptr)));
     }
 
-    ~_Container_proxy_ptr12() {
+    constexpr ~_Container_proxy_ptr12() {
         if (_Ptr) {
             _Delete_plain_internal(_Al, _Ptr);
         }
     }
 };
 
+inline constexpr _Fake_allocator _Fake_alloc{};
 template <class _Alloc>
 using _Container_proxy_ptr = _Fake_proxy_ptr_impl;
 
@@ -22305,75 +22759,132 @@ struct  _Uninitialized_backout {
     _Uninitialized_backout(const _Uninitialized_backout&) = delete;
     _Uninitialized_backout& operator=(const _Uninitialized_backout&) = delete;
 
-    ~_Uninitialized_backout() {
+    constexpr ~_Uninitialized_backout() {
         _Destroy_range(_First, _Last);
     }
 
     template <class... _Types>
-    void _Emplace_back(_Types&&... _Vals) {
+    constexpr void _Emplace_back(_Types&&... _Vals) {
                  _Construct_in_place(*_Last, ::std:: forward<_Types>(_Vals)...);
         ++_Last;
     }
 
-    _NoThrowFwdIt _Release() {          _First = _Last;
+    constexpr _NoThrowFwdIt _Release() {          _First = _Last;
         return _Last;
     }
 };
 
-namespace ranges {
-         template <class _To, class _From>
-    concept _Convertible_from = convertible_to<_From, _To>;
-
-         template <class _In, class _Out>
-    struct in_out_result {
-          _In in;
-          _Out out;
-
-        template <_Convertible_from<const _In&> _IIn, _Convertible_from<const _Out&> _OOut>
-        constexpr operator in_out_result<_IIn, _OOut>() const& {
-            return {in, out};
-        }
-
-        template <_Convertible_from<_In> _IIn, _Convertible_from<_Out> _OOut>
-        constexpr operator in_out_result<_IIn, _OOut>() && {
-            return {::std:: move(in), ::std:: move(out)};
-        }
-    };
-}  
  template <class _InIt, class _NoThrowFwdIt>
-_NoThrowFwdIt _Uninitialized_move_unchecked(_InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
+constexpr _NoThrowFwdIt _Uninitialized_move_unchecked(
+    _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
          if constexpr (_Ptr_move_cat<_InIt, _NoThrowFwdIt>::_Really_trivial) {
-        return _Copy_memmove(_First, _Last, _Dest);
-    } else {
-        _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
-        for (; _First != _Last; ++_First) {
-            _Backout._Emplace_back(::std:: move(*_First));
+        if (!::std:: is_constant_evaluated())
+        {
+            return _Copy_memmove(_First, _Last, _Dest);
         }
-
-        return _Backout._Release();
     }
+    _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
+    for (; _First != _Last; ++_First) {
+        _Backout._Emplace_back(::std:: move(*_First));
+    }
+
+    return _Backout._Release();
 }
 
+namespace ranges {
+              template <class _It>
+    concept _No_throw_input_iterator = input_iterator<_It>
+        && is_lvalue_reference_v<iter_reference_t<_It>>
+        && same_as<remove_cvref_t<iter_reference_t<_It>>, iter_value_t<_It>>;
+
+         template <class _Se, class _It>
+    concept _No_throw_sentinel_for = sentinel_for<_Se, _It>;
+
+         template <class _It>
+    concept _No_throw_forward_iterator = _No_throw_input_iterator<_It>
+        && forward_iterator<_It>
+        && _No_throw_sentinel_for<_It, _It>;
+
+         template <class _Rng>
+    concept _No_throw_input_range = range<_Rng>
+        && _No_throw_input_iterator<iterator_t<_Rng>>
+        && _No_throw_sentinel_for<sentinel_t<_Rng>, iterator_t<_Rng>>;
+
+         template <class _Rng>
+    concept _No_throw_forward_range = _No_throw_input_range<_Rng>
+        && _No_throw_forward_iterator<iterator_t<_Rng>>;
+     
+    template <class _InIt, class _OutIt>
+    in_out_result<_InIt, _OutIt> _Copy_memcpy_common(
+        _InIt _IFirst, _InIt _ILast, _OutIt _OFirst, _OutIt _OLast) noexcept {
+        const auto _IFirstPtr = _To_address(_IFirst);
+        const auto _ILastPtr  = _To_address(_ILast);
+        const auto _OFirstPtr = _To_address(_OFirst);
+        const auto _OLastPtr  = _To_address(_OLast);
+        const auto _IFirst_ch = const_cast<char*>(reinterpret_cast<const volatile char*>(_IFirstPtr));
+        const auto _ILast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_ILastPtr));
+        const auto _OFirst_ch = const_cast<char*>(reinterpret_cast<const volatile char*>(_OFirstPtr));
+        const auto _OLast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_OLastPtr));
+        const auto _Count     = static_cast<size_t>((::std:: min)(_ILast_ch - _IFirst_ch, _OLast_ch - _OFirst_ch));
+        :: memcpy(_OFirst_ch, _IFirst_ch, _Count);
+        if constexpr (is_pointer_v<_InIt>) {
+            _IFirst = reinterpret_cast<_InIt>(_IFirst_ch + _Count);
+        } else {
+            _IFirst += _Count / sizeof(iter_value_t<_InIt>);
+        }
+
+        if constexpr (is_pointer_v<_OutIt>) {
+            _OFirst = reinterpret_cast<_OutIt>(_OFirst_ch + _Count);
+        } else {
+            _OFirst += _Count / sizeof(iter_value_t<_OutIt>);
+        }
+        return {::std:: move(_IFirst), ::std:: move(_OFirst)};
+    }
+
+         template <class _In, class _Out>
+    using uninitialized_move_result = in_out_result<_In, _Out>;
+
+              template <input_iterator _It, sentinel_for<_It> _Se, _No_throw_forward_iterator _Out,
+        _No_throw_sentinel_for<_Out> _OSe>
+        requires constructible_from<iter_value_t<_Out>, iter_rvalue_reference_t<_It>>
+    uninitialized_move_result<_It, _Out> _Uninitialized_move_unchecked(
+            _It _IFirst, _Se _ILast, _Out _OFirst, _OSe _OLast) {
+                 if constexpr (_Ptr_move_cat<_It, _Out>::_Really_trivial
+                      && sized_sentinel_for<_Se, _It> && sized_sentinel_for<_OSe, _Out>) {
+            return _Copy_memcpy_common(
+                _IFirst, ::std::ranges:: next(_IFirst, ::std:: move(_ILast)), _OFirst, ::std::ranges:: next(_OFirst, ::std:: move(_OLast)));
+        } else {
+            _Uninitialized_backout _Backout{::std:: move(_OFirst)};
+
+            for (; _IFirst != _ILast && _Backout._Last != _OLast; ++_IFirst) {
+                _Backout._Emplace_back(::std::ranges:: iter_move(_IFirst));
+            }
+
+            return {::std:: move(_IFirst), _Backout._Release()};
+        }
+    }
+}  
  template <class _Alloc>
 class  _Uninitialized_backout_al {
          using pointer = _Alloc_ptr_t<_Alloc>;
 
 public:
-    _Uninitialized_backout_al(pointer _Dest, _Alloc& _Al_) : _First(_Dest), _Last(_Dest), _Al(_Al_) {}
+    constexpr _Uninitialized_backout_al(pointer _Dest, _Alloc& _Al_)
+        : _First(_Dest), _Last(_Dest), _Al(_Al_) {}
 
     _Uninitialized_backout_al(const _Uninitialized_backout_al&) = delete;
     _Uninitialized_backout_al& operator=(const _Uninitialized_backout_al&) = delete;
 
-    ~_Uninitialized_backout_al() {
+    constexpr ~_Uninitialized_backout_al() {
         _Destroy_range(_First, _Last, _Al);
     }
 
     template <class... _Types>
-    void _Emplace_back(_Types&&... _Vals) {          allocator_traits<_Alloc>::construct(_Al, _Unfancy(_Last), ::std:: forward<_Types>(_Vals)...);
+    constexpr void _Emplace_back(_Types&&... _Vals) {          allocator_traits<_Alloc>::construct(_Al, _Unfancy(_Last), ::std:: forward<_Types>(_Vals)...);
         ++_Last;
     }
 
-    pointer _Release() {          _First = _Last;
+    constexpr pointer _Release() {          _First = _Last;
         return _Last;
     }
 
@@ -22384,7 +22895,7 @@ private:
 };
 
  template <class _InIt, class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_copy(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_copy(
     const _InIt _First, const _InIt _Last, _Alloc_ptr_t<_Alloc> _Dest, _Alloc& _Al) {
               using _Ptrval = typename _Alloc::value_type*;
 
@@ -22393,82 +22904,99 @@ _Alloc_ptr_t<_Alloc> _Uninitialized_copy(
 
     if constexpr (conjunction_v<bool_constant<_Ptr_copy_cat<decltype(_UFirst), _Ptrval>::_Really_trivial>,
                       _Uses_default_construct<_Alloc, _Ptrval, decltype(*_UFirst)>>) {
-        _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
-        _Dest += _ULast - _UFirst;
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(*_UFirst);
+        if (!::std:: is_constant_evaluated())
+        {
+            _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
+            _Dest += _ULast - _UFirst;
+            return _Dest;
         }
-
-        _Dest = _Backout._Release();
     }
 
-    return _Dest;
+    _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
+    for (; _UFirst != _ULast; ++_UFirst) {
+        _Backout._Emplace_back(*_UFirst);
+    }
+
+    return _Backout._Release();
 }
 
  template <class _InIt, class _NoThrowFwdIt>
+constexpr _NoThrowFwdIt _Uninitialized_copy_unchecked(
+    _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
+         if constexpr (_Ptr_copy_cat<_InIt, _NoThrowFwdIt>::_Really_trivial) {
+        if (!::std:: is_constant_evaluated())
+        {
+            return _Copy_memmove(_First, _Last, _Dest);
+        }
+    }
+
+    _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
+    for (; _First != _Last; ++_First) {
+        _Backout._Emplace_back(*_First);
+    }
+
+    return _Backout._Release();
+}
+
+template <class _InIt, class _NoThrowFwdIt>
 _NoThrowFwdIt uninitialized_copy(const _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
          _Adl_verify_range(_First, _Last);
     auto _UFirst      = _Get_unwrapped(_First);
     const auto _ULast = _Get_unwrapped(_Last);
     auto _UDest       = _Get_unwrapped_n(_Dest, _Idl_distance<_InIt>(_UFirst, _ULast));
-    if constexpr (_Ptr_copy_cat<decltype(_UFirst), decltype(_UDest)>::_Really_trivial) {
-        _UDest = _Copy_memmove(_UFirst, _ULast, _UDest);
-    } else {
-        _Uninitialized_backout<decltype(_UDest)> _Backout{_UDest};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(*_UFirst);
-        }
-
-        _UDest = _Backout._Release();
-    }
-
-    _Seek_wrapped(_Dest, _UDest);
+    _Seek_wrapped(_Dest, _Uninitialized_copy_unchecked(_UFirst, _ULast, _UDest));
     return _Dest;
 }
 
  template <class _InIt, class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_move(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_move(
     const _InIt _First, const _InIt _Last, _Alloc_ptr_t<_Alloc> _Dest, _Alloc& _Al) {
               using _Ptrval     = typename _Alloc::value_type*;
     auto _UFirst      = _Get_unwrapped(_First);
     const auto _ULast = _Get_unwrapped(_Last);
     if constexpr (conjunction_v<bool_constant<_Ptr_move_cat<decltype(_UFirst), _Ptrval>::_Really_trivial>,
                       _Uses_default_construct<_Alloc, _Ptrval, decltype(::std:: move(*_UFirst))>>) {
-        _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
-        return _Dest + (_ULast - _UFirst);
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(::std:: move(*_UFirst));
+        if (!::std:: is_constant_evaluated())
+        {
+            _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
+            return _Dest + (_ULast - _UFirst);
         }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
+    for (; _UFirst != _ULast; ++_UFirst) {
+        _Backout._Emplace_back(::std:: move(*_UFirst));
+    }
+
+    return _Backout._Release();
 }
 
  template <class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_fill_n(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_fill_n(
     _Alloc_ptr_t<_Alloc> _First, _Alloc_size_t<_Alloc> _Count, const typename _Alloc::value_type& _Val, _Alloc& _Al) {
          using _Ty = typename _Alloc::value_type;
     if constexpr (_Fill_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
-        _Fill_memset(_Unfancy(_First), _Val, static_cast<size_t>(_Count));
-        return _First + _Count;
-    } else {
-        if constexpr (_Fill_zero_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
+        if (!::std:: is_constant_evaluated())
+        {
+            _Fill_memset(_Unfancy(_First), _Val, static_cast<size_t>(_Count));
+            return _First + _Count;
+        }
+    } else if constexpr (_Fill_zero_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
+        if (!::std:: is_constant_evaluated())
+        {
             if (_Is_all_bits_zero(_Val)) {
                 _Fill_zero_memset(_Unfancy(_First), static_cast<size_t>(_Count));
                 return _First + _Count;
             }
         }
-        _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
-        for (; 0 < _Count; --_Count) {
-            _Backout._Emplace_back(_Val);
-        }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
+    for (; 0 < _Count; --_Count) {
+        _Backout._Emplace_back(_Val);
+    }
+
+    return _Backout._Release();
 }
 
  template <class _NoThrowFwdIt, class _Tval>
@@ -22485,6 +23013,7 @@ void uninitialized_fill(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last, c
                 return;
             }
         }
+
         _Uninitialized_backout<_Unwrapped_t<const _NoThrowFwdIt&>> _Backout{_UFirst};
         while (_Backout._Last != _ULast) {
             _Backout._Emplace_back(_Val);
@@ -22495,33 +23024,37 @@ void uninitialized_fill(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last, c
 }
 
  template <class _NoThrowFwdIt>
-inline constexpr bool _Use_memset_value_construct_v = conjunction_v<is_pointer<_NoThrowFwdIt>,
-    is_scalar<_Iter_value_t<_NoThrowFwdIt>>, negation<is_volatile<remove_reference_t<_Iter_ref_t<_NoThrowFwdIt>>>>,
-    negation<is_member_pointer<_Iter_value_t<_NoThrowFwdIt>>>>;
+inline constexpr bool _Use_memset_value_construct_v =
+    conjunction_v<bool_constant<_Iterator_is_contiguous<_NoThrowFwdIt>>, is_scalar<_Iter_value_t<_NoThrowFwdIt>>,
+        negation<is_volatile<remove_reference_t<_Iter_ref_t<_NoThrowFwdIt>>>>,
+        negation<is_member_pointer<_Iter_value_t<_NoThrowFwdIt>>>>;
 
 template <class _Ptr>
-_Ptr _Zero_range(const _Ptr _First, const _Ptr _Last) {      char* const _First_ch = reinterpret_cast<char*>(_First);
-    char* const _Last_ch  = reinterpret_cast<char*>(_Last);
+_Ptr _Zero_range(const _Ptr _First, const _Ptr _Last) {      char* const _First_ch = reinterpret_cast<char*>(_To_address(_First));
+    char* const _Last_ch  = reinterpret_cast<char*>(_To_address(_Last));
     :: memset(_First_ch, 0, static_cast<size_t>(_Last_ch - _First_ch));
     return _Last;
 }
 
 template <class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_value_construct_n(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_value_construct_n(
     _Alloc_ptr_t<_Alloc> _First, _Alloc_size_t<_Alloc> _Count, _Alloc& _Al) {
          using _Ptrty = typename _Alloc::value_type*;
     if constexpr (_Use_memset_value_construct_v<_Ptrty> && _Uses_default_construct<_Alloc, _Ptrty>::value) {
-        auto _PFirst = _Unfancy(_First);
-        _Zero_range(_PFirst, _PFirst + _Count);
-        return _First + _Count;
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
-        for (; 0 < _Count; --_Count) {
-            _Backout._Emplace_back();
+        if (!::std:: is_constant_evaluated())
+        {
+            auto _PFirst = _Unfancy(_First);
+            _Zero_range(_PFirst, _PFirst + _Count);
+            return _First + _Count;
         }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
+    for (; 0 < _Count; --_Count) {
+        _Backout._Emplace_back();
+    }
+
+    return _Backout._Release();
 }
 
 template <class _NoThrowFwdIt, class _Diff>
@@ -22553,7 +23086,7 @@ struct _In_place_key_extract_set<_Key, _Key> {
     }
 };
 
-  template <class _Key, class... Args>
+  template <class _Key, class... _Args>
 struct _In_place_key_extract_map {
          static constexpr bool _Extractable = false;
 };
@@ -22653,7 +23186,8 @@ template <class _Alloc>
 }
 
  template <class _Container, class _Uty>
-typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val) {      auto _First          = _Cont.begin();
+constexpr typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     _Seek_wrapped(_First, ::std:: remove(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Val));
@@ -22662,7 +23196,8 @@ typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val
 }
 
  template <class _Container, class _Pr>
-typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) {      auto _First          = _Cont.begin();
+constexpr typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     _Seek_wrapped(_First, ::std:: remove_if(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Pred));
@@ -22671,7 +23206,8 @@ typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) { 
 }
 
  template <class _Container, class _Pr>
-typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {      auto _First          = _Cont.begin();
+typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     while (_First != _Last) {
@@ -22682,6 +23218,84 @@ typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {  
         }
     }
     return _Old_size - _Cont.size();
+}
+
+template <class _Ty, class _Alloc, class... _Types, enable_if_t<!_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, _Types&&... _Args) noexcept {
+    if constexpr (!uses_allocator_v<_Ty, _Alloc>) {
+        static_assert(is_constructible_v<_Ty, _Types...>,
+            "If uses_allocator_v<T, Alloc> does not hold, T must be constructible from Types...");
+        (void) _Al;
+        return ::std:: forward_as_tuple(::std:: forward<_Types>(_Args)...);
+    } else if constexpr (is_constructible_v<_Ty, allocator_arg_t, const _Alloc&, _Types...>) {
+        using _ReturnType = tuple<allocator_arg_t, const _Alloc&, _Types&&...>;
+        return _ReturnType{allocator_arg, _Al, ::std:: forward<_Types>(_Args)...};
+    } else if constexpr (is_constructible_v<_Ty, _Types..., const _Alloc&>) {
+        return ::std:: forward_as_tuple(::std:: forward<_Types>(_Args)..., _Al);
+    } else {
+        static_assert(_Always_false<_Ty>,
+            "T must be constructible from either (allocator_arg_t, const Alloc&, Types...) or (Types..., const Alloc&) if uses_allocator_v<T, Alloc> is true");
+    }
+}
+
+template <class _Ty, class _Alloc, class _Tuple1, class _Tuple2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(
+    const _Alloc& _Al, piecewise_construct_t, _Tuple1&& _Tup1, _Tuple2&& _Tup2) noexcept {
+    return ::std:: make_tuple(piecewise_construct,
+        ::std:: apply(
+            [&_Al](auto&&... _Tuple_args) {
+                return ::std:: uses_allocator_construction_args<typename _Ty::first_type>(
+                    _Al, ::std:: forward<decltype(_Tuple_args)>(_Tuple_args)...);
+            },
+            ::std:: forward<_Tuple1>(_Tup1)),
+        ::std:: apply(
+            [&_Al](auto&&... _Tuple_args) {
+                return ::std:: uses_allocator_construction_args<typename _Ty::second_type>(
+                    _Al, ::std:: forward<decltype(_Tuple_args)>(_Tuple_args)...);
+            },
+            ::std:: forward<_Tuple2>(_Tup2)));
+}
+
+template <class _Ty, class _Alloc, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al) noexcept {
+              return ::std:: make_tuple(piecewise_construct, ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, _Uty1&& _Val1, _Uty2&& _Val2) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, ::std:: forward<_Uty1>(_Val1)),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, ::std:: forward<_Uty2>(_Val2)));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(
+    const _Alloc& _Al, const pair<_Uty1, _Uty2>& _Pair) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, _Pair.first),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, _Pair.second));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, pair<_Uty1, _Uty2>&& _Pair) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, ::std:: move(_Pair).first),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, ::std:: move(_Pair).second));
+}
+
+template <class _Ty, class _Alloc, class... _Types>
+ constexpr _Ty make_obj_using_allocator(const _Alloc& _Al, _Types&&... _Args) {
+    return ::std:: make_from_tuple<_Ty>(::std:: uses_allocator_construction_args<_Ty>(_Al, ::std:: forward<_Types>(_Args)...));
+}
+
+template <class _Ty, class _Alloc, class... _Types>
+constexpr _Ty* uninitialized_construct_using_allocator(_Ty* _Ptr, const _Alloc& _Al, _Types&&... _Args) {
+    return ::std:: apply(
+        [&](auto&&... _Construct_args) {
+            return ::std:: construct_at(_Ptr, ::std:: forward<decltype(_Construct_args)>(_Construct_args)...);
+        },
+        ::std:: uses_allocator_construction_args<_Ty>(_Al, ::std:: forward<_Types>(_Args)...));
 }
 }
 
@@ -22853,6 +23467,12 @@ template <class _Elem, class _Traits = char_traits<_Elem>>
 class basic_ofstream;
 template <class _Elem, class _Traits = char_traits<_Elem>>
 class basic_fstream;
+template <class _Elem, class _Traits = char_traits<_Elem>>
+class _Basic_syncbuf_impl;
+template <class _Elem, class _Traits = char_traits<_Elem>, class _Alloc = allocator<_Elem>>
+class basic_syncbuf;
+template <class _Elem, class _Traits = char_traits<_Elem>, class _Alloc = allocator<_Elem>>
+class basic_osyncstream;
 
 
  using ios           = basic_ios<char, char_traits<char>>;
@@ -22868,6 +23488,8 @@ using filebuf       = basic_filebuf<char, char_traits<char>>;
 using ifstream      = basic_ifstream<char, char_traits<char>>;
 using ofstream      = basic_ofstream<char, char_traits<char>>;
 using fstream       = basic_fstream<char, char_traits<char>>;
+using syncbuf     = basic_syncbuf<char>;
+using osyncstream = basic_osyncstream<char>;
 
  using wios           = basic_ios<wchar_t, char_traits<wchar_t>>;
 using wstreambuf     = basic_streambuf<wchar_t, char_traits<wchar_t>>;
@@ -22882,6 +23504,8 @@ using wfilebuf       = basic_filebuf<wchar_t, char_traits<wchar_t>>;
 using wifstream      = basic_ifstream<wchar_t, char_traits<wchar_t>>;
 using wofstream      = basic_ofstream<wchar_t, char_traits<wchar_t>>;
 using wfstream       = basic_fstream<wchar_t, char_traits<wchar_t>>;
+using wsyncbuf     = basic_syncbuf<wchar_t>;
+using wosyncstream = basic_osyncstream<wchar_t>;
 
 }
 
@@ -22998,19 +23622,19 @@ struct _timespec64
 
 
 
-        __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+        __declspec(deprecated("This function or variable may be unsafe. Consider using _get_daylight instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  int* __cdecl __daylight(void);
 
 
-   __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+   __declspec(deprecated("This function or variable may be unsafe. Consider using _get_dstbias instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  long* __cdecl __dstbias(void);
 
 
-   __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+   __declspec(deprecated("This function or variable may be unsafe. Consider using _get_timezone instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  long* __cdecl __timezone(void);
 
 
-     __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _get_tzname instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char** __cdecl __tzname(void);
 
 
@@ -23198,7 +23822,7 @@ extern "C++"                                                                    
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strdate_s(  char (&_Buffer)[_Size]) throw()                  {                                                                                                     return _strdate_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    char* __cdecl _strdate(  char *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    char* __cdecl _strdate(  char *_Buffer);
 
 
  errno_t __cdecl _strtime_s(
@@ -23208,7 +23832,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strtime_s(  char (&_Buffer)[_Size]) throw()                  {                                                                                                     return _strtime_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strtime(  char *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strtime(  char *_Buffer);
 
  __time32_t __cdecl _time32(
       __time32_t* _Time
@@ -23498,6 +24122,7 @@ inline int _Check_C_return(int _Res) {      if (_Res != _Thrd_success) {
 extern "C"  char __stdcall __std_atomic_has_cmpxchg16b() noexcept;
 
   
+
  
  
 extern "C" {
@@ -23620,8 +24245,7 @@ _Ty kill_dependency(_Ty _Arg) noexcept {      return _Arg;
         return static_cast<_Integral>(_Source);
     } else if constexpr (is_pointer_v<_Ty> && sizeof(_Integral) == sizeof(_Ty)) {
         return reinterpret_cast<_Integral>(_Source);
-    } else
-    {
+    } else {
         _Integral _Result{};          :: memcpy(&_Result, ::std:: addressof(_Source), sizeof(_Source));
         return _Result;
     }
@@ -23687,15 +24311,20 @@ void _Atomic_wait_direct(
 }
 
 inline void _Atomic_lock_acquire(long& _Spinlock) noexcept {
-    while (_InterlockedExchange(&_Spinlock, 1)) {
-        ;
+                   int _Current_backoff   = 1;
+    const int _Max_backoff = 64;
+    while (_InterlockedExchange(&_Spinlock, 1) != 0) {
+        while (__iso_volatile_load32(&reinterpret_cast<int&>(_Spinlock)) != 0) {
+            for (int _Count_down = _Current_backoff; _Count_down != 0; --_Count_down) {
+                _mm_pause();
+            }
+            _Current_backoff = _Current_backoff < _Max_backoff ? _Current_backoff << 1 : _Max_backoff;
+        }
     }
 }
 
 inline void _Atomic_lock_release(long& _Spinlock) noexcept {
-    _InterlockedExchange(&_Spinlock, 0);
-}
-
+    _InterlockedExchange(&_Spinlock, 0);  }
 
 inline void _Atomic_lock_acquire(_Smtx_t* _Spinlock) noexcept {
     _Smtx_lock_exclusive(_Spinlock);
@@ -25798,11 +26427,11 @@ public:
             case _Not_locked:                  if (_Storage.compare_exchange_weak(_Rep, _Rep | _Locked_notify_not_needed)) {
                     return reinterpret_cast<_Ty*>(_Rep);
                 }
-                ;
+                _mm_pause();
                 break;
 
             case _Locked_notify_not_needed:                  if (!_Storage.compare_exchange_weak(_Rep, (_Rep & _Ptr_value_mask) | _Locked_notify_needed)) {
-                                         ;
+                                         _mm_pause();
                     break;
                 }
                 _Rep = (_Rep & _Ptr_value_mask) | _Locked_notify_needed;
@@ -25843,28 +26472,6 @@ private:
 
 namespace std {
 namespace ranges {
-              template <class _It>
-    concept _No_throw_input_iterator = input_iterator<_It>
-        && is_lvalue_reference_v<iter_reference_t<_It>>
-        && same_as<remove_cvref_t<iter_reference_t<_It>>, iter_value_t<_It>>;
-
-         template <class _Se, class _It>
-    concept _No_throw_sentinel_for = sentinel_for<_Se, _It>;
-
-         template <class _It>
-    concept _No_throw_forward_iterator = _No_throw_input_iterator<_It>
-        && forward_iterator<_It>
-        && _No_throw_sentinel_for<_It, _It>;
-
-         template <class _Rng>
-    concept _No_throw_input_range = range<_Rng>
-        && _No_throw_input_iterator<iterator_t<_Rng>>
-        && _No_throw_sentinel_for<sentinel_t<_Rng>, iterator_t<_Rng>>;
-
-         template <class _Rng>
-    concept _No_throw_forward_range = _No_throw_input_range<_Rng>
-        && _No_throw_forward_iterator<iterator_t<_Rng>>;
-     
          template <class _In, class _Out>
     using uninitialized_copy_result = in_out_result<_In, _Out>;
 
@@ -25902,15 +26509,17 @@ namespace ranges {
     private:
         template <class _It, class _Se, class _Out, class _OSe>
          static uninitialized_copy_result<_It, _Out> _Uninitialized_copy_unchecked(
-            _It _IFirst, const _Se _ILast, _Out _OFirst, const _OSe _OLast) {
+            _It _IFirst, _Se _ILast, _Out _OFirst, _OSe _OLast) {
             ;
             ;
             ;
             ;
             ;
 
-            if constexpr (is_same_v<_Se, _It> && _Ptr_copy_cat<_It, _Out>::_Really_trivial) {
-                return _Copy_memcpy_common(_IFirst, _ILast, _OFirst, _OLast);
+            if constexpr (_Ptr_copy_cat<_It, _Out>::_Really_trivial
+                          && sized_sentinel_for<_Se, _It> && sized_sentinel_for<_OSe, _Out>) {
+                return _Copy_memcpy_common(_IFirst, ::std::ranges:: next(_IFirst, ::std:: move(_ILast)), _OFirst,
+                    ::std::ranges:: next(_OFirst, ::std:: move(_OLast)));
             } else {
                 _Uninitialized_backout _Backout{::std:: move(_OFirst)};
 
@@ -25971,7 +26580,9 @@ namespace ranges {
             auto _OFirst      = _Get_unwrapped(::std:: move(_First2));
             const auto _OLast = _Get_unwrapped(::std:: move(_Last2));
             if constexpr (_Ptr_copy_cat<_It, _Out>::_Really_trivial) {
-                _OFirst = _Copy_memcpy_common(_IFirst, _IFirst + _Count, _OFirst, _OLast);
+                auto _UResult = _Copy_memcpy_common(_IFirst, _IFirst + _Count, _OFirst, _OLast);
+                _IFirst       = _UResult.in;
+                _OFirst       = _UResult.out;
             } else {
                 _Uninitialized_backout _Backout{::std:: move(_OFirst)};
 
@@ -26001,9 +26612,6 @@ _NoThrowFwdIt uninitialized_move(const _InIt _First, const _InIt _Last, _NoThrow
 }
 
 namespace ranges {
-         template <class _In, class _Out>
-    using uninitialized_move_result = in_out_result<_In, _Out>;
-
          class _Uninitialized_move_fn : private _Not_quite_object {
     public:
         using _Not_quite_object::_Not_quite_object;
@@ -26014,9 +26622,9 @@ namespace ranges {
         uninitialized_move_result<_It, _Out> operator()(_It _First1, _Se _Last1, _Out _First2, _OSe _Last2) const {
                          _Adl_verify_range(_First1, _Last1);
             _Adl_verify_range(_First2, _Last2);
-            auto _UResult =
-                _Uninitialized_move_unchecked(_Get_unwrapped(::std:: move(_First1)), _Get_unwrapped(::std:: move(_Last1)),
-                    _Get_unwrapped(::std:: move(_First2)), _Get_unwrapped(::std:: move(_Last2)));
+            auto _UResult = ::std::ranges:: _Uninitialized_move_unchecked(_Get_unwrapped(::std:: move(_First1)),
+                _Get_unwrapped(::std:: move(_Last1)), _Get_unwrapped(::std:: move(_First2)),
+                _Get_unwrapped(::std:: move(_Last2)));
 
             _Seek_wrapped(_First1, ::std:: move(_UResult.in));
             _Seek_wrapped(_First2, ::std:: move(_UResult.out));
@@ -26028,34 +26636,11 @@ namespace ranges {
         uninitialized_move_result<borrowed_iterator_t<_Rng1>, borrowed_iterator_t<_Rng2>> operator()(
             _Rng1&& _Range1, _Rng2&& _Range2) const {
                          auto _First1  = ::std::ranges:: begin(_Range1);
-            auto _UResult = _Uninitialized_move_unchecked(
+            auto _UResult = ::std::ranges:: _Uninitialized_move_unchecked(
                 _Get_unwrapped(::std:: move(_First1)), _Uend(_Range1), _Ubegin(_Range2), _Uend(_Range2));
 
             _Seek_wrapped(_First1, ::std:: move(_UResult.in));
             return {::std:: move(_First1), _Rewrap_iterator(_Range2, ::std:: move(_UResult.out))};
-        }
-
-    private:
-        template <class _It, class _Se, class _Out, class _OSe>
-         static uninitialized_move_result<_It, _Out> _Uninitialized_move_unchecked(
-            _It _IFirst, const _Se _ILast, _Out _OFirst, const _OSe _OLast) {
-            ;
-            ;
-            ;
-            ;
-            ;
-
-            if constexpr (is_same_v<_Se, _It> && _Ptr_move_cat<_It, _Out>::_Really_trivial) {
-                return _Copy_memcpy_common(_IFirst, _ILast, _OFirst, _OLast);
-            } else {
-                _Uninitialized_backout _Backout{::std:: move(_OFirst)};
-
-                for (; _IFirst != _ILast && _Backout._Last != _OLast; ++_IFirst) {
-                    _Backout._Emplace_back(::std::ranges:: iter_move(_IFirst));
-                }
-
-                return {::std:: move(_IFirst), _Backout._Release()};
-            }
         }
     };
 
@@ -26110,7 +26695,9 @@ namespace ranges {
             auto _OFirst      = _Get_unwrapped(::std:: move(_First2));
             const auto _OLast = _Get_unwrapped(::std:: move(_Last2));
             if constexpr (_Ptr_move_cat<_It, _Out>::_Really_trivial) {
-                _OFirst = _Copy_memcpy_common(_IFirst, _IFirst + _Count, _OFirst, _OLast);
+                auto _UResult = _Copy_memcpy_common(_IFirst, _IFirst + _Count, _OFirst, _OLast);
+                _IFirst       = _UResult.in;
+                _OFirst       = _UResult.out;
             } else {
                 _Uninitialized_backout _Backout{::std:: move(_OFirst)};
 
@@ -26152,7 +26739,7 @@ namespace ranges {
 
     private:
         template <class _It, class _Se, class _Ty>
-         static _It _Uninitialized_fill_unchecked(_It _OFirst, const _Se _OLast, const _Ty& _Val) {
+         static _It _Uninitialized_fill_unchecked(_It _OFirst, _Se _OLast, const _Ty& _Val) {
             ;
             ;
             ;
@@ -26254,16 +26841,7 @@ namespace ranges {
     };
 
     inline constexpr _Uninitialized_fill_n_fn uninitialized_fill_n{_Not_quite_object::_Construct_tag{}};
-}  
- template <class _Ty, class... _Types>
-constexpr auto construct_at(_Ty* const _Location, _Types&&... _Args) noexcept(
-    noexcept(::new (const_cast<void*>(static_cast<const volatile void*>(_Location)))
-            _Ty(::std:: forward<_Types>(_Args)...)))      -> decltype(
-        ::new (const_cast<void*>(static_cast<const volatile void*>(_Location))) _Ty(::std:: forward<_Types>(_Args)...)) {
-    return ::new (const_cast<void*>(static_cast<const volatile void*>(_Location))) _Ty(::std:: forward<_Types>(_Args)...);
-}
 
-namespace ranges {
          class _Construct_at_fn : private _Not_quite_object {
     public:
         using _Not_quite_object::_Not_quite_object;
@@ -26281,18 +26859,7 @@ namespace ranges {
     };
 
     inline constexpr _Construct_at_fn construct_at{_Not_quite_object::_Construct_tag{}};
-}  
- template <class _Ty>
-constexpr void destroy_at(_Ty* const _Location) noexcept   {
-    if constexpr (is_array_v<_Ty>) {
-        _Destroy_range(::std:: begin(*_Location), ::std:: end(*_Location));
-    } else
-    {
-        _Location->~_Ty();
-    }
-}
 
-namespace ranges {
               template <_No_throw_input_iterator _It, _No_throw_sentinel_for<_It> _Se>
         requires destructible<iter_value_t<_It>>
      constexpr _It _Destroy_unchecked(_It _First, _Se _Last) noexcept;
@@ -26314,16 +26881,21 @@ namespace ranges {
     inline constexpr _Destroy_at_fn destroy_at{_Not_quite_object::_Construct_tag{}};
 }  
  template <class _NoThrowFwdIt>
-void destroy(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last) {      _Adl_verify_range(_First, _Last);
+constexpr void destroy(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last) {
+         _Adl_verify_range(_First, _Last);
     _Destroy_range(_Get_unwrapped(_First), _Get_unwrapped(_Last));
 }
 
 namespace ranges {
               template <_No_throw_input_iterator _It, _No_throw_sentinel_for<_It> _Se>
         requires destructible<iter_value_t<_It>>
-     constexpr _It _Destroy_unchecked(_It _First, const _Se _Last) noexcept {
-                 for (; _First != _Last; ++_First) {
-            ::std::ranges:: destroy_at(::std:: addressof(*_First));
+     constexpr _It _Destroy_unchecked(_It _First, _Se _Last) noexcept {
+                 if constexpr (is_trivially_destructible_v<iter_value_t<_It>>) {
+            ::std::ranges:: advance(_First, ::std:: move(_Last));
+        } else {
+            for (; _First != _Last; ++_First) {
+                ::std::ranges:: destroy_at(::std:: addressof(*_First));
+            }
         }
 
         return _First;
@@ -26335,7 +26907,7 @@ namespace ranges {
 
                  template <_No_throw_input_iterator _It, _No_throw_sentinel_for<_It> _Se>
             requires destructible<iter_value_t<_It>>
-          _It operator()(_It _First, _Se _Last) const noexcept {
+        constexpr _It operator()(_It _First, _Se _Last) const noexcept {
                          _Adl_verify_range(_First, _Last);
             _Seek_wrapped(_First,
                 ::std::ranges:: _Destroy_unchecked(_Get_unwrapped(::std:: move(_First)), _Get_unwrapped(::std:: move(_Last))));
@@ -26344,7 +26916,7 @@ namespace ranges {
 
                  template <_No_throw_input_range _Rng>
             requires destructible<range_value_t<_Rng>>
-          borrowed_iterator_t<_Rng> operator()(_Rng&& _Range) const noexcept {
+        constexpr borrowed_iterator_t<_Rng> operator()(_Rng&& _Range) const noexcept {
                          auto _First = ::std::ranges:: begin(_Range);
             _Seek_wrapped(_First, ::std::ranges:: _Destroy_unchecked(_Get_unwrapped(::std:: move(_First)), _Uend(_Range)));
             return _First;
@@ -26354,7 +26926,7 @@ namespace ranges {
     inline constexpr _Destroy_fn destroy{_Not_quite_object::_Construct_tag{}};
 }  
  template <class _NoThrowFwdIt, class _Diff>
-_NoThrowFwdIt destroy_n(_NoThrowFwdIt _First, const _Diff _Count_raw) {
+constexpr _NoThrowFwdIt destroy_n(_NoThrowFwdIt _First, const _Diff _Count_raw) {
          _Algorithm_int_t<_Diff> _Count = _Count_raw;
     if (_Count <= 0) {
         return _First;
@@ -26380,8 +26952,9 @@ namespace ranges {
 
                  template <_No_throw_input_iterator _It>
             requires destructible<iter_value_t<_It>>
-          _It operator()(_It _First, const iter_difference_t<_It> _Count) const noexcept {
-                         if (_Count <= 0) {
+        constexpr _It operator()(_It _First, const iter_difference_t<_It> _Count_raw) const noexcept {
+                         _Algorithm_int_t<iter_difference_t<_It>> _Count = _Count_raw;
+            if (_Count <= 0) {
                 return _First;
             }
 
@@ -26565,16 +27138,13 @@ namespace ranges {
 
     private:
         template <class _It, class _Se>
-         static _It _Uninitialized_value_construct_unchecked(_It _OFirst, const _Se _OLast) {
+         static _It _Uninitialized_value_construct_unchecked(_It _OFirst, _Se _OLast) {
             ;
             ;
             ;
 
             if constexpr (_Use_memset_value_construct_v<_It>) {
-                const auto _OFinal = ::std::ranges:: next(_OFirst, ::std:: move(_OLast));
-                const auto _Count  = static_cast<size_t>(_OFinal - _OFirst);
-                :: memset(_OFirst, 0, _Count);
-                return _OFinal;
+                return _Zero_range(_OFirst, ::std::ranges:: next(_OFirst, ::std:: move(_OLast)));
             } else {
                 _Uninitialized_backout _Backout{::std:: move(_OFirst)};
 
@@ -26615,8 +27185,7 @@ namespace ranges {
 
             auto _UFirst = _Get_unwrapped_n(::std:: move(_First), _Count);
             if constexpr (_Use_memset_value_construct_v<_It>) {
-                :: memset(_UFirst, 0, static_cast<size_t>(_Count));
-                _Seek_wrapped(_First, _UFirst + _Count);
+                _Seek_wrapped(_First, _Zero_range(_UFirst, _UFirst + _Count));
             } else {
                 _Uninitialized_backout _Backout{::std:: move(_UFirst)};
 
@@ -26721,6 +27290,7 @@ class _Ref_count_resource : public _Ref_count_base {  public:
     _Ref_count_resource(_Resource _Px, _Dx _Dt)
         : _Ref_count_base(), _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Dt), _Px) {}
 
+    virtual ~_Ref_count_resource() noexcept override = default;  
     virtual void* _Get_deleter(const type_info& _Typeid) const noexcept override {
         if (_Typeid == typeid(_Dx)) {
             return const_cast<_Dx*>(::std:: addressof(_Mypair._Get_first()));
@@ -26746,6 +27316,7 @@ class _Ref_count_resource_alloc : public _Ref_count_base {
         : _Ref_count_base(),
           _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Dt), _One_then_variadic_args_t{}, _Ax, _Px) {}
 
+    virtual ~_Ref_count_resource_alloc() noexcept override = default;  
     virtual void* _Get_deleter(const type_info& _Typeid) const noexcept override {
         if (_Typeid == typeid(_Dx)) {
             return const_cast<_Dx*>(::std:: addressof(_Mypair._Get_first()));
@@ -26786,7 +27357,6 @@ template <class _Yty>
 struct _Can_enable_shared<_Yty, void_t<typename _Yty::_Esft_type>>
     : is_convertible<remove_cv_t<_Yty>*, typename _Yty::_Esft_type*>::type {
      };
-
 
  struct _Exception_ptr_access;
 
@@ -27180,7 +27750,6 @@ public:
     }
 
 private:
-
     template <class _UxptrOrNullptr, class _Dx>
     void _Setpd(const _UxptrOrNullptr _Px, _Dx _Dt) {          _Temporary_owner_del<_UxptrOrNullptr, _Dx> _Owner(_Px, _Dt);
         _Set_ptr_rep_and_enable_shared(
@@ -27261,28 +27830,8 @@ template <class _Ty1, class _Ty2>
 }
 
 template <class _Ty1, class _Ty2>
- bool operator!=(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
-    return _Left.get() != _Right.get();
-}
-
-template <class _Ty1, class _Ty2>
- bool operator<(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
-    return _Left.get() < _Right.get();
-}
-
-template <class _Ty1, class _Ty2>
- bool operator>=(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
-    return _Left.get() >= _Right.get();
-}
-
-template <class _Ty1, class _Ty2>
- bool operator>(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
-    return _Left.get() > _Right.get();
-}
-
-template <class _Ty1, class _Ty2>
- bool operator<=(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
-    return _Left.get() <= _Right.get();
+ strong_ordering operator<=>(const shared_ptr<_Ty1>& _Left, const shared_ptr<_Ty2>& _Right) noexcept {
+    return _Left.get() <=> _Right.get();
 }
 
 template <class _Ty>
@@ -27291,58 +27840,8 @@ template <class _Ty>
 }
 
 template <class _Ty>
- bool operator==(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return nullptr == _Right.get();
-}
-
-template <class _Ty>
- bool operator!=(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
-    return _Left.get() != nullptr;
-}
-
-template <class _Ty>
- bool operator!=(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return nullptr != _Right.get();
-}
-
-template <class _Ty>
- bool operator<(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
-    return _Left.get() < static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr);
-}
-
-template <class _Ty>
- bool operator<(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr) < _Right.get();
-}
-
-template <class _Ty>
- bool operator>=(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
-    return _Left.get() >= static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr);
-}
-
-template <class _Ty>
- bool operator>=(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr) >= _Right.get();
-}
-
-template <class _Ty>
- bool operator>(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
-    return _Left.get() > static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr);
-}
-
-template <class _Ty>
- bool operator>(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr) > _Right.get();
-}
-
-template <class _Ty>
- bool operator<=(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
-    return _Left.get() <= static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr);
-}
-
-template <class _Ty>
- bool operator<=(nullptr_t, const shared_ptr<_Ty>& _Right) noexcept {
-    return static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr) <= _Right.get();
+ strong_ordering operator<=>(const shared_ptr<_Ty>& _Left, nullptr_t) noexcept {
+    return _Left.get() <=> static_cast<typename shared_ptr<_Ty>::element_type*>(nullptr);
 }
 
 template <class _Elem, class _Traits, class _Ty>
@@ -27439,8 +27938,7 @@ class _Ref_count_obj2 : public _Ref_count_base {  public:
         }
     }
 
-    ~_Ref_count_obj2() {
-         
+    virtual ~_Ref_count_obj2() noexcept override {           
                                }
 
     union {
@@ -27460,10 +27958,10 @@ struct _Alignas_storage_unit {
     alignas(_Align) char _Space[_Align];
 };
 
-enum class _Check_overflow : bool { _No, _Yes };
+enum class _Check_overflow : bool { _Nope, _Yes };
 
 template <class _Refc, _Check_overflow _Check>
- size_t _Calculate_bytes_for_flexible_array(const size_t _Count) noexcept(_Check == _Check_overflow::_No) {
+ size_t _Calculate_bytes_for_flexible_array(const size_t _Count) noexcept(_Check == _Check_overflow::_Nope) {
     constexpr size_t _Align = alignof(_Refc);
 
     size_t _Bytes = sizeof(_Refc);  
@@ -27492,20 +27990,22 @@ template <class _Refc>
  _Refc* _Allocate_flexible_array(const size_t _Count) {
     const size_t _Bytes     = _Calculate_bytes_for_flexible_array<_Refc, _Check_overflow::_Yes>(_Count);
     constexpr size_t _Align = alignof(_Refc);
-    if constexpr (_Align <= 16ull) {
-        return static_cast<_Refc*>(::operator new(_Bytes));
-    } else {
+    if constexpr (_Align > 16ull) {
         return static_cast<_Refc*>(::operator new (_Bytes, align_val_t{_Align}));
+    } else
+    {
+        return static_cast<_Refc*>(::operator new(_Bytes));
     }
 }
 
 template <class _Refc>
 void _Deallocate_flexible_array(_Refc* const _Ptr) noexcept {
     constexpr size_t _Align = alignof(_Refc);
-    if constexpr (_Align <= 16ull) {
-        ::operator delete(static_cast<void*>(_Ptr));
-    } else {
+    if constexpr (_Align > 16ull) {
         ::operator delete (static_cast<void*>(_Ptr), align_val_t{_Align});
+    } else
+    {
+        ::operator delete(static_cast<void*>(_Ptr));
     }
 }
 
@@ -27675,8 +28175,7 @@ private:
     union {
         _Wrap<_Element_type> _Storage;      };
 
-    ~_Ref_count_unbounded_array() {
-         
+    virtual ~_Ref_count_unbounded_array() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {               }
@@ -27716,8 +28215,7 @@ private:
     union {
         _Wrap<_Element_type> _Storage;      };
 
-    ~_Ref_count_unbounded_array() {
-         
+    virtual ~_Ref_count_unbounded_array() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {          _Reverse_destroy_multidimensional_n(_Get_ptr(), _Size);
@@ -27747,8 +28245,7 @@ class _Ref_count_bounded_array : public _Ref_count_base {
     };
 
 private:
-    ~_Ref_count_bounded_array() {
-         
+    virtual ~_Ref_count_bounded_array() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {          _Destroy_in_place(_Storage);      }
@@ -27819,8 +28316,7 @@ public:
     };
 
 private:
-    ~_Ref_count_obj_alloc3() {
-         
+    virtual ~_Ref_count_obj_alloc3() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {          allocator_traits<_Rebound>::destroy(this->_Get_val(), ::std:: addressof(_Storage._Value));
@@ -27994,8 +28490,7 @@ private:
     union {
         _Wrap<_Element_type> _Storage;      };
 
-    ~_Ref_count_unbounded_array_alloc() {
-         
+    virtual ~_Ref_count_unbounded_array_alloc() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {          if constexpr (!conjunction_v<is_trivially_destructible<_Item>, _Uses_default_destroy<_Rebound, _Item*>>) {
@@ -28008,7 +28503,7 @@ private:
 
         _Rebind_alloc_t<_Alloc, _Storage> _Al(this->_Get_val());
         const size_t _Bytes =
-            _Calculate_bytes_for_flexible_array<_Ref_count_unbounded_array_alloc, _Check_overflow::_No>(_Size);
+            _Calculate_bytes_for_flexible_array<_Ref_count_unbounded_array_alloc, _Check_overflow::_Nope>(_Size);
         const size_t _Storage_units = _Bytes / sizeof(_Storage);
 
         this->~_Ref_count_unbounded_array_alloc();
@@ -28046,8 +28541,7 @@ public:
     };
 
 private:
-    ~_Ref_count_bounded_array_alloc() {
-         
+    virtual ~_Ref_count_bounded_array_alloc() noexcept override {           
              }
 
     virtual void _Destroy() noexcept override {          if constexpr (!conjunction_v<is_trivially_destructible<_Item>, _Uses_default_destroy<_Rebound, _Item*>>) {
@@ -28701,10 +29195,6 @@ template <class _Ty1, class _Dx1, class _Ty2, class _Dx2>
     return _Left.get() == _Right.get();
 }
 
-template <class _Ty1, class _Dx1, class _Ty2, class _Dx2>
- bool operator!=(const unique_ptr<_Ty1, _Dx1>& _Left, const unique_ptr<_Ty2, _Dx2>& _Right) {
-    return !(_Left == _Right);
-}
 
 template <class _Ty1, class _Dx1, class _Ty2, class _Dx2>
  bool operator<(const unique_ptr<_Ty1, _Dx1>& _Left, const unique_ptr<_Ty2, _Dx2>& _Right) {
@@ -28729,25 +29219,20 @@ template <class _Ty1, class _Dx1, class _Ty2, class _Dx2>
     return !(_Right < _Left);
 }
 
+ template <class _Ty1, class _Dx1, class _Ty2, class _Dx2>
+    requires three_way_comparable_with<typename unique_ptr<_Ty1, _Dx1>::pointer,
+        typename unique_ptr<_Ty2, _Dx2>::pointer>
+ compare_three_way_result_t<typename unique_ptr<_Ty1, _Dx1>::pointer,
+        typename unique_ptr<_Ty2, _Dx2>::pointer>
+    operator<=>(const unique_ptr<_Ty1, _Dx1>& _Left, const unique_ptr<_Ty2, _Dx2>& _Right) {
+         return _Left.get() <=> _Right.get();
+}
+
 template <class _Ty, class _Dx>
  bool operator==(const unique_ptr<_Ty, _Dx>& _Left, nullptr_t) noexcept {
     return !_Left;
 }
 
-template <class _Ty, class _Dx>
- bool operator==(nullptr_t, const unique_ptr<_Ty, _Dx>& _Right) noexcept {
-    return !_Right;
-}
-
-template <class _Ty, class _Dx>
- bool operator!=(const unique_ptr<_Ty, _Dx>& _Left, nullptr_t _Right) noexcept {
-    return !(_Left == _Right);
-}
-
-template <class _Ty, class _Dx>
- bool operator!=(nullptr_t _Left, const unique_ptr<_Ty, _Dx>& _Right) noexcept {
-    return !(_Left == _Right);
-}
 
 template <class _Ty, class _Dx>
  bool operator<(const unique_ptr<_Ty, _Dx>& _Left, nullptr_t _Right) {
@@ -28789,6 +29274,13 @@ template <class _Ty, class _Dx>
 template <class _Ty, class _Dx>
  bool operator<=(nullptr_t _Left, const unique_ptr<_Ty, _Dx>& _Right) {
     return !(_Right < _Left);
+}
+
+ template <class _Ty, class _Dx>
+    requires three_way_comparable<typename unique_ptr<_Ty, _Dx>::pointer>
+ compare_three_way_result_t<typename unique_ptr<_Ty, _Dx>::pointer> operator<=>(
+    const unique_ptr<_Ty, _Dx>& _Left, nullptr_t) {
+         return _Left.get() <=> static_cast<typename unique_ptr<_Ty, _Dx>::pointer>(nullptr);
 }
 
 template <class _OutTy, class _PxTy, class = void>
@@ -29300,6 +29792,7 @@ public:
  
   
 
+
  
 
 
@@ -29780,8 +30273,7 @@ double frexp(_Ty _Value,   int* const _Exp) noexcept   {
     return :: frexp(static_cast<double>(_Value), _Exp);
 }
 
- 
-template <class _Ty1, class _Ty2, class _Ty3,
+ template <class _Ty1, class _Ty2, class _Ty3,
     ::std:: enable_if_t<::std:: is_arithmetic_v<_Ty1> && ::std:: is_arithmetic_v<_Ty2> && ::std:: is_arithmetic_v<_Ty3>, int> = 0>
  ::std:: _Common_float_type_t<_Ty1, ::std:: _Common_float_type_t<_Ty2, _Ty3>> fma(
     _Ty1 _Left, _Ty2 _Middle, _Ty3 _Right) noexcept   {
@@ -29795,8 +30287,7 @@ template <class _Ty1, class _Ty2, class _Ty3,
     }
 }
 
- 
-template <class _Ty1, class _Ty2, ::std:: enable_if_t<::std:: is_arithmetic_v<_Ty1> && ::std:: is_arithmetic_v<_Ty2>, int> = 0>
+ template <class _Ty1, class _Ty2, ::std:: enable_if_t<::std:: is_arithmetic_v<_Ty1> && ::std:: is_arithmetic_v<_Ty2>, int> = 0>
 ::std:: _Common_float_type_t<_Ty1, _Ty2> remquo(_Ty1 _Left, _Ty2 _Right, int* _Pquo) noexcept   {
     using _Common = ::std:: _Common_float_type_t<_Ty1, _Ty2>;
     if constexpr (::std:: is_same_v<_Common, float>) {
@@ -30495,100 +30986,6 @@ template <class _Ty1, class _Ty2, class _Ty3,
 
 namespace std {
 
- template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct2(
-    true_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, allocator_arg, _Inner, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct2(
-    false_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         static_assert(is_constructible_v<_Ty, _Types..., _Inner_alloc&>,
-        "N4700 23.10.7.2 [allocator.uses.construction]/1 requires is_constructible_v<T, Args..., Alloc&> when uses_allocator_v<T, Alloc> is true and is_constructible_v<T, allocator_arg_t, Alloc&, Args...> is false");
-    allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, ::std:: forward<_Types>(_Args)..., _Inner);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct1(
-    true_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-              using _IsConstructible = typename is_constructible<_Ty, allocator_arg_t, _Inner_alloc&, _Types...>::type;
-    _Uses_allocator_construct2(_IsConstructible{}, _Ptr, _Outer, _Inner, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct1(false_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc&, _Types&&... _Args) {
-         static_assert(is_constructible_v<_Ty, _Types...>,
-        "N4700 23.10.7.2 [allocator.uses.construction]/1 requires is_constructible_v<T, Args...> when uses_allocator_v<T, Alloc> is false");
-    allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types,
-    enable_if_t<!_Is_specialization_v<_Ty, pair>, int> = 0>
-void _Uses_allocator_construct(_Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         _Uses_allocator_construct1(uses_allocator<_Ty, _Inner_alloc>{}, _Ptr, _Outer, _Inner,
-        ::std:: forward<_Types>(_Args)...);  }
-
-template <class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise2(true_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return ::std:: tuple_cat(tuple<allocator_arg_t, _Alloc&>(allocator_arg, _Al), ::std:: move(_Tuple));
-}
-
-template <class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise2(false_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return ::std:: tuple_cat(::std:: move(_Tuple), tuple<_Alloc&>(_Al));
-}
-
-template <class _Ty, class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise(true_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return _Uses_allocator_piecewise2(
-        is_constructible<_Ty, allocator_arg_t, _Alloc&, _Types...>(), _Al, ::std:: move(_Tuple));
-}
-
-template <class, class _Alloc, class... _Types>
-tuple<_Types...>&& _Uses_allocator_piecewise(false_type, _Alloc&, tuple<_Types...>&& _Tuple) {
-    return ::std:: move(_Tuple);
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class... _Types1, class... _Types2>
-void _Uses_allocator_construct_pair(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner,
-    tuple<_Types1...>&& _Val1, tuple<_Types2...>&& _Val2) {
-         allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, piecewise_construct,
-        _Uses_allocator_piecewise<_Ty1>(uses_allocator<_Ty1, _Inner_alloc>{}, _Inner, ::std:: move(_Val1)),
-        _Uses_allocator_piecewise<_Ty2>(uses_allocator<_Ty2, _Inner_alloc>{}, _Inner, ::std:: move(_Val2)));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class... _Types1, class... _Types2>
-void _Uses_allocator_construct(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner,
-    piecewise_construct_t, tuple<_Types1...> _Val1, tuple<_Types2...> _Val2) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: move(_Val1), ::std:: move(_Val2));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc>
-void _Uses_allocator_construct(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, tuple<>{}, tuple<>{});
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Uty&& _Arg1, _Vty&& _Arg2) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: forward_as_tuple(::std:: forward<_Uty>(_Arg1)),
-        ::std:: forward_as_tuple(::std:: forward<_Vty>(_Arg2)));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, const pair<_Uty, _Vty>& _Pair) {
-         _Uses_allocator_construct_pair(
-        _Ptr, _Outer, _Inner, ::std:: forward_as_tuple(_Pair.first), ::std:: forward_as_tuple(_Pair.second));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, pair<_Uty, _Vty>&& _Pair) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: forward_as_tuple(::std:: forward<_Uty>(_Pair.first)),
-        ::std:: forward_as_tuple(::std:: forward<_Vty>(_Pair.second)));
-}
 
 namespace pmr {
          class __declspec(novtable) memory_resource {
@@ -30619,9 +31016,6 @@ namespace pmr {
         return &_Left == &_Right || _Left.is_equal(_Right);
     }
 
-     inline bool operator!=(const memory_resource& _Left, const memory_resource& _Right) noexcept {
-        return !(_Left == _Right);
-    }
 
          extern "C"  memory_resource* __cdecl _Aligned_get_default_resource() noexcept;
     extern "C"  memory_resource* __cdecl _Unaligned_get_default_resource() noexcept;
@@ -30700,8 +31094,7 @@ namespace pmr {
 
         template <class _Uty, class... _Types>
         void construct(_Uty* const _Ptr, _Types&&... _Args) {
-                         allocator<char> _Al{};
-            _Uses_allocator_construct(_Ptr, _Al, *this, ::std:: forward<_Types>(_Args)...);
+                         ::std:: uninitialized_construct_using_allocator(_Ptr, *this, ::std:: forward<_Types>(_Args)...);
         }
 
         template <class _Uty>
@@ -30727,11 +31120,6 @@ namespace pmr {
                  return *_Left.resource() == *_Right.resource();
     }
 
-    template <class _Ty1, class _Ty2>
-     bool operator!=(
-        const polymorphic_allocator<_Ty1>& _Left, const polymorphic_allocator<_Ty2>& _Right) noexcept {
-        return !(_Left == _Right);
-    }
 
 }  
 template <class _Ty, class _Ptr>
@@ -30797,9 +31185,6 @@ public:
         return _Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _List_unchecked_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
 
     _Nodeptr _Ptr;  };
 
@@ -30901,9 +31286,6 @@ public:
         return this->_Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _List_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
 
 
     using _Prevent_inheriting_unwrap = _List_const_iterator;
@@ -31350,7 +31732,7 @@ private:
     }
 
     void _Construct_n( size_type _Count) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _List_node_insert_op2<_Alnode> _Appended(_Getal());
         _Appended._Append_n(_Count);
@@ -31369,7 +31751,7 @@ public:
 
 private:
     void _Construct_n( size_type _Count, const _Ty& _Val) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _List_node_insert_op2<_Alnode> _Appended(_Getal());
         _Appended._Append_n(_Count, _Val);
@@ -31389,7 +31771,7 @@ public:
 private:
     template <class _Iter>
     void _Construct_range_unchecked(_Iter _First, _Iter _Last) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _List_node_insert_op2<_Alnode> _Appended(_Getal());
         _Appended._Append_range_unchecked(_First, _Last);
@@ -31450,8 +31832,8 @@ private:
         if (_Al == _Right_al) {
             _Move_assign(_Right, _Equal_allocators{});
         } else {
-            auto&& _Alproxy       = _Fake_allocator();
-            auto&& _Right_alproxy = _Fake_allocator();
+            auto&& _Alproxy       = _Fake_alloc;
+            auto&& _Right_alproxy = _Fake_alloc;
             _Container_proxy_ptr<_Alty> _Proxy(_Right_alproxy, _Leave_proxy_unbound{});
             auto& _My_data      = _Mypair._Myval2;
             auto& _Right_data   = _Right._Mypair._Myval2;
@@ -31558,9 +31940,9 @@ public:
 
 private:
     void _Reload_sentinel_and_proxy(const list& _Right) {          auto& _Al             = _Getal();
-        auto&& _Alproxy       = _Fake_allocator();
+        auto&& _Alproxy       = _Fake_alloc;
         auto& _Right_al       = _Right._Getal();
-        auto&& _Right_alproxy = _Fake_allocator();
+        auto&& _Right_alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Right_alproxy, _Leave_proxy_unbound{});
         auto _Right_al_non_const = _Right_al;
         auto _Newhead            = _Node::_Buyheadnode(_Right_al_non_const);
@@ -32087,7 +32469,7 @@ private:
     }
 
     void _Alloc_sentinel_and_proxy() {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         auto& _Al     = _Getal();
         auto _Newhead = _Al.allocate(1);
@@ -32123,32 +32505,15 @@ void swap(list<_Ty, _Alloc>& _Left, list<_Ty, _Alloc>& _Right) noexcept   {
 
 template <class _Ty, class _Alloc>
  bool operator==(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return _Left.size() == _Right.size() && ::std:: equal(_Left.begin(), _Left.end(), _Right.begin());
+    return _Left.size() == _Right.size()
+        && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end(), _Right._Unchecked_begin());
 }
 
-template <class _Ty, class _Alloc>
- bool operator!=(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
 
 template <class _Ty, class _Alloc>
- bool operator<(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return ::std:: lexicographical_compare(_Left.begin(), _Left.end(), _Right.begin(), _Right.end());
-}
-
-template <class _Ty, class _Alloc>
- bool operator>(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Ty, class _Alloc>
- bool operator<=(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Ty, class _Alloc>
- bool operator>=(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
-    return !(_Left < _Right);
+ _Synth_three_way_result<_Ty> operator<=>(const list<_Ty, _Alloc>& _Left, const list<_Ty, _Alloc>& _Right) {
+    return ::std:: lexicographical_compare_three_way(_Left._Unchecked_begin(), _Left._Unchecked_end(),
+        _Right._Unchecked_begin(), _Right._Unchecked_end(), _Synth_three_way{});
 }
 
 template <class _Ty, class _Alloc, class _Uty>
@@ -32193,123 +32558,110 @@ public:
 
     using _Tptr = typename _Myvec::pointer;
 
-    _Vector_const_iterator() noexcept : _Ptr() {}
+    constexpr _Vector_const_iterator() noexcept : _Ptr() {}
 
-    _Vector_const_iterator(_Tptr _Parg, const _Container_base* _Pvector) noexcept : _Ptr(_Parg) {
+    constexpr _Vector_const_iterator(_Tptr _Parg, const _Container_base* _Pvector) noexcept : _Ptr(_Parg) {
         this->_Adopt(_Pvector);
     }
 
-     reference operator*() const noexcept {
+         constexpr _Vector_const_iterator& operator=(const _Vector_const_iterator&) noexcept = default;
+
+     constexpr reference operator*() const noexcept {
 
         return *_Ptr;
     }
 
-     pointer operator->() const noexcept {
+     constexpr pointer operator->() const noexcept {
 
         return _Ptr;
     }
 
-    _Vector_const_iterator& operator++() noexcept {
+    constexpr _Vector_const_iterator& operator++() noexcept {
 
         ++_Ptr;
         return *this;
     }
 
-    _Vector_const_iterator operator++(int) noexcept {
+    constexpr _Vector_const_iterator operator++(int) noexcept {
         _Vector_const_iterator _Tmp = *this;
         ++*this;
         return _Tmp;
     }
 
-    _Vector_const_iterator& operator--() noexcept {
+    constexpr _Vector_const_iterator& operator--() noexcept {
 
         --_Ptr;
         return *this;
     }
 
-    _Vector_const_iterator operator--(int) noexcept {
+    constexpr _Vector_const_iterator operator--(int) noexcept {
         _Vector_const_iterator _Tmp = *this;
         --*this;
         return _Tmp;
     }
 
-    void _Verify_offset(const difference_type _Off) const noexcept {
+    constexpr void _Verify_offset(const difference_type _Off) const noexcept {
         (void) _Off;
     }
 
-    _Vector_const_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _Vector_const_iterator& operator+=(const difference_type _Off) noexcept {
         _Verify_offset(_Off);
         _Ptr += _Off;
         return *this;
     }
 
-     _Vector_const_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _Vector_const_iterator operator+(const difference_type _Off) const noexcept {
         _Vector_const_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _Vector_const_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _Vector_const_iterator& operator-=(const difference_type _Off) noexcept {
         return *this += -_Off;
     }
 
-     _Vector_const_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _Vector_const_iterator operator-(const difference_type _Off) const noexcept {
         _Vector_const_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     difference_type operator-(const _Vector_const_iterator& _Right) const noexcept {
+     constexpr difference_type operator-(const _Vector_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return _Ptr - _Right._Ptr;
     }
 
-     reference operator[](const difference_type _Off) const noexcept {
+     constexpr reference operator[](const difference_type _Off) const noexcept {
         return *(*this + _Off);
     }
 
-     bool operator==(const _Vector_const_iterator& _Right) const noexcept {
+     constexpr bool operator==(const _Vector_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return _Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _Vector_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
-
-     bool operator<(const _Vector_const_iterator& _Right) const noexcept {
+     constexpr strong_ordering operator<=>(const _Vector_const_iterator& _Right) const noexcept {
         _Compat(_Right);
-        return _Ptr < _Right._Ptr;
+        return _Unfancy(_Ptr) <=> _Unfancy(_Right._Ptr);
     }
 
-     bool operator>(const _Vector_const_iterator& _Right) const noexcept {
-        return _Right < *this;
-    }
-
-     bool operator<=(const _Vector_const_iterator& _Right) const noexcept {
-        return !(_Right < *this);
-    }
-
-     bool operator>=(const _Vector_const_iterator& _Right) const noexcept {
-        return !(*this < _Right);
-    }
-
-    void _Compat(const _Vector_const_iterator& _Right) const noexcept {          (void) _Right;
+    constexpr void _Compat(const _Vector_const_iterator& _Right) const noexcept {
+                 (void) _Right;
     }
 
 
     using _Prevent_inheriting_unwrap = _Vector_const_iterator;
 
-     const value_type* _Unwrapped() const noexcept {
+     constexpr const value_type* _Unwrapped() const noexcept {
         return _Unfancy(_Ptr);
     }
 
-    void _Seek_to(const value_type* _It) noexcept {
+    constexpr void _Seek_to(const value_type* _It) noexcept {
         _Ptr = _Refancy<_Tptr>(const_cast<value_type*>(_It));
     }
 
     _Tptr _Ptr;  };
 
 template <class _Myvec>
- _Vector_const_iterator<_Myvec> operator+(
+ constexpr _Vector_const_iterator<_Myvec> operator+(
     typename _Vector_const_iterator<_Myvec>::difference_type _Off, _Vector_const_iterator<_Myvec> _Next) noexcept {
     return _Next += _Off;
 }
@@ -32340,71 +32692,74 @@ public:
 
     using _Mybase::_Mybase;
 
-     reference operator*() const noexcept {
+         constexpr _Vector_iterator& operator=(const _Vector_iterator&) noexcept = default;
+
+     constexpr reference operator*() const noexcept {
         return const_cast<reference>(_Mybase::operator*());
     }
 
-     pointer operator->() const noexcept {
-        return _Const_cast(_Mybase::operator->());
+     constexpr pointer operator->() const noexcept {
+
+        return this->_Ptr;
     }
 
-    _Vector_iterator& operator++() noexcept {
+    constexpr _Vector_iterator& operator++() noexcept {
         _Mybase::operator++();
         return *this;
     }
 
-    _Vector_iterator operator++(int) noexcept {
+    constexpr _Vector_iterator operator++(int) noexcept {
         _Vector_iterator _Tmp = *this;
         _Mybase::operator++();
         return _Tmp;
     }
 
-    _Vector_iterator& operator--() noexcept {
+    constexpr _Vector_iterator& operator--() noexcept {
         _Mybase::operator--();
         return *this;
     }
 
-    _Vector_iterator operator--(int) noexcept {
+    constexpr _Vector_iterator operator--(int) noexcept {
         _Vector_iterator _Tmp = *this;
         _Mybase::operator--();
         return _Tmp;
     }
 
-    _Vector_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _Vector_iterator& operator+=(const difference_type _Off) noexcept {
         _Mybase::operator+=(_Off);
         return *this;
     }
 
-     _Vector_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _Vector_iterator operator+(const difference_type _Off) const noexcept {
         _Vector_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _Vector_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _Vector_iterator& operator-=(const difference_type _Off) noexcept {
         _Mybase::operator-=(_Off);
         return *this;
     }
 
     using _Mybase::operator-;
 
-     _Vector_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _Vector_iterator operator-(const difference_type _Off) const noexcept {
         _Vector_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     reference operator[](const difference_type _Off) const noexcept {
+     constexpr reference operator[](const difference_type _Off) const noexcept {
         return const_cast<reference>(_Mybase::operator[](_Off));
     }
 
     using _Prevent_inheriting_unwrap = _Vector_iterator;
 
-     value_type* _Unwrapped() const noexcept {
+     constexpr value_type* _Unwrapped() const noexcept {
         return _Unfancy(this->_Ptr);
     }
 };
 
 template <class _Myvec>
- _Vector_iterator<_Myvec> operator+(
+ constexpr _Vector_iterator<_Myvec> operator+(
     typename _Vector_iterator<_Myvec>::difference_type _Off, _Vector_iterator<_Myvec> _Next) noexcept {
     return _Next += _Off;
 }
@@ -32445,19 +32800,19 @@ public:
     using reference       = value_type&;
     using const_reference = const value_type&;
 
-    _Vector_val() noexcept : _Myfirst(), _Mylast(), _Myend() {}
+    constexpr _Vector_val() noexcept : _Myfirst(), _Mylast(), _Myend() {}
 
-    _Vector_val(pointer _First, pointer _Last, pointer _End) noexcept
+    constexpr _Vector_val(pointer _First, pointer _Last, pointer _End) noexcept
         : _Myfirst(_First), _Mylast(_Last), _Myend(_End) {}
 
-    void _Swap_val(_Vector_val& _Right) noexcept {
+    constexpr void _Swap_val(_Vector_val& _Right) noexcept {
         this->_Swap_proxy_and_iterators(_Right);
         _Swap_adl(_Myfirst, _Right._Myfirst);
         _Swap_adl(_Mylast, _Right._Mylast);
         _Swap_adl(_Myend, _Right._Myend);
     }
 
-    void _Take_contents(_Vector_val& _Right) noexcept {
+    constexpr void _Take_contents(_Vector_val& _Right) noexcept {
         this->_Swap_proxy_and_iterators(_Right);
         _Myfirst = _Right._Myfirst;
         _Mylast  = _Right._Mylast;
@@ -32471,11 +32826,12 @@ public:
     pointer _Myfirst;      pointer _Mylast;      pointer _Myend;  };
 
  template <class _Ptrty>
-auto _Unfancy_maybe_null(_Ptrty _Ptr) noexcept {      return _Ptr ? ::std:: addressof(*_Ptr) : nullptr;
+constexpr auto _Unfancy_maybe_null(_Ptrty _Ptr) noexcept {
+         return _Ptr ? ::std:: addressof(*_Ptr) : nullptr;
 }
 
 template <class _Ty>
-_Ty* _Unfancy_maybe_null(_Ty* _Ptr) noexcept {      return _Ptr;
+constexpr _Ty* _Unfancy_maybe_null(_Ty* _Ptr) noexcept {      return _Ptr;
 }
 
  template <class _Ty, class _Alloc = allocator<_Ty>>
@@ -32510,18 +32866,19 @@ public:
     using reverse_iterator       = ::std:: reverse_iterator<iterator>;
     using const_reverse_iterator = ::std:: reverse_iterator<const_iterator>;
 
-    vector() noexcept(is_nothrow_default_constructible_v<_Alty>) : _Mypair(_Zero_then_variadic_args_t{}) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+    constexpr vector() noexcept(is_nothrow_default_constructible_v<_Alty>)
+        : _Mypair(_Zero_then_variadic_args_t{}) {
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
     }
 
-    explicit vector(const _Alloc& _Al) noexcept : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+    constexpr explicit vector(const _Alloc& _Al) noexcept : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
     }
 
 private:
     template <class _Ty2>
-    void _Construct_n_copies_of_ty( const size_type _Count, const _Ty2& _Val) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr void _Construct_n_copies_of_ty( const size_type _Count, const _Ty2& _Val) {
+        auto&& _Alproxy = _Fake_alloc;
         auto& _My_data  = _Mypair._Myval2;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _My_data);
         if (_Count != 0) {
@@ -32535,19 +32892,20 @@ private:
     }
 
 public:
-    explicit vector( const size_type _Count, const _Alloc& _Al = _Alloc())
+    constexpr explicit vector( const size_type _Count, const _Alloc& _Al = _Alloc())
         : _Mypair(_One_then_variadic_args_t{}, _Al) {
         _Construct_n_copies_of_ty(_Count, _Value_init_tag{});
     }
 
-    vector( const size_type _Count, const _Ty& _Val, const _Alloc& _Al = _Alloc())
+    constexpr vector(
+         const size_type _Count, const _Ty& _Val, const _Alloc& _Al = _Alloc())
         : _Mypair(_One_then_variadic_args_t{}, _Al) {
         _Construct_n_copies_of_ty(_Count, _Val);
     }
 
 private:
     template <class _Iter>
-    void _Range_construct_or_tidy(_Iter _First, _Iter _Last, input_iterator_tag) {
+    constexpr void _Range_construct_or_tidy(_Iter _First, _Iter _Last, input_iterator_tag) {
         _Tidy_guard<vector> _Guard{this};
         for (; _First != _Last; ++_First) {
             emplace_back(*_First);          }
@@ -32556,7 +32914,7 @@ private:
     }
 
     template <class _Iter>
-    void _Range_construct_or_tidy(_Iter _First, _Iter _Last, forward_iterator_tag) {
+    constexpr void _Range_construct_or_tidy(_Iter _First, _Iter _Last, forward_iterator_tag) {
         const auto _Count = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
         if (_Count != 0) {
             _Buy_nonzero(_Count);
@@ -32569,24 +32927,26 @@ private:
 
 public:
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    vector(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc()) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr vector(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc())
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Adl_verify_range(_First, _Last);
         _Range_construct_or_tidy(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Iter_cat_t<_Iter>{});
         _Proxy._Release();
     }
 
-    vector(initializer_list<_Ty> _Ilist, const _Alloc& _Al = _Alloc()) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr vector(initializer_list<_Ty> _Ilist, const _Alloc& _Al = _Alloc())
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Range_construct_or_tidy(_Ilist.begin(), _Ilist.end(), random_access_iterator_tag{});
         _Proxy._Release();
     }
 
-    vector(const vector& _Right)
+    constexpr vector(const vector& _Right)
         : _Mypair(_One_then_variadic_args_t{}, _Alty_traits::select_on_container_copy_construction(_Right._Getal())) {
-        auto&& _Alproxy           = _Fake_allocator();
+        auto&& _Alproxy           = _Fake_alloc;
         auto& _My_data            = _Mypair._Myval2;
         const auto& _Right_data   = _Right._Mypair._Myval2;
         const pointer _Rightfirst = _Right_data._Myfirst;
@@ -32602,8 +32962,8 @@ public:
         _Proxy._Release();
     }
 
-    vector(const vector& _Right, const _Alloc& _Al) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy           = _Fake_allocator();
+    constexpr vector(const vector& _Right, const _Alloc& _Al) : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy           = _Fake_alloc;
         auto& _My_data            = _Mypair._Myval2;
         const auto& _Right_data   = _Right._Mypair._Myval2;
         const pointer _Rightfirst = _Right_data._Myfirst;
@@ -32620,10 +32980,12 @@ public:
     }
 
 private:
-    void _Move_construct(vector& _Right, true_type) noexcept {          _Mypair._Myval2._Take_contents(_Right._Mypair._Myval2);
+    constexpr void _Move_construct(vector& _Right, true_type) noexcept {
+                 _Mypair._Myval2._Take_contents(_Right._Mypair._Myval2);
     }
 
-    void _Move_construct(vector& _Right, false_type) {          if constexpr (!_Alty_traits::is_always_equal::value) {
+    constexpr void _Move_construct(vector& _Right, false_type) {
+                 if constexpr (!_Alty_traits::is_always_equal::value) {
             if (_Getal() != _Right._Getal()) {
                 const auto& _Right_data   = _Right._Mypair._Myval2;
                 const pointer _Rightfirst = _Right_data._Myfirst;
@@ -32643,37 +33005,38 @@ private:
     }
 
 public:
-    vector(vector&& _Right) noexcept
+    constexpr vector(vector&& _Right) noexcept
         : _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Right._Getal()),
             ::std:: exchange(_Right._Mypair._Myval2._Myfirst, nullptr),
             ::std:: exchange(_Right._Mypair._Myval2._Mylast, nullptr),
             ::std:: exchange(_Right._Mypair._Myval2._Myend, nullptr)) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
         _Mypair._Myval2._Swap_proxy_and_iterators(_Right._Mypair._Myval2);
     }
 
-    vector(vector&& _Right, const _Alloc& _Al) noexcept(_Alty_traits::is_always_equal::value)          : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr vector(vector&& _Right, const _Alloc& _Al) noexcept(
+        _Alty_traits::is_always_equal::value)          : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Move_construct(_Right, typename _Alty_traits::is_always_equal::type{});
         _Proxy._Release();
     }
 
 private:
-    void _Move_assign(vector& _Right, _Equal_allocators) noexcept {
+    constexpr void _Move_assign(vector& _Right, _Equal_allocators) noexcept {
         _Tidy();
         _Pocma(_Getal(), _Right._Getal());
         _Mypair._Myval2._Take_contents(_Right._Mypair._Myval2);
     }
 
-    void _Move_assign(vector& _Right, _Propagate_allocators) noexcept   {
+    constexpr void _Move_assign(vector& _Right, _Propagate_allocators) noexcept   {
         _Tidy();
 
         _Pocma(_Getal(), _Right._Getal());
         _Mypair._Myval2._Take_contents(_Right._Mypair._Myval2);
     }
 
-    void _Move_assign(vector& _Right, _No_propagate_allocators) {
+    constexpr void _Move_assign(vector& _Right, _No_propagate_allocators) {
         if (_Getal() == _Right._Getal()) {
             _Move_assign(_Right, _Equal_allocators{});
         } else {
@@ -32696,8 +33059,7 @@ private:
                 }
 
                 _Mylast = _Refancy<pointer>(_Copy_memmove(_Unfancy(_First), _Unfancy(_Last), _Unfancy(_Myfirst)));
-            } else
-            {
+            } else {
                 auto _Oldsize = static_cast<size_type>(_Mylast - _Myfirst);
 
                 if (_Newsize > _Oldsize) {
@@ -32719,7 +33081,8 @@ private:
     }
 
 public:
-    vector& operator=(vector&& _Right) noexcept(noexcept(_Move_assign(_Right, _Choose_pocma<_Alty>{}))) {
+    constexpr vector& operator=(vector&& _Right) noexcept(
+        noexcept(_Move_assign(_Right, _Choose_pocma<_Alty>{}))) {
         if (this != ::std:: addressof(_Right)) {
             _Move_assign(_Right, _Choose_pocma<_Alty>{});
         }
@@ -32727,13 +33090,13 @@ public:
         return *this;
     }
 
-    ~vector() noexcept {
+    constexpr ~vector() noexcept {
         _Tidy();
     }
 
 private:
     template <class... _Valty>
-    decltype(auto) _Emplace_back_with_unused_capacity(_Valty&&... _Val) {
+    constexpr decltype(auto) _Emplace_back_with_unused_capacity(_Valty&&... _Val) {
                  auto& _My_data   = _Mypair._Myval2;
         pointer& _Mylast = _My_data._Mylast;
         ;          _Alty_traits::construct(_Getal(), _Unfancy(_Mylast), ::std:: forward<_Valty>(_Val)...);
@@ -32745,7 +33108,7 @@ private:
 
 public:
     template <class... _Valty>
-    decltype(auto) emplace_back(_Valty&&... _Val) {
+    constexpr decltype(auto) emplace_back(_Valty&&... _Val) {
                  auto& _My_data   = _Mypair._Myval2;
         pointer& _Mylast = _My_data._Mylast;
         if (_Mylast != _My_data._Myend) {
@@ -32756,14 +33119,15 @@ public:
         return _Result;
     }
 
-    void push_back(const _Ty& _Val) {          emplace_back(_Val);
+    constexpr void push_back(const _Ty& _Val) {          emplace_back(_Val);
     }
 
-    void push_back(_Ty&& _Val) {          emplace_back(::std:: move(_Val));
+    constexpr void push_back(_Ty&& _Val) {
+                 emplace_back(::std:: move(_Val));
     }
 
     template <class... _Valty>
-    pointer _Emplace_reallocate(const pointer _Whereptr, _Valty&&... _Val) {
+    constexpr pointer _Emplace_reallocate(const pointer _Whereptr, _Valty&&... _Val) {
                  _Alty& _Al        = _Getal();
         auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
@@ -32804,7 +33168,8 @@ public:
     }
 
     template <class... _Valty>
-    iterator emplace(const_iterator _Where, _Valty&&... _Val) {          const pointer _Whereptr = _Where._Ptr;
+    constexpr iterator emplace(const_iterator _Where, _Valty&&... _Val) {
+                 const pointer _Whereptr = _Where._Ptr;
         auto& _My_data          = _Mypair._Myval2;
         const pointer _Oldlast  = _My_data._Mylast;
 
@@ -32825,13 +33190,14 @@ public:
         return _Make_iterator(_Emplace_reallocate(_Whereptr, ::std:: forward<_Valty>(_Val)...));
     }
 
-    iterator insert(const_iterator _Where, const _Ty& _Val) {          return emplace(_Where, _Val);
+    constexpr iterator insert(const_iterator _Where, const _Ty& _Val) {          return emplace(_Where, _Val);
     }
 
-    iterator insert(const_iterator _Where, _Ty&& _Val) {          return emplace(_Where, ::std:: move(_Val));
+    constexpr iterator insert(const_iterator _Where, _Ty&& _Val) {          return emplace(_Where, ::std:: move(_Val));
     }
 
-    iterator insert(const_iterator _Where,  const size_type _Count, const _Ty& _Val) {
+    constexpr iterator insert(
+        const_iterator _Where,  const size_type _Count, const _Ty& _Val) {
                  const pointer _Whereptr = _Where._Ptr;
 
         auto& _My_data   = _Mypair._Myval2;
@@ -32891,7 +33257,7 @@ public:
 
 private:
     template <class _Iter>
-    void _Insert_range(const_iterator _Where, _Iter _First, _Iter _Last, input_iterator_tag) {
+    constexpr void _Insert_range(const_iterator _Where, _Iter _First, _Iter _Last, input_iterator_tag) {
                  if (_First == _Last) {
             return;          }
 
@@ -32912,7 +33278,7 @@ private:
     }
 
     template <class _Iter>
-    void _Insert_range(const_iterator _Where, _Iter _First, _Iter _Last, forward_iterator_tag) {
+    constexpr void _Insert_range(const_iterator _Where, _Iter _First, _Iter _Last, forward_iterator_tag) {
                  const pointer _Whereptr = _Where._Ptr;
         const auto _Count       = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
 
@@ -33007,7 +33373,7 @@ private:
 
 public:
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    iterator insert(const_iterator _Where, _Iter _First, _Iter _Last) {
+    constexpr iterator insert(const_iterator _Where, _Iter _First, _Iter _Last) {
         const pointer _Whereptr = _Where._Ptr;
         auto& _My_data          = _Mypair._Myval2;
         const pointer _Oldfirst = _My_data._Myfirst;
@@ -33018,11 +33384,12 @@ public:
         return _Make_iterator_offset(_Whereoff);
     }
 
-    iterator insert(const_iterator _Where, initializer_list<_Ty> _Ilist) {
+    constexpr iterator insert(const_iterator _Where, initializer_list<_Ty> _Ilist) {
         return insert(_Where, _Ilist.begin(), _Ilist.end());
     }
 
-    void assign( const size_type _Newsize, const _Ty& _Val) {          auto& _My_data    = _Mypair._Myval2;
+    constexpr void assign( const size_type _Newsize, const _Ty& _Val) {
+                 auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
 
@@ -33048,7 +33415,8 @@ public:
 
 private:
     template <class _Iter>
-    void _Assign_range(_Iter _First, _Iter _Last, input_iterator_tag) {          auto& _My_data    = _Mypair._Myval2;
+    constexpr void _Assign_range(_Iter _First, _Iter _Last, input_iterator_tag) {
+                 auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
 
@@ -33069,7 +33437,8 @@ private:
     }
 
     template <class _Iter>
-    void _Assign_range(_Iter _First, _Iter _Last, forward_iterator_tag) {          const auto _Newsize = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
+    constexpr void _Assign_range(_Iter _First, _Iter _Last, forward_iterator_tag) {
+                 const auto _Newsize = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
         auto& _My_data      = _Mypair._Myval2;
         pointer& _Myfirst   = _My_data._Myfirst;
         pointer& _Mylast    = _My_data._Mylast;
@@ -33080,64 +33449,66 @@ private:
         if constexpr (conjunction_v<bool_constant<_Ptr_copy_cat<_Iter, _Ty*>::_Trivially_copyable>,
                           _Uses_default_construct<_Alty, _Ty*, decltype(*_First)>,
                           _Uses_default_destroy<_Alty, _Ty*>>) {
-            const auto _Oldcapacity = static_cast<size_type>(_Myend - _Myfirst);
-            if (_Newsize > _Oldcapacity) {
-                _Clear_and_reserve_geometric(_Newsize);
-            }
-
-            _Mylast = _Refancy<pointer>(_Copy_memmove(_First, _Last, _Unfancy(_Myfirst)));
-        } else
-        {
-            auto _Oldsize = static_cast<size_type>(_Mylast - _Myfirst);
-
-            if (_Newsize > _Oldsize) {
+            if (!::std:: is_constant_evaluated())
+            {
                 const auto _Oldcapacity = static_cast<size_type>(_Myend - _Myfirst);
-                if (_Newsize > _Oldcapacity) {                      _Clear_and_reserve_geometric(_Newsize);
-                    _Oldsize = 0;
+                if (_Newsize > _Oldcapacity) {
+                    _Clear_and_reserve_geometric(_Newsize);
                 }
 
-                                 const _Iter _Mid = ::std:: next(_First, static_cast<difference_type>(_Oldsize));
-                _Copy_unchecked(_First, _Mid, _Myfirst);
-                _Mylast = _Ucopy(_Mid, _Last, _Mylast);
-            } else {
-                const pointer _Newlast = _Myfirst + _Newsize;
-                _Copy_unchecked(_First, _Last, _Myfirst);
-                _Destroy(_Newlast, _Mylast);
-                _Mylast = _Newlast;
+                _Mylast = _Refancy<pointer>(_Copy_memmove(_First, _Last, _Unfancy(_Myfirst)));
+                return;
             }
+        }
+        auto _Oldsize = static_cast<size_type>(_Mylast - _Myfirst);
+
+        if (_Newsize > _Oldsize) {
+            const auto _Oldcapacity = static_cast<size_type>(_Myend - _Myfirst);
+            if (_Newsize > _Oldcapacity) {                  _Clear_and_reserve_geometric(_Newsize);
+                _Oldsize = 0;
+            }
+
+                         const _Iter _Mid = ::std:: next(_First, static_cast<difference_type>(_Oldsize));
+            _Copy_unchecked(_First, _Mid, _Myfirst);
+            _Mylast = _Ucopy(_Mid, _Last, _Mylast);
+        } else {
+            const pointer _Newlast = _Myfirst + _Newsize;
+            _Copy_unchecked(_First, _Last, _Myfirst);
+            _Destroy(_Newlast, _Mylast);
+            _Mylast = _Newlast;
         }
     }
 
 public:
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    void assign(_Iter _First, _Iter _Last) {
+    constexpr void assign(_Iter _First, _Iter _Last) {
         _Adl_verify_range(_First, _Last);
         _Assign_range(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Iter_cat_t<_Iter>{});
     }
 
-    void assign(initializer_list<_Ty> _Ilist) {
+    constexpr void assign(initializer_list<_Ty> _Ilist) {
         _Assign_range(_Ilist.begin(), _Ilist.end(), random_access_iterator_tag{});
     }
 
 private:
-    void _Copy_assign(const vector& _Right, false_type) {
+    constexpr void _Copy_assign(const vector& _Right, false_type) {
         _Pocca(_Getal(), _Right._Getal());
         auto& _Right_data = _Right._Mypair._Myval2;
         assign(_Right_data._Myfirst, _Right_data._Mylast);
     }
 
-    void _Copy_assign(const vector& _Right, true_type) {
+    constexpr void _Copy_assign(const vector& _Right, true_type) {
         if (_Getal() != _Right._Getal()) {
             _Tidy();
             _Mypair._Myval2._Reload_proxy(
-                _Fake_allocator(), _Fake_allocator());
+                _Fake_alloc, _Fake_alloc);
         }
 
         _Copy_assign(_Right, false_type{});
     }
 
 public:
-    vector& operator=(const vector& _Right) {
+    constexpr vector& operator=(const vector& _Right) {
         if (this != ::std:: addressof(_Right)) {
             _Copy_assign(_Right, _Choose_pocca<_Alty>{});
         }
@@ -33145,14 +33516,14 @@ public:
         return *this;
     }
 
-    vector& operator=(initializer_list<_Ty> _Ilist) {
+    constexpr vector& operator=(initializer_list<_Ty> _Ilist) {
         _Assign_range(_Ilist.begin(), _Ilist.end(), random_access_iterator_tag{});
         return *this;
     }
 
 private:
     template <class _Ty2>
-    void _Resize_reallocate(const size_type _Newsize, const _Ty2& _Val) {
+    constexpr void _Resize_reallocate(const size_type _Newsize, const _Ty2& _Val) {
         if (_Newsize > max_size()) {
             _Xlength();
         }
@@ -33181,7 +33552,8 @@ private:
     }
 
     template <class _Ty2>
-    void _Resize(const size_type _Newsize, const _Ty2& _Val) {          auto& _My_data      = _Mypair._Myval2;
+    constexpr void _Resize(const size_type _Newsize, const _Ty2& _Val) {
+                 auto& _My_data      = _Mypair._Myval2;
         pointer& _Myfirst   = _My_data._Myfirst;
         pointer& _Mylast    = _My_data._Mylast;
         const auto _Oldsize = static_cast<size_type>(_Mylast - _Myfirst);
@@ -33205,16 +33577,16 @@ private:
              }
 
 public:
-    void resize( const size_type _Newsize) {
+    constexpr void resize( const size_type _Newsize) {
                  _Resize(_Newsize, _Value_init_tag{});
     }
 
-    void resize( const size_type _Newsize, const _Ty& _Val) {
+    constexpr void resize( const size_type _Newsize, const _Ty& _Val) {
                  _Resize(_Newsize, _Val);
     }
 
 private:
-    void _Reallocate_exactly(const size_type _Newcapacity) {
+    constexpr void _Reallocate_exactly(const size_type _Newcapacity) {
                  auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
@@ -33233,7 +33605,8 @@ private:
         _Change_array(_Newvec, _Size, _Newcapacity);
     }
 
-    void _Clear_and_reserve_geometric(const size_type _Newsize) {
+
+    constexpr void _Clear_and_reserve_geometric(const size_type _Newsize) {
         auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
@@ -33258,7 +33631,7 @@ private:
     }
 
 public:
-    void reserve( const size_type _Newcapacity) {
+    constexpr void reserve( const size_type _Newcapacity) {
                  if (_Newcapacity > capacity()) {              if (_Newcapacity > max_size()) {
                 _Xlength();
             }
@@ -33267,7 +33640,7 @@ public:
         }
     }
 
-    void shrink_to_fit() {          auto& _My_data         = _Mypair._Myval2;
+    constexpr void shrink_to_fit() {          auto& _My_data         = _Mypair._Myval2;
         const pointer _Oldlast = _My_data._Mylast;
         if (_Oldlast != _My_data._Myend) {              const pointer _Oldfirst = _My_data._Myfirst;
             if (_Oldfirst == _Oldlast) {
@@ -33278,28 +33651,31 @@ public:
         }
     }
 
-    void pop_back() noexcept   {
+    constexpr void pop_back() noexcept   {
         auto& _My_data   = _Mypair._Myval2;
         pointer& _Mylast = _My_data._Mylast;
 
 
+        _Orphan_range(_Mylast - 1, _Mylast);
         _Alty_traits::destroy(_Getal(), _Unfancy(_Mylast - 1));
         --_Mylast;
     }
 
-    iterator erase(const_iterator _Where) noexcept(is_nothrow_move_assignable_v<value_type>)   {
+    constexpr iterator erase(const_iterator _Where) noexcept(
+        is_nothrow_move_assignable_v<value_type>)   {
         const pointer _Whereptr = _Where._Ptr;
         auto& _My_data          = _Mypair._Myval2;
         pointer& _Mylast        = _My_data._Mylast;
 
 
+        _Orphan_range(_Whereptr, _Mylast);
         _Move_unchecked(_Whereptr + 1, _Mylast, _Whereptr);
         _Alty_traits::destroy(_Getal(), _Unfancy(_Mylast - 1));
         --_Mylast;
         return iterator(_Whereptr, ::std:: addressof(_My_data));
     }
 
-    iterator erase(const_iterator _First, const_iterator _Last) noexcept(
+    constexpr iterator erase(const_iterator _First, const_iterator _Last) noexcept(
         is_nothrow_move_assignable_v<value_type>)   {
         const pointer _Firstptr = _First._Ptr;
         const pointer _Lastptr  = _Last._Ptr;
@@ -33317,7 +33693,7 @@ public:
         return iterator(_Firstptr, ::std:: addressof(_My_data));
     }
 
-    void clear() noexcept {          auto& _My_data    = _Mypair._Myval2;
+    constexpr void clear() noexcept {          auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
 
@@ -33326,123 +33702,122 @@ public:
         _Mylast = _Myfirst;
     }
 
-public:
-    void swap(vector& _Right) noexcept   {
+    constexpr void swap(vector& _Right) noexcept   {
         if (this != ::std:: addressof(_Right)) {
             _Pocs(_Getal(), _Right._Getal());
             _Mypair._Myval2._Swap_val(_Right._Mypair._Myval2);
         }
     }
 
-     _Ty* data() noexcept {
+     constexpr _Ty* data() noexcept {
         return _Unfancy_maybe_null(_Mypair._Myval2._Myfirst);
     }
 
-     const _Ty* data() const noexcept {
+     constexpr const _Ty* data() const noexcept {
         return _Unfancy_maybe_null(_Mypair._Myval2._Myfirst);
     }
 
-     iterator begin() noexcept {
+     constexpr iterator begin() noexcept {
         auto& _My_data = _Mypair._Myval2;
         return iterator(_My_data._Myfirst, ::std:: addressof(_My_data));
     }
 
-     const_iterator begin() const noexcept {
+     constexpr const_iterator begin() const noexcept {
         auto& _My_data = _Mypair._Myval2;
         return const_iterator(_My_data._Myfirst, ::std:: addressof(_My_data));
     }
 
-     iterator end() noexcept {
+     constexpr iterator end() noexcept {
         auto& _My_data = _Mypair._Myval2;
         return iterator(_My_data._Mylast, ::std:: addressof(_My_data));
     }
 
-     const_iterator end() const noexcept {
+     constexpr const_iterator end() const noexcept {
         auto& _My_data = _Mypair._Myval2;
         return const_iterator(_My_data._Mylast, ::std:: addressof(_My_data));
     }
 
-     reverse_iterator rbegin() noexcept {
+     constexpr reverse_iterator rbegin() noexcept {
         return reverse_iterator(end());
     }
 
-     const_reverse_iterator rbegin() const noexcept {
+     constexpr const_reverse_iterator rbegin() const noexcept {
         return const_reverse_iterator(end());
     }
 
-     reverse_iterator rend() noexcept {
+     constexpr reverse_iterator rend() noexcept {
         return reverse_iterator(begin());
     }
 
-     const_reverse_iterator rend() const noexcept {
+     constexpr const_reverse_iterator rend() const noexcept {
         return const_reverse_iterator(begin());
     }
 
-     const_iterator cbegin() const noexcept {
+     constexpr const_iterator cbegin() const noexcept {
         return begin();
     }
 
-     const_iterator cend() const noexcept {
+     constexpr const_iterator cend() const noexcept {
         return end();
     }
 
-     const_reverse_iterator crbegin() const noexcept {
+     constexpr const_reverse_iterator crbegin() const noexcept {
         return rbegin();
     }
 
-     const_reverse_iterator crend() const noexcept {
+     constexpr const_reverse_iterator crend() const noexcept {
         return rend();
     }
 
-    pointer _Unchecked_begin() noexcept {
+     constexpr pointer _Unchecked_begin() noexcept {
         return _Mypair._Myval2._Myfirst;
     }
 
-    const_pointer _Unchecked_begin() const noexcept {
+     constexpr const_pointer _Unchecked_begin() const noexcept {
         return _Mypair._Myval2._Myfirst;
     }
 
-    pointer _Unchecked_end() noexcept {
+     constexpr pointer _Unchecked_end() noexcept {
         return _Mypair._Myval2._Mylast;
     }
 
-    const_pointer _Unchecked_end() const noexcept {
+     constexpr const_pointer _Unchecked_end() const noexcept {
         return _Mypair._Myval2._Mylast;
     }
 
-     bool empty() const noexcept {
+     constexpr bool empty() const noexcept {
         auto& _My_data = _Mypair._Myval2;
         return _My_data._Myfirst == _My_data._Mylast;
     }
 
-     size_type size() const noexcept {
+     constexpr size_type size() const noexcept {
         auto& _My_data = _Mypair._Myval2;
         return static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst);
     }
 
-     size_type max_size() const noexcept {
+     constexpr size_type max_size() const noexcept {
         return (::std:: min)(
             static_cast<size_type>((numeric_limits<difference_type>::max)()), _Alty_traits::max_size(_Getal()));
     }
 
-     size_type capacity() const noexcept {
+     constexpr size_type capacity() const noexcept {
         auto& _My_data = _Mypair._Myval2;
         return static_cast<size_type>(_My_data._Myend - _My_data._Myfirst);
     }
 
-     _Ty& operator[](const size_type _Pos) noexcept   {
+     constexpr _Ty& operator[](const size_type _Pos) noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return _My_data._Myfirst[_Pos];
     }
 
-     const _Ty& operator[](const size_type _Pos) const noexcept   {
+     constexpr const _Ty& operator[](const size_type _Pos) const noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return _My_data._Myfirst[_Pos];
     }
 
-     _Ty& at(const size_type _Pos) {
+     constexpr _Ty& at(const size_type _Pos) {
         auto& _My_data = _Mypair._Myval2;
         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
             _Xrange();
@@ -33451,7 +33826,7 @@ public:
         return _My_data._Myfirst[_Pos];
     }
 
-     const _Ty& at(const size_type _Pos) const {
+     constexpr const _Ty& at(const size_type _Pos) const {
         auto& _My_data = _Mypair._Myval2;
         if (static_cast<size_type>(_My_data._Mylast - _My_data._Myfirst) <= _Pos) {
             _Xrange();
@@ -33460,67 +33835,70 @@ public:
         return _My_data._Myfirst[_Pos];
     }
 
-     _Ty& front() noexcept   {
+     constexpr _Ty& front() noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return *_My_data._Myfirst;
     }
 
-     const _Ty& front() const noexcept   {
+     constexpr const _Ty& front() const noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return *_My_data._Myfirst;
     }
 
-     _Ty& back() noexcept   {
+     constexpr _Ty& back() noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return _My_data._Mylast[-1];
     }
 
-     const _Ty& back() const noexcept   {
+     constexpr const _Ty& back() const noexcept   {
         auto& _My_data = _Mypair._Myval2;
 
         return _My_data._Mylast[-1];
     }
 
-     allocator_type get_allocator() const noexcept {
+     constexpr allocator_type get_allocator() const noexcept {
         return static_cast<allocator_type>(_Getal());
     }
 
 private:
-    pointer _Ufill(pointer _Dest, const size_type _Count, const _Ty& _Val) {
+    constexpr pointer _Ufill(pointer _Dest, const size_type _Count, const _Ty& _Val) {
                  return _Uninitialized_fill_n(_Dest, _Count, _Val, _Getal());
     }
 
-    pointer _Ufill(pointer _Dest, const size_type _Count, _Value_init_tag) {
+    constexpr pointer _Ufill(pointer _Dest, const size_type _Count, _Value_init_tag) {
                  return _Uninitialized_value_construct_n(_Dest, _Count, _Getal());
     }
 
     template <class _Iter>
-    pointer _Ucopy(_Iter _First, _Iter _Last, pointer _Dest) {          return _Uninitialized_copy(_First, _Last, _Dest, _Getal());
+    constexpr pointer _Ucopy(_Iter _First, _Iter _Last, pointer _Dest) {
+                 return _Uninitialized_copy(_First, _Last, _Dest, _Getal());
     }
 
-    pointer _Umove(pointer _First, pointer _Last, pointer _Dest) {          return _Uninitialized_move(_First, _Last, _Dest, _Getal());
+    constexpr pointer _Umove(pointer _First, pointer _Last, pointer _Dest) {
+                 return _Uninitialized_move(_First, _Last, _Dest, _Getal());
     }
 
-    void _Umove_if_noexcept1(pointer _First, pointer _Last, pointer _Dest, true_type) {
+    constexpr void _Umove_if_noexcept1(pointer _First, pointer _Last, pointer _Dest, true_type) {
                  _Uninitialized_move(_First, _Last, _Dest, _Getal());
     }
 
-    void _Umove_if_noexcept1(pointer _First, pointer _Last, pointer _Dest, false_type) {
+    constexpr void _Umove_if_noexcept1(pointer _First, pointer _Last, pointer _Dest, false_type) {
                  _Uninitialized_copy(_First, _Last, _Dest, _Getal());
     }
 
-    void _Umove_if_noexcept(pointer _First, pointer _Last, pointer _Dest) {
+    constexpr void _Umove_if_noexcept(pointer _First, pointer _Last, pointer _Dest) {
                  _Umove_if_noexcept1(_First, _Last, _Dest,
             bool_constant<disjunction_v<is_nothrow_move_constructible<_Ty>, negation<is_copy_constructible<_Ty>>>>{});
     }
 
-    void _Destroy(pointer _First, pointer _Last) {          _Destroy_range(_First, _Last, _Getal());
+    constexpr void _Destroy(pointer _First, pointer _Last) {
+                 _Destroy_range(_First, _Last, _Getal());
     }
 
-    size_type _Calculate_growth(const size_type _Newsize) const {
+    constexpr size_type _Calculate_growth(const size_type _Newsize) const {
                  const size_type _Oldcapacity = capacity();
         const auto _Max              = max_size();
 
@@ -33534,7 +33912,7 @@ private:
 
         return _Geometric;      }
 
-    void _Buy_raw(const size_type _Newcapacity) {
+    constexpr void _Buy_raw(const size_type _Newcapacity) {
                  auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
@@ -33548,7 +33926,7 @@ private:
         _Myend             = _Newvec + _Newcapacity;
     }
 
-    void _Buy_nonzero(const size_type _Newcapacity) {
+    constexpr void _Buy_nonzero(const size_type _Newcapacity) {
          
         if (_Newcapacity > max_size()) {
             _Xlength();
@@ -33557,7 +33935,8 @@ private:
         _Buy_raw(_Newcapacity);
     }
 
-    void _Change_array(const pointer _Newvec, const size_type _Newsize, const size_type _Newcapacity) {
+    constexpr void _Change_array(
+        const pointer _Newvec, const size_type _Newsize, const size_type _Newcapacity) {
                  auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
@@ -33574,7 +33953,7 @@ private:
         _Myend   = _Newvec + _Newcapacity;
     }
 
-    void _Tidy() noexcept {          auto& _My_data    = _Mypair._Myval2;
+    constexpr void _Tidy() noexcept {          auto& _My_data    = _Mypair._Myval2;
         pointer& _Myfirst = _My_data._Myfirst;
         pointer& _Mylast  = _My_data._Mylast;
         pointer& _Myend   = _My_data._Myend;
@@ -33598,23 +33977,21 @@ private:
         _Xout_of_range("invalid vector subscript");
     }
 
-    void _Orphan_range(pointer _First, pointer _Last) const {          (void) _First;
-        (void) _Last;
-    }
+    constexpr void _Orphan_range(pointer, pointer) const {}
 
-    _Alty& _Getal() noexcept {
+     constexpr _Alty& _Getal() noexcept {
         return _Mypair._Get_first();
     }
 
-    const _Alty& _Getal() const noexcept {
+     constexpr const _Alty& _Getal() const noexcept {
         return _Mypair._Get_first();
     }
 
-    iterator _Make_iterator(const pointer _Ptr) noexcept {
+     constexpr iterator _Make_iterator(const pointer _Ptr) noexcept {
         return iterator(_Ptr, ::std:: addressof(_Mypair._Myval2));
     }
 
-    iterator _Make_iterator_offset(const size_type _Offset) noexcept {
+     constexpr iterator _Make_iterator_offset(const size_type _Offset) noexcept {
                  auto& _My_data = _Mypair._Myval2;
         return iterator(_My_data._Myfirst + _Offset, ::std:: addressof(_My_data));
     }
@@ -33626,45 +34003,81 @@ template <class _Iter, class _Alloc = allocator<_Iter_value_t<_Iter>>,
     enable_if_t<conjunction_v<_Is_iterator<_Iter>, _Is_allocator<_Alloc>>, int> = 0>
 vector(_Iter, _Iter, _Alloc = _Alloc()) -> vector<_Iter_value_t<_Iter>, _Alloc>;
 
+template <class _Alloc>
+class vector<bool, _Alloc>;
+
+using _Vbase         = unsigned int;  constexpr int _VBITS = 8 * sizeof(_Vbase);  
 template <class _Ty, class _Alloc>
-void swap(vector<_Ty, _Alloc>& _Left, vector<_Ty, _Alloc>& _Right) noexcept   {
+ constexpr bool operator==(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
+    if (_Left.size() != _Right.size()) {
+        return false;
+    }
+
+    if constexpr (is_same_v<_Ty, bool>) {
+        return ::std:: equal(
+            _Left._Myvec._Unchecked_begin(), _Left._Myvec._Unchecked_end(), _Right._Myvec._Unchecked_begin());
+    } else {
+        return ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end(), _Right._Unchecked_begin());
+    }
+}
+
+
+ 
+            
+template <class _Ret>
+struct _Vbase_compare_three_way {
+     constexpr _Ret operator()(const _Vbase _Left, const _Vbase _Right) const noexcept {
+        const _Vbase _Differing_bits = _Left ^ _Right;
+
+        if (_Differing_bits == 0) {              return strong_ordering::equal;
+        }
+
+        const int _Bit_index = _Countr_zero(_Differing_bits);          ;  
+        const _Vbase _Mask = _Vbase{1} << _Bit_index;  
+                 return (_Left & _Mask) == 0 ? strong_ordering::less : strong_ordering::greater;
+    }
+};
+
+template <class _Ty, class _Alloc>
+ constexpr _Synth_three_way_result<_Ty> operator<=>(
+    const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
+    if constexpr (is_same_v<_Ty, bool>) {
+                 const auto _Min_word_size = (::std:: min)(_Left._Myvec.size(), _Right._Myvec.size());
+        const auto _Left_words    = _Left._Myvec._Unchecked_begin();
+        const auto _Right_words   = _Right._Myvec._Unchecked_begin();
+
+        using _Comp = _Vbase_compare_three_way<strong_ordering>;
+
+        const strong_ordering _Word_comparison = ::std:: lexicographical_compare_three_way(
+            _Left_words, _Left_words + _Min_word_size, _Right_words, _Right_words + _Min_word_size, _Comp{});
+
+        if (_Word_comparison != 0) {
+            return _Word_comparison;
+        }
+
+        return _Left.size() <=> _Right.size();
+    } else {
+        return ::std:: lexicographical_compare_three_way(_Left._Unchecked_begin(), _Left._Unchecked_end(),
+            _Right._Unchecked_begin(), _Right._Unchecked_end(), _Synth_three_way{});
+    }
+}
+
+template <class _Ty, class _Alloc>
+constexpr void swap(vector<_Ty, _Alloc>& _Left, vector<_Ty, _Alloc>& _Right) noexcept   {
     _Left.swap(_Right);
 }
 
-template <class _Ty, class _Alloc>
- bool operator==(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return _Left.size() == _Right.size()
-           && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end(), _Right._Unchecked_begin());
+template <class _Ty, class _Alloc, class _Uty>
+constexpr typename vector<_Ty, _Alloc>::size_type erase(vector<_Ty, _Alloc>& _Cont, const _Uty& _Val) {
+    return _Erase_remove(_Cont, _Val);
 }
 
-template <class _Ty, class _Alloc>
- bool operator!=(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return !(_Left == _Right);
+template <class _Ty, class _Alloc, class _Pr>
+constexpr typename vector<_Ty, _Alloc>::size_type erase_if(vector<_Ty, _Alloc>& _Cont, _Pr _Pred) {
+    return _Erase_remove_if(_Cont, _Pass_fn(_Pred));
 }
 
-template <class _Ty, class _Alloc>
- bool operator<(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return ::std:: lexicographical_compare(
-        _Left._Unchecked_begin(), _Left._Unchecked_end(), _Right._Unchecked_begin(), _Right._Unchecked_end());
-}
-
-template <class _Ty, class _Alloc>
- bool operator>(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Ty, class _Alloc>
- bool operator<=(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Ty, class _Alloc>
- bool operator>=(const vector<_Ty, _Alloc>& _Left, const vector<_Ty, _Alloc>& _Right) {
-    return !(_Left < _Right);
-}
-
- using _Vbase         = unsigned int;  constexpr int _VBITS = 8 * sizeof(_Vbase);  
-template <class _Alloc0>
+ template <class _Alloc0>
 struct _Wrap_alloc {      using _Alloc = _Alloc0;
 };
 
@@ -33676,14 +34089,16 @@ class _Vb_iter_base : public _Iterator_base {
     using _Difference_type = typename allocator_traits<_Alvbase>::difference_type;
     using _Mycont          = vector<bool, _Rebind_alloc_t<_Alvbase, bool>>;
 
-    _Vb_iter_base() = default;
+    constexpr _Vb_iter_base() = default;
 
-    _Vb_iter_base(const _Vbase* _Ptr, _Size_type _Off, const _Container_base* _Mypvbool) noexcept
+    constexpr _Vb_iter_base(const _Vbase* _Ptr, _Size_type _Off, const _Container_base* _Mypvbool) noexcept
         : _Myptr(_Ptr), _Myoff(_Off) {
         this->_Adopt(_Mypvbool);
     }
 
-    void _Advance(_Size_type _Off) noexcept {
+         constexpr _Vb_iter_base& operator=(const _Vb_iter_base&) noexcept = default;
+
+    constexpr void _Advance(_Size_type _Off) noexcept {
         _Myoff += _Off;
         _Myptr += _Myoff / _VBITS;
         _Myoff %= _VBITS;
@@ -33700,18 +34115,19 @@ class _Vb_reference : public _Vb_iter_base<_Alvbase_wrapped> {
     using _Mycont          = typename _Mybase::_Mycont;
     using _Difference_type = typename _Mybase::_Difference_type;
 
-         _Vb_reference() = default;
+         constexpr _Vb_reference() = default;
 
 public:
-    _Vb_reference(const _Vb_reference&) = default;
+    constexpr _Vb_reference(const _Vb_reference&) = default;
 
-    _Vb_reference(const _Mybase& _Right) noexcept : _Mybase(_Right._Myptr, _Right._Myoff, _Right._Getcont()) {}
+    constexpr _Vb_reference(const _Mybase& _Right) noexcept
+        : _Mybase(_Right._Myptr, _Right._Myoff, _Right._Getcont()) {}
 
-    _Vb_reference& operator=(const _Vb_reference& _Right) noexcept {
+    constexpr _Vb_reference& operator=(const _Vb_reference& _Right) noexcept {
         return *this = static_cast<bool>(_Right);
     }
 
-    _Vb_reference& operator=(bool _Val) noexcept {
+    constexpr _Vb_reference& operator=(bool _Val) noexcept {
         if (_Val) {
             *const_cast<_Vbase*>(_Getptr()) |= _Mask();
         } else {
@@ -33721,26 +34137,26 @@ public:
         return *this;
     }
 
-    void flip() noexcept {
+    constexpr void flip() noexcept {
         *const_cast<_Vbase*>(_Getptr()) ^= _Mask();
     }
 
-    operator bool() const noexcept {
+    constexpr operator bool() const noexcept {
         return (*_Getptr() & _Mask()) != 0;
     }
 
-    const _Vbase* _Getptr() const noexcept {
+    constexpr const _Vbase* _Getptr() const noexcept {
 
         return this->_Myptr;
     }
 
-    friend void swap(_Vb_reference _Left, _Vb_reference _Right) noexcept {
+    friend constexpr void swap(_Vb_reference _Left, _Vb_reference _Right) noexcept {
         bool _Val = _Left;          _Left     = _Right;
         _Right    = _Val;
     }
 
 protected:
-    _Vbase _Mask() const noexcept {
+    constexpr _Vbase _Mask() const noexcept {
         return static_cast<_Vbase>(1) << this->_Myoff;
     }
 };
@@ -33763,104 +34179,95 @@ public:
     using pointer           = const_reference*;
     using reference         = const_reference;
 
-    _Vb_const_iterator() = default;
+    constexpr _Vb_const_iterator() = default;
 
-    _Vb_const_iterator(const _Vbase* _Ptr, const _Container_base* _Mypvbool) noexcept : _Mybase(_Ptr, 0, _Mypvbool) {}
+    constexpr _Vb_const_iterator(const _Vbase* _Ptr, const _Container_base* _Mypvbool) noexcept
+        : _Mybase(_Ptr, 0, _Mypvbool) {}
 
-     const_reference operator*() const noexcept {
+         constexpr _Vb_const_iterator& operator=(const _Vb_const_iterator&) noexcept = default;
+
+     constexpr const_reference operator*() const noexcept {
 
         return _Reft(*this);
     }
 
-    _Vb_const_iterator& operator++() noexcept {
+    constexpr _Vb_const_iterator& operator++() noexcept {
         _Inc();
         return *this;
     }
 
-    _Vb_const_iterator operator++(int) noexcept {
+    constexpr _Vb_const_iterator operator++(int) noexcept {
         _Vb_const_iterator _Tmp = *this;
         _Inc();
         return _Tmp;
     }
 
-    _Vb_const_iterator& operator--() noexcept {
+    constexpr _Vb_const_iterator& operator--() noexcept {
         _Dec();
         return *this;
     }
 
-    _Vb_const_iterator operator--(int) noexcept {
+    constexpr _Vb_const_iterator operator--(int) noexcept {
         _Vb_const_iterator _Tmp = *this;
         _Dec();
         return _Tmp;
     }
 
-    _Vb_const_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _Vb_const_iterator& operator+=(const difference_type _Off) noexcept {
 
-        if (_Off < 0 && this->_Myoff < 0 - static_cast<_Size_type>(_Off)) {              this->_Myoff += _Off;
+        if (_Off < 0 && this->_Myoff < 0 - static_cast<_Size_type>(_Off)) {              this->_Myoff += static_cast<_Size_type>(_Off);
             this->_Myptr -= 1 + (static_cast<_Size_type>(-1) - this->_Myoff) / _VBITS;
             this->_Myoff %= _VBITS;
-        } else {              this->_Myoff += _Off;
+        } else {              this->_Myoff += static_cast<_Size_type>(_Off);
             this->_Myptr += this->_Myoff / _VBITS;
             this->_Myoff %= _VBITS;
         }
         return *this;
     }
 
-     _Vb_const_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _Vb_const_iterator operator+(const difference_type _Off) const noexcept {
         _Vb_const_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _Vb_const_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _Vb_const_iterator& operator-=(const difference_type _Off) noexcept {
         return *this += -_Off;
     }
 
-     _Vb_const_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _Vb_const_iterator operator-(const difference_type _Off) const noexcept {
         _Vb_const_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     difference_type operator-(const _Vb_const_iterator& _Right) const noexcept {
+     constexpr difference_type operator-(const _Vb_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return static_cast<difference_type>(_VBITS * (this->_Myptr - _Right._Myptr))
-               + static_cast<difference_type>(this->_Myoff) - static_cast<difference_type>(_Right._Myoff);
+             + static_cast<difference_type>(this->_Myoff) - static_cast<difference_type>(_Right._Myoff);
     }
 
-     const_reference operator[](const difference_type _Off) const noexcept {
+     constexpr const_reference operator[](const difference_type _Off) const noexcept {
         return *(*this + _Off);
     }
 
-     bool operator==(const _Vb_const_iterator& _Right) const noexcept {
+     constexpr bool operator==(const _Vb_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return this->_Myptr == _Right._Myptr && this->_Myoff == _Right._Myoff;
     }
 
-     bool operator!=(const _Vb_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
-
-     bool operator<(const _Vb_const_iterator& _Right) const noexcept {
+     constexpr strong_ordering operator<=>(const _Vb_const_iterator& _Right) const noexcept {
         _Compat(_Right);
-        return this->_Myptr < _Right._Myptr || (this->_Myptr == _Right._Myptr && this->_Myoff < _Right._Myoff);
+        if (const auto _CmpResult = this->_Myptr <=> _Right._Myptr; _CmpResult != 0) {
+            return _CmpResult;
+        }
+        return this->_Myoff <=> _Right._Myoff;
     }
 
-     bool operator>(const _Vb_const_iterator& _Right) const noexcept {
-        return _Right < *this;
-    }
-
-     bool operator<=(const _Vb_const_iterator& _Right) const noexcept {
-        return !(_Right < *this);
-    }
-
-     bool operator>=(const _Vb_const_iterator& _Right) const noexcept {
-        return !(*this < _Right);
-    }
-
-    void _Compat(const _Vb_const_iterator& _Right) const noexcept {          (void) _Right;
+    constexpr void _Compat(const _Vb_const_iterator& _Right) const noexcept {
+                 (void) _Right;
     }
 
 
-    void _Dec() noexcept {  
+    constexpr void _Dec() noexcept {  
         if (this->_Myoff != 0) {
             --this->_Myoff;
         } else {              this->_Myoff = _VBITS - 1;
@@ -33868,7 +34275,7 @@ public:
         }
     }
 
-    void _Inc() noexcept {  
+    constexpr void _Inc() noexcept {  
         if (this->_Myoff < _VBITS - 1) {
             ++this->_Myoff;
         } else {              this->_Myoff = 0;
@@ -33878,7 +34285,7 @@ public:
 };
 
 template <class _Alvbase_wrapped>
- _Vb_const_iterator<_Alvbase_wrapped> operator+(
+ constexpr _Vb_const_iterator<_Alvbase_wrapped> operator+(
     typename _Vb_const_iterator<_Alvbase_wrapped>::difference_type _Off,
     _Vb_const_iterator<_Alvbase_wrapped> _Right) noexcept {
     return _Right += _Off;
@@ -33902,56 +34309,58 @@ public:
 
     using _Mybase::_Mybase;
 
-     reference operator*() const noexcept {
+     constexpr reference operator*() const noexcept {
 
         return _Reft(*this);
     }
 
-    _Vb_iterator& operator++() noexcept {
+         constexpr _Vb_iterator& operator=(const _Vb_iterator&) noexcept = default;
+
+    constexpr _Vb_iterator& operator++() noexcept {
         _Mybase::operator++();
         return *this;
     }
 
-    _Vb_iterator operator++(int) noexcept {
+    constexpr _Vb_iterator operator++(int) noexcept {
         _Vb_iterator _Tmp = *this;
         _Mybase::operator++();
         return _Tmp;
     }
 
-    _Vb_iterator& operator--() noexcept {
+    constexpr _Vb_iterator& operator--() noexcept {
         _Mybase::operator--();
         return *this;
     }
 
-    _Vb_iterator operator--(int) noexcept {
+    constexpr _Vb_iterator operator--(int) noexcept {
         _Vb_iterator _Tmp = *this;
         _Mybase::operator--();
         return _Tmp;
     }
 
-    _Vb_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _Vb_iterator& operator+=(const difference_type _Off) noexcept {
         _Mybase::operator+=(_Off);
         return *this;
     }
 
-     _Vb_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _Vb_iterator operator+(const difference_type _Off) const noexcept {
         _Vb_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _Vb_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _Vb_iterator& operator-=(const difference_type _Off) noexcept {
         _Mybase::operator-=(_Off);
         return *this;
     }
 
     using _Mybase::operator-;
 
-     _Vb_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _Vb_iterator operator-(const difference_type _Off) const noexcept {
         _Vb_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     reference operator[](const difference_type _Off) const noexcept {
+     constexpr reference operator[](const difference_type _Off) const noexcept {
         return *(*this + _Off);
     }
 
@@ -33959,7 +34368,7 @@ public:
 };
 
 template <class _Alvbase_wrapped>
- _Vb_iterator<_Alvbase_wrapped> operator+(
+ constexpr _Vb_iterator<_Alvbase_wrapped> operator+(
     typename _Vb_iterator<_Alvbase_wrapped>::difference_type _Off, _Vb_iterator<_Alvbase_wrapped> _Right) noexcept {
     return _Right += _Off;
 }
@@ -33973,59 +34382,61 @@ public:
     using _Alvbase_wrapped = _Wrap_alloc<_Alvbase>;
     using size_type        = typename _Alvbase_traits::size_type;
 
-    _Vb_val() noexcept(is_nothrow_default_constructible_v<_Vectype>) : _Myvec(), _Mysize(0) {
-        this->_Alloc_proxy(_Fake_allocator());
+    constexpr _Vb_val() noexcept(is_nothrow_default_constructible_v<_Vectype>) : _Myvec(), _Mysize(0) {
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(const _Alloc& _Al) noexcept(is_nothrow_constructible_v<_Vectype, _Alvbase>)
+    constexpr _Vb_val(const _Alloc& _Al) noexcept(is_nothrow_constructible_v<_Vectype, _Alvbase>)
         : _Myvec(static_cast<_Alvbase>(_Al)), _Mysize(0) {
-        this->_Alloc_proxy(_Fake_allocator());
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(size_type _Count, const bool& _Val) : _Myvec(_Nw(_Count), static_cast<_Vbase>(_Val ? -1 : 0)), _Mysize(0) {
-        this->_Alloc_proxy(_Fake_allocator());
+    constexpr _Vb_val(size_type _Count, const bool& _Val)
+        : _Myvec(_Nw(_Count), static_cast<_Vbase>(_Val ? -1 : 0)), _Mysize(0) {
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(size_type _Count, const bool& _Val, const _Alloc& _Al)
+    constexpr _Vb_val(size_type _Count, const bool& _Val, const _Alloc& _Al)
         : _Myvec(_Nw(_Count), static_cast<_Vbase>(_Val ? -1 : 0), static_cast<_Alvbase>(_Al)), _Mysize(0) {
-        this->_Alloc_proxy(_Fake_allocator());
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(const _Vb_val& _Right) : _Myvec(_Right._Myvec), _Mysize(_Right._Mysize) {
-        this->_Alloc_proxy(_Fake_allocator());
+    constexpr _Vb_val(const _Vb_val& _Right) : _Myvec(_Right._Myvec), _Mysize(_Right._Mysize) {
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(const _Vb_val& _Right, const _Alloc& _Al)
+    constexpr _Vb_val(const _Vb_val& _Right, const _Alloc& _Al)
         : _Myvec(_Right._Myvec, static_cast<_Alvbase>(_Al)), _Mysize(_Right._Mysize) {
-        this->_Alloc_proxy(_Fake_allocator());
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(_Vb_val&& _Right) noexcept(is_nothrow_move_constructible_v<_Vectype>)
+    constexpr _Vb_val(_Vb_val&& _Right) noexcept(is_nothrow_move_constructible_v<_Vectype>)
         : _Myvec(::std:: move(_Right._Myvec)), _Mysize(::std:: exchange(_Right._Mysize, size_type{0})) {
-        this->_Alloc_proxy(_Fake_allocator());
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    _Vb_val(_Vb_val&& _Right, const _Alloc& _Al) noexcept(is_nothrow_constructible_v<_Vectype, _Vectype, _Alvbase>)
+    constexpr _Vb_val(_Vb_val&& _Right, const _Alloc& _Al) noexcept(
+        is_nothrow_constructible_v<_Vectype, _Vectype, _Alvbase>)
         : _Myvec(::std:: move(_Right._Myvec), static_cast<_Alvbase>(_Al)), _Mysize(_Right._Mysize) {
         if (_Right._Myvec.empty()) {
                          _Right._Mysize = 0;
         }
 
-        this->_Alloc_proxy(_Fake_allocator());
+        this->_Alloc_proxy(_Fake_alloc);
     }
 
-    ~_Vb_val() noexcept {
+    constexpr ~_Vb_val() noexcept {
     }
 
-    _Alvbase& _Getal() noexcept {
+    constexpr _Alvbase& _Getal() noexcept {
         return _Myvec._Getal();
     }
 
-    const _Alvbase& _Getal() const noexcept {
+    constexpr const _Alvbase& _Getal() const noexcept {
         return _Myvec._Getal();
     }
 
-    static size_type _Nw(size_type _Count) noexcept {
+    static constexpr size_type _Nw(size_type _Count) noexcept {
         return (_Count + _VBITS - 1) / _VBITS;
     }
 
@@ -34061,38 +34472,41 @@ public:
 
     static const int _VBITS = ::std:: _VBITS;
     enum { _EEN_VBITS = _VBITS };  
-    vector() noexcept(is_nothrow_default_constructible_v<_Mybase>)          : _Mybase() {}
+    constexpr vector() noexcept(is_nothrow_default_constructible_v<_Mybase>)          : _Mybase() {}
 
-    explicit vector(const _Alloc& _Al) noexcept(is_nothrow_constructible_v<_Mybase, const _Alloc&>)          : _Mybase(_Al) {}
+    constexpr explicit vector(const _Alloc& _Al) noexcept(
+        is_nothrow_constructible_v<_Mybase, const _Alloc&>)          : _Mybase(_Al) {}
 
-    explicit vector( size_type _Count, const _Alloc& _Al = _Alloc()) : _Mybase(_Count, false, _Al) {
+    constexpr explicit vector( size_type _Count, const _Alloc& _Al = _Alloc())
+        : _Mybase(_Count, false, _Al) {
         _Trim(_Count);
     }
 
-    vector( size_type _Count, const bool& _Val, const _Alloc& _Al = _Alloc())
+    constexpr vector( size_type _Count, const bool& _Val, const _Alloc& _Al = _Alloc())
         : _Mybase(_Count, _Val, _Al) {
         _Trim(_Count);
     }
 
-    vector(const vector& _Right) : _Mybase(_Right) {}
+    constexpr vector(const vector& _Right) : _Mybase(_Right) {}
 
-    vector(const vector& _Right, const _Alloc& _Al) : _Mybase(_Right, _Al) {}
+    constexpr vector(const vector& _Right, const _Alloc& _Al) : _Mybase(_Right, _Al) {}
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    vector(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc()) : _Mybase(_Al) {
+    constexpr vector(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc()) : _Mybase(_Al) {
         _BConstruct(_First, _Last);
     }
 
     template <class _Iter>
-    void _BConstruct(_Iter _First, _Iter _Last) {
+    constexpr void _BConstruct(_Iter _First, _Iter _Last) {
         insert(begin(), _First, _Last);
     }
 
-    vector(vector&& _Right) noexcept(is_nothrow_move_constructible_v<_Mybase>)          : _Mybase(::std:: move(_Right)) {
+    constexpr vector(vector&& _Right) noexcept(is_nothrow_move_constructible_v<_Mybase>)          : _Mybase(::std:: move(_Right)) {
         this->_Swap_proxy_and_iterators(_Right);
     }
 
-    vector(vector&& _Right, const _Alloc& _Al) noexcept(is_nothrow_constructible_v<_Mybase, _Mybase, const _Alloc&>)
+    constexpr vector(vector&& _Right, const _Alloc& _Al) noexcept(
+        is_nothrow_constructible_v<_Mybase, _Mybase, const _Alloc&>)
         : _Mybase(::std:: move(_Right), _Al) {
         if constexpr (!_Alvbase_traits::is_always_equal::value) {
             if (this->_Getal() != _Right._Getal()) {
@@ -34106,7 +34520,7 @@ public:
 private:
 
 public:
-    vector& operator=(vector&& _Right) noexcept(is_nothrow_move_assignable_v<_Mybase>) {
+    constexpr vector& operator=(vector&& _Right) noexcept(is_nothrow_move_assignable_v<_Mybase>) {
         if (this != ::std:: addressof(_Right)) {
             this->_Myvec  = ::std:: move(_Right._Myvec);
             this->_Mysize = ::std:: exchange(_Right._Mysize, size_type{0});
@@ -34115,7 +34529,7 @@ public:
     }
 
     template <class... _Valty>
-    decltype(auto) emplace_back(_Valty&&... _Val) {
+    constexpr decltype(auto) emplace_back(_Valty&&... _Val) {
         bool _Tmp(::std:: forward<_Valty>(_Val)...);
         push_back(_Tmp);
 
@@ -34123,34 +34537,35 @@ public:
     }
 
     template <class... _Valty>
-    iterator emplace(const_iterator _Where, _Valty&&... _Val) {
+    constexpr iterator emplace(const_iterator _Where, _Valty&&... _Val) {
         bool _Tmp(::std:: forward<_Valty>(_Val)...);
         return insert(_Where, _Tmp);
     }
 
-    vector(initializer_list<bool> _Ilist, const _Alloc& _Al = allocator_type()) : _Mybase(0, false, _Al) {
+    constexpr vector(initializer_list<bool> _Ilist, const _Alloc& _Al = allocator_type())
+        : _Mybase(0, false, _Al) {
         insert(begin(), _Ilist.begin(), _Ilist.end());
     }
 
-    vector& operator=(initializer_list<bool> _Ilist) {
+    constexpr vector& operator=(initializer_list<bool> _Ilist) {
         assign(_Ilist.begin(), _Ilist.end());
         return *this;
     }
 
-    void assign(initializer_list<bool> _Ilist) {
+    constexpr void assign(initializer_list<bool> _Ilist) {
         assign(_Ilist.begin(), _Ilist.end());
     }
 
-    iterator insert(const_iterator _Where, initializer_list<bool> _Ilist) {
+    constexpr iterator insert(const_iterator _Where, initializer_list<bool> _Ilist) {
         return insert(_Where, _Ilist.begin(), _Ilist.end());
     }
 
-    ~vector() noexcept {}
+    constexpr ~vector() noexcept {}
 
 private:
 
 public:
-    vector& operator=(const vector& _Right) {
+    constexpr vector& operator=(const vector& _Right) {
         if (this != ::std:: addressof(_Right)) {
             this->_Myvec  = _Right._Myvec;
             this->_Mysize = _Right._Mysize;
@@ -34159,70 +34574,70 @@ public:
         return *this;
     }
 
-    void reserve( size_type _Count) {
+    constexpr void reserve( size_type _Count) {
         this->_Myvec.reserve(this->_Nw(_Count));
     }
 
-     size_type capacity() const noexcept {
+     constexpr size_type capacity() const noexcept {
         return this->_Myvec.capacity() * _VBITS;
     }
 
-     iterator begin() noexcept {
+     constexpr iterator begin() noexcept {
         return iterator(this->_Myvec.data(), this);
     }
 
-     const_iterator begin() const noexcept {
+     constexpr const_iterator begin() const noexcept {
         return const_iterator(this->_Myvec.data(), this);
     }
 
-     iterator end() noexcept {
+     constexpr iterator end() noexcept {
         return begin() + static_cast<difference_type>(this->_Mysize);
     }
 
-     const_iterator end() const noexcept {
+     constexpr const_iterator end() const noexcept {
         return begin() + static_cast<difference_type>(this->_Mysize);
     }
 
-     const_iterator cbegin() const noexcept {
+     constexpr const_iterator cbegin() const noexcept {
         return begin();
     }
 
-     const_iterator cend() const noexcept {
+     constexpr const_iterator cend() const noexcept {
         return end();
     }
 
-     const_reverse_iterator crbegin() const noexcept {
+     constexpr const_reverse_iterator crbegin() const noexcept {
         return rbegin();
     }
 
-     const_reverse_iterator crend() const noexcept {
+     constexpr const_reverse_iterator crend() const noexcept {
         return rend();
     }
 
-     iterator _Unchecked_begin() noexcept {
+     constexpr iterator _Unchecked_begin() noexcept {
         return iterator(this->_Myvec.data(), this);
     }
 
-     const_iterator _Unchecked_begin() const noexcept {
+     constexpr const_iterator _Unchecked_begin() const noexcept {
         return const_iterator(this->_Myvec.data(), this);
     }
 
-     iterator _Unchecked_end() noexcept {
+     constexpr iterator _Unchecked_end() noexcept {
         return _Unchecked_begin() + static_cast<difference_type>(this->_Mysize);
     }
 
-     const_iterator _Unchecked_end() const noexcept {
+     constexpr const_iterator _Unchecked_end() const noexcept {
         return _Unchecked_begin() + static_cast<difference_type>(this->_Mysize);
     }
 
-    void shrink_to_fit() {
+    constexpr void shrink_to_fit() {
         if (this->_Myvec.capacity() != this->_Myvec.size()) {
             this->_Orphan_all();
             this->_Myvec.shrink_to_fit();
         }
     }
 
-    iterator _Make_iter(const_iterator _Where) noexcept {
+    constexpr iterator _Make_iter(const_iterator _Where) noexcept {
         iterator _Tmp = begin();
         if (0 < this->_Mysize) {
             _Tmp += _Where - begin();
@@ -34231,23 +34646,23 @@ public:
         return _Tmp;
     }
 
-     reverse_iterator rbegin() noexcept {
+     constexpr reverse_iterator rbegin() noexcept {
         return reverse_iterator(end());
     }
 
-     const_reverse_iterator rbegin() const noexcept {
+     constexpr const_reverse_iterator rbegin() const noexcept {
         return const_reverse_iterator(end());
     }
 
-     reverse_iterator rend() noexcept {
+     constexpr reverse_iterator rend() noexcept {
         return reverse_iterator(begin());
     }
 
-     const_reverse_iterator rend() const noexcept {
+     constexpr const_reverse_iterator rend() const noexcept {
         return const_reverse_iterator(begin());
     }
 
-    void resize( size_type _Newsize, bool _Val = false) {
+    constexpr void resize( size_type _Newsize, bool _Val = false) {
         if (size() < _Newsize) {
             _Insert_n(end(), _Newsize - size(), _Val);
         } else if (_Newsize < size()) {
@@ -34255,11 +34670,11 @@ public:
         }
     }
 
-     size_type size() const noexcept {
+     constexpr size_type size() const noexcept {
         return this->_Mysize;
     }
 
-     size_type max_size() const noexcept {
+     constexpr size_type max_size() const noexcept {
         constexpr auto _Diff_max  = static_cast<size_type>((numeric_limits<difference_type>::max)());
         const size_type _Ints_max = this->_Myvec.max_size();
         if (_Ints_max > _Diff_max / _VBITS) {              return _Diff_max;
@@ -34268,15 +34683,15 @@ public:
                  return _Ints_max * _VBITS;
     }
 
-     bool empty() const noexcept {
+     constexpr bool empty() const noexcept {
         return size() == 0;
     }
 
-     allocator_type get_allocator() const noexcept {
+     constexpr allocator_type get_allocator() const noexcept {
         return static_cast<allocator_type>(this->_Myvec.get_allocator());
     }
 
-     const_reference at(size_type _Off) const {
+     constexpr const_reference at(size_type _Off) const {
         if (size() <= _Off) {
             _Xran();
         }
@@ -34284,7 +34699,7 @@ public:
         return (*this)[_Off];
     }
 
-     reference at(size_type _Off) {
+     constexpr reference at(size_type _Off) {
         if (size() <= _Off) {
             _Xran();
         }
@@ -34292,76 +34707,77 @@ public:
         return (*this)[_Off];
     }
 
-     const_reference operator[](size_type _Off) const noexcept   {
+     constexpr const_reference operator[](size_type _Off) const noexcept   {
 
         const_iterator _It = begin();
         _It._Advance(_Off);
         return *_It;
     }
 
-     reference operator[](size_type _Off) noexcept   {
+     constexpr reference operator[](size_type _Off) noexcept   {
 
         iterator _It = begin();
         _It._Advance(_Off);
         return *_It;
     }
 
-     reference front() noexcept   {
+     constexpr reference front() noexcept   {
 
         return *begin();
     }
 
-     const_reference front() const noexcept   {
+     constexpr const_reference front() const noexcept   {
 
         return *begin();
     }
 
-     reference back() noexcept   {
+     constexpr reference back() noexcept   {
 
         return *(end() - 1);
     }
 
-     const_reference back() const noexcept   {
+     constexpr const_reference back() const noexcept   {
 
         return *(end() - 1);
     }
 
-    void push_back(const bool& _Val) {
+    constexpr void push_back(const bool& _Val) {
         insert(end(), _Val);
     }
 
-    void pop_back() noexcept   {
+    constexpr void pop_back() noexcept   {
         erase(end() - 1);
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    void assign(_Iter _First, _Iter _Last) {
+    constexpr void assign(_Iter _First, _Iter _Last) {
         clear();
         insert(begin(), _First, _Last);
     }
 
-    void assign( size_type _Count, const bool& _Val) {
+    constexpr void assign( size_type _Count, const bool& _Val) {
         clear();
         _Insert_n(begin(), _Count, _Val);
     }
 
-    iterator insert(const_iterator _Where, const bool& _Val) {
+    constexpr iterator insert(const_iterator _Where, const bool& _Val) {
         return _Insert_n(_Where, static_cast<size_type>(1), _Val);
     }
 
-    iterator insert(const_iterator _Where,  size_type _Count, const bool& _Val) {
+    constexpr iterator insert(
+        const_iterator _Where,  size_type _Count, const bool& _Val) {
         return _Insert_n(_Where, _Count, _Val);
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    iterator insert(const_iterator _Where, _Iter _First, _Iter _Last) {
+    constexpr iterator insert(const_iterator _Where, _Iter _First, _Iter _Last) {
         difference_type _Off = _Where - begin();
         _Insert(_Where, _First, _Last, _Iter_cat_t<_Iter>{});
         return begin() + _Off;
     }
 
     template <class _Iter>
-    void _Insert(const_iterator _Where, _Iter _First, _Iter _Last, input_iterator_tag) {
+    constexpr void _Insert(const_iterator _Where, _Iter _First, _Iter _Last, input_iterator_tag) {
         difference_type _Off = _Where - begin();
 
         for (; _First != _Last; ++_First, (void) ++_Off) {
@@ -34370,14 +34786,14 @@ public:
     }
 
     template <class _Iter>
-    void _Insert(const_iterator _Where, _Iter _First, _Iter _Last, forward_iterator_tag) {
+    constexpr void _Insert(const_iterator _Where, _Iter _First, _Iter _Last, forward_iterator_tag) {
         _Adl_verify_range(_First, _Last);
         auto _Count    = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
         size_type _Off = _Insert_x(_Where, _Count);
         _Copy_unchecked(_Get_unwrapped(_First), _Get_unwrapped(_Last), begin() + static_cast<difference_type>(_Off));
     }
 
-    iterator erase(const_iterator _Where_arg) noexcept   {
+    constexpr iterator erase(const_iterator _Where_arg) noexcept   {
         iterator _Where      = _Make_iter(_Where_arg);
         difference_type _Off = _Where - begin();
 
@@ -34387,7 +34803,8 @@ public:
         return begin() + _Off;
     }
 
-    iterator erase(const_iterator _First_arg, const_iterator _Last_arg) noexcept   {
+    constexpr iterator erase(const_iterator _First_arg, const_iterator _Last_arg) noexcept
+      {
         iterator _First      = _Make_iter(_First_arg);
         iterator _Last       = _Make_iter(_Last_arg);
         difference_type _Off = _First - begin();
@@ -34398,20 +34815,20 @@ public:
         return begin() + _Off;
     }
 
-    void clear() noexcept {
+    constexpr void clear() noexcept {
         this->_Orphan_all();
         this->_Myvec.clear();
         this->_Mysize = 0;
     }
 
-    void flip() noexcept {          for (auto& _Elem : this->_Myvec) {
+    constexpr void flip() noexcept {          for (auto& _Elem : this->_Myvec) {
             _Elem = ~_Elem;
         }
 
         _Trim(this->_Mysize);
     }
 
-    void swap(vector& _Right) noexcept   {
+    constexpr void swap(vector& _Right) noexcept   {
         if (this != ::std:: addressof(_Right)) {
             this->_Swap_proxy_and_iterators(_Right);
             this->_Myvec.swap(_Right._Myvec);
@@ -34419,21 +34836,21 @@ public:
         }
     }
 
-    static void swap(reference _Left, reference _Right) noexcept {
+    static constexpr void swap(reference _Left, reference _Right) noexcept {
         bool _Val = _Left;          _Left     = _Right;
         _Right    = _Val;
     }
 
     friend hash<vector<bool, _Alloc>>;
 
-    iterator _Insert_n(const_iterator _Where, size_type _Count, const bool& _Val) {
+    constexpr iterator _Insert_n(const_iterator _Where, size_type _Count, const bool& _Val) {
         size_type _Off     = _Insert_x(_Where, _Count);
         const auto _Result = begin() + static_cast<difference_type>(_Off);
         ::std:: fill(_Result, _Result + static_cast<difference_type>(_Count), _Val);
         return _Result;
     }
 
-    size_type _Insert_x(const_iterator _Where, size_type _Count) {
+    constexpr size_type _Insert_x(const_iterator _Where, size_type _Count) {
         difference_type _Off = _Where - begin();
 
 
@@ -34454,9 +34871,8 @@ public:
         return static_cast<size_type>(_Off);
     }
 
-    void _Orphan_range(size_type, size_type) const {}
 
-    void _Trim(size_type _Size) {
+    constexpr void _Trim(size_type _Size) {
         if (max_size() < _Size) {
             _Xlen();          }
 
@@ -34481,16 +34897,6 @@ public:
     }
 };
 
-template <class _Alloc>
- bool operator==(const vector<bool, _Alloc>& _Left, const vector<bool, _Alloc>& _Right) {
-    return _Left.size() == _Right.size() && _Left._Myvec == _Right._Myvec;
-}
-
-template <class _Alloc>
- bool operator!=(const vector<bool, _Alloc>& _Left, const vector<bool, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
-
  template <class _Alloc>
 struct hash<vector<bool, _Alloc>> {
     [[deprecated(                                                                                                         "warning STL4007: Many result_type typedefs and all argument_type, first_argument_type, and second_argument_type typedefs are deprecated in C++17. You can define _SILENCE_CXX17_ADAPTOR_TYPEDEFS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef vector<bool, _Alloc> _Unnameable_argument;
@@ -34500,16 +34906,6 @@ struct hash<vector<bool, _Alloc>> {
         return _Hash_array_representation(_Keyval._Myvec.data(), _Keyval._Myvec.size());
     }
 };
-
-template <class _Ty, class _Alloc, class _Uty>
-typename vector<_Ty, _Alloc>::size_type erase(vector<_Ty, _Alloc>& _Cont, const _Uty& _Val) {
-    return _Erase_remove(_Cont, _Val);
-}
-
-template <class _Ty, class _Alloc, class _Pr>
-typename vector<_Ty, _Alloc>::size_type erase_if(vector<_Ty, _Alloc>& _Cont, _Pr _Pred) {
-    return _Erase_remove_if(_Cont, _Pass_fn(_Pred));
-}
 
 namespace pmr {
     template <class _Ty>
@@ -34637,6 +35033,7 @@ struct _Char_traits {      using char_type  = _Elem;
     using pos_type   = streampos;
     using off_type   = streamoff;
     using state_type = _Mbstatet;
+    using comparison_category = strong_ordering;
 
      
     static constexpr _Elem* copy(  _Elem* const _First1,
@@ -34656,8 +35053,8 @@ struct _Char_traits {      using char_type  = _Elem;
 
       static constexpr _Elem* _Copy_s( 
                                                                                  _Elem* const _First1,
-        const size_t _Dest_size,   const _Elem* const _First2,
-        const size_t _Count) noexcept {          do {                                                                    if (_Count <= _Dest_size) {           } else {                                                                do {                                             ;                   ::_invalid_parameter_noinfo_noreturn();     } while (false);                                        }                                                                                                                                       ;                                        } while (false);
+        const size_t _Dest_size,   const _Elem* const _First2, const size_t _Count) noexcept {
+                 do {                                                                    if (_Count <= _Dest_size) {           } else {                                                                do {                                             ;                   ::_invalid_parameter_noinfo_noreturn();     } while (false);                                        }                                                                                                                                       ;                                        } while (false);
         return copy(_First1, _First2, _Count);
     }
 
@@ -34729,17 +35126,28 @@ struct _Char_traits {      using char_type  = _Elem;
     }
 
     static constexpr _Elem* assign(
-          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept
-      {
-                 for (_Elem* _Next = _First; _Count > 0; --_Count, ++_Next) {
-            *_Next = _Ch;
+          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept   {
+                 if (::std:: is_constant_evaluated()) {
+            for (_Elem* _Next = _First; _Count > 0; --_Count, ++_Next) {
+                ::std:: construct_at(_Next, _Ch);
+            }
+        } else
+        {
+            for (_Elem* _Next = _First; _Count > 0; --_Count, ++_Next) {
+                *_Next = _Ch;
+            }
         }
 
         return _First;
     }
 
     static constexpr void assign(_Elem& _Left, const _Elem& _Right) noexcept {
-        _Left = _Right;
+        if (::std:: is_constant_evaluated()) {
+            ::std:: construct_at(::std:: addressof(_Left), _Right);
+        } else
+        {
+            _Left = _Right;
+        }
     }
 
      static constexpr bool eq(const _Elem& _Left, const _Elem& _Right) noexcept {
@@ -34782,6 +35190,7 @@ public:
     using pos_type   = streampos;
     using off_type   = streamoff;
     using state_type = mbstate_t;
+    using comparison_category = strong_ordering;
 
     using _Primary_char_traits::_Copy_s;
     using _Primary_char_traits::copy;
@@ -34814,8 +35223,7 @@ public:
     }
 
     static constexpr _Elem* assign(
-          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept
-      {
+          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept   {
                  if (::std:: is_constant_evaluated()) {
             return _Primary_char_traits::assign(_First, _Count, _Ch);
         }
@@ -34886,6 +35294,7 @@ public:
     using pos_type   = streampos;
     using off_type   = streamoff;
     using state_type = mbstate_t;
+    using comparison_category = strong_ordering;
 
     using _Primary_char_traits::_Copy_s;
     using _Primary_char_traits::copy;
@@ -34916,8 +35325,7 @@ public:
     }
 
     static constexpr _Elem* assign(
-          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept
-      {
+          _Elem* const _First, size_t _Count, const _Elem _Ch) noexcept   {
                  if (::std:: is_constant_evaluated()) {
             return _Primary_char_traits::assign(_First, _Count, _Ch);
         }
@@ -35418,24 +35826,8 @@ public:
         return _Myptr == _Right._Myptr;
     }
 
-     constexpr bool operator!=(const _String_view_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
-
-     constexpr bool operator<(const _String_view_iterator& _Right) const noexcept {
-        return _Myptr < _Right._Myptr;
-    }
-
-     constexpr bool operator>(const _String_view_iterator& _Right) const noexcept {
-        return _Right < *this;
-    }
-
-     constexpr bool operator<=(const _String_view_iterator& _Right) const noexcept {
-        return !(_Right < *this);
-    }
-
-     constexpr bool operator>=(const _String_view_iterator& _Right) const noexcept {
-        return !(*this < _Right);
+     constexpr strong_ordering operator<=>(const _String_view_iterator& _Right) const noexcept {
+        return _Myptr <=> _Right._Myptr;
     }
 
 
@@ -35851,10 +36243,6 @@ namespace ranges {
     return _Lhs._Equal(_Rhs);
 }
 
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator==(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs._Equal(_Rhs);
-}
 
 template <class _Elem, class _Traits, int = 2>   constexpr bool operator==(
     const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
@@ -35862,90 +36250,32 @@ template <class _Elem, class _Traits, int = 2>   constexpr bool operator==(
 }
 
 
- template <class _Elem, class _Traits>
- constexpr bool operator!=(
+template <class _Traits, class = void>
+struct _Get_comparison_category {
+    using type = weak_ordering;
+};
+
+template <class _Traits>
+struct _Get_comparison_category<_Traits, void_t<typename _Traits::comparison_category>> {
+    using type = typename _Traits::comparison_category;
+
+    static_assert(_Is_any_of_v<type, partial_ordering, weak_ordering, strong_ordering>,
+        "N4878 [string.view.comparison]/4: Mandates: R denotes a comparison category type.");
+};
+
+template <class _Traits>
+using _Get_comparison_category_t = typename _Get_comparison_category<_Traits>::type;
+
+template <class _Elem, class _Traits>
+ constexpr _Get_comparison_category_t<_Traits> operator<=>(
     const basic_string_view<_Elem, _Traits> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return !_Lhs._Equal(_Rhs);
+    return static_cast<_Get_comparison_category_t<_Traits>>(_Lhs.compare(_Rhs) <=> 0);
 }
 
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator!=(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return !_Lhs._Equal(_Rhs);
-}
-
-template <class _Elem, class _Traits, int = 2>   constexpr bool operator!=(
+template <class _Elem, class _Traits, int = 2>   constexpr _Get_comparison_category_t<_Traits> operator<=>(
     const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
-    return !_Lhs._Equal(_Rhs);
+    return static_cast<_Get_comparison_category_t<_Traits>>(_Lhs.compare(_Rhs) <=> 0);
 }
-
-
- template <class _Elem, class _Traits>
- constexpr bool operator<(
-    const basic_string_view<_Elem, _Traits> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) < 0;
-}
-
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator<(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) < 0;
-}
-
-template <class _Elem, class _Traits, int = 2>   constexpr bool operator<(
-    const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) < 0;
-}
-
-
- template <class _Elem, class _Traits>
- constexpr bool operator>(
-    const basic_string_view<_Elem, _Traits> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) > 0;
-}
-
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator>(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) > 0;
-}
-
-template <class _Elem, class _Traits, int = 2>   constexpr bool operator>(
-    const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) > 0;
-}
-
-
- template <class _Elem, class _Traits>
- constexpr bool operator<=(
-    const basic_string_view<_Elem, _Traits> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) <= 0;
-}
-
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator<=(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) <= 0;
-}
-
-template <class _Elem, class _Traits, int = 2>   constexpr bool operator<=(
-    const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) <= 0;
-}
-
-
- template <class _Elem, class _Traits>
- constexpr bool operator>=(
-    const basic_string_view<_Elem, _Traits> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) >= 0;
-}
-
-template <class _Elem, class _Traits, int = 1>   constexpr bool operator>=(
-    const _Identity_t<basic_string_view<_Elem, _Traits>> _Lhs, const basic_string_view<_Elem, _Traits> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) >= 0;
-}
-
-template <class _Elem, class _Traits, int = 2>   constexpr bool operator>=(
-    const basic_string_view<_Elem, _Traits> _Lhs, const _Identity_t<basic_string_view<_Elem, _Traits>> _Rhs) noexcept {
-    return _Lhs.compare(_Rhs) >= 0;
-}
-
 
  using string_view = basic_string_view<char>;
 using u8string_view = basic_string_view<char8_t>;
@@ -36003,122 +36333,110 @@ public:
     using pointer           = typename _Mystr::const_pointer;
     using reference         = const value_type&;
 
-    _String_const_iterator() noexcept : _Ptr() {}
+    constexpr _String_const_iterator() noexcept : _Ptr() {}
 
-    _String_const_iterator(pointer _Parg, const _Container_base* _Pstring) noexcept : _Ptr(_Parg) {
+    constexpr _String_const_iterator(pointer _Parg, const _Container_base* _Pstring) noexcept
+        : _Ptr(_Parg) {
         this->_Adopt(_Pstring);
     }
 
-     reference operator*() const noexcept {
+         constexpr _String_const_iterator& operator=(const _String_const_iterator&) noexcept = default;
+
+     constexpr reference operator*() const noexcept {
 
         ;
         return *_Ptr;
     }
 
-     pointer operator->() const noexcept {
+     constexpr pointer operator->() const noexcept {
         return pointer_traits<pointer>::pointer_to(**this);
     }
 
-    _String_const_iterator& operator++() noexcept {
+    constexpr _String_const_iterator& operator++() noexcept {
 
         ++_Ptr;
         return *this;
     }
 
-    _String_const_iterator operator++(int) noexcept {
+    constexpr _String_const_iterator operator++(int) noexcept {
         _String_const_iterator _Tmp = *this;
         ++*this;
         return _Tmp;
     }
 
-    _String_const_iterator& operator--() noexcept {
+    constexpr _String_const_iterator& operator--() noexcept {
 
         --_Ptr;
         return *this;
     }
 
-    _String_const_iterator operator--(int) noexcept {
+    constexpr _String_const_iterator operator--(int) noexcept {
         _String_const_iterator _Tmp = *this;
         --*this;
         return _Tmp;
     }
 
-    void _Verify_offset(const difference_type _Off) const noexcept {
+    constexpr void _Verify_offset(const difference_type _Off) const noexcept {
         (void) _Off;
     }
 
-    _String_const_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _String_const_iterator& operator+=(const difference_type _Off) noexcept {
         _Ptr += _Off;
         return *this;
     }
 
-     _String_const_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _String_const_iterator operator+(const difference_type _Off) const noexcept {
         _String_const_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _String_const_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _String_const_iterator& operator-=(const difference_type _Off) noexcept {
         return *this += -_Off;
     }
 
-     _String_const_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _String_const_iterator operator-(const difference_type _Off) const noexcept {
         _String_const_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     difference_type operator-(const _String_const_iterator& _Right) const noexcept {
+     constexpr difference_type operator-(const _String_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return _Ptr - _Right._Ptr;
     }
 
-     reference operator[](const difference_type _Off) const noexcept {
+     constexpr reference operator[](const difference_type _Off) const noexcept {
         return *(*this + _Off);
     }
 
-     bool operator==(const _String_const_iterator& _Right) const noexcept {
+     constexpr bool operator==(const _String_const_iterator& _Right) const noexcept {
         _Compat(_Right);
         return _Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _String_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
-
-     bool operator<(const _String_const_iterator& _Right) const noexcept {
+     constexpr strong_ordering operator<=>(const _String_const_iterator& _Right) const noexcept {
         _Compat(_Right);
-        return _Ptr < _Right._Ptr;
+        return _Unfancy(_Ptr) <=> _Unfancy(_Right._Ptr);
     }
 
-     bool operator>(const _String_const_iterator& _Right) const noexcept {
-        return _Right < *this;
-    }
-
-     bool operator<=(const _String_const_iterator& _Right) const noexcept {
-        return !(_Right < *this);
-    }
-
-     bool operator>=(const _String_const_iterator& _Right) const noexcept {
-        return !(*this < _Right);
-    }
-
-    void _Compat(const _String_const_iterator& _Right) const noexcept {          (void) _Right;
+    constexpr void _Compat(const _String_const_iterator& _Right) const noexcept {
+                 (void) _Right;
     }
 
 
     using _Prevent_inheriting_unwrap = _String_const_iterator;
 
-     const value_type* _Unwrapped() const noexcept {
+     constexpr const value_type* _Unwrapped() const noexcept {
         return _Unfancy(_Ptr);
     }
 
-    void _Seek_to(const value_type* _It) noexcept {
+    constexpr void _Seek_to(const value_type* _It) noexcept {
         _Ptr = _Refancy<pointer>(const_cast<value_type*>(_It));
     }
 
     pointer _Ptr;  };
 
 template <class _Mystr>
- _String_const_iterator<_Mystr> operator+(
+ constexpr _String_const_iterator<_Mystr> operator+(
     typename _String_const_iterator<_Mystr>::difference_type _Off, _String_const_iterator<_Mystr> _Next) noexcept {
     return _Next += _Off;
 }
@@ -36152,71 +36470,73 @@ public:
 
     using _Mybase::_Mybase;
 
-     reference operator*() const noexcept {
+         constexpr _String_iterator& operator=(const _String_iterator&) noexcept = default;
+
+     constexpr reference operator*() const noexcept {
         return const_cast<reference>(_Mybase::operator*());
     }
 
-     pointer operator->() const noexcept {
+     constexpr pointer operator->() const noexcept {
         return pointer_traits<pointer>::pointer_to(**this);
     }
 
-    _String_iterator& operator++() noexcept {
+    constexpr _String_iterator& operator++() noexcept {
         _Mybase::operator++();
         return *this;
     }
 
-    _String_iterator operator++(int) noexcept {
+    constexpr _String_iterator operator++(int) noexcept {
         _String_iterator _Tmp = *this;
         _Mybase::operator++();
         return _Tmp;
     }
 
-    _String_iterator& operator--() noexcept {
+    constexpr _String_iterator& operator--() noexcept {
         _Mybase::operator--();
         return *this;
     }
 
-    _String_iterator operator--(int) noexcept {
+    constexpr _String_iterator operator--(int) noexcept {
         _String_iterator _Tmp = *this;
         _Mybase::operator--();
         return _Tmp;
     }
 
-    _String_iterator& operator+=(const difference_type _Off) noexcept {
+    constexpr _String_iterator& operator+=(const difference_type _Off) noexcept {
         _Mybase::operator+=(_Off);
         return *this;
     }
 
-     _String_iterator operator+(const difference_type _Off) const noexcept {
+     constexpr _String_iterator operator+(const difference_type _Off) const noexcept {
         _String_iterator _Tmp = *this;
-        return _Tmp += _Off;
+        _Tmp += _Off;          return _Tmp;
     }
 
-    _String_iterator& operator-=(const difference_type _Off) noexcept {
+    constexpr _String_iterator& operator-=(const difference_type _Off) noexcept {
         _Mybase::operator-=(_Off);
         return *this;
     }
 
     using _Mybase::operator-;
 
-     _String_iterator operator-(const difference_type _Off) const noexcept {
+     constexpr _String_iterator operator-(const difference_type _Off) const noexcept {
         _String_iterator _Tmp = *this;
-        return _Tmp -= _Off;
+        _Tmp -= _Off;          return _Tmp;
     }
 
-     reference operator[](const difference_type _Off) const noexcept {
+     constexpr reference operator[](const difference_type _Off) const noexcept {
         return const_cast<reference>(_Mybase::operator[](_Off));
     }
 
     using _Prevent_inheriting_unwrap = _String_iterator;
 
-     value_type* _Unwrapped() const noexcept {
+     constexpr value_type* _Unwrapped() const noexcept {
         return const_cast<value_type*>(_Unfancy(this->_Ptr));
     }
 };
 
 template <class _Mystr>
- _String_iterator<_Mystr> operator+(
+ constexpr _String_iterator<_Mystr> operator+(
     typename _String_iterator<_Mystr>::difference_type _Off, _String_iterator<_Mystr> _Next) noexcept {
     return _Next += _Off;
 }
@@ -36257,15 +36577,16 @@ public:
     using reference       = value_type&;
     using const_reference = const value_type&;
 
-    _String_val() noexcept : _Bx(), _Mysize(0), _Myres(0) {}
+    constexpr _String_val() noexcept : _Bx() {}
 
          static constexpr size_type _BUF_SIZE = 16 / sizeof(value_type) < 1 ? 1 : 16 / sizeof(value_type);
-         static constexpr size_type _ALLOC_MASK =
-        sizeof(value_type) <= 1
-            ? 15
-            : sizeof(value_type) <= 2 ? 7 : sizeof(value_type) <= 4 ? 3 : sizeof(value_type) <= 8 ? 1 : 0;
+         static constexpr size_type _ALLOC_MASK = sizeof(value_type) <= 1 ? 15
+                                           : sizeof(value_type) <= 2 ? 7
+                                           : sizeof(value_type) <= 4 ? 3
+                                           : sizeof(value_type) <= 8 ? 1
+                                                                     : 0;
 
-    value_type* _Myptr() noexcept {
+    constexpr value_type* _Myptr() noexcept {
         value_type* _Result = _Bx._Buf;
         if (_Large_string_engaged()) {
             _Result = _Unfancy(_Bx._Ptr);
@@ -36274,7 +36595,7 @@ public:
         return _Result;
     }
 
-    const value_type* _Myptr() const noexcept {
+    constexpr const value_type* _Myptr() const noexcept {
         const value_type* _Result = _Bx._Buf;
         if (_Large_string_engaged()) {
             _Result = _Unfancy(_Bx._Ptr);
@@ -36283,16 +36604,21 @@ public:
         return _Result;
     }
 
-    bool _Large_string_engaged() const noexcept {
+    constexpr bool _Large_string_engaged() const noexcept {
+        if (::std:: is_constant_evaluated()) {
+            return true;
+        }
         return _BUF_SIZE <= _Myres;
     }
 
-    void _Check_offset(const size_type _Off) const {          if (_Mysize < _Off) {
+    constexpr void _Check_offset(const size_type _Off) const {
+                 if (_Mysize < _Off) {
             _Xran();
         }
     }
 
-    void _Check_offset_exclusive(const size_type _Off) const {          if (_Mysize <= _Off) {
+    constexpr void _Check_offset_exclusive(const size_type _Off) const {
+                 if (_Mysize <= _Off) {
             _Xran();
         }
     }
@@ -36301,22 +36627,26 @@ public:
         _Xout_of_range("invalid string position");
     }
 
-    size_type _Clamp_suffix_size(const size_type _Off, const size_type _Size) const noexcept {
+    constexpr size_type _Clamp_suffix_size(const size_type _Off, const size_type _Size) const noexcept {
                  return (::std:: min)(_Size, _Mysize - _Off);
     }
 
-    union _Bxty {          _Bxty() noexcept {}  
-        ~_Bxty() noexcept {}  
+    union _Bxty {          constexpr _Bxty() noexcept : _Ptr() {}  
+        constexpr ~_Bxty() noexcept {}  
         value_type _Buf[_BUF_SIZE];
         pointer _Ptr;
         char _Alias[_BUF_SIZE];      } _Bx;
 
-    size_type _Mysize;      size_type _Myres;  };
+    size_type _Mysize = 0;      size_type _Myres  = 0;  };
 
  template <class _Ty>
 constexpr size_t _Size_after_ebco_v = is_empty_v<_Ty> ? 0 : sizeof(_Ty);  
 struct _String_constructor_concat_tag {
          explicit _String_constructor_concat_tag() = default;
+};
+
+struct _String_constructor_rvalue_allocator_tag {
+         explicit _String_constructor_rvalue_allocator_tag() = default;
 };
 
 [[noreturn]] inline void _Xlen_string() {
@@ -36326,6 +36656,7 @@ struct _String_constructor_concat_tag {
 template <class _Elem, class _Traits = char_traits<_Elem>, class _Alloc = allocator<_Elem>>
 class basic_string {  private:
     friend _Tidy_deallocate_guard<basic_string>;
+    friend basic_stringbuf<_Elem, _Traits, _Alloc>;
 
     using _Alty        = _Rebind_alloc_t<_Alloc, _Elem>;
     using _Alty_traits = allocator_traits<_Alty>;
@@ -36379,69 +36710,73 @@ private:
             int>;
 
 public:
-    basic_string(const basic_string& _Right)
+    constexpr basic_string(const basic_string& _Right)
         : _Mypair(_One_then_variadic_args_t{}, _Alty_traits::select_on_container_copy_construction(_Right._Getal())) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Construct_lv_contents(_Right);
         _Proxy._Release();
     }
 
-    basic_string(const basic_string& _Right, const _Alloc& _Al) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string(const basic_string& _Right, const _Alloc& _Al)
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Construct_lv_contents(_Right);
         _Proxy._Release();
     }
 
-    basic_string() noexcept(is_nothrow_default_constructible_v<_Alty>) : _Mypair(_Zero_then_variadic_args_t{}) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+    constexpr basic_string() noexcept(is_nothrow_default_constructible_v<_Alty>)
+        : _Mypair(_Zero_then_variadic_args_t{}) {
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
         _Tidy_init();
     }
 
-    explicit basic_string(const _Alloc& _Al) noexcept : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+    constexpr explicit basic_string(const _Alloc& _Al) noexcept
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
         _Tidy_init();
     }
 
-    basic_string(const basic_string& _Right, const size_type _Roff, const _Alloc& _Al = _Alloc())
-        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string(const basic_string& _Right, const size_type _Roff, const _Alloc& _Al = _Alloc())
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Right, _Roff, npos);
         _Proxy._Release();
     }
 
-    basic_string(
+    constexpr basic_string(
         const basic_string& _Right, const size_type _Roff, const size_type _Count, const _Alloc& _Al = _Alloc())
-        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_allocator();
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Right, _Roff, _Count);
         _Proxy._Release();
     }
 
-    basic_string(  const _Elem* const _Ptr,  const size_type _Count)
+    constexpr basic_string(
+          const _Elem* const _Ptr,  const size_type _Count)
         : _Mypair(_Zero_then_variadic_args_t{}) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Ptr, _Count);
         _Proxy._Release();
     }
 
-    basic_string(
+    constexpr basic_string(
           const _Elem* const _Ptr,  const size_type _Count, const _Alloc& _Al)
         : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Ptr, _Count);
         _Proxy._Release();
     }
 
-    basic_string(  const _Elem* const _Ptr) : _Mypair(_Zero_then_variadic_args_t{}) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string(  const _Elem* const _Ptr) : _Mypair(_Zero_then_variadic_args_t{}) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Ptr);
@@ -36449,16 +36784,18 @@ public:
     }
 
     template <class _Alloc2 = _Alloc, enable_if_t<_Is_allocator<_Alloc2>::value, int> = 0>
-    basic_string(  const _Elem* const _Ptr, const _Alloc& _Al) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string(  const _Elem* const _Ptr, const _Alloc& _Al)
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Ptr);
         _Proxy._Release();
     }
 
-    basic_string( const size_type _Count, const _Elem _Ch) : _Mypair(_Zero_then_variadic_args_t{}) {
-                 auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string( const size_type _Count, const _Elem _Ch)
+        : _Mypair(_Zero_then_variadic_args_t{}) {
+                 auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Count, _Ch);
@@ -36466,8 +36803,8 @@ public:
     }
 
     template <class _Alloc2 = _Alloc, enable_if_t<_Is_allocator<_Alloc2>::value, int> = 0>
-    basic_string( const size_type _Count, const _Elem _Ch, const _Alloc& _Al)
-        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string( const size_type _Count, const _Elem _Ch, const _Alloc& _Al)
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Count, _Ch);
@@ -36475,8 +36812,9 @@ public:
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    basic_string(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc()) : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+    constexpr basic_string(_Iter _First, _Iter _Last, const _Alloc& _Al = _Alloc())
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         _Adl_verify_range(_First, _Last);
@@ -36485,7 +36823,7 @@ public:
     }
 
     template <class _Iter>
-    void _Construct(_Iter _First, const _Iter _Last, input_iterator_tag) {
+    constexpr void _Construct(_Iter _First, const _Iter _Last, input_iterator_tag) {
                  _Tidy_deallocate_guard<basic_string> _Guard{this};
         for (; _First != _Last; ++_First) {
             push_back(*_First);
@@ -36495,32 +36833,34 @@ public:
     }
 
     template <class _Iter>
-    void _Construct(const _Iter _First, const _Iter _Last, forward_iterator_tag) {
+    constexpr void _Construct(const _Iter _First, const _Iter _Last, forward_iterator_tag) {
                  const size_type _Count = _Convert_size<size_type>(static_cast<size_t>(::std:: distance(_First, _Last)));
         reserve(_Count);
         _Construct(_First, _Last, input_iterator_tag{});
     }
 
-    void _Construct(_Elem* const _First, _Elem* const _Last, random_access_iterator_tag) {
+    constexpr void _Construct(_Elem* const _First, _Elem* const _Last, random_access_iterator_tag) {
                  if (_First != _Last) {
             assign(_First, _Convert_size<size_type>(static_cast<size_t>(_Last - _First)));
         }
     }
 
-    void _Construct(const _Elem* const _First, const _Elem* const _Last, random_access_iterator_tag) {
+    constexpr void _Construct(
+        const _Elem* const _First, const _Elem* const _Last, random_access_iterator_tag) {
                  if (_First != _Last) {
             assign(_First, _Convert_size<size_type>(static_cast<size_t>(_Last - _First)));
         }
     }
 
-    basic_string(basic_string&& _Right) noexcept : _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Right._Getal())) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
-        _Take_contents(_Right, bool_constant<_Can_memcpy_val>{});
+    constexpr basic_string(basic_string&& _Right) noexcept
+        : _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Right._Getal())) {
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
+        _Take_contents(_Right);
     }
 
-    basic_string(basic_string&& _Right, const _Alloc& _Al) noexcept(
+    constexpr basic_string(basic_string&& _Right, const _Alloc& _Al) noexcept(
         _Alty_traits::is_always_equal::value)          : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         if constexpr (!_Alty_traits::is_always_equal::value) {
             if (_Getal() != _Right._Getal()) {
@@ -36530,12 +36870,13 @@ public:
             }
         }
 
-        _Take_contents(_Right, bool_constant<_Can_memcpy_val>{});
+        _Take_contents(_Right);
         _Proxy._Release();
     }
 
-    basic_string(_String_constructor_concat_tag, const basic_string& _Source_of_al, const _Elem* const _Left_ptr,
-        const size_type _Left_size, const _Elem* const _Right_ptr, const size_type _Right_size)
+    constexpr basic_string(_String_constructor_concat_tag, const basic_string& _Source_of_al,
+        const _Elem* const _Left_ptr, const size_type _Left_size, const _Elem* const _Right_ptr,
+        const size_type _Right_size)
         : _Mypair(
             _One_then_variadic_args_t{}, _Alty_traits::select_on_container_copy_construction(_Source_of_al._Getal())) {
         ;
@@ -36545,11 +36886,18 @@ public:
         size_type _New_capacity = _BUF_SIZE - 1;
         auto& _My_data          = _Mypair._Myval2;
         _Elem* _Ptr             = _My_data._Bx._Buf;
-        auto&& _Alproxy         = _Fake_allocator();
-        _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _My_data);          if (_New_capacity < _New_size) {
-            _New_capacity           = _Calculate_growth(_New_size, _BUF_SIZE - 1, max_size());
-            const pointer _Fancyptr = _Getal().allocate(_New_capacity + 1);              _Ptr                    = _Unfancy(_Fancyptr);
+        auto&& _Alproxy         = _Fake_alloc;
+        _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _My_data);  
+        const bool _Activate_large_mode = _New_capacity < _New_size || ::std:: is_constant_evaluated();
+
+        if (_Activate_large_mode) {
+                         const size_type _Requested_size = (::std:: max)(_New_size, _BUF_SIZE);
+            _New_capacity                   = _Calculate_growth(_Requested_size, _BUF_SIZE - 1, max_size());
+            const pointer _Fancyptr         = _Getal().allocate(_New_capacity + 1);              _Ptr                            = _Unfancy(_Fancyptr);
             _Construct_in_place(_My_data._Bx._Ptr, _Fancyptr);
+        }
+
+        if (::std:: is_constant_evaluated()) {              _Traits::assign(_Ptr, _New_capacity + 1, _Elem());
         }
 
         _My_data._Mysize = _New_size;
@@ -36560,7 +36908,7 @@ public:
         _Proxy._Release();
     }
 
-    basic_string(_String_constructor_concat_tag, basic_string& _Left, basic_string& _Right)
+    constexpr basic_string(_String_constructor_concat_tag, basic_string& _Left, basic_string& _Right)
         : _Mypair(_One_then_variadic_args_t{}, _Left._Getal()) {
         auto& _My_data    = _Mypair._Myval2;
         auto& _Left_data  = _Left._Mypair._Myval2;
@@ -36575,7 +36923,7 @@ public:
                  const auto _New_size     = static_cast<size_type>(_Left_size + _Right_size);
         const bool _Fits_in_left = _Right_size <= _Left_capacity - _Left_size;
         if (_Fits_in_left && _Right_capacity <= _Left_capacity) {
-                         _My_data._Alloc_proxy(_Fake_allocator());              _Take_contents(_Left, bool_constant<_Can_memcpy_val>{});
+                         _My_data._Alloc_proxy(_Fake_alloc);              _Take_contents(_Left);
             const auto _Ptr = _My_data._Myptr();
             _Traits::copy(_Ptr + _Left_size, _Right_data._Myptr(), _Right_size + 1);
             _My_data._Mysize = _New_size;
@@ -36585,7 +36933,7 @@ public:
         const bool _Fits_in_right = _Left_size <= _Right_capacity - _Right_size;
         if (_Allocators_equal(_Getal(), _Right._Getal()) && _Fits_in_right) {
                                                                                                                                  ;
-            _My_data._Alloc_proxy(_Fake_allocator());              _Take_contents(_Right, bool_constant<_Can_memcpy_val>{});
+            _My_data._Alloc_proxy(_Fake_alloc);              _Take_contents(_Right);
             const auto _Ptr = _Unfancy(_My_data._Bx._Ptr);
             _Traits::move(_Ptr + _Left_size, _Ptr, _Right_size + 1);
             _Traits::copy(_Ptr, _Left_data._Myptr(), _Left_size);
@@ -36598,8 +36946,10 @@ public:
         }
 
         const auto _New_capacity = _Calculate_growth(_New_size, _BUF_SIZE - 1, _Max);
-        auto&& _Alproxy          = _Fake_allocator();
-        _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _My_data);          const pointer _Fancyptr = _Getal().allocate(_New_capacity + 1);                   _Construct_in_place(_My_data._Bx._Ptr, _Fancyptr);
+        auto&& _Alproxy          = _Fake_alloc;
+        _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _My_data);          const pointer _Fancyptr = _Getal().allocate(_New_capacity + 1);                   if (::std:: is_constant_evaluated()) {              _Traits::assign(_Unfancy(_Fancyptr), _New_capacity + 1, _Elem());
+        }
+        _Construct_in_place(_My_data._Bx._Ptr, _Fancyptr);
         _My_data._Mysize = _New_size;
         _My_data._Myres  = _New_capacity;
         const auto _Ptr  = _Unfancy(_Fancyptr);
@@ -36609,9 +36959,9 @@ public:
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    explicit basic_string(const _StringViewIsh& _Right, const _Alloc& _Al = _Alloc())
+    constexpr explicit basic_string(const _StringViewIsh& _Right, const _Alloc& _Al = _Alloc())
         : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Right);
@@ -36619,35 +36969,41 @@ public:
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string(
+    constexpr basic_string(
         const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count, const _Alloc& _Al = _Alloc())
-        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_allocator();
+        : _Mypair(_One_then_variadic_args_t{}, _Al) {          auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Right, _Roff, _Count);
         _Proxy._Release();
     }
 
-private:
-    void _Move_assign(basic_string& _Right, _Equal_allocators) noexcept {
-        _Tidy_deallocate();
-        _Pocma(_Getal(), _Right._Getal());
-        _Take_contents(_Right, bool_constant<_Can_memcpy_val>{});
+    basic_string(_String_constructor_rvalue_allocator_tag, _Alloc&& _Al)
+        : _Mypair(_One_then_variadic_args_t{}, ::std:: move(_Al)) {
+                 _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
+        _Tidy_init();
     }
 
-    void _Move_assign(basic_string& _Right, _Propagate_allocators) noexcept {
+private:
+    constexpr void _Move_assign(basic_string& _Right, _Equal_allocators) noexcept {
+        _Tidy_deallocate();
+        _Pocma(_Getal(), _Right._Getal());
+        _Take_contents(_Right);
+    }
+
+    constexpr void _Move_assign(basic_string& _Right, _Propagate_allocators) noexcept {
         if (_Getal() == _Right._Getal()) {
             _Move_assign(_Right, _Equal_allocators{});
         } else {
                          _Mypair._Myval2._Orphan_all();
             _Mypair._Myval2._Reload_proxy(
-                _Fake_allocator(), _Fake_allocator());
+                _Fake_alloc, _Fake_alloc);
             _Pocma(_Getal(), _Right._Getal());
-            _Take_contents(_Right, bool_constant<_Can_memcpy_val>{});
+            _Take_contents(_Right);
         }
     }
 
-    void _Move_assign(basic_string& _Right, _No_propagate_allocators) {
+    constexpr void _Move_assign(basic_string& _Right, _No_propagate_allocators) {
         if (_Getal() == _Right._Getal()) {
             _Move_assign(_Right, _Equal_allocators{});
         } else {
@@ -36656,7 +37012,47 @@ private:
     }
 
 public:
-    basic_string& operator=(basic_string&& _Right) noexcept(noexcept(_Move_assign(_Right, _Choose_pocma<_Alty>{}))) {
+     bool _Move_assign_from_buffer(_Elem* const _Right, const size_type _Size, const size_type _Res) {
+                 _Tidy_deallocate();
+        pointer _Fancy_right = _Refancy<pointer>(_Right);
+        auto& _My_data       = _Mypair._Myval2;
+        _My_data._Mysize     = _Size;
+        _My_data._Myres      = _Res - 1;
+        if (_My_data._Large_string_engaged()) {
+            _Construct_in_place(_My_data._Bx._Ptr, _Fancy_right);
+            return true;
+        } else {
+            _Traits::copy(_My_data._Bx._Buf, _Right, _Res);
+            _My_data._Myres = _BUF_SIZE - 1;
+            return false;
+        }
+    }
+
+         struct _Released_buffer {
+        pointer _Ptr;
+        size_type _Size;
+        size_type _Res;
+    };
+
+     _Released_buffer _Release_to_buffer(_Alloc& _Al) {
+                 _Released_buffer _Result;
+        auto& _My_data = _Mypair._Myval2;
+        _Result._Size  = _My_data._Mysize;
+        if (_My_data._Large_string_engaged()) {
+            _Result._Ptr = _My_data._Bx._Ptr;
+            _Result._Res = _My_data._Myres + 1;
+        } else {
+                         _Result._Ptr = _Al.allocate(_BUF_SIZE + 1);
+            _Traits::copy(_Unfancy(_Result._Ptr), _My_data._Bx._Buf, _BUF_SIZE);
+            _Result._Res = _BUF_SIZE + 1;
+        }
+        _My_data._Orphan_all();
+        _Tidy_init();
+        return _Result;
+    }
+
+    constexpr basic_string& operator=(basic_string&& _Right) noexcept(
+        noexcept(_Move_assign(_Right, _Choose_pocma<_Alty>{}))) {
         if (this != ::std:: addressof(_Right)) {
             _Move_assign(_Right, _Choose_pocma<_Alty>{});
         }
@@ -36664,7 +37060,7 @@ public:
         return *this;
     }
 
-    basic_string& assign(basic_string&& _Right) noexcept(noexcept(*this = ::std:: move(_Right))) {
+    constexpr basic_string& assign(basic_string&& _Right) noexcept(noexcept(*this = ::std:: move(_Right))) {
         *this = ::std:: move(_Right);
         return *this;
     }
@@ -36678,15 +37074,20 @@ private:
         :: memcpy(_My_data_mem, _Right_data_mem, _Memcpy_val_size);
     }
 
-    void _Take_contents(basic_string& _Right, true_type) noexcept {
-                                             
-        _Memcpy_val_from(_Right);
-        _Right._Tidy_init();
-    }
-
-    void _Take_contents(basic_string& _Right, false_type) noexcept {
+    constexpr void _Take_contents(basic_string& _Right) noexcept {
                                                      auto& _My_data    = _Mypair._Myval2;
         auto& _Right_data = _Right._Mypair._Myval2;
+
+        if constexpr (_Can_memcpy_val) {
+            if (!::std:: is_constant_evaluated())
+            {
+
+                _Memcpy_val_from(_Right);
+                _Right._Tidy_init();
+                return;
+            }
+        }
+
         if (_Right_data._Large_string_engaged()) {              _Construct_in_place(_My_data._Bx._Ptr, _Right_data._Bx._Ptr);
             _Right_data._Bx._Ptr = nullptr;
             _Swap_proxy_and_iterators(_Right);
@@ -36699,12 +37100,15 @@ private:
         _Right._Tidy_init();
     }
 
-    void _Construct_lv_contents(const basic_string& _Right) {
+    constexpr void _Construct_lv_contents(const basic_string& _Right) {
                                             auto& _Right_data             = _Right._Mypair._Myval2;
         const size_type _Right_size   = _Right_data._Mysize;
         const _Elem* const _Right_ptr = _Right_data._Myptr();
         auto& _My_data                = _Mypair._Myval2;
-        if (_Right_size < _BUF_SIZE) {              _Traits::copy(_My_data._Bx._Buf, _Right_ptr, _BUF_SIZE);
+
+        const bool _Stay_small = _Right_size < _BUF_SIZE && !::std:: is_constant_evaluated();
+
+                          if (_Stay_small) {              _Traits::copy(_My_data._Bx._Buf, _Right_ptr, _BUF_SIZE);
             _My_data._Mysize = _Right_size;
             _My_data._Myres  = _BUF_SIZE - 1;
             return;
@@ -36713,44 +37117,47 @@ private:
         auto& _Al                     = _Getal();
         const size_type _New_capacity = (::std:: min)(_Right_size | _ALLOC_MASK, max_size());
         const pointer _New_array      = _Al.allocate(_New_capacity + 1);          _Construct_in_place(_My_data._Bx._Ptr, _New_array);
+
+        if (::std:: is_constant_evaluated()) {              _Traits::assign(_Unfancy(_New_array), _New_capacity + 1, _Elem());
+        }
         _Traits::copy(_Unfancy(_New_array), _Right_ptr, _Right_size + 1);
         _My_data._Mysize = _Right_size;
         _My_data._Myres  = _New_capacity;
     }
 
 public:
-    basic_string(initializer_list<_Elem> _Ilist, const _Alloc& _Al = allocator_type())
+    constexpr basic_string(initializer_list<_Elem> _Ilist, const _Alloc& _Al = allocator_type())
         : _Mypair(_One_then_variadic_args_t{}, _Al) {
-        auto&& _Alproxy = _Fake_allocator();
+        auto&& _Alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, _Mypair._Myval2);
         _Tidy_init();
         assign(_Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
         _Proxy._Release();
     }
 
-    basic_string& operator=(initializer_list<_Elem> _Ilist) {
+    constexpr basic_string& operator=(initializer_list<_Elem> _Ilist) {
         return assign(_Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
     }
 
-    basic_string& operator+=(initializer_list<_Elem> _Ilist) {
+    constexpr basic_string& operator+=(initializer_list<_Elem> _Ilist) {
         return append(_Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
     }
 
-    basic_string& assign(initializer_list<_Elem> _Ilist) {
+    constexpr basic_string& assign(initializer_list<_Elem> _Ilist) {
         return assign(_Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
     }
 
-    basic_string& append(initializer_list<_Elem> _Ilist) {
+    constexpr basic_string& append(initializer_list<_Elem> _Ilist) {
         return append(_Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
     }
 
-    iterator insert(const const_iterator _Where, const initializer_list<_Elem> _Ilist) {
+    constexpr iterator insert(const const_iterator _Where, const initializer_list<_Elem> _Ilist) {
         const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
         insert(_Off, _Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
         return begin() + static_cast<difference_type>(_Off);
     }
 
-    basic_string& replace(
+    constexpr basic_string& replace(
         const const_iterator _First, const const_iterator _Last, const initializer_list<_Elem> _Ilist) {
                  _Adl_verify_range(_First, _Last);
         const auto _Offset = static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr());
@@ -36758,7 +37165,7 @@ public:
         return replace(_Offset, _Length, _Ilist.begin(), _Convert_size<size_type>(_Ilist.size()));
     }
 
-    ~basic_string() noexcept {
+    constexpr ~basic_string() noexcept {
         _Tidy_deallocate();
     }
 
@@ -36766,23 +37173,26 @@ public:
 
 private:
     void _Copy_assign_val_from_small(const basic_string& _Right) {
-                 _Tidy_deallocate();
+                 ;
+        _Tidy_deallocate();
         if constexpr (_Can_memcpy_val) {
             _Memcpy_val_from(_Right);
         } else {
-            _Traits::copy(
-                _Mypair._Myval2._Bx._Buf, _Right._Mypair._Myval2._Bx._Buf, _Right._Mypair._Myval2._Mysize + 1);
-            _Mypair._Myval2._Mysize = _Right._Mypair._Myval2._Mysize;
-            _Mypair._Myval2._Myres  = _Right._Mypair._Myval2._Myres;
+            auto& _My_data    = _Mypair._Myval2;
+            auto& _Right_data = _Right._Mypair._Myval2;
+
+            _Traits::copy(_My_data._Bx._Buf, _Right_data._Bx._Buf, _Right_data._Mysize + 1);
+            _My_data._Mysize = _Right_data._Mysize;
+            _My_data._Myres  = _Right_data._Myres;
         }
     }
 
-    void _Copy_assign(const basic_string& _Right, false_type) {
+    constexpr void _Copy_assign(const basic_string& _Right, false_type) {
         _Pocca(_Getal(), _Right._Getal());
         assign(_Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-    void _Copy_assign(const basic_string& _Right, true_type) {
+    constexpr void _Copy_assign(const basic_string& _Right, true_type) {
         auto& _Al             = _Getal();
         const auto& _Right_al = _Right._Getal();
         if (_Al == _Right_al) {
@@ -36790,14 +37200,18 @@ private:
             return;
         }
 
-        auto&& _Alproxy       = _Fake_allocator();
-        auto&& _Right_alproxy = _Fake_allocator();
+        auto&& _Alproxy       = _Fake_alloc;
+        auto&& _Right_alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alty> _New_proxy(_Right_alproxy, _Leave_proxy_unbound{});  
         if (_Right._Mypair._Myval2._Large_string_engaged()) {
             const auto _New_size     = _Right._Mypair._Myval2._Mysize;
             const auto _New_capacity = _Calculate_growth(_New_size, 0, _Right.max_size());
             auto _Right_al_non_const = _Right_al;
-            const auto _New_ptr      = _Right_al_non_const.allocate(_New_capacity);              _Traits::copy(_Unfancy(_New_ptr), _Unfancy(_Right._Mypair._Myval2._Bx._Ptr), _New_size + 1);
+            const auto _New_ptr      = _Right_al_non_const.allocate(_New_capacity);  
+            if (::std:: is_constant_evaluated()) {                  _Traits::assign(_Unfancy(_New_ptr), _New_size + 1, _Elem());
+            }
+
+            _Traits::copy(_Unfancy(_New_ptr), _Unfancy(_Right._Mypair._Myval2._Bx._Ptr), _New_size + 1);
             _Tidy_deallocate();
             _Mypair._Myval2._Bx._Ptr = _New_ptr;
             _Mypair._Myval2._Mysize  = _New_size;
@@ -36811,7 +37225,7 @@ private:
     }
 
 public:
-    basic_string& operator=(const basic_string& _Right) {
+    constexpr basic_string& operator=(const basic_string& _Right) {
         if (this != ::std:: addressof(_Right)) {
             _Copy_assign(_Right, _Choose_pocca<_Alty>{});
         }
@@ -36820,61 +37234,64 @@ public:
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& operator=(const _StringViewIsh& _Right) {
+    constexpr basic_string& operator=(const _StringViewIsh& _Right) {
         return assign(_Right);
     }
 
-    basic_string& operator=(  const _Elem* const _Ptr) {
+    constexpr basic_string& operator=(  const _Elem* const _Ptr) {
         return assign(_Ptr);
     }
 
-    basic_string& operator=(const _Elem _Ch) {          _Mypair._Myval2._Mysize = 1;
+    constexpr basic_string& operator=(const _Elem _Ch) {          _Mypair._Myval2._Mysize = 1;
         _Elem* const _Ptr       = _Mypair._Myval2._Myptr();
         _Traits::assign(_Ptr[0], _Ch);
         _Traits::assign(_Ptr[1], _Elem());
         return *this;
     }
 
-    basic_string& operator+=(const basic_string& _Right) {
+    constexpr basic_string& operator+=(const basic_string& _Right) {
         return append(_Right);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& operator+=(const _StringViewIsh& _Right) {
+    constexpr basic_string& operator+=(const _StringViewIsh& _Right) {
         return append(_Right);
     }
 
-    basic_string& operator+=(  const _Elem* const _Ptr) {          return append(_Ptr);
+    constexpr basic_string& operator+=(  const _Elem* const _Ptr) {          return append(_Ptr);
     }
 
-    basic_string& operator+=(_Elem _Ch) {
+    constexpr basic_string& operator+=(_Elem _Ch) {
         push_back(_Ch);
         return *this;
     }
 
-    basic_string& append(const basic_string& _Right) {
+    constexpr basic_string& append(const basic_string& _Right) {
         return append(_Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-    basic_string& append(const basic_string& _Right, const size_type _Roff, size_type _Count = npos) {
+    constexpr basic_string& append(
+        const basic_string& _Right, const size_type _Roff, size_type _Count = npos) {
                  _Right._Mypair._Myval2._Check_offset(_Roff);
         _Count = _Right._Mypair._Myval2._Clamp_suffix_size(_Roff, _Count);
         return append(_Right._Mypair._Myval2._Myptr() + _Roff, _Count);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& append(const _StringViewIsh& _Right) {
+    constexpr basic_string& append(const _StringViewIsh& _Right) {
         const basic_string_view<_Elem, _Traits> _As_view = _Right;
         return append(_As_view.data(), _Convert_size<size_type>(_As_view.size()));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& append(const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
+    constexpr basic_string& append(
+        const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return append(_As_view.substr(_Roff, _Count));
     }
 
-    basic_string& append(  const _Elem* const _Ptr,  const size_type _Count) {
+    constexpr basic_string& append(
+          const _Elem* const _Ptr,  const size_type _Count) {
                  const size_type _Old_size = _Mypair._Myval2._Mysize;
         if (_Count <= _Mypair._Myval2._Myres - _Old_size) {
             _Mypair._Myval2._Mysize = _Old_size + _Count;
@@ -36895,10 +37312,11 @@ public:
             _Ptr, _Count);
     }
 
-    basic_string& append(  const _Elem* const _Ptr) {          return append(_Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
+    constexpr basic_string& append(  const _Elem* const _Ptr) {          return append(_Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
     }
 
-    basic_string& append( const size_type _Count, const _Elem _Ch) {          const size_type _Old_size = _Mypair._Myval2._Mysize;
+    constexpr basic_string& append( const size_type _Count, const _Elem _Ch) {
+                 const size_type _Old_size = _Mypair._Myval2._Mysize;
         if (_Count <= _Mypair._Myval2._Myres - _Old_size) {
             _Mypair._Myval2._Mysize = _Old_size + _Count;
             _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
@@ -36919,7 +37337,8 @@ public:
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    basic_string& append(const _Iter _First, const _Iter _Last) {          _Adl_verify_range(_First, _Last);
+    constexpr basic_string& append(const _Iter _First, const _Iter _Last) {
+                 _Adl_verify_range(_First, _Last);
         const auto _UFirst = _Get_unwrapped(_First);
         const auto _ULast  = _Get_unwrapped(_Last);
         if constexpr (_Is_elem_cptr<decltype(_UFirst)>::value) {
@@ -36930,30 +37349,33 @@ public:
         }
     }
 
-    basic_string& assign(const basic_string& _Right) {
+    constexpr basic_string& assign(const basic_string& _Right) {
         *this = _Right;
         return *this;
     }
 
-    basic_string& assign(const basic_string& _Right, const size_type _Roff, size_type _Count = npos) {
+    constexpr basic_string& assign(
+        const basic_string& _Right, const size_type _Roff, size_type _Count = npos) {
                  _Right._Mypair._Myval2._Check_offset(_Roff);
         _Count = _Right._Mypair._Myval2._Clamp_suffix_size(_Roff, _Count);
         return assign(_Right._Mypair._Myval2._Myptr() + _Roff, _Count);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& assign(const _StringViewIsh& _Right) {
+    constexpr basic_string& assign(const _StringViewIsh& _Right) {
         const basic_string_view<_Elem, _Traits> _As_view = _Right;
         return assign(_As_view.data(), _Convert_size<size_type>(_As_view.size()));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& assign(const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
+    constexpr basic_string& assign(
+        const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return assign(_As_view.substr(_Roff, _Count));
     }
 
-    basic_string& assign(  const _Elem* const _Ptr,  const size_type _Count) {
+    constexpr basic_string& assign(
+          const _Elem* const _Ptr,  const size_type _Count) {
                  if (_Count <= _Mypair._Myval2._Myres) {
             _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
             _Mypair._Myval2._Mysize = _Count;
@@ -36971,11 +37393,12 @@ public:
             _Ptr);
     }
 
-    basic_string& assign(  const _Elem* const _Ptr) {
+    constexpr basic_string& assign(  const _Elem* const _Ptr) {
         return assign(_Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
     }
 
-    basic_string& assign( const size_type _Count, const _Elem _Ch) {          if (_Count <= _Mypair._Myval2._Myres) {
+    constexpr basic_string& assign( const size_type _Count, const _Elem _Ch) {
+                 if (_Count <= _Mypair._Myval2._Myres) {
             _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
             _Mypair._Myval2._Mysize = _Count;
             _Traits::assign(_Old_ptr, _Count, _Ch);
@@ -36993,7 +37416,7 @@ public:
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    basic_string& assign(const _Iter _First, const _Iter _Last) {
+    constexpr basic_string& assign(const _Iter _First, const _Iter _Last) {
         _Adl_verify_range(_First, _Last);
         const auto _UFirst = _Get_unwrapped(_First);
         const auto _ULast  = _Get_unwrapped(_Last);
@@ -37003,7 +37426,7 @@ public:
             basic_string _Right(_UFirst, _ULast, get_allocator());
             if (_Mypair._Myval2._Myres < _Right._Mypair._Myval2._Myres) {
                 _Mypair._Myval2._Orphan_all();
-                _Swap_data(_Right, bool_constant<_Can_memcpy_val>{});
+                _Swap_data(_Right);
                 return *this;
             } else {
                 return assign(_Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
@@ -37011,10 +37434,11 @@ public:
         }
     }
 
-    basic_string& insert(const size_type _Off, const basic_string& _Right) {          return insert(_Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
+    constexpr basic_string& insert(const size_type _Off, const basic_string& _Right) {
+                 return insert(_Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-    basic_string& insert(
+    constexpr basic_string& insert(
         const size_type _Off, const basic_string& _Right, const size_type _Roff, size_type _Count = npos) {
                  _Right._Mypair._Myval2._Check_offset(_Roff);
         _Count = _Right._Mypair._Myval2._Clamp_suffix_size(_Roff, _Count);
@@ -37022,27 +37446,32 @@ public:
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& insert(const size_type _Off, const _StringViewIsh& _Right) {          const basic_string_view<_Elem, _Traits> _As_view = _Right;
+    constexpr basic_string& insert(const size_type _Off, const _StringViewIsh& _Right) {
+                 const basic_string_view<_Elem, _Traits> _As_view = _Right;
         return insert(_Off, _As_view.data(), _Convert_size<size_type>(_As_view.size()));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& insert(const size_type _Off, const _StringViewIsh& _Right, const size_type _Roff,
-        const size_type _Count = npos) {          basic_string_view<_Elem, _Traits> _As_view = _Right;
+    constexpr basic_string& insert(
+        const size_type _Off, const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
+                 basic_string_view<_Elem, _Traits> _As_view = _Right;
         return insert(_Off, _As_view.substr(_Roff, _Count));
     }
 
-    basic_string& insert(
+    constexpr basic_string& insert(
         const size_type _Off,   const _Elem* const _Ptr,  const size_type _Count) {
                  _Mypair._Myval2._Check_offset(_Off);
         const size_type _Old_size = _Mypair._Myval2._Mysize;
-        if (_Count <= _Mypair._Myval2._Myres - _Old_size) {
+
+                          const bool _Check_overlap = _Count <= _Mypair._Myval2._Myres - _Old_size && !::std:: is_constant_evaluated();
+
+        if (_Check_overlap) {
             _Mypair._Myval2._Mysize = _Old_size + _Count;
             _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
             _Elem* const _Insert_at = _Old_ptr + _Off;
                                       size_type _Ptr_shifted_after;
-            if (_Ptr + _Count <= _Insert_at
-                || _Ptr > _Old_ptr + _Old_size) {                  _Ptr_shifted_after = _Count;              } else if (_Insert_at <= _Ptr) {                  _Ptr_shifted_after = 0;
+            if (_Ptr + _Count <= _Insert_at || _Ptr > _Old_ptr + _Old_size) {
+                                 _Ptr_shifted_after = _Count;              } else if (_Insert_at <= _Ptr) {                  _Ptr_shifted_after = 0;
             } else {                  _Ptr_shifted_after = static_cast<size_type>(_Insert_at - _Ptr);
             }
 
@@ -37063,10 +37492,12 @@ public:
             _Off, _Ptr, _Count);
     }
 
-    basic_string& insert(const size_type _Off,   const _Elem* const _Ptr) {          return insert(_Off, _Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
+    constexpr basic_string& insert(const size_type _Off,   const _Elem* const _Ptr) {
+                 return insert(_Off, _Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
     }
 
-    basic_string& insert(const size_type _Off,  const size_type _Count, const _Elem _Ch) {
+    constexpr basic_string& insert(
+        const size_type _Off,  const size_type _Count, const _Elem _Ch) {
                  _Mypair._Myval2._Check_offset(_Off);
         const size_type _Old_size = _Mypair._Myval2._Mysize;
         if (_Count <= _Mypair._Myval2._Myres - _Old_size) {
@@ -37087,19 +37518,20 @@ public:
             _Off, _Count, _Ch);
     }
 
-    iterator insert(const const_iterator _Where, const _Elem _Ch) {          const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
+    constexpr iterator insert(const const_iterator _Where, const _Elem _Ch) {          const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
         insert(_Off, 1, _Ch);
         return begin() + static_cast<difference_type>(_Off);
     }
 
-    iterator insert(const const_iterator _Where,  const size_type _Count, const _Elem _Ch) {
+    constexpr iterator insert(
+        const const_iterator _Where,  const size_type _Count, const _Elem _Ch) {
                  const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
         insert(_Off, _Count, _Ch);
         return begin() + static_cast<difference_type>(_Off);
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    iterator insert(const const_iterator _Where, const _Iter _First, const _Iter _Last) {
+    constexpr iterator insert(const const_iterator _Where, const _Iter _First, const _Iter _Last) {
                  const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
         _Adl_verify_range(_First, _Last);
         const auto _UFirst = _Get_unwrapped(_First);
@@ -37114,13 +37546,13 @@ public:
         return begin() + static_cast<difference_type>(_Off);
     }
 
-    basic_string& erase(const size_type _Off = 0) {          _Mypair._Myval2._Check_offset(_Off);
+    constexpr basic_string& erase(const size_type _Off = 0) {          _Mypair._Myval2._Check_offset(_Off);
         _Eos(_Off);
         return *this;
     }
 
 private:
-    basic_string& _Erase_noexcept(const size_type _Off, size_type _Count) noexcept {
+    constexpr basic_string& _Erase_noexcept(const size_type _Off, size_type _Count) noexcept {
         _Count                    = _Mypair._Myval2._Clamp_suffix_size(_Off, _Count);
         const size_type _Old_size = _Mypair._Myval2._Mysize;
         _Elem* const _My_ptr      = _Mypair._Myval2._Myptr();
@@ -37131,51 +37563,55 @@ private:
     }
 
 public:
-    basic_string& erase(const size_type _Off, const size_type _Count) {          _Mypair._Myval2._Check_offset(_Off);
+    constexpr basic_string& erase(const size_type _Off, const size_type _Count) {
+                 _Mypair._Myval2._Check_offset(_Off);
         return _Erase_noexcept(_Off, _Count);
     }
 
-    iterator erase(const const_iterator _Where) noexcept   {
+    constexpr iterator erase(const const_iterator _Where) noexcept   {
         const auto _Off = static_cast<size_type>(_Unfancy(_Where._Ptr) - _Mypair._Myval2._Myptr());
         _Erase_noexcept(_Off, 1);
         return begin() + static_cast<difference_type>(_Off);
     }
 
-    iterator erase(const const_iterator _First, const const_iterator _Last) noexcept   {
+    constexpr iterator erase(const const_iterator _First, const const_iterator _Last) noexcept
+      {
         _Adl_verify_range(_First, _Last);
         const auto _Off = static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr());
         _Erase_noexcept(_Off, static_cast<size_type>(_Last._Ptr - _First._Ptr));
         return begin() + static_cast<difference_type>(_Off);
     }
 
-    void clear() noexcept {          _Eos(0);
+    constexpr void clear() noexcept {          _Eos(0);
     }
 
-    basic_string& replace(const size_type _Off, const size_type _Nx, const basic_string& _Right) {
+    constexpr basic_string& replace(
+        const size_type _Off, const size_type _Nx, const basic_string& _Right) {
                  return replace(_Off, _Nx, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-    basic_string& replace(const size_type _Off, size_type _Nx, const basic_string& _Right, const size_type _Roff,
-        size_type _Count = npos) {
+    constexpr basic_string& replace(const size_type _Off, size_type _Nx, const basic_string& _Right,
+        const size_type _Roff, size_type _Count = npos) {
                  _Right._Mypair._Myval2._Check_offset(_Roff);
         _Count = _Right._Mypair._Myval2._Clamp_suffix_size(_Roff, _Count);
         return replace(_Off, _Nx, _Right._Mypair._Myval2._Myptr() + _Roff, _Count);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& replace(const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right) {
+    constexpr basic_string& replace(
+        const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right) {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return replace(_Off, _Nx, _As_view.data(), _Convert_size<size_type>(_As_view.size()));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& replace(const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right,
-        const size_type _Roff, const size_type _Count = npos) {
+    constexpr basic_string& replace(const size_type _Off, const size_type _Nx,
+        const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return replace(_Off, _Nx, _As_view.substr(_Roff, _Count));
     }
 
-    basic_string& replace(
+    constexpr basic_string& replace(
         const size_type _Off, size_type _Nx,   const _Elem* const _Ptr, const size_type _Count) {
                  _Mypair._Myval2._Check_offset(_Off);
         _Nx = _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx);
@@ -37194,24 +37630,28 @@ public:
         }
 
         const size_type _Growth = static_cast<size_type>(_Count - _Nx);
-        if (_Growth <= _Mypair._Myval2._Myres - _Old_size) {              _Mypair._Myval2._Mysize = _Old_size + _Growth;
-            _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
-            _Elem* const _Insert_at = _Old_ptr + _Off;
-            _Elem* const _Suffix_at = _Insert_at + _Nx;
 
-            size_type _Ptr_shifted_after;              if (_Ptr + _Count <= _Insert_at || _Ptr > _Old_ptr + _Old_size) {
-                _Ptr_shifted_after = _Count;
-            } else if (_Suffix_at <= _Ptr) {
-                _Ptr_shifted_after = 0;
-            } else {
-                _Ptr_shifted_after = static_cast<size_type>(_Suffix_at - _Ptr);
+                          if (!::std:: is_constant_evaluated())
+        {
+            if (_Growth <= _Mypair._Myval2._Myres - _Old_size) {                  _Mypair._Myval2._Mysize = _Old_size + _Growth;
+                _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
+                _Elem* const _Insert_at = _Old_ptr + _Off;
+                _Elem* const _Suffix_at = _Insert_at + _Nx;
+
+                size_type _Ptr_shifted_after;                  if (_Ptr + _Count <= _Insert_at || _Ptr > _Old_ptr + _Old_size) {
+                    _Ptr_shifted_after = _Count;
+                } else if (_Suffix_at <= _Ptr) {
+                    _Ptr_shifted_after = 0;
+                } else {
+                    _Ptr_shifted_after = static_cast<size_type>(_Suffix_at - _Ptr);
+                }
+
+                _Traits::move(_Suffix_at + _Growth, _Suffix_at, _Suffix_size);
+                                                                   _Traits::move(_Insert_at, _Ptr, _Ptr_shifted_after);
+                                                  _Traits::copy(
+                    _Insert_at + _Ptr_shifted_after, _Ptr + _Growth + _Ptr_shifted_after, _Count - _Ptr_shifted_after);
+                return *this;
             }
-
-            _Traits::move(_Suffix_at + _Growth, _Suffix_at, _Suffix_size);
-                                                   _Traits::move(_Insert_at, _Ptr, _Ptr_shifted_after);
-                                      _Traits::copy(
-                _Insert_at + _Ptr_shifted_after, _Ptr + _Growth + _Ptr_shifted_after, _Count - _Ptr_shifted_after);
-            return *this;
         }
 
         return _Reallocate_grow_by(
@@ -37225,11 +37665,13 @@ public:
             _Off, _Nx, _Ptr, _Count);
     }
 
-    basic_string& replace(const size_type _Off, const size_type _Nx,   const _Elem* const _Ptr) {
+    constexpr basic_string& replace(
+        const size_type _Off, const size_type _Nx,   const _Elem* const _Ptr) {
                  return replace(_Off, _Nx, _Ptr, _Convert_size<size_type>(_Traits::length(_Ptr)));
     }
 
-    basic_string& replace(const size_type _Off, size_type _Nx, const size_type _Count, const _Elem _Ch) {
+    constexpr basic_string& replace(
+        const size_type _Off, size_type _Nx, const size_type _Count, const _Elem _Ch) {
                  _Mypair._Myval2._Check_offset(_Off);
         _Nx = _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx);
         if (_Count == _Nx) {
@@ -37238,8 +37680,8 @@ public:
         }
 
         const size_type _Old_size = _Mypair._Myval2._Mysize;
-        if (_Count < _Nx
-            || _Count - _Nx <= _Mypair._Myval2._Myres - _Old_size) {              _Mypair._Myval2._Mysize = _Old_size + _Count - _Nx;                                                                               _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
+        if (_Count < _Nx || _Count - _Nx <= _Mypair._Myval2._Myres - _Old_size) {
+                         _Mypair._Myval2._Mysize = _Old_size + _Count - _Nx;                                                                               _Elem* const _Old_ptr   = _Mypair._Myval2._Myptr();
             _Elem* const _Insert_at = _Old_ptr + _Off;
             _Traits::move(_Insert_at + _Count, _Insert_at + _Nx, _Old_size - _Nx - _Off + 1);
             _Traits::assign(_Insert_at, _Count, _Ch);
@@ -37257,33 +37699,36 @@ public:
             _Off, _Nx, _Count, _Ch);
     }
 
-    basic_string& replace(const const_iterator _First, const const_iterator _Last, const basic_string& _Right) {
+    constexpr basic_string& replace(
+        const const_iterator _First, const const_iterator _Last, const basic_string& _Right) {
                  _Adl_verify_range(_First, _Last);
         return replace(static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr()),
             static_cast<size_type>(_Last._Ptr - _First._Ptr), _Right);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-    basic_string& replace(const const_iterator _First, const const_iterator _Last, const _StringViewIsh& _Right) {
+    constexpr basic_string& replace(
+        const const_iterator _First, const const_iterator _Last, const _StringViewIsh& _Right) {
                  _Adl_verify_range(_First, _Last);
         return replace(static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr()),
             static_cast<size_type>(_Last._Ptr - _First._Ptr), _Right);
     }
 
-    basic_string& replace(const const_iterator _First, const const_iterator _Last,
+    constexpr basic_string& replace(const const_iterator _First, const const_iterator _Last,
           const _Elem* const _Ptr, const size_type _Count) {
                  _Adl_verify_range(_First, _Last);
         return replace(static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr()),
             static_cast<size_type>(_Last._Ptr - _First._Ptr), _Ptr, _Count);
     }
 
-    basic_string& replace(const const_iterator _First, const const_iterator _Last,   const _Elem* const _Ptr) {
+    constexpr basic_string& replace(
+        const const_iterator _First, const const_iterator _Last,   const _Elem* const _Ptr) {
                  _Adl_verify_range(_First, _Last);
         return replace(static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr()),
             static_cast<size_type>(_Last._Ptr - _First._Ptr), _Ptr);
     }
 
-    basic_string& replace(
+    constexpr basic_string& replace(
         const const_iterator _First, const const_iterator _Last, const size_type _Count, const _Elem _Ch) {
                  _Adl_verify_range(_First, _Last);
         return replace(static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr()),
@@ -37291,7 +37736,7 @@ public:
     }
 
     template <class _Iter, enable_if_t<_Is_iterator_v<_Iter>, int> = 0>
-    basic_string& replace(
+    constexpr basic_string& replace(
         const const_iterator _First, const const_iterator _Last, const _Iter _First2, const _Iter _Last2) {
                  _Adl_verify_range(_First, _Last);
         const auto _Off    = static_cast<size_type>(_Unfancy(_First._Ptr) - _Mypair._Myval2._Myptr());
@@ -37307,86 +37752,96 @@ public:
         }
     }
 
-     iterator begin() noexcept {
+     constexpr iterator begin() noexcept {
         return iterator(_Refancy<pointer>(_Mypair._Myval2._Myptr()), ::std:: addressof(_Mypair._Myval2));
     }
 
-     const_iterator begin() const noexcept {
+     constexpr const_iterator begin() const noexcept {
         return const_iterator(_Refancy<const_pointer>(_Mypair._Myval2._Myptr()), ::std:: addressof(_Mypair._Myval2));
     }
 
-     iterator end() noexcept {
+     constexpr iterator end() noexcept {
         return iterator(
             _Refancy<pointer>(_Mypair._Myval2._Myptr()) + static_cast<difference_type>(_Mypair._Myval2._Mysize),
             ::std:: addressof(_Mypair._Myval2));
     }
 
-     const_iterator end() const noexcept {
+     constexpr const_iterator end() const noexcept {
         return const_iterator(
             _Refancy<const_pointer>(_Mypair._Myval2._Myptr()) + static_cast<difference_type>(_Mypair._Myval2._Mysize),
             ::std:: addressof(_Mypair._Myval2));
     }
 
-    _Elem* _Unchecked_begin() noexcept {
+     constexpr _Elem* _Unchecked_begin() noexcept {
         return _Mypair._Myval2._Myptr();
     }
 
-    const _Elem* _Unchecked_begin() const noexcept {
+     constexpr const _Elem* _Unchecked_begin() const noexcept {
         return _Mypair._Myval2._Myptr();
     }
 
-    _Elem* _Unchecked_end() noexcept {
+     constexpr _Elem* _Unchecked_end() noexcept {
         return _Mypair._Myval2._Myptr() + _Mypair._Myval2._Mysize;
     }
 
-    const _Elem* _Unchecked_end() const noexcept {
+     constexpr const _Elem* _Unchecked_end() const noexcept {
         return _Mypair._Myval2._Myptr() + _Mypair._Myval2._Mysize;
     }
 
-     reverse_iterator rbegin() noexcept {
+     constexpr reverse_iterator rbegin() noexcept {
         return reverse_iterator(end());
     }
 
-     const_reverse_iterator rbegin() const noexcept {
+     constexpr const_reverse_iterator rbegin() const noexcept {
         return const_reverse_iterator(end());
     }
 
-     reverse_iterator rend() noexcept {
+     constexpr reverse_iterator rend() noexcept {
         return reverse_iterator(begin());
     }
 
-     const_reverse_iterator rend() const noexcept {
+     constexpr const_reverse_iterator rend() const noexcept {
         return const_reverse_iterator(begin());
     }
 
-     const_iterator cbegin() const noexcept {
+     constexpr const_iterator cbegin() const noexcept {
         return begin();
     }
 
-     const_iterator cend() const noexcept {
+     constexpr const_iterator cend() const noexcept {
         return end();
     }
 
-     const_reverse_iterator crbegin() const noexcept {
+     constexpr const_reverse_iterator crbegin() const noexcept {
         return rbegin();
     }
 
-     const_reverse_iterator crend() const noexcept {
+     constexpr const_reverse_iterator crend() const noexcept {
         return rend();
     }
 
-    void shrink_to_fit() {          auto& _My_data = _Mypair._Myval2;
-        if (!_My_data._Large_string_engaged()) {              return;
+    constexpr void shrink_to_fit() {          auto& _My_data = _Mypair._Myval2;
+
+        if (!::std:: is_constant_evaluated())
+        {
+            if (!_My_data._Large_string_engaged()) {                  return;
+            }
+
+            if (_My_data._Mysize < _BUF_SIZE) {
+                _Become_small();
+                return;
+            }
         }
 
-        if (_My_data._Mysize < _BUF_SIZE) {
-            _Become_small();
-            return;
-        }
+        size_type _Target_capacity = (::std:: min)(_My_data._Mysize | _ALLOC_MASK, max_size());
+                 _Target_capacity = (::std:: max)(_Target_capacity, _BUF_SIZE);
 
-        const size_type _Target_capacity = (::std:: min)(_My_data._Mysize | _ALLOC_MASK, max_size());
         if (_Target_capacity < _My_data._Myres) {              auto& _Al              = _Getal();
-            const pointer _New_ptr = _Al.allocate(_Target_capacity + 1);              _My_data._Orphan_all();
+            const pointer _New_ptr = _Al.allocate(_Target_capacity + 1);  
+            if (::std:: is_constant_evaluated()) {                  _Traits::assign(_Unfancy(_New_ptr), _Target_capacity + 1, _Elem());
+            }
+
+            _My_data._Orphan_all();
             _Traits::copy(_Unfancy(_New_ptr), _Unfancy(_My_data._Bx._Ptr), _My_data._Mysize + 1);
             _Al.deallocate(_My_data._Bx._Ptr, _My_data._Myres + 1);
             _My_data._Bx._Ptr = _New_ptr;
@@ -37394,29 +37849,30 @@ public:
         }
     }
 
-     reference at(const size_type _Off) {
+     constexpr reference at(const size_type _Off) {
         _Mypair._Myval2._Check_offset_exclusive(_Off);
         return _Mypair._Myval2._Myptr()[_Off];
     }
 
-     const_reference at(const size_type _Off) const {
+     constexpr const_reference at(const size_type _Off) const {
         _Mypair._Myval2._Check_offset_exclusive(_Off);
         return _Mypair._Myval2._Myptr()[_Off];
     }
 
-     reference operator[](const size_type _Off) noexcept   {
+     constexpr reference operator[](const size_type _Off) noexcept   {
         return _Mypair._Myval2._Myptr()[_Off];
     }
 
-     const_reference operator[](const size_type _Off) const noexcept   {
+     constexpr const_reference operator[](const size_type _Off) const noexcept
+      {
         return _Mypair._Myval2._Myptr()[_Off];
     }
 
-      operator basic_string_view<_Elem, _Traits>() const noexcept {
+      constexpr operator basic_string_view<_Elem, _Traits>() const noexcept {
                  return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize);
     }
 
-    void push_back(const _Elem _Ch) {          const size_type _Old_size = _Mypair._Myval2._Mysize;
+    constexpr void push_back(const _Elem _Ch) {          const size_type _Old_size = _Mypair._Myval2._Mysize;
         if (_Old_size < _Mypair._Myval2._Myres) {
             _Mypair._Myval2._Mysize = _Old_size + 1;
             _Elem* const _Ptr       = _Mypair._Myval2._Myptr();
@@ -37435,59 +37891,59 @@ public:
             _Ch);
     }
 
-    void pop_back() noexcept   {
+    constexpr void pop_back() noexcept   {
         const size_type _Old_size = _Mypair._Myval2._Mysize;
         _Eos(_Old_size - 1);
     }
 
-     reference front() noexcept   {
+     constexpr reference front() noexcept   {
 
         return _Mypair._Myval2._Myptr()[0];
     }
 
-     const_reference front() const noexcept   {
+     constexpr const_reference front() const noexcept   {
 
         return _Mypair._Myval2._Myptr()[0];
     }
 
-     reference back() noexcept   {
+     constexpr reference back() noexcept   {
 
         return _Mypair._Myval2._Myptr()[_Mypair._Myval2._Mysize - 1];
     }
 
-     const_reference back() const noexcept   {
+     constexpr const_reference back() const noexcept   {
 
         return _Mypair._Myval2._Myptr()[_Mypair._Myval2._Mysize - 1];
     }
 
-       const _Elem* c_str() const noexcept {
+     constexpr   const _Elem* c_str() const noexcept {
         return _Mypair._Myval2._Myptr();
     }
 
-       const _Elem* data() const noexcept {
+     constexpr   const _Elem* data() const noexcept {
         return _Mypair._Myval2._Myptr();
     }
 
-       _Elem* data() noexcept {
+     constexpr   _Elem* data() noexcept {
         return _Mypair._Myval2._Myptr();
     }
 
-     size_type length() const noexcept {
+     constexpr size_type length() const noexcept {
         return _Mypair._Myval2._Mysize;
     }
 
-     size_type size() const noexcept {
+     constexpr size_type size() const noexcept {
         return _Mypair._Myval2._Mysize;
     }
 
-     size_type max_size() const noexcept {
+     constexpr size_type max_size() const noexcept {
         const size_type _Alloc_max   = _Alty_traits::max_size(_Getal());
         const size_type _Storage_max =              (::std:: max)(_Alloc_max, static_cast<size_type>(_BUF_SIZE));
         return (::std:: min)(static_cast<size_type>((numeric_limits<difference_type>::max)()),
             _Storage_max - 1          );
     }
 
-    void resize( const size_type _Newsize, const _Elem _Ch = _Elem()) {
+    constexpr void resize( const size_type _Newsize, const _Elem _Ch = _Elem()) {
                  const size_type _Old_size = size();
         if (_Newsize <= _Old_size) {
             _Eos(_Newsize);
@@ -37496,11 +37952,12 @@ public:
         }
     }
 
-     size_type capacity() const noexcept {
+     constexpr size_type capacity() const noexcept {
         return _Mypair._Myval2._Myres;
     }
 
-    void reserve( const size_type _Newcap) {          if (_Mypair._Myval2._Myres >= _Newcap) {              return;          }
+    constexpr void reserve( const size_type _Newcap) {
+                 if (_Mypair._Myval2._Myres >= _Newcap) {              return;          }
 
         const size_type _Old_size = _Mypair._Myval2._Mysize;
         _Reallocate_grow_by(
@@ -37517,46 +37974,54 @@ public:
         }
     }
 
-     bool empty() const noexcept {
+     constexpr bool empty() const noexcept {
         return size() == 0;
     }
 
-    size_type copy(  _Elem* const _Ptr, size_type _Count, const size_type _Off = 0) const {
+    constexpr size_type copy(
+          _Elem* const _Ptr, size_type _Count, const size_type _Off = 0) const {
                  _Mypair._Myval2._Check_offset(_Off);
         _Count = _Mypair._Myval2._Clamp_suffix_size(_Off, _Count);
         _Traits::copy(_Ptr, _Mypair._Myval2._Myptr() + _Off, _Count);
         return _Count;
     }
 
-      size_type _Copy_s(  _Elem* const _Dest,
-        const size_type _Dest_size, size_type _Count, const size_type _Off = 0) const {
+    constexpr   size_type
+        _Copy_s(  _Elem* const _Dest, const size_type _Dest_size, size_type _Count,
+            const size_type _Off = 0) const {
                  _Mypair._Myval2._Check_offset(_Off);
         _Count = _Mypair._Myval2._Clamp_suffix_size(_Off, _Count);
         _Traits::_Copy_s(_Dest, _Dest_size, _Mypair._Myval2._Myptr() + _Off, _Count);
         return _Count;
     }
 
-    void _Swap_data(basic_string& _Right, true_type) {
-                 const auto _My_data_mem =
-            reinterpret_cast<unsigned char*>(::std:: addressof(_Mypair._Myval2)) + _Memcpy_val_offset;
-        const auto _Right_data_mem =
-            reinterpret_cast<unsigned char*>(::std:: addressof(_Right._Mypair._Myval2)) + _Memcpy_val_offset;
-        unsigned char _Temp_mem[_Memcpy_val_size];
-        :: memcpy(_Temp_mem, _My_data_mem, _Memcpy_val_size);
-        :: memcpy(_My_data_mem, _Right_data_mem, _Memcpy_val_size);
-        :: memcpy(_Right_data_mem, _Temp_mem, _Memcpy_val_size);
-    }
-
     void _Swap_bx_large_with_small(_Scary_val& _Starts_large, _Scary_val& _Starts_small) {
-                 const pointer _Ptr = _Starts_large._Bx._Ptr;
+                  
+        const pointer _Ptr = _Starts_large._Bx._Ptr;
         _Destroy_in_place(_Starts_large._Bx._Ptr);
         _Traits::copy(_Starts_large._Bx._Buf, _Starts_small._Bx._Buf, _BUF_SIZE);
         _Construct_in_place(_Starts_small._Bx._Ptr, _Ptr);
     }
 
-    void _Swap_data(basic_string& _Right, false_type) {
-                 auto& _My_data          = _Mypair._Myval2;
-        auto& _Right_data       = _Right._Mypair._Myval2;
+    constexpr void _Swap_data(basic_string& _Right) {
+        auto& _My_data    = _Mypair._Myval2;
+        auto& _Right_data = _Right._Mypair._Myval2;
+
+        if constexpr (_Can_memcpy_val) {
+            if (!::std:: is_constant_evaluated())
+            {
+                const auto _My_data_mem =
+                    reinterpret_cast<unsigned char*>(::std:: addressof(_My_data)) + _Memcpy_val_offset;
+                const auto _Right_data_mem =
+                    reinterpret_cast<unsigned char*>(::std:: addressof(_Right_data)) + _Memcpy_val_offset;
+                unsigned char _Temp_mem[_Memcpy_val_size];
+                :: memcpy(_Temp_mem, _My_data_mem, _Memcpy_val_size);
+                :: memcpy(_My_data_mem, _Right_data_mem, _Memcpy_val_size);
+                :: memcpy(_Right_data_mem, _Temp_mem, _Memcpy_val_size);
+                return;
+            }
+        }
+
         const bool _My_large    = _My_data._Large_string_engaged();
         const bool _Right_large = _Right_data._Large_string_engaged();
         if (_My_large) {
@@ -37577,220 +38042,239 @@ public:
         ::std:: swap(_My_data._Myres, _Right_data._Myres);
     }
 
-    void swap(basic_string& _Right) noexcept   {
+    constexpr void swap(basic_string& _Right) noexcept   {
         if (this != ::std:: addressof(_Right)) {
             _Pocs(_Getal(), _Right._Getal());
 
         }
 
-        _Swap_data(_Right, bool_constant<_Can_memcpy_val>{});
+        _Swap_data(_Right);
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type find(const _StringViewIsh& _Right, const size_type _Off = 0) const {
+     constexpr size_type find(const _StringViewIsh& _Right, const size_type _Off = 0) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(_Traits_find<_Traits>(
             _Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _As_view.data(), _As_view.size()));
     }
 
-     size_type find(const basic_string& _Right, const size_type _Off = 0) const noexcept {
+     constexpr size_type find(
+        const basic_string& _Right, const size_type _Off = 0) const noexcept {
                  return static_cast<size_type>(_Traits_find<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off,
             _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize));
     }
 
-     size_type find(  const _Elem* const _Ptr, const size_type _Off,
+     constexpr size_type find(  const _Elem* const _Ptr, const size_type _Off,
         const size_type _Count) const noexcept   {
                  return static_cast<size_type>(
             _Traits_find<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ptr, _Count));
     }
 
-     size_type find(  const _Elem* const _Ptr, const size_type _Off = 0) const noexcept
-      {
+     constexpr size_type find(
+          const _Elem* const _Ptr, const size_type _Off = 0) const noexcept   {
                  return static_cast<size_type>(_Traits_find<_Traits>(
             _Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ptr, _Traits::length(_Ptr)));
     }
 
-     size_type find(const _Elem _Ch, const size_type _Off = 0) const noexcept   {
+     constexpr size_type find(const _Elem _Ch, const size_type _Off = 0) const noexcept
+      {
                  return static_cast<size_type>(
             _Traits_find_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type rfind(const _StringViewIsh& _Right, const size_type _Off = npos) const {
+     constexpr size_type rfind(const _StringViewIsh& _Right, const size_type _Off = npos) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(_Traits_rfind<_Traits>(
             _Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _As_view.data(), _As_view.size()));
     }
 
-     size_type rfind(const basic_string& _Right, const size_type _Off = npos) const noexcept {
+     constexpr size_type rfind(
+        const basic_string& _Right, const size_type _Off = npos) const noexcept {
                  return static_cast<size_type>(_Traits_rfind<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off,
             _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize));
     }
 
-     size_type rfind(  const _Elem* const _Ptr, const size_type _Off,
+     constexpr size_type rfind(  const _Elem* const _Ptr, const size_type _Off,
         const size_type _Count) const noexcept   {
                  return static_cast<size_type>(
             _Traits_rfind<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ptr, _Count));
     }
 
-     size_type rfind(  const _Elem* const _Ptr, const size_type _Off = npos) const noexcept
-      {
+     constexpr size_type rfind(
+          const _Elem* const _Ptr, const size_type _Off = npos) const noexcept   {
                  return static_cast<size_type>(_Traits_rfind<_Traits>(
             _Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ptr, _Traits::length(_Ptr)));
     }
 
-     size_type rfind(const _Elem _Ch, const size_type _Off = npos) const noexcept   {
+     constexpr size_type rfind(const _Elem _Ch, const size_type _Off = npos) const noexcept
+      {
                  return static_cast<size_type>(
             _Traits_rfind_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type find_first_of(const _StringViewIsh& _Right, const size_type _Off = 0) const {
+     constexpr size_type find_first_of(
+        const _StringViewIsh& _Right, const size_type _Off = 0) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(_Traits_find_first_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _As_view.data(), _As_view.size(), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_of(const basic_string& _Right, const size_type _Off = 0) const noexcept {
+     constexpr size_type find_first_of(
+        const basic_string& _Right, const size_type _Off = 0) const noexcept {
                  return static_cast<size_type>(_Traits_find_first_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize,
             _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_of(  const _Elem* const _Ptr, const size_type _Off,
-        const size_type _Count) const noexcept   {
+     constexpr size_type find_first_of(  const _Elem* const _Ptr,
+        const size_type _Off, const size_type _Count) const noexcept   {
                  return static_cast<size_type>(_Traits_find_first_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Ptr, _Count, _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_of(  const _Elem* const _Ptr, const size_type _Off = 0) const noexcept
-      {
+     constexpr size_type find_first_of(
+          const _Elem* const _Ptr, const size_type _Off = 0) const noexcept   {
                  return static_cast<size_type>(_Traits_find_first_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Ptr, _Traits::length(_Ptr), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_of(const _Elem _Ch, const size_type _Off = 0) const noexcept   {
+     constexpr size_type find_first_of(const _Elem _Ch, const size_type _Off = 0) const noexcept
+      {
                  return static_cast<size_type>(
             _Traits_find_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type find_last_of(const _StringViewIsh& _Right, const size_type _Off = npos) const {
+     constexpr size_type find_last_of(
+        const _StringViewIsh& _Right, const size_type _Off = npos) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(_Traits_find_last_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _As_view.data(), _As_view.size(), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_of(const basic_string& _Right, size_type _Off = npos) const noexcept {
+     constexpr size_type find_last_of(
+        const basic_string& _Right, size_type _Off = npos) const noexcept {
                  return static_cast<size_type>(_Traits_find_last_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize,
             _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_of(  const _Elem* const _Ptr, const size_type _Off,
-        const size_type _Count) const noexcept   {
+     constexpr size_type find_last_of(  const _Elem* const _Ptr,
+        const size_type _Off, const size_type _Count) const noexcept   {
                  return static_cast<size_type>(_Traits_find_last_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Ptr, _Count, _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_of(  const _Elem* const _Ptr, const size_type _Off = npos) const noexcept
-      {
+     constexpr size_type find_last_of(
+          const _Elem* const _Ptr, const size_type _Off = npos) const noexcept   {
                  return static_cast<size_type>(_Traits_find_last_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Off, _Ptr, _Traits::length(_Ptr), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_of(const _Elem _Ch, const size_type _Off = npos) const noexcept   {
+     constexpr size_type find_last_of(
+        const _Elem _Ch, const size_type _Off = npos) const noexcept   {
                  return static_cast<size_type>(
             _Traits_rfind_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type find_first_not_of(const _StringViewIsh& _Right, const size_type _Off = 0) const {
+     constexpr size_type find_first_not_of(
+        const _StringViewIsh& _Right, const size_type _Off = 0) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(
             _Traits_find_first_not_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _As_view.data(),
                 _As_view.size(), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_not_of(const basic_string& _Right, const size_type _Off = 0) const noexcept {
+     constexpr size_type find_first_not_of(
+        const basic_string& _Right, const size_type _Off = 0) const noexcept {
                  return static_cast<size_type>(_Traits_find_first_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize,
             _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_not_of(  const _Elem* const _Ptr, const size_type _Off,
-        const size_type _Count) const noexcept   {
+     constexpr size_type find_first_not_of(  const _Elem* const _Ptr,
+        const size_type _Off, const size_type _Count) const noexcept   {
                  return static_cast<size_type>(_Traits_find_first_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Ptr, _Count, _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_not_of(  const _Elem* const _Ptr, size_type _Off = 0) const noexcept
-      {
+     constexpr size_type find_first_not_of(
+          const _Elem* const _Ptr, size_type _Off = 0) const noexcept   {
                  return static_cast<size_type>(_Traits_find_first_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Ptr, _Traits::length(_Ptr), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_first_not_of(const _Elem _Ch, const size_type _Off = 0) const noexcept
-      {
+     constexpr size_type find_first_not_of(
+        const _Elem _Ch, const size_type _Off = 0) const noexcept   {
                  return static_cast<size_type>(
             _Traits_find_not_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     size_type find_last_not_of(const _StringViewIsh& _Right, const size_type _Off = npos) const {
+     constexpr size_type find_last_not_of(
+        const _StringViewIsh& _Right, const size_type _Off = npos) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         return static_cast<size_type>(
             _Traits_find_last_not_of<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _As_view.data(),
                 _As_view.size(), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_not_of(const basic_string& _Right, const size_type _Off = npos) const noexcept {
+     constexpr size_type find_last_not_of(
+        const basic_string& _Right, const size_type _Off = npos) const noexcept {
                  return static_cast<size_type>(_Traits_find_last_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize,
             _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_not_of(  const _Elem* const _Ptr, const size_type _Off,
-        const size_type _Count) const noexcept   {
+     constexpr size_type find_last_not_of(  const _Elem* const _Ptr,
+        const size_type _Off, const size_type _Count) const noexcept   {
                  return static_cast<size_type>(_Traits_find_last_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Ptr, _Count, _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_not_of(  const _Elem* const _Ptr, const size_type _Off = npos) const noexcept
-      {
+     constexpr size_type find_last_not_of(
+          const _Elem* const _Ptr, const size_type _Off = npos) const noexcept   {
                  return static_cast<size_type>(_Traits_find_last_not_of<_Traits>(_Mypair._Myval2._Myptr(),
             _Mypair._Myval2._Mysize, _Off, _Ptr, _Traits::length(_Ptr), _Is_specialization<_Traits, char_traits>{}));
     }
 
-     size_type find_last_not_of(const _Elem _Ch, const size_type _Off = npos) const noexcept
-      {
+     constexpr size_type find_last_not_of(
+        const _Elem _Ch, const size_type _Off = npos) const noexcept   {
                  return static_cast<size_type>(
             _Traits_rfind_not_ch<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Off, _Ch));
     }
 
      bool _Starts_with(const basic_string_view<_Elem, _Traits> _Right) const noexcept {
-        return basic_string_view<_Elem, _Traits>(*this)._Starts_with(_Right);
+                 return basic_string_view<_Elem, _Traits>(*this)._Starts_with(_Right);
     }
 
-     basic_string substr(const size_type _Off = 0, const size_type _Count = npos) const {
+     constexpr basic_string substr(
+        const size_type _Off = 0, const size_type _Count = npos) const {
                  return basic_string(*this, _Off, _Count, get_allocator());
     }
 
-    bool _Equal(const basic_string& _Right) const noexcept {          return _Traits_equal<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
+    constexpr bool _Equal(const basic_string& _Right) const noexcept {
+                 return _Traits_equal<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-    bool _Equal(  const _Elem* const _Ptr) const noexcept {          return _Traits_equal<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Ptr, _Traits::length(_Ptr));
+    constexpr bool _Equal(  const _Elem* const _Ptr) const noexcept {
+                 return _Traits_equal<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Ptr, _Traits::length(_Ptr));
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     int compare(const _StringViewIsh& _Right) const {          basic_string_view<_Elem, _Traits> _As_view = _Right;
+     constexpr int compare(const _StringViewIsh& _Right) const {
+                 basic_string_view<_Elem, _Traits> _As_view = _Right;
         return _Traits_compare<_Traits>(
             _Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _As_view.data(), _As_view.size());
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     int compare(const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right) const {
+     constexpr int compare(
+        const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         _Mypair._Myval2._Check_offset(_Off);
         return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr() + _Off, _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx),
@@ -37798,8 +38282,8 @@ public:
     }
 
     template <class _StringViewIsh, _Is_string_view_ish<_StringViewIsh> = 0>
-     int compare(const size_type _Off, const size_type _Nx, const _StringViewIsh& _Right,
-        const size_type _Roff, const size_type _Count = npos) const {
+     constexpr int compare(const size_type _Off, const size_type _Nx,
+        const _StringViewIsh& _Right, const size_type _Roff, const size_type _Count = npos) const {
                  basic_string_view<_Elem, _Traits> _As_view = _Right;
         _Mypair._Myval2._Check_offset(_Off);
         const auto _With_substr = _As_view.substr(_Roff, _Count);
@@ -37807,70 +38291,73 @@ public:
             _With_substr.data(), _With_substr.size());
     }
 
-     int compare(const basic_string& _Right) const noexcept {          return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
+     constexpr int compare(const basic_string& _Right) const noexcept {
+                 return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize,
             _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-     int compare(size_type _Off, size_type _Nx, const basic_string& _Right) const {
+     constexpr int compare(size_type _Off, size_type _Nx, const basic_string& _Right) const {
                  _Mypair._Myval2._Check_offset(_Off);
         return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr() + _Off, _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx),
             _Right._Mypair._Myval2._Myptr(), _Right._Mypair._Myval2._Mysize);
     }
 
-     int compare(const size_type _Off, const size_type _Nx, const basic_string& _Right, const size_type _Roff,
-        const size_type _Count = npos) const {
+     constexpr int compare(const size_type _Off, const size_type _Nx, const basic_string& _Right,
+        const size_type _Roff, const size_type _Count = npos) const {
                  _Mypair._Myval2._Check_offset(_Off);
         _Right._Mypair._Myval2._Check_offset(_Roff);
         return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr() + _Off, _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx),
             _Right._Mypair._Myval2._Myptr() + _Roff, _Right._Mypair._Myval2._Clamp_suffix_size(_Roff, _Count));
     }
 
-     int compare(  const _Elem* const _Ptr) const noexcept   {
+     constexpr int compare(  const _Elem* const _Ptr) const noexcept   {
                  return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize, _Ptr, _Traits::length(_Ptr));
     }
 
-     int compare(const size_type _Off, const size_type _Nx,   const _Elem* const _Ptr) const {
+     constexpr int compare(
+        const size_type _Off, const size_type _Nx,   const _Elem* const _Ptr) const {
                  _Mypair._Myval2._Check_offset(_Off);
         return _Traits_compare<_Traits>(_Mypair._Myval2._Myptr() + _Off, _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx),
             _Ptr, _Traits::length(_Ptr));
     }
 
-     int compare(const size_type _Off, const size_type _Nx,   const _Elem* const _Ptr,
-        const size_type _Count) const {          _Mypair._Myval2._Check_offset(_Off);
+     constexpr int compare(const size_type _Off, const size_type _Nx,
+          const _Elem* const _Ptr, const size_type _Count) const {
+                 _Mypair._Myval2._Check_offset(_Off);
         return _Traits_compare<_Traits>(
             _Mypair._Myval2._Myptr() + _Off, _Mypair._Myval2._Clamp_suffix_size(_Off, _Nx), _Ptr, _Count);
     }
 
-     bool starts_with(const basic_string_view<_Elem, _Traits> _Right) const noexcept {
+     constexpr bool starts_with(const basic_string_view<_Elem, _Traits> _Right) const noexcept {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).starts_with(_Right);
     }
 
-     bool starts_with(const _Elem _Right) const noexcept {
+     constexpr bool starts_with(const _Elem _Right) const noexcept {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).starts_with(_Right);
     }
 
-     bool starts_with(const _Elem* const _Right) const noexcept   {
+     constexpr bool starts_with(const _Elem* const _Right) const noexcept   {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).starts_with(_Right);
     }
 
-     bool ends_with(const basic_string_view<_Elem, _Traits> _Right) const noexcept {
+     constexpr bool ends_with(const basic_string_view<_Elem, _Traits> _Right) const noexcept {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).ends_with(_Right);
     }
 
-     bool ends_with(const _Elem _Right) const noexcept {
+     constexpr bool ends_with(const _Elem _Right) const noexcept {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).ends_with(_Right);
     }
 
-     bool ends_with(const _Elem* const _Right) const noexcept   {
+     constexpr bool ends_with(const _Elem* const _Right) const noexcept   {
         return basic_string_view<_Elem, _Traits>(_Mypair._Myval2._Myptr(), _Mypair._Myval2._Mysize).ends_with(_Right);
     }
 
-     allocator_type get_allocator() const noexcept {
+     constexpr allocator_type get_allocator() const noexcept {
         return static_cast<allocator_type>(_Getal());
     }
 
 private:
-     static size_type _Calculate_growth(
+     static constexpr size_type _Calculate_growth(
         const size_type _Requested, const size_type _Old, const size_type _Max) noexcept {
         const size_type _Masked = _Requested | _ALLOC_MASK;
         if (_Masked > _Max) {              return _Max;
@@ -37882,19 +38369,22 @@ private:
         return (::std:: max)(_Masked, _Old + _Old / 2);
     }
 
-     size_type _Calculate_growth(const size_type _Requested) const noexcept {
+     constexpr size_type _Calculate_growth(const size_type _Requested) const noexcept {
         return _Calculate_growth(_Requested, _Mypair._Myval2._Myres, max_size());
     }
 
     template <class _Fty, class... _ArgTys>
-    basic_string& _Reallocate_for(const size_type _New_size, _Fty _Fn, _ArgTys... _Args) {
+    constexpr basic_string& _Reallocate_for(const size_type _New_size, _Fty _Fn, _ArgTys... _Args) {
                           if (_New_size > max_size()) {
             _Xlen_string();          }
 
         const size_type _Old_capacity = _Mypair._Myval2._Myres;
         const size_type _New_capacity = _Calculate_growth(_New_size);
         auto& _Al                     = _Getal();
-        const pointer _New_ptr        = _Al.allocate(_New_capacity + 1);          _Mypair._Myval2._Orphan_all();
+        const pointer _New_ptr        = _Al.allocate(_New_capacity + 1);  
+        if (::std:: is_constant_evaluated()) {              _Traits::assign(_Unfancy(_New_ptr), _New_capacity + 1, _Elem());
+        }
+        _Mypair._Myval2._Orphan_all();
         _Mypair._Myval2._Mysize = _New_size;
         _Mypair._Myval2._Myres  = _New_capacity;
         _Fn(_Unfancy(_New_ptr), _New_size, _Args...);
@@ -37909,7 +38399,8 @@ private:
     }
 
     template <class _Fty, class... _ArgTys>
-    basic_string& _Reallocate_grow_by(const size_type _Size_increase, _Fty _Fn, _ArgTys... _Args) {
+    constexpr basic_string& _Reallocate_grow_by(
+        const size_type _Size_increase, _Fty _Fn, _ArgTys... _Args) {
                           auto& _My_data            = _Mypair._Myval2;
         const size_type _Old_size = _My_data._Mysize;
         if (max_size() - _Old_size < _Size_increase) {
@@ -37919,7 +38410,10 @@ private:
         const size_type _Old_capacity = _My_data._Myres;
         const size_type _New_capacity = _Calculate_growth(_New_size);
         auto& _Al                     = _Getal();
-        const pointer _New_ptr        = _Al.allocate(_New_capacity + 1);          _My_data._Orphan_all();
+        const pointer _New_ptr        = _Al.allocate(_New_capacity + 1);  
+        if (::std:: is_constant_evaluated()) {              _Traits::assign(_Unfancy(_New_ptr), _New_capacity + 1, _Elem());
+        }
+        _My_data._Orphan_all();
         _My_data._Mysize      = _New_size;
         _My_data._Myres       = _New_capacity;
         _Elem* const _Raw_new = _Unfancy(_New_ptr);
@@ -37937,7 +38431,8 @@ private:
     }
 
     void _Become_small() {
-                                   _Mypair._Myval2._Orphan_all();
+                                    
+        _Mypair._Myval2._Orphan_all();
         const pointer _Ptr = _Mypair._Myval2._Bx._Ptr;
         auto& _Al          = _Getal();
         _Destroy_in_place(_Mypair._Myval2._Bx._Ptr);
@@ -37946,15 +38441,26 @@ private:
         _Mypair._Myval2._Myres = _BUF_SIZE - 1;
     }
 
-    void _Eos(const size_type _Newsize) {          _Traits::assign(_Mypair._Myval2._Myptr()[_Mypair._Myval2._Mysize = _Newsize], _Elem());
+    constexpr void _Eos(const size_type _Newsize) {          _Traits::assign(_Mypair._Myval2._Myptr()[_Mypair._Myval2._Mysize = _Newsize], _Elem());
     }
 
-    void _Tidy_init() noexcept {          _Mypair._Myval2._Mysize = 0;
-        _Mypair._Myval2._Myres  = _BUF_SIZE - 1;
-                 _Traits::assign(_Mypair._Myval2._Bx._Buf[0], _Elem());
+    constexpr void _Tidy_init() noexcept {          auto& _My_data   = _Mypair._Myval2;
+        _My_data._Mysize = 0;
+
+        if (::std:: is_constant_evaluated()) {
+            _My_data._Myres        = _BUF_SIZE;              auto& _Al              = _Getal();
+            const pointer _New_ptr = _Al.allocate(_BUF_SIZE + 1);              _My_data._Bx._Ptr      = _New_ptr;
+
+            _Elem* const _Raw_new = _Unfancy(_New_ptr);
+            _Traits::assign(_Raw_new, _BUF_SIZE + 1, _Elem());
+        } else
+        {
+            _My_data._Myres = _BUF_SIZE - 1;
+                         _Traits::assign(_My_data._Bx._Buf[0], _Elem());
+        }
     }
 
-    void _Tidy_deallocate() noexcept {          _Mypair._Myval2._Orphan_all();
+    constexpr void _Tidy_deallocate() noexcept {          _Mypair._Myval2._Orphan_all();
         if (_Mypair._Myval2._Large_string_engaged()) {
             const pointer _Ptr = _Mypair._Myval2._Bx._Ptr;
             auto& _Al          = _Getal();
@@ -37962,25 +38468,32 @@ private:
             _Al.deallocate(_Ptr, _Mypair._Myval2._Myres + 1);
         }
 
-        _Mypair._Myval2._Mysize = 0;
-        _Mypair._Myval2._Myres  = _BUF_SIZE - 1;
-                 _Traits::assign(_Mypair._Myval2._Bx._Buf[0], _Elem());
+        if (::std:: is_constant_evaluated()) {
+            _Mypair._Myval2._Bx._Ptr = nullptr;
+            _Mypair._Myval2._Mysize  = 0;
+            _Mypair._Myval2._Myres   = 0;
+        } else
+        {
+            _Mypair._Myval2._Mysize = 0;
+            _Mypair._Myval2._Myres  = _BUF_SIZE - 1;
+                         _Traits::assign(_Mypair._Myval2._Bx._Buf[0], _Elem());
+        }
     }
 
 public:
-    void _Orphan_all() noexcept {          _Mypair._Myval2._Orphan_all();
+    constexpr void _Orphan_all() noexcept {          _Mypair._Myval2._Orphan_all();
     }
 
 private:
-    void _Swap_proxy_and_iterators(basic_string& _Right) {
+    constexpr void _Swap_proxy_and_iterators(basic_string& _Right) {
         _Mypair._Myval2._Swap_proxy_and_iterators(_Right._Mypair._Myval2);
     }
 
-    _Alty& _Getal() noexcept {
+    constexpr _Alty& _Getal() noexcept {
         return _Mypair._Get_first();
     }
 
-    const _Alty& _Getal() const noexcept {
+    constexpr const _Alty& _Getal() const noexcept {
         return _Mypair._Get_first();
     }
 
@@ -38003,13 +38516,13 @@ basic_string(basic_string_view<_Elem, _Traits>, _Guide_size_type_t<_Alloc>, _Gui
     const _Alloc& = _Alloc()) -> basic_string<_Elem, _Traits, _Alloc>;
 
 template <class _Elem, class _Traits, class _Alloc>
-void swap(basic_string<_Elem, _Traits, _Alloc>& _Left, basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept
-  {
+constexpr void swap(basic_string<_Elem, _Traits, _Alloc>& _Left,
+    basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept   {
     _Left.swap(_Right);
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
     const auto _Left_size  = _Left.size();
     const auto _Right_size = _Right.size();
@@ -38021,7 +38534,7 @@ template <class _Elem, class _Traits, class _Alloc>
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
       const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
     using _Size_type       = typename basic_string<_Elem, _Traits, _Alloc>::size_type;
     const auto _Left_size  = _Convert_size<_Size_type>(_Traits::length(_Left));
@@ -38034,7 +38547,7 @@ template <class _Elem, class _Traits, class _Alloc>
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const _Elem _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
     const auto _Right_size = _Right.size();
     if (_Right_size == _Right.max_size()) {
@@ -38045,7 +38558,7 @@ template <class _Elem, class _Traits, class _Alloc>
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
     using _Size_type       = typename basic_string<_Elem, _Traits, _Alloc>::size_type;
     const auto _Left_size  = _Left.size();
@@ -38058,7 +38571,7 @@ template <class _Elem, class _Traits, class _Alloc>
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const basic_string<_Elem, _Traits, _Alloc>& _Left, const _Elem _Right) {
     const auto _Left_size = _Left.size();
     if (_Left_size == _Left.max_size()) {
@@ -38069,142 +38582,70 @@ template <class _Elem, class _Traits, class _Alloc>
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const basic_string<_Elem, _Traits, _Alloc>& _Left, basic_string<_Elem, _Traits, _Alloc>&& _Right) {
     return ::std:: move(_Right.insert(0, _Left));
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     basic_string<_Elem, _Traits, _Alloc>&& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
     return ::std:: move(_Left.append(_Right));
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     basic_string<_Elem, _Traits, _Alloc>&& _Left, basic_string<_Elem, _Traits, _Alloc>&& _Right) {
     return {_String_constructor_concat_tag{}, _Left, _Right};
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
       const _Elem* const _Left, basic_string<_Elem, _Traits, _Alloc>&& _Right) {
     return ::std:: move(_Right.insert(0, _Left));
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     const _Elem _Left, basic_string<_Elem, _Traits, _Alloc>&& _Right) {
     return ::std:: move(_Right.insert(0, 1, _Left));
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     basic_string<_Elem, _Traits, _Alloc>&& _Left,   const _Elem* const _Right) {
     return ::std:: move(_Left.append(_Right));
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- basic_string<_Elem, _Traits, _Alloc> operator+(
+ constexpr basic_string<_Elem, _Traits, _Alloc> operator+(
     basic_string<_Elem, _Traits, _Alloc>&& _Left, const _Elem _Right) {
     _Left.push_back(_Right);
     return ::std:: move(_Left);
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- bool operator==(
+ constexpr bool operator==(
     const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
     return _Left._Equal(_Right);
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- bool operator==(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return _Right._Equal(_Left);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator==(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
+ constexpr bool operator==(
+    const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
     return _Left._Equal(_Right);
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- bool operator!=(
+ constexpr _Get_comparison_category_t<_Traits> operator<=>(
     const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
-    return !(_Left == _Right);
+    return static_cast<_Get_comparison_category_t<_Traits>>(_Left.compare(_Right) <=> 0);
 }
 
 template <class _Elem, class _Traits, class _Alloc>
- bool operator!=(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator!=(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
-    return !(_Left == _Right);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<(
-    const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
-    return _Left.compare(_Right) < 0;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return _Right.compare(_Left) > 0;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
-    return _Left.compare(_Right) < 0;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>(
-    const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
-    return _Right < _Left;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
-    return _Right < _Left;
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<=(
-    const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
-    return !(_Right < _Left);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<=(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator<=(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>=(
-    const basic_string<_Elem, _Traits, _Alloc>& _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) noexcept {
-    return !(_Left < _Right);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>=(  const _Elem* const _Left, const basic_string<_Elem, _Traits, _Alloc>& _Right) {
-    return !(_Left < _Right);
-}
-
-template <class _Elem, class _Traits, class _Alloc>
- bool operator>=(const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
-    return !(_Left < _Right);
+ constexpr _Get_comparison_category_t<_Traits> operator<=>(
+    const basic_string<_Elem, _Traits, _Alloc>& _Left,   const _Elem* const _Right) {
+    return static_cast<_Get_comparison_category_t<_Traits>>(_Left.compare(_Right) <=> 0);
 }
 
 using string  = basic_string<char, char_traits<char>, allocator<char>>;
@@ -38282,34 +38723,38 @@ basic_ostream<_Elem, _Traits>& operator<<(
 
  inline namespace literals {
     inline namespace string_literals {
-         inline string operator"" s(const char* _Str, size_t _Len) {
+
+
+         constexpr string operator"" s(const char* _Str, size_t _Len) {
             return string(_Str, _Len);
         }
 
-         inline wstring operator"" s(const wchar_t* _Str, size_t _Len) {
+         constexpr wstring operator"" s(const wchar_t* _Str, size_t _Len) {
             return wstring(_Str, _Len);
         }
 
-         inline basic_string<char8_t> operator"" s(const char8_t* _Str, size_t _Len) {
+         constexpr basic_string<char8_t> operator"" s(const char8_t* _Str, size_t _Len) {
             return basic_string<char8_t>(_Str, _Len);
         }
 
-         inline u16string operator"" s(const char16_t* _Str, size_t _Len) {
+         constexpr u16string operator"" s(const char16_t* _Str, size_t _Len) {
             return u16string(_Str, _Len);
         }
 
-         inline u32string operator"" s(const char32_t* _Str, size_t _Len) {
+         constexpr u32string operator"" s(const char32_t* _Str, size_t _Len) {
             return u32string(_Str, _Len);
         }
+
+
     }  }  
 template <class _Elem, class _Traits, class _Alloc, class _Uty>
-typename basic_string<_Elem, _Traits, _Alloc>::size_type erase(
+constexpr typename basic_string<_Elem, _Traits, _Alloc>::size_type erase(
     basic_string<_Elem, _Traits, _Alloc>& _Cont, const _Uty& _Val) {
     return _Erase_remove(_Cont, _Val);
 }
 
 template <class _Elem, class _Traits, class _Alloc, class _Pr>
-typename basic_string<_Elem, _Traits, _Alloc>::size_type erase_if(
+constexpr typename basic_string<_Elem, _Traits, _Alloc>::size_type erase_if(
     basic_string<_Elem, _Traits, _Alloc>& _Cont, _Pr _Pred) {
     return _Erase_remove_if(_Cont, _Pass_fn(_Pred));
 }
@@ -38655,10 +39100,6 @@ struct _Reinterpret_move_iter {
         return _Lhs._Base == _Rhs._Base;
     }
 
-    
-    friend bool operator!=(const _Reinterpret_move_iter& _Lhs, const _Reinterpret_move_iter& _Rhs) {
-        return _Lhs._Base != _Rhs._Base;
-    }
 };
 
  template <class _Alnode>
@@ -38710,12 +39151,12 @@ struct _Hash_vec {
             value_type&, const value_type&>>>;
 
     _Hash_vec() : _Mypair(_Zero_then_variadic_args_t{}) {
-        _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+        _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
     }
 
     template <class _Any_alloc, enable_if_t<!is_same_v<_Remove_cvref_t<_Any_alloc>, _Hash_vec>, int> = 0>
     explicit _Hash_vec(_Any_alloc&& _Al) noexcept
-        : _Mypair(_One_then_variadic_args_t{}, ::std:: forward<_Any_alloc>(_Al)) {          _Mypair._Myval2._Alloc_proxy(_Fake_allocator());
+        : _Mypair(_One_then_variadic_args_t{}, ::std:: forward<_Any_alloc>(_Al)) {          _Mypair._Myval2._Alloc_proxy(_Fake_alloc);
     }
 
     _Hash_vec(const _Hash_vec&) = delete;
@@ -38801,7 +39242,6 @@ public:
 
     static constexpr size_type _Bucket_size = _Key_compare::bucket_size;
     static constexpr size_type _Min_buckets = 8;      static constexpr bool _Multi            = _Traits::_Multi;
-
 
     template <class _TraitsT>
     friend bool _Hash_equal(const _Hash<_TraitsT>& _Left, const _Hash<_TraitsT>& _Right);
@@ -38913,8 +39353,8 @@ private:
         if (_Getal() == _Right._Getal()) {
             _Move_assign(_Right, _Equal_allocators{});
         } else {
-                         auto&& _Alproxy       = _Fake_allocator();
-            auto&& _Right_alproxy = _Fake_allocator();
+                         auto&& _Alproxy       = _Fake_alloc;
+            auto&& _Right_alproxy = _Fake_alloc;
             _Container_proxy_ptr<_Alnode> _List_proxy(_Right_alproxy, _Leave_proxy_unbound{});
             _Container_proxy_ptr<_Alnode> _Vec_proxy(_Right_alproxy, _Leave_proxy_unbound{});
             _List_head_construct_ptr<_Alnode> _Newhead(_Right._Getal());
@@ -39141,8 +39581,8 @@ private:
             return;
         }
 
-        auto&& _Alproxy       = _Fake_allocator();
-        auto&& _Right_alproxy = _Fake_allocator();
+        auto&& _Alproxy       = _Fake_alloc;
+        auto&& _Right_alproxy = _Fake_alloc;
         _Container_proxy_ptr<_Alnode> _Vec_proxy(_Right_alproxy, _Leave_proxy_unbound{});
         _List._Reload_sentinel_and_proxy(_Right._List);
         _Vec._Tidy();
@@ -40101,6 +40541,7 @@ protected:
         }
     }
 
+    template <bool _Multi2 = _Traits::_Multi, enable_if_t<_Multi2, int> = 0>
      bool _Multi_equal(const _Hash& _Right) const {
         static_assert(_Traits::_Multi, "This function only works with multi containers");
         ;
@@ -40123,7 +40564,6 @@ protected:
 
  template <class _Hasher>
 using _Is_hasher = negation<disjunction<is_integral<_Hasher>, _Is_allocator<_Hasher>>>;
-
 
 template <class _Traits>
  bool _Hash_equal(const _Hash<_Traits>& _Left, const _Hash<_Traits>& _Right) {
@@ -40579,11 +41019,6 @@ template <class _Kty, class _Ty, class _Hasher, class _Keyeq, class _Alloc>
     return _Hash_equal(_Left, _Right);
 }
 
-template <class _Kty, class _Ty, class _Hasher, class _Keyeq, class _Alloc>
- bool operator!=(const unordered_map<_Kty, _Ty, _Hasher, _Keyeq, _Alloc>& _Left,
-    const unordered_map<_Kty, _Ty, _Hasher, _Keyeq, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
 
  template <class _Kty, class _Ty, class _Hasher = hash<_Kty>, class _Keyeq = equal_to<_Kty>,
     class _Alloc = allocator<pair<const _Kty, _Ty>>>
@@ -40860,11 +41295,6 @@ template <class _Kty, class _Ty, class _Hasher, class _Keyeq, class _Alloc>
     return _Hash_equal(_Left, _Right);
 }
 
-template <class _Kty, class _Ty, class _Hasher, class _Keyeq, class _Alloc>
- bool operator!=(const unordered_multimap<_Kty, _Ty, _Hasher, _Keyeq, _Alloc>& _Left,
-    const unordered_multimap<_Kty, _Ty, _Hasher, _Keyeq, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
 
 
 namespace pmr {
@@ -41262,7 +41692,7 @@ private:
  constexpr size_t _Space_size = (_Small_object_num_ptrs - 1) * sizeof(void*);
 
 template <class _Impl>  inline constexpr bool _Is_large = sizeof(_Impl) > _Space_size || alignof(_Impl) > alignof(max_align_t)
-                                       || !_Impl::_Nothrow_move::value;
+                                    || !_Impl::_Nothrow_move::value;
 
 
  template <class _Callable, class _Rx, class... _Types>
@@ -41520,20 +41950,6 @@ template <class _Fty>
     return !_Other;
 }
 
-template <class _Fty>
- bool operator==(nullptr_t, const function<_Fty>& _Other) noexcept {
-    return !_Other;
-}
-
-template <class _Fty>
- bool operator!=(const function<_Fty>& _Other, nullptr_t) noexcept {
-    return static_cast<bool>(_Other);
-}
-
-template <class _Fty>
- bool operator!=(nullptr_t, const function<_Fty>& _Other) noexcept {
-    return static_cast<bool>(_Other);
-}
 
  template <int _Nx>
 struct _Ph {      static_assert(_Nx > 0, "invalid placeholder index");
@@ -42337,16 +42753,6 @@ namespace ranges {
             requires equality_comparable_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
             static_cast<bool>(static_cast<_Ty1&&>(_Left) == static_cast<_Ty2&&>(_Right))))   {
             return !static_cast<bool>(static_cast<_Ty1&&>(_Left) == static_cast<_Ty2&&>(_Right));
-        }
-         
-        using is_transparent = int;
-    };
-
-         struct greater {
-                 template <class _Ty1, class _Ty2>
-            requires totally_ordered_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
-            static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left))))   {
-            return static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left));
         }
          
         using is_transparent = int;

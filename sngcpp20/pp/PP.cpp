@@ -884,6 +884,10 @@ void PP::AddLogicalPhysicalMapping(std::unique_ptr<LogicalPhysicalMapping>&& map
 
 void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replacementList, const std::u32string& definitionStr)
 {
+    if (name.ToString() == U"__MACHINEARM_ARM64")
+    {
+        int x = 0;
+    }
     Macro* prevMacro = GetMacro(name);
     if (prevMacro)
     {
@@ -907,7 +911,7 @@ void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replace
     }
     else
     {
-        std::vector<Token> definition = MacroExpand(replacementList, nullptr);
+        std::vector<Token> definition = replacementList;
         if (ContainsHash(definition))
         {
             std::string error = "error: replacement list of an object macro cannot contain the # operator: " + fileName + ":" + std::to_string(lineNumber);
@@ -965,7 +969,7 @@ void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& param
     }
     else
     {
-        std::vector<Token> definition = MacroExpand(replacementList, nullptr);
+        std::vector<Token> definition = replacementList;
         std::unique_ptr<FunctionMacro> macro(new FunctionMacro(name, fileName, lineNumber, params, definition, definitionStr, this));
         if (!macro->MakeParamIndexMap())
         {

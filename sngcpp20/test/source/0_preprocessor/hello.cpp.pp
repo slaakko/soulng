@@ -1,6 +1,6 @@
 
 int main()
 {
-    printf("Hello, World");
+    printf("Hello, " STRINGIZE(World));
 }
 

@@ -813,7 +813,7 @@ extern "C++"                                                                    
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrdate_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrdate_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
 
 
  errno_t __cdecl _wstrtime_s(
@@ -823,7 +823,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrtime_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrtime_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
 
 
 
@@ -879,19 +879,19 @@ struct _timespec64
 
 
 
-        __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+        __declspec(deprecated("This function or variable may be unsafe. Consider using _get_daylight instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  int* __cdecl __daylight(void);
 
 
-   __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+   __declspec(deprecated("This function or variable may be unsafe. Consider using _get_dstbias instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  long* __cdecl __dstbias(void);
 
 
-   __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+   __declspec(deprecated("This function or variable may be unsafe. Consider using _get_timezone instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  long* __cdecl __timezone(void);
 
 
-     __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _get_tzname instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char** __cdecl __tzname(void);
 
 
@@ -1079,7 +1079,7 @@ extern "C++"                                                                    
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strdate_s(  char (&_Buffer)[_Size]) throw()                  {                                                                                                     return _strdate_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    char* __cdecl _strdate(  char *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    char* __cdecl _strdate(  char *_Buffer);
 
 
  errno_t __cdecl _strtime_s(
@@ -1089,7 +1089,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strtime_s(  char (&_Buffer)[_Size]) throw()                  {                                                                                                     return _strtime_s(_Buffer, _Size);                                                                }                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strtime(  char *_Buffer);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strtime(  char *_Buffer);
 
  __time32_t __cdecl _time32(
       __time32_t* _Time

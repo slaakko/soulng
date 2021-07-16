@@ -7,7 +7,7 @@
                                                  
            
      
-                                                                                               
+                                                                                                                   
   
     
                                                                                               
@@ -510,7 +510,7 @@ extern uintptr_t __security_cookie;
 
  
   
- 
+
   
 
 
@@ -618,7 +618,6 @@ extern uintptr_t __security_cookie;
   
 
   
- 
  
   
  
@@ -642,7 +641,6 @@ extern uintptr_t __security_cookie;
  
  
  
- 
     
  
   
@@ -653,7 +651,6 @@ extern uintptr_t __security_cookie;
  
 
   
-
 
   
    
@@ -698,36 +695,54 @@ extern uintptr_t __security_cookie;
 
 
 
-  
- 
- 
- 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
- 
-
-
-
-
-
 
   
+ 
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+ 
+ 
+
+
+
+
+
+
+  
 
 
  
@@ -738,44 +753,21 @@ extern uintptr_t __security_cookie;
   
  
   
+
  
   
  
   
+
+ 
 
        
-       
 
 
-typedef signed char        int8_t;
-typedef short              int16_t;
-typedef int                int32_t;
-typedef long long          int64_t;
-typedef unsigned char      uint8_t;
-typedef unsigned short     uint16_t;
-typedef unsigned int       uint32_t;
-typedef unsigned long long uint64_t;
+extern "C" {
 
-typedef signed char        int_least8_t;
-typedef short              int_least16_t;
-typedef int                int_least32_t;
-typedef long long          int_least64_t;
-typedef unsigned char      uint_least8_t;
-typedef unsigned short     uint_least16_t;
-typedef unsigned int       uint_least32_t;
-typedef unsigned long long uint_least64_t;
+ 
 
-typedef signed char        int_fast8_t;
-typedef int                int_fast16_t;
-typedef int                int_fast32_t;
-typedef long long          int_fast64_t;
-typedef unsigned char      uint_fast8_t;
-typedef unsigned int       uint_fast16_t;
-typedef unsigned int       uint_fast32_t;
-typedef unsigned long long uint_fast64_t;
-
-typedef long long          intmax_t;
-typedef unsigned long long uintmax_t;
 
  
 
@@ -783,7 +775,96 @@ typedef unsigned long long uintmax_t;
 
 
 
-     
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+unsigned char _BitScanForward(unsigned long * _Index, unsigned long _Mask);
+unsigned char _BitScanForward64(unsigned long * _Index, unsigned __int64 _Mask);
+
+unsigned char _BitScanReverse(unsigned long * _Index, unsigned long _Mask);
+unsigned char _BitScanReverse64(unsigned long * _Index, unsigned __int64 _Mask);
+
+unsigned char _bittest(long const *, long);
+
+
+long _InterlockedAnd(long volatile * _Value, long _Mask);
+short _InterlockedAnd16(short volatile * _Value, short _Mask);
+
+
+
+__int64 _InterlockedAnd64(__int64 volatile * _Value, __int64 _Mask);
+__int64 _interlockedand64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
+char _InterlockedAnd8(char volatile * _Value, char _Mask);
+
+
+
+
+
+
+long  _InterlockedCompareExchange(long volatile * _Destination, long _Exchange, long _Comparand);
+
+short _InterlockedCompareExchange16(short volatile * _Destination, short _Exchange, short _Comparand);
+
+
+
+__int64 _InterlockedCompareExchange64(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand);
+
+
+
+char _InterlockedCompareExchange8(char volatile * _Destination, char _Exchange, char _Comparand);
+
+
+
+
+
+
+unsigned char _InterlockedCompareExchange128(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult);
+
+
+
+long  _InterlockedDecrement(long volatile * _Addend);
+
+short _InterlockedDecrement16(short volatile * _Addend);
+__int64 _InterlockedDecrement64(__int64 volatile * _Addend);
+__int64 _interlockeddecrement64(__int64 volatile * _Addend);
+long  _InterlockedExchange(long volatile * _Target, long _Value);
+
+short _InterlockedExchange16(short volatile * _Target, short _Value);
+
+
+
+__int64 _InterlockedExchange64(__int64 volatile * _Target, __int64 _Value);
+__int64 _interlockedexchange64(__int64 volatile * _Target, __int64 _Value);
+
+
+
+char _InterlockedExchange8(char volatile * _Target, char _Value);
+
+
+
+long  _InterlockedExchangeAdd(long volatile * _Addend, long _Value);
+short _InterlockedExchangeAdd16(short volatile * _Addend, short _Value);
+
+
+
+__int64 _InterlockedExchangeAdd64(__int64 volatile * _Addend, __int64 _Value);
+__int64 _interlockedexchangeadd64(__int64 volatile * _Addend, __int64 _Value);
+
+
+
+char _InterlockedExchangeAdd8(char volatile * _Addend, char _Value);
 
 
 
@@ -793,42 +874,123 @@ typedef unsigned long long uintmax_t;
 
 
 
+long  _InterlockedIncrement(long volatile * _Addend);
 
-namespace std {
-using :: int8_t;
-using :: int16_t;
-using :: int32_t;
-using :: int64_t;
-using :: uint8_t;
-using :: uint16_t;
-using :: uint32_t;
-using :: uint64_t;
+short _InterlockedIncrement16(short volatile * _Addend);
+__int64 _InterlockedIncrement64(__int64 volatile * _Addend);
+__int64 _interlockedincrement64(__int64 volatile * _Addend);
 
-using :: int_least8_t;
-using :: int_least16_t;
-using :: int_least32_t;
-using :: int_least64_t;
-using :: uint_least8_t;
-using :: uint_least16_t;
-using :: uint_least32_t;
-using :: uint_least64_t;
+long _InterlockedOr(long volatile * _Value, long _Mask);
+short _InterlockedOr16(short volatile * _Value, short _Mask);
 
-using :: int_fast8_t;
-using :: int_fast16_t;
-using :: int_fast32_t;
-using :: int_fast64_t;
-using :: uint_fast8_t;
-using :: uint_fast16_t;
-using :: uint_fast32_t;
-using :: uint_fast64_t;
 
-using :: intmax_t;
-using :: intptr_t;
-using :: uintmax_t;
-using :: uintptr_t;
+
+__int64 _InterlockedOr64(__int64 volatile * _Value, __int64 _Mask);
+__int64 _interlockedor64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
+char _InterlockedOr8(char volatile * _Value, char _Mask);
+
+
+
+
+
+
+long _InterlockedXor(long volatile * _Value, long _Mask);
+short _InterlockedXor16(short volatile * _Value, short _Mask);
+
+
+
+__int64 _InterlockedXor64(__int64 volatile * _Value, __int64 _Mask);
+__int64 _interlockedxor64(__int64 volatile * _Value, __int64 _Mask);
+
+
+
+char _InterlockedXor8(char volatile * _Value, char _Mask);
+
+
+
+
+
+
+void _ReadWriteBarrier(void);
+__int16 __iso_volatile_load16(const volatile __int16 *);
+__int32 __iso_volatile_load32(const volatile __int32 *);
+__int64 __iso_volatile_load64(const volatile __int64 *);
+__int8 __iso_volatile_load8(const volatile __int8 *);
+void __iso_volatile_store16(volatile __int16 *, __int16);
+void __iso_volatile_store32(volatile __int32 *, __int32);
+void __iso_volatile_store64(volatile __int64 *, __int64);
+void __iso_volatile_store8(volatile __int8 *, __int8);
+
+
+unsigned char _interlockedbittestandset(long volatile *, long);
+
+
+
+void _mm_pause(void);
+unsigned int __lzcnt(unsigned int);
+unsigned short __lzcnt16(unsigned short);
+unsigned __int64 __lzcnt64(unsigned __int64);
+unsigned int __popcnt(unsigned int);
+unsigned short __popcnt16(unsigned short);
+unsigned __int64 __popcnt64(unsigned __int64);
+unsigned __int64 __shiftright128(unsigned __int64 _LowPart, unsigned __int64 _HighPart, unsigned char _Shift);
+unsigned int _tzcnt_u32(unsigned int);
+unsigned __int64 _tzcnt_u64(unsigned __int64);
+unsigned __int64 _umul128(unsigned __int64 _Multiplier, unsigned __int64 _Multiplicand, unsigned __int64 * _HighProduct);
+double __ceil(double);
+float __ceilf(float);
+double __floor(double);
+float __floorf(float);
+double __round(double);
+float __roundf(float);
+double __trunc(double);
+float __truncf(float);
+double __copysign(double, double);
+float __copysignf(float, float);
+unsigned __signbitvalue(double);
+unsigned __signbitvaluef(float);
+int _cvt_ftoi_sat (float a);
+unsigned _cvt_ftoui_sat (float a);
+long long _cvt_ftoll_sat (float a);
+unsigned long long _cvt_ftoull_sat (float a);
+int _cvt_ftoi_sent (float a);
+unsigned _cvt_ftoui_sent (float a);
+long long _cvt_ftoll_sent (float a);
+unsigned long long _cvt_ftoull_sent (float a);
+int _cvt_dtoi_sat (double a);
+unsigned _cvt_dtoui_sat (double a);
+long long _cvt_dtoll_sat (double a);
+unsigned long long _cvt_dtoull_sat (double a);
+int _cvt_dtoi_sent (double a);
+unsigned _cvt_dtoui_sent (double a);
+long long _cvt_dtoll_sent (double a);
+unsigned long long _cvt_dtoull_sent (double a);
+constexpr void * __cdecl __builtin_assume_aligned(const void *, size_t, ...) noexcept;
+
+ 
 
 }
+ 
+ 
 
+enum ISA_AVAILABILITY
+{
+    __ISA_AVAILABLE_X86   = 0,
+    __ISA_AVAILABLE_SSE2  = 1,
+    __ISA_AVAILABLE_SSE42 = 2,
+    __ISA_AVAILABLE_AVX   = 3,
+    __ISA_AVAILABLE_ENFSTRG = 4,
+    __ISA_AVAILABLE_AVX2 = 5,
+    __ISA_AVAILABLE_AVX512 = 6,
+
+    __ISA_AVAILABLE_ARMNT   = 0,        __ISA_AVAILABLE_NEON    = 1,        __ISA_AVAILABLE_NEON_ARM64 = 2,                                     };
+
+
+ 
+ 
 
 
  
@@ -840,7 +1002,7 @@ using :: uintptr_t;
  
   
 
-       
+        
        
        
      
@@ -1072,6 +1234,6114 @@ typedef _Mbstatet mbstate_t;
 
 
 
+
+
+         extern "C" {
+
+
+
+
+
+              
+
+
+     
+
+
+
+
+
+     
+ 
+ 
+
+ 
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+       
+ unsigned int __cdecl _clearfp(void);
+
+
+ __declspec(deprecated("This function or variable may be unsafe. Consider using _controlfp_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ unsigned int __cdecl _controlfp(
+      unsigned int _NewValue,
+      unsigned int _Mask
+    );
+
+
+
+ void __cdecl _set_controlfp(
+      unsigned int _NewValue,
+      unsigned int _Mask
+    );
+
+
+ errno_t __cdecl _controlfp_s(
+      unsigned int* _CurrentState,
+           unsigned int  _NewValue,
+           unsigned int  _Mask
+    );
+
+
+ unsigned int __cdecl _statusfp(void);
+
+
+ void __cdecl _fpreset(void);
+
+
+
+
+ unsigned int __cdecl _control87(
+      unsigned int _NewValue,
+      unsigned int _Mask
+    );
+
+
+  
+ int* __cdecl __fpecode(void);
+
+
+ 
+ int __cdecl __fpe_flt_rounds(void);
+
+
+
+
+        double __cdecl _copysign(  double _Number,   double _Sign);
+   double __cdecl _chgsign(  double _X);
+   double __cdecl _scalb(  double _X,   long _Y);
+   double __cdecl _logb(  double _X);
+   double __cdecl _nextafter(  double _X,   double _Y);
+   int    __cdecl _finite(  double _X);
+   int    __cdecl _isnan(  double _X);
+   int    __cdecl _fpclass(  double _X);
+
+       float __cdecl _scalbf(  float _X,   long _Y);
+
+
+
+     
+
+    
+     void __cdecl fpreset(void);
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+}                             
+
+ 
+  
+ 
+  
+
+       
+       
+
+         extern "C" {
+
+
+
+
+
+
+
+
+     
+
+}                             
+
+
+ 
+  
+ 
+  
+
+ 
+  
+ 
+  
+
+       
+                
+              
+       
+
+
+         extern "C" {
+
+
+
+
+
+
+          
+
+   
+                 
+    
+    __declspec(noinline) __inline unsigned __int64* __cdecl __local_stdio_printf_options(void)
+    {
+        static unsigned __int64 _OptionsStorage;
+        return &_OptionsStorage;
+    }
+
+                 
+    
+    __declspec(noinline) __inline unsigned __int64* __cdecl __local_stdio_scanf_options(void)
+    {
+        static unsigned __int64 _OptionsStorage;
+        return &_OptionsStorage;
+    }
+
+
+
+
+
+
+
+
+
+
+}                             
+
+
+
+
+         extern "C" {
+
+         typedef struct _iobuf
+    {
+        void* _Placeholder;
+    } FILE;
+
+ FILE* __cdecl __acrt_iob_func(unsigned _Ix);
+
+
+
+
+
+                             
+     wint_t __cdecl fgetwc(
+          FILE* _Stream
+        );
+
+    
+     wint_t __cdecl _fgetwchar(void);
+
+    
+     wint_t __cdecl fputwc(
+             wchar_t _Character,
+          FILE*   _Stream);
+
+    
+     wint_t __cdecl _fputwchar(
+          wchar_t _Character
+        );
+
+     
+     wint_t __cdecl getwc(
+          FILE* _Stream
+        );
+
+     
+     wint_t __cdecl getwchar(void);
+
+
+    
+     
+     wchar_t* __cdecl fgetws(
+          wchar_t* _Buffer,
+                                  int      _BufferCount,
+                               FILE*    _Stream
+        );
+
+    
+     int __cdecl fputws(
+           wchar_t const* _Buffer,
+          FILE*          _Stream
+        );
+
+    
+     
+     wchar_t* __cdecl _getws_s(
+          wchar_t* _Buffer,
+                                  size_t   _BufferCount
+        );
+
+    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     wchar_t* __cdecl _getws_s( wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _getws_s(_Buffer, _Size);                                                                }                                                                                             }
+
+    
+     wint_t __cdecl putwc(
+             wchar_t _Character,
+          FILE*   _Stream
+        );
+
+    
+     wint_t __cdecl putwchar(
+          wchar_t _Character
+        );
+
+    
+     int __cdecl _putws(
+          wchar_t const* _Buffer
+        );
+
+    
+     wint_t __cdecl ungetwc(
+             wint_t _Character,
+          FILE*  _Stream
+        );
+
+     
+     FILE * __cdecl _wfdopen(
+            int            _FileHandle,
+          wchar_t const* _Mode
+        );
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using _wfopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     FILE* __cdecl _wfopen(
+          wchar_t const* _FileName,
+          wchar_t const* _Mode
+        );
+
+    
+     errno_t __cdecl _wfopen_s(
+          FILE**         _Stream,
+                             wchar_t const* _FileName,
+                             wchar_t const* _Mode
+        );
+
+     
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _wfreopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     FILE* __cdecl _wfreopen(
+           wchar_t const* _FileName,
+           wchar_t const* _Mode,
+          FILE*          _OldStream
+        );
+
+    
+     errno_t __cdecl _wfreopen_s(
+          FILE**         _Stream,
+                             wchar_t const* _FileName,
+                             wchar_t const* _Mode,
+                            FILE*          _OldStream
+        );
+
+     
+     FILE* __cdecl _wfsopen(
+          wchar_t const* _FileName,
+          wchar_t const* _Mode,
+            int            _ShFlag
+        );
+
+     void __cdecl _wperror(
+          wchar_t const* _ErrorMessage
+        );
+
+
+         
+         FILE* __cdecl _wpopen(
+              wchar_t const* _Command,
+              wchar_t const* _Mode
+            );
+
+
+     int __cdecl _wremove(
+          wchar_t const* _FileName
+        );
+
+
+     
+     __declspec(allocator) wchar_t* __cdecl _wtempnam(
+          wchar_t const* _Directory,
+          wchar_t const* _FilePrefix
+        );
+
+
+     
+    
+     errno_t __cdecl _wtmpnam_s(
+          wchar_t* _Buffer,
+                                  size_t   _BufferCount
+        );
+
+    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl _wtmpnam_s( wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wtmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _wtmpnam_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           wchar_t* __cdecl _wtmpnam(   wchar_t *_Buffer);
+
+
+
+                             
+     wint_t __cdecl _fgetwc_nolock(
+          FILE* _Stream
+        );
+
+    
+     wint_t __cdecl _fputwc_nolock(
+             wchar_t _Character,
+          FILE*   _Stream
+        );
+
+    
+     wint_t __cdecl _getwc_nolock(
+          FILE* _Stream
+        );
+
+    
+     wint_t __cdecl _putwc_nolock(
+             wchar_t _Character,
+          FILE*   _Stream
+        );
+
+    
+     wint_t __cdecl _ungetwc_nolock(
+             wint_t _Character,
+          FILE*  _Stream
+        );
+
+
+
+
+     
+
+
+                             
+     int __cdecl __stdio_common_vfwprintf(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+     int __cdecl __stdio_common_vfwprintf_s(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+     int __cdecl __stdio_common_vfwprintf_p(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+    __inline int __cdecl _vfwprintf_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __stdio_common_vfwprintf((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vfwprintf(
+                                FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwprintf_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfwprintf_s_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __stdio_common_vfwprintf_s((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vfwprintf_s(
+                                    FILE*          const _Stream,
+                wchar_t const* const _Format,
+                                          va_list              _ArgList
+            )
+        {
+            return _vfwprintf_s_l(_Stream, _Format, 0, _ArgList);
+        }
+
+
+    
+    __inline int __cdecl _vfwprintf_p_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __stdio_common_vfwprintf_p((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfwprintf_p(
+                                FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwprintf_p_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vwprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return _vfwprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vwprintf(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vwprintf_s_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return _vfwprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vwprintf_s(
+                wchar_t const* const _Format,
+                                          va_list              _ArgList
+            )
+        {
+            return _vfwprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        }
+
+
+    
+    __inline int __cdecl _vwprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return _vfwprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vwprintf_p(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _fwprintf_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl fwprintf(
+                                FILE*          const _Stream,
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwprintf_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _fwprintf_s_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_s_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl fwprintf_s(
+                                    FILE*          const _Stream,
+                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfwprintf_s_l(_Stream, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    
+    __inline int __cdecl _fwprintf_p_l(
+                                          FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_p_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _fwprintf_p(
+                                FILE*          const _Stream,
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwprintf_p_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _wprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl wprintf(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _wprintf_s_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl wprintf_s(
+                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    
+    __inline int __cdecl _wprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _wprintf_p(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+                             
+     int __cdecl __stdio_common_vfwscanf(
+                                            unsigned __int64 _Options,
+                                         FILE*            _Stream,
+            wchar_t const*   _Format,
+                                        _locale_t        _Locale,
+                                               va_list          _ArgList
+        );
+
+    
+    __inline int __cdecl _vfwscanf_l(
+          FILE*                                const _Stream,
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return __stdio_common_vfwscanf(
+            (*__local_stdio_scanf_options ()),
+            _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vfwscanf(
+          FILE*                                const _Stream,
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwscanf_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfwscanf_s_l(
+                                FILE*          const _Stream,
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return __stdio_common_vfwscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Stream, _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vfwscanf_s(
+                                    FILE*          const _Stream,
+                wchar_t const* const _Format,
+                                          va_list              _ArgList
+            )
+        {
+            return _vfwscanf_s_l(_Stream, _Format, 0, _ArgList);
+        }
+
+
+    __inline int __cdecl _vwscanf_l(
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vwscanf(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vwscanf_s_l(
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return _vfwscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vwscanf_s(
+                wchar_t const* const _Format,
+                                          va_list              _ArgList
+            )
+        {
+            return _vfwscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+        }
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _fwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _fwscanf_l(
+                                         FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwscanf_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using fwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl fwscanf(
+                               FILE*          const _Stream,
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwscanf_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _fwscanf_s_l(
+                                           FILE*          const _Stream,
+            wchar_t const* const _Format,
+                                          _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwscanf_s_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl fwscanf_s(
+                                     FILE*          const _Stream,
+                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfwscanf_s_l(_Stream, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _wscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _wscanf_l(
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using wscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl wscanf(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _wscanf_s_l(
+            wchar_t const* const _Format,
+                                          _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl wscanf_s(
+                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+
+
+                         
+     
+    
+     int __cdecl __stdio_common_vswprintf(
+                                             unsigned __int64 _Options,
+                 wchar_t*         _Buffer,
+                                             size_t           _BufferCount,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+    
+     int __cdecl __stdio_common_vswprintf_s(
+                                             unsigned __int64 _Options,
+                     wchar_t*         _Buffer,
+                                             size_t           _BufferCount,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+    
+     int __cdecl __stdio_common_vsnwprintf_s(
+                                             unsigned __int64 _Options,
+                 wchar_t*         _Buffer,
+                                             size_t           _BufferCount,
+                                             size_t           _MaxCount,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+    
+     int __cdecl __stdio_common_vswprintf_p(
+                                             unsigned __int64 _Options,
+                     wchar_t*         _Buffer,
+                                             size_t           _BufferCount,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vsnwprintf_l(
+            wchar_t*       const _Buffer,
+                                                  size_t         const _BufferCount,
+                 wchar_t const* const _Format,
+                                              _locale_t      const _Locale,
+                                                     va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf(
+            (*__local_stdio_printf_options()) | (1ULL << 0),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsnwprintf_s_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                                       size_t         const _MaxCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+                                                          va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsnwprintf_s(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsnwprintf_s(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                                       size_t         const _MaxCount,
+                                wchar_t const* const _Format,
+                                                          va_list              _ArgList
+        )
+    {
+        return _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
+    }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _snwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _snwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vsnwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, va_list _Args);
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vsnwprintf(
+            wchar_t*       _Buffer,
+                                                  size_t         _BufferCount,
+                           wchar_t const* _Format,
+                                                     va_list        _ArgList
+        )
+    {
+        return _vsnwprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    int __cdecl _vsnwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
+
+     
+    
+    __inline int __cdecl _vswprintf_c_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+                                                          va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vswprintf_c(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                wchar_t const* const _Format,
+                                                          va_list              _ArgList
+        )
+    {
+        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vswprintf_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+                                                          va_list              _ArgList
+        )
+    {
+        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl __vswprintf_l(
+                  wchar_t*       const _Buffer,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vswprintf(
+           wchar_t*       const _Buffer,
+               wchar_t const* const _Format,
+                                         va_list              _ArgList
+        )
+    {
+        return _vswprintf_l(_Buffer, (size_t)-1, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl vswprintf(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                      wchar_t const* const _Format,
+                                                          va_list              _ArgList
+        )
+    {
+        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vswprintf_s_l(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                  wchar_t const* const _Format,
+                                               _locale_t      const _Locale,
+                                                      va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf_s(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+
+         
+        __inline int __cdecl vswprintf_s(
+               wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                wchar_t const* const _Format,
+                                                          va_list              _ArgList
+            )
+        {
+            return _vswprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        }
+
+
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                    int __cdecl vswprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
+
+     
+    
+    __inline int __cdecl _vswprintf_p_l(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                  wchar_t const* const _Format,
+                                               _locale_t      const _Locale,
+                                                      va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf_p(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vswprintf_p(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                            wchar_t const* const _Format,
+                                                      va_list              _ArgList
+        )
+    {
+        return _vswprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+     
+     
+    __inline int __cdecl _vscwprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf(
+            (*__local_stdio_printf_options()) | (1ULL << 1),
+            0, 0, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+     
+    __inline int __cdecl _vscwprintf(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vscwprintf_l(_Format, 0, _ArgList);
+    }
+
+     
+     
+    __inline int __cdecl _vscwprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vswprintf_p(
+            (*__local_stdio_printf_options()) | (1ULL << 1),
+            0, 0, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+     
+    __inline int __cdecl _vscwprintf_p(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vscwprintf_p_l(_Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl __swprintf_l(
+                  wchar_t*       const _Buffer,
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = __vswprintf_l(_Buffer, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swprintf_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swprintf(
+           wchar_t*       const _Buffer,
+               wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = __vswprintf_l(_Buffer, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl swprintf(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using __swprintf_l_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __swprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vswprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __vswprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, va_list _Args);
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using swprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _swprintf(   wchar_t *_Buffer,         wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using vswprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vswprintf(   wchar_t *_Buffer,         wchar_t const* _Format, va_list _Args);
+
+     
+    
+    __inline int __cdecl _swprintf_s_l(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                  wchar_t const* const _Format,
+                                               _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+         
+        __inline int __cdecl swprintf_s(
+               wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl swprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
+
+     
+    
+    __inline int __cdecl _swprintf_p_l(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                  wchar_t const* const _Format,
+                                               _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swprintf_p(
+           wchar_t*       const _Buffer,
+                                                   size_t         const _BufferCount,
+                            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swprintf_c_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swprintf_c(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snwprintf_l(
+            wchar_t*       const _Buffer,
+                                                  size_t         const _BufferCount,
+                 wchar_t const* const _Format,
+                                              _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snwprintf(
+            wchar_t*       _Buffer,
+                                                  size_t         _BufferCount,
+                           wchar_t const* _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snwprintf_s_l(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                                       size_t         const _MaxCount,
+                      wchar_t const* const _Format,
+                                                   _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snwprintf_s(
+           wchar_t*       const _Buffer,
+                                                       size_t         const _BufferCount,
+                                                       size_t         const _MaxCount,
+                                wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
+
+     
+    __inline int __cdecl _scwprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vscwprintf_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     
+    __inline int __cdecl _scwprintf(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vscwprintf_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     
+    __inline int __cdecl _scwprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vscwprintf_p_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     
+    __inline int __cdecl _scwprintf_p(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vscwprintf_p_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+                  
+
+            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using swprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+            inline int swprintf(
+                           wchar_t*       const _Buffer,
+                    wchar_t const* const _Format,
+                ...) throw()
+            {
+                int _Result;
+                va_list _ArgList;
+                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+                _Result = vswprintf(_Buffer, 2147483647, _Format, _ArgList);
+                ((void)(_ArgList = (va_list)0));
+                return _Result;
+            }
+
+            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using vswprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+            inline int __cdecl vswprintf(
+                           wchar_t*       const _Buffer,
+                    wchar_t const* const _Format,
+                                              va_list              _ArgList
+                ) throw()
+            {
+                return vswprintf(_Buffer, 2147483647, _Format, _ArgList);
+            }
+
+            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _swprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+            inline int _swprintf_l(
+                                     wchar_t*       const _Buffer,
+                    wchar_t const* const _Format,
+                                                 _locale_t      const _Locale,
+                ...) throw()
+            {
+                int _Result;
+                va_list _ArgList;
+                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+                _Result = _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+                ((void)(_ArgList = (va_list)0));
+                return _Result;
+            }
+
+            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _vswprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+            inline int __cdecl _vswprintf_l(
+                                     wchar_t*       const _Buffer,
+                    wchar_t const* const _Format,
+                                                 _locale_t      const _Locale,
+                                                        va_list              _ArgList
+                ) throw()
+            {
+                return _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+            }
+
+
+
+
+
+                              
+     int __cdecl __stdio_common_vswscanf(
+                                            unsigned __int64 _Options,
+                  wchar_t const*   _Buffer,
+                                            size_t           _BufferCount,
+            wchar_t const*   _Format,
+                                        _locale_t        _Locale,
+                                               va_list          _ArgList
+        );
+
+     
+    
+    __inline int __cdecl _vswscanf_l(
+                                 wchar_t const* const _Buffer,
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return __stdio_common_vswscanf(
+            (*__local_stdio_scanf_options ()),
+            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl vswscanf(
+                                 wchar_t const* _Buffer,
+            wchar_t const* _Format,
+                                      va_list        _ArgList
+        )
+    {
+        return _vswscanf_l(_Buffer, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vswscanf_s_l(
+                                 wchar_t const* const _Buffer,
+            wchar_t const* const _Format,
+                               _locale_t      const _Locale,
+                                      va_list              _ArgList
+        )
+    {
+        return __stdio_common_vswscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+
+         
+        
+        __inline int __cdecl vswscanf_s(
+                                     wchar_t const* const _Buffer,
+                wchar_t const* const _Format,
+                                          va_list              _ArgList
+            )
+        {
+            return _vswscanf_s_l(_Buffer, _Format, 0, _ArgList);
+        }
+
+
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                    int __cdecl vswscanf_s(                         wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vswscanf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vsnwscanf_l(
+                  wchar_t const* const _Buffer,
+                                            size_t         const _BufferCount,
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+                                               va_list              _ArgList
+        )
+    {
+        return __stdio_common_vswscanf(
+            (*__local_stdio_scanf_options ()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vsnwscanf_s_l(
+                    wchar_t const* const _Buffer,
+                                              size_t         const _BufferCount,
+            wchar_t const* const _Format,
+                                          _locale_t      const _Locale,
+                                                 va_list              _ArgList
+        )
+    {
+        return __stdio_common_vswscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _swscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _swscanf_l(
+                                          wchar_t const* const _Buffer,
+            wchar_t const* const _Format,
+                                        _locale_t            _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswscanf_l(_Buffer, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+      __declspec(deprecated("This function or variable may be unsafe. Consider using swscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl swscanf(
+                                wchar_t const* const _Buffer,
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vswscanf_l(_Buffer, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _swscanf_s_l(
+                                            wchar_t const* const _Buffer,
+            wchar_t const* const _Format,
+                                          _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vswscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+         
+        
+        __inline int __cdecl swscanf_s(
+                                      wchar_t const* const _Buffer,
+                wchar_t const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vswscanf_s_l(_Buffer, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snwscanf_l(
+                  wchar_t const* const _Buffer,
+                                            size_t         const _BufferCount,
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snwscanf(
+            wchar_t const* const _Buffer,
+                                      size_t         const _BufferCount,
+                wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snwscanf_s_l(
+                    wchar_t const* const _Buffer,
+                                              size_t         const _BufferCount,
+            wchar_t const* const _Format,
+                                          _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snwscanf_s(
+             wchar_t const* const _Buffer,
+                                       size_t         const _BufferCount,
+               wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+}                             
+
+
+
+
+         extern "C" {
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+typedef __int64 fpos_t;
+
+
+
+
+    
+     errno_t __cdecl _get_stream_buffer_pointers(
+               FILE*   _Stream,
+          char*** _Base,
+          char*** _Pointer,
+          int**   _Count
+        );
+
+
+                         
+        
+         errno_t __cdecl clearerr_s(
+              FILE* _Stream
+            );
+
+        
+         
+         errno_t __cdecl fopen_s(
+              FILE**      _Stream,
+                                     char const* _FileName,
+                                     char const* _Mode
+            );
+
+        
+         
+         size_t __cdecl fread_s(
+                void*  _Buffer,
+                                    size_t _BufferSize,
+                                                                            size_t _ElementSize,
+                                                                            size_t _ElementCount,
+                                                                         FILE*  _Stream
+            );
+
+        
+         errno_t __cdecl freopen_s(
+              FILE**      _Stream,
+                                 char const* _FileName,
+                                 char const* _Mode,
+                                FILE*       _OldStream
+            );
+
+         
+         char* __cdecl gets_s(
+              char*   _Buffer,
+                               rsize_t _Size
+            );
+
+        
+         errno_t __cdecl tmpfile_s(
+                FILE** _Stream
+            );
+
+         
+        
+         errno_t __cdecl tmpnam_s(
+              char*   _Buffer,
+                               rsize_t _Size
+            );
+
+
+     void __cdecl clearerr(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl fclose(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _fcloseall(void);
+
+     
+     FILE* __cdecl _fdopen(
+            int         _FileHandle,
+          char const* _Mode
+        );
+
+     
+     int __cdecl feof(
+          FILE* _Stream
+        );
+
+     
+     int __cdecl ferror(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl fflush(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl fgetc(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _fgetchar(void);
+
+     
+    
+     int __cdecl fgetpos(
+          FILE*   _Stream,
+            fpos_t* _Position
+        );
+
+     
+    
+     char* __cdecl fgets(
+          char* _Buffer,
+                               int   _MaxCount,
+                            FILE* _Stream
+        );
+
+     
+     int __cdecl _fileno(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _flushall(void);
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     FILE* __cdecl fopen(
+          char const* _FileName,
+          char const* _Mode
+        );
+
+
+     
+    
+     int __cdecl fputc(
+             int   _Character,
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _fputchar(
+          int _Character
+        );
+
+     
+    
+     int __cdecl fputs(
+           char const* _Buffer,
+          FILE*       _Stream
+        );
+
+    
+     size_t __cdecl fread(
+          void*  _Buffer,
+                                                      size_t _ElementSize,
+                                                      size_t _ElementCount,
+                                                   FILE*  _Stream
+        );
+
+     
+      __declspec(deprecated("This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     FILE* __cdecl freopen(
+           char const* _FileName,
+           char const* _Mode,
+          FILE*       _Stream
+        );
+
+     
+     FILE* __cdecl _fsopen(
+          char const* _FileName,
+          char const* _Mode,
+            int         _ShFlag
+        );
+
+     
+    
+     int __cdecl fsetpos(
+          FILE*         _Stream,
+             fpos_t const* _Position
+        );
+
+     
+    
+     int __cdecl fseek(
+          FILE* _Stream,
+             long  _Offset,
+             int   _Origin
+        );
+
+     
+    
+     int __cdecl _fseeki64(
+          FILE*   _Stream,
+             __int64 _Offset,
+             int     _Origin
+        );
+
+     
+     
+     long __cdecl ftell(
+          FILE* _Stream
+        );
+
+     
+     
+     __int64 __cdecl _ftelli64(
+          FILE* _Stream
+        );
+
+    
+     size_t __cdecl fwrite(
+          void const* _Buffer,
+                                                    size_t      _ElementSize,
+                                                    size_t      _ElementCount,
+                                                 FILE*       _Stream
+        );
+
+     
+     
+     int __cdecl getc(
+          FILE* _Stream
+        );
+
+     
+     int __cdecl getchar(void);
+
+     
+     int __cdecl _getmaxstdio(void);
+
+    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            char* __cdecl gets_s(char (&_Buffer)[_Size]) throw()                  {                                                                                                     return gets_s(_Buffer, _Size);                                                                }                                                                                             }
+
+     
+     int __cdecl _getw(
+          FILE* _Stream
+        );
+
+     void __cdecl perror(
+          char const* _ErrorMessage
+        );
+
+
+         
+        
+         int __cdecl _pclose(
+              FILE* _Stream
+            );
+
+         
+         FILE* __cdecl _popen(
+              char const* _Command,
+              char const* _Mode
+            );
+
+
+     
+    
+     int __cdecl putc(
+             int   _Character,
+          FILE* _Stream
+        );
+
+    
+     int __cdecl putchar(
+          int _Character
+        );
+
+    
+     int __cdecl puts(
+          char const* _Buffer
+        );
+
+     
+    
+     int __cdecl _putw(
+             int   _Word,
+          FILE* _Stream
+        );
+
+     int __cdecl remove(
+          char const* _FileName
+        );
+
+     
+     int __cdecl rename(
+          char const* _OldFileName,
+          char const* _NewFileName
+        );
+
+     int __cdecl _unlink(
+          char const* _FileName
+        );
+
+
+        __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _unlink. See online help for details."))
+         int __cdecl unlink(
+              char const* _FileName
+            );
+
+
+     void __cdecl rewind(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _rmtmp(void);
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using setvbuf instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     void __cdecl setbuf(
+                                                      FILE* _Stream,
+            char* _Buffer
+        );
+
+    
+     int __cdecl _setmaxstdio(
+          int _Maximum
+        );
+
+     
+    
+     int __cdecl setvbuf(
+                               FILE*  _Stream,
+            char*  _Buffer,
+                                  int    _Mode,
+                                  size_t _Size
+        );
+
+
+     
+     __declspec(allocator) char* __cdecl _tempnam(
+          char const* _DirectoryName,
+          char const* _FilePrefix
+        );
+
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using tmpfile_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     FILE* __cdecl tmpfile(void);
+
+    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl tmpnam_s( char (&_Buffer)[_Size]) throw()                  {                                                                                                     return tmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using tmpnam_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           char* __cdecl tmpnam(   char *_Buffer);
+
+     
+    
+     int __cdecl ungetc(
+             int   _Character,
+          FILE* _Stream
+        );
+
+
+
+                              void __cdecl _lock_file(
+          FILE* _Stream
+        );
+
+     void __cdecl _unlock_file(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl _fclose_nolock(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl _fflush_nolock(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl _fgetc_nolock(
+          FILE* _Stream
+        );
+
+     
+    
+     int __cdecl _fputc_nolock(
+             int   _Character,
+          FILE* _Stream
+        );
+
+    
+     size_t __cdecl _fread_nolock(
+          void*  _Buffer,
+                                                      size_t _ElementSize,
+                                                      size_t _ElementCount,
+                                                   FILE*  _Stream
+        );
+
+    
+     
+     size_t __cdecl _fread_nolock_s(
+          void*  _Buffer,
+                              size_t _BufferSize,
+                                                                      size_t _ElementSize,
+                                                                      size_t _ElementCount,
+                                                                   FILE*  _Stream
+        );
+
+    
+     int __cdecl _fseek_nolock(
+          FILE* _Stream,
+             long  _Offset,
+             int   _Origin
+        );
+
+    
+     int __cdecl _fseeki64_nolock(
+          FILE*   _Stream,
+             __int64 _Offset,
+             int     _Origin
+        );
+
+     
+     long __cdecl _ftell_nolock(
+          FILE* _Stream
+        );
+
+     
+     __int64 __cdecl _ftelli64_nolock(
+          FILE* _Stream
+        );
+
+    
+     size_t __cdecl _fwrite_nolock(
+          void const* _Buffer,
+                                                    size_t      _ElementSize,
+                                                    size_t      _ElementCount,
+                                                 FILE*       _Stream
+        );
+
+    
+     int __cdecl _getc_nolock(
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _putc_nolock(
+             int   _Character,
+          FILE* _Stream
+        );
+
+    
+     int __cdecl _ungetc_nolock(
+             int   _Character,
+          FILE* _Stream
+        );
+
+
+
+
+
+
+
+     int* __cdecl __p__commode(void);
+
+
+
+
+     
+                              int __cdecl __stdio_common_vfprintf(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     int __cdecl __stdio_common_vfprintf_s(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     int __cdecl __stdio_common_vfprintf_p(
+                                             unsigned __int64 _Options,
+                                          FILE*            _Stream,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+    __inline int __cdecl _vfprintf_l(
+           FILE*       const _Stream,
+            char const* const _Format,
+          _locale_t   const _Locale,
+                 va_list           _ArgList
+        )
+    {
+        return __stdio_common_vfprintf((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vfprintf(
+                                FILE*       const _Stream,
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfprintf_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfprintf_s_l(
+           FILE*       const _Stream,
+            char const* const _Format,
+          _locale_t   const _Locale,
+                 va_list           _ArgList
+        )
+    {
+        return __stdio_common_vfprintf_s((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vfprintf_s(
+                                    FILE*       const _Stream,
+                char const* const _Format,
+                                          va_list           _ArgList
+            )
+        {
+            return _vfprintf_s_l(_Stream, _Format, 0, _ArgList);
+        }
+
+
+    
+    __inline int __cdecl _vfprintf_p_l(
+           FILE*       const _Stream,
+            char const* const _Format,
+          _locale_t   const _Locale,
+                 va_list           _ArgList
+        )
+    {
+        return __stdio_common_vfprintf_p((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfprintf_p(
+                                FILE*       const _Stream,
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfprintf_p_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vprintf_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        return _vfprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vprintf(
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vprintf_s_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        return _vfprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vprintf_s(
+                char const* const _Format,
+                                          va_list           _ArgList
+            )
+        {
+            return _vfprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        }
+
+
+    
+    __inline int __cdecl _vprintf_p_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        return _vfprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vprintf_p(
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _fprintf_l(
+                                          FILE*       const _Stream,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl fprintf(
+                                FILE*       const _Stream,
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfprintf_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     int __cdecl _set_printf_count_output(
+          int _Value
+        );
+
+     int __cdecl _get_printf_count_output(void);
+
+    
+    __inline int __cdecl _fprintf_s_l(
+                                          FILE*       const _Stream,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_s_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl fprintf_s(
+                                    FILE*       const _Stream,
+                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfprintf_s_l(_Stream, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    
+    __inline int __cdecl _fprintf_p_l(
+                                          FILE*       const _Stream,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_p_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _fprintf_p(
+                                FILE*       const _Stream,
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfprintf_p_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _printf_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl printf(
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _printf_s_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl printf_s(
+                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    
+    __inline int __cdecl _printf_p_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _printf_p(
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+                              int __cdecl __stdio_common_vfscanf(
+                                            unsigned __int64 _Options,
+                                         FILE*            _Stream,
+            char const*      _Format,
+                                        _locale_t        _Locale,
+                                               va_list          _Arglist
+        );
+
+    
+    __inline int __cdecl _vfscanf_l(
+                                FILE*       const _Stream,
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return __stdio_common_vfscanf(
+            (*__local_stdio_scanf_options ()),
+            _Stream, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vfscanf(
+                                FILE*       const _Stream,
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfscanf_l(_Stream, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vfscanf_s_l(
+                                FILE*       const _Stream,
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return __stdio_common_vfscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Stream, _Format, _Locale, _ArgList);
+    }
+
+
+
+        
+        __inline int __cdecl vfscanf_s(
+                                    FILE*       const _Stream,
+                char const* const _Format,
+                                          va_list           _ArgList
+            )
+        {
+            return _vfscanf_s_l(_Stream, _Format, 0, _ArgList);
+        }
+
+
+    
+    __inline int __cdecl _vscanf_l(
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vscanf(
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vscanf_s_l(
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return _vfscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+    }
+
+
+        
+        __inline int __cdecl vscanf_s(
+                char const* const _Format,
+                                          va_list           _ArgList
+            )
+        {
+            return _vfscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+        }
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _fscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _fscanf_l(
+                                         FILE*       const _Stream,
+            char const* const _Format,
+                                        _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfscanf_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl fscanf(
+                               FILE*       const _Stream,
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfscanf_l(_Stream, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _fscanf_s_l(
+                                           FILE*       const _Stream,
+            char const* const _Format,
+                                          _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfscanf_s_l(_Stream, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl fscanf_s(
+                                     FILE*       const _Stream,
+                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfscanf_s_l(_Stream, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _scanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _scanf_l(
+            char const* const _Format,
+                                        _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl scanf(
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _scanf_s_l(
+            char const* const _Format,
+                                          _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl scanf_s(
+                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+
+
+                              
+     int __cdecl __stdio_common_vsprintf(
+                                             unsigned __int64 _Options,
+                 char*            _Buffer,
+                                             size_t           _BufferCount,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     int __cdecl __stdio_common_vsprintf_s(
+                                             unsigned __int64 _Options,
+                     char*            _Buffer,
+                                             size_t           _BufferCount,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     int __cdecl __stdio_common_vsnprintf_s(
+                                             unsigned __int64 _Options,
+                 char*            _Buffer,
+                                             size_t           _BufferCount,
+                                             size_t           _MaxCount,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     int __cdecl __stdio_common_vsprintf_p(
+                                             unsigned __int64 _Options,
+                     char*            _Buffer,
+                                             size_t           _BufferCount,
+            char const*      _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vsnprintf_l(
+            char*       const _Buffer,
+                                                  size_t      const _BufferCount,
+                 char const* const _Format,
+                                              _locale_t   const _Locale,
+                                                     va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf(
+            (*__local_stdio_printf_options()) | (1ULL << 0),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsnprintf(
+            char*       const _Buffer,
+                                                 size_t      const _BufferCount,
+                          char const* const _Format,
+                                                    va_list           _ArgList
+        )
+    {
+        return _vsnprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+
+     
+    
+    __inline int __cdecl vsnprintf(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                char const* const _Format,
+                                                          va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf(
+            (*__local_stdio_printf_options()) | (1ULL << 1),
+            _Buffer, _BufferCount, _Format, 0, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vsprintf_l(
+           char*       const _Buffer,
+                                    char const* const _Format,
+                                  _locale_t   const _Locale,
+                                         va_list           _ArgList
+        )
+    {
+        return _vsnprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl vsprintf(
+           char*       const _Buffer,
+               char const* const _Format,
+                                         va_list           _ArgList
+        )
+    {
+        return _vsnprintf_l(_Buffer, (size_t)-1, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vsprintf_s_l(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                  char const* const _Format,
+                                               _locale_t   const _Locale,
+                                                      va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf_s(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+
+         
+        
+        __inline int __cdecl vsprintf_s(
+               char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                char const* const _Format,
+                                                          va_list           _ArgList
+            )
+        {
+            return _vsprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        }
+
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                        int __cdecl vsprintf_s(            char (&_Buffer)[_Size],     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
+
+
+     
+    
+    __inline int __cdecl _vsprintf_p_l(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                  char const* const _Format,
+                                               _locale_t   const _Locale,
+                                                      va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf_p(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsprintf_p(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                            char const* const _Format,
+                                                      va_list           _ArgList
+        )
+    {
+        return _vsprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+     
+    
+    __inline int __cdecl _vsnprintf_s_l(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                                       size_t      const _MaxCount,
+                      char const* const _Format,
+                                                   _locale_t   const _Locale,
+                                                          va_list          _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsnprintf_s(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsnprintf_s(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                                       size_t      const _MaxCount,
+                                char const* const _Format,
+                                                          va_list           _ArgList
+        )
+    {
+        return _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
+    }
+
+    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    int __cdecl _vsnprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
+
+
+         
+        
+        __inline int __cdecl vsnprintf_s(
+               char*       const _Buffer,
+                                                           size_t      const _BufferCount,
+                                                           size_t      const _MaxCount,
+                                    char const* const _Format,
+                                                              va_list           _ArgList
+            )
+        {
+            return _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
+        }
+
+        extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                        int __cdecl vsnprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
+
+
+    
+    __inline int __cdecl _vscprintf_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf(
+            (*__local_stdio_printf_options()) | (1ULL << 1),
+            0, 0, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    __inline int __cdecl _vscprintf(
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vscprintf_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vscprintf_p_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf_p(
+            (*__local_stdio_printf_options()) | (1ULL << 1),
+            0, 0, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    __inline int __cdecl _vscprintf_p(
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vscprintf_p_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vsnprintf_c_l(
+                   char*       const _Buffer,
+                                             size_t      const _BufferCount,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+                                                va_list           _ArgList
+        )
+    {
+        int const _Result = __stdio_common_vsprintf(
+            (*__local_stdio_printf_options()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        return _Result < 0 ? -1 : _Result;
+    }
+
+     
+    
+    __inline int __cdecl _vsnprintf_c(
+          char*       const _Buffer,
+                                    size_t      const _BufferCount,
+             char const* const _Format,
+                                       va_list           _ArgList
+        )
+    {
+        return _vsnprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _sprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _sprintf_l(
+                  char*       const _Buffer,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = _vsprintf_l(_Buffer, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl sprintf(
+           char*       const _Buffer,
+               char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = _vsprintf_l(_Buffer, _Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl sprintf(   char *_Buffer,         char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl vsprintf(   char *_Buffer,         char const* _Format, va_list _Args);
+
+     
+    
+    __inline int __cdecl _sprintf_s_l(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                  char const* const _Format,
+                                               _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+         
+        
+        __inline int __cdecl sprintf_s(
+               char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+            _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl sprintf_s(            char (&_Buffer)[_Size],     char const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
+
+     
+    
+    __inline int __cdecl _sprintf_p_l(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                  char const* const _Format,
+                                               _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _sprintf_p(
+           char*       const _Buffer,
+                                                   size_t      const _BufferCount,
+                            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snprintf_l(
+            char*       const _Buffer,
+                                                  size_t      const _BufferCount,
+                 char const* const _Format,
+                                              _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = _vsnprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+     
+    
+    __inline int __cdecl snprintf(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snprintf(
+            char*       const _Buffer,
+                                                  size_t      const _BufferCount,
+                           char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _snprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _vsnprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, va_list _Args);
+
+     
+    
+    __inline int __cdecl _snprintf_c_l(
+                   char*       const _Buffer,
+                                             size_t      const _BufferCount,
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snprintf_c(
+          char*       const _Buffer,
+                                    size_t      const _BufferCount,
+             char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snprintf_s_l(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                                       size_t      const _MaxCount,
+                      char const* const _Format,
+                                                   _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    
+    __inline int __cdecl _snprintf_s(
+           char*       const _Buffer,
+                                                       size_t      const _BufferCount,
+                                                       size_t      const _MaxCount,
+                                char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
+
+    
+    __inline int __cdecl _scprintf_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vscprintf_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    __inline int __cdecl _scprintf(
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vscprintf_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _scprintf_p_l(
+            char const* const _Format,
+                                         _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vscprintf_p_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     
+    __inline int __cdecl _scprintf_p(
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vscprintf_p(_Format, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+                              int __cdecl __stdio_common_vsscanf(
+                                            unsigned __int64 _Options,
+                  char const*      _Buffer,
+                                            size_t           _BufferCount,
+            char const*      _Format,
+                                        _locale_t        _Locale,
+                                               va_list          _ArgList
+        );
+
+    
+    __inline int __cdecl _vsscanf_l(
+                                 char const* const _Buffer,
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()),
+            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl vsscanf(
+                                 char const* const _Buffer,
+            char const* const _Format,
+                                      va_list           _ArgList
+        )
+    {
+        return _vsscanf_l(_Buffer, _Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vsscanf_s_l(
+                                 char const* const _Buffer,
+            char const* const _Format,
+                               _locale_t   const _Locale,
+                                      va_list           _ArgList
+        )
+    {
+        return __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
+    }
+
+
+
+        
+        __inline int __cdecl vsscanf_s(
+                                     char const* const _Buffer,
+                char const* const _Format,
+                                          va_list           _ArgList
+            )
+        {
+            return _vsscanf_s_l(_Buffer, _Format, 0, _ArgList);
+        }
+
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           int __cdecl vsscanf_s(                         char const (&_Buffer)[_Size],     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vsscanf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
+
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _sscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _sscanf_l(
+                                          char const* const _Buffer,
+            char const* const _Format,
+                                        _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsscanf_l(_Buffer, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl sscanf(
+                                char const* const _Buffer,
+            char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vsscanf_l(_Buffer, _Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _sscanf_s_l(
+                                            char const* const _Buffer,
+            char const* const _Format,
+                                          _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vsscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+        
+        __inline int __cdecl sscanf_s(
+                                      char const* const _Buffer,
+                char const* const _Format,
+            ...)
+        {
+            int _Result;
+            va_list _ArgList;
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+            _Result = vsscanf_s(_Buffer, _Format, _ArgList);
+
+            ((void)(_ArgList = (va_list)0));
+            return _Result;
+        }
+
+
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snscanf_l(
+            char const* const _Buffer,
+                                            size_t      const _BufferCount,
+            char const* const _Format,
+                                        _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _snscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _snscanf(
+            char const* const _Buffer,
+                                            size_t      const _BufferCount,
+                      char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()),
+            _Buffer, _BufferCount, _Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+    
+    __inline int __cdecl _snscanf_s_l(
+              char const* const _Buffer,
+                                              size_t      const _BufferCount,
+            char const* const _Format,
+                                          _locale_t   const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _snscanf_s(
+            char const* const _Buffer,
+                                            size_t      const _BufferCount,
+                    char const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = __stdio_common_vsscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Buffer, _BufferCount, _Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+
+
+
+                         
+
+
+        __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _tempnam. See online help for details."))
+         char* __cdecl tempnam(
+              char const* _Directory,
+              char const* _FilePrefix
+            );
+
+
+         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fcloseall. See online help for details."))  int   __cdecl fcloseall(void);
+              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fdopen. See online help for details."))     FILE* __cdecl fdopen(  int _FileHandle,   char const* _Format);
+         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fgetchar. See online help for details."))   int   __cdecl fgetchar(void);
+              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fileno. See online help for details."))     int   __cdecl fileno(  FILE* _Stream);
+         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _flushall. See online help for details."))   int   __cdecl flushall(void);
+         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fputchar. See online help for details."))   int   __cdecl fputchar(  int _Ch);
+              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getw. See online help for details."))       int   __cdecl getw(  FILE* _Stream);
+         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _putw. See online help for details."))       int   __cdecl putw(  int _Ch,   FILE* _Stream);
+              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _rmtmp. See online help for details."))      int   __cdecl rmtmp(void);
+
+
+
+
+}                             
+
+
+
+
+ 
+ 
+namespace std {
+
+using :: FILE;
+using :: _Mbstatet;
+
+using :: size_t;
+using :: fpos_t;
+using :: FILE;
+using :: clearerr;
+using :: fclose;
+using :: feof;
+using :: ferror;
+using :: fflush;
+using :: fgetc;
+using :: fgetpos;
+using :: fgets;
+using :: fopen;
+using :: fprintf;
+using :: fputc;
+using :: fputs;
+using :: fread;
+using :: freopen;
+using :: fscanf;
+using :: fseek;
+using :: fsetpos;
+using :: ftell;
+using :: fwrite;
+using :: getc;
+using :: getchar;
+using :: perror;
+using :: putc;
+using :: putchar;
+using :: printf;
+using :: puts;
+using :: remove;
+using :: rename;
+using :: rewind;
+using :: scanf;
+using :: setbuf;
+using :: setvbuf;
+using :: sprintf;
+using :: sscanf;
+using :: tmpfile;
+using :: tmpnam;
+using :: ungetc;
+using :: vfprintf;
+using :: vprintf;
+using :: vsprintf;
+
+using :: snprintf;
+using :: vsnprintf;
+using :: vfscanf;
+using :: vscanf;
+using :: vsscanf;
+
+}
+
+
+
+         
+              
+              
+       
+
+
+         extern "C" {
+
+
+
+     int* __cdecl _errno(void);
+
+     errno_t __cdecl _set_errno(  int _Value);
+     errno_t __cdecl _get_errno(  int* _Value);
+
+     unsigned long* __cdecl __doserrno(void);
+
+     errno_t __cdecl _set_doserrno(  unsigned long _Value);
+     errno_t __cdecl _get_doserrno(  unsigned long * _Value);
+
+
+
+ 
+ 
+ 
+ 
+
+
+}                             
+
+       
+       
+
+
+         extern "C" {
+
+
+
+  
+ void const* __cdecl memchr(
+      void const* _Buf,
+                                 int         _Val,
+                                 size_t      _MaxCount
+    );
+
+  
+int __cdecl memcmp(
+      void const* _Buf1,
+      void const* _Buf2,
+                         size_t      _Size
+    );
+
+
+ 
+
+void* __cdecl memcpy(
+      void* _Dst,
+            void const* _Src,
+                               size_t      _Size
+    );
+
+
+ void* __cdecl memmove(
+      void*       _Dst,
+            void const* _Src,
+                                   size_t      _Size
+    );
+
+ 
+
+void* __cdecl memset(
+      void*  _Dst,
+                               int    _Val,
+                               size_t _Size
+    );
+
+  
+ char const* __cdecl strchr(
+      char const* _Str,
+        int         _Val
+    );
+
+  
+ char const* __cdecl strrchr(
+      char const* _Str,
+        int         _Ch
+    );
+
+    
+ char const* __cdecl strstr(
+      char const* _Str,
+      char const* _SubStr
+    );
+
+  
+
+ wchar_t const* __cdecl wcschr(
+      wchar_t const* _Str,
+        wchar_t        _Ch
+    );
+
+  
+ wchar_t const* __cdecl wcsrchr(
+      wchar_t const* _Str,
+        wchar_t        _Ch
+    );
+
+    
+
+ wchar_t const* __cdecl wcsstr(
+      wchar_t const* _Str,
+      wchar_t const* _SubStr
+    );
+
+
+
+}                             
+
+
+
+
+
+         extern "C" {
+
+
+
+
+     
+    
+    static __inline errno_t __cdecl memcpy_s(
+          void*       const _Destination,
+                                                              rsize_t     const _DestinationSize,
+                                 void const* const _Source,
+                                                              rsize_t     const _SourceSize
+        )
+    {
+        if (_SourceSize == 0)
+        {
+            return 0;
+        }
+
+        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        if (_Source == 0 || _DestinationSize < _SourceSize)
+        {
+            memset(_Destination, 0, _DestinationSize);
+
+            {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+            {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
+
+                         return 22;
+        }
+        memcpy(_Destination, _Source, _SourceSize);
+        return 0;
+    }
+
+    
+    static __inline errno_t __cdecl memmove_s(
+          void*       const _Destination,
+                                                              rsize_t     const _DestinationSize,
+                                 void const* const _Source,
+                                                              rsize_t     const _SourceSize
+        )
+    {
+        if (_SourceSize == 0)
+        {
+            return 0;
+        }
+
+        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
+        {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
+
+        memmove(_Destination, _Source, _SourceSize);
+        return 0;
+    }
+
+
+
+
+}                             
+        
+              
+
+
+         extern "C" {
+
+
+
+
+
+    
+     
+     errno_t __cdecl _cgetws_s(
+          wchar_t* _Buffer,
+                                               size_t   _BufferCount,
+                                              size_t*  _SizeRead
+        );
+
+    extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                                    errno_t __cdecl _cgetws_s(  wchar_t (&_Buffer)[_Size],                       size_t* _SizeRead) throw()                 {                                                                                                                    return _cgetws_s(_Buffer, _Size, _SizeRead);                                                                       }                                                                                                            }
+
+    
+     int __cdecl _cputws(
+          wchar_t const* _Buffer
+        );
+
+           wint_t __cdecl _getwch  (void);
+           wint_t __cdecl _getwche (void);
+      wint_t __cdecl _putwch  (  wchar_t _Character);
+      wint_t __cdecl _ungetwch(  wint_t  _Character);
+
+           wint_t __cdecl _getwch_nolock  (void);
+           wint_t __cdecl _getwche_nolock (void);
+      wint_t __cdecl _putwch_nolock  (  wchar_t _Character);
+      wint_t __cdecl _ungetwch_nolock(  wint_t  _Character);
+
+
+
+                             
+     int __cdecl __conio_common_vcwprintf(
+                                             unsigned __int64 _Options,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+     int __cdecl __conio_common_vcwprintf_s(
+                                             unsigned __int64 _Options,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+     int __cdecl __conio_common_vcwprintf_p(
+                                             unsigned __int64 _Options,
+            wchar_t const*   _Format,
+                                         _locale_t        _Locale,
+                                                va_list          _ArgList
+        );
+
+    
+    __inline int __cdecl _vcwprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __conio_common_vcwprintf((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwprintf(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vcwprintf_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwprintf_s_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __conio_common_vcwprintf_s((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwprintf_s(
+            wchar_t const* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vcwprintf_s_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+                                                va_list              _ArgList
+        )
+    {
+        return __conio_common_vcwprintf_p((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwprintf_p(
+            const wchar_t* const _Format,
+                                      va_list              _ArgList
+        )
+    {
+        return _vcwprintf_p_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _cwprintf_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vcwprintf_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwprintf(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vcwprintf_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwprintf_s_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vcwprintf_s_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwprintf_s(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vcwprintf_s_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwprintf_p_l(
+            wchar_t const* const _Format,
+                                         _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vcwprintf_p_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwprintf_p(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vcwprintf_p_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+
+                             
+     int __cdecl __conio_common_vcwscanf(
+                                            unsigned __int64 _Options,
+            wchar_t const*   _Format,
+                                        _locale_t        _Locale,
+                                               va_list          _ArgList
+        );
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vcwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vcwscanf_l(
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+                                               va_list              _ArgList
+        )
+    {
+        return __conio_common_vcwscanf(
+            (*__local_stdio_scanf_options ()),
+            _Format, _Locale, _ArgList);
+    }
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _vcwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _vcwscanf(
+            wchar_t const* const _Format,
+                                               va_list              _ArgList
+        )
+    {
+        return _vcwscanf_l(_Format, 0, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwscanf_s_l(
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+                                               va_list              _ArgList
+        )
+    {
+        return __conio_common_vcwscanf(
+            (*__local_stdio_scanf_options ()) | (1ULL << 0),
+            _Format, _Locale, _ArgList);
+    }
+
+    
+    __inline int __cdecl _vcwscanf_s(
+            wchar_t const* const _Format,
+                                               va_list              _ArgList
+        )
+    {
+        return _vcwscanf_s_l(_Format, 0, _ArgList);
+    }
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _cwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _cwscanf_l(
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+
+        _Result = _vcwscanf_l(_Format, _Locale, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+     __declspec(deprecated("This function or variable may be unsafe. Consider using _cwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    __inline int __cdecl _cwscanf(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+
+        _Result = _vcwscanf_l(_Format, 0, _ArgList);
+
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwscanf_s_l(
+            wchar_t const* const _Format,
+                                        _locale_t      const _Locale,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
+        _Result = _vcwscanf_s_l(_Format, _Locale, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+    
+    __inline int __cdecl _cwscanf_s(
+            wchar_t const* const _Format,
+        ...)
+    {
+        int _Result;
+        va_list _ArgList;
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
+        _Result = _vcwscanf_s_l(_Format, 0, _ArgList);
+        ((void)(_ArgList = (va_list)0));
+        return _Result;
+    }
+
+
+}                             
+
+        
+       
+
+
+         extern "C" {
+
+
+
+
+
+
+  
+
+     const unsigned short* __cdecl __pctype_func(void);
+     const wctype_t*       __cdecl __pwctype_func(void);
+
+
+ 
+
+
+
+        int __cdecl iswalnum  (  wint_t _C);
+   int __cdecl iswalpha  (  wint_t _C);
+   int __cdecl iswascii  (  wint_t _C);
+   int __cdecl iswblank  (  wint_t _C);
+   int __cdecl iswcntrl  (  wint_t _C);
+
+
+   int __cdecl iswdigit  (  wint_t _C);
+
+   int __cdecl iswgraph  (  wint_t _C);
+   int __cdecl iswlower  (  wint_t _C);
+   int __cdecl iswprint  (  wint_t _C);
+   int __cdecl iswpunct  (  wint_t _C);
+   int __cdecl iswspace  (  wint_t _C);
+   int __cdecl iswupper  (  wint_t _C);
+   int __cdecl iswxdigit (  wint_t _C);
+   int __cdecl __iswcsymf(  wint_t _C);
+   int __cdecl __iswcsym (  wint_t _C);
+
+   int __cdecl _iswalnum_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswalpha_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswblank_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswcntrl_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswdigit_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswgraph_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswlower_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswprint_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswpunct_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswspace_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswupper_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswxdigit_l(  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswcsymf_l (  wint_t _C,   _locale_t _Locale);
+   int __cdecl _iswcsym_l  (  wint_t _C,   _locale_t _Locale);
+
+
+   wint_t __cdecl towupper(  wint_t _C);
+   wint_t __cdecl towlower(  wint_t _C);
+   int    __cdecl iswctype(  wint_t _C,   wctype_t _Type);
+
+   wint_t __cdecl _towupper_l(  wint_t _C,   _locale_t _Locale);
+   wint_t __cdecl _towlower_l(  wint_t _C,   _locale_t _Locale);
+   int    __cdecl _iswctype_l(  wint_t _C,   wctype_t _Type,   _locale_t _Locale);
+
+
+       int __cdecl isleadbyte(  int _C);
+       int __cdecl _isleadbyte_l(  int _C,   _locale_t _Locale);
+
+    __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using iswctype instead. See online help for details."))  int __cdecl is_wctype(  wint_t _C,   wctype_t _Type);
+
+
+
+     
+
+
+}                             
+
+        
+       
+
+
+         extern "C" {
+
+
+ 
+   
+ __declspec(allocator) wchar_t* __cdecl _wgetcwd(
+      wchar_t* _DstBuf,
+                                  int      _SizeInWords
+    );
+
+ 
+   
+ __declspec(allocator) wchar_t* __cdecl _wgetdcwd(
+                                  int      _Drive,
+      wchar_t* _DstBuf,
+                                  int      _SizeInWords
+    );
+
+
+
+ 
+ int __cdecl _wchdir(
+      wchar_t const* _Path
+    );
+
+ 
+ int __cdecl _wmkdir(
+      wchar_t const* _Path
+    );
+
+ 
+ int __cdecl _wrmdir(
+      wchar_t const* _Path
+    );
+
+
+
+}                             
+
+        
+               
+       
+
+
+
+
+
+
+
+
+
+
+         extern "C" {
+
+     
+typedef unsigned long _fsize_t;
+
+struct _wfinddata32_t
+{
+    unsigned   attrib;
+    __time32_t time_create;         __time32_t time_access;         __time32_t time_write;
+    _fsize_t   size;
+    wchar_t    name[260];
+};
+
+struct _wfinddata32i64_t
+{
+    unsigned   attrib;
+    __time32_t time_create;         __time32_t time_access;         __time32_t time_write;
+    __int64    size;
+    wchar_t    name[260];
+};
+
+struct _wfinddata64i32_t
+{
+    unsigned   attrib;
+    __time64_t time_create;         __time64_t time_access;         __time64_t time_write;
+    _fsize_t   size;
+    wchar_t    name[260];
+};
+
+struct _wfinddata64_t
+{
+    unsigned   attrib;
+    __time64_t time_create;         __time64_t time_access;         __time64_t time_write;
+    __int64    size;
+    wchar_t    name[260];
+};
+
+
+
+     
+ 
+ int __cdecl _waccess(
+      wchar_t const* _FileName,
+        int            _AccessMode
+    );
+
+
+ errno_t __cdecl _waccess_s(
+      wchar_t const* _FileName,
+        int            _AccessMode
+    );
+
+ 
+ int __cdecl _wchmod(
+      wchar_t const* _FileName,
+        int            _Mode
+    );
+
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ int __cdecl _wcreat(
+      wchar_t const* _FileName,
+        int            _PermissionMode
+    );
+
+ 
+ 
+ intptr_t __cdecl _wfindfirst32(
+      wchar_t const*         _FileName,
+       struct _wfinddata32_t* _FindData
+    );
+
+ 
+ 
+ int __cdecl _wfindnext32(
+       intptr_t               _FindHandle,
+      struct _wfinddata32_t* _FindData
+    );
+
+ int __cdecl _wunlink(
+      wchar_t const* _FileName
+    );
+
+ 
+ int __cdecl _wrename(
+      wchar_t const* _OldFileName,
+      wchar_t const* _NewFileName
+    );
+
+ errno_t __cdecl _wmktemp_s(
+      wchar_t* _TemplateName,
+                                 size_t   _SizeInWords
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wmktemp_s(wchar_t (&_TemplateName)[_Size]) throw()                  {                                                                                                     return _wmktemp_s(_TemplateName, _Size);                                                                }                                                                                             }
+
+ 
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wmktemp_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wmktemp(  wchar_t *_TemplateName);
+
+ 
+ 
+ intptr_t __cdecl _wfindfirst32i64(
+      wchar_t const*            _FileName,
+       struct _wfinddata32i64_t* _FindData
+    );
+
+ 
+ 
+ intptr_t __cdecl _wfindfirst64i32(
+      wchar_t const*            _FileName,
+       struct _wfinddata64i32_t* _FindData
+    );
+
+ 
+ 
+ intptr_t __cdecl _wfindfirst64(
+      wchar_t const*         _FileName,
+       struct _wfinddata64_t* _FindData
+    );
+
+ 
+ 
+ int __cdecl _wfindnext32i64(
+       intptr_t                  _FindHandle,
+      struct _wfinddata32i64_t* _FindData
+    );
+
+ 
+ 
+ int __cdecl _wfindnext64i32(
+       intptr_t                  _FindHandle,
+      struct _wfinddata64i32_t* _FindData
+    );
+
+ 
+ 
+ int __cdecl _wfindnext64(
+       intptr_t               _FindHandle,
+      struct _wfinddata64_t* _FindData
+    );
+
+
+ errno_t __cdecl _wsopen_s(
+       int*           _FileHandle,
+      wchar_t const* _FileName,
+        int            _OpenFlag,
+        int            _ShareFlag,
+        int            _PermissionFlag
+    );
+
+ errno_t __cdecl _wsopen_dispatch(
+      wchar_t const* _FileName,
+        int            _OFlag,
+        int            _ShFlag,
+        int            _PMode,
+       int*           _PFileHandle,
+        int            _BSecure
+    );
+
+
+
+
+         extern "C++"   __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    inline int __cdecl _wopen(
+          wchar_t const* _FileName,
+            int            _OFlag,
+            int            _PMode = 0
+        )
+    {
+        int _FileHandle;
+                 errno_t const _Result = _wsopen_dispatch(_FileName, _OFlag, 0x40, _PMode, &_FileHandle, 0);
+        return _Result ? -1 : _FileHandle;
+    }
+
+    extern "C++"   __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    inline int __cdecl _wsopen(
+          wchar_t const* _FileName,
+            int            _OFlag,
+            int            _ShFlag,
+            int            _PMode = 0
+        )
+    {
+        int _FileHandle;
+                 errno_t const _Result = _wsopen_dispatch(_FileName, _OFlag, _ShFlag, _PMode, &_FileHandle, 0);
+        return _Result ? -1 : _FileHandle;
+    }
+
+
+
+}                             
+
+        
+       
+
+
+         extern "C" {
+
+
+
+
+         intptr_t __cdecl _wexecl(
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wexecle(
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wexeclp(
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wexeclpe(
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wexecv(
+              wchar_t const*        _FileName,
+              wchar_t const* const* _ArgList
+            );
+
+         intptr_t __cdecl _wexecve(
+                  wchar_t const*        _FileName,
+                  wchar_t const* const* _ArgList,
+              wchar_t const* const* _Env
+            );
+
+         intptr_t __cdecl _wexecvp(
+              wchar_t const*        _FileName,
+              wchar_t const* const* _ArgList
+            );
+
+         intptr_t __cdecl _wexecvpe(
+                  wchar_t const*        _FileName,
+                  wchar_t const* const* _ArgList,
+              wchar_t const* const* _Env
+            );
+
+         intptr_t __cdecl _wspawnl(
+                int            _Mode,
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wspawnle(
+                int            _Mode,
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wspawnlp(
+                int            _Mode,
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wspawnlpe(
+                int            _Mode,
+              wchar_t const* _FileName,
+              wchar_t const* _ArgList,
+            ...);
+
+         intptr_t __cdecl _wspawnv(
+                int                   _Mode,
+              wchar_t const*        _FileName,
+              wchar_t const* const* _ArgList
+            );
+
+         intptr_t __cdecl _wspawnve(
+                    int                   _Mode,
+                  wchar_t const*        _FileName,
+                  wchar_t const* const* _ArgList,
+              wchar_t const* const* _Env
+            );
+
+         intptr_t __cdecl _wspawnvp(
+                int                   _Mode,
+              wchar_t const*        _FileName,
+              wchar_t const* const* _ArgList
+            );
+
+         intptr_t __cdecl _wspawnvpe(
+                    int                   _Mode,
+                  wchar_t const*        _FileName,
+                  wchar_t const* const* _ArgList,
+              wchar_t const* const* _Env
+            );
+
+         int __cdecl _wsystem(
+              wchar_t const* _Command
+            );
+
+
+
+
+}                             
+
+                 
+       
+
+
+         extern "C" {
+
+
+
+   
+
+
+
+
+
+
+     
+    
+     errno_t __cdecl _itow_s(
+                                  int      _Value,
+          wchar_t* _Buffer,
+                                  size_t   _BufferCount,
+                                  int      _Radix
+        );
+
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _itow_s(  int _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _itow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _itow(                     int _Value,     wchar_t *_Buffer,                      int _Radix);
+
+     
+    
+     errno_t __cdecl _ltow_s(
+                                  long     _Value,
+          wchar_t* _Buffer,
+                                  size_t   _BufferCount,
+                                  int      _Radix
+        );
+
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltow_s(  long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ltow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ltow(                     long _Value,     wchar_t *_Buffer,                      int _Radix);
+
+    
+     errno_t __cdecl _ultow_s(
+                                  unsigned long _Value,
+          wchar_t*      _Buffer,
+                                  size_t        _BufferCount,
+                                  int           _Radix
+        );
+
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultow_s(  unsigned long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ultow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ultow(                     unsigned long _Value,     wchar_t *_Buffer,                      int _Radix);
+
+     
+     double __cdecl wcstod(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr
+        );
+
+     
+     double __cdecl _wcstod_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                          _locale_t      _Locale
+        );
+
+     
+     long __cdecl wcstol(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     long __cdecl _wcstol_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+     
+     long long __cdecl wcstoll(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     long long __cdecl _wcstoll_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+     
+     unsigned long __cdecl wcstoul(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     unsigned long __cdecl _wcstoul_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+     
+     unsigned long long __cdecl wcstoull(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     unsigned long long __cdecl _wcstoull_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+     
+     long double __cdecl wcstold(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr
+        );
+
+     
+     long double __cdecl _wcstold_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                          _locale_t      _Locale
+        );
+
+     
+     float __cdecl wcstof(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr
+        );
+
+     
+     float __cdecl _wcstof_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                          _locale_t      _Locale
+        );
+
+     
+     double __cdecl _wtof(
+          wchar_t const* _String
+        );
+
+     
+     double __cdecl _wtof_l(
+            wchar_t const* _String,
+          _locale_t      _Locale
+        );
+
+     
+     int __cdecl _wtoi(
+          wchar_t const* _String
+        );
+
+     
+     int __cdecl _wtoi_l(
+            wchar_t const* _String,
+          _locale_t      _Locale
+        );
+
+     
+     long __cdecl _wtol(
+          wchar_t const* _String
+        );
+
+     
+     long __cdecl _wtol_l(
+            wchar_t const* _String,
+          _locale_t      _Locale
+        );
+
+     
+     long long __cdecl _wtoll(
+          wchar_t const* _String
+        );
+
+     
+     long long __cdecl _wtoll_l(
+            wchar_t const* _String,
+          _locale_t      _Locale
+        );
+
+    
+     errno_t __cdecl _i64tow_s(
+                                  __int64  _Value,
+          wchar_t* _Buffer,
+                                  size_t   _BufferCount,
+                                  int      _Radix
+        );
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _i64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     wchar_t* __cdecl _i64tow(
+                            __int64  _Value,
+            wchar_t* _Buffer,
+                            int      _Radix
+        );
+
+    
+     errno_t __cdecl _ui64tow_s(
+                                  unsigned __int64 _Value,
+          wchar_t*         _Buffer,
+                                  size_t           _BufferCount,
+                                  int              _Radix
+        );
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ui64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     wchar_t* __cdecl _ui64tow(
+                            unsigned __int64 _Value,
+            wchar_t*         _Buffer,
+                            int              _Radix
+        );
+
+     
+     __int64 __cdecl _wtoi64(
+          wchar_t const* _String
+        );
+
+     
+     __int64 __cdecl _wtoi64_l(
+            wchar_t const* _String,
+          _locale_t      _Locale
+        );
+
+     
+     __int64 __cdecl _wcstoi64(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     __int64 __cdecl _wcstoi64_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+     
+     unsigned __int64 __cdecl _wcstoui64(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix
+        );
+
+     
+     unsigned __int64 __cdecl _wcstoui64_l(
+                            wchar_t const* _String,
+            wchar_t**      _EndPtr,
+                              int            _Radix,
+                          _locale_t      _Locale
+        );
+
+
+     
+     
+     __declspec(allocator) wchar_t* __cdecl _wfullpath(
+          wchar_t*       _Buffer,
+                                    wchar_t const* _Path,
+                                      size_t         _BufferCount
+        );
+
+
+    
+     errno_t __cdecl _wmakepath_s(
+          wchar_t*       _Buffer,
+                                  size_t         _BufferCount,
+                            wchar_t const* _Drive,
+                            wchar_t const* _Dir,
+                            wchar_t const* _Filename,
+                            wchar_t const* _Ext
+        );
+
+    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wmakepath_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _Drive,   wchar_t const* _Dir,   wchar_t const* _Filename,   wchar_t const* _Ext) throw()                  {                                                                                                                                                                     return _wmakepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wmakepath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wmakepath(    wchar_t *_Buffer,                wchar_t const* _Drive,                wchar_t const* _Dir,                wchar_t const* _Filename,                wchar_t const* _Ext);
+
+     void __cdecl _wperror(
+          wchar_t const* _ErrorMessage
+        );
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _wsplitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+     void __cdecl _wsplitpath(
+                            wchar_t const* _FullPath,
+            wchar_t*       _Drive,
+            wchar_t*       _Dir,
+            wchar_t*       _Filename,
+            wchar_t*       _Ext
+        );
+
+     errno_t __cdecl _wsplitpath_s(
+                                      wchar_t const* _FullPath,
+             wchar_t*       _Drive,
+                                        size_t         _DriveCount,
+               wchar_t*       _Dir,
+                                        size_t         _DirCount,
+          wchar_t*       _Filename,
+                                        size_t         _FilenameCount,
+               wchar_t*       _Ext,
+                                        size_t         _ExtCount
+        );
+
+    extern "C++"                                                                                                      {                                                                                                                     template <size_t _DriveSize, size_t _DirSize, size_t _NameSize, size_t _ExtSize>                                  inline                                                                                                            errno_t __cdecl _wsplitpath_s(                                                                                        wchar_t const* _Path,                                                                                        wchar_t (&_Drive)[_DriveSize],                                                                            wchar_t (&_Dir)[_DirSize],                                                                                wchar_t (&_Name)[_NameSize],                                                                              wchar_t (&_Ext)[_ExtSize]                                                                               ) throw()                                                                                     {                                                                                                                     return _wsplitpath_s(_Path, _Drive, _DriveSize, _Dir, _DirSize, _Name, _NameSize, _Ext, _ExtSize);                 }                                                                                                             }
+
+
+        
+         errno_t __cdecl _wdupenv_s(
+                wchar_t**      _Buffer,
+                                                                                size_t*        _BufferCount,
+                                                                                   wchar_t const* _VarName
+            );
+
+
+          __declspec(deprecated("This function or variable may be unsafe. Consider using _wdupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+         wchar_t* __cdecl _wgetenv(
+              wchar_t const* _VarName
+            );
+
+         
+        
+         errno_t __cdecl _wgetenv_s(
+                                         size_t*        _RequiredCount,
+              wchar_t*       _Buffer,
+                                          size_t         _BufferCount,
+                                        wchar_t const* _VarName
+            );
+
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                        errno_t __cdecl _wgetenv_s(   size_t* _RequiredCount, wchar_t (&_Buffer)[_Size],   wchar_t const* _VarName) throw()                 {                                                                                                                                    return _wgetenv_s(_RequiredCount, _Buffer, _Size, _VarName);                                                                               }                                                                                                                            }
+
+         
+         int __cdecl _wputenv(
+              wchar_t const* _EnvString
+            );
+
+        
+         errno_t __cdecl _wputenv_s(
+              wchar_t const* _Name,
+              wchar_t const* _Value
+            );
+
+         errno_t __cdecl _wsearchenv_s(
+                                    wchar_t const* _Filename,
+                                    wchar_t const* _VarName,
+              wchar_t*       _Buffer,
+                                      size_t         _BufferCount
+            );
+
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wsearchenv_s(  wchar_t const* _Filename,   wchar_t const* _VarName, wchar_t (&_ResultPath)[_Size]) throw()                 {                                                                                                                                    return _wsearchenv_s(_Filename, _VarName, _ResultPath, _Size);                                                                               }                                                                                                                            }
+
+        __declspec(deprecated("This function or variable may be unsafe. Consider using _wsearchenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wsearchenv(                   wchar_t const* _Filename,                    wchar_t const* _VarName,     wchar_t *_ResultPath);
+
+         int __cdecl _wsystem(
+              wchar_t const* _Command
+            );
+
+
+
+
+}                             
+
+        
+              
+
+
+
+         extern "C" {
+
+
+
+     
+    
+     errno_t __cdecl wcscat_s(
+          wchar_t* _Destination,
+          rsize_t _SizeInWords,
+          wchar_t const* _Source
+        );
+
+    
+     errno_t __cdecl wcscpy_s(
+          wchar_t* _Destination,
+          rsize_t _SizeInWords,
+          wchar_t const* _Source
+        );
+
+    
+     errno_t __cdecl wcsncat_s(
+          wchar_t*       _Destination,
+                                     rsize_t        _SizeInWords,
+               wchar_t const* _Source,
+                                     rsize_t        _MaxCount
+        );
+
+    
+     errno_t __cdecl wcsncpy_s(
+          wchar_t*       _Destination,
+                                  rsize_t        _SizeInWords,
+            wchar_t const* _Source,
+                                  rsize_t        _MaxCount
+        );
+
+     
+     wchar_t* __cdecl wcstok_s(
+                          wchar_t*       _String,
+                                 wchar_t const* _Delimiter,
+            wchar_t**      _Context
+        );
+
+
+
+
+     
+ 
+ __declspec(allocator) wchar_t* __cdecl _wcsdup(
+      wchar_t const* _String
+    );
+
+
+
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscat_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcscat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscat(  wchar_t *_Destination,                                                                             wchar_t const* _Source);
+
+ 
+ int __cdecl wcscmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscpy(  wchar_t *_Destination,                                          wchar_t const* _Source);
+
+ 
+ size_t __cdecl wcscspn(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+ 
+ size_t __cdecl wcslen(
+      wchar_t const* _String
+    );
+
+ 
+
+
+ size_t __cdecl wcsnlen(
+      wchar_t const* _Source,
+                            size_t         _MaxCount
+    );
+
+
+     
+    
+    
+    static __inline size_t __cdecl wcsnlen_s(
+          wchar_t const* _Source,
+                                size_t         _MaxCount
+        )
+    {
+        return (_Source == 0) ? 0 : wcsnlen(_Source, _MaxCount);
+    }
+
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncat_s(              wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcsncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncat(  wchar_t *_Destination,      wchar_t const* _Source,                         size_t _Count);
+
+ 
+ int __cdecl wcsncmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncpy(    wchar_t *_Destination,               wchar_t const* _Source,                                  size_t _Count);
+
+ 
+ wchar_t const* __cdecl wcspbrk(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+ 
+ size_t __cdecl wcsspn(
+      wchar_t const* _String,
+      wchar_t const* _Control
+    );
+
+  __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl wcstok(
+                          wchar_t*       _String,
+                                 wchar_t const* _Delimiter,
+        wchar_t**      _Context
+    );
+
+
+
+      __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+    static __inline wchar_t* __cdecl _wcstok(
+          wchar_t*       const _String,
+                 wchar_t const* const _Delimiter
+        )
+    {
+        return wcstok(_String, _Delimiter, 0);
+    }
+
+
+        extern "C++"   __declspec(deprecated("wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK."))
+        inline wchar_t* __cdecl wcstok(
+              wchar_t*       _String,
+                     wchar_t const* _Delimiter
+            ) throw()
+        {
+            return wcstok(_String, _Delimiter, 0);
+        }
+
+
+
+
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl _wcserror(
+      int _ErrorNumber
+    );
+
+
+ errno_t __cdecl _wcserror_s(
+      wchar_t* _Buffer,
+                                  size_t   _SizeInWords,
+                                  int      _ErrorNumber
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcserror_s(wchar_t (&_Buffer)[_Size],   int _Error) throw()                 {                                                                                                                    return _wcserror_s(_Buffer, _Size, _Error);                                                                       }                                                                                                            }
+
+ 
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using __wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl __wcserror(
+      wchar_t const* _String
+    );
+
+  errno_t __cdecl __wcserror_s(
+      wchar_t*       _Buffer,
+                                  size_t         _SizeInWords,
+                                wchar_t const* _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl __wcserror_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _ErrorMessage) throw()                 {                                                                                                                    return __wcserror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+   int __cdecl _wcsicmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+   int __cdecl _wcsicmp_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+   int __cdecl _wcsnicmp(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+   int __cdecl _wcsnicmp_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+  errno_t __cdecl _wcsnset_s(
+      wchar_t* _Destination,
+                                 size_t   _SizeInWords,
+                                 wchar_t  _Value,
+                                 size_t   _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wcsnset_s(  wchar_t (&_Destination)[_Size],          wchar_t _Value,           size_t _MaxCount) throw()                 {                                                                                                                                    return _wcsnset_s(_Destination, _Size, _Value, _MaxCount);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsnset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsnset(  wchar_t *_String,                            wchar_t _Value,                            size_t _MaxCount);
+
+ wchar_t* __cdecl _wcsrev(
+      wchar_t* _String
+    );
+
+  errno_t __cdecl _wcsset_s(
+      wchar_t* _Destination,
+                                 size_t   _SizeInWords,
+                                 wchar_t  _Value
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsset_s(  wchar_t (&_String)[_Size],          wchar_t _Value) throw()                 {                                                                                                                    return _wcsset_s(_String, _Size, _Value);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsset(  wchar_t *_String,                       wchar_t _Value);
+
+  errno_t __cdecl _wcslwr_s(
+      wchar_t* _String,
+                                 size_t   _SizeInWords
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcslwr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcslwr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcslwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr(  wchar_t *_String);
+
+
+ errno_t __cdecl _wcslwr_s_l(
+      wchar_t*  _String,
+                                 size_t    _SizeInWords,
+                             _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcslwr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcslwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcslwr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr_l(  wchar_t *_String,                   _locale_t _Locale);
+
+
+ errno_t __cdecl _wcsupr_s(
+      wchar_t* _String,
+                          size_t   _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcsupr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcsupr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsupr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr(  wchar_t *_String);
+
+
+ errno_t __cdecl _wcsupr_s_l(
+      wchar_t*  _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsupr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcsupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcsupr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr_l(  wchar_t *_String,                   _locale_t _Locale);
+
+ 
+
+ size_t __cdecl wcsxfrm(
+        wchar_t*       _Destination,
+                                         wchar_t const* _Source,
+                size_t         _MaxCount
+    );
+
+ 
+
+ size_t __cdecl _wcsxfrm_l(
+        wchar_t*       _Destination,
+                                         wchar_t const* _Source,
+                size_t         _MaxCount,
+                                       _locale_t      _Locale
+    );
+
+ 
+ int __cdecl wcscoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+ 
+ int __cdecl _wcscoll_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsicoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2
+    );
+
+ 
+ int __cdecl _wcsicoll_l(
+        wchar_t const* _String1,
+        wchar_t const* _String2,
+      _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsncoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+ 
+ int __cdecl _wcsncoll_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+ 
+ int __cdecl _wcsnicoll(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount
+    );
+
+ 
+ int __cdecl _wcsnicoll_l(
+      wchar_t const* _String1,
+      wchar_t const* _String2,
+                            size_t         _MaxCount,
+                        _locale_t      _Locale
+    );
+
+
+
+     extern "C++" {
+
+     
+    
+    inline wchar_t* __cdecl wcschr(  wchar_t* _String, wchar_t _C)
+    {
+        return const_cast<wchar_t*>(wcschr(static_cast<wchar_t const*>(_String), _C));
+    }
+
+     
+    inline wchar_t* __cdecl wcspbrk(  wchar_t* _String,   wchar_t const* _Control)
+    {
+        return const_cast<wchar_t*>(wcspbrk(static_cast<wchar_t const*>(_String), _Control));
+    }
+
+     
+    inline wchar_t* __cdecl wcsrchr(  wchar_t* _String,   wchar_t _C)
+    {
+        return const_cast<wchar_t*>(wcsrchr(static_cast<wchar_t const*>(_String), _C));
+    }
+
+       
+    
+    inline wchar_t* __cdecl wcsstr(  wchar_t* _String,   wchar_t const*_SubStr)
+    {
+        return const_cast<wchar_t*>(wcsstr(static_cast<wchar_t const*>(_String), _SubStr));
+    }
+
+}
+
+
+
+     
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details."))
+     wchar_t* __cdecl wcsdup(
+          wchar_t const* _String
+        );
+
+
+     
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicmp. See online help for details."))
+     int __cdecl wcsicmp(
+          wchar_t const* _String1,
+          wchar_t const* _String2
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnicmp. See online help for details."))
+     int __cdecl wcsnicmp(
+          wchar_t const* _String1,
+          wchar_t const* _String2,
+                                size_t         _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnset. See online help for details."))
+     
+     wchar_t* __cdecl wcsnset(
+          wchar_t* _String,
+                                  wchar_t  _Value,
+                                  size_t   _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsrev. See online help for details."))
+     
+     wchar_t* __cdecl wcsrev(
+          wchar_t* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsset. See online help for details."))
+     
+     wchar_t* __cdecl wcsset(
+          wchar_t* _String,
+               wchar_t  _Value
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcslwr. See online help for details."))
+     
+     wchar_t* __cdecl wcslwr(
+          wchar_t* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsupr. See online help for details."))
+     
+     wchar_t* __cdecl wcsupr(
+          wchar_t* _String
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicoll. See online help for details."))
+     int __cdecl wcsicoll(
+          wchar_t const* _String1,
+          wchar_t const* _String2
+        );
+
+
+
+
+}                             
+
+
+        
+       
+
+
+         extern "C" {
+
+
+
+     struct tm
+{
+    int tm_sec;        int tm_min;        int tm_hour;       int tm_mday;       int tm_mon;        int tm_year;       int tm_wday;       int tm_yday;       int tm_isdst;  };
+
+
+       __declspec(deprecated("This function or variable may be unsafe. Consider using _wasctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ 
+ 
+ wchar_t* __cdecl _wasctime(
+      struct tm const* _Tm
+    );
+
+ 
+
+ errno_t __cdecl _wasctime_s(
+        wchar_t*         _Buffer,
+                                          size_t           _SizeInWords,
+                                                       struct tm const* _Tm
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                                errno_t __cdecl _wasctime_s(  wchar_t (&_Buffer)[_Size],                       struct tm const* _Time) throw()                 {                                                                                                                    return _wasctime_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
+
+ 
+
+ size_t __cdecl wcsftime(
+       wchar_t*         _Buffer,
+                               size_t           _SizeInWords,
+                             wchar_t const*   _Format,
+                               struct tm const* _Tm
+    );
+
+ 
+
+ size_t __cdecl _wcsftime_l(
+       wchar_t*         _Buffer,
+                               size_t           _SizeInWords,
+                             wchar_t const*   _Format,
+                               struct tm const* _Tm,
+                           _locale_t        _Locale
+    );
+
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _wctime32_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl _wctime32(
+      __time32_t const* _Time
+    );
+
+
+ errno_t __cdecl _wctime32_s(
+        wchar_t*          _Buffer,
+                                      size_t            _SizeInWords,
+                                                       __time32_t const* _Time
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wctime32_s(  wchar_t (&_Buffer)[_Size],                       __time32_t const* _Time) throw()                 {                                                                                                                    return _wctime32_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
+
+ 
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _wctime64_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ wchar_t* __cdecl _wctime64(
+      __time64_t const* _Time
+    );
+
+
+ errno_t __cdecl _wctime64_s(
+        wchar_t*          _Buffer,
+                                      size_t            _SizeInWords,
+                                                       __time64_t const* _Time);
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wctime64_s(  wchar_t (&_Buffer)[_Size],                       __time64_t const* _Time) throw()                 {                                                                                                                    return _wctime64_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
+
+
+ errno_t __cdecl _wstrdate_s(
+       wchar_t* _Buffer,
+                                                                                size_t   _SizeInWords
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrdate_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrdate_s(_Buffer, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrdate_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
+
+
+ errno_t __cdecl _wstrtime_s(
+       wchar_t* _Buffer,
+                                                                                size_t   _SizeInWords
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrtime_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrtime_s(_Buffer, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wstrtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
+
+
+
+     
+         
+        static __inline wchar_t * __cdecl _wctime(
+              time_t const* const _Time)
+        {
+            return _wctime64(_Time);
+        }
+
+        
+        static __inline errno_t __cdecl _wctime_s(
+                  wchar_t*      const _Buffer,
+                                                             size_t        const _SizeInWords,
+                                                             time_t const* const _Time
+            )
+        {
+            return _wctime64_s(_Buffer, _SizeInWords, _Time);
+        }
+
+
+}                             
+
+       
+              
+       
+
+
+
+    typedef unsigned short _ino_t;  
+        typedef _ino_t ino_t;
+
+
+
+
+    typedef unsigned int _dev_t;  
+        typedef _dev_t dev_t;
+
+
+
+
+    typedef long _off_t;  
+        typedef _off_t off_t;
+
+
+
+
+
+         extern "C" {
+
+     struct _stat32
+{
+    _dev_t         st_dev;
+    _ino_t         st_ino;
+    unsigned short st_mode;
+    short          st_nlink;
+    short          st_uid;
+    short          st_gid;
+    _dev_t         st_rdev;
+    _off_t         st_size;
+    __time32_t     st_atime;
+    __time32_t     st_mtime;
+    __time32_t     st_ctime;
+};
+
+struct _stat32i64
+{
+    _dev_t         st_dev;
+    _ino_t         st_ino;
+    unsigned short st_mode;
+    short          st_nlink;
+    short          st_uid;
+    short          st_gid;
+    _dev_t         st_rdev;
+    __int64        st_size;
+    __time32_t     st_atime;
+    __time32_t     st_mtime;
+    __time32_t     st_ctime;
+};
+
+struct _stat64i32
+{
+    _dev_t         st_dev;
+    _ino_t         st_ino;
+    unsigned short st_mode;
+    short          st_nlink;
+    short          st_uid;
+    short          st_gid;
+    _dev_t         st_rdev;
+    _off_t         st_size;
+    __time64_t     st_atime;
+    __time64_t     st_mtime;
+    __time64_t     st_ctime;
+};
+
+struct _stat64
+{
+    _dev_t         st_dev;
+    _ino_t         st_ino;
+    unsigned short st_mode;
+    short          st_nlink;
+    short          st_uid;
+    short          st_gid;
+    _dev_t         st_rdev;
+    __int64        st_size;
+    __time64_t     st_atime;
+    __time64_t     st_mtime;
+    __time64_t     st_ctime;
+};
+
+
+    struct stat
+    {
+        _dev_t         st_dev;
+        _ino_t         st_ino;
+        unsigned short st_mode;
+        short          st_nlink;
+        short          st_uid;
+        short          st_gid;
+        _dev_t         st_rdev;
+        _off_t         st_size;
+        time_t         st_atime;
+        time_t         st_mtime;
+        time_t         st_ctime;
+    };
+
+
+
+     
+
+
+
+     
+
+
+ int __cdecl _fstat32(
+       int             _FileHandle,
+      struct _stat32* _Stat
+    );
+
+ int __cdecl _fstat32i64(
+       int                _FileHandle,
+      struct _stat32i64* _Stat
+    );
+
+ int __cdecl _fstat64i32(
+       int                _FileHandle,
+      struct _stat64i32* _Stat
+    );
+
+ int __cdecl _fstat64(
+       int             _FileHandle,
+      struct _stat64* _Stat
+    );
+
+ int __cdecl _stat32(
+      char const*     _FileName,
+       struct _stat32* _Stat
+    );
+
+ int __cdecl _stat32i64(
+      char const*        _FileName,
+       struct _stat32i64* _Stat
+    );
+
+ int __cdecl _stat64i32(
+      char const*        _FileName,
+       struct _stat64i32* _Stat
+    );
+
+ int __cdecl _stat64(
+      char const*     _FileName,
+       struct _stat64* _Stat
+    );
+
+ int __cdecl _wstat32(
+      wchar_t const*  _FileName,
+       struct _stat32* _Stat
+    );
+
+ int __cdecl _wstat32i64(
+      wchar_t const*     _FileName,
+       struct _stat32i64* _Stat
+    );
+
+ int __cdecl _wstat64i32(
+      wchar_t const*     _FileName,
+       struct _stat64i32* _Stat
+    );
+
+ int __cdecl _wstat64(
+      wchar_t const*  _FileName,
+       struct _stat64* _Stat
+    );
+
+
+
+
+        static __inline int __cdecl fstat(int const _FileHandle, struct stat* const _Stat)
+        {
+            static_assert((sizeof(struct stat) == sizeof(struct _stat64i32)), "sizeof(struct  stat)  ==  sizeof(struct  _stat64i32)");
+            return _fstat64i32(_FileHandle, (struct _stat64i32*)_Stat);
+        }
+        static __inline int __cdecl stat(char const* const _FileName, struct stat* const _Stat)
+        {
+            static_assert((sizeof(struct stat) == sizeof(struct _stat64i32)), "sizeof(struct  stat)  ==  sizeof(struct  _stat64i32)");
+            return _stat64i32(_FileName, (struct _stat64i32*)_Stat);
+        }
+
+
+}                             
+
+              
+
+
+         extern "C" {
+
+
+
+
+
+
+typedef wchar_t _Wint_t;
+
+
+
+
+        
+     wchar_t* __cdecl _wsetlocale(
+                int            _Category,
+          wchar_t const* _Locale
+        );
+
+    
+     _locale_t __cdecl _wcreate_locale(
+            int            _Category,
+          wchar_t const* _Locale
+        );
+
+
+
+     wint_t __cdecl btowc(
+          int _Ch
+        );
+
+     size_t __cdecl mbrlen(
+            char const* _Ch,
+                                                    size_t      _SizeInBytes,
+                                                 mbstate_t*  _State
+        );
+
+     size_t __cdecl mbrtowc(
+                                  wchar_t*    _DstCh,
+            char const* _SrcCh,
+                                                    size_t      _SizeInBytes,
+                                                 mbstate_t*  _State
+        );
+
+     
+     errno_t __cdecl mbsrtowcs_s(
+                                  size_t*      _Retval,
+                  wchar_t*     _Dst,
+                                       size_t       _Size,
+                          char const** _PSrc,
+                                       size_t       _N,
+                                    mbstate_t*   _State
+        );
+
+    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl mbsrtowcs_s(                          size_t* _Retval,                            wchar_t (&_Dest)[_Size],     char const** _PSource,                                size_t _Count,                             mbstate_t* _State) throw()                  {                                                                                                                                                                     return mbsrtowcs_s(_Retval, _Dest, _Size, _PSource, _Count, _State);                                                                                                }                                                                                                                                                             }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using mbsrtowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    size_t __cdecl mbsrtowcs(  wchar_t *_Dest,                   char const** _PSrc,                                size_t _Count,                             mbstate_t* _State);
+
+     
+     errno_t __cdecl wcrtomb_s(
+                                 size_t*    _Retval,
+          char*      _Dst,
+                                      size_t     _SizeInBytes,
+                                      wchar_t    _Ch,
+                               mbstate_t* _State
+        );
+
+    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    errno_t __cdecl wcrtomb_s(                  size_t* _Retval,   char (&_Dest)[_Size],                        wchar_t _Source,                 mbstate_t* _State) throw()                 {                                                                                                                                                    return wcrtomb_s(_Retval, _Dest, _Size, _Source, _State);                                                                                       }                                                                                                                                            }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcrtomb_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcrtomb(    char *_Dest,                        wchar_t _Source,                mbstate_t* _State);
+
+     
+     errno_t __cdecl wcsrtombs_s(
+                                                  size_t*         _Retval,
+          char*           _Dst,
+                                                       size_t          _SizeInBytes,
+                                    wchar_t const** _Src,
+                                                       size_t          _Size,
+                                                mbstate_t*      _State
+        );
+
+    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl wcsrtombs_s(                  size_t* _Retval,   char (&_Dest)[_Size],     wchar_t const** _PSrc,                        size_t _Count,                 mbstate_t* _State) throw()                  {                                                                                                                                                                     return wcsrtombs_s(_Retval, _Dest, _Size, _PSrc, _Count, _State);                                                                                                }                                                                                                                                                             }
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using wcsrtombs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcsrtombs(    char *_Dest,     wchar_t const** _PSource,                        size_t _Count,                 mbstate_t* _State);
+
+     int __cdecl wctob(
+          wint_t _WCh
+        );
+
+
+         
+        errno_t __cdecl wmemcpy_s(
+              wchar_t*       _S1,
+                                      rsize_t        _N1,
+                        wchar_t const* _S2,
+                                      rsize_t        _N
+            );
+
+         
+        errno_t __cdecl wmemmove_s(
+              wchar_t*       _S1,
+                                      rsize_t        _N1,
+                        wchar_t const* _S2,
+                                      rsize_t        _N
+            );
+
+
+    __inline int __cdecl fwide(
+          FILE* _F,
+              int   _M
+        )
+    {
+        (void)_F;
+        return (_M);
+    }
+
+    __inline int __cdecl mbsinit(
+          mbstate_t const* _P
+        )
+    {
+        return _P == 0 || _P->_Wchar == 0;
+    }
+
+    __inline wchar_t const* __cdecl wmemchr(
+          wchar_t const* _S,
+                    wchar_t        _C,
+                    size_t         _N
+        )
+    {
+        for (; 0 < _N; ++_S, --_N)
+            if (*_S == _C)
+                return (wchar_t const*)_S;
+
+        return 0;
+    }
+
+    __inline int __cdecl wmemcmp(
+          wchar_t const* _S1,
+          wchar_t const* _S2,
+                    size_t         _N
+        )
+    {
+        for (; 0 < _N; ++_S1, ++_S2, --_N)
+            if (*_S1 != *_S2)
+                return *_S1 < *_S2 ? -1 : 1;
+
+        return 0;
+    }
+
+     
+    
+    __inline 
+    wchar_t* __cdecl wmemcpy(
+          wchar_t*       _S1,
+                wchar_t const* _S2,
+                          size_t         _N
+        )
+    {
+        return (wchar_t*)memcpy(_S1, _S2, _N*sizeof(wchar_t));
+    }
+
+    __inline 
+    wchar_t* __cdecl wmemmove(
+          wchar_t*       _S1,
+                wchar_t const* _S2,
+                              size_t         _N
+        )
+    {
+        return (wchar_t*)memmove(_S1, _S2, _N*sizeof(wchar_t));
+    }
+
+     
+    
+    __inline wchar_t* __cdecl wmemset(
+          wchar_t* _S,
+                          wchar_t  _C,
+                          size_t   _N
+        )
+    {
+        wchar_t *_Su = _S;
+        for (; 0 < _N; ++_Su, --_N)
+        {
+            *_Su = _C;
+        }
+        return _S;
+    }
+
+
+        extern "C++" inline wchar_t* __cdecl wmemchr(
+              wchar_t* _S,
+                        wchar_t  _C,
+                        size_t   _N
+            )
+        {
+            wchar_t const* const _SC = _S;
+            return const_cast<wchar_t*>(wmemchr(_SC, _C, _N));
+        }
+
+
+
+
+}                             
+
+
+
+
+using _Mbstatet = mbstate_t;
+
+namespace std {
+
+using :: _Mbstatet;
+
+using :: mbstate_t;
+using :: size_t;
+using :: tm;
+using :: wint_t;
+
+using :: btowc;
+using :: fgetwc;
+using :: fgetws;
+using :: fputwc;
+using :: fputws;
+using :: fwide;
+using :: fwprintf;
+using :: fwscanf;
+using :: getwc;
+using :: getwchar;
+using :: mbrlen;
+using :: mbrtowc;
+using :: mbsrtowcs;
+using :: mbsinit;
+using :: putwc;
+using :: putwchar;
+using :: swprintf;
+using :: swscanf;
+using :: ungetwc;
+using :: vfwprintf;
+using :: vswprintf;
+using :: vwprintf;
+using :: wcrtomb;
+using :: wprintf;
+using :: wscanf;
+using :: wcsrtombs;
+using :: wcstol;
+using :: wcscat;
+using :: wcschr;
+using :: wcscmp;
+using :: wcscoll;
+using :: wcscpy;
+using :: wcscspn;
+using :: wcslen;
+using :: wcsncat;
+using :: wcsncmp;
+using :: wcsncpy;
+using :: wcspbrk;
+using :: wcsrchr;
+using :: wcsspn;
+using :: wcstod;
+using :: wcstoul;
+using :: wcsstr;
+using :: wcstok;
+using :: wcsxfrm;
+using :: wctob;
+using :: wmemchr;
+using :: wmemcmp;
+using :: wmemcpy;
+using :: wmemmove;
+using :: wmemset;
+using :: wcsftime;
+
+using :: vfwscanf;
+using :: vswscanf;
+using :: vwscanf;
+using :: wcstof;
+using :: wcstold;
+using :: wcstoll;
+using :: wcstoull;
+
+}
+
+
+
+ 
+
+  
+  
+ 
+  
+ 
+  
+ 
+  
+
+       
+       
 
 
          extern "C" {
@@ -2325,397 +8595,7 @@ void* __cdecl _aligned_recalloc(
 
 }                             
 
-        
-       
-
-
-         extern "C" {
-
-
-
-   
-
-
-
-
-
-
-     
-    
-     errno_t __cdecl _itow_s(
-                                  int      _Value,
-          wchar_t* _Buffer,
-                                  size_t   _BufferCount,
-                                  int      _Radix
-        );
-
-    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _itow_s(  int _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _itow(                     int _Value,     wchar_t *_Buffer,                      int _Radix);
-
-     
-    
-     errno_t __cdecl _ltow_s(
-                                  long     _Value,
-          wchar_t* _Buffer,
-                                  size_t   _BufferCount,
-                                  int      _Radix
-        );
-
-    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltow_s(  long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ltow(                     long _Value,     wchar_t *_Buffer,                      int _Radix);
-
-    
-     errno_t __cdecl _ultow_s(
-                                  unsigned long _Value,
-          wchar_t*      _Buffer,
-                                  size_t        _BufferCount,
-                                  int           _Radix
-        );
-
-    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultow_s(  unsigned long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ultow(                     unsigned long _Value,     wchar_t *_Buffer,                      int _Radix);
-
-     
-     double __cdecl wcstod(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr
-        );
-
-     
-     double __cdecl _wcstod_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                          _locale_t      _Locale
-        );
-
-     
-     long __cdecl wcstol(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     long __cdecl _wcstol_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-     
-     long long __cdecl wcstoll(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     long long __cdecl _wcstoll_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-     
-     unsigned long __cdecl wcstoul(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     unsigned long __cdecl _wcstoul_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-     
-     unsigned long long __cdecl wcstoull(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     unsigned long long __cdecl _wcstoull_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-     
-     long double __cdecl wcstold(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr
-        );
-
-     
-     long double __cdecl _wcstold_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                          _locale_t      _Locale
-        );
-
-     
-     float __cdecl wcstof(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr
-        );
-
-     
-     float __cdecl _wcstof_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                          _locale_t      _Locale
-        );
-
-     
-     double __cdecl _wtof(
-          wchar_t const* _String
-        );
-
-     
-     double __cdecl _wtof_l(
-            wchar_t const* _String,
-          _locale_t      _Locale
-        );
-
-     
-     int __cdecl _wtoi(
-          wchar_t const* _String
-        );
-
-     
-     int __cdecl _wtoi_l(
-            wchar_t const* _String,
-          _locale_t      _Locale
-        );
-
-     
-     long __cdecl _wtol(
-          wchar_t const* _String
-        );
-
-     
-     long __cdecl _wtol_l(
-            wchar_t const* _String,
-          _locale_t      _Locale
-        );
-
-     
-     long long __cdecl _wtoll(
-          wchar_t const* _String
-        );
-
-     
-     long long __cdecl _wtoll_l(
-            wchar_t const* _String,
-          _locale_t      _Locale
-        );
-
-    
-     errno_t __cdecl _i64tow_s(
-                                  __int64  _Value,
-          wchar_t* _Buffer,
-                                  size_t   _BufferCount,
-                                  int      _Radix
-        );
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _i64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     wchar_t* __cdecl _i64tow(
-                            __int64  _Value,
-            wchar_t* _Buffer,
-                            int      _Radix
-        );
-
-    
-     errno_t __cdecl _ui64tow_s(
-                                  unsigned __int64 _Value,
-          wchar_t*         _Buffer,
-                                  size_t           _BufferCount,
-                                  int              _Radix
-        );
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _ui64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     wchar_t* __cdecl _ui64tow(
-                            unsigned __int64 _Value,
-            wchar_t*         _Buffer,
-                            int              _Radix
-        );
-
-     
-     __int64 __cdecl _wtoi64(
-          wchar_t const* _String
-        );
-
-     
-     __int64 __cdecl _wtoi64_l(
-            wchar_t const* _String,
-          _locale_t      _Locale
-        );
-
-     
-     __int64 __cdecl _wcstoi64(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     __int64 __cdecl _wcstoi64_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-     
-     unsigned __int64 __cdecl _wcstoui64(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix
-        );
-
-     
-     unsigned __int64 __cdecl _wcstoui64_l(
-                            wchar_t const* _String,
-            wchar_t**      _EndPtr,
-                              int            _Radix,
-                          _locale_t      _Locale
-        );
-
-
-     
-     
-     __declspec(allocator) wchar_t* __cdecl _wfullpath(
-          wchar_t*       _Buffer,
-                                    wchar_t const* _Path,
-                                      size_t         _BufferCount
-        );
-
-
-    
-     errno_t __cdecl _wmakepath_s(
-          wchar_t*       _Buffer,
-                                  size_t         _BufferCount,
-                            wchar_t const* _Drive,
-                            wchar_t const* _Dir,
-                            wchar_t const* _Filename,
-                            wchar_t const* _Ext
-        );
-
-    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wmakepath_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _Drive,   wchar_t const* _Dir,   wchar_t const* _Filename,   wchar_t const* _Ext) throw()                  {                                                                                                                                                                     return _wmakepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wmakepath(    wchar_t *_Buffer,                wchar_t const* _Drive,                wchar_t const* _Dir,                wchar_t const* _Filename,                wchar_t const* _Ext);
-
-     void __cdecl _wperror(
-          wchar_t const* _ErrorMessage
-        );
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _wsplitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     void __cdecl _wsplitpath(
-                            wchar_t const* _FullPath,
-            wchar_t*       _Drive,
-            wchar_t*       _Dir,
-            wchar_t*       _Filename,
-            wchar_t*       _Ext
-        );
-
-     errno_t __cdecl _wsplitpath_s(
-                                      wchar_t const* _FullPath,
-             wchar_t*       _Drive,
-                                        size_t         _DriveCount,
-               wchar_t*       _Dir,
-                                        size_t         _DirCount,
-          wchar_t*       _Filename,
-                                        size_t         _FilenameCount,
-               wchar_t*       _Ext,
-                                        size_t         _ExtCount
-        );
-
-    extern "C++"                                                                                                      {                                                                                                                     template <size_t _DriveSize, size_t _DirSize, size_t _NameSize, size_t _ExtSize>                                  inline                                                                                                            errno_t __cdecl _wsplitpath_s(                                                                                        wchar_t const* _Path,                                                                                        wchar_t (&_Drive)[_DriveSize],                                                                            wchar_t (&_Dir)[_DirSize],                                                                                wchar_t (&_Name)[_NameSize],                                                                              wchar_t (&_Ext)[_ExtSize]                                                                               ) throw()                                                                                     {                                                                                                                     return _wsplitpath_s(_Path, _Drive, _DriveSize, _Dir, _DirSize, _Name, _NameSize, _Ext, _ExtSize);                 }                                                                                                             }
-
-
-        
-         errno_t __cdecl _wdupenv_s(
-                wchar_t**      _Buffer,
-                                                                                size_t*        _BufferCount,
-                                                                                   wchar_t const* _VarName
-            );
-
-
-          __declspec(deprecated("This function or variable may be unsafe. Consider using _wdupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-         wchar_t* __cdecl _wgetenv(
-              wchar_t const* _VarName
-            );
-
-         
-        
-         errno_t __cdecl _wgetenv_s(
-                                         size_t*        _RequiredCount,
-              wchar_t*       _Buffer,
-                                          size_t         _BufferCount,
-                                        wchar_t const* _VarName
-            );
-
-        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                        errno_t __cdecl _wgetenv_s(   size_t* _RequiredCount, wchar_t (&_Buffer)[_Size],   wchar_t const* _VarName) throw()                 {                                                                                                                                    return _wgetenv_s(_RequiredCount, _Buffer, _Size, _VarName);                                                                               }                                                                                                                            }
-
-         
-         int __cdecl _wputenv(
-              wchar_t const* _EnvString
-            );
-
-        
-         errno_t __cdecl _wputenv_s(
-              wchar_t const* _Name,
-              wchar_t const* _Value
-            );
-
-         errno_t __cdecl _wsearchenv_s(
-                                    wchar_t const* _Filename,
-                                    wchar_t const* _VarName,
-              wchar_t*       _Buffer,
-                                      size_t         _BufferCount
-            );
-
-        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wsearchenv_s(  wchar_t const* _Filename,   wchar_t const* _VarName, wchar_t (&_ResultPath)[_Size]) throw()                 {                                                                                                                                    return _wsearchenv_s(_Filename, _VarName, _ResultPath, _Size);                                                                               }                                                                                                                            }
-
-        __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wsearchenv(                   wchar_t const* _Filename,                    wchar_t const* _VarName,     wchar_t *_ResultPath);
-
-         int __cdecl _wsystem(
-              wchar_t const* _Command
-            );
-
-
-
-
-}                             
-
-       
-       
-
-         extern "C" {
-
-
-
-
-
-
-
-
-
-
-}                             
-
-
+               
 
 
          extern "C" {
@@ -2822,9 +8702,9 @@ int __cdecl at_quick_exit(void (__cdecl*)(void));
 
 
 
- __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char**    __cdecl __p__pgmptr (void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  int*      __cdecl __p__fmode  (void);
+ __declspec(deprecated("This function or variable may be unsafe. Consider using _get_pgmptr instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char**    __cdecl __p__pgmptr (void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _get_wpgmptr instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _get_fmode instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  int*      __cdecl __p__fmode  (void);
 
 
  
@@ -3153,7 +9033,7 @@ typedef struct
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                errno_t __cdecl _itoa_s(  int _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _itoa(                     int _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _itoa(                     int _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3166,7 +9046,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltoa_s(  long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ltoa(                     long _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _ltoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ltoa(                     long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3179,7 +9059,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultoa_s(  unsigned long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ultoa(                     unsigned long _Value,     char *_Buffer,                      int _Radix);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _ultoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ultoa(                     unsigned long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -3356,7 +9236,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl mbstowcs_s(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount) throw()                 {                                                                                                                                                    return mbstowcs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl mbstowcs(  wchar_t *_Dest,                           char const* _Source,                             size_t _MaxCount);
+__declspec(deprecated("This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl mbstowcs(  wchar_t *_Dest,                           char const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _mbstowcs_s_l(
@@ -3370,7 +9250,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _mbstowcs_s_l(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount,    _locale_t _Locale) throw()                  {                                                                                                                                                                     return _mbstowcs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _mbstowcs_l(  wchar_t *_Dest,                       char const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _mbstowcs_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _mbstowcs_l(  wchar_t *_Dest,                       char const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
@@ -3417,7 +9297,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl wcstombs_s(                      size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                          wchar_t const* _Source,                            size_t _MaxCount) throw()                 {                                                                                                                                                    return wcstombs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcstombs(  char *_Dest,                           wchar_t const* _Source,                             size_t _MaxCount);
+__declspec(deprecated("This function or variable may be unsafe. Consider using wcstombs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcstombs(  char *_Dest,                           wchar_t const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _wcstombs_s_l(
@@ -3431,7 +9311,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wcstombs_s_l(                size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                    wchar_t const* _Source,                      size_t _MaxCount,                  _locale_t _Locale) throw()                  {                                                                                                                                                                     return _wcstombs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _wcstombs_l(  char *_Dest,                       wchar_t const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wcstombs_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _wcstombs_l(  char *_Dest,                       wchar_t const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
@@ -3459,7 +9339,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
 extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _makepath_s(char (&_Buffer)[_Size],   char const* _Drive,   char const* _Dir,   char const* _Filename,   char const* _Ext) throw()                  {                                                                                                                                                                     return _makepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _makepath(    char *_Buffer,                char const* _Drive,                char const* _Dir,                char const* _Filename,                char const* _Ext);
+__declspec(deprecated("This function or variable may be unsafe. Consider using _makepath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _makepath(    char *_Buffer,                char const* _Drive,                char const* _Dir,                char const* _Filename,                char const* _Ext);
 
 __declspec(deprecated("This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  void __cdecl _splitpath(
@@ -3556,7 +9436,7 @@ extern "C++"                                                                    
 
     extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _searchenv_s(  char const* _Filename,   char const* _VarName, char (&_Buffer)[_Size]) throw()                 {                                                                                                                                    return _searchenv_s(_Filename, _VarName, _Buffer, _Size);                                                                               }                                                                                                                            }
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _searchenv(                   char const* _Filename,                    char const* _VarName,     char *_Buffer);
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _searchenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _searchenv(                   char const* _Filename,                    char const* _VarName,     char *_Buffer);
 
          __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using SetErrorMode instead. See online help for details."))
      void __cdecl _seterrormode(
@@ -4007,6 +9887,1119 @@ template <class _Ty>
 
 
 
+
+
+
+namespace std {
+ enum float_denorm_style {      denorm_indeterminate = -1,
+    denorm_absent        = 0,
+    denorm_present       = 1
+};
+
+ enum float_round_style {      round_indeterminate       = -1,
+    round_toward_zero         = 0,
+    round_to_nearest          = 1,
+    round_toward_infinity     = 2,
+    round_toward_neg_infinity = 3
+};
+
+ struct _Num_base {      static constexpr float_denorm_style has_denorm = denorm_absent;
+    static constexpr bool has_denorm_loss          = false;
+    static constexpr bool has_infinity             = false;
+    static constexpr bool has_quiet_NaN            = false;
+    static constexpr bool has_signaling_NaN        = false;
+    static constexpr bool is_bounded               = false;
+    static constexpr bool is_exact                 = false;
+    static constexpr bool is_iec559                = false;
+    static constexpr bool is_integer               = false;
+    static constexpr bool is_modulo                = false;
+    static constexpr bool is_signed                = false;
+    static constexpr bool is_specialized           = false;
+    static constexpr bool tinyness_before          = false;
+    static constexpr bool traps                    = false;
+    static constexpr float_round_style round_style = round_toward_zero;
+    static constexpr int digits                    = 0;
+    static constexpr int digits10                  = 0;
+    static constexpr int max_digits10              = 0;
+    static constexpr int max_exponent              = 0;
+    static constexpr int max_exponent10            = 0;
+    static constexpr int min_exponent              = 0;
+    static constexpr int min_exponent10            = 0;
+    static constexpr int radix                     = 0;
+};
+
+ template <class _Ty>
+class numeric_limits : public _Num_base {  public:
+     static constexpr _Ty(min)() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty(max)() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty lowest() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty epsilon() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty round_error() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty denorm_min() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty infinity() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty quiet_NaN() noexcept {
+        return _Ty();
+    }
+
+     static constexpr _Ty signaling_NaN() noexcept {
+        return _Ty();
+    }
+};
+
+template <class _Ty>
+class numeric_limits<const _Ty> : public numeric_limits<_Ty> {};  
+template <class _Ty>
+class numeric_limits<volatile _Ty> : public numeric_limits<_Ty> {};  
+template <class _Ty>
+class numeric_limits<const volatile _Ty> : public numeric_limits<_Ty> {};  
+ struct _Num_int_base : _Num_base {      static constexpr bool is_bounded     = true;
+    static constexpr bool is_exact       = true;
+    static constexpr bool is_integer     = true;
+    static constexpr bool is_specialized = true;
+    static constexpr int radix           = 2;
+};
+
+ struct _Num_float_base : _Num_base {      static constexpr float_denorm_style has_denorm = denorm_present;
+    static constexpr bool has_infinity             = true;
+    static constexpr bool has_quiet_NaN            = true;
+    static constexpr bool has_signaling_NaN        = true;
+    static constexpr bool is_bounded               = true;
+    static constexpr bool is_iec559                = true;
+    static constexpr bool is_signed                = true;
+    static constexpr bool is_specialized           = true;
+    static constexpr float_round_style round_style = round_to_nearest;
+    static constexpr int radix                     = 2;
+};
+
+ template <>
+class numeric_limits<bool> : public _Num_int_base {
+public:
+     static constexpr bool(min)() noexcept {
+        return false;
+    }
+
+     static constexpr bool(max)() noexcept {
+        return true;
+    }
+
+     static constexpr bool lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr bool epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr bool round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr bool denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr bool infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr bool quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr bool signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr int digits = 1;
+};
+
+ template <>
+class numeric_limits<char> : public _Num_int_base {
+public:
+     static constexpr char(min)() noexcept {
+        return (-128);
+    }
+
+     static constexpr char(max)() noexcept {
+        return 127;
+    }
+
+     static constexpr char lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr char epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr char round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr char denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr char infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr char quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr char signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_signed = (-128) != 0;
+    static constexpr bool is_modulo = (-128) == 0;
+    static constexpr int digits     = 8 - ((-128) != 0);
+    static constexpr int digits10   = 2;
+};
+
+ template <>
+class numeric_limits<signed char> : public _Num_int_base {
+public:
+     static constexpr signed char(min)() noexcept {
+        return (-128);
+    }
+
+     static constexpr signed char(max)() noexcept {
+        return 127;
+    }
+
+     static constexpr signed char lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr signed char epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr signed char round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr signed char denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr signed char infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr signed char quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr signed char signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_signed = true;
+    static constexpr int digits     = 7;
+    static constexpr int digits10   = 2;
+};
+
+ template <>
+class numeric_limits<unsigned char> : public _Num_int_base {
+public:
+     static constexpr unsigned char(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char(max)() noexcept {
+        return 0xff;
+    }
+
+     static constexpr unsigned char lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr unsigned char epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned char signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 8;
+    static constexpr int digits10   = 2;
+};
+
+ template <>
+class numeric_limits<char8_t> : public _Num_int_base {
+public:
+     static constexpr char8_t(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t(max)() noexcept {
+        return 0xff;
+    }
+
+     static constexpr char8_t lowest() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr char8_t signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 8;
+    static constexpr int digits10   = 2;
+};
+
+ template <>
+class numeric_limits<char16_t> : public _Num_int_base {
+public:
+     static constexpr char16_t(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t(max)() noexcept {
+        return 0xffff;
+    }
+
+     static constexpr char16_t lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr char16_t epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr char16_t signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 16;
+    static constexpr int digits10   = 4;
+};
+
+ template <>
+class numeric_limits<char32_t> : public _Num_int_base {
+public:
+     static constexpr char32_t(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t(max)() noexcept {
+        return 0xffffffff;
+    }
+
+     static constexpr char32_t lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr char32_t epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr char32_t signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 32;
+    static constexpr int digits10   = 9;
+};
+
+ template <>
+class numeric_limits<wchar_t> : public _Num_int_base {
+public:
+     static constexpr wchar_t(min)() noexcept {
+        return 0x0000;
+    }
+
+     static constexpr wchar_t(max)() noexcept {
+        return 0xffff;
+    }
+
+     static constexpr wchar_t lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr wchar_t epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr wchar_t round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr wchar_t denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr wchar_t infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr wchar_t quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr wchar_t signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 16;
+    static constexpr int digits10   = 4;
+};
+
+ template <>
+class numeric_limits<short> : public _Num_int_base {
+public:
+     static constexpr short(min)() noexcept {
+        return (-32768);
+    }
+
+     static constexpr short(max)() noexcept {
+        return 32767;
+    }
+
+     static constexpr short lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr short epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr short round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr short denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr short infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr short quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr short signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_signed = true;
+    static constexpr int digits     = 15;
+    static constexpr int digits10   = 4;
+};
+
+ template <>
+class numeric_limits<int> : public _Num_int_base {
+public:
+     static constexpr int(min)() noexcept {
+        return (-2147483647 - 1);
+    }
+
+     static constexpr int(max)() noexcept {
+        return 2147483647;
+    }
+
+     static constexpr int lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr int epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr int round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr int denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr int infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr int quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr int signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_signed = true;
+    static constexpr int digits     = 31;
+    static constexpr int digits10   = 9;
+};
+
+ template <>
+class numeric_limits<long> : public _Num_int_base {
+public:
+     static constexpr long(min)() noexcept {
+        return (-2147483647L - 1);
+    }
+
+     static constexpr long(max)() noexcept {
+        return 2147483647L;
+    }
+
+     static constexpr long lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr long epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr long round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr long denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr long infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr long quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr long signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static_assert(sizeof(int) == sizeof(long), "LLP64 assumption");
+    static constexpr bool is_signed = true;
+    static constexpr int digits     = 31;
+    static constexpr int digits10   = 9;
+};
+
+ template <>
+class numeric_limits<long long> : public _Num_int_base {
+public:
+     static constexpr long long(min)() noexcept {
+        return (-9223372036854775807i64 - 1);
+    }
+
+     static constexpr long long(max)() noexcept {
+        return 9223372036854775807i64;
+    }
+
+     static constexpr long long lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr long long epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr long long round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr long long denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr long long infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr long long quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr long long signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_signed = true;
+    static constexpr int digits     = 63;
+    static constexpr int digits10   = 18;
+};
+
+ template <>
+class numeric_limits<unsigned short> : public _Num_int_base {
+public:
+     static constexpr unsigned short(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short(max)() noexcept {
+        return 0xffff;
+    }
+
+     static constexpr unsigned short lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr unsigned short epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned short signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 16;
+    static constexpr int digits10   = 4;
+};
+
+ template <>
+class numeric_limits<unsigned int> : public _Num_int_base {
+public:
+     static constexpr unsigned int(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int(max)() noexcept {
+        return 0xffffffff;
+    }
+
+     static constexpr unsigned int lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr unsigned int epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned int signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 32;
+    static constexpr int digits10   = 9;
+};
+
+ template <>
+class numeric_limits<unsigned long> : public _Num_int_base {
+public:
+     static constexpr unsigned long(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long(max)() noexcept {
+        return 0xffffffffUL;
+    }
+
+     static constexpr unsigned long lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr unsigned long epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static_assert(sizeof(unsigned int) == sizeof(unsigned long), "LLP64 assumption");
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 32;
+    static constexpr int digits10   = 9;
+};
+
+ template <>
+class numeric_limits<unsigned long long> : public _Num_int_base {
+public:
+     static constexpr unsigned long long(min)() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long(max)() noexcept {
+        return 0xffffffffffffffffui64;
+    }
+
+     static constexpr unsigned long long lowest() noexcept {
+        return (min)();
+    }
+
+     static constexpr unsigned long long epsilon() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long round_error() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long denorm_min() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long infinity() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long quiet_NaN() noexcept {
+        return 0;
+    }
+
+     static constexpr unsigned long long signaling_NaN() noexcept {
+        return 0;
+    }
+
+    static constexpr bool is_modulo = true;
+    static constexpr int digits     = 64;
+    static constexpr int digits10   = 19;
+};
+
+ template <>
+class numeric_limits<float> : public _Num_float_base {
+public:
+     static constexpr float(min)() noexcept {
+        return 1.175494351e-38F;
+    }
+
+     static constexpr float(max)() noexcept {
+        return 3.402823466e+38F;
+    }
+
+     static constexpr float lowest() noexcept {
+        return -(max)();
+    }
+
+     static constexpr float epsilon() noexcept {
+        return 1.192092896e-07F;
+    }
+
+     static constexpr float round_error() noexcept {
+        return 0.5F;
+    }
+
+     static constexpr float denorm_min() noexcept {
+        return 1.401298464e-45F;
+    }
+
+     static constexpr float infinity() noexcept {
+        return __builtin_huge_valf();
+    }
+
+     static constexpr float quiet_NaN() noexcept {
+        return __builtin_nanf("0");
+    }
+
+     static constexpr float signaling_NaN() noexcept {
+        return __builtin_nansf("1");
+    }
+
+    static constexpr int digits         = 24;
+    static constexpr int digits10       = 6;
+    static constexpr int max_digits10   = 9;
+    static constexpr int max_exponent   = 128;
+    static constexpr int max_exponent10 = 38;
+    static constexpr int min_exponent   = (-125);
+    static constexpr int min_exponent10 = (-37);
+};
+
+ template <>
+class numeric_limits<double> : public _Num_float_base {
+public:
+     static constexpr double(min)() noexcept {
+        return 2.2250738585072014e-308;
+    }
+
+     static constexpr double(max)() noexcept {
+        return 1.7976931348623158e+308;
+    }
+
+     static constexpr double lowest() noexcept {
+        return -(max)();
+    }
+
+     static constexpr double epsilon() noexcept {
+        return 2.2204460492503131e-016;
+    }
+
+     static constexpr double round_error() noexcept {
+        return 0.5;
+    }
+
+     static constexpr double denorm_min() noexcept {
+        return 4.9406564584124654e-324;
+    }
+
+     static constexpr double infinity() noexcept {
+        return __builtin_huge_val();
+    }
+
+     static constexpr double quiet_NaN() noexcept {
+        return __builtin_nan("0");
+    }
+
+     static constexpr double signaling_NaN() noexcept {
+        return __builtin_nans("1");
+    }
+
+    static constexpr int digits         = 53;
+    static constexpr int digits10       = 15;
+    static constexpr int max_digits10   = 17;
+    static constexpr int max_exponent   = 1024;
+    static constexpr int max_exponent10 = 308;
+    static constexpr int min_exponent   = (-1021);
+    static constexpr int min_exponent10 = (-307);
+};
+
+ template <>
+class numeric_limits<long double> : public _Num_float_base {
+public:
+     static constexpr long double(min)() noexcept {
+        return 2.2250738585072014e-308;
+    }
+
+     static constexpr long double(max)() noexcept {
+        return 1.7976931348623158e+308;
+    }
+
+     static constexpr long double lowest() noexcept {
+        return -(max)();
+    }
+
+     static constexpr long double epsilon() noexcept {
+        return 2.2204460492503131e-016;
+    }
+
+     static constexpr long double round_error() noexcept {
+        return 0.5L;
+    }
+
+     static constexpr long double denorm_min() noexcept {
+        return 4.9406564584124654e-324;
+    }
+
+     static constexpr long double infinity() noexcept {
+        return __builtin_huge_val();
+    }
+
+     static constexpr long double quiet_NaN() noexcept {
+        return __builtin_nan("0");
+    }
+
+     static constexpr long double signaling_NaN() noexcept {
+        return __builtin_nans("1");
+    }
+
+    static constexpr int digits         = 53;
+    static constexpr int digits10       = 15;
+    static constexpr int max_digits10   = 17;
+    static constexpr int max_exponent   = 1024;
+    static constexpr int max_exponent10 = 308;
+    static constexpr int min_exponent   = (-1021);
+    static constexpr int min_exponent10 = (-307);
+};
+
+   template <class _Ty>
+ constexpr int _Countl_zero_fallback(_Ty _Val) noexcept {
+    _Ty _Yy = 0;
+
+    unsigned int _Nn = numeric_limits<_Ty>::digits;
+    unsigned int _Cc = numeric_limits<_Ty>::digits / 2;
+    do {
+        _Yy = static_cast<_Ty>(_Val >> _Cc);
+        if (_Yy != 0) {
+            _Nn -= _Cc;
+            _Val = _Yy;
+        }
+        _Cc >>= 1;
+    } while (_Cc != 0);
+    return static_cast<int>(_Nn) - static_cast<int>(_Val);
+}
+
+   template <class _Ty>
+ constexpr int _Countr_zero_fallback(const _Ty _Val) noexcept {
+    constexpr int _Digits = std::numeric_limits<_Ty>::digits;
+    return _Digits - _Countl_zero_fallback(static_cast<_Ty>(static_cast<_Ty>(~_Val) & static_cast<_Ty>(_Val - 1)));
+}
+
+extern "C" {
+extern int __isa_available;
+}
+
+template <class _Ty>
+ int _Checked_x86_x64_countr_zero(const _Ty _Val) noexcept {
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
+    constexpr _Ty _Max    = (numeric_limits<_Ty>::max)();
+
+                   if constexpr (_Digits > 16) {
+        const bool _Definitely_have_tzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
+        if (!_Definitely_have_tzcnt && _Val == 0) {
+            return _Digits;
+        }
+    }
+
+    if constexpr (_Digits <= 32) {
+                                   return static_cast<int>(_tzcnt_u32(static_cast<unsigned int>(~_Max | _Val)));
+    } else {
+        return static_cast<int>(_tzcnt_u64(_Val));
+    }
+}
+
+template <class _Ty>
+constexpr bool _Is_standard_unsigned_integer =
+    _Is_any_of_v<remove_cv_t<_Ty>, unsigned char, unsigned short, unsigned int, unsigned long, unsigned long long>;
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr int _Countr_zero(const _Ty _Val) noexcept {
+    if (!::std:: is_constant_evaluated()) {
+        return _Checked_x86_x64_countr_zero(_Val);
+    }
+         return _Countr_zero_fallback(_Val);
+}
+
+}
+
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+       
+       
+
+
+typedef signed char        int8_t;
+typedef short              int16_t;
+typedef int                int32_t;
+typedef long long          int64_t;
+typedef unsigned char      uint8_t;
+typedef unsigned short     uint16_t;
+typedef unsigned int       uint32_t;
+typedef unsigned long long uint64_t;
+
+typedef signed char        int_least8_t;
+typedef short              int_least16_t;
+typedef int                int_least32_t;
+typedef long long          int_least64_t;
+typedef unsigned char      uint_least8_t;
+typedef unsigned short     uint_least16_t;
+typedef unsigned int       uint_least32_t;
+typedef unsigned long long uint_least64_t;
+
+typedef signed char        int_fast8_t;
+typedef int                int_fast16_t;
+typedef int                int_fast32_t;
+typedef long long          int_fast64_t;
+typedef unsigned char      uint_fast8_t;
+typedef unsigned int       uint_fast16_t;
+typedef unsigned int       uint_fast32_t;
+typedef unsigned long long uint_fast64_t;
+
+typedef long long          intmax_t;
+typedef unsigned long long uintmax_t;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+namespace std {
+using :: int8_t;
+using :: int16_t;
+using :: int32_t;
+using :: int64_t;
+using :: uint8_t;
+using :: uint16_t;
+using :: uint32_t;
+using :: uint64_t;
+
+using :: int_least8_t;
+using :: int_least16_t;
+using :: int_least32_t;
+using :: int_least64_t;
+using :: uint_least8_t;
+using :: uint_least16_t;
+using :: uint_least32_t;
+using :: uint_least64_t;
+
+using :: int_fast8_t;
+using :: int_fast16_t;
+using :: int_fast32_t;
+using :: int_fast64_t;
+using :: uint_fast8_t;
+using :: uint_fast16_t;
+using :: uint_fast32_t;
+using :: uint_fast64_t;
+
+using :: intmax_t;
+using :: intptr_t;
+using :: uintmax_t;
+using :: uintptr_t;
+
+}
+
+
+
+ 
+  
 
 
 
@@ -5389,6 +12382,28 @@ template <class _Rx, class _Callable, class... _Args>
 inline constexpr bool is_nothrow_invocable_r_v =
     _Select_invoke_traits<_Callable, _Args...>::template _Is_nothrow_invocable_r<_Rx>::value;
 
+ template <class _Ty1, class _Ty2>
+struct is_layout_compatible : bool_constant<__is_layout_compatible(_Ty1, _Ty2)> {};
+
+template <class _Ty1, class _Ty2>
+inline constexpr bool is_layout_compatible_v = __is_layout_compatible(_Ty1, _Ty2);
+
+ template <class _Base, class _Derived>
+struct is_pointer_interconvertible_base_of : bool_constant<__is_pointer_interconvertible_base_of(_Base, _Derived)> {};
+
+template <class _Base, class _Derived>
+inline constexpr bool is_pointer_interconvertible_base_of_v = __is_pointer_interconvertible_base_of(_Base, _Derived);
+
+ template <class _ClassTy, class _MemberTy>
+ constexpr bool is_pointer_interconvertible_with_class(_MemberTy _ClassTy::*_Pm) noexcept {
+    return __is_pointer_interconvertible_with_class(_ClassTy, _Pm);
+}
+
+ template <class _ClassTy1, class _ClassTy2, class _MemberTy1, class _MemberTy2>
+ constexpr bool is_corresponding_member(_MemberTy1 _ClassTy1::*_Pm1, _MemberTy2 _ClassTy2::*_Pm2) noexcept {
+    return __is_corresponding_member(_ClassTy1, _ClassTy2, _Pm1, _Pm2);
+}
+
  template <class _Ty>
 struct _Function_args {};  
 
@@ -5743,15 +12758,199 @@ struct _Floating_type_traits<long double> : _Floating_type_traits<double> {};
 
 
 
- 
-  
+
+
+
+namespace std {
+
+template <class _To, class _From,
+    enable_if_t<conjunction_v<bool_constant<sizeof(_To) == sizeof(_From)>, is_trivially_copyable<_To>,
+                    is_trivially_copyable<_From>>,
+        int> = 0>
+ constexpr _To bit_cast(const _From& _Val) noexcept {
+    return __builtin_bit_cast(_To, _Val);
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr int countl_zero(_Ty _Val) noexcept;
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr bool has_single_bit(const _Ty _Val) noexcept {
+    return _Val != 0 && (_Val & (_Val - 1)) == 0;
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr _Ty bit_ceil(const _Ty _Val) noexcept   {
+    if (_Val == 0) {
+        return 1;
+    }
+
+    return static_cast<_Ty>(_Ty{1} << (numeric_limits<_Ty>::digits - ::std:: countl_zero(static_cast<_Ty>(_Val - 1))));
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr _Ty bit_floor(const _Ty _Val) noexcept {
+    if (_Val == 0) {
+        return 0;
+    }
+
+    return static_cast<_Ty>(_Ty{1} << (numeric_limits<_Ty>::digits - 1 - ::std:: countl_zero(_Val)));
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr _Ty bit_width(const _Ty _Val) noexcept {
+    return static_cast<_Ty>(numeric_limits<_Ty>::digits - ::std:: countl_zero(_Val));
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr _Ty rotr(_Ty _Val, int _Rotation) noexcept;
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr _Ty rotl(const _Ty _Val, const int _Rotation) noexcept {
+    constexpr auto _Digits = numeric_limits<_Ty>::digits;
+    const auto _Remainder  = _Rotation % _Digits;
+    if (_Remainder > 0) {
+        return static_cast<_Ty>(
+            static_cast<_Ty>(_Val << _Remainder) | static_cast<_Ty>(_Val >> (_Digits - _Remainder)));
+    } else if (_Remainder == 0) {
+        return _Val;
+    } else {          return ::std:: rotr(_Val, -_Remainder);
+    }
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled>
+ constexpr _Ty rotr(const _Ty _Val, const int _Rotation) noexcept {
+    constexpr auto _Digits = numeric_limits<_Ty>::digits;
+    const auto _Remainder  = _Rotation % _Digits;
+    if (_Remainder > 0) {
+        return static_cast<_Ty>(
+            static_cast<_Ty>(_Val >> _Remainder) | static_cast<_Ty>(_Val << (_Digits - _Remainder)));
+    } else if (_Remainder == 0) {
+        return _Val;
+    } else {          return ::std:: rotl(_Val, -_Remainder);
+    }
+}
+
+  template <class _Ty>
+ constexpr int _Popcount_fallback(_Ty _Val) noexcept {
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
+         _Val = static_cast<_Ty>(_Val - ((_Val >> 1) & static_cast<_Ty>(0x5555'5555'5555'5555ull)));
+    _Val = static_cast<_Ty>((_Val & static_cast<_Ty>(0x3333'3333'3333'3333ull))
+                            + ((_Val >> 2) & static_cast<_Ty>(0x3333'3333'3333'3333ull)));
+    _Val = static_cast<_Ty>((_Val + (_Val >> 4)) & static_cast<_Ty>(0x0F0F'0F0F'0F0F'0F0Full));
+    for (int _Shift_digits = 8; _Shift_digits < _Digits; _Shift_digits <<= 1) {
+        _Val = static_cast<_Ty>(_Val + static_cast<_Ty>(_Val >> _Shift_digits));
+    }
+         return static_cast<int>(_Val & static_cast<_Ty>(_Digits + _Digits - 1));
+}
+
+
+extern "C" {
+extern int __isa_available;
+}
+
+template <class _Ty>
+ int _Countl_zero_lzcnt(const _Ty _Val) noexcept {
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
+
+    if constexpr (_Digits <= 16) {
+        return static_cast<int>(__lzcnt16(_Val) - (16 - _Digits));
+    } else if constexpr (_Digits == 32) {
+        return static_cast<int>(__lzcnt(_Val));
+    } else {
+        return static_cast<int>(__lzcnt64(_Val));
+    }
+}
+
+template <class _Ty>
+ int _Countl_zero_bsr(const _Ty _Val) noexcept {
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
+
+    unsigned long _Result;
+    if constexpr (_Digits <= 32) {
+        if (!_BitScanReverse(&_Result, _Val)) {
+            return _Digits;
+        }
+    } else {
+        if (!_BitScanReverse64(&_Result, _Val)) {
+            return _Digits;
+        }
+    }
+    return static_cast<int>(_Digits - 1 - _Result);
+}
+
+template <class _Ty>
+ int _Checked_x86_x64_countl_zero(const _Ty _Val) noexcept {
+    const bool _Definitely_have_lzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
+    if (_Definitely_have_lzcnt) {
+        return _Countl_zero_lzcnt(_Val);
+    } else {
+        return _Countl_zero_bsr(_Val);
+    }
+}
+
+template <class _Ty>
+ int _Checked_x86_x64_popcount(const _Ty _Val) noexcept {
+    constexpr int _Digits = numeric_limits<_Ty>::digits;
+    const bool _Definitely_have_popcnt = __isa_available >= __ISA_AVAILABLE_SSE42;
+    if (!_Definitely_have_popcnt) {
+        return _Popcount_fallback(_Val);
+    }
+
+    if constexpr (_Digits <= 16) {
+        return static_cast<int>(__popcnt16(_Val));
+    } else if constexpr (_Digits == 32) {
+        return static_cast<int>(__popcnt(_Val));
+    } else {
+        return static_cast<int>(__popcnt64(_Val));
+    }
+}
+
+
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled>
+ constexpr int countl_zero(const _Ty _Val) noexcept {
+    if (!::std:: is_constant_evaluated()) {
+        return _Checked_x86_x64_countl_zero(_Val);
+    }
+
+    return _Countl_zero_fallback(_Val);
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr int countl_one(const _Ty _Val) noexcept {
+    return ::std:: countl_zero(static_cast<_Ty>(~_Val));
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
+ constexpr int countr_zero(const _Ty _Val) noexcept {
+    return _Countr_zero(_Val);
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled = 0>
+ constexpr int countr_one(const _Ty _Val) noexcept {
+    return _Countr_zero(static_cast<_Ty>(~_Val));
+}
+
+template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled = 0>
+ constexpr int popcount(const _Ty _Val) noexcept {
+    if (!::std:: is_constant_evaluated()) {
+        return _Checked_x86_x64_popcount(_Val);
+    }
+    return _Popcount_fallback(_Val);
+}
+
+enum class endian { little = 0, big = 1, native = little };
+
+}
+
  
   
  
   
 
-       
-              
+ 
+  
        
        
 
@@ -5913,1453 +13112,6 @@ void __cdecl operator delete[](
 }  
 
 
-extern "C++" {
-
-
-
-
-          
-    __declspec(allocator) void* __cdecl operator new(
-            size_t      _Size,
-            int         _BlockUse,
-          char const* _FileName,
-            int         _LineNumber
-        );
-
-          
-    __declspec(allocator) void* __cdecl operator new[](
-            size_t      _Size,
-            int         _BlockUse,
-          char const* _FileName,
-            int         _LineNumber
-        );
-
-    void __cdecl operator delete(
-        void*       _Block,
-        int         _BlockUse,
-        char const* _FileName,
-        int         _LineNumber
-        ) noexcept;
-
-    void __cdecl operator delete[](
-        void*       _Block,
-        int         _BlockUse,
-        char const* _FileName,
-        int         _LineNumber
-        ) noexcept;
-
-
-
-
-}  
-
-
-
-         extern "C" {
-
-
-
-typedef void* _HFILE;  
-
-
-
-
-
-     
-typedef int (__cdecl* _CRT_REPORT_HOOK )(int, char*,    int*);
-typedef int (__cdecl* _CRT_REPORT_HOOKW)(int, wchar_t*, int*);
-
-
-
-typedef int (__cdecl* _CRT_ALLOC_HOOK)(int, void*, size_t, int, long, unsigned char const*, int);
-
-
-
-
-
-     
- 
-  
-  
-
-
- 
-     
-typedef void (__cdecl* _CRT_DUMP_CLIENT)(void*, size_t);
-
-
-struct _CrtMemBlockHeader;
-
-typedef struct _CrtMemState
-{
-    struct _CrtMemBlockHeader* pBlockHeader;
-    size_t lCounts[5];
-    size_t lSizes[5];
-    size_t lHighWaterCount;
-    size_t lTotalCount;
-} _CrtMemState;
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-}                             
-
-                      
-
-
-      
- 
- 
-   
-
-
-
-
-
-  
-
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  
-
-
-
-namespace std {
-enum _Uninitialized {      _Noinit
-};
-
- class  _Lockit {  public:
-    __thiscall _Lockit() noexcept;
-    explicit __thiscall _Lockit(int) noexcept;      __thiscall ~_Lockit() noexcept;  
-    static void __cdecl _Lockit_ctor(int) noexcept;
-    static void __cdecl _Lockit_dtor(int) noexcept;
-
-private:
-    static void __cdecl _Lockit_ctor(_Lockit*) noexcept;
-    static void __cdecl _Lockit_ctor(_Lockit*, int) noexcept;
-    static void __cdecl _Lockit_dtor(_Lockit*) noexcept;
-
-public:
-     _Lockit(const _Lockit&) = delete;
-    _Lockit&  operator=(const _Lockit&) = delete;
-
-private:
-    int _Locktype;
-};
-
-
-
-
-
-
-class  _Init_locks {  public:
-    __thiscall _Init_locks() noexcept;
-    __thiscall ~_Init_locks() noexcept;
-
-private:
-    static void __cdecl _Init_locks_ctor(_Init_locks*) noexcept;
-    static void __cdecl _Init_locks_dtor(_Init_locks*) noexcept;
-};
-
- 
-
-}
-
-
-
-
- 
-  
- 
-  
-
-       
- 
-  
- 
-  
- 
-  
-
-       
-                 
-              
-              
-       
-
-
-         extern "C" {
-
-
-
-     int* __cdecl _errno(void);
-
-     errno_t __cdecl _set_errno(  int _Value);
-     errno_t __cdecl _get_errno(  int* _Value);
-
-     unsigned long* __cdecl __doserrno(void);
-
-     errno_t __cdecl _set_doserrno(  unsigned long _Value);
-     errno_t __cdecl _get_doserrno(  unsigned long * _Value);
-
-
-
- 
- 
- 
- 
-
-
-}                             
-
-       
-       
-
-
-         extern "C" {
-
-
-
-  
- void const* __cdecl memchr(
-      void const* _Buf,
-                                 int         _Val,
-                                 size_t      _MaxCount
-    );
-
-  
-int __cdecl memcmp(
-      void const* _Buf1,
-      void const* _Buf2,
-                         size_t      _Size
-    );
-
-
- 
-
-void* __cdecl memcpy(
-      void* _Dst,
-            void const* _Src,
-                               size_t      _Size
-    );
-
-
- void* __cdecl memmove(
-      void*       _Dst,
-            void const* _Src,
-                                   size_t      _Size
-    );
-
- 
-
-void* __cdecl memset(
-      void*  _Dst,
-                               int    _Val,
-                               size_t _Size
-    );
-
-  
- char const* __cdecl strchr(
-      char const* _Str,
-        int         _Val
-    );
-
-  
- char const* __cdecl strrchr(
-      char const* _Str,
-        int         _Ch
-    );
-
-    
- char const* __cdecl strstr(
-      char const* _Str,
-      char const* _SubStr
-    );
-
-  
-
- wchar_t const* __cdecl wcschr(
-      wchar_t const* _Str,
-        wchar_t        _Ch
-    );
-
-  
- wchar_t const* __cdecl wcsrchr(
-      wchar_t const* _Str,
-        wchar_t        _Ch
-    );
-
-    
-
- wchar_t const* __cdecl wcsstr(
-      wchar_t const* _Str,
-      wchar_t const* _SubStr
-    );
-
-
-
-}                             
-
-
-
-
-
-         extern "C" {
-
-
-
-
-     
-    
-    static __inline errno_t __cdecl memcpy_s(
-          void*       const _Destination,
-                                                              rsize_t     const _DestinationSize,
-                                 void const* const _Source,
-                                                              rsize_t     const _SourceSize
-        )
-    {
-        if (_SourceSize == 0)
-        {
-            return 0;
-        }
-
-        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        if (_Source == 0 || _DestinationSize < _SourceSize)
-        {
-            memset(_Destination, 0, _DestinationSize);
-
-            {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-            {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
-
-                         return 22;
-        }
-        memcpy(_Destination, _Source, _SourceSize);
-        return 0;
-    }
-
-    
-    static __inline errno_t __cdecl memmove_s(
-          void*       const _Destination,
-                                                              rsize_t     const _DestinationSize,
-                                 void const* const _Source,
-                                                              rsize_t     const _SourceSize
-        )
-    {
-        if (_SourceSize == 0)
-        {
-            return 0;
-        }
-
-        {                                                                                  int _Expr_val=!!(_Destination != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        {                                                                                  int _Expr_val=!!(_Source != 0);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 22;                                                             _invalid_parameter_noinfo();                                                   return 22;                                                          }                                                                          };
-        {                                                                                  int _Expr_val=!!(_DestinationSize >= _SourceSize);                                                        if (!(_Expr_val))                                                              {                                                                                  (*_errno()) = 34;                                                             _invalid_parameter_noinfo();                                                   return 34;                                                          }                                                                          };
-
-        memmove(_Destination, _Source, _SourceSize);
-        return 0;
-    }
-
-
-
-
-}                             
-       
-
-
-
-         extern "C" {
-
-
-
- 
- int __cdecl _memicmp(
-      void const* _Buf1,
-      void const* _Buf2,
-                             size_t      _Size
-    );
-
- 
- int __cdecl _memicmp_l(
-      void const* _Buf1,
-      void const* _Buf2,
-                             size_t      _Size,
-                         _locale_t   _Locale
-    );
-
-
-
-
-
-
-
-
-
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memccpy. See online help for details."))
-     void* __cdecl memccpy(
-          void*       _Dst,
-            void const* _Src,
-                                   int         _Val,
-                                   size_t      _Size
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memicmp. See online help for details."))
-     int __cdecl memicmp(
-          void const* _Buf1,
-          void const* _Buf2,
-                                 size_t      _Size
-        );
-
-
-
-
-
-    extern "C++"  
-    inline void* __cdecl memchr(
-          void*  _Pv,
-                              int    _C,
-                              size_t _N
-        )
-    {
-        void const* const _Pvc = _Pv;
-        return const_cast<void*>(memchr(_Pvc, _C, _N));
-    }
-
-
-
-
-}                             
-
-
-        
-              
-
-
-
-         extern "C" {
-
-
-
-     
-    
-     errno_t __cdecl wcscat_s(
-          wchar_t* _Destination,
-          rsize_t _SizeInWords,
-          wchar_t const* _Source
-        );
-
-    
-     errno_t __cdecl wcscpy_s(
-          wchar_t* _Destination,
-          rsize_t _SizeInWords,
-          wchar_t const* _Source
-        );
-
-    
-     errno_t __cdecl wcsncat_s(
-          wchar_t*       _Destination,
-                                     rsize_t        _SizeInWords,
-               wchar_t const* _Source,
-                                     rsize_t        _MaxCount
-        );
-
-    
-     errno_t __cdecl wcsncpy_s(
-          wchar_t*       _Destination,
-                                  rsize_t        _SizeInWords,
-            wchar_t const* _Source,
-                                  rsize_t        _MaxCount
-        );
-
-     
-     wchar_t* __cdecl wcstok_s(
-                          wchar_t*       _String,
-                                 wchar_t const* _Delimiter,
-            wchar_t**      _Context
-        );
-
-
-
-
-     
- 
- __declspec(allocator) wchar_t* __cdecl _wcsdup(
-      wchar_t const* _String
-    );
-
-
-
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscat_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscat(  wchar_t *_Destination,                                                                             wchar_t const* _Source);
-
- 
- int __cdecl wcscmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl wcscpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source) throw()                 {                                                                                                                    return wcscpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcscpy(  wchar_t *_Destination,                                          wchar_t const* _Source);
-
- 
- size_t __cdecl wcscspn(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
- 
- size_t __cdecl wcslen(
-      wchar_t const* _String
-    );
-
- 
-
-
- size_t __cdecl wcsnlen(
-      wchar_t const* _Source,
-                            size_t         _MaxCount
-    );
-
-
-     
-    
-    
-    static __inline size_t __cdecl wcsnlen_s(
-          wchar_t const* _Source,
-                                size_t         _MaxCount
-        )
-    {
-        return (_Source == 0) ? 0 : wcsnlen(_Source, _MaxCount);
-    }
-
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncat_s(              wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncat(  wchar_t *_Destination,      wchar_t const* _Source,                         size_t _Count);
-
- 
- int __cdecl wcsncmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl wcsncpy_s(wchar_t (&_Destination)[_Size],   wchar_t const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return wcsncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl wcsncpy(    wchar_t *_Destination,               wchar_t const* _Source,                                  size_t _Count);
-
- 
- wchar_t const* __cdecl wcspbrk(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
- 
- size_t __cdecl wcsspn(
-      wchar_t const* _String,
-      wchar_t const* _Control
-    );
-
-  __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl wcstok(
-                          wchar_t*       _String,
-                                 wchar_t const* _Delimiter,
-        wchar_t**      _Context
-    );
-
-
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using wcstok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    static __inline wchar_t* __cdecl _wcstok(
-          wchar_t*       const _String,
-                 wchar_t const* const _Delimiter
-        )
-    {
-        return wcstok(_String, _Delimiter, 0);
-    }
-
-
-        extern "C++"   __declspec(deprecated("wcstok has been changed to conform with the ISO C standard, adding an extra context parameter. To use the legacy Microsoft wcstok, define _CRT_NON_CONFORMING_WCSTOK."))
-        inline wchar_t* __cdecl wcstok(
-              wchar_t*       _String,
-                     wchar_t const* _Delimiter
-            ) throw()
-        {
-            return wcstok(_String, _Delimiter, 0);
-        }
-
-
-
-
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl _wcserror(
-      int _ErrorNumber
-    );
-
-
- errno_t __cdecl _wcserror_s(
-      wchar_t* _Buffer,
-                                  size_t   _SizeInWords,
-                                  int      _ErrorNumber
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcserror_s(wchar_t (&_Buffer)[_Size],   int _Error) throw()                 {                                                                                                                    return _wcserror_s(_Buffer, _Size, _Error);                                                                       }                                                                                                            }
-
- 
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using __wcserror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl __wcserror(
-      wchar_t const* _String
-    );
-
-  errno_t __cdecl __wcserror_s(
-      wchar_t*       _Buffer,
-                                  size_t         _SizeInWords,
-                                wchar_t const* _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl __wcserror_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _ErrorMessage) throw()                 {                                                                                                                    return __wcserror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
-   int __cdecl _wcsicmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
-   int __cdecl _wcsicmp_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
-   int __cdecl _wcsnicmp(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
-   int __cdecl _wcsnicmp_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
-  errno_t __cdecl _wcsnset_s(
-      wchar_t* _Destination,
-                                 size_t   _SizeInWords,
-                                 wchar_t  _Value,
-                                 size_t   _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wcsnset_s(  wchar_t (&_Destination)[_Size],          wchar_t _Value,           size_t _MaxCount) throw()                 {                                                                                                                                    return _wcsnset_s(_Destination, _Size, _Value, _MaxCount);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsnset(  wchar_t *_String,                            wchar_t _Value,                            size_t _MaxCount);
-
- wchar_t* __cdecl _wcsrev(
-      wchar_t* _String
-    );
-
-  errno_t __cdecl _wcsset_s(
-      wchar_t* _Destination,
-                                 size_t   _SizeInWords,
-                                 wchar_t  _Value
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsset_s(  wchar_t (&_String)[_Size],          wchar_t _Value) throw()                 {                                                                                                                    return _wcsset_s(_String, _Size, _Value);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsset(  wchar_t *_String,                       wchar_t _Value);
-
-  errno_t __cdecl _wcslwr_s(
-      wchar_t* _String,
-                                 size_t   _SizeInWords
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcslwr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcslwr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr(  wchar_t *_String);
-
-
- errno_t __cdecl _wcslwr_s_l(
-      wchar_t*  _String,
-                                 size_t    _SizeInWords,
-                             _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcslwr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcslwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcslwr_l(  wchar_t *_String,                   _locale_t _Locale);
-
-
- errno_t __cdecl _wcsupr_s(
-      wchar_t* _String,
-                          size_t   _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wcsupr_s(  wchar_t (&_String)[_Size]) throw()                  {                                                                                                     return _wcsupr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr(  wchar_t *_String);
-
-
- errno_t __cdecl _wcsupr_s_l(
-      wchar_t*  _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wcsupr_s_l(  wchar_t (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _wcsupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wcsupr_l(  wchar_t *_String,                   _locale_t _Locale);
-
- 
-
- size_t __cdecl wcsxfrm(
-        wchar_t*       _Destination,
-                                         wchar_t const* _Source,
-                size_t         _MaxCount
-    );
-
- 
-
- size_t __cdecl _wcsxfrm_l(
-        wchar_t*       _Destination,
-                                         wchar_t const* _Source,
-                size_t         _MaxCount,
-                                       _locale_t      _Locale
-    );
-
- 
- int __cdecl wcscoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
- 
- int __cdecl _wcscoll_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsicoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2
-    );
-
- 
- int __cdecl _wcsicoll_l(
-        wchar_t const* _String1,
-        wchar_t const* _String2,
-      _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsncoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
- 
- int __cdecl _wcsncoll_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
- 
- int __cdecl _wcsnicoll(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount
-    );
-
- 
- int __cdecl _wcsnicoll_l(
-      wchar_t const* _String1,
-      wchar_t const* _String2,
-                            size_t         _MaxCount,
-                        _locale_t      _Locale
-    );
-
-
-
-     extern "C++" {
-
-     
-    
-    inline wchar_t* __cdecl wcschr(  wchar_t* _String, wchar_t _C)
-    {
-        return const_cast<wchar_t*>(wcschr(static_cast<wchar_t const*>(_String), _C));
-    }
-
-     
-    inline wchar_t* __cdecl wcspbrk(  wchar_t* _String,   wchar_t const* _Control)
-    {
-        return const_cast<wchar_t*>(wcspbrk(static_cast<wchar_t const*>(_String), _Control));
-    }
-
-     
-    inline wchar_t* __cdecl wcsrchr(  wchar_t* _String,   wchar_t _C)
-    {
-        return const_cast<wchar_t*>(wcsrchr(static_cast<wchar_t const*>(_String), _C));
-    }
-
-       
-    
-    inline wchar_t* __cdecl wcsstr(  wchar_t* _String,   wchar_t const*_SubStr)
-    {
-        return const_cast<wchar_t*>(wcsstr(static_cast<wchar_t const*>(_String), _SubStr));
-    }
-
-}
-
-
-
-     
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details."))
-     wchar_t* __cdecl wcsdup(
-          wchar_t const* _String
-        );
-
-
-     
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicmp. See online help for details."))
-     int __cdecl wcsicmp(
-          wchar_t const* _String1,
-          wchar_t const* _String2
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnicmp. See online help for details."))
-     int __cdecl wcsnicmp(
-          wchar_t const* _String1,
-          wchar_t const* _String2,
-                                size_t         _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsnset. See online help for details."))
-     
-     wchar_t* __cdecl wcsnset(
-          wchar_t* _String,
-                                  wchar_t  _Value,
-                                  size_t   _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsrev. See online help for details."))
-     
-     wchar_t* __cdecl wcsrev(
-          wchar_t* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsset. See online help for details."))
-     
-     wchar_t* __cdecl wcsset(
-          wchar_t* _String,
-               wchar_t  _Value
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcslwr. See online help for details."))
-     
-     wchar_t* __cdecl wcslwr(
-          wchar_t* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsupr. See online help for details."))
-     
-     wchar_t* __cdecl wcsupr(
-          wchar_t* _String
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsicoll. See online help for details."))
-     int __cdecl wcsicoll(
-          wchar_t const* _String1,
-          wchar_t const* _String2
-        );
-
-
-
-
-}                             
-
-
-       
-
-
-
-         extern "C" {
-
-
-
-
-
-    
-     errno_t __cdecl strcpy_s(
-          char*       _Destination,
-                                  rsize_t     _SizeInBytes,
-                                char const* _Source
-        );
-
-    
-     errno_t __cdecl strcat_s(
-          char*       _Destination,
-                                     rsize_t     _SizeInBytes,
-                                   char const* _Source
-        );
-
-    
-     errno_t __cdecl strerror_s(
-          char*  _Buffer,
-                                  size_t _SizeInBytes,
-                                  int    _ErrorNumber);
-
-    
-     errno_t __cdecl strncat_s(
-          char*       _Destination,
-                                     rsize_t     _SizeInBytes,
-               char const* _Source,
-                                     rsize_t     _MaxCount
-        );
-
-    
-     errno_t __cdecl strncpy_s(
-          char*       _Destination,
-                                  rsize_t     _SizeInBytes,
-            char const* _Source,
-                                  rsize_t     _MaxCount
-        );
-
-     
-     char*  __cdecl strtok_s(
-                          char*       _String,
-                                 char const* _Delimiter,
-            char**      _Context
-        );
-
-
- void* __cdecl _memccpy(
-      void*       _Dst,
-                                   void const* _Src,
-                                   int         _Val,
-                                   size_t      _MaxCount
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcat_s(char (&_Destination)[_Size],   char const* _Source) throw()                 {                                                                                                                    return strcat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcat(  char *_Destination,                                                                             char const* _Source);
-
-
- 
-int __cdecl strcmp(
-      char const* _Str1,
-      char const* _Str2
-    );
-
- 
- int __cdecl _strcmpi(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl strcoll(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _strcoll_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcpy_s(  char (&_Destination)[_Size],     char const* _Source) throw()                 {                                                                                                                    return strcpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcpy(  char *_Destination,                                          char const* _Source);
-
- 
- size_t __cdecl strcspn(
-      char const* _Str,
-      char const* _Control
-    );
-
-
- 
- __declspec(allocator) char* __cdecl _strdup(
-      char const* _Source
-    );
-
-
- 
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char*  __cdecl _strerror(
-      char const* _ErrorMessage
-    );
-
-
- errno_t __cdecl _strerror_s(
-      char*       _Buffer,
-                              size_t      _SizeInBytes,
-                        char const* _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strerror_s(char (&_Buffer)[_Size],   char const* _ErrorMessage) throw()                 {                                                                                                                    return _strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char* __cdecl strerror(
-      int _ErrorMessage
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strerror_s(char (&_Buffer)[_Size],   int _ErrorMessage) throw()                 {                                                                                                                    return strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
-
- 
- int __cdecl _stricmp(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _stricoll(
-      char const* _String1,
-      char const* _String2
-    );
-
- 
- int __cdecl _stricoll_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
- 
- int __cdecl _stricmp_l(
-        char const* _String1,
-        char const* _String2,
-      _locale_t   _Locale
-    );
-
- 
-size_t __cdecl strlen(
-      char const* _Str
-    );
-
-
- errno_t __cdecl _strlwr_s(
-      char*  _String,
-                          size_t _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strlwr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strlwr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr(  char *_String);
-
-
- errno_t __cdecl _strlwr_s_l(
-      char*     _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strlwr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strlwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr_l(  char *_String,                   _locale_t _Locale);
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncat_s(              char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncat(  char *_Destination,      char const* _Source,                         size_t _Count);
-
- 
- int __cdecl strncmp(
-      char const* _Str1,
-      char const* _Str2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicmp(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicmp_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- 
- int __cdecl _strnicoll(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strnicoll_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- 
- int __cdecl _strncoll(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount
-    );
-
- 
- int __cdecl _strncoll_l(
-      char const* _String1,
-      char const* _String2,
-                            size_t      _MaxCount,
-                        _locale_t   _Locale
-    );
-
- size_t __cdecl __strncnt(
-      char const* _String,
-                         size_t      _Count
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncpy_s(char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncpy(    char *_Destination,               char const* _Source,                                  size_t _Count);
-
- 
-
-
- size_t __cdecl strnlen(
-      char const* _String,
-                            size_t      _MaxCount
-    );
-
-
-     
-    
-    
-    static __inline size_t __cdecl strnlen_s(
-          char const* _String,
-                                size_t      _MaxCount
-        )
-    {
-        return _String == 0 ? 0 : strnlen(_String, _MaxCount);
-    }
-
-
-
- errno_t __cdecl _strnset_s(
-      char*  _String,
-                                 size_t _SizeInBytes,
-                                 int    _Value,
-                                 size_t _MaxCount
-    );
-
-extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _strnset_s(  char (&_Destination)[_Size],          int _Value,          size_t _Count) throw()                 {                                                                                                                                    return _strnset_s(_Destination, _Size, _Value, _Count);                                                                               }                                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strnset(  char *_Destination,                         int _Value,                         size_t _Count);
-
- 
- char const* __cdecl strpbrk(
-      char const* _Str,
-      char const* _Control
-    );
-
- char* __cdecl _strrev(
-      char* _Str
-    );
-
-
- errno_t __cdecl _strset_s(
-      char*  _Destination,
-                                     size_t _DestinationSize,
-                                     int    _Value
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strset_s(  char (&_Destination)[_Size],          int _Value) throw()                 {                                                                                                                    return _strset_s(_Destination, _Size, _Value);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strset(  char *_Destination,         int _Value);
-
- 
- size_t __cdecl strspn(
-      char const* _Str,
-      char const* _Control
-    );
-
-  __declspec(deprecated("This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- char* __cdecl strtok(
-      char*       _String,
-             char const* _Delimiter
-    );
-
-
- errno_t __cdecl _strupr_s(
-      char*  _String,
-                          size_t _Size
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strupr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strupr_s(_String, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr(  char *_String);
-
-
- errno_t __cdecl _strupr_s_l(
-      char*     _String,
-                          size_t    _Size,
-                      _locale_t _Locale
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strupr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr_l(  char *_String,                   _locale_t _Locale);
-
- 
-
- size_t __cdecl strxfrm(
-        char*       _Destination,
-                                         char const* _Source,
-                 size_t      _MaxCount
-    );
-
- 
-
- size_t __cdecl _strxfrm_l(
-        char*       _Destination,
-                                         char const* _Source,
-                 size_t      _MaxCount,
-                                       _locale_t   _Locale
-    );
-
-
-
-extern "C++"
-{
-     
-    inline char* __cdecl strchr(  char* const _String,   int const _Ch)
-    {
-        return const_cast<char*>(strchr(static_cast<char const*>(_String), _Ch));
-    }
-
-     
-    inline char* __cdecl strpbrk(  char* const _String,   char const* const _Control)
-    {
-        return const_cast<char*>(strpbrk(static_cast<char const*>(_String), _Control));
-    }
-
-     
-    inline char* __cdecl strrchr(  char* const _String,   int const _Ch)
-    {
-        return const_cast<char*>(strrchr(static_cast<char const*>(_String), _Ch));
-    }
-
-       
-    inline char* __cdecl strstr(  char* const _String,   char const* const _SubString)
-    {
-        return const_cast<char*>(strstr(static_cast<char const*>(_String), _SubString));
-    }
-}
-
-
-
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details."))
-     char* __cdecl strdup(
-          char const* _String
-        );
-
-           __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details."))
-     int __cdecl strcmpi(
-          char const* _String1,
-          char const* _String2
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details."))
-     int __cdecl stricmp(
-          char const* _String1,
-          char const* _String2
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details."))
-     char* __cdecl strlwr(
-          char* _String
-        );
-
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details."))
-     int __cdecl strnicmp(
-          char const* _String1,
-          char const* _String2,
-                                size_t      _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnset. See online help for details."))
-     char* __cdecl strnset(
-          char*  _String,
-                                  int    _Value,
-                                  size_t _MaxCount
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strrev. See online help for details."))
-     char* __cdecl strrev(
-          char* _String
-        );
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strset. See online help for details."))
-    char* __cdecl strset(
-          char* _String,
-               int   _Value);
-
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strupr. See online help for details."))
-     char* __cdecl strupr(
-          char* _String
-        );
-
-
-
-
-}                             
-
-
-
-
-namespace std {
-
-using :: size_t;
-using :: memchr;
-using :: memcmp;
-using :: memcpy;
-using :: memmove;
-using :: memset;
-using :: strcat;
-using :: strchr;
-using :: strcmp;
-using :: strcoll;
-using :: strcpy;
-using :: strcspn;
-using :: strerror;
-using :: strlen;
-using :: strncat;
-using :: strncmp;
-using :: strncpy;
-using :: strpbrk;
-using :: strrchr;
-using :: strspn;
-using :: strstr;
-using :: strtok;
-using :: strxfrm;
-
-}
-
-
-
- 
-  
- 
-  
- 
-  
- 
-  
-
- 
-  
- 
-  
-
- 
-  
-       
-
 
 namespace std {
   template <class _Ty1, class _Ty2>
@@ -7482,10 +13234,9 @@ concept _Has_class_or_enum_type = __is_class(remove_reference_t<_Ty>) || __is_en
             }
         };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Swap::_Cpo swap;
     }
-    using namespace _Cpos;
 }  
  template <class _Ty>
 concept swappable = requires(_Ty& __x, _Ty& __y) {
@@ -7610,6510 +13361,6 @@ struct _Choice_t {
 }
 
 
-
- 
-  
- 
-  
-
- 
-  
- 
-  
-
- 
-
-       
-
-
-extern "C" {
-
- 
-
-
- 
-
-
-
-
-
-
- 
-
-
-
-
-
-
- 
-
-(void __dmb(unsigned int _Type))
-
-unsigned char _BitScanForward(unsigned long * _Index, unsigned long _Mask);
-unsigned char _BitScanForward64(unsigned long * _Index, unsigned __int64 _Mask);
-(unsigned char _BitScanForward64(unsigned long * _Index, unsigned __int64 _Mask))
-unsigned char _BitScanReverse(unsigned long * _Index, unsigned long _Mask);
-unsigned char _BitScanReverse64(unsigned long * _Index, unsigned __int64 _Mask);
-(unsigned char _BitScanReverse64(unsigned long * _Index, unsigned __int64 _Mask))
-unsigned char _bittest(long const *, long);
-(unsigned int _CountLeadingZeros(unsigned long))
-(unsigned int _CountLeadingZeros64(unsigned __int64))
-long _InterlockedAnd(long volatile * _Value, long _Mask);
-short _InterlockedAnd16(short volatile * _Value, short _Mask);
-(short _InterlockedAnd16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedAnd16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedAnd16_rel(short volatile * _Value, short _Mask))
-__int64 _InterlockedAnd64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedAnd64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedAnd64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedAnd64_rel(__int64 volatile * _Value, __int64 _Mask))
-char _InterlockedAnd8(char volatile * _Value, char _Mask);
-(char _InterlockedAnd8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedAnd8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedAnd8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedAnd_acq(long volatile * _Value, long _Mask))
-(long _InterlockedAnd_nf(long volatile * _Value, long _Mask))
-(long _InterlockedAnd_rel(long volatile * _Value, long _Mask))
-long  _InterlockedCompareExchange(long volatile * _Destination, long _Exchange, long _Comparand);
-
-short _InterlockedCompareExchange16(short volatile * _Destination, short _Exchange, short _Comparand);
-(short _InterlockedCompareExchange16_acq(short volatile * _Destination, short _Exchange, short _Comparand))
-(short _InterlockedCompareExchange16_nf(short volatile * _Destination, short _Exchange, short _Comparand))
-(short _InterlockedCompareExchange16_rel(short volatile * _Destination, short _Exchange, short _Comparand))
-__int64 _InterlockedCompareExchange64(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand);
-(__int64 _InterlockedCompareExchange64_acq(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
-(__int64 _InterlockedCompareExchange64_nf(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
-(__int64 _InterlockedCompareExchange64_rel(__int64 volatile * _Destination, __int64 _Exchange, __int64 _Comparand))
-char _InterlockedCompareExchange8(char volatile * _Destination, char _Exchange, char _Comparand);
-(char _InterlockedCompareExchange8_acq(char volatile * _Destination, char _Exchange, char _Comparand))
-(char _InterlockedCompareExchange8_nf(char volatile * _Destination, char _Exchange, char _Comparand))
-(char _InterlockedCompareExchange8_rel(char volatile * _Destination, char _Exchange, char _Comparand))
-(long _InterlockedCompareExchange_acq(long volatile * _Destination, long _Exchange, long _Comparand))
-(long _InterlockedCompareExchange_nf(long volatile * _Destination, long _Exchange, long _Comparand))
-(long _InterlockedCompareExchange_rel(long volatile * _Destination, long _Exchange, long _Comparand))
-unsigned char _InterlockedCompareExchange128(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult);
-(unsigned char _InterlockedCompareExchange128_acq(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
-(unsigned char _InterlockedCompareExchange128_nf(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
-(unsigned char _InterlockedCompareExchange128_rel(__int64 volatile * _Destination, __int64 _ExchangeHigh, __int64 _ExchangeLow, __int64 * _ComparandResult))
-long  _InterlockedDecrement(long volatile * _Addend);
-
-short _InterlockedDecrement16(short volatile * _Addend);
-__int64 _InterlockedDecrement64(__int64 volatile * _Addend);
-long  _InterlockedExchange(long volatile * _Target, long _Value);
-
-short _InterlockedExchange16(short volatile * _Target, short _Value);
-(short _InterlockedExchange16_acq(short volatile * _Target, short _Value))
-(short _InterlockedExchange16_nf(short volatile * _Target, short _Value))
-(short _InterlockedExchange16_rel(short volatile * _Target, short _Value))
-__int64 _InterlockedExchange64(__int64 volatile * _Target, __int64 _Value);
-(__int64 _InterlockedExchange64_acq(__int64 volatile * _Target, __int64 _Value))
-(__int64 _InterlockedExchange64_nf(__int64 volatile * _Target, __int64 _Value))
-(__int64 _InterlockedExchange64_rel(__int64 volatile * _Target, __int64 _Value))
-char _InterlockedExchange8(char volatile * _Target, char _Value);
-(char _InterlockedExchange8_acq(char volatile * _Target, char _Value))
-(char _InterlockedExchange8_nf(char volatile * _Target, char _Value))
-(char _InterlockedExchange8_rel(char volatile * _Target, char _Value))
-long  _InterlockedExchangeAdd(long volatile * _Addend, long _Value);
-short _InterlockedExchangeAdd16(short volatile * _Addend, short _Value);
-(short _InterlockedExchangeAdd16_acq(short volatile * _Addend, short _Value))
-(short _InterlockedExchangeAdd16_nf(short volatile * _Addend, short _Value))
-(short _InterlockedExchangeAdd16_rel(short volatile * _Addend, short _Value))
-__int64 _InterlockedExchangeAdd64(__int64 volatile * _Addend, __int64 _Value);
-(__int64 _InterlockedExchangeAdd64_acq(__int64 volatile * _Addend, __int64 _Value))
-(__int64 _InterlockedExchangeAdd64_nf(__int64 volatile * _Addend, __int64 _Value))
-(__int64 _InterlockedExchangeAdd64_rel(__int64 volatile * _Addend, __int64 _Value))
-char _InterlockedExchangeAdd8(char volatile * _Addend, char _Value);
-(char _InterlockedExchangeAdd8_acq(char volatile * _Addend, char _Value))
-(char _InterlockedExchangeAdd8_nf(char volatile * _Addend, char _Value))
-(char _InterlockedExchangeAdd8_rel(char volatile * _Addend, char _Value))
-(long _InterlockedExchangeAdd_acq(long volatile * _Addend, long _Value))
-(long _InterlockedExchangeAdd_nf(long volatile * _Addend, long _Value))
-(long _InterlockedExchangeAdd_rel(long volatile * _Addend, long _Value))
-(long _InterlockedExchange_acq(long volatile * _Target, long _Value))
-(long _InterlockedExchange_nf(long volatile * _Target, long _Value))
-(long _InterlockedExchange_rel(long volatile * _Target, long _Value))
-long  _InterlockedIncrement(long volatile * _Addend);
-
-short _InterlockedIncrement16(short volatile * _Addend);
-__int64 _InterlockedIncrement64(__int64 volatile * _Addend);
-(long _InterlockedIncrement_nf(long volatile * _Addend))
-long _InterlockedOr(long volatile * _Value, long _Mask);
-short _InterlockedOr16(short volatile * _Value, short _Mask);
-(short _InterlockedOr16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedOr16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedOr16_rel(short volatile * _Value, short _Mask))
-__int64 _InterlockedOr64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedOr64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedOr64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedOr64_rel(__int64 volatile * _Value, __int64 _Mask))
-char _InterlockedOr8(char volatile * _Value, char _Mask);
-(char _InterlockedOr8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedOr8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedOr8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedOr_acq(long volatile * _Value, long _Mask))
-(long _InterlockedOr_nf(long volatile * _Value, long _Mask))
-(long _InterlockedOr_rel(long volatile * _Value, long _Mask))
-long _InterlockedXor(long volatile * _Value, long _Mask);
-short _InterlockedXor16(short volatile * _Value, short _Mask);
-(short _InterlockedXor16_acq(short volatile * _Value, short _Mask))
-(short _InterlockedXor16_nf(short volatile * _Value, short _Mask))
-(short _InterlockedXor16_rel(short volatile * _Value, short _Mask))
-__int64 _InterlockedXor64(__int64 volatile * _Value, __int64 _Mask);
-(__int64 _InterlockedXor64_acq(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedXor64_nf(__int64 volatile * _Value, __int64 _Mask))
-(__int64 _InterlockedXor64_rel(__int64 volatile * _Value, __int64 _Mask))
-char _InterlockedXor8(char volatile * _Value, char _Mask);
-(char _InterlockedXor8_acq(char volatile * _Value, char _Mask))
-(char _InterlockedXor8_nf(char volatile * _Value, char _Mask))
-(char _InterlockedXor8_rel(char volatile * _Value, char _Mask))
-(long _InterlockedXor_acq(long volatile * _Value, long _Mask))
-(long _InterlockedXor_nf(long volatile * _Value, long _Mask))
-(long _InterlockedXor_rel(long volatile * _Value, long _Mask))
-void _ReadWriteBarrier(void);
-__int16 __iso_volatile_load16(const volatile __int16 *);
-__int32 __iso_volatile_load32(const volatile __int32 *);
-__int64 __iso_volatile_load64(const volatile __int64 *);
-__int8 __iso_volatile_load8(const volatile __int8 *);
-void __iso_volatile_store16(volatile __int16 *, __int16);
-void __iso_volatile_store32(volatile __int32 *, __int32);
-void __iso_volatile_store64(volatile __int64 *, __int64);
-void __iso_volatile_store8(volatile __int8 *, __int8);
-(__int64 __ldrexd(const volatile __int64 *))
-(void __yield(void))
-unsigned char _interlockedbittestandset(long volatile *, long);
-(unsigned char _interlockedbittestandset_acq(long volatile *, long))
-(unsigned char _interlockedbittestandset_nf(long volatile *, long))
-(unsigned char _interlockedbittestandset_rel(long volatile *, long))
-unsigned int __lzcnt(unsigned int);
-unsigned short __lzcnt16(unsigned short);
-unsigned __int64 __lzcnt64(unsigned __int64);
-unsigned int __popcnt(unsigned int);
-unsigned short __popcnt16(unsigned short);
-unsigned __int64 __popcnt64(unsigned __int64);
-unsigned __int64 __shiftright128(unsigned __int64 _LowPart, unsigned __int64 _HighPart, unsigned char _Shift);
-unsigned int _tzcnt_u32(unsigned int);
-unsigned __int64 _tzcnt_u64(unsigned __int64);
-unsigned __int64 _umul128(unsigned __int64 _Multiplier, unsigned __int64 _Multiplicand, unsigned __int64 * _HighProduct);
-double __ceil(double);
-float __ceilf(float);
-double __floor(double);
-float __floorf(float);
-double __round(double);
-float __roundf(float);
-double __trunc(double);
-float __truncf(float);
-double __copysign(double, double);
-float __copysignf(float, float);
-unsigned __signbitvalue(double);
-unsigned __signbitvaluef(float);
-constexpr void * __cdecl __builtin_assume_aligned(const void *, size_t, ...) noexcept;
-
- 
-
-}
- 
- 
-
-enum ISA_AVAILABILITY
-{
-    __ISA_AVAILABLE_X86   = 0,
-    __ISA_AVAILABLE_SSE2  = 1,
-    __ISA_AVAILABLE_SSE42 = 2,
-    __ISA_AVAILABLE_AVX   = 3,
-    __ISA_AVAILABLE_ENFSTRG = 4,
-    __ISA_AVAILABLE_AVX2 = 5,
-    __ISA_AVAILABLE_AVX512 = 6,
-
-    __ISA_AVAILABLE_ARMNT   = 0,        __ISA_AVAILABLE_NEON    = 1,        __ISA_AVAILABLE_NEON_ARM64 = 2,                                     };
-
-
- 
- 
-
-
- 
-  
- 
-  
- 
-  
- 
-  
-
-        
-       
-
-
-         extern "C" {
-
-
-
-
-
-              
-
-
-     
-
-
-
-
-
-     
- 
- 
-
- 
-
- 
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
- 
-
-
-
-
-       
- unsigned int __cdecl _clearfp(void);
-
-
- __declspec(deprecated("This function or variable may be unsafe. Consider using _controlfp_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- unsigned int __cdecl _controlfp(
-      unsigned int _NewValue,
-      unsigned int _Mask
-    );
-
-
-
- void __cdecl _set_controlfp(
-      unsigned int _NewValue,
-      unsigned int _Mask
-    );
-
-
- errno_t __cdecl _controlfp_s(
-      unsigned int* _CurrentState,
-           unsigned int  _NewValue,
-           unsigned int  _Mask
-    );
-
-
- unsigned int __cdecl _statusfp(void);
-
-
- void __cdecl _fpreset(void);
-
-
-
-
- unsigned int __cdecl _control87(
-      unsigned int _NewValue,
-      unsigned int _Mask
-    );
-
-
-  
- int* __cdecl __fpecode(void);
-
-
- 
- int __cdecl __fpe_flt_rounds(void);
-
-
-
-
-        double __cdecl _copysign(  double _Number,   double _Sign);
-   double __cdecl _chgsign(  double _X);
-   double __cdecl _scalb(  double _X,   long _Y);
-   double __cdecl _logb(  double _X);
-   double __cdecl _nextafter(  double _X,   double _Y);
-   int    __cdecl _finite(  double _X);
-   int    __cdecl _isnan(  double _X);
-   int    __cdecl _fpclass(  double _X);
-
-       float __cdecl _scalbf(  float _X,   long _Y);
-
-
-
-     
-
-    
-     void __cdecl fpreset(void);
-
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-}                             
-
- 
-  
- 
-  
- 
-  
-
- 
-  
- 
-  
-
-       
-                
-              
-       
-
-
-         extern "C" {
-
-
-
-
-
-
-          
-
-   
-                 
-    
-    __declspec(noinline) __inline unsigned __int64* __cdecl __local_stdio_printf_options(void)
-    {
-        static unsigned __int64 _OptionsStorage;
-        return &_OptionsStorage;
-    }
-
-                 
-    
-    __declspec(noinline) __inline unsigned __int64* __cdecl __local_stdio_scanf_options(void)
-    {
-        static unsigned __int64 _OptionsStorage;
-        return &_OptionsStorage;
-    }
-
-
-
-
-
-
-
-
-
-
-}                             
-
-
-
-
-         extern "C" {
-
-         typedef struct _iobuf
-    {
-        void* _Placeholder;
-    } FILE;
-
- FILE* __cdecl __acrt_iob_func(unsigned _Ix);
-
-
-
-
-
-                             
-     wint_t __cdecl fgetwc(
-          FILE* _Stream
-        );
-
-    
-     wint_t __cdecl _fgetwchar(void);
-
-    
-     wint_t __cdecl fputwc(
-             wchar_t _Character,
-          FILE*   _Stream);
-
-    
-     wint_t __cdecl _fputwchar(
-          wchar_t _Character
-        );
-
-     
-     wint_t __cdecl getwc(
-          FILE* _Stream
-        );
-
-     
-     wint_t __cdecl getwchar(void);
-
-
-    
-     
-     wchar_t* __cdecl fgetws(
-          wchar_t* _Buffer,
-                                  int      _BufferCount,
-                               FILE*    _Stream
-        );
-
-    
-     int __cdecl fputws(
-           wchar_t const* _Buffer,
-          FILE*          _Stream
-        );
-
-    
-     
-     wchar_t* __cdecl _getws_s(
-          wchar_t* _Buffer,
-                                  size_t   _BufferCount
-        );
-
-    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     wchar_t* __cdecl _getws_s( wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _getws_s(_Buffer, _Size);                                                                }                                                                                             }
-
-    
-     wint_t __cdecl putwc(
-             wchar_t _Character,
-          FILE*   _Stream
-        );
-
-    
-     wint_t __cdecl putwchar(
-          wchar_t _Character
-        );
-
-    
-     int __cdecl _putws(
-          wchar_t const* _Buffer
-        );
-
-    
-     wint_t __cdecl ungetwc(
-             wint_t _Character,
-          FILE*  _Stream
-        );
-
-     
-     FILE * __cdecl _wfdopen(
-            int            _FileHandle,
-          wchar_t const* _Mode
-        );
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using _wfopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     FILE* __cdecl _wfopen(
-          wchar_t const* _FileName,
-          wchar_t const* _Mode
-        );
-
-    
-     errno_t __cdecl _wfopen_s(
-          FILE**         _Stream,
-                             wchar_t const* _FileName,
-                             wchar_t const* _Mode
-        );
-
-     
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _wfreopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     FILE* __cdecl _wfreopen(
-           wchar_t const* _FileName,
-           wchar_t const* _Mode,
-          FILE*          _OldStream
-        );
-
-    
-     errno_t __cdecl _wfreopen_s(
-          FILE**         _Stream,
-                             wchar_t const* _FileName,
-                             wchar_t const* _Mode,
-                            FILE*          _OldStream
-        );
-
-     
-     FILE* __cdecl _wfsopen(
-          wchar_t const* _FileName,
-          wchar_t const* _Mode,
-            int            _ShFlag
-        );
-
-     void __cdecl _wperror(
-          wchar_t const* _ErrorMessage
-        );
-
-
-         
-         FILE* __cdecl _wpopen(
-              wchar_t const* _Command,
-              wchar_t const* _Mode
-            );
-
-
-     int __cdecl _wremove(
-          wchar_t const* _FileName
-        );
-
-
-     
-     __declspec(allocator) wchar_t* __cdecl _wtempnam(
-          wchar_t const* _Directory,
-          wchar_t const* _FilePrefix
-        );
-
-
-     
-    
-     errno_t __cdecl _wtmpnam_s(
-          wchar_t* _Buffer,
-                                  size_t   _BufferCount
-        );
-
-    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl _wtmpnam_s( wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wtmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           wchar_t* __cdecl _wtmpnam(   wchar_t *_Buffer);
-
-
-
-                             
-     wint_t __cdecl _fgetwc_nolock(
-          FILE* _Stream
-        );
-
-    
-     wint_t __cdecl _fputwc_nolock(
-             wchar_t _Character,
-          FILE*   _Stream
-        );
-
-    
-     wint_t __cdecl _getwc_nolock(
-          FILE* _Stream
-        );
-
-    
-     wint_t __cdecl _putwc_nolock(
-             wchar_t _Character,
-          FILE*   _Stream
-        );
-
-    
-     wint_t __cdecl _ungetwc_nolock(
-             wint_t _Character,
-          FILE*  _Stream
-        );
-
-
-
-
-     
-
-
-                             
-     int __cdecl __stdio_common_vfwprintf(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-     int __cdecl __stdio_common_vfwprintf_s(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-     int __cdecl __stdio_common_vfwprintf_p(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-    __inline int __cdecl _vfwprintf_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __stdio_common_vfwprintf((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vfwprintf(
-                                FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwprintf_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfwprintf_s_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __stdio_common_vfwprintf_s((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vfwprintf_s(
-                                    FILE*          const _Stream,
-                wchar_t const* const _Format,
-                                          va_list              _ArgList
-            )
-        {
-            return _vfwprintf_s_l(_Stream, _Format, 0, _ArgList);
-        }
-
-
-    
-    __inline int __cdecl _vfwprintf_p_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __stdio_common_vfwprintf_p((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfwprintf_p(
-                                FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwprintf_p_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vwprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return _vfwprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vwprintf(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vwprintf_s_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return _vfwprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vwprintf_s(
-                wchar_t const* const _Format,
-                                          va_list              _ArgList
-            )
-        {
-            return _vfwprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        }
-
-
-    
-    __inline int __cdecl _vwprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return _vfwprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vwprintf_p(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _fwprintf_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl fwprintf(
-                                FILE*          const _Stream,
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwprintf_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _fwprintf_s_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_s_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl fwprintf_s(
-                                    FILE*          const _Stream,
-                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfwprintf_s_l(_Stream, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    
-    __inline int __cdecl _fwprintf_p_l(
-                                          FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_p_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _fwprintf_p(
-                                FILE*          const _Stream,
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwprintf_p_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _wprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl wprintf(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _wprintf_s_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl wprintf_s(
-                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    
-    __inline int __cdecl _wprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _wprintf_p(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-                             
-     int __cdecl __stdio_common_vfwscanf(
-                                            unsigned __int64 _Options,
-                                         FILE*            _Stream,
-            wchar_t const*   _Format,
-                                        _locale_t        _Locale,
-                                               va_list          _ArgList
-        );
-
-    
-    __inline int __cdecl _vfwscanf_l(
-          FILE*                                const _Stream,
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return __stdio_common_vfwscanf(
-            (*__local_stdio_scanf_options ()),
-            _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vfwscanf(
-          FILE*                                const _Stream,
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwscanf_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfwscanf_s_l(
-                                FILE*          const _Stream,
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return __stdio_common_vfwscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Stream, _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vfwscanf_s(
-                                    FILE*          const _Stream,
-                wchar_t const* const _Format,
-                                          va_list              _ArgList
-            )
-        {
-            return _vfwscanf_s_l(_Stream, _Format, 0, _ArgList);
-        }
-
-
-    __inline int __cdecl _vwscanf_l(
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vwscanf(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vwscanf_s_l(
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return _vfwscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vwscanf_s(
-                wchar_t const* const _Format,
-                                          va_list              _ArgList
-            )
-        {
-            return _vfwscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        }
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _fwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _fwscanf_l(
-                                         FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwscanf_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using fwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl fwscanf(
-                               FILE*          const _Stream,
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwscanf_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _fwscanf_s_l(
-                                           FILE*          const _Stream,
-            wchar_t const* const _Format,
-                                          _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwscanf_s_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl fwscanf_s(
-                                     FILE*          const _Stream,
-                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfwscanf_s_l(_Stream, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _wscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _wscanf_l(
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using wscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl wscanf(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _wscanf_s_l(
-            wchar_t const* const _Format,
-                                          _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl wscanf_s(
-                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-
-
-                         
-     
-    
-     int __cdecl __stdio_common_vswprintf(
-                                             unsigned __int64 _Options,
-                 wchar_t*         _Buffer,
-                                             size_t           _BufferCount,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-    
-     int __cdecl __stdio_common_vswprintf_s(
-                                             unsigned __int64 _Options,
-                     wchar_t*         _Buffer,
-                                             size_t           _BufferCount,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-    
-     int __cdecl __stdio_common_vsnwprintf_s(
-                                             unsigned __int64 _Options,
-                 wchar_t*         _Buffer,
-                                             size_t           _BufferCount,
-                                             size_t           _MaxCount,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-    
-     int __cdecl __stdio_common_vswprintf_p(
-                                             unsigned __int64 _Options,
-                     wchar_t*         _Buffer,
-                                             size_t           _BufferCount,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vsnwprintf_l(
-            wchar_t*       const _Buffer,
-                                                  size_t         const _BufferCount,
-                 wchar_t const* const _Format,
-                                              _locale_t      const _Locale,
-                                                     va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf(
-            (*__local_stdio_printf_options()) | (1ULL << 0),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsnwprintf_s_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                                       size_t         const _MaxCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-                                                          va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsnwprintf_s(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsnwprintf_s(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                                       size_t         const _MaxCount,
-                                wchar_t const* const _Format,
-                                                          va_list              _ArgList
-        )
-    {
-        return _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-    }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _snwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _VFuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vsnwprintf(    wchar_t *_Buffer,                                            size_t _BufferCount,                     wchar_t const* _Format, va_list _Args);
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vsnwprintf(
-            wchar_t*       _Buffer,
-                                                  size_t         _BufferCount,
-                           wchar_t const* _Format,
-                                                     va_list        _ArgList
-        )
-    {
-        return _vsnwprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    int __cdecl _vsnwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
-
-     
-    
-    __inline int __cdecl _vswprintf_c_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-                                                          va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vswprintf_c(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                wchar_t const* const _Format,
-                                                          va_list              _ArgList
-        )
-    {
-        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vswprintf_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-                                                          va_list              _ArgList
-        )
-    {
-        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl __vswprintf_l(
-                  wchar_t*       const _Buffer,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vswprintf(
-           wchar_t*       const _Buffer,
-               wchar_t const* const _Format,
-                                         va_list              _ArgList
-        )
-    {
-        return _vswprintf_l(_Buffer, (size_t)-1, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl vswprintf(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                      wchar_t const* const _Format,
-                                                          va_list              _ArgList
-        )
-    {
-        return _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vswprintf_s_l(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                  wchar_t const* const _Format,
-                                               _locale_t      const _Locale,
-                                                      va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf_s(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-
-         
-        __inline int __cdecl vswprintf_s(
-               wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                wchar_t const* const _Format,
-                                                          va_list              _ArgList
-            )
-        {
-            return _vswprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        }
-
-
-    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                    int __cdecl vswprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
-
-     
-    
-    __inline int __cdecl _vswprintf_p_l(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                  wchar_t const* const _Format,
-                                               _locale_t      const _Locale,
-                                                      va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf_p(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vswprintf_p(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                            wchar_t const* const _Format,
-                                                      va_list              _ArgList
-        )
-    {
-        return _vswprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-     
-     
-    __inline int __cdecl _vscwprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf(
-            (*__local_stdio_printf_options()) | (1ULL << 1),
-            0, 0, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-     
-    __inline int __cdecl _vscwprintf(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vscwprintf_l(_Format, 0, _ArgList);
-    }
-
-     
-     
-    __inline int __cdecl _vscwprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vswprintf_p(
-            (*__local_stdio_printf_options()) | (1ULL << 1),
-            0, 0, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-     
-    __inline int __cdecl _vscwprintf_p(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vscwprintf_p_l(_Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl __swprintf_l(
-                  wchar_t*       const _Buffer,
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = __vswprintf_l(_Buffer, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swprintf_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swprintf(
-           wchar_t*       const _Buffer,
-               wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = __vswprintf_l(_Buffer, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl swprintf(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __swprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl __vswprintf_l(   wchar_t *_Buffer,     wchar_t const* _Format,                                  _locale_t _Locale, va_list _Args);
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _swprintf(   wchar_t *_Buffer,         wchar_t const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) __inline          int __cdecl _vswprintf(   wchar_t *_Buffer,         wchar_t const* _Format, va_list _Args);
-
-     
-    
-    __inline int __cdecl _swprintf_s_l(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                  wchar_t const* const _Format,
-                                               _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-         
-        __inline int __cdecl swprintf_s(
-               wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl swprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
-
-     
-    
-    __inline int __cdecl _swprintf_p_l(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                  wchar_t const* const _Format,
-                                               _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swprintf_p(
-           wchar_t*       const _Buffer,
-                                                   size_t         const _BufferCount,
-                            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swprintf_c_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swprintf_c(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snwprintf_l(
-            wchar_t*       const _Buffer,
-                                                  size_t         const _BufferCount,
-                 wchar_t const* const _Format,
-                                              _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snwprintf(
-            wchar_t*       _Buffer,
-                                                  size_t         _BufferCount,
-                           wchar_t const* _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snwprintf_s_l(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                                       size_t         const _MaxCount,
-                      wchar_t const* const _Format,
-                                                   _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snwprintf_s(
-           wchar_t*       const _Buffer,
-                                                       size_t         const _BufferCount,
-                                                       size_t         const _MaxCount,
-                                wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
-
-     
-    __inline int __cdecl _scwprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vscwprintf_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     
-    __inline int __cdecl _scwprintf(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vscwprintf_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     
-    __inline int __cdecl _scwprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vscwprintf_p_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     
-    __inline int __cdecl _scwprintf_p(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vscwprintf_p_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-                  
-
-            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using swprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-            inline int swprintf(
-                           wchar_t*       const _Buffer,
-                    wchar_t const* const _Format,
-                ...) throw()
-            {
-                int _Result;
-                va_list _ArgList;
-                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-                _Result = vswprintf(_Buffer, 2147483647, _Format, _ArgList);
-                ((void)(_ArgList = (va_list)0));
-                return _Result;
-            }
-
-            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using vswprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-            inline int __cdecl vswprintf(
-                           wchar_t*       const _Buffer,
-                    wchar_t const* const _Format,
-                                              va_list              _ArgList
-                ) throw()
-            {
-                return vswprintf(_Buffer, 2147483647, _Format, _ArgList);
-            }
-
-            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _swprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-            inline int _swprintf_l(
-                                     wchar_t*       const _Buffer,
-                    wchar_t const* const _Format,
-                                                 _locale_t      const _Locale,
-                ...) throw()
-            {
-                int _Result;
-                va_list _ArgList;
-                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-                _Result = _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-                ((void)(_ArgList = (va_list)0));
-                return _Result;
-            }
-
-            extern "C++" __declspec(deprecated("function has been changed to conform with the ISO C standard, adding an extra character count parameter. To use the traditional Microsoft version, set _CRT_NON_CONFORMING_SWPRINTFS.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _vswprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-            inline int __cdecl _vswprintf_l(
-                                     wchar_t*       const _Buffer,
-                    wchar_t const* const _Format,
-                                                 _locale_t      const _Locale,
-                                                        va_list              _ArgList
-                ) throw()
-            {
-                return _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-            }
-
-
-
-
-
-                              
-     int __cdecl __stdio_common_vswscanf(
-                                            unsigned __int64 _Options,
-                  wchar_t const*   _Buffer,
-                                            size_t           _BufferCount,
-            wchar_t const*   _Format,
-                                        _locale_t        _Locale,
-                                               va_list          _ArgList
-        );
-
-     
-    
-    __inline int __cdecl _vswscanf_l(
-                                 wchar_t const* const _Buffer,
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return __stdio_common_vswscanf(
-            (*__local_stdio_scanf_options ()),
-            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl vswscanf(
-                                 wchar_t const* _Buffer,
-            wchar_t const* _Format,
-                                      va_list        _ArgList
-        )
-    {
-        return _vswscanf_l(_Buffer, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vswscanf_s_l(
-                                 wchar_t const* const _Buffer,
-            wchar_t const* const _Format,
-                               _locale_t      const _Locale,
-                                      va_list              _ArgList
-        )
-    {
-        return __stdio_common_vswscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-
-         
-        
-        __inline int __cdecl vswscanf_s(
-                                     wchar_t const* const _Buffer,
-                wchar_t const* const _Format,
-                                          va_list              _ArgList
-            )
-        {
-            return _vswscanf_s_l(_Buffer, _Format, 0, _ArgList);
-        }
-
-
-    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                    int __cdecl vswscanf_s(                         wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vswscanf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vsnwscanf_l(
-                  wchar_t const* const _Buffer,
-                                            size_t         const _BufferCount,
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-                                               va_list              _ArgList
-        )
-    {
-        return __stdio_common_vswscanf(
-            (*__local_stdio_scanf_options ()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vsnwscanf_s_l(
-                    wchar_t const* const _Buffer,
-                                              size_t         const _BufferCount,
-            wchar_t const* const _Format,
-                                          _locale_t      const _Locale,
-                                                 va_list              _ArgList
-        )
-    {
-        return __stdio_common_vswscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _swscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _swscanf_l(
-                                          wchar_t const* const _Buffer,
-            wchar_t const* const _Format,
-                                        _locale_t            _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswscanf_l(_Buffer, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-      __declspec(deprecated("This function or variable may be unsafe. Consider using swscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl swscanf(
-                                wchar_t const* const _Buffer,
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vswscanf_l(_Buffer, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _swscanf_s_l(
-                                            wchar_t const* const _Buffer,
-            wchar_t const* const _Format,
-                                          _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vswscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-         
-        
-        __inline int __cdecl swscanf_s(
-                                      wchar_t const* const _Buffer,
-                wchar_t const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vswscanf_s_l(_Buffer, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snwscanf_l(
-                  wchar_t const* const _Buffer,
-                                            size_t         const _BufferCount,
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snwscanf(
-            wchar_t const* const _Buffer,
-                                      size_t         const _BufferCount,
-                wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snwscanf_s_l(
-                    wchar_t const* const _Buffer,
-                                              size_t         const _BufferCount,
-            wchar_t const* const _Format,
-                                          _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snwscanf_s(
-             wchar_t const* const _Buffer,
-                                       size_t         const _BufferCount,
-               wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-}                             
-
-
-
-
-         extern "C" {
-
- 
-
-
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-typedef __int64 fpos_t;
-
-
-
-
-    
-     errno_t __cdecl _get_stream_buffer_pointers(
-               FILE*   _Stream,
-          char*** _Base,
-          char*** _Pointer,
-          int**   _Count
-        );
-
-
-                         
-        
-         errno_t __cdecl clearerr_s(
-              FILE* _Stream
-            );
-
-        
-         
-         errno_t __cdecl fopen_s(
-              FILE**      _Stream,
-                                     char const* _FileName,
-                                     char const* _Mode
-            );
-
-        
-         
-         size_t __cdecl fread_s(
-                void*  _Buffer,
-                                    size_t _BufferSize,
-                                                                            size_t _ElementSize,
-                                                                            size_t _ElementCount,
-                                                                         FILE*  _Stream
-            );
-
-        
-         errno_t __cdecl freopen_s(
-              FILE**      _Stream,
-                                 char const* _FileName,
-                                 char const* _Mode,
-                                FILE*       _OldStream
-            );
-
-         
-         char* __cdecl gets_s(
-              char*   _Buffer,
-                               rsize_t _Size
-            );
-
-        
-         errno_t __cdecl tmpfile_s(
-                FILE** _Stream
-            );
-
-         
-        
-         errno_t __cdecl tmpnam_s(
-              char*   _Buffer,
-                               rsize_t _Size
-            );
-
-
-     void __cdecl clearerr(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl fclose(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _fcloseall(void);
-
-     
-     FILE* __cdecl _fdopen(
-            int         _FileHandle,
-          char const* _Mode
-        );
-
-     
-     int __cdecl feof(
-          FILE* _Stream
-        );
-
-     
-     int __cdecl ferror(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl fflush(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl fgetc(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _fgetchar(void);
-
-     
-    
-     int __cdecl fgetpos(
-          FILE*   _Stream,
-            fpos_t* _Position
-        );
-
-     
-    
-     char* __cdecl fgets(
-          char* _Buffer,
-                               int   _MaxCount,
-                            FILE* _Stream
-        );
-
-     
-     int __cdecl _fileno(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _flushall(void);
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     FILE* __cdecl fopen(
-          char const* _FileName,
-          char const* _Mode
-        );
-
-
-     
-    
-     int __cdecl fputc(
-             int   _Character,
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _fputchar(
-          int _Character
-        );
-
-     
-    
-     int __cdecl fputs(
-           char const* _Buffer,
-          FILE*       _Stream
-        );
-
-    
-     size_t __cdecl fread(
-          void*  _Buffer,
-                                                      size_t _ElementSize,
-                                                      size_t _ElementCount,
-                                                   FILE*  _Stream
-        );
-
-     
-      __declspec(deprecated("This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     FILE* __cdecl freopen(
-           char const* _FileName,
-           char const* _Mode,
-          FILE*       _Stream
-        );
-
-     
-     FILE* __cdecl _fsopen(
-          char const* _FileName,
-          char const* _Mode,
-            int         _ShFlag
-        );
-
-     
-    
-     int __cdecl fsetpos(
-          FILE*         _Stream,
-             fpos_t const* _Position
-        );
-
-     
-    
-     int __cdecl fseek(
-          FILE* _Stream,
-             long  _Offset,
-             int   _Origin
-        );
-
-     
-    
-     int __cdecl _fseeki64(
-          FILE*   _Stream,
-             __int64 _Offset,
-             int     _Origin
-        );
-
-     
-     
-     long __cdecl ftell(
-          FILE* _Stream
-        );
-
-     
-     
-     __int64 __cdecl _ftelli64(
-          FILE* _Stream
-        );
-
-    
-     size_t __cdecl fwrite(
-          void const* _Buffer,
-                                                    size_t      _ElementSize,
-                                                    size_t      _ElementCount,
-                                                 FILE*       _Stream
-        );
-
-     
-     
-     int __cdecl getc(
-          FILE* _Stream
-        );
-
-     
-     int __cdecl getchar(void);
-
-     
-     int __cdecl _getmaxstdio(void);
-
-    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            char* __cdecl gets_s(char (&_Buffer)[_Size]) throw()                  {                                                                                                     return gets_s(_Buffer, _Size);                                                                }                                                                                             }
-
-     
-     int __cdecl _getw(
-          FILE* _Stream
-        );
-
-     void __cdecl perror(
-          char const* _ErrorMessage
-        );
-
-
-         
-        
-         int __cdecl _pclose(
-              FILE* _Stream
-            );
-
-         
-         FILE* __cdecl _popen(
-              char const* _Command,
-              char const* _Mode
-            );
-
-
-     
-    
-     int __cdecl putc(
-             int   _Character,
-          FILE* _Stream
-        );
-
-    
-     int __cdecl putchar(
-          int _Character
-        );
-
-    
-     int __cdecl puts(
-          char const* _Buffer
-        );
-
-     
-    
-     int __cdecl _putw(
-             int   _Word,
-          FILE* _Stream
-        );
-
-     int __cdecl remove(
-          char const* _FileName
-        );
-
-     
-     int __cdecl rename(
-          char const* _OldFileName,
-          char const* _NewFileName
-        );
-
-     int __cdecl _unlink(
-          char const* _FileName
-        );
-
-
-        __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _unlink. See online help for details."))
-         int __cdecl unlink(
-              char const* _FileName
-            );
-
-
-     void __cdecl rewind(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _rmtmp(void);
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using setvbuf instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     void __cdecl setbuf(
-                                                      FILE* _Stream,
-            char* _Buffer
-        );
-
-    
-     int __cdecl _setmaxstdio(
-          int _Maximum
-        );
-
-     
-    
-     int __cdecl setvbuf(
-                               FILE*  _Stream,
-            char*  _Buffer,
-                                  int    _Mode,
-                                  size_t _Size
-        );
-
-
-     
-     __declspec(allocator) char* __cdecl _tempnam(
-          char const* _DirectoryName,
-          char const* _FilePrefix
-        );
-
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using tmpfile_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-     FILE* __cdecl tmpfile(void);
-
-    extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                                     errno_t __cdecl tmpnam_s( char (&_Buffer)[_Size]) throw()                  {                                                                                                     return tmpnam_s(_Buffer, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           char* __cdecl tmpnam(   char *_Buffer);
-
-     
-    
-     int __cdecl ungetc(
-             int   _Character,
-          FILE* _Stream
-        );
-
-
-
-                              void __cdecl _lock_file(
-          FILE* _Stream
-        );
-
-     void __cdecl _unlock_file(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl _fclose_nolock(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl _fflush_nolock(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl _fgetc_nolock(
-          FILE* _Stream
-        );
-
-     
-    
-     int __cdecl _fputc_nolock(
-             int   _Character,
-          FILE* _Stream
-        );
-
-    
-     size_t __cdecl _fread_nolock(
-          void*  _Buffer,
-                                                      size_t _ElementSize,
-                                                      size_t _ElementCount,
-                                                   FILE*  _Stream
-        );
-
-    
-     
-     size_t __cdecl _fread_nolock_s(
-          void*  _Buffer,
-                              size_t _BufferSize,
-                                                                      size_t _ElementSize,
-                                                                      size_t _ElementCount,
-                                                                   FILE*  _Stream
-        );
-
-    
-     int __cdecl _fseek_nolock(
-          FILE* _Stream,
-             long  _Offset,
-             int   _Origin
-        );
-
-    
-     int __cdecl _fseeki64_nolock(
-          FILE*   _Stream,
-             __int64 _Offset,
-             int     _Origin
-        );
-
-     
-     long __cdecl _ftell_nolock(
-          FILE* _Stream
-        );
-
-     
-     __int64 __cdecl _ftelli64_nolock(
-          FILE* _Stream
-        );
-
-    
-     size_t __cdecl _fwrite_nolock(
-          void const* _Buffer,
-                                                    size_t      _ElementSize,
-                                                    size_t      _ElementCount,
-                                                 FILE*       _Stream
-        );
-
-    
-     int __cdecl _getc_nolock(
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _putc_nolock(
-             int   _Character,
-          FILE* _Stream
-        );
-
-    
-     int __cdecl _ungetc_nolock(
-             int   _Character,
-          FILE* _Stream
-        );
-
-
-
-
-
-
-
-     int* __cdecl __p__commode(void);
-
-
-
-
-     
-                              int __cdecl __stdio_common_vfprintf(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     int __cdecl __stdio_common_vfprintf_s(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     int __cdecl __stdio_common_vfprintf_p(
-                                             unsigned __int64 _Options,
-                                          FILE*            _Stream,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-    __inline int __cdecl _vfprintf_l(
-           FILE*       const _Stream,
-            char const* const _Format,
-          _locale_t   const _Locale,
-                 va_list           _ArgList
-        )
-    {
-        return __stdio_common_vfprintf((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vfprintf(
-                                FILE*       const _Stream,
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfprintf_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfprintf_s_l(
-           FILE*       const _Stream,
-            char const* const _Format,
-          _locale_t   const _Locale,
-                 va_list           _ArgList
-        )
-    {
-        return __stdio_common_vfprintf_s((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vfprintf_s(
-                                    FILE*       const _Stream,
-                char const* const _Format,
-                                          va_list           _ArgList
-            )
-        {
-            return _vfprintf_s_l(_Stream, _Format, 0, _ArgList);
-        }
-
-
-    
-    __inline int __cdecl _vfprintf_p_l(
-           FILE*       const _Stream,
-            char const* const _Format,
-          _locale_t   const _Locale,
-                 va_list           _ArgList
-        )
-    {
-        return __stdio_common_vfprintf_p((*__local_stdio_printf_options()), _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfprintf_p(
-                                FILE*       const _Stream,
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfprintf_p_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vprintf_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        return _vfprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vprintf(
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vprintf_s_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        return _vfprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vprintf_s(
-                char const* const _Format,
-                                          va_list           _ArgList
-            )
-        {
-            return _vfprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        }
-
-
-    
-    __inline int __cdecl _vprintf_p_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        return _vfprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vprintf_p(
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _fprintf_l(
-                                          FILE*       const _Stream,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl fprintf(
-                                FILE*       const _Stream,
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfprintf_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     int __cdecl _set_printf_count_output(
-          int _Value
-        );
-
-     int __cdecl _get_printf_count_output(void);
-
-    
-    __inline int __cdecl _fprintf_s_l(
-                                          FILE*       const _Stream,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_s_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl fprintf_s(
-                                    FILE*       const _Stream,
-                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfprintf_s_l(_Stream, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    
-    __inline int __cdecl _fprintf_p_l(
-                                          FILE*       const _Stream,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_p_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _fprintf_p(
-                                FILE*       const _Stream,
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfprintf_p_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _printf_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl printf(
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _printf_s_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl printf_s(
-                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    
-    __inline int __cdecl _printf_p_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _printf_p(
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-                              int __cdecl __stdio_common_vfscanf(
-                                            unsigned __int64 _Options,
-                                         FILE*            _Stream,
-            char const*      _Format,
-                                        _locale_t        _Locale,
-                                               va_list          _Arglist
-        );
-
-    
-    __inline int __cdecl _vfscanf_l(
-                                FILE*       const _Stream,
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return __stdio_common_vfscanf(
-            (*__local_stdio_scanf_options ()),
-            _Stream, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vfscanf(
-                                FILE*       const _Stream,
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfscanf_l(_Stream, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vfscanf_s_l(
-                                FILE*       const _Stream,
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return __stdio_common_vfscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Stream, _Format, _Locale, _ArgList);
-    }
-
-
-
-        
-        __inline int __cdecl vfscanf_s(
-                                    FILE*       const _Stream,
-                char const* const _Format,
-                                          va_list           _ArgList
-            )
-        {
-            return _vfscanf_s_l(_Stream, _Format, 0, _ArgList);
-        }
-
-
-    
-    __inline int __cdecl _vscanf_l(
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vscanf(
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vscanf_s_l(
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return _vfscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-    }
-
-
-        
-        __inline int __cdecl vscanf_s(
-                char const* const _Format,
-                                          va_list           _ArgList
-            )
-        {
-            return _vfscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        }
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _fscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _fscanf_l(
-                                         FILE*       const _Stream,
-            char const* const _Format,
-                                        _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfscanf_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl fscanf(
-                               FILE*       const _Stream,
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfscanf_l(_Stream, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _fscanf_s_l(
-                                           FILE*       const _Stream,
-            char const* const _Format,
-                                          _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfscanf_s_l(_Stream, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl fscanf_s(
-                                     FILE*       const _Stream,
-                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfscanf_s_l(_Stream, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _scanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _scanf_l(
-            char const* const _Format,
-                                        _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl scanf(
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _scanf_s_l(
-            char const* const _Format,
-                                          _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl scanf_s(
-                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-
-
-                              
-     int __cdecl __stdio_common_vsprintf(
-                                             unsigned __int64 _Options,
-                 char*            _Buffer,
-                                             size_t           _BufferCount,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     int __cdecl __stdio_common_vsprintf_s(
-                                             unsigned __int64 _Options,
-                     char*            _Buffer,
-                                             size_t           _BufferCount,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     int __cdecl __stdio_common_vsnprintf_s(
-                                             unsigned __int64 _Options,
-                 char*            _Buffer,
-                                             size_t           _BufferCount,
-                                             size_t           _MaxCount,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     int __cdecl __stdio_common_vsprintf_p(
-                                             unsigned __int64 _Options,
-                     char*            _Buffer,
-                                             size_t           _BufferCount,
-            char const*      _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsnprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vsnprintf_l(
-            char*       const _Buffer,
-                                                  size_t      const _BufferCount,
-                 char const* const _Format,
-                                              _locale_t   const _Locale,
-                                                     va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf(
-            (*__local_stdio_printf_options()) | (1ULL << 0),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsnprintf(
-            char*       const _Buffer,
-                                                 size_t      const _BufferCount,
-                          char const* const _Format,
-                                                    va_list           _ArgList
-        )
-    {
-        return _vsnprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-
-     
-    
-    __inline int __cdecl vsnprintf(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                char const* const _Format,
-                                                          va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf(
-            (*__local_stdio_printf_options()) | (1ULL << 1),
-            _Buffer, _BufferCount, _Format, 0, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vsprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vsprintf_l(
-           char*       const _Buffer,
-                                    char const* const _Format,
-                                  _locale_t   const _Locale,
-                                         va_list           _ArgList
-        )
-    {
-        return _vsnprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl vsprintf(
-           char*       const _Buffer,
-               char const* const _Format,
-                                         va_list           _ArgList
-        )
-    {
-        return _vsnprintf_l(_Buffer, (size_t)-1, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vsprintf_s_l(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                  char const* const _Format,
-                                               _locale_t   const _Locale,
-                                                      va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf_s(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-
-         
-        
-        __inline int __cdecl vsprintf_s(
-               char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                char const* const _Format,
-                                                          va_list           _ArgList
-            )
-        {
-            return _vsprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        }
-
-        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                        int __cdecl vsprintf_s(            char (&_Buffer)[_Size],     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
-
-
-     
-    
-    __inline int __cdecl _vsprintf_p_l(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                  char const* const _Format,
-                                               _locale_t   const _Locale,
-                                                      va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf_p(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsprintf_p(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                            char const* const _Format,
-                                                      va_list           _ArgList
-        )
-    {
-        return _vsprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-     
-    
-    __inline int __cdecl _vsnprintf_s_l(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                                       size_t      const _MaxCount,
-                      char const* const _Format,
-                                                   _locale_t   const _Locale,
-                                                          va_list          _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsnprintf_s(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsnprintf_s(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                                       size_t      const _MaxCount,
-                                char const* const _Format,
-                                                          va_list           _ArgList
-        )
-    {
-        return _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-    }
-
-    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    int __cdecl _vsnprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
-
-
-         
-        
-        __inline int __cdecl vsnprintf_s(
-               char*       const _Buffer,
-                                                           size_t      const _BufferCount,
-                                                           size_t      const _MaxCount,
-                                    char const* const _Format,
-                                                              va_list           _ArgList
-            )
-        {
-            return _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-        }
-
-        extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                        int __cdecl vsnprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                                    return vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                            }
-
-
-    
-    __inline int __cdecl _vscprintf_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf(
-            (*__local_stdio_printf_options()) | (1ULL << 1),
-            0, 0, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    __inline int __cdecl _vscprintf(
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vscprintf_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vscprintf_p_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf_p(
-            (*__local_stdio_printf_options()) | (1ULL << 1),
-            0, 0, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    __inline int __cdecl _vscprintf_p(
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vscprintf_p_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vsnprintf_c_l(
-                   char*       const _Buffer,
-                                             size_t      const _BufferCount,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-                                                va_list           _ArgList
-        )
-    {
-        int const _Result = __stdio_common_vsprintf(
-            (*__local_stdio_printf_options()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        return _Result < 0 ? -1 : _Result;
-    }
-
-     
-    
-    __inline int __cdecl _vsnprintf_c(
-          char*       const _Buffer,
-                                    size_t      const _BufferCount,
-             char const* const _Format,
-                                       va_list           _ArgList
-        )
-    {
-        return _vsnprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _sprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _sprintf_l(
-                  char*       const _Buffer,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = _vsprintf_l(_Buffer, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl sprintf(
-           char*       const _Buffer,
-               char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = _vsprintf_l(_Buffer, _Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl sprintf(   char *_Buffer,         char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureVFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl vsprintf(   char *_Buffer,         char const* _Format, va_list _Args);
-
-     
-    
-    __inline int __cdecl _sprintf_s_l(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                  char const* const _Format,
-                                               _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-         
-        
-        __inline int __cdecl sprintf_s(
-               char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-            _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl sprintf_s(            char (&_Buffer)[_Size],     char const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
-
-     
-    
-    __inline int __cdecl _sprintf_p_l(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                  char const* const _Format,
-                                               _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _sprintf_p(
-           char*       const _Buffer,
-                                                   size_t      const _BufferCount,
-                            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snprintf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snprintf_l(
-            char*       const _Buffer,
-                                                  size_t      const _BufferCount,
-                 char const* const _Format,
-                                              _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = _vsnprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-     
-    
-    __inline int __cdecl snprintf(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snprintf(
-            char*       const _Buffer,
-                                                  size_t      const _BufferCount,
-                           char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _FuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _snprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, ...);                 __declspec(deprecated("This function or variable may be unsafe. Consider using _VFuncName##_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))           int __cdecl _vsnprintf(    char *_Buffer,                                            size_t _BufferCount,                     char const* _Format, va_list _Args);
-
-     
-    
-    __inline int __cdecl _snprintf_c_l(
-                   char*       const _Buffer,
-                                             size_t      const _BufferCount,
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snprintf_c(
-          char*       const _Buffer,
-                                    size_t      const _BufferCount,
-             char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snprintf_s_l(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                                       size_t      const _MaxCount,
-                      char const* const _Format,
-                                                   _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    
-    __inline int __cdecl _snprintf_s(
-           char*       const _Buffer,
-                                                       size_t      const _BufferCount,
-                                                       size_t      const _MaxCount,
-                                char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
-
-    
-    __inline int __cdecl _scprintf_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vscprintf_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    __inline int __cdecl _scprintf(
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vscprintf_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _scprintf_p_l(
-            char const* const _Format,
-                                         _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vscprintf_p_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     
-    __inline int __cdecl _scprintf_p(
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vscprintf_p(_Format, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-                              int __cdecl __stdio_common_vsscanf(
-                                            unsigned __int64 _Options,
-                  char const*      _Buffer,
-                                            size_t           _BufferCount,
-            char const*      _Format,
-                                        _locale_t        _Locale,
-                                               va_list          _ArgList
-        );
-
-    
-    __inline int __cdecl _vsscanf_l(
-                                 char const* const _Buffer,
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()),
-            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl vsscanf(
-                                 char const* const _Buffer,
-            char const* const _Format,
-                                      va_list           _ArgList
-        )
-    {
-        return _vsscanf_l(_Buffer, _Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vsscanf_s_l(
-                                 char const* const _Buffer,
-            char const* const _Format,
-                               _locale_t   const _Locale,
-                                      va_list           _ArgList
-        )
-    {
-        return __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-    }
-
-
-
-        
-        __inline int __cdecl vsscanf_s(
-                                     char const* const _Buffer,
-                char const* const _Format,
-                                          va_list           _ArgList
-            )
-        {
-            return _vsscanf_s_l(_Buffer, _Format, 0, _ArgList);
-        }
-
-        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           int __cdecl vsscanf_s(                         char const (&_Buffer)[_Size],     char const* _Format, va_list _ArgList) throw()                 {                                                                                                                                    return vsscanf_s(_Buffer, _Size, _Format, _ArgList);                                                                               }                                                                                                                            }
-
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _sscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _sscanf_l(
-                                          char const* const _Buffer,
-            char const* const _Format,
-                                        _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsscanf_l(_Buffer, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-      __declspec(deprecated("This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl sscanf(
-                                char const* const _Buffer,
-            char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vsscanf_l(_Buffer, _Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _sscanf_s_l(
-                                            char const* const _Buffer,
-            char const* const _Format,
-                                          _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vsscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-        
-        __inline int __cdecl sscanf_s(
-                                      char const* const _Buffer,
-                char const* const _Format,
-            ...)
-        {
-            int _Result;
-            va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-            _Result = vsscanf_s(_Buffer, _Format, _ArgList);
-
-            ((void)(_ArgList = (va_list)0));
-            return _Result;
-        }
-
-
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snscanf_l(
-            char const* const _Buffer,
-                                            size_t      const _BufferCount,
-            char const* const _Format,
-                                        _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _snscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _snscanf(
-            char const* const _Buffer,
-                                            size_t      const _BufferCount,
-                      char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()),
-            _Buffer, _BufferCount, _Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-    
-    __inline int __cdecl _snscanf_s_l(
-              char const* const _Buffer,
-                                              size_t      const _BufferCount,
-            char const* const _Format,
-                                          _locale_t   const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Buffer, _BufferCount, _Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _snscanf_s(
-            char const* const _Buffer,
-                                            size_t      const _BufferCount,
-                    char const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = __stdio_common_vsscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Buffer, _BufferCount, _Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-
-
-
-                         
-
-
-        __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _tempnam. See online help for details."))
-         char* __cdecl tempnam(
-              char const* _Directory,
-              char const* _FilePrefix
-            );
-
-
-         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fcloseall. See online help for details."))  int   __cdecl fcloseall(void);
-              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fdopen. See online help for details."))     FILE* __cdecl fdopen(  int _FileHandle,   char const* _Format);
-         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fgetchar. See online help for details."))   int   __cdecl fgetchar(void);
-              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fileno. See online help for details."))     int   __cdecl fileno(  FILE* _Stream);
-         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _flushall. See online help for details."))   int   __cdecl flushall(void);
-         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fputchar. See online help for details."))   int   __cdecl fputchar(  int _Ch);
-              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getw. See online help for details."))       int   __cdecl getw(  FILE* _Stream);
-         __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _putw. See online help for details."))       int   __cdecl putw(  int _Ch,   FILE* _Stream);
-              __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _rmtmp. See online help for details."))      int   __cdecl rmtmp(void);
-
-
-
-
-}                             
-
-
-
-
- 
- 
-namespace std {
-
-using :: FILE;
-using :: _Mbstatet;
-
-using :: size_t;
-using :: fpos_t;
-using :: FILE;
-using :: clearerr;
-using :: fclose;
-using :: feof;
-using :: ferror;
-using :: fflush;
-using :: fgetc;
-using :: fgetpos;
-using :: fgets;
-using :: fopen;
-using :: fprintf;
-using :: fputc;
-using :: fputs;
-using :: fread;
-using :: freopen;
-using :: fscanf;
-using :: fseek;
-using :: fsetpos;
-using :: ftell;
-using :: fwrite;
-using :: getc;
-using :: getchar;
-using :: perror;
-using :: putc;
-using :: putchar;
-using :: printf;
-using :: puts;
-using :: remove;
-using :: rename;
-using :: rewind;
-using :: scanf;
-using :: setbuf;
-using :: setvbuf;
-using :: sprintf;
-using :: sscanf;
-using :: tmpfile;
-using :: tmpnam;
-using :: ungetc;
-using :: vfprintf;
-using :: vprintf;
-using :: vsprintf;
-
-using :: snprintf;
-using :: vsnprintf;
-using :: vfscanf;
-using :: vscanf;
-using :: vsscanf;
-
-}
-
-
-
-         
-                      
-              
-
-
-         extern "C" {
-
-
-
-
-
-    
-     
-     errno_t __cdecl _cgetws_s(
-          wchar_t* _Buffer,
-                                               size_t   _BufferCount,
-                                              size_t*  _SizeRead
-        );
-
-    extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                                    errno_t __cdecl _cgetws_s(  wchar_t (&_Buffer)[_Size],                       size_t* _SizeRead) throw()                 {                                                                                                                    return _cgetws_s(_Buffer, _Size, _SizeRead);                                                                       }                                                                                                            }
-
-    
-     int __cdecl _cputws(
-          wchar_t const* _Buffer
-        );
-
-           wint_t __cdecl _getwch  (void);
-           wint_t __cdecl _getwche (void);
-      wint_t __cdecl _putwch  (  wchar_t _Character);
-      wint_t __cdecl _ungetwch(  wint_t  _Character);
-
-           wint_t __cdecl _getwch_nolock  (void);
-           wint_t __cdecl _getwche_nolock (void);
-      wint_t __cdecl _putwch_nolock  (  wchar_t _Character);
-      wint_t __cdecl _ungetwch_nolock(  wint_t  _Character);
-
-
-
-                             
-     int __cdecl __conio_common_vcwprintf(
-                                             unsigned __int64 _Options,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-     int __cdecl __conio_common_vcwprintf_s(
-                                             unsigned __int64 _Options,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-     int __cdecl __conio_common_vcwprintf_p(
-                                             unsigned __int64 _Options,
-            wchar_t const*   _Format,
-                                         _locale_t        _Locale,
-                                                va_list          _ArgList
-        );
-
-    
-    __inline int __cdecl _vcwprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __conio_common_vcwprintf((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwprintf(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vcwprintf_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwprintf_s_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __conio_common_vcwprintf_s((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwprintf_s(
-            wchar_t const* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vcwprintf_s_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-                                                va_list              _ArgList
-        )
-    {
-        return __conio_common_vcwprintf_p((*__local_stdio_printf_options()), _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwprintf_p(
-            const wchar_t* const _Format,
-                                      va_list              _ArgList
-        )
-    {
-        return _vcwprintf_p_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _cwprintf_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vcwprintf_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwprintf(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vcwprintf_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwprintf_s_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vcwprintf_s_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwprintf_s(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vcwprintf_s_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwprintf_p_l(
-            wchar_t const* const _Format,
-                                         _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vcwprintf_p_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwprintf_p(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vcwprintf_p_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-
-                             
-     int __cdecl __conio_common_vcwscanf(
-                                            unsigned __int64 _Options,
-            wchar_t const*   _Format,
-                                        _locale_t        _Locale,
-                                               va_list          _ArgList
-        );
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vcwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vcwscanf_l(
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-                                               va_list              _ArgList
-        )
-    {
-        return __conio_common_vcwscanf(
-            (*__local_stdio_scanf_options ()),
-            _Format, _Locale, _ArgList);
-    }
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _vcwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _vcwscanf(
-            wchar_t const* const _Format,
-                                               va_list              _ArgList
-        )
-    {
-        return _vcwscanf_l(_Format, 0, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwscanf_s_l(
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-                                               va_list              _ArgList
-        )
-    {
-        return __conio_common_vcwscanf(
-            (*__local_stdio_scanf_options ()) | (1ULL << 0),
-            _Format, _Locale, _ArgList);
-    }
-
-    
-    __inline int __cdecl _vcwscanf_s(
-            wchar_t const* const _Format,
-                                               va_list              _ArgList
-        )
-    {
-        return _vcwscanf_s_l(_Format, 0, _ArgList);
-    }
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _cwscanf_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _cwscanf_l(
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-
-        _Result = _vcwscanf_l(_Format, _Locale, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-     __declspec(deprecated("This function or variable may be unsafe. Consider using _cwscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    __inline int __cdecl _cwscanf(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-
-        _Result = _vcwscanf_l(_Format, 0, _ArgList);
-
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwscanf_s_l(
-            wchar_t const* const _Format,
-                                        _locale_t      const _Locale,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
-        _Result = _vcwscanf_s_l(_Format, _Locale, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-    
-    __inline int __cdecl _cwscanf_s(
-            wchar_t const* const _Format,
-        ...)
-    {
-        int _Result;
-        va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
-        _Result = _vcwscanf_s_l(_Format, 0, _ArgList);
-        ((void)(_ArgList = (va_list)0));
-        return _Result;
-    }
-
-
-}                             
-
-        
-       
-
-
-         extern "C" {
-
-
-
-
-
-
-  
-
-     const unsigned short* __cdecl __pctype_func(void);
-     const wctype_t*       __cdecl __pwctype_func(void);
-
-
- 
-
-
-
-        int __cdecl iswalnum  (  wint_t _C);
-   int __cdecl iswalpha  (  wint_t _C);
-   int __cdecl iswascii  (  wint_t _C);
-   int __cdecl iswblank  (  wint_t _C);
-   int __cdecl iswcntrl  (  wint_t _C);
-
-
-   int __cdecl iswdigit  (  wint_t _C);
-
-   int __cdecl iswgraph  (  wint_t _C);
-   int __cdecl iswlower  (  wint_t _C);
-   int __cdecl iswprint  (  wint_t _C);
-   int __cdecl iswpunct  (  wint_t _C);
-   int __cdecl iswspace  (  wint_t _C);
-   int __cdecl iswupper  (  wint_t _C);
-   int __cdecl iswxdigit (  wint_t _C);
-   int __cdecl __iswcsymf(  wint_t _C);
-   int __cdecl __iswcsym (  wint_t _C);
-
-   int __cdecl _iswalnum_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswalpha_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswblank_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswcntrl_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswdigit_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswgraph_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswlower_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswprint_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswpunct_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswspace_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswupper_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswxdigit_l(  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswcsymf_l (  wint_t _C,   _locale_t _Locale);
-   int __cdecl _iswcsym_l  (  wint_t _C,   _locale_t _Locale);
-
-
-   wint_t __cdecl towupper(  wint_t _C);
-   wint_t __cdecl towlower(  wint_t _C);
-   int    __cdecl iswctype(  wint_t _C,   wctype_t _Type);
-
-   wint_t __cdecl _towupper_l(  wint_t _C,   _locale_t _Locale);
-   wint_t __cdecl _towlower_l(  wint_t _C,   _locale_t _Locale);
-   int    __cdecl _iswctype_l(  wint_t _C,   wctype_t _Type,   _locale_t _Locale);
-
-
-       int __cdecl isleadbyte(  int _C);
-       int __cdecl _isleadbyte_l(  int _C,   _locale_t _Locale);
-
-    __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using iswctype instead. See online help for details."))  int __cdecl is_wctype(  wint_t _C,   wctype_t _Type);
-
-
-
-     
-
-
-}                             
-
-        
-       
-
-
-         extern "C" {
-
-
- 
-   
- __declspec(allocator) wchar_t* __cdecl _wgetcwd(
-      wchar_t* _DstBuf,
-                                  int      _SizeInWords
-    );
-
- 
-   
- __declspec(allocator) wchar_t* __cdecl _wgetdcwd(
-                                  int      _Drive,
-      wchar_t* _DstBuf,
-                                  int      _SizeInWords
-    );
-
-
-
- 
- int __cdecl _wchdir(
-      wchar_t const* _Path
-    );
-
- 
- int __cdecl _wmkdir(
-      wchar_t const* _Path
-    );
-
- 
- int __cdecl _wrmdir(
-      wchar_t const* _Path
-    );
-
-
-
-}                             
-
-        
-               
-       
-
-
-
-
-
-
-
-
-
-
-         extern "C" {
-
-     
-typedef unsigned long _fsize_t;
-
-struct _wfinddata32_t
-{
-    unsigned   attrib;
-    __time32_t time_create;         __time32_t time_access;         __time32_t time_write;
-    _fsize_t   size;
-    wchar_t    name[260];
-};
-
-struct _wfinddata32i64_t
-{
-    unsigned   attrib;
-    __time32_t time_create;         __time32_t time_access;         __time32_t time_write;
-    __int64    size;
-    wchar_t    name[260];
-};
-
-struct _wfinddata64i32_t
-{
-    unsigned   attrib;
-    __time64_t time_create;         __time64_t time_access;         __time64_t time_write;
-    _fsize_t   size;
-    wchar_t    name[260];
-};
-
-struct _wfinddata64_t
-{
-    unsigned   attrib;
-    __time64_t time_create;         __time64_t time_access;         __time64_t time_write;
-    __int64    size;
-    wchar_t    name[260];
-};
-
-
-
-     
- 
- int __cdecl _waccess(
-      wchar_t const* _FileName,
-        int            _AccessMode
-    );
-
-
- errno_t __cdecl _waccess_s(
-      wchar_t const* _FileName,
-        int            _AccessMode
-    );
-
- 
- int __cdecl _wchmod(
-      wchar_t const* _FileName,
-        int            _Mode
-    );
-
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- int __cdecl _wcreat(
-      wchar_t const* _FileName,
-        int            _PermissionMode
-    );
-
- 
- 
- intptr_t __cdecl _wfindfirst32(
-      wchar_t const*         _FileName,
-       struct _wfinddata32_t* _FindData
-    );
-
- 
- 
- int __cdecl _wfindnext32(
-       intptr_t               _FindHandle,
-      struct _wfinddata32_t* _FindData
-    );
-
- int __cdecl _wunlink(
-      wchar_t const* _FileName
-    );
-
- 
- int __cdecl _wrename(
-      wchar_t const* _OldFileName,
-      wchar_t const* _NewFileName
-    );
-
- errno_t __cdecl _wmktemp_s(
-      wchar_t* _TemplateName,
-                                 size_t   _SizeInWords
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wmktemp_s(wchar_t (&_TemplateName)[_Size]) throw()                  {                                                                                                     return _wmktemp_s(_TemplateName, _Size);                                                                }                                                                                             }
-
- 
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _wmktemp(  wchar_t *_TemplateName);
-
- 
- 
- intptr_t __cdecl _wfindfirst32i64(
-      wchar_t const*            _FileName,
-       struct _wfinddata32i64_t* _FindData
-    );
-
- 
- 
- intptr_t __cdecl _wfindfirst64i32(
-      wchar_t const*            _FileName,
-       struct _wfinddata64i32_t* _FindData
-    );
-
- 
- 
- intptr_t __cdecl _wfindfirst64(
-      wchar_t const*         _FileName,
-       struct _wfinddata64_t* _FindData
-    );
-
- 
- 
- int __cdecl _wfindnext32i64(
-       intptr_t                  _FindHandle,
-      struct _wfinddata32i64_t* _FindData
-    );
-
- 
- 
- int __cdecl _wfindnext64i32(
-       intptr_t                  _FindHandle,
-      struct _wfinddata64i32_t* _FindData
-    );
-
- 
- 
- int __cdecl _wfindnext64(
-       intptr_t               _FindHandle,
-      struct _wfinddata64_t* _FindData
-    );
-
-
- errno_t __cdecl _wsopen_s(
-       int*           _FileHandle,
-      wchar_t const* _FileName,
-        int            _OpenFlag,
-        int            _ShareFlag,
-        int            _PermissionFlag
-    );
-
- errno_t __cdecl _wsopen_dispatch(
-      wchar_t const* _FileName,
-        int            _OFlag,
-        int            _ShFlag,
-        int            _PMode,
-       int*           _PFileHandle,
-        int            _BSecure
-    );
-
-
-
-
-         extern "C++"   __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    inline int __cdecl _wopen(
-          wchar_t const* _FileName,
-            int            _OFlag,
-            int            _PMode = 0
-        )
-    {
-        int _FileHandle;
-                 errno_t const _Result = _wsopen_dispatch(_FileName, _OFlag, 0x40, _PMode, &_FileHandle, 0);
-        return _Result ? -1 : _FileHandle;
-    }
-
-    extern "C++"   __declspec(deprecated("This function or variable may be unsafe. Consider using _wsopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
-    inline int __cdecl _wsopen(
-          wchar_t const* _FileName,
-            int            _OFlag,
-            int            _ShFlag,
-            int            _PMode = 0
-        )
-    {
-        int _FileHandle;
-                 errno_t const _Result = _wsopen_dispatch(_FileName, _OFlag, _ShFlag, _PMode, &_FileHandle, 0);
-        return _Result ? -1 : _FileHandle;
-    }
-
-
-
-}                             
-
-        
-       
-
-
-         extern "C" {
-
-
-
-
-         intptr_t __cdecl _wexecl(
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wexecle(
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wexeclp(
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wexeclpe(
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wexecv(
-              wchar_t const*        _FileName,
-              wchar_t const* const* _ArgList
-            );
-
-         intptr_t __cdecl _wexecve(
-                  wchar_t const*        _FileName,
-                  wchar_t const* const* _ArgList,
-              wchar_t const* const* _Env
-            );
-
-         intptr_t __cdecl _wexecvp(
-              wchar_t const*        _FileName,
-              wchar_t const* const* _ArgList
-            );
-
-         intptr_t __cdecl _wexecvpe(
-                  wchar_t const*        _FileName,
-                  wchar_t const* const* _ArgList,
-              wchar_t const* const* _Env
-            );
-
-         intptr_t __cdecl _wspawnl(
-                int            _Mode,
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wspawnle(
-                int            _Mode,
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wspawnlp(
-                int            _Mode,
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wspawnlpe(
-                int            _Mode,
-              wchar_t const* _FileName,
-              wchar_t const* _ArgList,
-            ...);
-
-         intptr_t __cdecl _wspawnv(
-                int                   _Mode,
-              wchar_t const*        _FileName,
-              wchar_t const* const* _ArgList
-            );
-
-         intptr_t __cdecl _wspawnve(
-                    int                   _Mode,
-                  wchar_t const*        _FileName,
-                  wchar_t const* const* _ArgList,
-              wchar_t const* const* _Env
-            );
-
-         intptr_t __cdecl _wspawnvp(
-                int                   _Mode,
-              wchar_t const*        _FileName,
-              wchar_t const* const* _ArgList
-            );
-
-         intptr_t __cdecl _wspawnvpe(
-                    int                   _Mode,
-                  wchar_t const*        _FileName,
-                  wchar_t const* const* _ArgList,
-              wchar_t const* const* _Env
-            );
-
-         int __cdecl _wsystem(
-              wchar_t const* _Command
-            );
-
-
-
-
-}                             
-
-                                 
-       
-
-
-         extern "C" {
-
-
-
-     struct tm
-{
-    int tm_sec;        int tm_min;        int tm_hour;       int tm_mday;       int tm_mon;        int tm_year;       int tm_wday;       int tm_yday;       int tm_isdst;  };
-
-
-       __declspec(deprecated("This function or variable may be unsafe. Consider using _wasctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- 
- 
- wchar_t* __cdecl _wasctime(
-      struct tm const* _Tm
-    );
-
- 
-
- errno_t __cdecl _wasctime_s(
-        wchar_t*         _Buffer,
-                                          size_t           _SizeInWords,
-                                                       struct tm const* _Tm
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                                errno_t __cdecl _wasctime_s(  wchar_t (&_Buffer)[_Size],                       struct tm const* _Time) throw()                 {                                                                                                                    return _wasctime_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
-
- 
-
- size_t __cdecl wcsftime(
-       wchar_t*         _Buffer,
-                               size_t           _SizeInWords,
-                             wchar_t const*   _Format,
-                               struct tm const* _Tm
-    );
-
- 
-
- size_t __cdecl _wcsftime_l(
-       wchar_t*         _Buffer,
-                               size_t           _SizeInWords,
-                             wchar_t const*   _Format,
-                               struct tm const* _Tm,
-                           _locale_t        _Locale
-    );
-
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _wctime32_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl _wctime32(
-      __time32_t const* _Time
-    );
-
-
- errno_t __cdecl _wctime32_s(
-        wchar_t*          _Buffer,
-                                      size_t            _SizeInWords,
-                                                       __time32_t const* _Time
-    );
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wctime32_s(  wchar_t (&_Buffer)[_Size],                       __time32_t const* _Time) throw()                 {                                                                                                                    return _wctime32_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
-
- 
- 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using _wctime64_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
- wchar_t* __cdecl _wctime64(
-      __time64_t const* _Time
-    );
-
-
- errno_t __cdecl _wctime64_s(
-        wchar_t*          _Buffer,
-                                      size_t            _SizeInWords,
-                                                       __time64_t const* _Time);
-
-extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _wctime64_s(  wchar_t (&_Buffer)[_Size],                       __time64_t const* _Time) throw()                 {                                                                                                                    return _wctime64_s(_Buffer, _Size, _Time);                                                                       }                                                                                                            }
-
-
- errno_t __cdecl _wstrdate_s(
-       wchar_t* _Buffer,
-                                                                                size_t   _SizeInWords
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrdate_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrdate_s(_Buffer, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrdate(  wchar_t *_Buffer);
-
-
- errno_t __cdecl _wstrtime_s(
-       wchar_t* _Buffer,
-                                                                                size_t   _SizeInWords
-    );
-
-extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _wstrtime_s(  wchar_t (&_Buffer)[_Size]) throw()                  {                                                                                                     return _wstrtime_s(_Buffer, _Size);                                                                }                                                                                             }
-
-__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))      wchar_t* __cdecl _wstrtime(  wchar_t *_Buffer);
-
-
-
-     
-         
-        static __inline wchar_t * __cdecl _wctime(
-              time_t const* const _Time)
-        {
-            return _wctime64(_Time);
-        }
-
-        
-        static __inline errno_t __cdecl _wctime_s(
-                  wchar_t*      const _Buffer,
-                                                             size_t        const _SizeInWords,
-                                                             time_t const* const _Time
-            )
-        {
-            return _wctime64_s(_Buffer, _SizeInWords, _Time);
-        }
-
-
-}                             
-
-       
-              
-       
-
-
-
-    typedef unsigned short _ino_t;  
-        typedef _ino_t ino_t;
-
-
-
-
-    typedef unsigned int _dev_t;  
-        typedef _dev_t dev_t;
-
-
-
-
-    typedef long _off_t;  
-        typedef _off_t off_t;
-
-
-
-
-
-         extern "C" {
-
-     struct _stat32
-{
-    _dev_t         st_dev;
-    _ino_t         st_ino;
-    unsigned short st_mode;
-    short          st_nlink;
-    short          st_uid;
-    short          st_gid;
-    _dev_t         st_rdev;
-    _off_t         st_size;
-    __time32_t     st_atime;
-    __time32_t     st_mtime;
-    __time32_t     st_ctime;
-};
-
-struct _stat32i64
-{
-    _dev_t         st_dev;
-    _ino_t         st_ino;
-    unsigned short st_mode;
-    short          st_nlink;
-    short          st_uid;
-    short          st_gid;
-    _dev_t         st_rdev;
-    __int64        st_size;
-    __time32_t     st_atime;
-    __time32_t     st_mtime;
-    __time32_t     st_ctime;
-};
-
-struct _stat64i32
-{
-    _dev_t         st_dev;
-    _ino_t         st_ino;
-    unsigned short st_mode;
-    short          st_nlink;
-    short          st_uid;
-    short          st_gid;
-    _dev_t         st_rdev;
-    _off_t         st_size;
-    __time64_t     st_atime;
-    __time64_t     st_mtime;
-    __time64_t     st_ctime;
-};
-
-struct _stat64
-{
-    _dev_t         st_dev;
-    _ino_t         st_ino;
-    unsigned short st_mode;
-    short          st_nlink;
-    short          st_uid;
-    short          st_gid;
-    _dev_t         st_rdev;
-    __int64        st_size;
-    __time64_t     st_atime;
-    __time64_t     st_mtime;
-    __time64_t     st_ctime;
-};
-
-
-    struct stat
-    {
-        _dev_t         st_dev;
-        _ino_t         st_ino;
-        unsigned short st_mode;
-        short          st_nlink;
-        short          st_uid;
-        short          st_gid;
-        _dev_t         st_rdev;
-        _off_t         st_size;
-        time_t         st_atime;
-        time_t         st_mtime;
-        time_t         st_ctime;
-    };
-
-
-
-     
-
-
-
-     
-
-
- int __cdecl _fstat32(
-       int             _FileHandle,
-      struct _stat32* _Stat
-    );
-
- int __cdecl _fstat32i64(
-       int                _FileHandle,
-      struct _stat32i64* _Stat
-    );
-
- int __cdecl _fstat64i32(
-       int                _FileHandle,
-      struct _stat64i32* _Stat
-    );
-
- int __cdecl _fstat64(
-       int             _FileHandle,
-      struct _stat64* _Stat
-    );
-
- int __cdecl _stat32(
-      char const*     _FileName,
-       struct _stat32* _Stat
-    );
-
- int __cdecl _stat32i64(
-      char const*        _FileName,
-       struct _stat32i64* _Stat
-    );
-
- int __cdecl _stat64i32(
-      char const*        _FileName,
-       struct _stat64i32* _Stat
-    );
-
- int __cdecl _stat64(
-      char const*     _FileName,
-       struct _stat64* _Stat
-    );
-
- int __cdecl _wstat32(
-      wchar_t const*  _FileName,
-       struct _stat32* _Stat
-    );
-
- int __cdecl _wstat32i64(
-      wchar_t const*     _FileName,
-       struct _stat32i64* _Stat
-    );
-
- int __cdecl _wstat64i32(
-      wchar_t const*     _FileName,
-       struct _stat64i32* _Stat
-    );
-
- int __cdecl _wstat64(
-      wchar_t const*  _FileName,
-       struct _stat64* _Stat
-    );
-
-
-
-
-        static __inline int __cdecl fstat(int const _FileHandle, struct stat* const _Stat)
-        {
-            static_assert((sizeof(struct stat) == sizeof(struct _stat64i32)), "sizeof(struct  stat)  ==  sizeof(struct  _stat64i32)");
-            return _fstat64i32(_FileHandle, (struct _stat64i32*)_Stat);
-        }
-        static __inline int __cdecl stat(char const* const _FileName, struct stat* const _Stat)
-        {
-            static_assert((sizeof(struct stat) == sizeof(struct _stat64i32)), "sizeof(struct  stat)  ==  sizeof(struct  _stat64i32)");
-            return _stat64i32(_FileName, (struct _stat64i32*)_Stat);
-        }
-
-
-}                             
-
-              
-
-
-         extern "C" {
-
-
-
-
-
-
-typedef wchar_t _Wint_t;
-
-
-
-
-        
-     wchar_t* __cdecl _wsetlocale(
-                int            _Category,
-          wchar_t const* _Locale
-        );
-
-    
-     _locale_t __cdecl _wcreate_locale(
-            int            _Category,
-          wchar_t const* _Locale
-        );
-
-
-
-     wint_t __cdecl btowc(
-          int _Ch
-        );
-
-     size_t __cdecl mbrlen(
-            char const* _Ch,
-                                                    size_t      _SizeInBytes,
-                                                 mbstate_t*  _State
-        );
-
-     size_t __cdecl mbrtowc(
-                                  wchar_t*    _DstCh,
-            char const* _SrcCh,
-                                                    size_t      _SizeInBytes,
-                                                 mbstate_t*  _State
-        );
-
-     
-     errno_t __cdecl mbsrtowcs_s(
-                                  size_t*      _Retval,
-                  wchar_t*     _Dst,
-                                       size_t       _Size,
-                          char const** _PSrc,
-                                       size_t       _N,
-                                    mbstate_t*   _State
-        );
-
-    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl mbsrtowcs_s(                          size_t* _Retval,                            wchar_t (&_Dest)[_Size],     char const** _PSource,                                size_t _Count,                             mbstate_t* _State) throw()                  {                                                                                                                                                                     return mbsrtowcs_s(_Retval, _Dest, _Size, _PSource, _Count, _State);                                                                                                }                                                                                                                                                             }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))    size_t __cdecl mbsrtowcs(  wchar_t *_Dest,                   char const** _PSrc,                                size_t _Count,                             mbstate_t* _State);
-
-     
-     errno_t __cdecl wcrtomb_s(
-                                 size_t*    _Retval,
-          char*      _Dst,
-                                      size_t     _SizeInBytes,
-                                      wchar_t    _Ch,
-                               mbstate_t* _State
-        );
-
-    extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                                    errno_t __cdecl wcrtomb_s(                  size_t* _Retval,   char (&_Dest)[_Size],                        wchar_t _Source,                 mbstate_t* _State) throw()                 {                                                                                                                                                    return wcrtomb_s(_Retval, _Dest, _Size, _Source, _State);                                                                                       }                                                                                                                                            }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcrtomb(    char *_Dest,                        wchar_t _Source,                mbstate_t* _State);
-
-     
-     errno_t __cdecl wcsrtombs_s(
-                                                  size_t*         _Retval,
-          char*           _Dst,
-                                                       size_t          _SizeInBytes,
-                                    wchar_t const** _Src,
-                                                       size_t          _Size,
-                                                mbstate_t*      _State
-        );
-
-    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                     errno_t __cdecl wcsrtombs_s(                  size_t* _Retval,   char (&_Dest)[_Size],     wchar_t const** _PSrc,                        size_t _Count,                 mbstate_t* _State) throw()                  {                                                                                                                                                                     return wcsrtombs_s(_Retval, _Dest, _Size, _PSrc, _Count, _State);                                                                                                }                                                                                                                                                             }
-
-    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcsrtombs(    char *_Dest,     wchar_t const** _PSource,                        size_t _Count,                 mbstate_t* _State);
-
-     int __cdecl wctob(
-          wint_t _WCh
-        );
-
-
-         
-        errno_t __cdecl wmemcpy_s(
-              wchar_t*       _S1,
-                                      rsize_t        _N1,
-                        wchar_t const* _S2,
-                                      rsize_t        _N
-            );
-
-         
-        errno_t __cdecl wmemmove_s(
-              wchar_t*       _S1,
-                                      rsize_t        _N1,
-                        wchar_t const* _S2,
-                                      rsize_t        _N
-            );
-
-
-    __inline int __cdecl fwide(
-          FILE* _F,
-              int   _M
-        )
-    {
-        (void)_F;
-        return (_M);
-    }
-
-    __inline int __cdecl mbsinit(
-          mbstate_t const* _P
-        )
-    {
-        return _P == 0 || _P->_Wchar == 0;
-    }
-
-    __inline wchar_t const* __cdecl wmemchr(
-          wchar_t const* _S,
-                    wchar_t        _C,
-                    size_t         _N
-        )
-    {
-        for (; 0 < _N; ++_S, --_N)
-            if (*_S == _C)
-                return (wchar_t const*)_S;
-
-        return 0;
-    }
-
-    __inline int __cdecl wmemcmp(
-          wchar_t const* _S1,
-          wchar_t const* _S2,
-                    size_t         _N
-        )
-    {
-        for (; 0 < _N; ++_S1, ++_S2, --_N)
-            if (*_S1 != *_S2)
-                return *_S1 < *_S2 ? -1 : 1;
-
-        return 0;
-    }
-
-     
-    
-    __inline 
-    wchar_t* __cdecl wmemcpy(
-          wchar_t*       _S1,
-                wchar_t const* _S2,
-                          size_t         _N
-        )
-    {
-        return (wchar_t*)memcpy(_S1, _S2, _N*sizeof(wchar_t));
-    }
-
-    __inline 
-    wchar_t* __cdecl wmemmove(
-          wchar_t*       _S1,
-                wchar_t const* _S2,
-                              size_t         _N
-        )
-    {
-        return (wchar_t*)memmove(_S1, _S2, _N*sizeof(wchar_t));
-    }
-
-     
-    
-    __inline wchar_t* __cdecl wmemset(
-          wchar_t* _S,
-                          wchar_t  _C,
-                          size_t   _N
-        )
-    {
-        wchar_t *_Su = _S;
-        for (; 0 < _N; ++_Su, --_N)
-        {
-            *_Su = _C;
-        }
-        return _S;
-    }
-
-
-        extern "C++" inline wchar_t* __cdecl wmemchr(
-              wchar_t* _S,
-                        wchar_t  _C,
-                        size_t   _N
-            )
-        {
-            wchar_t const* const _SC = _S;
-            return const_cast<wchar_t*>(wmemchr(_SC, _C, _N));
-        }
-
-
-
-
-}                             
-
-
-
-
-using _Mbstatet = mbstate_t;
-
-namespace std {
-
-using :: _Mbstatet;
-
-using :: mbstate_t;
-using :: size_t;
-using :: tm;
-using :: wint_t;
-
-using :: btowc;
-using :: fgetwc;
-using :: fgetws;
-using :: fputwc;
-using :: fputws;
-using :: fwide;
-using :: fwprintf;
-using :: fwscanf;
-using :: getwc;
-using :: getwchar;
-using :: mbrlen;
-using :: mbrtowc;
-using :: mbsrtowcs;
-using :: mbsinit;
-using :: putwc;
-using :: putwchar;
-using :: swprintf;
-using :: swscanf;
-using :: ungetwc;
-using :: vfwprintf;
-using :: vswprintf;
-using :: vwprintf;
-using :: wcrtomb;
-using :: wprintf;
-using :: wscanf;
-using :: wcsrtombs;
-using :: wcstol;
-using :: wcscat;
-using :: wcschr;
-using :: wcscmp;
-using :: wcscoll;
-using :: wcscpy;
-using :: wcscspn;
-using :: wcslen;
-using :: wcsncat;
-using :: wcsncmp;
-using :: wcsncpy;
-using :: wcspbrk;
-using :: wcsrchr;
-using :: wcsspn;
-using :: wcstod;
-using :: wcstoul;
-using :: wcsstr;
-using :: wcstok;
-using :: wcsxfrm;
-using :: wctob;
-using :: wmemchr;
-using :: wmemcmp;
-using :: wmemcpy;
-using :: wmemmove;
-using :: wmemset;
-using :: wcsftime;
-
-using :: vfwscanf;
-using :: vswscanf;
-using :: vwscanf;
-using :: wcstof;
-using :: wcstold;
-using :: wcstoll;
-using :: wcstoull;
-
-}
-
-
-
- 
-
-  
-  
-
-
-
-namespace std {
- enum float_denorm_style {      denorm_indeterminate = -1,
-    denorm_absent        = 0,
-    denorm_present       = 1
-};
-
- enum float_round_style {      round_indeterminate       = -1,
-    round_toward_zero         = 0,
-    round_to_nearest          = 1,
-    round_toward_infinity     = 2,
-    round_toward_neg_infinity = 3
-};
-
- struct _Num_base {      static constexpr float_denorm_style has_denorm = denorm_absent;
-    static constexpr bool has_denorm_loss          = false;
-    static constexpr bool has_infinity             = false;
-    static constexpr bool has_quiet_NaN            = false;
-    static constexpr bool has_signaling_NaN        = false;
-    static constexpr bool is_bounded               = false;
-    static constexpr bool is_exact                 = false;
-    static constexpr bool is_iec559                = false;
-    static constexpr bool is_integer               = false;
-    static constexpr bool is_modulo                = false;
-    static constexpr bool is_signed                = false;
-    static constexpr bool is_specialized           = false;
-    static constexpr bool tinyness_before          = false;
-    static constexpr bool traps                    = false;
-    static constexpr float_round_style round_style = round_toward_zero;
-    static constexpr int digits                    = 0;
-    static constexpr int digits10                  = 0;
-    static constexpr int max_digits10              = 0;
-    static constexpr int max_exponent              = 0;
-    static constexpr int max_exponent10            = 0;
-    static constexpr int min_exponent              = 0;
-    static constexpr int min_exponent10            = 0;
-    static constexpr int radix                     = 0;
-};
-
- template <class _Ty>
-class numeric_limits : public _Num_base {  public:
-     static constexpr _Ty(min)() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty(max)() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty lowest() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty epsilon() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty round_error() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty denorm_min() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty infinity() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty quiet_NaN() noexcept {
-        return _Ty();
-    }
-
-     static constexpr _Ty signaling_NaN() noexcept {
-        return _Ty();
-    }
-};
-
-template <class _Ty>
-class numeric_limits<const _Ty> : public numeric_limits<_Ty> {};  
-template <class _Ty>
-class numeric_limits<volatile _Ty> : public numeric_limits<_Ty> {};  
-template <class _Ty>
-class numeric_limits<const volatile _Ty> : public numeric_limits<_Ty> {};  
- struct _Num_int_base : _Num_base {      static constexpr bool is_bounded     = true;
-    static constexpr bool is_exact       = true;
-    static constexpr bool is_integer     = true;
-    static constexpr bool is_specialized = true;
-    static constexpr int radix           = 2;
-};
-
- struct _Num_float_base : _Num_base {      static constexpr float_denorm_style has_denorm = denorm_present;
-    static constexpr bool has_infinity             = true;
-    static constexpr bool has_quiet_NaN            = true;
-    static constexpr bool has_signaling_NaN        = true;
-    static constexpr bool is_bounded               = true;
-    static constexpr bool is_iec559                = true;
-    static constexpr bool is_signed                = true;
-    static constexpr bool is_specialized           = true;
-    static constexpr float_round_style round_style = round_to_nearest;
-    static constexpr int radix                     = 2;
-};
-
- template <>
-class numeric_limits<bool> : public _Num_int_base {
-public:
-     static constexpr bool(min)() noexcept {
-        return false;
-    }
-
-     static constexpr bool(max)() noexcept {
-        return true;
-    }
-
-     static constexpr bool lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr bool epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr bool round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr bool denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr bool infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr bool quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr bool signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr int digits = 1;
-};
-
- template <>
-class numeric_limits<char> : public _Num_int_base {
-public:
-     static constexpr char(min)() noexcept {
-        return (-128);
-    }
-
-     static constexpr char(max)() noexcept {
-        return 127;
-    }
-
-     static constexpr char lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr char epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr char round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr char denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr char infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr char quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr char signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_signed = (-128) != 0;
-    static constexpr bool is_modulo = (-128) == 0;
-    static constexpr int digits     = 8 - ((-128) != 0);
-    static constexpr int digits10   = 2;
-};
-
- template <>
-class numeric_limits<signed char> : public _Num_int_base {
-public:
-     static constexpr signed char(min)() noexcept {
-        return (-128);
-    }
-
-     static constexpr signed char(max)() noexcept {
-        return 127;
-    }
-
-     static constexpr signed char lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr signed char epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr signed char round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr signed char denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr signed char infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr signed char quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr signed char signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_signed = true;
-    static constexpr int digits     = 7;
-    static constexpr int digits10   = 2;
-};
-
- template <>
-class numeric_limits<unsigned char> : public _Num_int_base {
-public:
-     static constexpr unsigned char(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char(max)() noexcept {
-        return 0xff;
-    }
-
-     static constexpr unsigned char lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr unsigned char epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned char signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 8;
-    static constexpr int digits10   = 2;
-};
-
- template <>
-class numeric_limits<char8_t> : public _Num_int_base {
-public:
-     static constexpr char8_t(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t(max)() noexcept {
-        return 0xff;
-    }
-
-     static constexpr char8_t lowest() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr char8_t signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 8;
-    static constexpr int digits10   = 2;
-};
-
- template <>
-class numeric_limits<char16_t> : public _Num_int_base {
-public:
-     static constexpr char16_t(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t(max)() noexcept {
-        return 0xffff;
-    }
-
-     static constexpr char16_t lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr char16_t epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr char16_t signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 16;
-    static constexpr int digits10   = 4;
-};
-
- template <>
-class numeric_limits<char32_t> : public _Num_int_base {
-public:
-     static constexpr char32_t(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t(max)() noexcept {
-        return 0xffffffff;
-    }
-
-     static constexpr char32_t lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr char32_t epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr char32_t signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 32;
-    static constexpr int digits10   = 9;
-};
-
- template <>
-class numeric_limits<wchar_t> : public _Num_int_base {
-public:
-     static constexpr wchar_t(min)() noexcept {
-        return 0x0000;
-    }
-
-     static constexpr wchar_t(max)() noexcept {
-        return 0xffff;
-    }
-
-     static constexpr wchar_t lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr wchar_t epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr wchar_t round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr wchar_t denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr wchar_t infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr wchar_t quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr wchar_t signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 16;
-    static constexpr int digits10   = 4;
-};
-
- template <>
-class numeric_limits<short> : public _Num_int_base {
-public:
-     static constexpr short(min)() noexcept {
-        return (-32768);
-    }
-
-     static constexpr short(max)() noexcept {
-        return 32767;
-    }
-
-     static constexpr short lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr short epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr short round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr short denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr short infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr short quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr short signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_signed = true;
-    static constexpr int digits     = 15;
-    static constexpr int digits10   = 4;
-};
-
- template <>
-class numeric_limits<int> : public _Num_int_base {
-public:
-     static constexpr int(min)() noexcept {
-        return (-2147483647 - 1);
-    }
-
-     static constexpr int(max)() noexcept {
-        return 2147483647;
-    }
-
-     static constexpr int lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr int epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr int round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr int denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr int infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr int quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr int signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_signed = true;
-    static constexpr int digits     = 31;
-    static constexpr int digits10   = 9;
-};
-
- template <>
-class numeric_limits<long> : public _Num_int_base {
-public:
-     static constexpr long(min)() noexcept {
-        return (-2147483647L - 1);
-    }
-
-     static constexpr long(max)() noexcept {
-        return 2147483647L;
-    }
-
-     static constexpr long lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr long epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr long round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr long denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr long infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr long quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr long signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static_assert(sizeof(int) == sizeof(long), "LLP64 assumption");
-    static constexpr bool is_signed = true;
-    static constexpr int digits     = 31;
-    static constexpr int digits10   = 9;
-};
-
- template <>
-class numeric_limits<long long> : public _Num_int_base {
-public:
-     static constexpr long long(min)() noexcept {
-        return (-9223372036854775807i64 - 1);
-    }
-
-     static constexpr long long(max)() noexcept {
-        return 9223372036854775807i64;
-    }
-
-     static constexpr long long lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr long long epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr long long round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr long long denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr long long infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr long long quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr long long signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_signed = true;
-    static constexpr int digits     = 63;
-    static constexpr int digits10   = 18;
-};
-
- template <>
-class numeric_limits<unsigned short> : public _Num_int_base {
-public:
-     static constexpr unsigned short(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short(max)() noexcept {
-        return 0xffff;
-    }
-
-     static constexpr unsigned short lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr unsigned short epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned short signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 16;
-    static constexpr int digits10   = 4;
-};
-
- template <>
-class numeric_limits<unsigned int> : public _Num_int_base {
-public:
-     static constexpr unsigned int(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int(max)() noexcept {
-        return 0xffffffff;
-    }
-
-     static constexpr unsigned int lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr unsigned int epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned int signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 32;
-    static constexpr int digits10   = 9;
-};
-
- template <>
-class numeric_limits<unsigned long> : public _Num_int_base {
-public:
-     static constexpr unsigned long(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long(max)() noexcept {
-        return 0xffffffffUL;
-    }
-
-     static constexpr unsigned long lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr unsigned long epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static_assert(sizeof(unsigned int) == sizeof(unsigned long), "LLP64 assumption");
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 32;
-    static constexpr int digits10   = 9;
-};
-
- template <>
-class numeric_limits<unsigned long long> : public _Num_int_base {
-public:
-     static constexpr unsigned long long(min)() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long(max)() noexcept {
-        return 0xffffffffffffffffui64;
-    }
-
-     static constexpr unsigned long long lowest() noexcept {
-        return (min)();
-    }
-
-     static constexpr unsigned long long epsilon() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long round_error() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long denorm_min() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long infinity() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long quiet_NaN() noexcept {
-        return 0;
-    }
-
-     static constexpr unsigned long long signaling_NaN() noexcept {
-        return 0;
-    }
-
-    static constexpr bool is_modulo = true;
-    static constexpr int digits     = 64;
-    static constexpr int digits10   = 19;
-};
-
- template <>
-class numeric_limits<float> : public _Num_float_base {
-public:
-     static constexpr float(min)() noexcept {
-        return 1.175494351e-38F;
-    }
-
-     static constexpr float(max)() noexcept {
-        return 3.402823466e+38F;
-    }
-
-     static constexpr float lowest() noexcept {
-        return -(max)();
-    }
-
-     static constexpr float epsilon() noexcept {
-        return 1.192092896e-07F;
-    }
-
-     static constexpr float round_error() noexcept {
-        return 0.5F;
-    }
-
-     static constexpr float denorm_min() noexcept {
-        return 1.401298464e-45F;
-    }
-
-     static constexpr float infinity() noexcept {
-        return __builtin_huge_valf();
-    }
-
-     static constexpr float quiet_NaN() noexcept {
-        return __builtin_nanf("0");
-    }
-
-     static constexpr float signaling_NaN() noexcept {
-        return __builtin_nansf("1");
-    }
-
-    static constexpr int digits         = 24;
-    static constexpr int digits10       = 6;
-    static constexpr int max_digits10   = 9;
-    static constexpr int max_exponent   = 128;
-    static constexpr int max_exponent10 = 38;
-    static constexpr int min_exponent   = (-125);
-    static constexpr int min_exponent10 = (-37);
-};
-
- template <>
-class numeric_limits<double> : public _Num_float_base {
-public:
-     static constexpr double(min)() noexcept {
-        return 2.2250738585072014e-308;
-    }
-
-     static constexpr double(max)() noexcept {
-        return 1.7976931348623158e+308;
-    }
-
-     static constexpr double lowest() noexcept {
-        return -(max)();
-    }
-
-     static constexpr double epsilon() noexcept {
-        return 2.2204460492503131e-016;
-    }
-
-     static constexpr double round_error() noexcept {
-        return 0.5;
-    }
-
-     static constexpr double denorm_min() noexcept {
-        return 4.9406564584124654e-324;
-    }
-
-     static constexpr double infinity() noexcept {
-        return __builtin_huge_val();
-    }
-
-     static constexpr double quiet_NaN() noexcept {
-        return __builtin_nan("0");
-    }
-
-     static constexpr double signaling_NaN() noexcept {
-        return __builtin_nans("1");
-    }
-
-    static constexpr int digits         = 53;
-    static constexpr int digits10       = 15;
-    static constexpr int max_digits10   = 17;
-    static constexpr int max_exponent   = 1024;
-    static constexpr int max_exponent10 = 308;
-    static constexpr int min_exponent   = (-1021);
-    static constexpr int min_exponent10 = (-307);
-};
-
- template <>
-class numeric_limits<long double> : public _Num_float_base {
-public:
-     static constexpr long double(min)() noexcept {
-        return 2.2250738585072014e-308;
-    }
-
-     static constexpr long double(max)() noexcept {
-        return 1.7976931348623158e+308;
-    }
-
-     static constexpr long double lowest() noexcept {
-        return -(max)();
-    }
-
-     static constexpr long double epsilon() noexcept {
-        return 2.2204460492503131e-016;
-    }
-
-     static constexpr long double round_error() noexcept {
-        return 0.5L;
-    }
-
-     static constexpr long double denorm_min() noexcept {
-        return 4.9406564584124654e-324;
-    }
-
-     static constexpr long double infinity() noexcept {
-        return __builtin_huge_val();
-    }
-
-     static constexpr long double quiet_NaN() noexcept {
-        return __builtin_nan("0");
-    }
-
-     static constexpr long double signaling_NaN() noexcept {
-        return __builtin_nans("1");
-    }
-
-    static constexpr int digits         = 53;
-    static constexpr int digits10       = 15;
-    static constexpr int max_digits10   = 17;
-    static constexpr int max_exponent   = 1024;
-    static constexpr int max_exponent10 = 308;
-    static constexpr int min_exponent   = (-1021);
-    static constexpr int min_exponent10 = (-307);
-};
-
-   template <class _Ty>
- constexpr int _Countl_zero_fallback(_Ty _Val) noexcept {
-    _Ty _Yy = 0;
-
-    unsigned int _Nn = numeric_limits<_Ty>::digits;
-    unsigned int _Cc = numeric_limits<_Ty>::digits / 2;
-    do {
-        _Yy = static_cast<_Ty>(_Val >> _Cc);
-        if (_Yy != 0) {
-            _Nn -= _Cc;
-            _Val = _Yy;
-        }
-        _Cc >>= 1;
-    } while (_Cc != 0);
-    return static_cast<int>(_Nn) - static_cast<int>(_Val);
-}
-
-   template <class _Ty>
- constexpr int _Countr_zero_fallback(const _Ty _Val) noexcept {
-    constexpr int _Digits = std::numeric_limits<_Ty>::digits;
-    return _Digits - _Countl_zero_fallback(static_cast<_Ty>(static_cast<_Ty>(~_Val) & static_cast<_Ty>(_Val - 1)));
-}
-
-extern "C" {
-extern int __isa_available;
-}
-
-template <class _Ty>
- int _Checked_x86_x64_countr_zero(const _Ty _Val) noexcept {
-    constexpr int _Digits = numeric_limits<_Ty>::digits;
-    constexpr _Ty _Max    = (numeric_limits<_Ty>::max)();
-
-    const bool _Definitely_have_tzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
-    if (!_Definitely_have_tzcnt && _Val == 0) {
-        return _Digits;
-    }
-
-    if constexpr (_Digits <= 32) {
-                                   return static_cast<int>(_tzcnt_u32(static_cast<unsigned int>(~_Max | _Val)));
-    } else {
-        return static_cast<int>(_tzcnt_u64(_Val));
-    }
-}
-
-template <class _Ty>
-constexpr bool _Is_standard_unsigned_integer =
-    _Is_any_of_v<remove_cv_t<_Ty>, unsigned char, unsigned short, unsigned int, unsigned long, unsigned long long>;
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr int _Countr_zero(const _Ty _Val) noexcept {
-    if (!::std:: is_constant_evaluated()) {
-        return _Checked_x86_x64_countr_zero(_Val);
-    }
-         return _Countr_zero_fallback(_Val);
-}
-
-}
-
- 
-  
-
-
-
-namespace std {
-
-template <class _To, class _From,
-    enable_if_t<conjunction_v<bool_constant<sizeof(_To) == sizeof(_From)>, is_trivially_copyable<_To>,
-                    is_trivially_copyable<_From>>,
-        int> = 0>
- constexpr _To bit_cast(const _From& _Val) noexcept {
-    return __builtin_bit_cast(_To, _Val);
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr int countl_zero(_Ty _Val) noexcept;
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr bool has_single_bit(const _Ty _Val) noexcept {
-    return _Val != 0 && (_Val & (_Val - 1)) == 0;
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr _Ty bit_ceil(const _Ty _Val) noexcept   {
-    if (_Val == 0) {
-        return 1;
-    }
-
-    return static_cast<_Ty>(_Ty{1} << (numeric_limits<_Ty>::digits - ::std:: countl_zero(static_cast<_Ty>(_Val - 1))));
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr _Ty bit_floor(const _Ty _Val) noexcept {
-    if (_Val == 0) {
-        return 0;
-    }
-
-    return static_cast<_Ty>(_Ty{1} << (numeric_limits<_Ty>::digits - 1 - ::std:: countl_zero(_Val)));
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr _Ty bit_width(const _Ty _Val) noexcept {
-    return static_cast<_Ty>(numeric_limits<_Ty>::digits - ::std:: countl_zero(_Val));
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr _Ty rotr(_Ty _Val, int _Rotation) noexcept;
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr _Ty rotl(const _Ty _Val, const int _Rotation) noexcept {
-    constexpr auto _Digits = numeric_limits<_Ty>::digits;
-    const auto _Remainder  = _Rotation % _Digits;
-    if (_Remainder > 0) {
-        return static_cast<_Ty>(
-            static_cast<_Ty>(_Val << _Remainder) | static_cast<_Ty>(_Val >> (_Digits - _Remainder)));
-    } else if (_Remainder == 0) {
-        return _Val;
-    } else {          return ::std:: rotr(_Val, -_Remainder);
-    }
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled>
- constexpr _Ty rotr(const _Ty _Val, const int _Rotation) noexcept {
-    constexpr auto _Digits = numeric_limits<_Ty>::digits;
-    const auto _Remainder  = _Rotation % _Digits;
-    if (_Remainder > 0) {
-        return static_cast<_Ty>(
-            static_cast<_Ty>(_Val >> _Remainder) | static_cast<_Ty>(_Val << (_Digits - _Remainder)));
-    } else if (_Remainder == 0) {
-        return _Val;
-    } else {          return ::std:: rotl(_Val, -_Remainder);
-    }
-}
-
-  template <class _Ty>
- constexpr int _Popcount_fallback(_Ty _Val) noexcept {
-    constexpr int _Digits = numeric_limits<_Ty>::digits;
-         _Val = static_cast<_Ty>(_Val - ((_Val >> 1) & static_cast<_Ty>(0x5555'5555'5555'5555ull)));
-    _Val = static_cast<_Ty>((_Val & static_cast<_Ty>(0x3333'3333'3333'3333ull))
-                            + ((_Val >> 2) & static_cast<_Ty>(0x3333'3333'3333'3333ull)));
-    _Val = static_cast<_Ty>((_Val + (_Val >> 4)) & static_cast<_Ty>(0x0F0F'0F0F'0F0F'0F0Full));
-    for (int _Shift_digits = 8; _Shift_digits < _Digits; _Shift_digits <<= 1) {
-        _Val = static_cast<_Ty>(_Val + static_cast<_Ty>(_Val >> _Shift_digits));
-    }
-         return static_cast<int>(_Val & static_cast<_Ty>(_Digits + _Digits - 1));
-}
-
-
-extern "C" {
-extern int __isa_available;
-}
-
-template <class _Ty>
- int _Countl_zero_lzcnt(const _Ty _Val) noexcept {
-    constexpr int _Digits = numeric_limits<_Ty>::digits;
-
-    if constexpr (_Digits <= 16) {
-        return static_cast<int>(__lzcnt16(_Val) - (16 - _Digits));
-    } else if constexpr (_Digits == 32) {
-        return static_cast<int>(__lzcnt(_Val));
-    } else {
-        return static_cast<int>(__lzcnt64(_Val));
-    }
-}
-
-template <class _Ty>
- int _Countl_zero_bsr(const _Ty _Val) noexcept {
-    constexpr int _Digits = numeric_limits<_Ty>::digits;
-
-    unsigned long _Result;
-    if constexpr (_Digits <= 32) {
-        if (!_BitScanReverse(&_Result, _Val)) {
-            return _Digits;
-        }
-    } else {
-        if (!_BitScanReverse64(&_Result, _Val)) {
-            return _Digits;
-        }
-    }
-    return static_cast<int>(_Digits - 1 - _Result);
-}
-
-template <class _Ty>
- int _Checked_x86_x64_countl_zero(const _Ty _Val) noexcept {
-    const bool _Definitely_have_lzcnt = __isa_available >= __ISA_AVAILABLE_AVX2;
-    if (_Definitely_have_lzcnt) {
-        return _Countl_zero_lzcnt(_Val);
-    } else {
-        return _Countl_zero_bsr(_Val);
-    }
-}
-
-template <class _Ty>
- int _Checked_x86_x64_popcount(const _Ty _Val) noexcept {
-    constexpr int _Digits              = numeric_limits<_Ty>::digits;
-    const bool _Definitely_have_popcnt = __isa_available >= __ISA_AVAILABLE_SSE42;
-    if (!_Definitely_have_popcnt) {
-        return _Popcount_fallback(_Val);
-    }
-
-    if constexpr (_Digits <= 16) {
-        return static_cast<int>(__popcnt16(_Val));
-    } else if constexpr (_Digits == 32) {
-        return static_cast<int>(__popcnt(_Val));
-    } else {
-        return static_cast<int>(__popcnt64(_Val));
-    }
-}
-
-
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled>
- constexpr int countl_zero(const _Ty _Val) noexcept {
-    if (::std:: is_constant_evaluated()) {
-        return _Countl_zero_fallback(_Val);
-    } else {
-        return _Checked_x86_x64_countl_zero(_Val);
-    }
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr int countl_one(const _Ty _Val) noexcept {
-    return ::std:: countl_zero(static_cast<_Ty>(~_Val));
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> = 0>
- constexpr int countr_zero(const _Ty _Val) noexcept {
-    return _Countr_zero(_Val);
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled = 0>
- constexpr int countr_one(const _Ty _Val) noexcept {
-    return _Countr_zero(static_cast<_Ty>(~_Val));
-}
-
-template <class _Ty, enable_if_t<_Is_standard_unsigned_integer<_Ty>, int> _Enabled = 0>
- constexpr int popcount(const _Ty _Val) noexcept {
-    if (!::std:: is_constant_evaluated()) {
-        return _Checked_x86_x64_popcount(_Val);
-    }
-    return _Popcount_fallback(_Val);
-}
-
-enum class endian { little = 0, big = 1, native = little };
-
-}
-
- 
-  
 
 
 
@@ -14412,6 +13659,31 @@ struct compare_three_way {
     using is_transparent = int;
 };
  
+ struct _Synth_three_way {
+         template <class _Ty1, class _Ty2>
+     constexpr auto operator()(const _Ty1& _Left, const _Ty2& _Right) const
+    requires requires {
+        { _Left < _Right } -> _Boolean_testable;
+        { _Right < _Left } -> _Boolean_testable;
+    }
+         {
+        if constexpr (three_way_comparable_with<_Ty1, _Ty2>) {
+            return _Left <=> _Right;
+        } else {
+            if (_Left < _Right) {
+                return weak_ordering::less;
+            } else if (_Right < _Left) {
+                return weak_ordering::greater;
+            } else {
+                return weak_ordering::equivalent;
+            }
+        }
+    }
+};
+
+ template <class _Ty1, class _Ty2 = _Ty1>
+using _Synth_three_way_result = decltype(_Synth_three_way{}(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()));
+
  
  namespace _Strong_order {
     void strong_order();  
@@ -14494,10 +13766,9 @@ struct compare_three_way {
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Strong_order::_Cpo strong_order;
 }
-using namespace _Cpos;
 
  namespace _Weak_order {
     void weak_order();  
@@ -14601,10 +13872,9 @@ using namespace _Cpos;
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Weak_order::_Cpo weak_order;
 }
-using namespace _Cpos;
 
  namespace _Partial_order {
     void partial_order();  
@@ -14671,10 +13941,9 @@ using namespace _Cpos;
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Partial_order::_Cpo partial_order;
 }
-using namespace _Cpos;
 
  template <class _Ty1, class _Ty2>
 concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
@@ -14700,10 +13969,9 @@ concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
                 return {_St::_Strong, noexcept(::std:: strong_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt<_Ty1, _Ty2>) {
                 return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? strong_ordering::equal
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? strong_ordering::less
-                                                                                 : strong_ordering::greater)};
+                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? strong_ordering::equal
+                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? strong_ordering::less
+                                                                             : strong_ordering::greater)};
             } else {
                 return {_St::_None};
             }
@@ -14722,17 +13990,17 @@ concept _Can_fallback_eq_lt = requires(_Ty1& _Left, _Ty2& _Right) {
                 return ::std:: strong_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
                 return _Left == _Right ? strong_ordering::equal
-                                       : _Left < _Right ? strong_ordering::less : strong_ordering::greater;
+                     : _Left < _Right  ? strong_ordering::less
+                                       : strong_ordering::greater;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_strong_order_fallback::_Cpo compare_strong_order_fallback;
 }
-using namespace _Cpos;
 
  namespace _Compare_weak_order_fallback {
     template <class _Ty1, class _Ty2>
@@ -14751,11 +14019,10 @@ using namespace _Cpos;
             } else if constexpr (_Can_weak_order<_Ty1, _Ty2>) {
                 return {_St::_Weak, noexcept(::std:: weak_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt<_Ty1, _Ty2>) {
-                return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? weak_ordering::equivalent
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? weak_ordering::less
-                                                                                 : weak_ordering::greater)};
+                return {
+                    _St::_Fallback, noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? weak_ordering::equivalent
+                                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? weak_ordering::less
+                                                                                             : weak_ordering::greater)};
             } else {
                 return {_St::_None};
             }
@@ -14774,17 +14041,17 @@ using namespace _Cpos;
                 return ::std:: weak_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
                 return _Left == _Right ? weak_ordering::equivalent
-                                       : _Left < _Right ? weak_ordering::less : weak_ordering::greater;
+                     : _Left < _Right  ? weak_ordering::less
+                                       : weak_ordering::greater;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_weak_order_fallback::_Cpo compare_weak_order_fallback;
 }
-using namespace _Cpos;
 
  namespace _Compare_partial_order_fallback {
     template <class _Ty1, class _Ty2>
@@ -14811,12 +14078,10 @@ using namespace _Cpos;
                 return {_St::_Partial, noexcept(::std:: partial_order(::std:: declval<_Ty1&>(), ::std:: declval<_Ty2&>()))};
             } else if constexpr (_Can_fallback_eq_lt_twice<_Ty1, _Ty2>) {
                 return {_St::_Fallback,
-                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()
-                                 ? partial_ordering::equivalent
-                                 : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>()
-                                       ? partial_ordering::less
-                                       : ::std:: declval<_Ty2&>() < ::std:: declval<_Ty1&>() ? partial_ordering::greater
-                                                                                       : partial_ordering::unordered)};
+                    noexcept(::std:: declval<_Ty1&>() == ::std:: declval<_Ty2&>()  ? partial_ordering::equivalent
+                             : ::std:: declval<_Ty1&>() < ::std:: declval<_Ty2&>() ? partial_ordering::less
+                             : ::std:: declval<_Ty2&>() < ::std:: declval<_Ty1&>() ? partial_ordering::greater
+                                                                             : partial_ordering::unordered)};
             } else {
                 return {_St::_None};
             }
@@ -14834,25 +14099,841 @@ using namespace _Cpos;
             if constexpr (_Strat == _St::_Partial) {
                 return ::std:: partial_order(_Left, _Right);
             } else if constexpr (_Strat == _St::_Fallback) {
-                return _Left == _Right
-                           ? partial_ordering::equivalent
-                           : _Left < _Right ? partial_ordering::less
-                                            : _Right < _Left ? partial_ordering::greater : partial_ordering::unordered;
+                return _Left == _Right ? partial_ordering::equivalent
+                     : _Left < _Right  ? partial_ordering::less
+                     : _Right < _Left  ? partial_ordering::greater
+                                       : partial_ordering::unordered;
             } else {
                 static_assert(_Always_false<_Ty1>, "should be unreachable");
             }
         }
     };
 }  
-namespace _Cpos {
+inline namespace _Cpos {
     inline constexpr _Compare_partial_order_fallback::_Cpo compare_partial_order_fallback;
 }
-using namespace _Cpos;
 
 }
 
 
 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+       
+              
+       
+
+extern "C++" {
+
+
+
+
+          
+    __declspec(allocator) void* __cdecl operator new(
+            size_t      _Size,
+            int         _BlockUse,
+          char const* _FileName,
+            int         _LineNumber
+        );
+
+          
+    __declspec(allocator) void* __cdecl operator new[](
+            size_t      _Size,
+            int         _BlockUse,
+          char const* _FileName,
+            int         _LineNumber
+        );
+
+    void __cdecl operator delete(
+        void*       _Block,
+        int         _BlockUse,
+        char const* _FileName,
+        int         _LineNumber
+        ) noexcept;
+
+    void __cdecl operator delete[](
+        void*       _Block,
+        int         _BlockUse,
+        char const* _FileName,
+        int         _LineNumber
+        ) noexcept;
+
+
+
+
+}  
+
+
+
+         extern "C" {
+
+
+
+typedef void* _HFILE;  
+
+
+
+
+
+     
+typedef int (__cdecl* _CRT_REPORT_HOOK )(int, char*,    int*);
+typedef int (__cdecl* _CRT_REPORT_HOOKW)(int, wchar_t*, int*);
+
+
+
+typedef int (__cdecl* _CRT_ALLOC_HOOK)(int, void*, size_t, int, long, unsigned char const*, int);
+
+
+
+
+
+     
+ 
+  
+  
+
+
+ 
+     
+typedef void (__cdecl* _CRT_DUMP_CLIENT)(void*, size_t);
+
+
+struct _CrtMemBlockHeader;
+
+typedef struct _CrtMemState
+{
+    struct _CrtMemBlockHeader* pBlockHeader;
+    size_t lCounts[5];
+    size_t lSizes[5];
+    size_t lHighWaterCount;
+    size_t lTotalCount;
+} _CrtMemState;
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+}                             
+
+                      
+
+
+      
+ 
+ 
+   
+
+
+
+
+
+  
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+
+
+namespace std {
+enum _Uninitialized {      _Noinit
+};
+
+ class  _Lockit {  public:
+    __thiscall _Lockit() noexcept;
+    explicit __thiscall _Lockit(int) noexcept;      __thiscall ~_Lockit() noexcept;  
+    static void __cdecl _Lockit_ctor(int) noexcept;
+    static void __cdecl _Lockit_dtor(int) noexcept;
+
+private:
+    static void __cdecl _Lockit_ctor(_Lockit*) noexcept;
+    static void __cdecl _Lockit_ctor(_Lockit*, int) noexcept;
+    static void __cdecl _Lockit_dtor(_Lockit*) noexcept;
+
+public:
+     _Lockit(const _Lockit&) = delete;
+    _Lockit&  operator=(const _Lockit&) = delete;
+
+private:
+    int _Locktype;
+};
+
+
+
+
+
+
+class  _Init_locks {  public:
+    __thiscall _Init_locks() noexcept;
+    __thiscall ~_Init_locks() noexcept;
+
+private:
+    static void __cdecl _Init_locks_ctor(_Init_locks*) noexcept;
+    static void __cdecl _Init_locks_dtor(_Init_locks*) noexcept;
+};
+
+ 
+
+}
+
+
+
+
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+       
+                 
+                     
+
+
+
+         extern "C" {
+
+
+
+ 
+ int __cdecl _memicmp(
+      void const* _Buf1,
+      void const* _Buf2,
+                             size_t      _Size
+    );
+
+ 
+ int __cdecl _memicmp_l(
+      void const* _Buf1,
+      void const* _Buf2,
+                             size_t      _Size,
+                         _locale_t   _Locale
+    );
+
+
+
+
+
+
+
+
+
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memccpy. See online help for details."))
+     void* __cdecl memccpy(
+          void*       _Dst,
+            void const* _Src,
+                                   int         _Val,
+                                   size_t      _Size
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _memicmp. See online help for details."))
+     int __cdecl memicmp(
+          void const* _Buf1,
+          void const* _Buf2,
+                                 size_t      _Size
+        );
+
+
+
+
+
+    extern "C++"  
+    inline void* __cdecl memchr(
+          void*  _Pv,
+                              int    _C,
+                              size_t _N
+        )
+    {
+        void const* const _Pvc = _Pv;
+        return const_cast<void*>(memchr(_Pvc, _C, _N));
+    }
+
+
+
+
+}                             
+
+
+               
+
+
+
+         extern "C" {
+
+
+
+
+
+    
+     errno_t __cdecl strcpy_s(
+          char*       _Destination,
+                                  rsize_t     _SizeInBytes,
+                                char const* _Source
+        );
+
+    
+     errno_t __cdecl strcat_s(
+          char*       _Destination,
+                                     rsize_t     _SizeInBytes,
+                                   char const* _Source
+        );
+
+    
+     errno_t __cdecl strerror_s(
+          char*  _Buffer,
+                                  size_t _SizeInBytes,
+                                  int    _ErrorNumber);
+
+    
+     errno_t __cdecl strncat_s(
+          char*       _Destination,
+                                     rsize_t     _SizeInBytes,
+               char const* _Source,
+                                     rsize_t     _MaxCount
+        );
+
+    
+     errno_t __cdecl strncpy_s(
+          char*       _Destination,
+                                  rsize_t     _SizeInBytes,
+            char const* _Source,
+                                  rsize_t     _MaxCount
+        );
+
+     
+     char*  __cdecl strtok_s(
+                          char*       _String,
+                                 char const* _Delimiter,
+            char**      _Context
+        );
+
+
+ void* __cdecl _memccpy(
+      void*       _Dst,
+                                   void const* _Src,
+                                   int         _Val,
+                                   size_t      _MaxCount
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcat_s(char (&_Destination)[_Size],   char const* _Source) throw()                 {                                                                                                                    return strcat_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+
+    __declspec(deprecated("This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcat(  char *_Destination,                                                                             char const* _Source);
+
+
+ 
+int __cdecl strcmp(
+      char const* _Str1,
+      char const* _Str2
+    );
+
+ 
+ int __cdecl _strcmpi(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl strcoll(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _strcoll_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strcpy_s(  char (&_Destination)[_Size],     char const* _Source) throw()                 {                                                                                                                    return strcpy_s(_Destination, _Size, _Source);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strcpy(  char *_Destination,                                          char const* _Source);
+
+ 
+ size_t __cdecl strcspn(
+      char const* _Str,
+      char const* _Control
+    );
+
+
+ 
+ __declspec(allocator) char* __cdecl _strdup(
+      char const* _Source
+    );
+
+
+ 
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char*  __cdecl _strerror(
+      char const* _ErrorMessage
+    );
+
+
+ errno_t __cdecl _strerror_s(
+      char*       _Buffer,
+                              size_t      _SizeInBytes,
+                        char const* _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strerror_s(char (&_Buffer)[_Size],   char const* _ErrorMessage) throw()                 {                                                                                                                    return _strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+ 
+  __declspec(deprecated("This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char* __cdecl strerror(
+      int _ErrorMessage
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl strerror_s(char (&_Buffer)[_Size],   int _ErrorMessage) throw()                 {                                                                                                                    return strerror_s(_Buffer, _Size, _ErrorMessage);                                                                       }                                                                                                            }
+
+ 
+ int __cdecl _stricmp(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _stricoll(
+      char const* _String1,
+      char const* _String2
+    );
+
+ 
+ int __cdecl _stricoll_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _stricmp_l(
+        char const* _String1,
+        char const* _String2,
+      _locale_t   _Locale
+    );
+
+ 
+size_t __cdecl strlen(
+      char const* _Str
+    );
+
+
+ errno_t __cdecl _strlwr_s(
+      char*  _String,
+                          size_t _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strlwr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strlwr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strlwr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr(  char *_String);
+
+
+ errno_t __cdecl _strlwr_s_l(
+      char*     _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strlwr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strlwr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strlwr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strlwr_l(  char *_String,                   _locale_t _Locale);
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncat_s(              char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncat_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncat(  char *_Destination,      char const* _Source,                         size_t _Count);
+
+ 
+ int __cdecl strncmp(
+      char const* _Str1,
+      char const* _Str2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicmp(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicmp_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _strnicoll(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strnicoll_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ 
+ int __cdecl _strncoll(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount
+    );
+
+ 
+ int __cdecl _strncoll_l(
+      char const* _String1,
+      char const* _String2,
+                            size_t      _MaxCount,
+                        _locale_t   _Locale
+    );
+
+ size_t __cdecl __strncnt(
+      char const* _String,
+                         size_t      _Count
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl strncpy_s(char (&_Destination)[_Size],   char const* _Source,                      size_t _Count) throw()                 {                                                                                                                                    return strncpy_s(_Destination, _Size, _Source, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl strncpy(    char *_Destination,               char const* _Source,                                  size_t _Count);
+
+ 
+
+
+ size_t __cdecl strnlen(
+      char const* _String,
+                            size_t      _MaxCount
+    );
+
+
+     
+    
+    
+    static __inline size_t __cdecl strnlen_s(
+          char const* _String,
+                                size_t      _MaxCount
+        )
+    {
+        return _String == 0 ? 0 : strnlen(_String, _MaxCount);
+    }
+
+
+
+ errno_t __cdecl _strnset_s(
+      char*  _String,
+                                 size_t _SizeInBytes,
+                                 int    _Value,
+                                 size_t _MaxCount
+    );
+
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _strnset_s(  char (&_Destination)[_Size],          int _Value,          size_t _Count) throw()                 {                                                                                                                                    return _strnset_s(_Destination, _Size, _Value, _Count);                                                                               }                                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strnset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strnset(  char *_Destination,                         int _Value,                         size_t _Count);
+
+ 
+ char const* __cdecl strpbrk(
+      char const* _Str,
+      char const* _Control
+    );
+
+ char* __cdecl _strrev(
+      char* _Str
+    );
+
+
+ errno_t __cdecl _strset_s(
+      char*  _Destination,
+                                     size_t _DestinationSize,
+                                     int    _Value
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strset_s(  char (&_Destination)[_Size],          int _Value) throw()                 {                                                                                                                    return _strset_s(_Destination, _Size, _Value);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strset_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strset(  char *_Destination,         int _Value);
+
+ 
+ size_t __cdecl strspn(
+      char const* _Str,
+      char const* _Control
+    );
+
+  __declspec(deprecated("This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
+ char* __cdecl strtok(
+      char*       _String,
+             char const* _Delimiter
+    );
+
+
+ errno_t __cdecl _strupr_s(
+      char*  _String,
+                          size_t _Size
+    );
+
+extern "C++"                                                                                      {                                                                                                     template <size_t _Size>                                                                           inline                                                                                            errno_t __cdecl _strupr_s(  char (&_String)[_Size]) throw()                  {                                                                                                     return _strupr_s(_String, _Size);                                                                }                                                                                             }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strupr_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr(  char *_String);
+
+
+ errno_t __cdecl _strupr_s_l(
+      char*     _String,
+                          size_t    _Size,
+                      _locale_t _Locale
+    );
+
+extern "C++"                                                                                                     {                                                                                                                    template <size_t _Size>                                                                                          inline                                                                                                           errno_t __cdecl _strupr_s_l(  char (&_String)[_Size],      _locale_t _Locale) throw()                 {                                                                                                                    return _strupr_s_l(_String, _Size, _Locale);                                                                       }                                                                                                            }
+
+__declspec(deprecated("This function or variable may be unsafe. Consider using _strupr_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _strupr_l(  char *_String,                   _locale_t _Locale);
+
+ 
+
+ size_t __cdecl strxfrm(
+        char*       _Destination,
+                                         char const* _Source,
+                 size_t      _MaxCount
+    );
+
+ 
+
+ size_t __cdecl _strxfrm_l(
+        char*       _Destination,
+                                         char const* _Source,
+                 size_t      _MaxCount,
+                                       _locale_t   _Locale
+    );
+
+
+
+extern "C++"
+{
+     
+    inline char* __cdecl strchr(  char* const _String,   int const _Ch)
+    {
+        return const_cast<char*>(strchr(static_cast<char const*>(_String), _Ch));
+    }
+
+     
+    inline char* __cdecl strpbrk(  char* const _String,   char const* const _Control)
+    {
+        return const_cast<char*>(strpbrk(static_cast<char const*>(_String), _Control));
+    }
+
+     
+    inline char* __cdecl strrchr(  char* const _String,   int const _Ch)
+    {
+        return const_cast<char*>(strrchr(static_cast<char const*>(_String), _Ch));
+    }
+
+       
+    inline char* __cdecl strstr(  char* const _String,   char const* const _SubString)
+    {
+        return const_cast<char*>(strstr(static_cast<char const*>(_String), _SubString));
+    }
+}
+
+
+
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details."))
+     char* __cdecl strdup(
+          char const* _String
+        );
+
+           __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details."))
+     int __cdecl strcmpi(
+          char const* _String1,
+          char const* _String2
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details."))
+     int __cdecl stricmp(
+          char const* _String1,
+          char const* _String2
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details."))
+     char* __cdecl strlwr(
+          char* _String
+        );
+
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnicmp. See online help for details."))
+     int __cdecl strnicmp(
+          char const* _String1,
+          char const* _String2,
+                                size_t      _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strnset. See online help for details."))
+     char* __cdecl strnset(
+          char*  _String,
+                                  int    _Value,
+                                  size_t _MaxCount
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strrev. See online help for details."))
+     char* __cdecl strrev(
+          char* _String
+        );
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strset. See online help for details."))
+    char* __cdecl strset(
+          char* _String,
+               int   _Value);
+
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strupr. See online help for details."))
+     char* __cdecl strupr(
+          char* _String
+        );
+
+
+
+
+}                             
+
+
+
+
+namespace std {
+
+using :: size_t;
+using :: memchr;
+using :: memcmp;
+using :: memcpy;
+using :: memmove;
+using :: memset;
+using :: strcat;
+using :: strchr;
+using :: strcmp;
+using :: strcoll;
+using :: strcpy;
+using :: strcspn;
+using :: strerror;
+using :: strlen;
+using :: strncat;
+using :: strncmp;
+using :: strncpy;
+using :: strpbrk;
+using :: strrchr;
+using :: strspn;
+using :: strstr;
+using :: strtok;
+using :: strxfrm;
+
+}
+
+
+
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+
+ 
+  
+
+ 
+  
 
 
 
@@ -15047,28 +15128,12 @@ template <class _Ty1, class _Ty2>
 }
 
 template <class _Ty1, class _Ty2>
- constexpr bool operator!=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Left == _Right);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator<(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return _Left.first < _Right.first || (!(_Right.first < _Left.first) && _Left.second < _Right.second);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator>(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator<=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Ty1, class _Ty2>
- constexpr bool operator>=(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
-    return !(_Left < _Right);
+ constexpr common_comparison_category_t<_Synth_three_way_result<_Ty1>, _Synth_three_way_result<_Ty2>>
+    operator<=>(const pair<_Ty1, _Ty2>& _Left, const pair<_Ty1, _Ty2>& _Right) {
+    if (auto _Result = _Synth_three_way{}(_Left.first, _Right.first); _Result != 0) {
+        return _Result;
+    }
+    return _Synth_three_way{}(_Left.second, _Right.second);
 }
 
  template <class _Ty>
@@ -15457,18 +15522,30 @@ struct _Get_rebind_alias<_Ty, _Other, void_t<typename _Ty::template rebind<_Othe
 };
 
  template <class _Iter>
- void* _Voidify_iter(_Iter _It) noexcept {
+ constexpr void* _Voidify_iter(_Iter _It) noexcept {
     if constexpr (is_pointer_v<_Iter>) {
         return const_cast<void*>(static_cast<const volatile void*>(_It));
-    } else
-    {
+    } else {
         return const_cast<void*>(static_cast<const volatile void*>(::std:: addressof(*_It)));
     }
 }
 
+ template <class _Ty, class... _Types,
+    class = void_t<decltype(::new (::std:: declval<void*>()) _Ty(::std:: declval<_Types>()...))>>
+constexpr _Ty* construct_at(_Ty* const _Location, _Types&&... _Args) noexcept(
+    noexcept(::new (_Voidify_iter(_Location)) _Ty(::std:: forward<_Types>(_Args)...)))   {
+    return ::new (_Voidify_iter(_Location)) _Ty(::std:: forward<_Types>(_Args)...);
+}
+
  template <class _Ty, class... _Types>
-void _Construct_in_place(_Ty& _Obj, _Types&&... _Args) noexcept(is_nothrow_constructible_v<_Ty, _Types...>) {
-    ::new (_Voidify_iter(::std:: addressof(_Obj))) _Ty(::std:: forward<_Types>(_Args)...);
+constexpr void _Construct_in_place(_Ty& _Obj, _Types&&... _Args) noexcept(
+    is_nothrow_constructible_v<_Ty, _Types...>) {
+    if (::std:: is_constant_evaluated()) {
+        ::std:: construct_at(::std:: addressof(_Obj), ::std:: forward<_Types>(_Args)...);
+    } else
+    {
+        ::new (_Voidify_iter(::std:: addressof(_Obj))) _Ty(::std:: forward<_Types>(_Args)...);
+    }
 }
 
  template <class _Ty>
@@ -15542,8 +15619,7 @@ template <class _Ptr>
 struct _Ref_fn {      template <class... _Args>
     constexpr decltype(auto) operator()(_Args&&... _Vals) {          if constexpr (is_member_pointer_v<_Fx>) {
             return ::std:: invoke(_Fn, ::std:: forward<_Args>(_Vals)...);
-        } else
-        {
+        } else {
             return _Fn(::std:: forward<_Args>(_Vals)...);
         }
     }
@@ -15976,10 +16052,9 @@ struct iterator_traits<_Ty*> {
             }
         };
              }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Iter_move::_Cpo iter_move;
     }
-    using namespace _Cpos;
 }  
  
   template <class _Ty>
@@ -16013,17 +16088,27 @@ concept indirectly_writable = requires(_It&& __i, _Ty&& __t) {
     const_cast<const iter_reference_t<_It>&&>(*static_cast<_It&&>(__i)) = static_cast<_Ty&&>(__t);
 };
 
-  template <class _Ty>
-concept _Integer_like = _Is_nonbool_integral<_Ty>;
-
  template <class _Ty>
+concept _Integer_like = _Is_nonbool_integral<remove_cv_t<_Ty>>;
+
+  template <class _Ty>
 concept _Signed_integer_like = _Integer_like<_Ty> && static_cast<_Ty>(-1) < static_cast<_Ty>(0);
  
  template <class _Ty>
 using _Make_unsigned_like_t = make_unsigned_t<_Ty>;
 
+template <_Integer_like _Ty>
+ constexpr auto _To_unsigned_like(const _Ty _Value) noexcept {
+    return static_cast<_Make_unsigned_like_t<_Ty>>(_Value);
+}
+
  template <class _Ty>
 using _Make_signed_like_t = make_signed_t<_Ty>;
+
+template <_Integer_like _Ty>
+ constexpr auto _To_signed_like(const _Ty _Value) noexcept {
+    return static_cast<_Make_signed_like_t<_Ty>>(_Value);
+}
 
   template <class _Ty>
 concept weakly_incrementable = default_initializable<_Ty> && movable<_Ty> && requires(_Ty __i) {
@@ -16196,7 +16281,8 @@ using indirect_result_t = invoke_result_t<_Fn, iter_reference_t<_Its>...>;
 template <indirectly_readable _It, indirectly_regular_unary_invocable<_It> _Proj>
 struct projected {
     using value_type = remove_cvref_t<indirect_result_t<_Proj&, _It>>;
-    indirect_result_t<_Proj&, _It> operator*() const;
+    indirect_result_t<_Proj&, _It> operator*() const {
+        :: abort();      }
 };
 
 
@@ -16298,10 +16384,9 @@ concept indirectly_copyable_storable = indirectly_copyable<_In, _Out>
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Iter_swap::_Cpo iter_swap;
     }
-    using namespace _Cpos;
 }  
   template <class _It1, class _It2 = _It1>
 concept indirectly_swappable = indirectly_readable<_It1> && indirectly_readable<_It2>
@@ -16619,8 +16704,7 @@ constexpr _BidIt _Prev_iter(_BidIt _First) {      return --_First;
     return _First;
 }
 
- 
-template <class _BidIt>
+ template <class _BidIt>
 class reverse_iterator {
 public:
     using iterator_type = _BidIt;
@@ -17065,10 +17149,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Begin::_Cpo begin;
     }
-    using namespace _Cpos;
 
          template <class _Ty>
     using iterator_t = decltype(::std::ranges:: begin(::std:: declval<_Ty&>()));
@@ -17120,10 +17203,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Unchecked_begin::_Cpo _Ubegin;
     }
-    using namespace _Cpos;
 
          namespace _End {
         template <class _Ty>
@@ -17188,10 +17270,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _End::_Cpo end;
     }
-    using namespace _Cpos;
 
          namespace _Unchecked_end {
                  template <class _Ty>
@@ -17240,10 +17321,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Unchecked_end::_Cpo _Uend;
     }
-    using namespace _Cpos;
 
          template <class _Rng>
     concept range = requires(_Rng& __r) {
@@ -17278,10 +17358,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cbegin_fn cbegin;
     }
-    using namespace _Cpos;
 
          struct _Cend_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17292,10 +17371,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cend_fn cend;
     }
-    using namespace _Cpos;
 
          namespace _Rbegin {
         template <class _Ty>
@@ -17358,10 +17436,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Rbegin::_Cpo rbegin;
     }
-    using namespace _Cpos;
 
          namespace _Rend {
         template <class _Ty>
@@ -17425,10 +17502,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Rend::_Cpo rend;
     }
-    using namespace _Cpos;
 
          struct _Crbegin_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17439,10 +17515,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Crbegin_fn crbegin;
     }
-    using namespace _Cpos;
 
          struct _Crend_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17453,10 +17528,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Crend_fn crend;
     }
-    using namespace _Cpos;
 
          template <class>
     inline constexpr bool disable_sized_range = false;
@@ -17534,10 +17608,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Size::_Cpo size;
     }
-    using namespace _Cpos;
 
          namespace _Empty {
                  template <class _Ty>
@@ -17599,10 +17672,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Empty::_Cpo empty;
     }
-    using namespace _Cpos;
 
          namespace _Data {
                  template <class _Ty>
@@ -17653,10 +17725,9 @@ namespace ranges {
             }
                      };
     }  
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Data::_Cpo data;
     }
-    using namespace _Cpos;
 
          struct _Cdata_fn {
                  template <class _Ty, class _CTy = _Const_thru_ref<_Ty>>
@@ -17667,10 +17738,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Cdata_fn cdata;
     }
-    using namespace _Cpos;
 
               template <class _Rng>
     concept sized_range = range<_Rng> && requires(_Rng& __r) {
@@ -17883,10 +17953,9 @@ namespace ranges {
         }
              };
 
-    namespace _Cpos {
+    inline namespace _Cpos {
         inline constexpr _Ssize_fn ssize;
     }
-    using namespace _Cpos;
 
          class _Next_fn : private _Not_quite_object {
     public:
@@ -17972,6 +18041,16 @@ namespace ranges {
             requires totally_ordered_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
             static_cast<bool>(static_cast<_Ty1&&>(_Left) < static_cast<_Ty2&&>(_Right))))   {
             return static_cast<bool>(static_cast<_Ty1&&>(_Left) < static_cast<_Ty2&&>(_Right));
+        }
+         
+        using is_transparent = int;
+    };
+
+         struct greater {
+                 template <class _Ty1, class _Ty2>
+            requires totally_ordered_with<_Ty1, _Ty2>           constexpr bool operator()(_Ty1&& _Left, _Ty2&& _Right) const noexcept(noexcept(
+            static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left))))   {
+            return static_cast<bool>(static_cast<_Ty2&&>(_Right) < static_cast<_Ty1&&>(_Left));
         }
          
         using is_transparent = int;
@@ -18278,7 +18357,7 @@ namespace ranges {
         }
 
         constexpr subrange& advance(const iter_difference_t<_It> _Count) {
-                         if constexpr (bidirectional_iterator<_It>) {
+            if constexpr (bidirectional_iterator<_It>) {
                 if (_Count < 0) {
                     ::std::ranges:: advance(_First, _Count);
                     if constexpr (_Store_size) {
@@ -18303,7 +18382,7 @@ namespace ranges {
     subrange(_It, _Se, _Make_unsigned_like_t<iter_difference_t<_It>>) -> subrange<_It, _Se, subrange_kind::sized>;
 
     template <borrowed_range _Rng>
-    subrange(_Rng &&) -> subrange<iterator_t<_Rng>, sentinel_t<_Rng>,
+    subrange(_Rng&&) -> subrange<iterator_t<_Rng>, sentinel_t<_Rng>,
         (sized_range<_Rng> || sized_sentinel_for<sentinel_t<_Rng>, iterator_t<_Rng>>) ? subrange_kind::sized
                                                                                       : subrange_kind::unsized>;
 
@@ -18409,7 +18488,8 @@ public:
         return *this;
     }
      
-     constexpr const iterator_type& base() const& noexcept   {          return _Current;
+     constexpr const iterator_type& base() const& noexcept   {
+        return _Current;
     }
      constexpr iterator_type base() && noexcept(is_nothrow_move_constructible_v<_Iter>)   {
         return ::std:: move(_Current);
@@ -18419,7 +18499,7 @@ public:
         return ::std::ranges:: iter_move(_Current);
     }
 
-     [[deprecated("warning STL4031: std::move_iterator::operator->() is deprecated in C++20. You can define _SILENCE_CXX20_MOVE_ITERATOR_ARROW_DEPRECATION_WARNING or _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] constexpr pointer operator->() const {
+    [[deprecated("warning STL4031: std::move_iterator::operator->() is deprecated in C++20. You can define _SILENCE_CXX20_MOVE_ITERATOR_ARROW_DEPRECATION_WARNING or _SILENCE_ALL_CXX20_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  constexpr pointer operator->() const {
         return _Current;
     }
 
@@ -18621,6 +18701,21 @@ namespace _Unreachable_sentinel_detail {
 }  struct unreachable_sentinel_t : _Unreachable_sentinel_detail::_Base {};  
  inline constexpr unreachable_sentinel_t unreachable_sentinel{};
 
+  
+ template <class _Iter>
+inline constexpr bool _Iterator_is_contiguous = contiguous_iterator<_Iter>;
+
+template <class _Iter>
+ constexpr auto _To_address(const _Iter& _Val) noexcept {
+    ;
+    return ::std:: to_address(_Val);
+}
+
+ 
+template <class _Iter1, class _Iter2>
+inline constexpr bool _Iterators_are_contiguous =
+    _Iterator_is_contiguous<_Iter1>&& _Iterator_is_contiguous<_Iter2>;
+
  template <class _Source, class _Dest>
 struct _Ptr_cat_helper {
     using _USource                        = _Unwrap_enum_t<_Source>;
@@ -18659,50 +18754,48 @@ struct _False_copy_cat {
     static constexpr bool _Trivially_copyable = false;
 };
 
-template <class _Source, class _Dest>
-struct _Ptr_copy_cat : _False_copy_cat {};  
-template <class _Source, class _Dest>
-struct _Ptr_copy_cat<_Source*, _Dest*>
-    : conditional_t<is_trivially_assignable_v<_Dest&, _Source&>,
-          _Ptr_cat_helper<remove_cv_t<_Source>, remove_cv_t<_Dest>>, _False_copy_cat> {};
+ template <class _Source, class _Dest, bool _Non_contiguous = !_Iterators_are_contiguous<_Source, _Dest>>
+struct _Ptr_move_cat : _False_copy_cat {};
 
 template <class _Source, class _Dest>
-struct _Ptr_copy_cat<move_iterator<_Source*>, _Dest*> : _Ptr_copy_cat<_Source*, _Dest*> {};
+struct _Ptr_move_cat<_Source, _Dest, false>
+    : conditional_t<is_trivially_assignable_v<_Iter_ref_t<_Dest>, remove_reference_t<_Iter_ref_t<_Source>>>,
+          _Ptr_cat_helper<_Iter_value_t<_Source>, _Iter_value_t<_Dest>>, _False_copy_cat> {};
 
 template <class _Source, class _Dest>
-struct _Ptr_move_cat : _False_copy_cat {};  
-template <class _Source, class _Dest>
-struct _Ptr_move_cat<_Source*, _Dest*>
-    : conditional_t<is_trivially_assignable_v<_Dest&, _Source>,
-          _Ptr_cat_helper<remove_cv_t<_Source>, remove_cv_t<_Dest>>, _False_copy_cat> {};
+struct _Ptr_move_cat<move_iterator<_Source>, _Dest, true> : _Ptr_move_cat<_Source, _Dest> {};
+
+template <class _Source, class _Dest, bool _Non_contiguous = !_Iterators_are_contiguous<_Source, _Dest>>
+struct _Ptr_copy_cat : _False_copy_cat {};
 
 template <class _Source, class _Dest>
-struct _Ptr_move_cat<move_iterator<_Source*>, _Dest*> : _Ptr_move_cat<_Source*, _Dest*> {};
+struct _Ptr_copy_cat<_Source, _Dest, false>
+    : conditional_t<is_trivially_assignable_v<_Iter_ref_t<_Dest>, _Iter_ref_t<_Source>>,
+          _Ptr_cat_helper<_Iter_value_t<_Source>, _Iter_value_t<_Dest>>, _False_copy_cat> {};
 
-template <class _InIt, class _OutIt>
-_OutIt _Copy_memmove(_InIt _First, _InIt _Last, _OutIt _Dest) {
-    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_First));
-    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_Last));
-    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<volatile char*>(_Dest));
+template <class _Source, class _Dest>
+struct _Ptr_copy_cat<move_iterator<_Source>, _Dest, true> : _Ptr_move_cat<_Source, _Dest> {};
+
+template <class _CtgIt, class _OutCtgIt>
+_OutCtgIt _Copy_memmove(_CtgIt _First, _CtgIt _Last, _OutCtgIt _Dest) {
+    auto _FirstPtr              = _To_address(_First);
+    auto _LastPtr               = _To_address(_Last);
+    auto _DestPtr               = _To_address(_Dest);
+    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_FirstPtr));
+    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_LastPtr));
+    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<const volatile char*>(_DestPtr));
     const auto _Count           = static_cast<size_t>(_Last_ch - _First_ch);
     :: memmove(_Dest_ch, _First_ch, _Count);
-    return reinterpret_cast<_OutIt>(_Dest_ch + _Count);
+    if constexpr (is_pointer_v<_OutCtgIt>) {
+        return reinterpret_cast<_OutCtgIt>(_Dest_ch + _Count);
+    } else {
+        return _Dest + (_LastPtr - _FirstPtr);
+    }
 }
 
 template <class _InIt, class _OutIt>
 _OutIt _Copy_memmove(move_iterator<_InIt> _First, move_iterator<_InIt> _Last, _OutIt _Dest) {
     return _Copy_memmove(_First.base(), _Last.base(), _Dest);
-}
-
-template <class _InIt, class _OutIt>
-_OutIt _Copy_memcpy_common(_InIt _IFirst, _InIt _ILast, _OutIt _OFirst, _OutIt _OLast) noexcept {
-    const auto _IFirst_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_IFirst));
-    const auto _ILast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_ILast));
-    const auto _OFirst_ch = const_cast<char*>(reinterpret_cast<volatile char*>(_OFirst));
-    const auto _OLast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_OLast));
-    const auto _Count     = static_cast<size_t>((::std:: min)(_ILast_ch - _IFirst_ch, _OLast_ch - _OFirst_ch));
-    :: memcpy(_OFirst_ch, _IFirst_ch, _Count);
-    return reinterpret_cast<_OutIt>(_OFirst_ch + _Count);
 }
 
  template <class _It, bool _RequiresMutable = false>
@@ -18740,6 +18833,74 @@ _FwdIt2 copy(_ExPo&&, _FwdIt1 _First, _FwdIt1 _Last, _FwdIt2 _Dest) noexcept   {
     return ::std:: copy(_First, _Last, _Dest);
 }
 
+namespace ranges {
+         template <class _To, class _From>
+    concept _Convertible_from = convertible_to<_From, _To>;
+
+         template <class _In, class _Out>
+    struct in_out_result {
+          _In in;
+          _Out out;
+
+        template <_Convertible_from<const _In&> _IIn, _Convertible_from<const _Out&> _OOut>
+        constexpr operator in_out_result<_IIn, _OOut>() const& {
+            return {in, out};
+        }
+
+        template <_Convertible_from<_In> _IIn, _Convertible_from<_Out> _OOut>
+        constexpr operator in_out_result<_IIn, _OOut>() && {
+            return {::std:: move(in), ::std:: move(out)};
+        }
+    };
+
+         template <class _In, class _Out>
+    using copy_result = in_out_result<_In, _Out>;
+
+              template <input_iterator _It, sentinel_for<_It> _Se, weakly_incrementable _Out>
+        requires indirectly_copyable<_It, _Out>
+     constexpr copy_result<_It, _Out> _Copy_unchecked(_It _First, _Se _Last, _Out _Result) {
+                 if constexpr (_Ptr_copy_cat<_It, _Out>::_Trivially_copyable && sized_sentinel_for<_Se, _It>) {
+            if (!::std:: is_constant_evaluated()) {
+                auto _Final = ::std::ranges:: next(_First, ::std:: move(_Last));
+                _Result     = _Copy_memmove(::std:: move(_First), _Final, ::std:: move(_Result));
+                return {::std:: move(_Final), ::std:: move(_Result)};
+            }
+        }
+
+        for (; _First != _Last; ++_First, (void) ++_Result) {
+            *_Result = *_First;
+        }
+
+        return {::std:: move(_First), ::std:: move(_Result)};
+    }
+
+    class _Copy_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It, sentinel_for<_It> _Se, weakly_incrementable _Out>
+            requires indirectly_copyable<_It, _Out>
+        constexpr copy_result<_It, _Out> operator()(_It _First, _Se _Last, _Out _Result) const {
+            _Adl_verify_range(_First, _Last);
+            auto _UResult = ::std::ranges:: _Copy_unchecked(
+                _Get_unwrapped(::std:: move(_First)), _Get_unwrapped(::std:: move(_Last)), ::std:: move(_Result));
+            _Seek_wrapped(_First, ::std:: move(_UResult.in));
+            return {::std:: move(_First), ::std:: move(_UResult.out)};
+        }
+
+        template <input_range _Rng, weakly_incrementable _Out>
+            requires indirectly_copyable<iterator_t<_Rng>, _Out>
+        constexpr copy_result<borrowed_iterator_t<_Rng>, _Out> operator()(_Rng&& _Range, _Out _Result) const {
+            auto _First = ::std::ranges:: begin(_Range);
+            auto _UResult =
+                ::std::ranges:: _Copy_unchecked(_Get_unwrapped(::std:: move(_First)), _Uend(_Range), ::std:: move(_Result));
+            _Seek_wrapped(_First, ::std:: move(_UResult.in));
+            return {::std:: move(_First), ::std:: move(_UResult.out)};
+        }
+             };
+
+    inline constexpr _Copy_fn copy{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _InIt, class _Diff, class _OutIt>
 constexpr _OutIt copy_n(_InIt _First, _Diff _Count_raw, _OutIt _Dest) {
          _Algorithm_int_t<_Diff> _Count = _Count_raw;
@@ -18771,7 +18932,6 @@ constexpr _OutIt copy_n(_InIt _First, _Diff _Count_raw, _OutIt _Dest) {
     return _Dest;
 }
 
-
 template <class _ExPo, class _FwdIt1, class _Diff, class _FwdIt2, _Enable_if_execution_policy_t<_ExPo> = 0>
 _FwdIt2 copy_n(_ExPo&&, _FwdIt1 _First, _Diff _Count_raw, _FwdIt2 _Dest) noexcept   {
               static_assert(_Is_fwd_iter_v<_Iter>, "Parallel algorithms require forward iterators or stronger.");
@@ -18779,13 +18939,21 @@ _FwdIt2 copy_n(_ExPo&&, _FwdIt1 _First, _Diff _Count_raw, _FwdIt2 _Dest) noexcep
     return ::std:: copy_n(_First, _Count_raw, _Dest);
 }
 
- template <class _BidIt1, class _BidIt2>
-_BidIt2 _Copy_backward_memmove(_BidIt1 _First, _BidIt1 _Last, _BidIt2 _Dest) {
-         const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_First));
-    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_Last));
-    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<volatile char*>(_Dest));
+ template <class _CtgIt1, class _CtgIt2>
+_CtgIt2 _Copy_backward_memmove(_CtgIt1 _First, _CtgIt1 _Last, _CtgIt2 _Dest) {
+         auto _FirstPtr              = _To_address(_First);
+    auto _LastPtr               = _To_address(_Last);
+    auto _DestPtr               = _To_address(_Dest);
+    const char* const _First_ch = const_cast<const char*>(reinterpret_cast<const volatile char*>(_FirstPtr));
+    const char* const _Last_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_LastPtr));
+    char* const _Dest_ch        = const_cast<char*>(reinterpret_cast<const volatile char*>(_DestPtr));
     const auto _Count           = static_cast<size_t>(_Last_ch - _First_ch);
-    return static_cast<_BidIt2>(:: memmove(_Dest_ch - _Count, _First_ch, _Count));
+    auto _Result                = :: memmove(_Dest_ch - _Count, _First_ch, _Count);
+    if constexpr (is_pointer_v<_CtgIt2>) {
+        return static_cast<_CtgIt2>(_Result);
+    } else {
+        return _Dest - (_LastPtr - _FirstPtr);
+    }
 }
 
 template <class _BidIt1, class _BidIt2>
@@ -18888,7 +19056,8 @@ _BidIt2 move_backward(_ExPo&&, _BidIt1 _First, _BidIt1 _Last, _BidIt2 _Dest) noe
               return ::std:: move_backward(_First, _Last, _Dest);
 }
 
- template <class _Ty>
+ 
+template <class _Ty>
 struct _Is_character : false_type {};  
 template <>
 struct _Is_character<char> : true_type {};  
@@ -18899,23 +19068,26 @@ struct _Is_character<unsigned char> : true_type {};
 template <>
 struct _Is_character<char8_t> : true_type {};  
 template <class _Ty>
-struct _Is_character_or_byte_or_bool : _Is_character<_Ty>::type {};
+struct _Is_character_or_bool : _Is_character<_Ty>::type {};
+
+template <>
+struct _Is_character_or_bool<bool> : true_type {};
+
+template <class _Ty>
+struct _Is_character_or_byte_or_bool : _Is_character_or_bool<_Ty>::type {};
 
 template <>
 struct _Is_character_or_byte_or_bool<byte> : true_type {};
 
-template <>
-struct _Is_character_or_byte_or_bool<bool> : true_type {};
-
- template <class _FwdIt, class _Ty, bool = is_pointer_v<_FwdIt>>
+  template <class _FwdIt, class _Ty, bool = _Iterator_is_contiguous<_FwdIt>>
 inline constexpr bool _Fill_memset_is_safe = conjunction_v<is_scalar<_Ty>,
     _Is_character_or_byte_or_bool<_Unwrap_enum_t<remove_reference_t<_Iter_ref_t<_FwdIt>>>>,
-    is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
+    negation<is_volatile<remove_reference_t<_Iter_ref_t<_FwdIt>>>>, is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
 
 template <class _FwdIt, class _Ty>
 inline constexpr bool _Fill_memset_is_safe<_FwdIt, _Ty, false> = false;
 
-template <class _FwdIt, class _Ty, bool = is_pointer_v<_FwdIt>>
+template <class _FwdIt, class _Ty, bool = _Iterator_is_contiguous<_FwdIt>>
 inline constexpr bool _Fill_zero_memset_is_safe =
     conjunction_v<is_scalar<_Ty>, is_scalar<_Iter_value_t<_FwdIt>>, negation<is_member_pointer<_Iter_value_t<_FwdIt>>>,
         negation<is_volatile<remove_reference_t<_Iter_ref_t<_FwdIt>>>>, is_assignable<_Iter_ref_t<_FwdIt>, const _Ty&>>;
@@ -18923,14 +19095,15 @@ inline constexpr bool _Fill_zero_memset_is_safe =
 template <class _FwdIt, class _Ty>
 inline constexpr bool _Fill_zero_memset_is_safe<_FwdIt, _Ty, false> = false;
 
-template <class _DestTy, class _Ty>
-void _Fill_memset(_DestTy* const _Dest, const _Ty _Val, const size_t _Count) {
-    _DestTy _Dest_val = _Val;      :: memset(_Dest, static_cast<unsigned char>(_Dest_val), _Count);
+template <class _CtgIt, class _Ty>
+void _Fill_memset(_CtgIt _Dest, const _Ty _Val, const size_t _Count) {
+         _Iter_value_t<_CtgIt> _Dest_val = _Val;
+    :: memset(_To_address(_Dest), static_cast<unsigned char>(_Dest_val), _Count);
 }
 
-template <class _DestTy>
-void _Fill_zero_memset(_DestTy* const _Dest, const size_t _Count) {
-    :: memset(_Dest, 0, _Count * sizeof(_DestTy));
+template <class _CtgIt>
+void _Fill_zero_memset(_CtgIt _Dest, const size_t _Count) {
+    :: memset(_To_address(_Dest), 0, _Count * sizeof(_Iter_value_t<_CtgIt>));
 }
 
 template <class _Ty>
@@ -19008,17 +19181,50 @@ constexpr _OutIt fill_n(_OutIt _Dest, const _Diff _Count_raw, const _Ty& _Val) {
     return _Dest;
 }
 
-
 template <class _ExPo, class _FwdIt, class _Diff, class _Ty, _Enable_if_execution_policy_t<_ExPo> = 0>
 _FwdIt fill_n(_ExPo&&, _FwdIt _Dest, _Diff _Count_raw, const _Ty& _Val) noexcept   {
               static_assert(_Is_fwd_iter_v<_Iter>, "Parallel algorithms require forward iterators or stronger.");
     return ::std:: fill_n(_Dest, _Count_raw, _Val);
 }
 
+namespace ranges {
+         class _Fill_n_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+        template <class _Ty, output_iterator<const _Ty&> _It>
+        constexpr _It operator()(_It _First, iter_difference_t<_It> _Count, const _Ty& _Value) const {
+            if (_Count > 0) {
+                auto _UFirst = _Get_unwrapped_n(::std:: move(_First), _Count);
+                if (!::std:: is_constant_evaluated()) {
+                    if constexpr (_Fill_memset_is_safe<decltype(_UFirst), _Ty>) {
+                        _Fill_memset(_UFirst, _Value, static_cast<size_t>(_Count));
+                        _Seek_wrapped(_First, _UFirst + _Count);                          return _First;
+                    } else if constexpr (_Fill_zero_memset_is_safe<decltype(_UFirst), _Ty>) {
+                        if (_Is_all_bits_zero(_Value)) {
+                            _Fill_zero_memset(_UFirst, static_cast<size_t>(_Count));
+                            _Seek_wrapped(_First, _UFirst + _Count);                              return _First;
+                        }
+                    }
+                }
+
+                for (; _Count > 0; ++_UFirst, (void) --_Count) {
+                    *_UFirst = _Value;
+                }
+
+                _Seek_wrapped(_First, ::std:: move(_UFirst));
+            }
+
+            return _First;
+        }
+    };
+
+    inline constexpr _Fill_n_fn fill_n{_Not_quite_object::_Construct_tag{}};
+}  
  
   
      template <class _Elem1, class _Elem2,
-    bool = sizeof(_Elem1) == sizeof(_Elem2)             && is_integral_v<_Elem1> && !is_volatile_v<_Elem1>             && is_integral_v<_Elem2> && !is_volatile_v<_Elem2>>
+    bool = sizeof(_Elem1) == sizeof(_Elem2)          && is_integral_v<_Elem1> && !is_volatile_v<_Elem1>          && is_integral_v<_Elem2> && !is_volatile_v<_Elem2>>
 inline constexpr bool _Can_memcmp_elements =
     is_same_v<_Elem1, bool> || is_same_v<_Elem2, bool> || static_cast<_Elem1>(-1) == static_cast<_Elem2>(-1);
 
@@ -19046,10 +19252,6 @@ inline constexpr bool _Pred_is_consistent_with_memcmp<_Elem1, _Elem2, ::std::ran
    template <class _Elem1, class _Elem2, class _Pr>
 inline constexpr bool _Can_memcmp_elements_with_pred = _Can_memcmp_elements<_Elem1, _Elem2>      && _Pred_is_consistent_with_memcmp<_Elem1, _Elem2, _Pr>;
 
-  
- template <class _Iter1, class _Iter2>
-inline constexpr bool _Iterators_are_contiguous = contiguous_iterator<_Iter1>      && contiguous_iterator<_Iter2>;
-
    template <class _Iter1, class _Iter2, class _Pr>
 inline constexpr bool _Equal_memcmp_is_safe_helper = _Iterators_are_contiguous<_Iter1, _Iter2>      && _Can_memcmp_elements_with_pred<remove_const_t<remove_reference_t<_Iter_ref_t<_Iter1>>>,
         remove_const_t<remove_reference_t<_Iter_ref_t<_Iter2>>>, _Pr>;
@@ -19057,6 +19259,23 @@ inline constexpr bool _Equal_memcmp_is_safe_helper = _Iterators_are_contiguous<_
 template <class _Iter1, class _Iter2, class _Pr>
 inline constexpr bool _Equal_memcmp_is_safe =
     _Equal_memcmp_is_safe_helper<remove_const_t<_Iter1>, remove_const_t<_Iter2>, _Pr>;
+
+template <class _CtgIt1, class _CtgIt2>
+ int _Memcmp_ranges(_CtgIt1 _First1, _CtgIt1 _Last1, _CtgIt2 _First2) {
+    ;
+    const auto _First1_ch = reinterpret_cast<const char*>(_To_address(_First1));
+    const auto _Last1_ch  = reinterpret_cast<const char*>(_To_address(_Last1));
+    const auto _First2_ch = reinterpret_cast<const char*>(_To_address(_First2));
+    return :: memcmp(_First1_ch, _First2_ch, static_cast<size_t>(_Last1_ch - _First1_ch));
+}
+
+template <class _CtgIt1, class _CtgIt2>
+ int _Memcmp_count(_CtgIt1 _First1, _CtgIt2 _First2, const size_t _Count) {
+    ;
+    const auto _First1_ch = reinterpret_cast<const char*>(_To_address(_First1));
+    const auto _First2_ch = reinterpret_cast<const char*>(_To_address(_First2));
+    return :: memcmp(_First1_ch, _First2_ch, _Count * sizeof(_Iter_value_t<_CtgIt1>));
+}
 
 template <class _InIt1, class _InIt2, class _Pr>
  constexpr bool equal(const _InIt1 _First1, const _InIt1 _Last1, const _InIt2 _First2, _Pr _Pred) {
@@ -19067,10 +19286,7 @@ template <class _InIt1, class _InIt2, class _Pr>
     if constexpr (_Equal_memcmp_is_safe<decltype(_UFirst1), decltype(_UFirst2), _Pr>) {
         if (!::std:: is_constant_evaluated())
         {
-            const auto _First1_ch = reinterpret_cast<const char*>(_UFirst1);
-            const auto _First2_ch = reinterpret_cast<const char*>(_UFirst2);
-            const auto _Count     = static_cast<size_t>(reinterpret_cast<const char*>(_ULast1) - _First1_ch);
-            return :: memcmp(_First1_ch, _First2_ch, _Count) == 0;
+            return _Memcmp_ranges(_UFirst1, _ULast1, _UFirst2) == 0;
         }
     }
 
@@ -19147,6 +19363,127 @@ template <class _ExPo, class _FwdIt1, class _FwdIt2, _Enable_if_execution_policy
          return ::std:: equal(::std:: forward<_ExPo>(_Exec), _First1, _Last1, _First2, _Last2, equal_to{});
 }
 
+namespace ranges {
+         template <forward_range _Rng, class _It>
+     constexpr iterator_t<_Rng> _Rewrap_iterator(_Rng&& _Range, _It&& _Val) {
+        ;
+
+        if constexpr (is_same_v<remove_cvref_t<_It>, iterator_t<_Rng>>) {
+            return ::std:: forward<_It>(_Val);
+        } else {
+            auto _Result = ::std::ranges:: begin(_Range);
+            _Result._Seek_to(::std:: forward<_It>(_Val));
+            return _Result;
+        }
+    }
+
+         template <class _In1, class _In2>
+    struct in_in_result {
+          _In1 in1;
+          _In2 in2;
+
+        template <_Convertible_from<const _In1&> _IIn1, _Convertible_from<const _In2&> _IIn2>
+        constexpr operator in_in_result<_IIn1, _IIn2>() const& {
+            return {in1, in2};
+        }
+
+        template <_Convertible_from<_In1> _IIn1, _Convertible_from<_In2> _IIn2>
+        constexpr operator in_in_result<_IIn1, _IIn2>() && {
+            return {::std:: move(in1), ::std:: move(in2)};
+        }
+    };
+
+         template <class _In1, class _In2>
+    using mismatch_result = in_in_result<_In1, _In2>;
+
+         class _Mismatch_fn : private _Not_quite_object {
+    private:
+        template <class _It1, class _It2, class _Pr, class _Pj1, class _Pj2>
+         static constexpr mismatch_result<_It1, _It2> _Mismatch_n(
+            _It1 _First1, _It2 _First2, iter_difference_t<_It1> _Count, _Pr _Pred, _Pj1 _Proj1, _Pj2 _Proj2) {
+            auto _UFirst1 = _Get_unwrapped(::std:: move(_First1));
+            auto _UFirst2 = _Get_unwrapped(::std:: move(_First2));
+
+            for (; _Count != 0; ++_UFirst1, (void) ++_UFirst2, --_Count) {
+                if (!::std:: invoke(_Pred, ::std:: invoke(_Proj1, *_UFirst1), ::std:: invoke(_Proj2, *_UFirst2))) {
+                    break;
+                }
+            }
+
+            _Seek_wrapped(_First1, ::std:: move(_UFirst1));
+            _Seek_wrapped(_First2, ::std:: move(_UFirst2));
+            return {::std:: move(_First1), ::std:: move(_First2)};
+        }
+
+        template <class _It1, class _Se1, class _It2, class _Se2, class _Pr, class _Pj1, class _Pj2>
+         static constexpr mismatch_result<_It1, _It2> _Mismatch_4(
+            _It1 _First1, _Se1 _Last1, _It2 _First2, _Se2 _Last2, _Pr _Pred, _Pj1 _Proj1, _Pj2 _Proj2) {
+            auto _UFirst1      = _Get_unwrapped(::std:: move(_First1));
+            const auto _ULast1 = _Get_unwrapped(::std:: move(_Last1));
+            auto _UFirst2      = _Get_unwrapped(::std:: move(_First2));
+            const auto _ULast2 = _Get_unwrapped(::std:: move(_Last2));
+
+            for (; _UFirst1 != _ULast1 && _UFirst2 != _ULast2; ++_UFirst1, (void) ++_UFirst2) {
+                if (!::std:: invoke(_Pred, ::std:: invoke(_Proj1, *_UFirst1), ::std:: invoke(_Proj2, *_UFirst2))) {
+                    break;
+                }
+            }
+
+            _Seek_wrapped(_First1, ::std:: move(_UFirst1));
+            _Seek_wrapped(_First2, ::std:: move(_UFirst2));
+            return {::std:: move(_First1), ::std:: move(_First2)};
+        }
+
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It1, sentinel_for<_It1> _Se1, input_iterator _It2, sentinel_for<_It2> _Se2,
+            class _Pr = ranges::equal_to, class _Pj1 = identity, class _Pj2 = identity>
+            requires indirectly_comparable<_It1, _It2, _Pr, _Pj1, _Pj2>
+         constexpr mismatch_result<_It1, _It2> operator()(_It1 _First1, _Se1 _Last1,
+            _It2 _First2, _Se2 _Last2, _Pr _Pred = {}, _Pj1 _Proj1 = {}, _Pj2 _Proj2 = {}) const {
+            _Adl_verify_range(_First1, _Last1);
+            _Adl_verify_range(_First2, _Last2);
+
+            if constexpr (sized_sentinel_for<_Se1, _It1> && sized_sentinel_for<_Se2, _It2>) {
+                iter_difference_t<_It1> _Count1 = _Last1 - _First1;
+                const iter_difference_t<_It2> _Count2 = _Last2 - _First2;
+                if (_Count1 > _Count2) {
+                    _Count1 = static_cast<decltype(_Count1)>(_Count2);
+                }
+
+                return _Mismatch_n(::std:: move(_First1), ::std:: move(_First2), _Count1,
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            } else {
+                return _Mismatch_4(::std:: move(_First1), ::std:: move(_Last1), ::std:: move(_First2), ::std:: move(_Last2),
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            }
+        }
+
+        template <input_range _Rng1, input_range _Rng2, class _Pr = ranges::equal_to, class _Pj1 = identity,
+            class _Pj2 = identity>
+            requires indirectly_comparable<iterator_t<_Rng1>, iterator_t<_Rng2>, _Pr, _Pj1, _Pj2>
+         constexpr mismatch_result<borrowed_iterator_t<_Rng1>, borrowed_iterator_t<_Rng2>> operator()(
+            _Rng1&& _Range1, _Rng2&& _Range2, _Pr _Pred = {}, _Pj1 _Proj1 = {}, _Pj2 _Proj2 = {}) const {
+            if constexpr (sized_range<_Rng1> && sized_range<_Rng2>) {
+                range_difference_t<_Rng1> _Count1 = ::std::ranges:: distance(_Range1);
+                const range_difference_t<_Rng2> _Count2 = ::std::ranges:: distance(_Range2);
+                if (_Count1 > _Count2) {
+                    _Count1 = static_cast<range_difference_t<_Rng1>>(_Count2);
+                }
+
+                return _Mismatch_n(::std::ranges:: begin(_Range1), ::std::ranges:: begin(_Range2), _Count1,
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            } else {
+                return _Mismatch_4(::std::ranges:: begin(_Range1), ::std::ranges:: end(_Range1),
+                    ::std::ranges:: begin(_Range2), ::std::ranges:: end(_Range2),
+                    _Pass_fn(_Pred), _Pass_fn(_Proj1), _Pass_fn(_Proj2));
+            }
+        }
+             };
+
+    inline constexpr _Mismatch_fn mismatch{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _Elem1, class _Elem2, class _FTy>
 struct _Lex_compare_check_element_types_helper
     : bool_constant<
@@ -19170,6 +19507,8 @@ struct _Lex_compare_check_element_types_helper<byte, byte, void> : true_type {
 template <class _Memcmp_pr>
 struct _Lex_compare_optimize {
     explicit _Lex_compare_optimize() = default;
+
+    using _Pred = _Memcmp_pr;
 };  
 template <class _Memcmp_pr, class _Obj1, class _Obj2, class _FTy>
 using _Lex_compare_check_element_types = _Lex_compare_optimize<conditional_t<
@@ -19180,14 +19519,28 @@ constexpr auto _Lex_compare_memcmp_classify(const _InIt1&, const _InIt2&, const 
          return _Lex_compare_optimize<void>{};
 }
 
-template <class _Obj1, class _Obj2, class _FTy>
-constexpr auto _Lex_compare_memcmp_classify(_Obj1* const&, _Obj2* const&, const less<_FTy>&) {
-         return _Lex_compare_check_element_types<less<int>, _Obj1, _Obj2, _FTy>{};
+template <class _CtgIt1, class _CtgIt2, class _FTy, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const less<_FTy>&) {
+         return _Lex_compare_check_element_types<less<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, _FTy>{};
 }
 
-template <class _Obj1, class _Obj2, class _FTy>
-constexpr auto _Lex_compare_memcmp_classify(_Obj1* const&, _Obj2* const&, const greater<_FTy>&) {
-         return _Lex_compare_check_element_types<greater<int>, _Obj1, _Obj2, _FTy>{};
+template <class _CtgIt1, class _CtgIt2, class _FTy, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const greater<_FTy>&) {
+         return _Lex_compare_check_element_types<greater<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, _FTy>{};
+}
+
+template <class _CtgIt1, class _CtgIt2, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const ::std::ranges:: less&) {
+         return _Lex_compare_check_element_types<less<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, void>{};
+}
+
+template <class _CtgIt1, class _CtgIt2, enable_if_t<_Iterators_are_contiguous<_CtgIt1, _CtgIt2>, int> = 0>
+constexpr auto _Lex_compare_memcmp_classify(const _CtgIt1&, const _CtgIt2&, const ::std::ranges:: greater&) {
+         return _Lex_compare_check_element_types<greater<int>, remove_reference_t<_Iter_ref_t<_CtgIt1>>,
+        remove_reference_t<_Iter_ref_t<_CtgIt2>>, void>{};
 }
 
 template <class _InIt1, class _InIt2, class _Pr>
@@ -19203,16 +19556,16 @@ template <class _InIt1, class _InIt2, class _Pr>
     return _First1 == _Last1 && _First2 != _Last2;
 }
 
-template <class _InIt1, class _InIt2, class _Pr, class _Memcmp_pr>
+template <class _CtgIt1, class _CtgIt2, class _Pr, class _Memcmp_pr>
  constexpr bool _Lex_compare_unchecked(
-    _InIt1 _First1, _InIt1 _Last1, _InIt2 _First2, _InIt2 _Last2, _Pr _Pred, _Lex_compare_optimize<_Memcmp_pr>) {
+    _CtgIt1 _First1, _CtgIt1 _Last1, _CtgIt2 _First2, _CtgIt2 _Last2, _Pr _Pred, _Lex_compare_optimize<_Memcmp_pr>) {
          if (::std:: is_constant_evaluated()) {
         return _Lex_compare_unchecked(_First1, _Last1, _First2, _Last2, _Pred, _Lex_compare_optimize<void>{});
     }
     (void) _Pred;
     const auto _Num1 = static_cast<size_t>(_Last1 - _First1);
     const auto _Num2 = static_cast<size_t>(_Last2 - _First2);
-    const int _Ans   = :: memcmp(_First1, _First2, _Num1 < _Num2 ? _Num1 : _Num2);
+    const int _Ans   = _Memcmp_count(_First1, _First2, (::std:: min)(_Num1, _Num2));
     return _Memcmp_pr{}(_Ans, 0) || (_Ans == 0 && _Num1 < _Num2);
 }
 
@@ -19264,15 +19617,15 @@ template <class _ExPo, class _FwdIt1, class _FwdIt2, _Enable_if_execution_policy
     using _Ty1         = remove_const_t<remove_pointer_t<_UIt1>>;
     using _Ty2         = remove_const_t<remove_pointer_t<_UIt2>>;
 
-    if constexpr (conjunction_v<is_same<_Cmp, compare_three_way>, is_pointer<_UIt1>, is_pointer<_UIt2>,
-                      disjunction<
-                          conjunction<is_same<_Ty1, byte>, is_same<_Ty2, byte>>,
-                          conjunction<_Is_character<_Ty1>, is_unsigned<_Ty1>, _Is_character<_Ty2>,
-                              is_unsigned<_Ty2>>>>) {
+    if constexpr (
+        conjunction_v<is_same<_Cmp, compare_three_way>, bool_constant<_Iterators_are_contiguous<_UIt1, _UIt2>>,
+            disjunction<
+                conjunction<is_same<_Ty1, byte>, is_same<_Ty2, byte>>,
+                conjunction<_Is_character<_Ty1>, is_unsigned<_Ty1>, _Is_character<_Ty2>, is_unsigned<_Ty2>>>>) {
         if (!::std:: is_constant_evaluated()) {
             const auto _Num1 = static_cast<size_t>(_ULast1 - _UFirst1);
             const auto _Num2 = static_cast<size_t>(_ULast2 - _UFirst2);
-            const int _Ans   = :: memcmp(_UFirst1, _UFirst2, (::std:: min)(_Num1, _Num2));
+            const int _Ans   = _Memcmp_count(_UFirst1, _UFirst2, (::std:: min)(_Num1, _Num2));
             if (_Ans == 0) {
                 return _Num1 <=> _Num2;
             } else {
@@ -19306,38 +19659,57 @@ template <class _InIt1, class _InIt2>
 }
 
  template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, true_type, _Any_tag) {      return (-128) <= _Val && _Val <= 127;
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, true_type, _Any_tag, false_type) {
+         return (-128) <= _Val && _Val <= 127;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, true_type) {
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, true_type, false_type) {
          return _Val <= 127 || static_cast<_Ty>((-128)) <= _Val;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, false_type) {
+ constexpr bool _Within_limits(const _Ty& _Val, true_type, false_type, false_type, false_type) {
          return _Val <= 127;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, false_type, true_type, _Any_tag) {
+ constexpr bool _Within_limits(const _Ty& _Val, false_type, true_type, _Any_tag, false_type) {
          return 0 <= _Val && _Val <= 0xff;
 }
 
 template <class _Ty>
- constexpr bool _Within_limits(const _Ty& _Val, false_type, false_type, _Any_tag) {
+ constexpr bool _Within_limits(const _Ty& _Val, false_type, false_type, _Any_tag, false_type) {
          return _Val <= 0xff;
 }
 
+template <class _Ty>
+ constexpr bool _Within_limits(const _Ty& _Val, _Any_tag, _Any_tag, _Any_tag, true_type) {
+         return _Val == true || _Val == false;
+}
+
 template <class _InIt, class _Ty>
- constexpr bool _Within_limits(_InIt, const _Ty& _Val) {      using _Elem = remove_pointer_t<_InIt>;
+ constexpr bool _Within_limits(const _InIt&, const _Ty& _Val) {
+         using _Elem = _Iter_value_t<_InIt>;
     return _Within_limits(_Val, bool_constant<is_signed_v<_Elem>>{}, bool_constant<is_signed_v<_Ty>>{},
-        bool_constant<-1 == static_cast<_Ty>(-1)>{});
+        bool_constant<-1 == static_cast<_Ty>(-1)>{}, bool_constant<is_same_v<_Elem, bool>>{});
 }
 
 template <class _InIt>
- constexpr bool _Within_limits(_InIt, const bool&) {      return true;
+ constexpr bool _Within_limits(const _InIt&, const bool&) {      return true;
 }
+
+template <class _InIt>
+ constexpr bool _Within_limits(const _InIt&, const byte&) {      return true;
+}
+
+template <class _Iter, class _Ty>
+inline constexpr bool _Memchr_in_find_is_safe =
+    _Iterator_is_contiguous<_Iter>&&
+        disjunction_v<conjunction<is_integral<_Ty>, _Is_character_or_bool<_Iter_value_t<_Iter>>>
+            ,
+            conjunction<is_same<_Ty, byte>, is_same<_Iter_value_t<_Iter>, byte>>
+            > && !is_volatile_v<remove_reference_t<_Iter_ref_t<_Iter>>>;
 
 template <class _InIt, class _Ty>
  constexpr _InIt _Find_unchecked1(_InIt _First, const _InIt _Last, const _Ty& _Val, false_type) {
@@ -19357,20 +19729,22 @@ template <class _InIt, class _Ty>
     }
 
     if (::std:: is_constant_evaluated()) {
-        using _Elem = remove_pointer_t<_InIt>;
+        using _Elem = _Iter_value_t<_InIt>;
         return _Find_unchecked1(_First, _Last, static_cast<_Elem>(_Val), false_type{});
     }
-    _First =
-        static_cast<_InIt>(:: memchr(_First, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
-    return _First ? _First : _Last;
+    const auto _First_ptr = _To_address(_First);
+    const auto _Result    = static_cast<remove_reference_t<_Iter_ref_t<_InIt>>*>(
+        :: memchr(_First_ptr, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
+    if constexpr (is_pointer_v<_InIt>) {
+        return _Result ? _Result : _Last;
+    } else {
+        return _Result ? _First + (_Result - _First_ptr) : _Last;
+    }
 }
 
 template <class _InIt, class _Ty>
  constexpr _InIt _Find_unchecked(const _InIt _First, const _InIt _Last, const _Ty& _Val) {
-              using _Memchr_opt = bool_constant<
-        is_integral_v<_Ty> && _Is_any_of_v<_InIt, char*, signed char*, unsigned char*,              const char*, const signed char*, const unsigned char*>>;
-
-    return _Find_unchecked1(_First, _Last, _Val, _Memchr_opt{});
+              return _Find_unchecked1(_First, _Last, _Val, bool_constant<_Memchr_in_find_is_safe<_InIt, _Ty>>{});
 }
 
 template <class _InIt, class _Ty>
@@ -19381,6 +19755,70 @@ template <class _InIt, class _Ty>
 
 template <class _ExPo, class _FwdIt, class _Ty, _Enable_if_execution_policy_t<_ExPo> = 0>
  _FwdIt find(_ExPo&& _Exec, _FwdIt _First, const _FwdIt _Last, const _Ty& _Val) noexcept;  
+namespace ranges {
+                   template <input_iterator _It, sentinel_for<_It> _Se, class _Ty, class _Pj = identity>
+        requires indirect_binary_predicate<ranges::equal_to, projected<_It, _Pj>, const _Ty*>
+     constexpr _It _Find_unchecked(_It _First, const _Se _Last, const _Ty& _Val, _Pj _Proj = {}) {
+                 if constexpr (_Memchr_in_find_is_safe<_It, _Ty> && sized_sentinel_for<_Se, _It> && same_as<_Pj, identity>) {
+            if (!::std:: is_constant_evaluated()) {
+                if (!_Within_limits(_First, _Val)) {
+                    return ::std::ranges:: next(::std:: move(_First), _Last);
+                }
+
+                const auto _First_ptr = ::std:: to_address(_First);
+                const auto _Result    = static_cast<remove_reference_t<_Iter_ref_t<_It>>*>(
+                    :: memchr(_First_ptr, static_cast<unsigned char>(_Val), static_cast<size_t>(_Last - _First)));
+                if (_Result) {
+                    if constexpr (is_pointer_v<_It>) {
+                        return _Result;
+                    } else {
+                        return ::std::ranges:: next(::std:: move(_First), _Result - _First_ptr);
+                    }
+                } else {
+                    return ::std::ranges:: next(::std:: move(_First), _Last);
+                }
+            }
+        }
+
+        for (; _First != _Last; ++_First) {
+            if (::std:: invoke(_Proj, *_First) == _Val) {
+                break;
+            }
+        }
+
+        return _First;
+    }
+
+    class _Find_fn : private _Not_quite_object {
+    public:
+        using _Not_quite_object::_Not_quite_object;
+
+                 template <input_iterator _It, sentinel_for<_It> _Se, class _Ty, class _Pj = identity>
+            requires indirect_binary_predicate<ranges::equal_to, projected<_It, _Pj>, const _Ty*>
+         constexpr _It operator()(_It _First, _Se _Last, const _Ty& _Val, _Pj _Proj = {}) const {
+            _Adl_verify_range(_First, _Last);
+            auto _UResult = ::std::ranges:: _Find_unchecked(
+                _Get_unwrapped(::std:: move(_First)), _Get_unwrapped(::std:: move(_Last)), _Val, _Pass_fn(_Proj));
+
+            _Seek_wrapped(_First, ::std:: move(_UResult));
+            return _First;
+        }
+
+        template <input_range _Rng, class _Ty, class _Pj = identity>
+            requires indirect_binary_predicate<ranges::equal_to, projected<iterator_t<_Rng>, _Pj>, const _Ty*>
+         constexpr borrowed_iterator_t<_Rng> operator()(
+            _Rng&& _Range, const _Ty& _Val, _Pj _Proj = {}) const {
+            auto _First = ::std::ranges:: begin(_Range);
+            auto _UResult =
+                ::std::ranges:: _Find_unchecked(_Get_unwrapped(::std:: move(_First)), _Uend(_Range), _Val, _Pass_fn(_Proj));
+
+            _Seek_wrapped(_First, ::std:: move(_UResult));
+            return _First;
+        }
+             };
+
+    inline constexpr _Find_fn find{_Not_quite_object::_Construct_tag{}};
+}  
  template <class _InIt, class _Ty>
  constexpr _Iter_diff_t<_InIt> count(const _InIt _First, const _InIt _Last, const _Ty& _Val) {
          _Adl_verify_range(_First, _Last);
@@ -19424,7 +19862,6 @@ template <class _InIt, class _Ty, class _Pr>
     return _Count;
 }
 
-
 template <class _FwdIt1, class _FwdIt2, class _Pr>
  constexpr bool _Check_match_counts(
     const _FwdIt1 _First1, _FwdIt1 _Last1, const _FwdIt2 _First2, _FwdIt2 _Last2, _Pr _Pred) {
@@ -19437,6 +19874,7 @@ template <class _FwdIt1, class _FwdIt2, class _Pr>
         ++_Last1;
         ++_Last2;
     }
+
     for (_FwdIt1 _Next1 = _First1; _Next1 != _Last1; ++_Next1) {
         if (_Next1 == _Find_pr(_First1, _Next1, *_Next1, _Pred)) {              _Iter_diff_t<_FwdIt2> _Count2 = _Count_pr(_First2, _Last2, *_Next1, _Pred);
             if (_Count2 == 0) {
@@ -19456,22 +19894,22 @@ template <class _FwdIt1, class _FwdIt2, class _Pr>
 constexpr void reverse(const _BidIt _First, const _BidIt _Last) {      _Adl_verify_range(_First, _Last);
     auto _UFirst = _Get_unwrapped(_First);
     auto _ULast  = _Get_unwrapped(_Last);
-    using _Elem = remove_pointer_t<decltype(_UFirst)>;
-    constexpr bool _Allow_vectorization =
-        conjunction_v<is_pointer<decltype(_UFirst)>, _Is_trivially_swappable<_Elem>, negation<is_volatile<_Elem>>>;
-    constexpr size_t _Nx = sizeof(_Elem);
+    using _Elem                         = remove_reference_t<_Iter_ref_t<decltype(_UFirst)>>;
+    constexpr bool _Allow_vectorization = conjunction_v<bool_constant<_Iterator_is_contiguous<decltype(_UFirst)>>,
+        _Is_trivially_swappable<_Elem>, negation<is_volatile<_Elem>>>;
+    constexpr size_t _Nx                = sizeof(_Elem);
 
     if constexpr (_Allow_vectorization && _Nx <= 8 && (_Nx & (_Nx - 1)) == 0) {
         if (!::std:: is_constant_evaluated())
         {
             if constexpr (_Nx == 1) {
-                __std_reverse_trivially_swappable_1(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_1(_To_address(_UFirst), _To_address(_ULast));
             } else if constexpr (_Nx == 2) {
-                __std_reverse_trivially_swappable_2(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_2(_To_address(_UFirst), _To_address(_ULast));
             } else if constexpr (_Nx == 4) {
-                __std_reverse_trivially_swappable_4(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_4(_To_address(_UFirst), _To_address(_ULast));
             } else {
-                __std_reverse_trivially_swappable_8(_UFirst, _ULast);
+                __std_reverse_trivially_swappable_8(_To_address(_UFirst), _To_address(_ULast));
             }
 
             return;
@@ -19656,6 +20094,8 @@ namespace ranges {
 
     inline constexpr _Find_if_not_fn find_if_not{_Not_quite_object::_Construct_tag{}};
 }  
+ template <auto>
+struct _Require_constant;                             
  template <class _FwdIt, class _Ty, class _Pr>
  constexpr _FwdIt lower_bound(_FwdIt _First, const _FwdIt _Last, const _Ty& _Val, _Pr _Pred) {
          _Adl_verify_range(_First, _Last);
@@ -19769,6 +20209,7 @@ inline constexpr allocator_arg_t allocator_arg{};
 [[noreturn]]  void __cdecl _Xout_of_range(  const char*);
 [[noreturn]]  void __cdecl _Xoverflow_error(  const char*);
 [[noreturn]]  void __cdecl _Xruntime_error(  const char*);
+[[noreturn]]  void __cdecl _XGetLastError();
 
  template <class _Ty, class _Alloc>
 struct uses_allocator : _Has_allocator_type<_Ty, _Alloc>::type {
@@ -19830,6 +20271,8 @@ struct [[deprecated(                                                            
              }
 };
 ;
+
+ struct monostate {};
 
 }
 
@@ -19994,8 +20437,8 @@ class tuple<> {  public:
         return true;
     }
 
-    constexpr bool _Less(const tuple&) const noexcept {
-        return false;
+     constexpr strong_ordering _Three_way_compare(const tuple&) const noexcept {
+        return strong_ordering::equal;
     }
 };
 
@@ -20214,10 +20657,12 @@ class tuple<_This, _Rest...> : private tuple<_Rest...> {  public:
         return _Myfirst._Val == _Right._Myfirst._Val && _Mybase::_Equals(_Right._Get_rest());
     }
 
-    template <class... _Other>
-    constexpr bool _Less(const tuple<_Other...>& _Right) const {
-        return _Myfirst._Val < _Right._Myfirst._Val
-               || (!(_Right._Myfirst._Val < _Myfirst._Val) && _Mybase::_Less(_Right._Get_rest()));
+    template <class _First, class... _Other,
+        class _Ret = common_comparison_category_t<_Synth_three_way_result<_This, _First>,              _Synth_three_way_result<_Rest, _Other>...>>       constexpr _Ret _Three_way_compare(const tuple<_First, _Other...>& _Right) const {
+        if (auto _Result = _Synth_three_way{}(_Myfirst._Val, _Right._Myfirst._Val); _Result != 0) {
+            return _Result;
+        }
+        return _Mybase::_Three_way_compare(_Right._Get_rest());
     }
 
     template <size_t _Index, class... _Types>
@@ -20271,29 +20716,10 @@ tuple(allocator_arg_t, _Alloc, tuple<_Types...>) -> tuple<_Types...>;
 }
 
 template <class... _Types1, class... _Types2>
- constexpr bool operator!=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Left == _Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator<(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
+ constexpr common_comparison_category_t<_Synth_three_way_result<_Types1, _Types2>...> operator<=>(
+    const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
     static_assert(sizeof...(_Types1) == sizeof...(_Types2), "cannot compare tuples of different sizes");
-    return _Left._Less(_Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator>=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Left < _Right);
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator>(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return _Right < _Left;
-}
-
-template <class... _Types1, class... _Types2>
- constexpr bool operator<=(const tuple<_Types1...>& _Left, const tuple<_Types2...>& _Right) {
-    return !(_Right < _Left);
+    return _Left._Three_way_compare(_Right);
 }
 
 template <class... _Types, enable_if_t<conjunction_v<::std:: _Is_swappable<_Types>...>, int> = 0>
@@ -21100,12 +21526,15 @@ template <class _Integral, class _Ty>
  
   
 
+ 
+  
+
 
 
 namespace std {
  template <class _Ty>
 struct  _Tidy_guard {      _Ty* _Target;
-    ~_Tidy_guard() {
+    constexpr ~_Tidy_guard() {
         if (_Target) {
             _Target->_Tidy();
         }
@@ -21114,7 +21543,7 @@ struct  _Tidy_guard {      _Ty* _Target;
 
  template <class _Ty>
 struct  _Tidy_deallocate_guard {      _Ty* _Target;
-    ~_Tidy_deallocate_guard() {
+    constexpr ~_Tidy_deallocate_guard() {
         if (_Target) {
             _Target->_Tidy_deallocate();
         }
@@ -21143,12 +21572,16 @@ inline constexpr size_t _New_alignof = (::std:: max)(alignof(_Ty),
     static_cast<size_t>(16ull)  );
 
  struct _Default_allocate_traits {
-    __declspec(allocator) static void* _Allocate(const size_t _Bytes) {
+    __declspec(allocator) static
+        void* _Allocate(const size_t _Bytes) {
         return ::operator new(_Bytes);
     }
 
-    __declspec(allocator) static void* _Allocate_aligned(const size_t _Bytes, const size_t _Align) {
-        return ::operator new (_Bytes, align_val_t{_Align});
+    __declspec(allocator) static
+        void* _Allocate_aligned(const size_t _Bytes, const size_t _Align) {
+        {
+            return ::operator new (_Bytes, align_val_t{_Align});
+        }
     }
 };
 
@@ -21163,7 +21596,7 @@ static_assert(2 * sizeof(void*) <= _Big_allocation_alignment,
     "Big allocation alignment should at least match vector register alignment");
 static_assert(_Is_pow_2(_Big_allocation_alignment), "Big allocation alignment must be a power of two");
 
-constexpr size_t _Non_user_size           = sizeof(void*) + _Big_allocation_alignment - 1;
+constexpr size_t _Non_user_size = sizeof(void*) + _Big_allocation_alignment - 1;
 
 constexpr size_t _Big_allocation_sentinel = 0xFAFAFAFAFAFAFAFAULL;
 
@@ -21196,33 +21629,44 @@ __declspec(allocator) void* _Allocate_manually_vector_aligned(const size_t _Byte
 
  template <size_t _Align, class _Traits = _Default_allocate_traits,
     enable_if_t<(_Align > 16ull), int> = 0>
-__declspec(allocator) void* _Allocate(const size_t _Bytes) {
+__declspec(allocator) constexpr void* _Allocate(const size_t _Bytes) {
          if (_Bytes == 0) {
         return nullptr;
     }
 
-    size_t _Passed_align = _Align;
-    if (_Bytes >= _Big_allocation_threshold) {
-                 _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+    if (::std:: is_constant_evaluated()) {
+        return _Traits::_Allocate(_Bytes);
+    } else
+    {
+        size_t _Passed_align = _Align;
+        if (_Bytes >= _Big_allocation_threshold) {
+                         _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+        }
+        return _Traits::_Allocate_aligned(_Bytes, _Passed_align);
     }
-
-    return _Traits::_Allocate_aligned(_Bytes, _Passed_align);
 }
 
 template <size_t _Align, enable_if_t<(_Align > 16ull), int> = 0>
-void _Deallocate(void* _Ptr, const size_t _Bytes) noexcept {
-         size_t _Passed_align = _Align;
-    if (_Bytes >= _Big_allocation_threshold) {          _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+constexpr void _Deallocate(void* _Ptr, const size_t _Bytes) noexcept {
+         if (::std:: is_constant_evaluated()) {
+        ::operator delete(_Ptr);
+    } else
+    {
+        size_t _Passed_align = _Align;
+        if (_Bytes >= _Big_allocation_threshold) {              _Passed_align = (::std:: max)(_Align, _Big_allocation_alignment);
+        }
+        ::operator delete (_Ptr, _Bytes, align_val_t{_Passed_align});
     }
-
-    ::operator delete (_Ptr, _Bytes, align_val_t{_Passed_align});
 }
 
 
 template <size_t _Align, class _Traits = _Default_allocate_traits,
     enable_if_t<(!1 || _Align <= 16ull), int> = 0>
-__declspec(allocator) void* _Allocate(const size_t _Bytes) {
-         if (_Bytes >= _Big_allocation_threshold) {          return _Allocate_manually_vector_aligned<_Traits>(_Bytes);
+__declspec(allocator) constexpr void* _Allocate(const size_t _Bytes) {
+         if (!::std:: is_constant_evaluated())
+    {
+        if (_Bytes >= _Big_allocation_threshold) {              return _Allocate_manually_vector_aligned<_Traits>(_Bytes);
+        }
     }
 
     if (_Bytes != 0) {
@@ -21233,11 +21677,15 @@ __declspec(allocator) void* _Allocate(const size_t _Bytes) {
 }
 
 template <size_t _Align, enable_if_t<(!1 || _Align <= 16ull), int> = 0>
-void _Deallocate(void* _Ptr, size_t _Bytes) noexcept {
-         if (_Bytes >= _Big_allocation_threshold) {          _Adjust_manually_vector_aligned(_Ptr, _Bytes);
+constexpr void _Deallocate(void* _Ptr, size_t _Bytes) noexcept {
+         if (::std:: is_constant_evaluated()) {
+        ::operator delete(_Ptr);
+    } else
+    {
+        if (_Bytes >= _Big_allocation_threshold) {              _Adjust_manually_vector_aligned(_Ptr, _Bytes);
+        }
+        ::operator delete(_Ptr, _Bytes);
     }
-
-    ::operator delete(_Ptr, _Bytes);
 }
 
 
@@ -21260,12 +21708,12 @@ _Ty* _Global_new(_Types&&... _Args) {      struct  _Guard_type {
 using _Rebind_pointer_t = typename pointer_traits<_Ptr>::template rebind<_Ty>;
 
  template <class _Pointer, enable_if_t<!is_pointer_v<_Pointer>, int> = 0>
-_Pointer _Refancy(typename pointer_traits<_Pointer>::element_type* _Ptr) noexcept {
+constexpr _Pointer _Refancy(typename pointer_traits<_Pointer>::element_type* _Ptr) noexcept {
     return pointer_traits<_Pointer>::pointer_to(*_Ptr);
 }
 
 template <class _Pointer, enable_if_t<is_pointer_v<_Pointer>, int> = 0>
-_Pointer _Refancy(_Pointer _Ptr) noexcept {
+constexpr _Pointer _Refancy(_Pointer _Ptr) noexcept {
     return _Ptr;
 }
 
@@ -21276,9 +21724,18 @@ template <class _Ty>
 constexpr void _Destroy_in_place(_Ty& _Obj) noexcept {
     if constexpr (is_array_v<_Ty>) {
         _Destroy_range(_Obj, _Obj + extent_v<_Ty>);
+    } else {
+        _Obj.~_Ty();
+    }
+}
+
+ template <class _Ty>
+constexpr void destroy_at(_Ty* const _Location) noexcept   {
+    if constexpr (is_array_v<_Ty>) {
+        _Destroy_range(::std:: begin(*_Location), ::std:: end(*_Location));
     } else
     {
-        _Obj.~_Ty();
+        _Location->~_Ty();
     }
 }
 
@@ -21509,11 +21966,12 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
     template <class _Other>
     using rebind_traits = allocator_traits<rebind_alloc<_Other>>;
 
-     static __declspec(allocator) pointer allocate(_Alloc& _Al,  const size_type _Count) {
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count) {
         return _Al.allocate(_Count);
     }
 
-     static __declspec(allocator) pointer
+     static constexpr __declspec(allocator) pointer
         allocate(_Alloc& _Al,  const size_type _Count, const const_void_pointer _Hint) {
         if constexpr (_Has_allocate_hint<_Alloc, size_type, const_void_pointer>::value) {
             return _Al.allocate(_Count, _Hint);
@@ -21522,29 +21980,29 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
         }
     }
 
-    static void deallocate(_Alloc& _Al, pointer _Ptr, size_type _Count) {
+    static constexpr void deallocate(_Alloc& _Al, pointer _Ptr, size_type _Count) {
         _Al.deallocate(_Ptr, _Count);
     }
 
     template <class _Ty, class... _Types>
-    static void construct(_Alloc& _Al, _Ty* _Ptr, _Types&&... _Args) {
+    static constexpr void construct(_Alloc& _Al, _Ty* _Ptr, _Types&&... _Args) {
         if constexpr (_Uses_default_construct<_Alloc, _Ty*, _Types...>::value) {
-            (void) _Al;              ::new (static_cast<void*>(_Ptr)) _Ty(::std:: forward<_Types>(_Args)...);
+            (void) _Al;              ::std:: construct_at(_Ptr, ::std:: forward<_Types>(_Args)...);
         } else {
             _Al.construct(_Ptr, ::std:: forward<_Types>(_Args)...);
         }
     }
 
     template <class _Ty>
-    static void destroy(_Alloc& _Al, _Ty* _Ptr) {
+    static constexpr void destroy(_Alloc& _Al, _Ty* _Ptr) {
         if constexpr (_Uses_default_destroy<_Alloc, _Ty*>::value) {
-            _Ptr->~_Ty();
+            ::std:: destroy_at(_Ptr);
         } else {
             _Al.destroy(_Ptr);
         }
     }
 
-     static size_type max_size(const _Alloc& _Al) noexcept {
+     static constexpr size_type max_size(const _Alloc& _Al) noexcept {
         if constexpr (_Has_max_size<_Alloc>::value) {
             return _Al.max_size();
         } else {
@@ -21552,7 +22010,7 @@ struct _Normal_allocator_traits {      using allocator_type = _Alloc;
         }
     }
 
-     static _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
+     static constexpr _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
         if constexpr (_Has_select_on_container_copy_construction<_Alloc>::value) {
             return _Al.select_on_container_copy_construction();
         } else {
@@ -21585,34 +22043,60 @@ struct _Default_allocator_traits {      using allocator_type = _Alloc;
     template <class _Other>
     using rebind_traits = allocator_traits<allocator<_Other>>;
 
-     static __declspec(allocator) pointer allocate(_Alloc&,  const size_type _Count) {
-        return static_cast<pointer>(_Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count) {
+        if (::std:: is_constant_evaluated()) {
+            return _Al.allocate(_Count);
+        } else
+        {
+            (void) _Al;
+            return static_cast<pointer>(
+                _Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+        }
     }
 
-     static __declspec(allocator) pointer
-        allocate(_Alloc&,  const size_type _Count, const_void_pointer) {
-        return static_cast<pointer>(_Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+     static constexpr __declspec(allocator) pointer
+        allocate(_Alloc& _Al,  const size_type _Count, const_void_pointer) {
+        if (::std:: is_constant_evaluated()) {
+            return _Al.allocate(_Count);
+        } else
+        {
+            (void) _Al;
+            return static_cast<pointer>(
+                _Allocate<_New_alignof<value_type>>(_Get_size_of_n<sizeof(value_type)>(_Count)));
+        }
     }
 
-    static void deallocate(_Alloc&, const pointer _Ptr, const size_type _Count) {
-                 _Deallocate<_New_alignof<value_type>>(_Ptr, sizeof(value_type) * _Count);
+    static constexpr void deallocate(_Alloc& _Al, const pointer _Ptr, const size_type _Count) {
+                 if (::std:: is_constant_evaluated()) {
+            _Al.deallocate(_Ptr, _Count);
+        } else
+        {
+            (void) _Al;
+            _Deallocate<_New_alignof<value_type>>(_Ptr, sizeof(value_type) * _Count);
+        }
     }
 
     template <class _Objty, class... _Types>
-    static void construct(_Alloc&, _Objty* const _Ptr, _Types&&... _Args) {
-        ::new (const_cast<void*>(static_cast<const volatile void*>(_Ptr))) _Objty(::std:: forward<_Types>(_Args)...);
+    static constexpr void construct(_Alloc&, _Objty* const _Ptr, _Types&&... _Args) {
+        if (::std:: is_constant_evaluated()) {
+            ::std:: construct_at(_Ptr, ::std:: forward<_Types>(_Args)...);
+        } else
+        {
+            ::new (_Voidify_iter(_Ptr)) _Objty(::std:: forward<_Types>(_Args)...);
+        }
     }
 
     template <class _Uty>
-    static void destroy(_Alloc&, _Uty* const _Ptr) {
-        _Ptr->~_Uty();
+    static constexpr void destroy(_Alloc&, _Uty* const _Ptr) {
+        ::std:: destroy_at(_Ptr);
     }
 
-     static size_type max_size(const _Alloc&) noexcept {
+     static constexpr size_type max_size(const _Alloc&) noexcept {
         return static_cast<size_t>(-1) / sizeof(value_type);
     }
 
-     static _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
+     static constexpr _Alloc select_on_container_copy_construction(const _Alloc& _Al) {
         return _Al;
     }
 };
@@ -21660,93 +22144,48 @@ public:
 
     using value_type = _Ty;
 
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef _Ty* pointer;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const _Ty* const_pointer;
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef _Ty& reference;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const _Ty& const_reference;
 
     using size_type       = size_t;
     using difference_type = ptrdiff_t;
 
-    using propagate_on_container_move_assignment                 = true_type;
-    using is_always_equal [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] = true_type;
+    using propagate_on_container_move_assignment = true_type;
 
-    template <class _Other>
-    struct [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] rebind {
-        using other = allocator<_Other>;
-    };
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  _Ty* address(_Ty& _Val) const noexcept {
-        return ::std:: addressof(_Val);
-    }
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  const _Ty* address(const _Ty& _Val) const noexcept {
-        return ::std:: addressof(_Val);
-    }
 
     constexpr allocator() noexcept {}
 
     constexpr allocator(const allocator&) noexcept = default;
     template <class _Other>
     constexpr allocator(const allocator<_Other>&) noexcept {}
+    constexpr ~allocator()       = default;
+    constexpr allocator& operator=(const allocator&) = default;
 
-    void deallocate(_Ty* const _Ptr, const size_t _Count) {
+    constexpr void deallocate(_Ty* const _Ptr, const size_t _Count) {
                  _Deallocate<_New_alignof<_Ty>>(_Ptr, sizeof(_Ty) * _Count);
     }
 
-     __declspec(allocator) _Ty* allocate( const size_t _Count) {
+     constexpr __declspec(allocator) _Ty* allocate( const size_t _Count) {
         return static_cast<_Ty*>(_Allocate<_New_alignof<_Ty>>(_Get_size_of_n<sizeof(_Ty)>(_Count)));
     }
 
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  __declspec(allocator) _Ty* allocate(
-         const size_t _Count, const void*) {
-        return allocate(_Count);
-    }
-
-    template <class _Objty, class... _Types>
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] void construct(_Objty* const _Ptr, _Types&&... _Args) {
-        ::new (const_cast<void*>(static_cast<const volatile void*>(_Ptr))) _Objty(::std:: forward<_Types>(_Args)...);
-    }
-
-    template <class _Uty>
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] void destroy(_Uty* const _Ptr) {
-        _Ptr->~_Uty();
-    }
-
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]]  size_t max_size() const noexcept {
-        return static_cast<size_t>(-1) / sizeof(_Ty);
-    }
 };
 
  template <>
 class allocator<void> {
 public:
     using value_type = void;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef void* pointer;
-    [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] typedef const void* const_pointer;
 
     using size_type       = size_t;
     using difference_type = ptrdiff_t;
 
-    using propagate_on_container_move_assignment                 = true_type;
-    using is_always_equal [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] = true_type;
+    using propagate_on_container_move_assignment = true_type;
 
-    template <class _Other>
-    struct [[deprecated("warning STL4010: Various members of std::allocator are deprecated in C++17. Use std::allocator_traits instead of accessing these members directly. You can define _SILENCE_CXX17_OLD_ALLOCATOR_MEMBERS_DEPRECATION_WARNING or _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS to acknowledge that you have received this warning.")]] rebind {
-        using other = allocator<_Other>;
-    };
 };
 
 template <class _Ty, class _Other>
- bool operator==(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
+ constexpr bool operator==(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
     return true;
 }
 
-template <class _Ty, class _Other>
- bool operator!=(const allocator<_Ty>&, const allocator<_Other>&) noexcept {
-    return false;
-}
 
  template <class _Alloc>
 using _Guide_size_type_t =
@@ -21759,20 +22198,20 @@ using _Alloc_ptr_t = typename allocator_traits<_Alloc>::pointer;
 using _Alloc_size_t = typename allocator_traits<_Alloc>::size_type;
 
  template <class _Alloc>
-void _Pocca(_Alloc& _Left, const _Alloc& _Right) noexcept {
+constexpr void _Pocca(_Alloc& _Left, const _Alloc& _Right) noexcept {
     if constexpr (allocator_traits<_Alloc>::propagate_on_container_copy_assignment::value) {
         _Left = _Right;
     }
 }
 
  template <class _Alloc>
-void _Pocma(_Alloc& _Left, _Alloc& _Right) noexcept {      if constexpr (allocator_traits<_Alloc>::propagate_on_container_move_assignment::value) {
+constexpr void _Pocma(_Alloc& _Left, _Alloc& _Right) noexcept {      if constexpr (allocator_traits<_Alloc>::propagate_on_container_move_assignment::value) {
         _Left = ::std:: move(_Right);
     }
 }
 
  template <class _Alloc>
-void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
+constexpr void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
     if constexpr (allocator_traits<_Alloc>::propagate_on_container_swap::value) {
         _Swap_adl(_Left, _Right);
     } else {
@@ -21781,7 +22220,8 @@ void _Pocs(_Alloc& _Left, _Alloc& _Right) noexcept {
 }
 
  template <class _Alloc>
-void _Destroy_range(_Alloc_ptr_t<_Alloc> _First, const _Alloc_ptr_t<_Alloc> _Last, _Alloc& _Al) noexcept {
+constexpr void _Destroy_range(
+    _Alloc_ptr_t<_Alloc> _First, const _Alloc_ptr_t<_Alloc> _Last, _Alloc& _Al) noexcept {
          using _Ty = typename _Alloc::value_type;
     if constexpr (!conjunction_v<is_trivially_destructible<_Ty>, _Uses_default_destroy<_Alloc, _Ty*>>) {
         for (; _First != _Last; ++_First) {
@@ -21814,7 +22254,7 @@ template <>
 }
 
  template <class _Alloc>
-void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
+constexpr void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
          using _Alloc_traits = allocator_traits<_Alloc>;
     if constexpr (is_same_v<_Alloc_ptr_t<_Alloc>, typename _Alloc::value_type*>) {
         _Alloc_traits::deallocate(_Al, _Ptr, 1);
@@ -21825,7 +22265,7 @@ void _Deallocate_plain(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noe
 }
 
  template <class _Alloc>
-void _Delete_plain_internal(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
+constexpr void _Delete_plain_internal(_Alloc& _Al, typename _Alloc::value_type* const _Ptr) noexcept {
          using _Ty = typename _Alloc::value_type;
     _Ptr->~_Ty();
     _Deallocate_plain(_Al, _Ptr);
@@ -21836,15 +22276,15 @@ struct _Alloc_construct_ptr {      using pointer = _Alloc_ptr_t<_Alloc>;
     _Alloc& _Al;
     pointer _Ptr;
 
-    explicit _Alloc_construct_ptr(_Alloc& _Al_) : _Al(_Al_), _Ptr(nullptr) {}
+    constexpr explicit _Alloc_construct_ptr(_Alloc& _Al_) : _Al(_Al_), _Ptr(nullptr) {}
 
-     pointer _Release() noexcept {          return ::std:: exchange(_Ptr, nullptr);
+     constexpr pointer _Release() noexcept {          return ::std:: exchange(_Ptr, nullptr);
     }
 
-    void _Allocate() {          _Ptr = nullptr;          _Ptr = _Al.allocate(1);
+    constexpr void _Allocate() {          _Ptr = nullptr;          _Ptr = _Al.allocate(1);
     }
 
-    ~_Alloc_construct_ptr() {          if (_Ptr) {
+    constexpr ~_Alloc_construct_ptr() {          if (_Ptr) {
             _Al.deallocate(_Ptr, 1);
         }
     }
@@ -21856,15 +22296,15 @@ struct _Alloc_construct_ptr {      using pointer = _Alloc_ptr_t<_Alloc>;
  struct _Fake_allocator {};
 
 struct _Container_base0 {
-    void _Orphan_all() noexcept {}
-    void _Swap_proxy_and_iterators(_Container_base0&) noexcept {}
-    void _Alloc_proxy(const _Fake_allocator&) noexcept {}
-    void _Reload_proxy(const _Fake_allocator&, const _Fake_allocator&) noexcept {}
+    constexpr void _Orphan_all() noexcept {}
+    constexpr void _Swap_proxy_and_iterators(_Container_base0&) noexcept {}
+    constexpr void _Alloc_proxy(const _Fake_allocator&) noexcept {}
+    constexpr void _Reload_proxy(const _Fake_allocator&, const _Fake_allocator&) noexcept {}
 };
 
 struct _Iterator_base0 {
-    void _Adopt(const void*) noexcept {}
-    const _Container_base0* _Getcont() const noexcept {
+    constexpr void _Adopt(const void*) noexcept {}
+    constexpr const _Container_base0* _Getcont() const noexcept {
         return nullptr;
     }
 
@@ -21872,25 +22312,25 @@ struct _Iterator_base0 {
 };
 
  struct _Container_base12;
-struct _Container_proxy {      _Container_proxy() noexcept : _Mycont(nullptr), _Myfirstiter(nullptr) {}
-    _Container_proxy(_Container_base12* _Mycont_) noexcept : _Mycont(_Mycont_), _Myfirstiter(nullptr) {}
+struct _Container_proxy {      constexpr _Container_proxy() noexcept = default;
+    constexpr _Container_proxy(_Container_base12* _Mycont_) noexcept : _Mycont(_Mycont_) {}
 
-    const _Container_base12* _Mycont;
-    _Iterator_base12* _Myfirstiter;
+    const _Container_base12* _Mycont       = nullptr;
+    mutable _Iterator_base12* _Myfirstiter = nullptr;
 };
 
 struct _Container_base12 {
 public:
-    _Container_base12() noexcept : _Myproxy(nullptr) {}
+    constexpr _Container_base12() noexcept = default;
 
     _Container_base12(const _Container_base12&) = delete;
     _Container_base12& operator=(const _Container_base12&) = delete;
 
-    void _Orphan_all() noexcept;
-    void _Swap_proxy_and_iterators(_Container_base12&) noexcept;
+    constexpr void _Orphan_all() noexcept;
+    constexpr void _Swap_proxy_and_iterators(_Container_base12&) noexcept;
 
     template <class _Alloc>
-    void _Alloc_proxy(_Alloc&& _Al) {
+    constexpr void _Alloc_proxy(_Alloc&& _Al) {
         _Container_proxy* const _New_proxy = _Unfancy(_Al.allocate(1));
         _Construct_in_place(*_New_proxy, this);
         _Myproxy            = _New_proxy;
@@ -21898,61 +22338,73 @@ public:
     }
 
     template <class _Alloc>
-    void _Reload_proxy(_Alloc&& _Old_alloc, _Alloc&& _New_alloc) {
+    constexpr void _Reload_proxy(_Alloc&& _Old_alloc, _Alloc&& _New_alloc) {
                  _Container_proxy* const _New_proxy = _Unfancy(_New_alloc.allocate(1));
         _Construct_in_place(*_New_proxy, this);
         _New_proxy->_Mycont = this;
         _Delete_plain_internal(_Old_alloc, ::std:: exchange(_Myproxy, _New_proxy));
     }
 
-    _Container_proxy* _Myproxy;
+    _Container_proxy* _Myproxy = nullptr;
+
+private:
+    constexpr void _Orphan_all_unlocked() noexcept;
+    constexpr void _Swap_proxy_and_iterators_unlocked(_Container_base12&) noexcept;
+
+    void _Orphan_all_locked() noexcept {
+        _Lockit _Lock(3);
+        _Orphan_all_unlocked();
+    }
+
+    void _Swap_proxy_and_iterators_locked(_Container_base12& _Right) noexcept {
+        _Lockit _Lock(3);
+        _Swap_proxy_and_iterators_unlocked(_Right);
+    }
 };
 
-struct _Iterator_base12 {      _Iterator_base12() noexcept : _Myproxy(nullptr), _Mynextiter(nullptr) {}  
-    _Iterator_base12(const _Iterator_base12& _Right) noexcept : _Myproxy(nullptr), _Mynextiter(nullptr) {
+struct _Iterator_base12 {  public:
+    constexpr _Iterator_base12() noexcept = default;  
+    constexpr _Iterator_base12(const _Iterator_base12& _Right) noexcept {
         *this = _Right;
     }
 
-    _Iterator_base12& operator=(const _Iterator_base12& _Right) noexcept {
+    constexpr _Iterator_base12& operator=(const _Iterator_base12& _Right) noexcept {
         if (_Myproxy != _Right._Myproxy) {
             if (_Right._Myproxy) {
                 _Adopt(_Right._Myproxy->_Mycont);
             } else {                  _Myproxy = nullptr;
             }
         }
-
         return *this;
     }
 
-    ~_Iterator_base12() noexcept {
-    }
-
-    void _Adopt(const _Container_base12* _Parent) noexcept {
-        if (_Parent) {
-                         _Container_proxy* _Parent_proxy = _Parent->_Myproxy;
-
-            _Myproxy = _Parent_proxy;
-        } else {
-                         _Myproxy = nullptr;
+    constexpr void _Adopt(const _Container_base12* _Parent) noexcept {
+        if (_Parent) {              _Myproxy = _Parent->_Myproxy;
+        } else {              _Myproxy = nullptr;
         }
     }
 
-    const _Container_base12* _Getcont() const noexcept {
+    constexpr const _Container_base12* _Getcont() const noexcept {
         return _Myproxy ? _Myproxy->_Mycont : nullptr;
     }
 
-
     static constexpr bool _Unwrap_when_unverified = 0 == 0;
 
-    _Container_proxy* _Myproxy;
-    _Iterator_base12* _Mynextiter;
+    mutable _Container_proxy* _Myproxy    = nullptr;
+    mutable _Iterator_base12* _Mynextiter = nullptr;
+
 };
 
- inline void _Container_base12::_Orphan_all() noexcept {
+ constexpr void _Container_base12::_Orphan_all_unlocked() noexcept {
+    for (auto& _Pnext = _Myproxy->_Myfirstiter; _Pnext; _Pnext = _Pnext->_Mynextiter) {          _Pnext->_Myproxy = nullptr;
+    }
+    _Myproxy->_Myfirstiter = nullptr;
 }
 
-inline void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Right) noexcept {
+constexpr void _Container_base12::_Orphan_all() noexcept {
+}
 
+constexpr void _Container_base12::_Swap_proxy_and_iterators_unlocked(_Container_base12& _Right) noexcept {
     _Container_proxy* _Temp = _Myproxy;
     _Myproxy                = _Right._Myproxy;
     _Right._Myproxy         = _Temp;
@@ -21966,6 +22418,10 @@ inline void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Rig
     }
 }
 
+constexpr void _Container_base12::_Swap_proxy_and_iterators(_Container_base12& _Right) noexcept {
+    _Swap_proxy_and_iterators_unlocked(_Right);
+}
+
 using _Container_base = _Container_base0;
 using _Iterator_base  = _Iterator_base0;
 
@@ -21974,21 +22430,21 @@ using _Iterator_base  = _Iterator_base0;
 };  
 struct _Fake_proxy_ptr_impl {      _Fake_proxy_ptr_impl(const _Fake_proxy_ptr_impl&) = delete;
     _Fake_proxy_ptr_impl& operator=(const _Fake_proxy_ptr_impl&) = delete;
-    _Fake_proxy_ptr_impl(const _Fake_allocator&, _Leave_proxy_unbound) noexcept {}
-    _Fake_proxy_ptr_impl(const _Fake_allocator&, const _Container_base0&) noexcept {}
+    constexpr _Fake_proxy_ptr_impl(const _Fake_allocator&, _Leave_proxy_unbound) noexcept {}
+    constexpr _Fake_proxy_ptr_impl(const _Fake_allocator&, const _Container_base0&) noexcept {}
 
-    void _Bind(const _Fake_allocator&, _Container_base0*) noexcept {}
-    void _Release() noexcept {}
+    constexpr void _Bind(const _Fake_allocator&, _Container_base0*) noexcept {}
+    constexpr void _Release() noexcept {}
 };
 
 struct _Basic_container_proxy_ptr12 {
-         _Container_proxy* _Ptr;
+         _Container_proxy* _Ptr = nullptr;
 
-    void _Release() noexcept {          _Ptr = nullptr;
+    constexpr void _Release() noexcept {          _Ptr = nullptr;
     }
 
 protected:
-    _Basic_container_proxy_ptr12()                                    = default;
+    constexpr _Basic_container_proxy_ptr12()             = default;
     _Basic_container_proxy_ptr12(const _Basic_container_proxy_ptr12&) = delete;
     _Basic_container_proxy_ptr12(_Basic_container_proxy_ptr12&&)      = delete;
 };
@@ -21997,28 +22453,30 @@ template <class _Alloc>
 struct _Container_proxy_ptr12 : _Basic_container_proxy_ptr12 {
          _Alloc& _Al;
 
-    _Container_proxy_ptr12(_Alloc& _Al_, _Leave_proxy_unbound) : _Al(_Al_) {          _Ptr = _Unfancy(_Al_.allocate(1));
+    constexpr _Container_proxy_ptr12(_Alloc& _Al_, _Leave_proxy_unbound) : _Al(_Al_) {
+                 _Ptr = _Unfancy(_Al_.allocate(1));
         _Construct_in_place(*_Ptr);
     }
 
-    _Container_proxy_ptr12(_Alloc& _Al_, _Container_base12& _Mycont)
-        : _Al(_Al_) {          _Ptr = _Unfancy(_Al_.allocate(1));
+    constexpr _Container_proxy_ptr12(_Alloc& _Al_, _Container_base12& _Mycont) : _Al(_Al_) {
+                 _Ptr = _Unfancy(_Al_.allocate(1));
         _Construct_in_place(*_Ptr, ::std:: addressof(_Mycont));
         _Mycont._Myproxy = _Ptr;
     }
 
-    void _Bind(_Alloc& _Old_alloc, _Container_base12* _Mycont) noexcept {
+    constexpr void _Bind(_Alloc& _Old_alloc, _Container_base12* _Mycont) noexcept {
                           _Ptr->_Mycont = _Mycont;
         _Delete_plain_internal(_Old_alloc, ::std:: exchange(_Mycont->_Myproxy, ::std:: exchange(_Ptr, nullptr)));
     }
 
-    ~_Container_proxy_ptr12() {
+    constexpr ~_Container_proxy_ptr12() {
         if (_Ptr) {
             _Delete_plain_internal(_Al, _Ptr);
         }
     }
 };
 
+inline constexpr _Fake_allocator _Fake_alloc{};
 template <class _Alloc>
 using _Container_proxy_ptr = _Fake_proxy_ptr_impl;
 
@@ -22124,75 +22582,132 @@ struct  _Uninitialized_backout {
     _Uninitialized_backout(const _Uninitialized_backout&) = delete;
     _Uninitialized_backout& operator=(const _Uninitialized_backout&) = delete;
 
-    ~_Uninitialized_backout() {
+    constexpr ~_Uninitialized_backout() {
         _Destroy_range(_First, _Last);
     }
 
     template <class... _Types>
-    void _Emplace_back(_Types&&... _Vals) {
+    constexpr void _Emplace_back(_Types&&... _Vals) {
                  _Construct_in_place(*_Last, ::std:: forward<_Types>(_Vals)...);
         ++_Last;
     }
 
-    _NoThrowFwdIt _Release() {          _First = _Last;
+    constexpr _NoThrowFwdIt _Release() {          _First = _Last;
         return _Last;
     }
 };
 
-namespace ranges {
-         template <class _To, class _From>
-    concept _Convertible_from = convertible_to<_From, _To>;
-
-         template <class _In, class _Out>
-    struct in_out_result {
-          _In in;
-          _Out out;
-
-        template <_Convertible_from<const _In&> _IIn, _Convertible_from<const _Out&> _OOut>
-        constexpr operator in_out_result<_IIn, _OOut>() const& {
-            return {in, out};
-        }
-
-        template <_Convertible_from<_In> _IIn, _Convertible_from<_Out> _OOut>
-        constexpr operator in_out_result<_IIn, _OOut>() && {
-            return {::std:: move(in), ::std:: move(out)};
-        }
-    };
-}  
  template <class _InIt, class _NoThrowFwdIt>
-_NoThrowFwdIt _Uninitialized_move_unchecked(_InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
+constexpr _NoThrowFwdIt _Uninitialized_move_unchecked(
+    _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
          if constexpr (_Ptr_move_cat<_InIt, _NoThrowFwdIt>::_Really_trivial) {
-        return _Copy_memmove(_First, _Last, _Dest);
-    } else {
-        _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
-        for (; _First != _Last; ++_First) {
-            _Backout._Emplace_back(::std:: move(*_First));
+        if (!::std:: is_constant_evaluated())
+        {
+            return _Copy_memmove(_First, _Last, _Dest);
         }
-
-        return _Backout._Release();
     }
+    _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
+    for (; _First != _Last; ++_First) {
+        _Backout._Emplace_back(::std:: move(*_First));
+    }
+
+    return _Backout._Release();
 }
 
+namespace ranges {
+              template <class _It>
+    concept _No_throw_input_iterator = input_iterator<_It>
+        && is_lvalue_reference_v<iter_reference_t<_It>>
+        && same_as<remove_cvref_t<iter_reference_t<_It>>, iter_value_t<_It>>;
+
+         template <class _Se, class _It>
+    concept _No_throw_sentinel_for = sentinel_for<_Se, _It>;
+
+         template <class _It>
+    concept _No_throw_forward_iterator = _No_throw_input_iterator<_It>
+        && forward_iterator<_It>
+        && _No_throw_sentinel_for<_It, _It>;
+
+         template <class _Rng>
+    concept _No_throw_input_range = range<_Rng>
+        && _No_throw_input_iterator<iterator_t<_Rng>>
+        && _No_throw_sentinel_for<sentinel_t<_Rng>, iterator_t<_Rng>>;
+
+         template <class _Rng>
+    concept _No_throw_forward_range = _No_throw_input_range<_Rng>
+        && _No_throw_forward_iterator<iterator_t<_Rng>>;
+     
+    template <class _InIt, class _OutIt>
+    in_out_result<_InIt, _OutIt> _Copy_memcpy_common(
+        _InIt _IFirst, _InIt _ILast, _OutIt _OFirst, _OutIt _OLast) noexcept {
+        const auto _IFirstPtr = _To_address(_IFirst);
+        const auto _ILastPtr  = _To_address(_ILast);
+        const auto _OFirstPtr = _To_address(_OFirst);
+        const auto _OLastPtr  = _To_address(_OLast);
+        const auto _IFirst_ch = const_cast<char*>(reinterpret_cast<const volatile char*>(_IFirstPtr));
+        const auto _ILast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_ILastPtr));
+        const auto _OFirst_ch = const_cast<char*>(reinterpret_cast<const volatile char*>(_OFirstPtr));
+        const auto _OLast_ch  = const_cast<const char*>(reinterpret_cast<const volatile char*>(_OLastPtr));
+        const auto _Count     = static_cast<size_t>((::std:: min)(_ILast_ch - _IFirst_ch, _OLast_ch - _OFirst_ch));
+        :: memcpy(_OFirst_ch, _IFirst_ch, _Count);
+        if constexpr (is_pointer_v<_InIt>) {
+            _IFirst = reinterpret_cast<_InIt>(_IFirst_ch + _Count);
+        } else {
+            _IFirst += _Count / sizeof(iter_value_t<_InIt>);
+        }
+
+        if constexpr (is_pointer_v<_OutIt>) {
+            _OFirst = reinterpret_cast<_OutIt>(_OFirst_ch + _Count);
+        } else {
+            _OFirst += _Count / sizeof(iter_value_t<_OutIt>);
+        }
+        return {::std:: move(_IFirst), ::std:: move(_OFirst)};
+    }
+
+         template <class _In, class _Out>
+    using uninitialized_move_result = in_out_result<_In, _Out>;
+
+              template <input_iterator _It, sentinel_for<_It> _Se, _No_throw_forward_iterator _Out,
+        _No_throw_sentinel_for<_Out> _OSe>
+        requires constructible_from<iter_value_t<_Out>, iter_rvalue_reference_t<_It>>
+    uninitialized_move_result<_It, _Out> _Uninitialized_move_unchecked(
+            _It _IFirst, _Se _ILast, _Out _OFirst, _OSe _OLast) {
+                 if constexpr (_Ptr_move_cat<_It, _Out>::_Really_trivial
+                      && sized_sentinel_for<_Se, _It> && sized_sentinel_for<_OSe, _Out>) {
+            return _Copy_memcpy_common(
+                _IFirst, ::std::ranges:: next(_IFirst, ::std:: move(_ILast)), _OFirst, ::std::ranges:: next(_OFirst, ::std:: move(_OLast)));
+        } else {
+            _Uninitialized_backout _Backout{::std:: move(_OFirst)};
+
+            for (; _IFirst != _ILast && _Backout._Last != _OLast; ++_IFirst) {
+                _Backout._Emplace_back(::std::ranges:: iter_move(_IFirst));
+            }
+
+            return {::std:: move(_IFirst), _Backout._Release()};
+        }
+    }
+}  
  template <class _Alloc>
 class  _Uninitialized_backout_al {
          using pointer = _Alloc_ptr_t<_Alloc>;
 
 public:
-    _Uninitialized_backout_al(pointer _Dest, _Alloc& _Al_) : _First(_Dest), _Last(_Dest), _Al(_Al_) {}
+    constexpr _Uninitialized_backout_al(pointer _Dest, _Alloc& _Al_)
+        : _First(_Dest), _Last(_Dest), _Al(_Al_) {}
 
     _Uninitialized_backout_al(const _Uninitialized_backout_al&) = delete;
     _Uninitialized_backout_al& operator=(const _Uninitialized_backout_al&) = delete;
 
-    ~_Uninitialized_backout_al() {
+    constexpr ~_Uninitialized_backout_al() {
         _Destroy_range(_First, _Last, _Al);
     }
 
     template <class... _Types>
-    void _Emplace_back(_Types&&... _Vals) {          allocator_traits<_Alloc>::construct(_Al, _Unfancy(_Last), ::std:: forward<_Types>(_Vals)...);
+    constexpr void _Emplace_back(_Types&&... _Vals) {          allocator_traits<_Alloc>::construct(_Al, _Unfancy(_Last), ::std:: forward<_Types>(_Vals)...);
         ++_Last;
     }
 
-    pointer _Release() {          _First = _Last;
+    constexpr pointer _Release() {          _First = _Last;
         return _Last;
     }
 
@@ -22203,7 +22718,7 @@ private:
 };
 
  template <class _InIt, class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_copy(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_copy(
     const _InIt _First, const _InIt _Last, _Alloc_ptr_t<_Alloc> _Dest, _Alloc& _Al) {
               using _Ptrval = typename _Alloc::value_type*;
 
@@ -22212,82 +22727,99 @@ _Alloc_ptr_t<_Alloc> _Uninitialized_copy(
 
     if constexpr (conjunction_v<bool_constant<_Ptr_copy_cat<decltype(_UFirst), _Ptrval>::_Really_trivial>,
                       _Uses_default_construct<_Alloc, _Ptrval, decltype(*_UFirst)>>) {
-        _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
-        _Dest += _ULast - _UFirst;
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(*_UFirst);
+        if (!::std:: is_constant_evaluated())
+        {
+            _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
+            _Dest += _ULast - _UFirst;
+            return _Dest;
         }
-
-        _Dest = _Backout._Release();
     }
 
-    return _Dest;
+    _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
+    for (; _UFirst != _ULast; ++_UFirst) {
+        _Backout._Emplace_back(*_UFirst);
+    }
+
+    return _Backout._Release();
 }
 
  template <class _InIt, class _NoThrowFwdIt>
+constexpr _NoThrowFwdIt _Uninitialized_copy_unchecked(
+    _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
+         if constexpr (_Ptr_copy_cat<_InIt, _NoThrowFwdIt>::_Really_trivial) {
+        if (!::std:: is_constant_evaluated())
+        {
+            return _Copy_memmove(_First, _Last, _Dest);
+        }
+    }
+
+    _Uninitialized_backout<_NoThrowFwdIt> _Backout{_Dest};
+    for (; _First != _Last; ++_First) {
+        _Backout._Emplace_back(*_First);
+    }
+
+    return _Backout._Release();
+}
+
+template <class _InIt, class _NoThrowFwdIt>
 _NoThrowFwdIt uninitialized_copy(const _InIt _First, const _InIt _Last, _NoThrowFwdIt _Dest) {
          _Adl_verify_range(_First, _Last);
     auto _UFirst      = _Get_unwrapped(_First);
     const auto _ULast = _Get_unwrapped(_Last);
     auto _UDest       = _Get_unwrapped_n(_Dest, _Idl_distance<_InIt>(_UFirst, _ULast));
-    if constexpr (_Ptr_copy_cat<decltype(_UFirst), decltype(_UDest)>::_Really_trivial) {
-        _UDest = _Copy_memmove(_UFirst, _ULast, _UDest);
-    } else {
-        _Uninitialized_backout<decltype(_UDest)> _Backout{_UDest};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(*_UFirst);
-        }
-
-        _UDest = _Backout._Release();
-    }
-
-    _Seek_wrapped(_Dest, _UDest);
+    _Seek_wrapped(_Dest, _Uninitialized_copy_unchecked(_UFirst, _ULast, _UDest));
     return _Dest;
 }
 
  template <class _InIt, class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_move(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_move(
     const _InIt _First, const _InIt _Last, _Alloc_ptr_t<_Alloc> _Dest, _Alloc& _Al) {
               using _Ptrval     = typename _Alloc::value_type*;
     auto _UFirst      = _Get_unwrapped(_First);
     const auto _ULast = _Get_unwrapped(_Last);
     if constexpr (conjunction_v<bool_constant<_Ptr_move_cat<decltype(_UFirst), _Ptrval>::_Really_trivial>,
                       _Uses_default_construct<_Alloc, _Ptrval, decltype(::std:: move(*_UFirst))>>) {
-        _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
-        return _Dest + (_ULast - _UFirst);
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
-        for (; _UFirst != _ULast; ++_UFirst) {
-            _Backout._Emplace_back(::std:: move(*_UFirst));
+        if (!::std:: is_constant_evaluated())
+        {
+            _Copy_memmove(_UFirst, _ULast, _Unfancy(_Dest));
+            return _Dest + (_ULast - _UFirst);
         }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_Dest, _Al};
+    for (; _UFirst != _ULast; ++_UFirst) {
+        _Backout._Emplace_back(::std:: move(*_UFirst));
+    }
+
+    return _Backout._Release();
 }
 
  template <class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_fill_n(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_fill_n(
     _Alloc_ptr_t<_Alloc> _First, _Alloc_size_t<_Alloc> _Count, const typename _Alloc::value_type& _Val, _Alloc& _Al) {
          using _Ty = typename _Alloc::value_type;
     if constexpr (_Fill_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
-        _Fill_memset(_Unfancy(_First), _Val, static_cast<size_t>(_Count));
-        return _First + _Count;
-    } else {
-        if constexpr (_Fill_zero_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
+        if (!::std:: is_constant_evaluated())
+        {
+            _Fill_memset(_Unfancy(_First), _Val, static_cast<size_t>(_Count));
+            return _First + _Count;
+        }
+    } else if constexpr (_Fill_zero_memset_is_safe<_Ty*, _Ty> && _Uses_default_construct<_Alloc, _Ty*, _Ty>::value) {
+        if (!::std:: is_constant_evaluated())
+        {
             if (_Is_all_bits_zero(_Val)) {
                 _Fill_zero_memset(_Unfancy(_First), static_cast<size_t>(_Count));
                 return _First + _Count;
             }
         }
-        _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
-        for (; 0 < _Count; --_Count) {
-            _Backout._Emplace_back(_Val);
-        }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
+    for (; 0 < _Count; --_Count) {
+        _Backout._Emplace_back(_Val);
+    }
+
+    return _Backout._Release();
 }
 
  template <class _NoThrowFwdIt, class _Tval>
@@ -22304,6 +22836,7 @@ void uninitialized_fill(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last, c
                 return;
             }
         }
+
         _Uninitialized_backout<_Unwrapped_t<const _NoThrowFwdIt&>> _Backout{_UFirst};
         while (_Backout._Last != _ULast) {
             _Backout._Emplace_back(_Val);
@@ -22314,33 +22847,37 @@ void uninitialized_fill(const _NoThrowFwdIt _First, const _NoThrowFwdIt _Last, c
 }
 
  template <class _NoThrowFwdIt>
-inline constexpr bool _Use_memset_value_construct_v = conjunction_v<is_pointer<_NoThrowFwdIt>,
-    is_scalar<_Iter_value_t<_NoThrowFwdIt>>, negation<is_volatile<remove_reference_t<_Iter_ref_t<_NoThrowFwdIt>>>>,
-    negation<is_member_pointer<_Iter_value_t<_NoThrowFwdIt>>>>;
+inline constexpr bool _Use_memset_value_construct_v =
+    conjunction_v<bool_constant<_Iterator_is_contiguous<_NoThrowFwdIt>>, is_scalar<_Iter_value_t<_NoThrowFwdIt>>,
+        negation<is_volatile<remove_reference_t<_Iter_ref_t<_NoThrowFwdIt>>>>,
+        negation<is_member_pointer<_Iter_value_t<_NoThrowFwdIt>>>>;
 
 template <class _Ptr>
-_Ptr _Zero_range(const _Ptr _First, const _Ptr _Last) {      char* const _First_ch = reinterpret_cast<char*>(_First);
-    char* const _Last_ch  = reinterpret_cast<char*>(_Last);
+_Ptr _Zero_range(const _Ptr _First, const _Ptr _Last) {      char* const _First_ch = reinterpret_cast<char*>(_To_address(_First));
+    char* const _Last_ch  = reinterpret_cast<char*>(_To_address(_Last));
     :: memset(_First_ch, 0, static_cast<size_t>(_Last_ch - _First_ch));
     return _Last;
 }
 
 template <class _Alloc>
-_Alloc_ptr_t<_Alloc> _Uninitialized_value_construct_n(
+constexpr _Alloc_ptr_t<_Alloc> _Uninitialized_value_construct_n(
     _Alloc_ptr_t<_Alloc> _First, _Alloc_size_t<_Alloc> _Count, _Alloc& _Al) {
          using _Ptrty = typename _Alloc::value_type*;
     if constexpr (_Use_memset_value_construct_v<_Ptrty> && _Uses_default_construct<_Alloc, _Ptrty>::value) {
-        auto _PFirst = _Unfancy(_First);
-        _Zero_range(_PFirst, _PFirst + _Count);
-        return _First + _Count;
-    } else {
-        _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
-        for (; 0 < _Count; --_Count) {
-            _Backout._Emplace_back();
+        if (!::std:: is_constant_evaluated())
+        {
+            auto _PFirst = _Unfancy(_First);
+            _Zero_range(_PFirst, _PFirst + _Count);
+            return _First + _Count;
         }
-
-        return _Backout._Release();
     }
+
+    _Uninitialized_backout_al<_Alloc> _Backout{_First, _Al};
+    for (; 0 < _Count; --_Count) {
+        _Backout._Emplace_back();
+    }
+
+    return _Backout._Release();
 }
 
 template <class _NoThrowFwdIt, class _Diff>
@@ -22372,7 +22909,7 @@ struct _In_place_key_extract_set<_Key, _Key> {
     }
 };
 
-  template <class _Key, class... Args>
+  template <class _Key, class... _Args>
 struct _In_place_key_extract_map {
          static constexpr bool _Extractable = false;
 };
@@ -22472,7 +23009,8 @@ template <class _Alloc>
 }
 
  template <class _Container, class _Uty>
-typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val) {      auto _First          = _Cont.begin();
+constexpr typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     _Seek_wrapped(_First, ::std:: remove(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Val));
@@ -22481,7 +23019,8 @@ typename _Container::size_type _Erase_remove(_Container& _Cont, const _Uty& _Val
 }
 
  template <class _Container, class _Pr>
-typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) {      auto _First          = _Cont.begin();
+constexpr typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     _Seek_wrapped(_First, ::std:: remove_if(_Get_unwrapped(_First), _Get_unwrapped(_Last), _Pred));
@@ -22490,7 +23029,8 @@ typename _Container::size_type _Erase_remove_if(_Container& _Cont, _Pr _Pred) { 
 }
 
  template <class _Container, class _Pr>
-typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {      auto _First          = _Cont.begin();
+typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {
+         auto _First          = _Cont.begin();
     const auto _Last     = _Cont.end();
     const auto _Old_size = _Cont.size();
     while (_First != _Last) {
@@ -22501,6 +23041,84 @@ typename _Container::size_type _Erase_nodes_if(_Container& _Cont, _Pr _Pred) {  
         }
     }
     return _Old_size - _Cont.size();
+}
+
+template <class _Ty, class _Alloc, class... _Types, enable_if_t<!_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, _Types&&... _Args) noexcept {
+    if constexpr (!uses_allocator_v<_Ty, _Alloc>) {
+        static_assert(is_constructible_v<_Ty, _Types...>,
+            "If uses_allocator_v<T, Alloc> does not hold, T must be constructible from Types...");
+        (void) _Al;
+        return ::std:: forward_as_tuple(::std:: forward<_Types>(_Args)...);
+    } else if constexpr (is_constructible_v<_Ty, allocator_arg_t, const _Alloc&, _Types...>) {
+        using _ReturnType = tuple<allocator_arg_t, const _Alloc&, _Types&&...>;
+        return _ReturnType{allocator_arg, _Al, ::std:: forward<_Types>(_Args)...};
+    } else if constexpr (is_constructible_v<_Ty, _Types..., const _Alloc&>) {
+        return ::std:: forward_as_tuple(::std:: forward<_Types>(_Args)..., _Al);
+    } else {
+        static_assert(_Always_false<_Ty>,
+            "T must be constructible from either (allocator_arg_t, const Alloc&, Types...) or (Types..., const Alloc&) if uses_allocator_v<T, Alloc> is true");
+    }
+}
+
+template <class _Ty, class _Alloc, class _Tuple1, class _Tuple2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(
+    const _Alloc& _Al, piecewise_construct_t, _Tuple1&& _Tup1, _Tuple2&& _Tup2) noexcept {
+    return ::std:: make_tuple(piecewise_construct,
+        ::std:: apply(
+            [&_Al](auto&&... _Tuple_args) {
+                return ::std:: uses_allocator_construction_args<typename _Ty::first_type>(
+                    _Al, ::std:: forward<decltype(_Tuple_args)>(_Tuple_args)...);
+            },
+            ::std:: forward<_Tuple1>(_Tup1)),
+        ::std:: apply(
+            [&_Al](auto&&... _Tuple_args) {
+                return ::std:: uses_allocator_construction_args<typename _Ty::second_type>(
+                    _Al, ::std:: forward<decltype(_Tuple_args)>(_Tuple_args)...);
+            },
+            ::std:: forward<_Tuple2>(_Tup2)));
+}
+
+template <class _Ty, class _Alloc, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al) noexcept {
+              return ::std:: make_tuple(piecewise_construct, ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, _Uty1&& _Val1, _Uty2&& _Val2) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, ::std:: forward<_Uty1>(_Val1)),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, ::std:: forward<_Uty2>(_Val2)));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(
+    const _Alloc& _Al, const pair<_Uty1, _Uty2>& _Pair) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, _Pair.first),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, _Pair.second));
+}
+
+template <class _Ty, class _Alloc, class _Uty1, class _Uty2, enable_if_t<_Is_specialization_v<_Ty, pair>, int> = 0>
+ constexpr auto uses_allocator_construction_args(const _Alloc& _Al, pair<_Uty1, _Uty2>&& _Pair) noexcept {
+                   return ::std:: make_tuple(piecewise_construct,
+        ::std:: uses_allocator_construction_args<typename _Ty::first_type>(_Al, ::std:: move(_Pair).first),
+        ::std:: uses_allocator_construction_args<typename _Ty::second_type>(_Al, ::std:: move(_Pair).second));
+}
+
+template <class _Ty, class _Alloc, class... _Types>
+ constexpr _Ty make_obj_using_allocator(const _Alloc& _Al, _Types&&... _Args) {
+    return ::std:: make_from_tuple<_Ty>(::std:: uses_allocator_construction_args<_Ty>(_Al, ::std:: forward<_Types>(_Args)...));
+}
+
+template <class _Ty, class _Alloc, class... _Types>
+constexpr _Ty* uninitialized_construct_using_allocator(_Ty* _Ptr, const _Alloc& _Al, _Types&&... _Args) {
+    return ::std:: apply(
+        [&](auto&&... _Construct_args) {
+            return ::std:: construct_at(_Ptr, ::std:: forward<decltype(_Construct_args)>(_Construct_args)...);
+        },
+        ::std:: uses_allocator_construction_args<_Ty>(_Al, ::std:: forward<_Types>(_Args)...));
 }
 }
 
@@ -22757,16 +23375,10 @@ public:
         return _Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _Tree_unchecked_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
 
      bool operator==(_Default_sentinel) const noexcept {
         return !!_Ptr->_Isnil;                                      }
 
-     bool operator!=(_Default_sentinel) const noexcept {
-        return !_Ptr->_Isnil;
-    }
 
     _Nodeptr _Ptr;  };
 
@@ -22867,9 +23479,6 @@ public:
         return this->_Ptr == _Right._Ptr;
     }
 
-     bool operator!=(const _Tree_const_iterator& _Right) const noexcept {
-        return !(*this == _Right);
-    }
 
 
     using _Prevent_inheriting_unwrap = _Tree_const_iterator;
@@ -23414,7 +24023,7 @@ public:
     _Tree(const _Tree& _Right, _Any_alloc&& _Al)
         : _Mypair(_One_then_variadic_args_t{}, _Right.key_comp(), _One_then_variadic_args_t{},
             ::std:: forward<_Any_alloc>(_Al)) {
-        auto&& _Alproxy   = _Fake_allocator();
+        auto&& _Alproxy   = _Fake_alloc;
         const auto _Scary = _Get_scary();
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, *_Scary);
         _Tree_head_scoped_ptr<_Alnode, _Scary_val> _Sentinel(_Getal(), *_Scary);
@@ -23431,7 +24040,7 @@ public:
 
 private:
     void _Different_allocator_move_construct(_Tree&& _Right) {
-                 auto&& _Alproxy   = _Fake_allocator();
+                 auto&& _Alproxy   = _Fake_alloc;
         const auto _Scary = _Get_scary();
         _Container_proxy_ptr<_Alty> _Proxy(_Alproxy, *_Scary);
         _Tree_head_scoped_ptr<_Alnode, _Scary_val> _Sentinel(_Getal(), *_Scary);
@@ -23466,8 +24075,8 @@ private:
             _Move_assign(_Right, _Equal_allocators{});
         } else {
             clear();
-            _Getcomp()            = _Right._Getcomp();              auto&& _Alproxy       = _Fake_allocator();
-            auto&& _Right_alproxy = _Fake_allocator();
+            _Getcomp()            = _Right._Getcomp();              auto&& _Alproxy       = _Fake_alloc;
+            auto&& _Right_alproxy = _Fake_alloc;
             _Container_proxy_ptr<_Alty> _Proxy(_Right_alproxy, _Leave_proxy_unbound{});
             const auto _Scary       = _Get_scary();
             const auto _Right_scary = _Right._Get_scary();
@@ -23607,9 +24216,9 @@ private:
             const auto _Scary = _Get_scary();
             _Scary->_Orphan_all();
             auto& _Al             = _Getal();
-            auto&& _Alproxy       = _Fake_allocator();
+            auto&& _Alproxy       = _Fake_alloc;
             const auto& _Right_al = _Right._Getal();
-            auto&& _Right_alproxy = _Fake_allocator();
+            auto&& _Right_alproxy = _Fake_alloc;
             _Container_proxy_ptr<_Alty> _Proxy(_Right_alproxy, _Leave_proxy_unbound{});
             auto _Right_al_non_const = _Right_al;
             auto _Newhead            = _Node::_Buyheadnode(_Right_al_non_const);
@@ -24304,7 +24913,7 @@ protected:
 
     void _Alloc_sentinel_and_proxy() {
         const auto _Scary = _Get_scary();
-        auto&& _Alproxy   = _Fake_allocator();
+        auto&& _Alproxy   = _Fake_alloc;
         _Container_proxy_ptr<_Alnode> _Proxy(_Alproxy, *_Scary);
         _Scary->_Myhead = _Node::_Buyheadnode(_Getal());
         _Proxy._Release();
@@ -24363,100 +24972,6 @@ private:
 
 namespace std {
 
- template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct2(
-    true_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, allocator_arg, _Inner, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct2(
-    false_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         static_assert(is_constructible_v<_Ty, _Types..., _Inner_alloc&>,
-        "N4700 23.10.7.2 [allocator.uses.construction]/1 requires is_constructible_v<T, Args..., Alloc&> when uses_allocator_v<T, Alloc> is true and is_constructible_v<T, allocator_arg_t, Alloc&, Args...> is false");
-    allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, ::std:: forward<_Types>(_Args)..., _Inner);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct1(
-    true_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-              using _IsConstructible = typename is_constructible<_Ty, allocator_arg_t, _Inner_alloc&, _Types...>::type;
-    _Uses_allocator_construct2(_IsConstructible{}, _Ptr, _Outer, _Inner, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types>
-void _Uses_allocator_construct1(false_type, _Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc&, _Types&&... _Args) {
-         static_assert(is_constructible_v<_Ty, _Types...>,
-        "N4700 23.10.7.2 [allocator.uses.construction]/1 requires is_constructible_v<T, Args...> when uses_allocator_v<T, Alloc> is false");
-    allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, ::std:: forward<_Types>(_Args)...);
-}
-
-template <class _Ty, class _Outer_alloc, class _Inner_alloc, class... _Types,
-    enable_if_t<!_Is_specialization_v<_Ty, pair>, int> = 0>
-void _Uses_allocator_construct(_Ty* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Types&&... _Args) {
-         _Uses_allocator_construct1(uses_allocator<_Ty, _Inner_alloc>{}, _Ptr, _Outer, _Inner,
-        ::std:: forward<_Types>(_Args)...);  }
-
-template <class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise2(true_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return ::std:: tuple_cat(tuple<allocator_arg_t, _Alloc&>(allocator_arg, _Al), ::std:: move(_Tuple));
-}
-
-template <class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise2(false_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return ::std:: tuple_cat(::std:: move(_Tuple), tuple<_Alloc&>(_Al));
-}
-
-template <class _Ty, class _Alloc, class... _Types>
-auto _Uses_allocator_piecewise(true_type, _Alloc& _Al, tuple<_Types...>&& _Tuple) {
-    return _Uses_allocator_piecewise2(
-        is_constructible<_Ty, allocator_arg_t, _Alloc&, _Types...>(), _Al, ::std:: move(_Tuple));
-}
-
-template <class, class _Alloc, class... _Types>
-tuple<_Types...>&& _Uses_allocator_piecewise(false_type, _Alloc&, tuple<_Types...>&& _Tuple) {
-    return ::std:: move(_Tuple);
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class... _Types1, class... _Types2>
-void _Uses_allocator_construct_pair(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner,
-    tuple<_Types1...>&& _Val1, tuple<_Types2...>&& _Val2) {
-         allocator_traits<_Outer_alloc>::construct(_Outer, _Ptr, piecewise_construct,
-        _Uses_allocator_piecewise<_Ty1>(uses_allocator<_Ty1, _Inner_alloc>{}, _Inner, ::std:: move(_Val1)),
-        _Uses_allocator_piecewise<_Ty2>(uses_allocator<_Ty2, _Inner_alloc>{}, _Inner, ::std:: move(_Val2)));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class... _Types1, class... _Types2>
-void _Uses_allocator_construct(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner,
-    piecewise_construct_t, tuple<_Types1...> _Val1, tuple<_Types2...> _Val2) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: move(_Val1), ::std:: move(_Val2));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc>
-void _Uses_allocator_construct(pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, tuple<>{}, tuple<>{});
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, _Uty&& _Arg1, _Vty&& _Arg2) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: forward_as_tuple(::std:: forward<_Uty>(_Arg1)),
-        ::std:: forward_as_tuple(::std:: forward<_Vty>(_Arg2)));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, const pair<_Uty, _Vty>& _Pair) {
-         _Uses_allocator_construct_pair(
-        _Ptr, _Outer, _Inner, ::std:: forward_as_tuple(_Pair.first), ::std:: forward_as_tuple(_Pair.second));
-}
-
-template <class _Ty1, class _Ty2, class _Outer_alloc, class _Inner_alloc, class _Uty, class _Vty>
-void _Uses_allocator_construct(
-    pair<_Ty1, _Ty2>* const _Ptr, _Outer_alloc& _Outer, _Inner_alloc& _Inner, pair<_Uty, _Vty>&& _Pair) {
-         _Uses_allocator_construct_pair(_Ptr, _Outer, _Inner, ::std:: forward_as_tuple(::std:: forward<_Uty>(_Pair.first)),
-        ::std:: forward_as_tuple(::std:: forward<_Vty>(_Pair.second)));
-}
 
 namespace pmr {
          class __declspec(novtable) memory_resource {
@@ -24487,9 +25002,6 @@ namespace pmr {
         return &_Left == &_Right || _Left.is_equal(_Right);
     }
 
-     inline bool operator!=(const memory_resource& _Left, const memory_resource& _Right) noexcept {
-        return !(_Left == _Right);
-    }
 
          extern "C"  memory_resource* __cdecl _Aligned_get_default_resource() noexcept;
     extern "C"  memory_resource* __cdecl _Unaligned_get_default_resource() noexcept;
@@ -24568,8 +25080,7 @@ namespace pmr {
 
         template <class _Uty, class... _Types>
         void construct(_Uty* const _Ptr, _Types&&... _Args) {
-                         allocator<char> _Al{};
-            _Uses_allocator_construct(_Ptr, _Al, *this, ::std:: forward<_Types>(_Args)...);
+                         ::std:: uninitialized_construct_using_allocator(_Ptr, *this, ::std:: forward<_Types>(_Args)...);
         }
 
         template <class _Uty>
@@ -24595,11 +25106,6 @@ namespace pmr {
                  return *_Left.resource() == *_Right.resource();
     }
 
-    template <class _Ty1, class _Ty2>
-     bool operator!=(
-        const polymorphic_allocator<_Ty1>& _Left, const polymorphic_allocator<_Ty2>& _Right) noexcept {
-        return !(_Left == _Right);
-    }
 
 }  
 template <class _Ty, class _Ptr>
@@ -24933,33 +25439,15 @@ map(initializer_list<pair<_Kty, _Ty>>, _Alloc) -> map<_Kty, _Ty, less<_Kty>, _Al
 template <class _Kty, class _Ty, class _Pr, class _Alloc>
  bool operator==(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
     return _Left.size() == _Right.size()
-           && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin());
+        && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin());
 }
 
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator!=(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
 
 template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator<(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return ::std:: lexicographical_compare(
-        _Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin(), _Right._Unchecked_end_iter());
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator>(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator<=(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator>=(const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Left < _Right);
+ _Synth_three_way_result<pair<const _Kty, _Ty>> operator<=>(
+    const map<_Kty, _Ty, _Pr, _Alloc>& _Left, const map<_Kty, _Ty, _Pr, _Alloc>& _Right) {
+    return ::std:: lexicographical_compare_three_way(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(),
+        _Right._Unchecked_begin(), _Right._Unchecked_end_iter(), _Synth_three_way{});
 }
 
 template <class _Kty, class _Ty, class _Pr, class _Alloc>
@@ -25115,38 +25603,15 @@ template <class _Kty, class _Ty, class _Pr, class _Alloc>
  bool operator==(
     const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
     return _Left.size() == _Right.size()
-           && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin());
+        && ::std:: equal(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin());
 }
 
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator!=(
-    const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Left == _Right);
-}
 
 template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator<(
+ _Synth_three_way_result<pair<const _Kty, _Ty>> operator<=>(
     const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return ::std:: lexicographical_compare(
-        _Left._Unchecked_begin(), _Left._Unchecked_end_iter(), _Right._Unchecked_begin(), _Right._Unchecked_end_iter());
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator>(
-    const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return _Right < _Left;
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator<=(
-    const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Right < _Left);
-}
-
-template <class _Kty, class _Ty, class _Pr, class _Alloc>
- bool operator>=(
-    const multimap<_Kty, _Ty, _Pr, _Alloc>& _Left, const multimap<_Kty, _Ty, _Pr, _Alloc>& _Right) {
-    return !(_Left < _Right);
+    return ::std:: lexicographical_compare_three_way(_Left._Unchecked_begin(), _Left._Unchecked_end_iter(),
+        _Right._Unchecked_begin(), _Right._Unchecked_end_iter(), _Synth_three_way{});
 }
 
 template <class _Kty, class _Ty, class _Pr, class _Alloc>
