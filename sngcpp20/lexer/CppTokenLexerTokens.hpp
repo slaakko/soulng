@@ -160,11 +160,16 @@ namespace CppTokenLexerTokens
     const int __CDECL = 148;
     const int __FASTCALL = 149;
     const int __STDCALL = 150;
-    const int __INT64 = 151;
-    const int __UNALIGNED = 152;
-    const int __INLINE = 153;
-    const int __NULLPTR = 154;
-    const int MAX = 155;
+    const int __THISCALL = 151;
+    const int __VECTORCALL = 152;
+    const int __INT64 = 153;
+    const int __INT32 = 154;
+    const int __INT16 = 155;
+    const int __INT8 = 156;
+    const int __UNALIGNED = 157;
+    const int __INLINE = 158;
+    const int __NULLPTR = 159;
+    const int MAX = 160;
 
     LEXER_API void InitTokenIdMap();
     LEXER_API int GetTokenId(const std::u32string& tokenName);

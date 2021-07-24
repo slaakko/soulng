@@ -28,9 +28,14 @@ TemplateHeadNode::TemplateHeadNode(const SourcePos& sourcePos_) : CompoundNode(N
 {
 }
 
-TemplateHeadNode::TemplateHeadNode(const SourcePos& sourcePos_, Node* templateParamList_, Node* requiresClause_) : 
-    CompoundNode(NodeKind::templateHeadNode, sourcePos_), templateParamList(templateParamList_), requiresClause(requiresClause_)
+void TemplateHeadNode::SetTemplateParameterList(Node* templateParamList_)
 {
+    templateParamList.reset(templateParamList_);
+}
+
+void TemplateHeadNode::SetRequiresClause(Node* requiresClause_)
+{
+    requiresClause.reset(requiresClause_);
 }
 
 void TemplateHeadNode::Accept(Visitor& visitor)

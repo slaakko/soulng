@@ -21,6 +21,7 @@
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 [cpp]#include <sngcpp20/symbols/Class.hpp>
 [cpp]#include <sngcpp20/symbols/SymbolTable.hpp>
+[cpp]#include <sngcpp20/symbols/ScopeResolver.hpp>
 
 using namespace sngcpp::ast;
 using namespace CppTokens;
@@ -40,6 +41,7 @@ parser api(PARSER_API) TypeParser
     using EnumParser.EnumSpecifier;
     using EnumParser.ElaboratedEnumSpecifier;
     using GuardParser.NotDefiningTypeSpecifierGuard;
+    using FunctionParser.DestructorId;
     using ExpressionParser.Expression;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
@@ -73,13 +75,18 @@ parser api(PARSER_API) TypeParser
     DefiningTypeSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   
-            DefiningTypeSpecifier(ctx):first{ node.reset(new DefiningTypeSpecifierSequenceNode(sourcePos)); node->AddNode(first); }
-            (DefiningTypeSpecifier(ctx):next{ node->AddNode(next); })*
+            DefiningTypeSpecifierReset(ctx):first{ node.reset(new DefiningTypeSpecifierSequenceNode(sourcePos)); node->AddNode(first); }
+            (DefiningTypeSpecifierReset(ctx):next{ node->AddNode(next); })*
             (AttributeSpecifierSeq(ctx):attributes{ node->AddNode(attributes); })?
         )
         {
             return node.release();
         }
+        ;
+
+    DefiningTypeSpecifierReset(sngcpp::symbols::Context* ctx) : Node*
+        ::= empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
+            DefiningTypeSpecifier(ctx):definingTypeSpecifier{ ctx->PopFlags(); return definingTypeSpecifier; } / { ctx->PopFlags(); }
         ;
 
     DefiningTypeSpecifier(sngcpp::symbols::Context* ctx) : Node*
@@ -100,15 +107,15 @@ parser api(PARSER_API) TypeParser
         ;
 
     TypeSpecifier(sngcpp::symbols::Context* ctx) : Node*
-        ::= ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier
-            { 
-                ctx->SetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); 
-                return elaboratedTypeSpecifier; 
-            }
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier
+        ::= SimpleTypeSpecifier(ctx):simpleTypeSpecifier
             { 
                 ctx->SetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); 
                 return simpleTypeSpecifier; 
+            }
+        |   ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier
+            { 
+                ctx->SetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); 
+                return elaboratedTypeSpecifier; 
             }
         |   TypenameSpecifier(ctx):typenameSpecifier
             { 
@@ -177,14 +184,55 @@ parser api(PARSER_API) TypeParser
                     { 
                         return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)); 
                     }
-                |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } TypeName(ctx):typeName
+                |   QualifiedTypeName(ctx):qtn
                     { 
-                        return new QualifiedIdNode(s, nns2, typeName); 
+                        std::unique_ptr<Node> node;
+                        node.reset(qtn);
+                        pass = !sngcpp::symbols::IsQualifiedConstructorName(node.get(), ctx);
+                        if (pass)
+                        {
+                            return node.release();
+                        }
+                        else
+                        {
+                            ctx->SetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor);
+                        }
                     }
-                )
+                |   NestedNameSpecifier(ctx):nns1 DestructorId(ctx):dtorId
+                    { 
+                        ctx->SetBottomUpFlag(sngcpp::symbols::ContextFlags::destructor);
+                        pass = false; 
+                    }
+                |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } 
+                    Identifier(ctx):id
+                    { 
+                        if (ctx->GetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId))
+                        {
+                            ctx->SetBottomUpFlag(sngcpp::symbols::ContextFlags::simpleTypeSpecifierWithoutTypeNameMatched); 
+                            return new QualifiedIdNode(s, nns2, id); 
+                        }
+                        else
+                        {
+                            pass = false;
+                        }
+                    }
                 |   TypeName(ctx):typeName2
                     { 
-                        return typeName2; 
+                        std::unique_ptr<Node> tn;
+                        tn.reset(typeName2);
+                        pass = !ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor) && !ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::destructor);
+                        if (pass)
+                        {
+                            pass = !sngcpp::symbols::IsConstructorName(tn.get(), ctx);
+                            if (pass)
+                            {
+                                return tn.release(); 
+                            }
+                            else
+                            {
+                                ctx->SetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor);
+                            }
+                        }
                     }
                 |   DeclTypeSpecifier(ctx):declTypeSpecifier
                     { 
@@ -194,6 +242,7 @@ parser api(PARSER_API) TypeParser
                     { 
                         return placeholderTypeSpecifier; 
                     }
+                )
             )
         )
         ;
@@ -203,10 +252,38 @@ parser api(PARSER_API) TypeParser
         |   TypeIdentifier(ctx):typeIdentifier{ return typeIdentifier;  }        
         ;
 
+    QualifiedTypeName(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> nnsNode, var std::unique_ptr<Node> idNode) : Node*
+        ::= 
+        (
+            NestedNameSpecifier(ctx):nns{ nnsNode.reset(nns); s = sourcePos; }
+            Identifier(ctx):id{ idNode.reset(id); }
+        )
+        {
+            sngcpp::symbols::Scope* scope = sngcpp::symbols::ResolveScope(nnsNode.get(), ctx);
+            if (scope)
+            {
+                sngcpp::symbols::Symbol* symbol = scope->Lookup(idNode->Str(), sngcpp::symbols::SymbolGroupKind::typeSymbolGroup, sngcpp::symbols::ScopeLookup::allScopes, s, ctx);
+                if (symbol && symbol->IsTypeSymbol())
+                {
+                    ctx->GetSymbolTable()->MapNode(idNode.get(), symbol);
+                    return new QualifiedIdNode(s, nnsNode.release(), idNode.release());
+                }
+                else
+                {
+                    pass = false;
+                }
+            }
+            else
+            {
+                pass = false;
+            }
+        }
+        ;
+
     TypeId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
-            empty{ ctx->PushFlags(); }
+            empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
             TypeSpecifierSeq(ctx):typeSpecifiers{ s = sourcePos; } AbstractDeclarator(ctx):declarator?
         )
         {

@@ -47,8 +47,8 @@ parser api(SNGCPP_PARSER_API) DeclarationParser
         |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
         |   SpecialMemberFunctionDefinition(ctx):specialMemberFunctionDefinition{ return specialMemberFunctionDefinition; }
         |   TemplateDeclaration(ctx):templateDeclaration{ return templateDeclaration; }
-        |   ExplicitInstantiation(ctx):explicitInstantiation{ return explicitInstantiation; }
         |   ExplicitSpecialization(ctx):explicitSpecialization{ return explicitSpecialization; }
+        |   ExplicitInstantiation(ctx):explicitInstantiation{ return explicitInstantiation; }
         |   ClassDeclaration(ctx):classDeclaration{ return classDeclaration; }
         |   EnumDeclaration(ctx):enumDeclaration{ return enumDeclaration; }
         |   LinkageSpecification(ctx):linkageSpecification{ return linkageSpecification; }

@@ -53,6 +53,10 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::longFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longIntType;
     flagMap[DeclarationFlags::longLongFlag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::longLongFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longLongIntType;
+    flagMap[DeclarationFlags::int64Flag] = FundamentalTypeKind::longLongIntType;
+    flagMap[DeclarationFlags::int32Flag] = FundamentalTypeKind::intType;
+    flagMap[DeclarationFlags::int16Flag] = FundamentalTypeKind::shortIntType;
+    flagMap[DeclarationFlags::int8Flag] = FundamentalTypeKind::charType;
     flagMap[DeclarationFlags::signedFlag] = FundamentalTypeKind::intType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::charFlag] = FundamentalTypeKind::signedCharType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longFlag] = FundamentalTypeKind::longIntType;
@@ -60,6 +64,9 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::intType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longLongFlag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::int64Flag] = FundamentalTypeKind::longLongIntType;
+    flagMap[DeclarationFlags::signedFlag | DeclarationFlags::int32Flag] = FundamentalTypeKind::intType;
+    flagMap[DeclarationFlags::signedFlag | DeclarationFlags::int16Flag] = FundamentalTypeKind::shortIntType;
+    flagMap[DeclarationFlags::signedFlag | DeclarationFlags::int8Flag] = FundamentalTypeKind::charType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longLongFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::shortFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::shortIntType;
@@ -73,6 +80,9 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::longLongFlag] = FundamentalTypeKind::unsignedLongLongIntType;
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::longLongFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::unsignedLongLongIntType;
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::int64Flag] = FundamentalTypeKind::unsignedLongLongIntType;
+    flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::int32Flag] = FundamentalTypeKind::unsignedIntType;
+    flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::int16Flag] = FundamentalTypeKind::unsignedShortIntType;
+    flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::int8Flag] = FundamentalTypeKind::unsignedCharType;
     flagMap[DeclarationFlags::floatFlag] = FundamentalTypeKind::floatType;
     flagMap[DeclarationFlags::doubleFlag] = FundamentalTypeKind::doubleType;
     flagMap[DeclarationFlags::longFlag | DeclarationFlags::doubleFlag] = FundamentalTypeKind::longDoubleType;

@@ -148,9 +148,9 @@ parser api(PARSER_API) ClassParser
             { 
                 return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)); 
             }
-        |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } TypeName(ctx):typeName
+        |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } Identifier(ctx):id
             { 
-                return new QualifiedIdNode(s, nns2, typeName); 
+                return new QualifiedIdNode(s, nns2, id); 
             }
         |   TypeName(ctx):typeName2{ return typeName2; }
         |   DeclTypeSpecifier(ctx):declTypeSpecifier{ return declTypeSpecifier; }
@@ -222,21 +222,26 @@ parser api(PARSER_API) ClassParser
     MemberSpecification(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container, var SourcePos s, var SourcePos colonPos)
         ::= 
         (   AccessSpecifier:accessSpecifier{ s = sourcePos; } COLON{ colonPos = sourcePos; container->AddNode(new BeginAccessGroupNode(s, accessSpecifier, colonPos)); }
-        |   MemberDeclaration(ctx):memberDeclaration{ container->AddNode(memberDeclaration); }
+        |   MemberDeclaration(ctx, true):memberDeclarationCtor{ container->AddNode(memberDeclarationCtor); }
+        |   MemberDeclaration(ctx, false):memberDeclaration{ container->AddNode(memberDeclaration); }
         )+
         ;
 
-    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+    MemberDeclaration(sngcpp::symbols::Context* ctx, bool matchConstructor, var SourcePos s, var std::unique_ptr<Node> declSpecifiersNode, var std::unique_ptr<Node> declaratorsNode) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
-            (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
-            (MemberDeclaratorList(ctx):declarators{ if (!s.IsValid()) s = sourcePos; })? 
+            (MemberDeclSpecifiers(ctx, matchConstructor):declSpecifiers{ if (!s.IsValid()) s = sourcePos; declSpecifiersNode.reset(declSpecifiers); })? 
+            (MemberDeclaratorList(ctx):declarators{ if (!s.IsValid()) s = sourcePos; declaratorsNode.reset(declarators); })? 
             (Semicolon:semicolon{ if (!s.IsValid()) s = sourcePos; })
             {
-                MemberDeclarationNode* memberDeclarationNode = new MemberDeclarationNode(s, attributes, declSpecifiers, declarators, semicolon);
-                sngcpp::symbols::ProcessMemberDeclaration(memberDeclarationNode, ctx);
-                return memberDeclarationNode;
+                if (!declSpecifiersNode && !declaratorsNode) pass = false;
+                else
+                {
+                    MemberDeclarationNode* memberDeclarationNode = new MemberDeclarationNode(s, attributes, declSpecifiersNode.release(), declaratorsNode.release(), semicolon);
+                    sngcpp::symbols::ProcessMemberDeclaration(memberDeclarationNode, ctx);
+                    return memberDeclarationNode;
+                }
             }
-        |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
+        |   MemberFunctionDefinition(ctx, matchConstructor):memberFunctionDefinition{ return memberFunctionDefinition; }
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
         |   UsingEnumDeclaration(ctx):usingEnumDeclaration{ return usingEnumDeclaration; }
         |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }
@@ -246,6 +251,16 @@ parser api(PARSER_API) ClassParser
         |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
         |   OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
         |   EmptyDeclaration:emptyDeclaration{ return emptyDeclaration; }
+        ;
+
+    MemberDeclSpecifiers(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
+        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+            DeclSpecifierSeq(ctx):declSpecifiers{ ctx->PopFlags(); return declSpecifiers; } / { ctx->PopFlags(); }
+        ;
+
+    MemberFunctionDefinition(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
+        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+            FunctionDefinition(ctx):functionDefinition{ ctx->PopFlags(); return functionDefinition; } / { ctx->PopFlags(); }
         ;
 
     MemberDeclaratorList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
@@ -294,7 +309,7 @@ parser api(PARSER_API) ClassParser
         (   
             MemberInitializer(ctx):first{ node.reset(new MemberInitializerListNode(sourcePos)); node->AddNode(first); }
             (Comma:comma{ node->AddNode(comma); } MemberInitializer(ctx):next{ node->AddNode(next); })*
-            (Ellipsis:ellipsis{ node->AddNode(ellipsis); })
+            (Ellipsis:ellipsis{ node->AddNode(ellipsis); })?
         )
         {
             return node.release();

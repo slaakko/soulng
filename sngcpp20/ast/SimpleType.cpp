@@ -143,4 +143,31 @@ void Int64Node::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+Int32Node::Int32Node(const SourcePos& sourcePos_) : Node(NodeKind::int32Node, sourcePos_)
+{
+}
+
+void Int32Node::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+Int16Node::Int16Node(const SourcePos& sourcePos_) : Node(NodeKind::int16Node, sourcePos_)
+{
+}
+
+void Int16Node::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+Int8Node::Int8Node(const SourcePos& sourcePos_) : Node(NodeKind::int8Node, sourcePos_)
+{
+}
+
+void Int8Node::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 } // namespace sngcpp::ast

@@ -15,6 +15,16 @@ FunctionSymbol::FunctionSymbol(const std::u32string& name_, std::vector<std::uni
     GetScope()->SetKind(ScopeKind::functionScope);
 }
 
+bool FunctionSymbol::IsConstructorSymbol() const
+{
+    return Name() == Parent()->Name();
+}
+
+bool FunctionSymbol::IsDestructorSymbol() const
+{
+    return Name() == U"~" + Parent()->Name();
+}
+
 bool FunctionSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
 {
     switch (scopeKind)

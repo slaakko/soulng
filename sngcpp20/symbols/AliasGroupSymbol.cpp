@@ -20,6 +20,7 @@ bool AliasGroupSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     switch (scopeKind)
     {
         case ScopeKind::namespaceScope: return true;
+        case ScopeKind::templateDeclarationScope: return true;
         case ScopeKind::classScope: return true;
         case ScopeKind::blockScope: return true;
     }
@@ -31,8 +32,18 @@ void AliasGroupSymbol::AddAliasTypeSymbol(AliasTypeSymbol* aliasTypeSymbol)
     aliasTypeSymbols.push_back(aliasTypeSymbol);
 }
 
-AliasTypeSymbol* AliasGroupSymbol::GetAliasTypeSymbol(const std::vector<Symbol*>& templateArguments) const
+AliasTypeSymbol* AliasGroupSymbol::GetAliasTypeSymbol(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const
 {
+    exact = false;
+    for (AliasTypeSymbol* aliasTypeSymbol : aliasTypeSymbols)
+    {
+        if (SymbolsEqual(templateArguments, aliasTypeSymbol->TemplateArguments()))
+        {
+            exact = true;
+            return aliasTypeSymbol;
+        }
+    }
+    if (matchKind == MatchKind::exact) return nullptr;
     std::vector<std::pair<Symbol*, int>> symbolScores;
     for (AliasTypeSymbol* aliasTypeSymbol : aliasTypeSymbols)
     {
@@ -58,6 +69,18 @@ AliasTypeSymbol* AliasGroupSymbol::GetAliasTypeSymbol(const std::vector<Symbol*>
     {
         return static_cast<AliasTypeSymbol*>(first.first);
     }
+}
+
+AliasTypeSymbol* AliasGroupSymbol::AliasTypeTemplate() const
+{
+    for (AliasTypeSymbol* aliasTypeSymbol : aliasTypeSymbols)
+    {
+        if (aliasTypeSymbol->IsAliasTemplate())
+        {
+            return aliasTypeSymbol;
+        }
+    }
+    return nullptr;
 }
 
 } // sngcpp::symbols

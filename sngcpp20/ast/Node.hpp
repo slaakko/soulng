@@ -16,6 +16,7 @@ namespace sngcpp::ast {
 
 using soulng::lexer::SourcePos;
 
+class Node;
 class Visitor;
 class Writer;
 class Reader;
@@ -26,6 +27,10 @@ enum class NodeType
 };
 
 AST_API std::string NodeTypeStr(NodeType nodeType);
+
+using NodeDestroyedFunc = void(*)(Node*);
+
+AST_API void SetNodeDestroyedFunc(NodeDestroyedFunc func);
 
 enum class NodeKind : uint16_t
 {
@@ -60,7 +65,7 @@ enum class NodeKind : uint16_t
     opaqueEnumDeclarationNode, functionDeclarationNode, linkageSpecificationNode, namespaceDefinitionNode, namespaceBodyNode, attributeDeclarationNode,
     initDeclaratorListNode, initDeclaratorNode, trailingFunctionDeclaratorNode, parenthesizedDeclaratorNode, abstractDeclaratorNode, declSpecifierSequenceNode,
     friendNode, typedefNode, constExprNode, constEvalNode, constInitNode, inlineNode, staticNode, threadLocalNode, externNode, mutableNode, virtualNode, explicitNode, conditionalExplicitNode,
-    cdeclNode, fastCallNode, stdCallNode, int64Node, unalignedNode, declSpecNode,
+    cdeclNode, fastCallNode, stdCallNode, thisCallNode, vectorCallNode, int64Node, int32Node, int16Node, int8Node, unalignedNode, declSpecNode,
     qualifiedPtrNode,
     typeSpecifierSequenceNode, typenameSpecifierNode, typeIdNode, trailingReturnTypeNode, elaboratedTypeSpecifierNode, declTypeSpecifierNode, placeholderTypeSpecifierNode,
     classSpecifierNode, classHeadNode, baseClauseNode, baseSpecifierListNode, baseSpecifierNode, beginAccessGroupNode, memberDeclarationNode, memberDeclaratorListNode, virtSpecifierSequenceNode,

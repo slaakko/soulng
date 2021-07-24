@@ -48,30 +48,42 @@ parser api(PARSER_API) TemplateParser
     using TypeParser.TypeId;
 
     TemplateDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> templateHeadNode, var SourcePos s) : Node*
-        ::= TemplateHead(ctx):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; sngcpp::symbols::BeginTemplateDeclaration(templateHeadNode.get(), ctx); }
+        ::= TemplateHead(ctx, true):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; }
             (   ConceptDefinition(ctx):concepDefinition{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), concepDefinition); }
             |   Declaration(ctx):declaration{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), declaration); }
             )
         ;
 
-    TemplateHead(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+    TemplateHead(sngcpp::symbols::Context* ctx, bool begin, var SourcePos s, var std::unique_ptr<TemplateHeadNode> templateHeadNode) : Node*
         ::= 
         (
-            TEMPLATE{ s = sourcePos; }
-            TemplateParameterList(ctx):templateParamList
-            RequiresClause(ctx):requiresClause?
+            TEMPLATE{ s = sourcePos; templateHeadNode.reset(new TemplateHeadNode(s)); if (begin) sngcpp::symbols::BeginTemplateDeclaration(templateHeadNode.get(), ctx); }
+            TemplateParameterList(ctx):templateParamList{ templateHeadNode->SetTemplateParameterList(templateParamList); }
+            (RequiresClause(ctx):requiresClause{ templateHeadNode->SetRequiresClause(requiresClause); })?
         )
         {
-            return new TemplateHeadNode(s, templateParamList, requiresClause);
+            return templateHeadNode.release();
         }
         ;
 
-    TemplateParameterList(sngcpp::symbols::Context* ctx, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
+    TemplateParameterList(sngcpp::symbols::Context* ctx, var int index, var std::unique_ptr<Node> templateParameterNode, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             LANGLE{ node.reset(new TemplateParameterListNode(sourcePos)); laPos = sourcePos; } 
-            TemplateParameter(ctx):first{ node->AddNode(first); } 
-            (Comma:comma{ node->AddNode(comma); } TemplateParameter(ctx):next{ node->AddNode(next); })*
+            TemplateParameter(ctx):first
+            { 
+                templateParameterNode.reset(first); 
+                sngcpp::symbols::AddTemplateParameter(templateParameterNode.get(), index, ctx); 
+                node->AddNode(templateParameterNode.release()); 
+                index = index + 1; 
+            } 
+            (Comma:comma{ node->AddNode(comma); } TemplateParameter(ctx):next
+            { 
+                templateParameterNode.reset(next); 
+                sngcpp::symbols::AddTemplateParameter(templateParameterNode.get(), index, ctx); 
+                node->AddNode(templateParameterNode.release()); 
+                index = index + 1; 
+            })*
             RANGLE{ raPos = sourcePos; }
         )
         {
@@ -88,7 +100,7 @@ parser api(PARSER_API) TemplateParser
 
     TypeParameter(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
-        (   TemplateHead(ctx):templateHead{ s = sourcePos; } 
+        (   TemplateHead(ctx, false):templateHead{ s = sourcePos; } 
             TypeParameterKey:key 
             (   Identifier(ctx):identifier? Assign:assign IdExpression(ctx):idExpr{ return new TypeParameterNode(s, key, identifier, assign, idExpr, nullptr, templateHead); }
             |   (Ellipsis:ellipsis? Identifier(ctx):identifier2?){ return new TypeParameterNode(s, key, identifier2, nullptr, nullptr, ellipsis, templateHead); }
@@ -122,7 +134,7 @@ parser api(PARSER_API) TemplateParser
                 )
                 LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName.release())); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
-                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { --lexer.langleCount; ctx->PopFlags(); }
             )
             {
                 node->SetLAnglePos(laPos);
@@ -137,9 +149,26 @@ parser api(PARSER_API) TemplateParser
         ::= 
         (
             TemplateName(ctx):templateName{ s = sourcePos; }
-            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName)); }
+            LANGLE
+            { 
+                laPos = sourcePos; 
+                ++lexer.langleCount; 
+                ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); 
+                ctx->ResetBottomUpFlags();
+                node.reset(new TemplateIdNode(s, templateName)); 
+            }
             TemplateArgumentList(ctx, node.get()):templateArgs?
-            RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+            RANGLE
+            { 
+                raPos = sourcePos; 
+                --lexer.langleCount; 
+                ctx->PopFlags(); 
+            }
+            / 
+            { 
+                --lexer.langleCount; 
+                ctx->PopFlags(); 
+            }
         )
         {
             node->SetLAnglePos(laPos);
@@ -164,7 +193,18 @@ parser api(PARSER_API) TemplateParser
         ;
 
     TemplateArgument(sngcpp::symbols::Context* ctx) : Node*
-        ::= TypeId(ctx):typeId{ return typeId; }
+        ::= TypeId(ctx):typeId
+            { 
+                if (ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::simpleTypeSpecifierWithoutTypeNameMatched)) 
+                {
+                    ctx->ResetBottomUpFlag(sngcpp::symbols::ContextFlags::simpleTypeSpecifierWithoutTypeNameMatched);
+                    pass = false; 
+                }
+                else 
+                {
+                    return typeId; 
+                }
+            }
         |   ConstantExpression(ctx):constantExpr{ return constantExpr; }
         |   IdExpression(ctx):idExpr{ return idExpr; }
         ;
@@ -214,7 +254,8 @@ parser api(PARSER_API) TemplateParser
             Template:tmp{ s = sourcePos; }
             LANGLE{ laPos = sourcePos; }
             RANGLE{ raPos = sourcePos; }
-            Declaration(ctx):declaration
+            empty{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateDeclaration); }
+            Declaration(ctx):declaration{ ctx->PopFlags(); } / { ctx->PopFlags(); }
         )
         {
             return new ExplicitSpecializationNode(s, tmp, declaration, laPos, raPos);

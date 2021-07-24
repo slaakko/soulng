@@ -16,11 +16,13 @@ struct PARSER_API TypeParser
     static soulng::parser::Match TypeSpecifierSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DefiningTypeId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DefiningTypeSpecifierSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match DefiningTypeSpecifierReset(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DefiningTypeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ElaboratedTypeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match SimpleTypeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypeName(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match QualifiedTypeName(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypeId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypenameSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclTypeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);

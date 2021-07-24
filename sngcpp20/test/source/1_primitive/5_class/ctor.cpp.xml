@@ -1,0 +1,102 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="3" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <classSpecifierNode count="1" pos="(1,1)" type="sequence">
+     <classHeadNode pos="(1,1)" type="compound">
+      <classNode pos="(1,1)" type="single">
+       <keyword pos="(1,1)" value="class"/>
+      </classNode>
+      <identifierNode pos="(1,7)" type="compound">
+       <identifier pos="(1,7)" value="foo"/>
+      </identifierNode>
+     </classHeadNode>
+     <operator pos="(1,11)" value="{"/>
+     <functionDefinitionNode pos="(1,13)" type="compound">
+      <functionDeclaratorNode count="1" pos="(1,13)" type="unary">
+       <identifierNode pos="(1,13)" type="compound">
+        <identifier pos="(1,13)" value="foo"/>
+       </identifierNode>
+      </functionDeclaratorNode>
+      <parameterListNode pos="(1,16)" type="list">
+       <operator pos="(1,16)" value="("/>
+       <operator pos="(1,17)" value=")"/>
+      </parameterListNode>
+      <functionBodyNode count="1" pos="(1,19)" type="unary">
+       <compoundStatementNode pos="()" type="sequence">
+        <operator pos="(1,19)" value="{"/>
+        <operator pos="(1,20)" value="}"/>
+       </compoundStatementNode>
+      </functionBodyNode>
+     </functionDefinitionNode>
+     <operator pos="(1,22)" value="}"/>
+    </classSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(1,23)" type="single">
+    <operator pos="(1,23)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <classSpecifierNode count="1" pos="(2,1)" type="sequence">
+     <classHeadNode pos="(2,1)" type="compound">
+      <classNode pos="(2,1)" type="single">
+       <keyword pos="(2,1)" value="class"/>
+      </classNode>
+      <identifierNode pos="(2,7)" type="compound">
+       <identifier pos="(2,7)" value="bar"/>
+      </identifierNode>
+     </classHeadNode>
+     <operator pos="(2,11)" value="{"/>
+     <memberDeclarationNode pos="(2,13)" type="compound">
+      <memberDeclaratorListNode count="1" pos="(2,13)" type="list">
+       <functionDeclaratorNode count="1" pos="(2,13)" type="unary">
+        <identifierNode pos="(2,13)" type="compound">
+         <identifier pos="(2,13)" value="bar"/>
+        </identifierNode>
+       </functionDeclaratorNode>
+       <parameterListNode pos="(2,16)" type="list">
+        <operator pos="(2,16)" value="("/>
+        <operator pos="(2,17)" value=")"/>
+       </parameterListNode>
+      </memberDeclaratorListNode>
+      <semicolonNode pos="(2,18)" type="single">
+       <operator pos="(2,18)" value=";"/>
+      </semicolonNode>
+     </memberDeclarationNode>
+     <operator pos="(2,20)" value="}"/>
+    </classSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(2,21)" type="single">
+    <operator pos="(2,21)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <functionDefinitionNode pos="(3,1)" type="compound">
+   <functionDeclaratorNode count="1" pos="(3,1)" type="unary">
+    <qualifiedIdNode count="2" pos="(3,1)" type="binary">
+     <nestedNameSpecifierNode count="2" pos="(3,1)" type="sequence">
+      <identifierNode pos="(3,1)" type="compound">
+       <identifier pos="(3,1)" value="bar"/>
+      </identifierNode>
+      <colonColonNode pos="(3,4)" type="single">
+       <operator pos="(3,4)" value="::"/>
+      </colonColonNode>
+     </nestedNameSpecifierNode>
+     <identifierNode pos="(3,6)" type="compound">
+      <identifier pos="(3,6)" value="bar"/>
+     </identifierNode>
+    </qualifiedIdNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(3,9)" type="list">
+    <operator pos="(3,9)" value="("/>
+    <operator pos="(3,10)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(3,11)" type="unary">
+    <compoundStatementNode pos="(3,11)" type="sequence">
+     <operator pos="(3,11)" value="{"/>
+     <operator pos="(3,12)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

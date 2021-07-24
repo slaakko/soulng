@@ -87,15 +87,22 @@ void UsingDirectiveAdder::Visit(QualifiedIdNode& node)
 
 void UsingDirectiveAdder::Visit(IdentifierNode& node)
 {
-    Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
-    if (symbol->Kind() == SymbolKind::namespaceSymbol)
+    try
     {
-        NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(symbol);
-        context->GetSymbolTable()->CurrentScope()->AddUsingDirective(ns, node.GetSourcePos(), context);
+        Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
+        if (symbol->Kind() == SymbolKind::namespaceSymbol)
+        {
+            NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(symbol);
+            context->GetSymbolTable()->CurrentScope()->AddUsingDirective(ns, node.GetSourcePos(), context);
+        }
+        else
+        {
+            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote a namespace", node.GetSourcePos(), context);
+        }
     }
-    else
+    catch (const std::exception& ex)
     {
-        throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote a namespace", node.GetSourcePos(), context);
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
@@ -134,22 +141,29 @@ void UsingDeclarationAdder::Visit(QualifiedIdNode& node)
 
 void UsingDeclarationAdder::Visit(IdentifierNode& node)
 {
-    std::vector<Symbol*> symbols;
-    scope->Lookup(node.Str(), SymbolGroupKind::all, ScopeLookup::thisScope, symbols);
-    if (symbols.empty())
+    try
     {
-        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+        std::vector<Symbol*> symbols;
+        scope->Lookup(node.Str(), SymbolGroupKind::all, ScopeLookup::thisScope, symbols);
+        if (symbols.empty())
+        {
+            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+        }
+        for (Symbol* symbol : symbols)
+        {
+            if (symbol->Kind() == SymbolKind::namespaceSymbol)
+            {
+                throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' denotes a namespace", node.GetSourcePos(), context);
+            }
+            else
+            {
+                context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
+            }
+        }
     }
-    for (Symbol* symbol : symbols)
+    catch (const std::exception& ex)
     {
-        if (symbol->Kind() == SymbolKind::namespaceSymbol)
-        {
-            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' denotes a namespace", node.GetSourcePos(), context);
-        }
-        else
-        {
-            context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
-        }
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
@@ -188,25 +202,32 @@ void UsingEnumDeclarationAdder::Visit(UsingEnumDeclarationNode& node)
 
 void UsingEnumDeclarationAdder::Visit(IdentifierNode& node)
 {
-    Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
-    if (symbol)
+    try
     {
-        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
+        Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
+        if (symbol)
         {
-            EnumTypeSymbol* enumTypeSymbol = static_cast<EnumTypeSymbol*>(symbol);
-            for (const auto& enumeratorSymbol : enumTypeSymbol->Enumerators())
+            if (symbol->Kind() == SymbolKind::enumTypeSymbol)
             {
-                context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(enumeratorSymbol.get(), node.GetSourcePos(), context);
+                EnumTypeSymbol* enumTypeSymbol = static_cast<EnumTypeSymbol*>(symbol);
+                for (const auto& enumeratorSymbol : enumTypeSymbol->Enumerators())
+                {
+                    context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(enumeratorSymbol.get(), node.GetSourcePos(), context);
+                }
+            }
+            else
+            {
+                throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote an enumerated type", node.GetSourcePos(), context);
             }
         }
         else
         {
-            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote an enumerated type", node.GetSourcePos(), context);
+            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
         }
     }
-    else
+    catch (const std::exception& ex)
     {
-        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 

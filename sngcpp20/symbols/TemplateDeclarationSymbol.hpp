@@ -19,6 +19,7 @@ class SYMBOLS_API TemplateParameterSymbol : public TypeSymbol
 {
 public:
     TemplateParameterSymbol(Symbol* constraint_, const std::u32string& name_, int index_);
+    bool CanInstall() const override { return !Name().empty(); }
     Symbol* Constraint() const { return constraint; }
     int Index() const { return index; }
 private:
@@ -33,9 +34,9 @@ public:
     bool CanInstall() const override { return false; }
     void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
     std::string SymbolKindStr() const override { return "template declaration symbol"; }
-    const std::vector<TemplateParameterSymbol*>& TemplateParameters() const { return temlateParameters; }
+    const std::vector<TemplateParameterSymbol*>& TemplateParameters() const { return templateParameters; }
 private:
-    std::vector<TemplateParameterSymbol*> temlateParameters;
+    std::vector<TemplateParameterSymbol*> templateParameters;
 };
 
 } // sngcpp::symbols

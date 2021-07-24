@@ -24,6 +24,7 @@ bool ClassGroupSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     switch (scopeKind)
     {
         case ScopeKind::namespaceScope: return true;
+        case ScopeKind::templateDeclarationScope: return true;
         case ScopeKind::classScope: return true;
         case ScopeKind::blockScope: return true;
     }
@@ -38,6 +39,11 @@ void ClassGroupSymbol::AddClass(ClassTypeSymbol* classTypeSymbol)
 ClassTypeSymbol* ClassGroupSymbol::GetClass(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const
 {
     exact = false;
+    if (templateArguments.empty() && classes.size() == 1)
+    {
+        exact = true;
+        return classes.front();
+    }
     for (ClassTypeSymbol* classTypeSymbol : classes)
     {
         if (SymbolsEqual(templateArguments, classTypeSymbol->TemplateArguments()))
@@ -74,6 +80,18 @@ ClassTypeSymbol* ClassGroupSymbol::GetClass(const std::vector<Symbol*>& template
         if (first.second == 0) exact = true;
         return static_cast<ClassTypeSymbol*>(first.first);
     }
+}
+
+ClassTypeSymbol* ClassGroupSymbol::GetClassTemplate() const
+{
+    for (ClassTypeSymbol* classTypeSymbol : classes)
+    {
+        if (classTypeSymbol->IsClassTemplate())
+        {
+            return classTypeSymbol;
+        }
+    }
+    return nullptr;
 }
 
 } // sngcpp::symbols

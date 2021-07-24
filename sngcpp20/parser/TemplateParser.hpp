@@ -16,7 +16,7 @@ class CppLexer;
 struct PARSER_API TemplateParser
 {
     static soulng::parser::Match TemplateDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match TemplateHead(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match TemplateHead(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool begin);
     static soulng::parser::Match TemplateParameterList(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TemplateParameter(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypeParameter(CppLexer& lexer, sngcpp::symbols::Context* ctx);

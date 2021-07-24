@@ -46,11 +46,14 @@ enum class DeclarationFlags : int64_t
     doubleFlag = 1 << 29,
     voidFlag = 1 << 30,
     int64Flag = 1 << 31,
-    autoFlag = 1ll << 32ll,
+    int32Flag = 1ll << 32ll,
+    int16Flag = 1ll << 33ll,
+    int8Flag = 1ll << 34ll,
+    autoFlag = 1ll << 35ll,
 
     fundamentalTypeFlags = 
         charFlag | char8Flag | char16Flag | char32Flag | wcharFlag | boolFlag | shortFlag | intFlag | longFlag | longLongFlag | signedFlag | unsignedFlag | floatFlag | doubleFlag | 
-        voidFlag | int64Flag | autoFlag,
+        voidFlag | int64Flag | int32Flag | int16Flag | int8Flag | autoFlag,
 
     typedefFlagMask = staticFlag | threadLocalFlag | externFlag | mutableFlag | virtualFlag | explicitFlag | inlineFlag | friendFlag | constrExprFlag | constEvalFlag | constInitFlag,
 

@@ -165,7 +165,7 @@ parser api(PARSER_API) ConceptParser
             (
                 LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node->SetHasTemplateArgumentList(); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
-                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { --lexer.langleCount; ctx->PopFlags(); }
             )?
         )
         {

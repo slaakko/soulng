@@ -52,23 +52,30 @@ EnumCreatorVisitor::EnumCreatorVisitor(Stage stage_, Context* context_) :
 
 void EnumCreatorVisitor::Visit(EnumSpecifierNode& node)
 {
-    if (stage == Stage::createEnumType)
+    try
     {
-        specifierNode = &node;
-        node.EnumHead()->Accept(*this);
+        if (stage == Stage::createEnumType)
+        {
+            specifierNode = &node;
+            node.EnumHead()->Accept(*this);
+        }
+        else if (stage == Stage::createEnumerators)
+        {
+            Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
+            if (symbol->Kind() == SymbolKind::enumTypeSymbol)
+            {
+                enumType = static_cast<EnumTypeSymbol*>(symbol);
+            }
+            else
+            {
+                throw Exception("enum type expected", node.GetSourcePos(), context);
+            }
+            VisitListContent(node);
+        }
     }
-    else if (stage == Stage::createEnumerators)
+    catch (const std::exception& ex)
     {
-        Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
-        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
-        {
-            enumType = static_cast<EnumTypeSymbol*>(symbol);
-        }
-        else
-        {
-            throw Exception("enum type expected", node.GetSourcePos(), context);
-        }
-        VisitListContent(node);
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
@@ -111,47 +118,54 @@ void EnumCreatorVisitor::Visit(UnnamedNode& node)
 
 void EnumCreatorVisitor::Visit(EnumeratorDefinitionNode& node)
 {
-    Value* val = nullptr;
-    std::u32string rep;
-    if (node.Value())
+    try
     {
-        first = false;
-        val = EvaluateConstantExpression(node.Value(), GetEvaluationContext());
-        if (val->GetValueKind() == ValueKind::integerValue)
+        Value* val = nullptr;
+        std::u32string rep;
+        if (node.Value())
         {
-            IntegerValue* integerValue = static_cast<IntegerValue*>(val);
-            value = integerValue->GetValue();
-            rep = val->Rep();
+            first = false;
+            val = EvaluateConstantExpression(node.Value(), GetEvaluationContext());
+            if (val->GetValueKind() == ValueKind::integerValue)
+            {
+                IntegerValue* integerValue = static_cast<IntegerValue*>(val);
+                value = integerValue->GetValue();
+                rep = val->Rep();
+            }
+            else if (val->GetValueKind() == ValueKind::boolValue)
+            {
+                BoolValue* boolValue = static_cast<BoolValue*>(val);
+                value = boolValue->GetValue();
+                rep = val->Rep();
+            }
+            else
+            {
+                throw Exception("integer or Boolean value expected", node.GetSourcePos(), context);
+            }
         }
-        else if (val->GetValueKind() == ValueKind::boolValue)
+        else if (first)
         {
-            BoolValue* boolValue = static_cast<BoolValue*>(val);
-            value = boolValue->GetValue();
-            rep = val->Rep();
+            first = false;
+            rep = ToUtf32(std::to_string(value));
         }
         else
         {
-            throw Exception("integer or Boolean value expected", node.GetSourcePos(), context);
+            ++value;
+            rep = ToUtf32(std::to_string(value));
+        }
+        node.Enumerator()->Accept(*this);
+        if (idNode)
+        {
+            enumType->AddEnumerator(new EnumeratorSymbol(idNode->Str(), value, rep));
+        }
+        else
+        {
+            throw Exception("identifier expected", node.GetSourcePos(), context);
         }
     }
-    else if (first)
+    catch (const std::exception& ex)
     {
-        first = false;
-        rep = ToUtf32(std::to_string(value));
-    }
-    else
-    {
-        ++value;
-        rep = ToUtf32(std::to_string(value));
-    }
-    node.Enumerator()->Accept(*this);
-    if (idNode)
-    {
-        enumType->AddEnumerator(new EnumeratorSymbol(idNode->Str(), value, rep));
-    }
-    else
-    {
-        throw Exception("identifier expected", node.GetSourcePos(), context);
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 

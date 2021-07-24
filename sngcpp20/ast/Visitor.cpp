@@ -835,6 +835,20 @@ void DefaultVisitor::Visit(StdCallNode& node)
     EndVisit(node);
 }
 
+void DefaultVisitor::Visit(ThisCallNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__thiscall", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(VectorCallNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__vectorcall", node.GetSourcePos());
+    EndVisit(node);
+}
+
 void DefaultVisitor::Visit(UnalignedNode& node)
 {
     BeginVisit(node);
@@ -2501,6 +2515,27 @@ void DefaultVisitor::Visit(Int64Node& node)
 {
     BeginVisit(node);
     VisitKeyword("__int64", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(Int32Node& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__int32", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(Int16Node& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__int16", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(Int8Node& node) 
+{
+    BeginVisit(node);
+    VisitKeyword("__int8", node.GetSourcePos());
     EndVisit(node);
 }
 

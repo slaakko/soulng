@@ -49,7 +49,7 @@ TypeSymbol* EvaluateDeclTypeNode(Node* declTypeNode, Context* context)
     TypeSymbol* type = evaluator.GetType();
     if (!type)
     {
-        throw std::runtime_error("decltype evaluator incomplete");
+        throw Exception("decltype evaluator incomplete", declTypeNode->GetSourcePos(), context);
     }
     return type;
 }

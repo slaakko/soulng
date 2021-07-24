@@ -22,7 +22,7 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 260);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 265);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -236,27 +236,63 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::symb
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch4 = &match;
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
+                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+                            soulng::lexer::Span span = lexer.GetSpan();
+                            switch (*lexer)
                             {
-                                int64_t pos = lexer.GetPos();
-                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                soulng::parser::Match match(false);
-                                if (*lexer == __INT64)
+                                case __INT64:
                                 {
                                     ++lexer;
-                                    match.hit = true;
-                                }
-                                if (match.hit)
-                                {
                                     {
-                                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
-                                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, new Int64Node(sourcePos));
+                                        {
+                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
+                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                            return soulng::parser::Match(true, new Int64Node(sourcePos));
+                                        }
                                     }
+                                    break;
                                 }
-                                *parentMatch5 = match;
+                                case __INT32:
+                                {
+                                    ++lexer;
+                                    {
+                                        {
+                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
+                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                            return soulng::parser::Match(true, new Int32Node(sourcePos));
+                                        }
+                                    }
+                                    break;
+                                }
+                                case __INT16:
+                                {
+                                    ++lexer;
+                                    {
+                                        {
+                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
+                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                            return soulng::parser::Match(true, new Int16Node(sourcePos));
+                                        }
+                                    }
+                                    break;
+                                }
+                                case __INT8:
+                                {
+                                    ++lexer;
+                                    {
+                                        {
+                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
+                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                            return soulng::parser::Match(true, new Int8Node(sourcePos));
+                                        }
+                                    }
+                                    break;
+                                }
                             }
                             *parentMatch4 = match;
                         }

@@ -12,7 +12,7 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
-Context::Context() : flags(ContextFlags::none), node(nullptr), symbolTable(nullptr), lexer(nullptr)
+Context::Context() : flags(ContextFlags::none), bottomUpFlags(ContextFlags::none), node(nullptr), symbolTable(nullptr), lexer(nullptr)
 {
 }
 
@@ -37,6 +37,11 @@ void Context::PushResetFlag(ContextFlags flag)
 {
     PushFlags();
     flags = flags & ~flag;
+}
+
+void Context::ResetBottomUpFlags()
+{
+    bottomUpFlags = ContextFlags::none;
 }
 
 void Context::PushNode(sngcpp::ast::Node* node_)

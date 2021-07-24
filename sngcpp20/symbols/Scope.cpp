@@ -231,13 +231,16 @@ void ContainerScope::Lookup(const std::u32string& id, SymbolGroupKind symbolGrou
         }
         if ((scopeLookup & ScopeLookup::usingScope) != ScopeLookup::none)
         {
-            if (usingDeclarationScope)
+            if (symbols.empty())
             {
-                usingDeclarationScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
-            }
-            for (Scope* usingDirectiveScope : usingDirectiveScopes)
-            {
-                usingDirectiveScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+                if (usingDeclarationScope)
+                {
+                    usingDeclarationScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+                }
+                for (Scope* usingDirectiveScope : usingDirectiveScopes)
+                {
+                    usingDirectiveScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+                }
             }
         }
     }

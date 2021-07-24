@@ -1,0 +1,43 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <classSpecifierNode count="1" pos="(1,1)" type="sequence">
+     <classHeadNode pos="(1,1)" type="compound">
+      <classNode pos="(1,1)" type="single">
+       <keyword pos="(1,1)" value="class"/>
+      </classNode>
+      <identifierNode pos="(1,7)" type="compound">
+       <identifier pos="(1,7)" value="foo"/>
+      </identifierNode>
+     </classHeadNode>
+     <operator pos="(1,11)" value="{"/>
+     <memberDeclarationNode pos="(1,13)" type="compound">
+      <declSpecifierSequenceNode count="1" pos="(1,13)" type="sequence">
+       <identifierNode pos="(1,13)" type="compound">
+        <identifier pos="(1,13)" value="foo"/>
+       </identifierNode>
+      </declSpecifierSequenceNode>
+      <memberDeclaratorListNode count="1" pos="(1,16)" type="list">
+       <ptrDeclaratorNode count="2" pos="(1,16)" type="sequence">
+        <ptrNode pos="(1,16)" type="single">
+         <operator pos="(1,16)" value="*"/>
+        </ptrNode>
+        <identifierNode pos="(1,18)" type="compound">
+         <identifier pos="(1,18)" value="f"/>
+        </identifierNode>
+       </ptrDeclaratorNode>
+      </memberDeclaratorListNode>
+      <semicolonNode pos="(1,19)" type="single">
+       <operator pos="(1,19)" value=";"/>
+      </semicolonNode>
+     </memberDeclarationNode>
+     <operator pos="(1,21)" value="}"/>
+    </classSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(1,22)" type="single">
+    <operator pos="(1,22)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

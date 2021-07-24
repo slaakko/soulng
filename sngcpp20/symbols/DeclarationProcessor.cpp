@@ -7,6 +7,8 @@
 #include <sngcpp20/symbols/DeclTypeEvaluator.hpp>
 #include <sngcpp20/symbols/AliasGroupSymbol.hpp>
 #include <sngcpp20/symbols/AliasTypeSymbol.hpp>
+#include <sngcpp20/symbols/VariableGroupSymbol.hpp>
+#include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
 #include <sngcpp20/symbols/Class.hpp>
 #include <sngcpp20/symbols/ClassGroupSymbol.hpp>
@@ -16,8 +18,10 @@
 #include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
+#include <sngcpp20/symbols/Value.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
 #include <sngcpp20/ast/Declaration.hpp>
+#include <sngcpp20/ast/Expression.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <sngcpp20/ast/Enum.hpp>
 #include <sngcpp20/ast/Literal.hpp>
@@ -59,20 +63,30 @@ inline DeclarationKind operator~(DeclarationKind operand)
     return DeclarationKind(~int(operand));
 }
 
+struct Id
+{
+    Id() : idNode(nullptr), templateArguments() {}
+    Id(Node* idNode_, const std::vector<Symbol*>& templateArguments_) : idNode(idNode_), templateArguments(templateArguments_) { }
+    std::u32string functionName;
+    Node* idNode;
+    std::vector<Symbol*> templateArguments;
+};
+
 struct Declaration
 {
-    Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
+    Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
     DeclarationKind kind;
     DeclarationFlags flags;
-    TypeSymbol* type;
-    Node* idNode;
+    Symbol* typeOrValue;
+    Id id;
+    Value* initializer;
     Scope* scope;
     Node* node;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
 };
 
-Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
-    kind(kind_), flags(flags_), type(type_), idNode(idNode_), scope(scope_), node(node_), parameters(std::move(parameters_))
+Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
+    kind(kind_), flags(flags_), typeOrValue(typeOrValue_), id(id_), initializer(initializer_), scope(scope_), node(node_), parameters(std::move(parameters_))
 {
 }
 
@@ -89,6 +103,9 @@ public:
     std::vector<Declaration> GetDeclarations();
 
     void SetKind(DeclarationKind kind_) { kind = kind_; }
+    void SetConversionFunction() { isConversionFunction = true; }
+    void SetConstructor() { constructor = true; }
+    void SetDestructor() { destructor = true; }
 
     void Visit(SimpleDeclarationNode& node) override;
 
@@ -103,6 +120,7 @@ public:
     void Visit(EnumSpecifierNode& node);
     void Visit(ElaboratedTypeSpecifierNode& node);
     void Visit(DeclTypeSpecifierNode& node) override;
+    void Visit(TypenameSpecifierNode& node) override;
 
     void Visit(AliasDeclarationNode& node);
 
@@ -136,6 +154,9 @@ public:
     void Visit(DoubleNode& node) override;
     void Visit(VoidNode& node) override;
     void Visit(Int64Node& node) override;
+    void Visit(Int32Node& node) override;
+    void Visit(Int16Node& node) override;
+    void Visit(Int8Node& node) override;
 
     void Visit(IdentifierNode& node) override;
     void Visit(QualifiedIdNode& node) override;
@@ -152,18 +173,70 @@ public:
     void Visit(MemberDeclaratorListNode& node) override;
 
     void Visit(FunctionDeclaratorNode& node) override;
+    void Visit(TrailingFunctionDeclaratorNode& node) override;
     void Visit(ArrayDeclaratorNode& node) override;
     void Visit(IntegerLiteralNode& node) override;
+    void Visit(BooleanLiteralNode& node) override;
     void Visit(ParenthesizedDeclaratorNode& node) override;
     void Visit(ParameterNode& node) override;
     void Visit(EllipsisNode& node) override;
     void Visit(PlaceholderTypeSpecifierNode& node) override;
 
+    void Visit(OperatorFunctionIdNode& node) override;
+    void Visit(NewArrayOpNode& node) override;
+    void Visit(NewOpNode& node) override;
+    void Visit(DeleteArrayOpNode& node) override;
+    void Visit(DeleteOpNode& node) override;
+    void Visit(CoAwaitOpNode& node) override;
+    void Visit(InvokeOpNode& node) override;
+    void Visit(SubscriptOpNode& node) override;
+    void Visit(ArrowNode& node) override;
+    void Visit(ArrowStarNode& node) override;
+    void Visit(ComplementNode& node) override;
+    void Visit(NotNode& node) override;
+    void Visit(PlusNode& node) override;
+    void Visit(MinusNode& node) override;
+    void Visit(MulNode& node) override;
+    void Visit(DivNode& node) override;
+    void Visit(ModNode& node) override;
+    void Visit(ExclusiveOrNode& node) override;
+    void Visit(AndNode& node) override;
+    void Visit(InclusiveOrNode& node) override;
+    void Visit(AssignNode& node) override;
+    void Visit(PlusAssignNode& node) override;
+    void Visit(MinusAssignNode& node) override;
+    void Visit(MulAssignNode& node) override;
+    void Visit(DivAssignNode& node) override;
+    void Visit(ModAssignNode& node) override;
+    void Visit(XorAssignNode& node) override;
+    void Visit(AndAssignNode& node) override;
+    void Visit(OrAssignNode& node) override;
+    void Visit(ShiftLeftAssignNode& node) override;
+    void Visit(ShiftRightAssignNode& node) override;
+    void Visit(EqualNode& node) override;
+    void Visit(NotEqualNode& node) override;
+    void Visit(LessOrEqualNode& node) override;
+    void Visit(GreaterOrEqualNode& node) override;
+    void Visit(CompareNode& node) override;
+    void Visit(LessNode& node) override;
+    void Visit(GreaterNode& node) override;
+    void Visit(ConjunctionNode& node) override;
+    void Visit(DisjunctionNode& node) override;
+    void Visit(ShiftLeftNode& node) override;
+    void Visit(ShiftRightNode& node) override;
+    void Visit(PrefixIncNode& node) override;
+    void Visit(PrefixDecNode& node) override;
+    void Visit(CommaNode& node) override;
+
+    void Visit(NoexceptSpecifierNode& node) override;
+
+    void Visit(DestructorIdNode& node) override;
+
     void ProcessDeclSpecifiers(Node* declSpecifiers);
     void ProcessDeclarator(Node* declarator);
     void ResolveBaseType(Node* node);
-    TypeSymbol* GetBaseType() const { return baseTypeSymbol; }
-    void SetBaseType(TypeSymbol* baseType_) { baseTypeSymbol = baseType_; }
+    TypeSymbol* GetBaseType() const;
+    void SetBaseTypeOrValue(Symbol* baseTypeOrValue_);
 private:
     void ProcesInitDeclarators(Node* initDeclaratorList);
     void ProcessMemberDeclarators(Node* memberDeclarators);
@@ -171,23 +244,49 @@ private:
     Stage stage;
     DeclarationFlags flags;
     Context* context;
-    TypeSymbol* baseTypeSymbol;
-    TypeSymbol* type;
+    Symbol* baseTypeOrValue;
+    Symbol* typeOrValue;
     TypeSymbol* functionType;
-    Node* idNode;
+    Id id;
+    Value* initializer;
     Scope* scope;
     Node* node;
     uint64_t dimension;
+    std::u32string typeName;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     std::vector<Declaration> declarations;
     std::vector<Symbol*> templateArguments;
     std::stack<std::vector<Symbol*>> templateArgumentsStack;
+    bool isConversionFunction;
+    bool constructor;
+    bool destructor;
+    bool operatorFunctionId;
+    bool getDimension;
+    bool resolveTypeName;
 };
 
 DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : 
-    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), functionType(nullptr), idNode(nullptr),
-    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr), dimension(0)
+    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeOrValue(nullptr), typeOrValue(nullptr), functionType(nullptr), id(), initializer(nullptr),
+    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr), dimension(0), isConversionFunction(false), constructor(false), destructor(false), 
+    getDimension(false), operatorFunctionId(false), resolveTypeName(false)
 {
+}
+
+TypeSymbol* DeclarationProcessorVisitor::GetBaseType() const
+{ 
+    if (baseTypeOrValue->IsTypeSymbol())
+    {
+        return static_cast<TypeSymbol*>(baseTypeOrValue);
+    }
+    else
+    {
+        throw std::runtime_error("type expected");
+    }
+}
+
+void DeclarationProcessorVisitor::SetBaseTypeOrValue(Symbol* baseTypeOrValue_)
+{ 
+    baseTypeOrValue = baseTypeOrValue_;
 }
 
 Declaration DeclarationProcessorVisitor::GetDeclaration()
@@ -196,7 +295,7 @@ Declaration DeclarationProcessorVisitor::GetDeclaration()
     {
         kind = DeclarationKind::objectDeclaration;
     }
-    return Declaration(kind, flags, type, idNode, scope, node, std::move(parameters));
+    return Declaration(kind, flags, typeOrValue, id, initializer, scope, node, std::move(parameters));
 }
 
 std::vector<Declaration> DeclarationProcessorVisitor::GetDeclarations()
@@ -215,8 +314,8 @@ void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
     }
     else
     {
-        type = baseTypeSymbol;
-        idNode = nullptr;
+        typeOrValue = baseTypeOrValue;
+        id = Id();
         scope = context->GetSymbolTable()->CurrentScope();
         declarations.push_back(GetDeclaration());
     }
@@ -224,103 +323,215 @@ void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
 
 void DeclarationProcessorVisitor::Visit(MemberDeclarationNode& node)
 {
-    kind = DeclarationKind::none;
-    this->node = &node;
-    ProcessDeclSpecifiers(node.DeclSpecifiers());
-    ProcessMemberDeclarators(node.MemberDeclarators());
+    try
+    {
+        kind = DeclarationKind::none;
+        this->node = &node;
+        ProcessDeclSpecifiers(node.DeclSpecifiers());
+        ProcessMemberDeclarators(node.MemberDeclarators());
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(TypeIdNode& node)
 {
-    node.TypeSpecifiers()->Accept(*this);
-    ProcessDeclarator(node.Declarator());
+    try
+    {
+        node.TypeSpecifiers()->Accept(*this);
+        ProcessDeclarator(node.Declarator());
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(TypeSpecifierSequenceNode& node)
 {
-    if (!this->node)
+    try
     {
-        this->node = &node;
+        if (!this->node)
+        {
+            this->node = &node;
+        }
+        stage = Stage::processDeclSpecifiers;
+        VisitSequenceContent(node);
+        ResolveBaseType(&node);
     }
-    stage = Stage::processDeclSpecifiers;
-    VisitSequenceContent(node);
-    ResolveBaseType(&node);
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(DefiningTypeIdNode& node)
 {
-    node.DefiningTypeSpecifiers()->Accept(*this);
-    ResolveBaseType(&node);
-    type = baseTypeSymbol;
-    node.AbstractDeclarator()->Accept(*this);
+    try
+    {
+        node.DefiningTypeSpecifiers()->Accept(*this);
+        ResolveBaseType(&node);
+        typeOrValue = baseTypeOrValue;
+        node.AbstractDeclarator()->Accept(*this);
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(TemplateIdNode& node)
 {
-    templateArgumentsStack.push(templateArguments);
-    templateArguments.clear();
-    for (Node* itemNode : node.Items())
+    try
     {
-        baseTypeSymbol = nullptr;
-        type = nullptr;
+        Stage prevStage = stage;
+        templateArgumentsStack.push(templateArguments);
+        templateArguments.clear();
+        for (Node* itemNode : node.Items())
+        {
+            baseTypeOrValue = nullptr;
+            typeOrValue = nullptr;
+            flags = DeclarationFlags();
+            stage = Stage::processDeclSpecifiers;
+            itemNode->Accept(*this);
+            if (!typeOrValue)
+            {
+                typeOrValue = baseTypeOrValue;
+            }
+            templateArguments.push_back(typeOrValue);
+        }
+        stage = prevStage;
+        baseTypeOrValue = nullptr;
         flags = DeclarationFlags();
-        itemNode->Accept(*this);
-        templateArguments.push_back(type);
+        if (stage == Stage::processDeclarators)
+        {
+            id = Id();
+        }
+        node.TemplateName()->Accept(*this);
+        templateArguments = templateArgumentsStack.top();
+        templateArgumentsStack.pop();
     }
-    stage = Stage::processDeclSpecifiers;
-    baseTypeSymbol = nullptr;
-    flags = DeclarationFlags();
-    node.TemplateName()->Accept(*this);
-    templateArguments = templateArgumentsStack.top();
-    templateArgumentsStack.pop();
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ClassSpecifierNode& node)
 {
-    kind = kind | DeclarationKind::classDeclaration;
-    Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
-    if (symbol->Kind() == SymbolKind::classTypeSymbol)
+    try
     {
-        baseTypeSymbol = static_cast<TypeSymbol*>(symbol);
+        kind = kind | DeclarationKind::classDeclaration;
+        Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
+        if (symbol->Kind() == SymbolKind::classTypeSymbol)
+        {
+            baseTypeOrValue = static_cast<TypeSymbol*>(symbol);
+        }
+        else
+        {
+            throw Exception("class type symbol expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(EnumSpecifierNode& node)
 {
-    kind = kind | DeclarationKind::enumDeclaration;
-    Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
-    if (symbol->Kind() == SymbolKind::enumTypeSymbol)
+    try
     {
-        baseTypeSymbol = static_cast<TypeSymbol*>(symbol);
+        kind = kind | DeclarationKind::enumDeclaration;
+        Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
+        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
+        {
+            baseTypeOrValue = static_cast<TypeSymbol*>(symbol);
+        }
+        else
+        {
+            throw Exception("enum type symbol expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(ElaboratedTypeSpecifierNode& node)
 {
-    kind = kind | DeclarationKind::classDeclaration;
-    Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
-    if (symbol->Kind() == SymbolKind::classTypeSymbol)
+    try
     {
-        baseTypeSymbol = static_cast<TypeSymbol*>(symbol);
+        kind = kind | DeclarationKind::classDeclaration;
+        Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
+        if (symbol->Kind() == SymbolKind::classTypeSymbol)
+        {
+            baseTypeOrValue = static_cast<TypeSymbol*>(symbol);
+        }
+        else
+        {
+            throw Exception("class type symbol expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(DeclTypeSpecifierNode& node)
 {
-    baseTypeSymbol = EvaluateDeclTypeNode(&node, context);
+    try
+    {
+        baseTypeOrValue = EvaluateDeclTypeNode(&node, context);
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(TypenameSpecifierNode& node)
+{
+    try
+    {
+        baseTypeOrValue = context->GetSymbolTable()->MakeGenericTypeSymbol();
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(AliasDeclarationNode& node)
 {
-    kind = kind | DeclarationKind::aliasDeclararation;
-    if (!this->node)
+    try
     {
-        this->node = &node;
+        kind = kind | DeclarationKind::aliasDeclararation;
+        if (!this->node)
+        {
+            this->node = &node;
+        }
+        stage = Stage::processDeclarators;
+        node.Identifier()->Accept(*this);
+        Id prevId = id;
+        stage = Stage::processDeclSpecifiers;;
+        node.DefiningTypeId()->Accept(*this);
+        id = prevId;
     }
-    stage = Stage::processDeclarators;
-    node.Identifier()->Accept(*this);
-    stage = Stage::processDeclSpecifiers;;
-    node.DefiningTypeId()->Accept(*this);
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
@@ -330,42 +541,73 @@ void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
         node = declSpecifiers;
     }
     stage = Stage::processDeclSpecifiers;
-    declSpecifiers->Accept(*this);
+    if (declSpecifiers)
+    {
+        declSpecifiers->Accept(*this);
+    }
     ResolveBaseType(declSpecifiers);
 }
 
 void DeclarationProcessorVisitor::ResolveBaseType(Node* node)
 {
-    DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
-    if (fundamentalTypeFlags != DeclarationFlags::none)
+    try
     {
-        if (baseTypeSymbol)
+        if (isConversionFunction) return;
+        if (constructor || destructor)
         {
-            throw Exception("duplicate type symbol in declaration specifier sequence", node->GetSourcePos(), context);
+            baseTypeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node->GetSourcePos(), context);
         }
-        baseTypeSymbol = GetFundamentalType(fundamentalTypeFlags, node->GetSourcePos(), context);
-    }
-    else
-    {
-        if (!baseTypeSymbol)
+        if (!node) return;
+        DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
+        if (fundamentalTypeFlags != DeclarationFlags::none)
         {
-            throw Exception("declaration specifier sequence does not contain a type symbol", node->GetSourcePos(), context);
+            if (baseTypeOrValue)
+            {
+                throw Exception("duplicate type symbol in declaration specifier sequence", node->GetSourcePos(), context);
+            }
+            baseTypeOrValue = GetFundamentalType(fundamentalTypeFlags, node->GetSourcePos(), context);
         }
-    }
-    if ((flags & DeclarationFlags::constFlag) != DeclarationFlags::none)
-    {
-        baseTypeSymbol = context->GetSymbolTable()->MakeConstType(baseTypeSymbol);
-    }
-    if ((flags & DeclarationFlags::volatileFlag) != DeclarationFlags::none)
-    {
-        baseTypeSymbol = context->GetSymbolTable()->MakeVolatileType(baseTypeSymbol);
-    }
-    if ((flags & DeclarationFlags::typedefFlag) != DeclarationFlags::none)
-    {
-        if ((flags & DeclarationFlags::typedefFlagMask) != DeclarationFlags::none)
+        else
         {
-            throw Exception("invalid declaration specifier sequence: typedef cannot be combined with these specifiers", node->GetSourcePos(), context);
+            if (!baseTypeOrValue)
+            {
+                throw Exception("declaration specifier sequence does not contain a type symbol", node->GetSourcePos(), context);
+            }
         }
+        if ((flags & DeclarationFlags::constFlag) != DeclarationFlags::none)
+        {
+            if (baseTypeOrValue->IsTypeSymbol())
+            {
+                baseTypeOrValue = context->GetSymbolTable()->MakeConstType(static_cast<TypeSymbol*>(baseTypeOrValue));
+            }
+            else
+            {
+                throw Exception("type symbol expected", node->GetSourcePos(), context);
+            }
+        }
+        if ((flags & DeclarationFlags::volatileFlag) != DeclarationFlags::none)
+        {
+            if (baseTypeOrValue->IsTypeSymbol())
+            {
+                baseTypeOrValue = context->GetSymbolTable()->MakeVolatileType(static_cast<TypeSymbol*>(baseTypeOrValue));
+            }
+            else
+            {
+                throw Exception("type symbol expected", node->GetSourcePos(), context);
+            }
+        }
+        if ((flags & DeclarationFlags::typedefFlag) != DeclarationFlags::none)
+        {
+            if ((flags & DeclarationFlags::typedefFlagMask) != DeclarationFlags::none)
+            {
+                throw Exception("invalid declaration specifier sequence: typedef cannot be combined with these specifiers", node->GetSourcePos(), context);
+            }
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
@@ -377,8 +619,8 @@ void DeclarationProcessorVisitor::ProcessDeclarator(Node* declarator)
     }
     stage = Stage::processDeclarators;
     flags = flags & ~DeclarationFlags::cvQualifierFlagMask;
-    type = baseTypeSymbol;
-    idNode = nullptr;
+    typeOrValue = baseTypeOrValue;
+    id = Id();
     declarator->Accept(*this);
 }
 
@@ -399,8 +641,8 @@ void DeclarationProcessorVisitor::ProcessMemberDeclarators(Node* memberDeclarato
     }
     else
     {
-        type = baseTypeSymbol;
-        idNode = nullptr;
+        typeOrValue = baseTypeOrValue;
+        id = Id();
         scope = context->GetSymbolTable()->CurrentScope();
         declarations.push_back(GetDeclaration());
     }
@@ -408,83 +650,174 @@ void DeclarationProcessorVisitor::ProcessMemberDeclarators(Node* memberDeclarato
 
 void DeclarationProcessorVisitor::Visit(StaticNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::staticFlag, "static", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::staticFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::staticFlag, "static", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::staticFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ThreadLocalNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::threadLocalFlag, "thread_local", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::threadLocalFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::threadLocalFlag, "thread_local", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::threadLocalFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ExternNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::externFlag, "extern", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::externFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::externFlag, "extern", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::externFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(MutableNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::mutableFlag, "mutable", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::mutableFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::mutableFlag, "mutable", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::mutableFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(VirtualNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::virtualFlag, "virtual", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::virtualFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::virtualFlag, "virtual", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::virtualFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ExplicitNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::explicitFlag, "explicit", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::explicitFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::explicitFlag, "explicit", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::explicitFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ConditionalExplicitNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::explicitFlag, "explicit", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::explicitFlag;
-    // todo
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::explicitFlag, "explicit", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::explicitFlag;
+        // todo
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(InlineNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::inlineFlag, "inline", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::inlineFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::inlineFlag, "inline", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::inlineFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(FriendNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::friendFlag, "friend", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::friendFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::friendFlag, "friend", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::friendFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(TypedefNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::typedefFlag, "typedef", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::typedefFlag;
-    this->node = &node;
-    kind = kind | DeclarationKind::aliasDeclararation;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::typedefFlag, "typedef", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::typedefFlag;
+        this->node = &node;
+        kind = kind | DeclarationKind::aliasDeclararation;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ConstExprNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::constrExprFlag, "constexpr", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::constrExprFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::constrExprFlag, "constexpr", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::constrExprFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ConstEvalNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::constEvalFlag, "consteval", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::constEvalFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::constEvalFlag, "consteval", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::constEvalFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ConstInitNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::constInitFlag, "constinit", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::constInitFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::constInitFlag, "constinit", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::constInitFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(DeclSpecNode& node)
@@ -493,324 +826,1232 @@ void DeclarationProcessorVisitor::Visit(DeclSpecNode& node)
 
 void DeclarationProcessorVisitor::Visit(CharNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::charFlag, "char", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::charFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::charFlag, "char", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::charFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(Char8Node& node) 
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::char8Flag, "char8_t", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::char8Flag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::char8Flag, "char8_t", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::char8Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(Char16Node& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::char16Flag, "char16_t", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::char16Flag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::char16Flag, "char16_t", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::char16Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(Char32Node& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::char32Flag, "char32_t", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::char32Flag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::char32Flag, "char32_t", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::char32Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(WCharNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::wcharFlag, "wchar_t", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::wcharFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::wcharFlag, "wchar_t", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::wcharFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(BoolNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::boolFlag, "bool", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::boolFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::boolFlag, "bool", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::boolFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ShortNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::shortFlag, "short", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::shortFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::shortFlag, "short", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::shortFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(IntNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::intFlag, "int", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::intFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::intFlag, "int", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::intFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(LongNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::longLongFlag, "long long", node.GetSourcePos(), context);
-    if ((flags & DeclarationFlags::longFlag) != DeclarationFlags::none)
+    try
     {
-        flags = (flags | DeclarationFlags::longLongFlag) & ~DeclarationFlags::longFlag;
+        CheckDuplicateSpecifier(flags, DeclarationFlags::longLongFlag, "long long", node.GetSourcePos(), context);
+        if ((flags & DeclarationFlags::longFlag) != DeclarationFlags::none)
+        {
+            flags = (flags | DeclarationFlags::longLongFlag) & ~DeclarationFlags::longFlag;
+        }
+        else
+        {
+            flags = flags | DeclarationFlags::longFlag;
+        }
     }
-    else
+    catch (const std::exception& ex)
     {
-        flags = flags | DeclarationFlags::longFlag;
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(SignedNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::signedFlag, "signed", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::signedFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::signedFlag, "signed", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::signedFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(UnsignedNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::unsignedFlag, "unsigned", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::unsignedFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::unsignedFlag, "unsigned", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::unsignedFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(FloatNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::floatFlag, "float", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::floatFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::floatFlag, "float", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::floatFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(DoubleNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::doubleFlag, "double", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::doubleFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::doubleFlag, "double", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::doubleFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(VoidNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::voidFlag, "void", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::voidFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::voidFlag, "void", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::voidFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(Int64Node& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::int64Flag, "__int64", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::int64Flag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::int64Flag, "__int64", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::int64Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(Int32Node& node)
+{
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::int32Flag, "__int32", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::int32Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(Int16Node& node)
+{
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::int16Flag, "__int16", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::int16Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(Int8Node& node)
+{
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::int8Flag, "__int8", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::int8Flag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(IdentifierNode& node)
 {
-    if (stage == Stage::processDeclSpecifiers)
+    try
     {
-        Symbol* symbol = context->GetSymbolTable()->GetSymbolNothrow(&node);
-        if (!symbol)
+        if (resolveTypeName)
         {
-            symbol = context->GetSymbolTable()->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, node.GetSourcePos(), context);
+            typeName = node.Str();
+            return;
         }
-        if (symbol)
+        if (stage == Stage::processDeclSpecifiers)
         {
-            if (symbol->IsTypeSymbol())
+            Symbol* symbol = context->GetSymbolTable()->GetSymbolNothrow(&node);
+            if (!symbol)
             {
-                if (baseTypeSymbol)
+                symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup | SymbolGroupKind::variableSymbolGroup, ScopeLookup::allScopes, node.GetSourcePos(), context);
+            }
+            if (symbol)
+            {
+                if (symbol->IsTypeSymbol())
                 {
-                    throw Exception("duplicate type symbol in declaration specifier sequence", node.GetSourcePos(), context);
+                    if (baseTypeOrValue)
+                    {
+                        throw Exception("duplicate type symbol in declaration specifier sequence", node.GetSourcePos(), context);
+                    }
+                    else
+                    {
+                        if (symbol->Kind() == SymbolKind::aliasGroupSymbol)
+                        {
+                            AliasGroupSymbol* aliasGroupSymbol = static_cast<AliasGroupSymbol*>(symbol);
+                            bool exact = false;
+                            symbol = aliasGroupSymbol->GetAliasTypeSymbol(templateArguments, MatchKind::exact, exact);
+                            if (!symbol)
+                            {
+                                AliasTypeSymbol* aliasTemplate = aliasGroupSymbol->AliasTypeTemplate();
+                                if (aliasTemplate)
+                                {
+                                    symbol = context->GetSymbolTable()->Instantiate(aliasTemplate, templateArguments);
+                                }
+                            }
+                        }
+                        else if (symbol->Kind() == SymbolKind::classGroupSymbol)
+                        {
+                            ClassGroupSymbol* classGroupSymbol = static_cast<ClassGroupSymbol*>(symbol);
+                            bool exact = false;
+                            symbol = classGroupSymbol->GetClass(templateArguments, MatchKind::partial, exact);
+                            if (!symbol)
+                            {
+                                ClassTypeSymbol* classTemplate = classGroupSymbol->GetClassTemplate();
+                                if (classTemplate)
+                                {
+                                    symbol = context->GetSymbolTable()->Instantiate(classTemplate, templateArguments);
+                                }
+                            }
+                        }
+                        if (!symbol)
+                        {
+                            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+                        }
+                        if (symbol->IsTypeSymbol())
+                        {
+                            baseTypeOrValue = static_cast<TypeSymbol*>(symbol);
+                        }
+                        else
+                        {
+                            throw Exception("type symbol expected", node.GetSourcePos(), context);
+                        }
+                    }
                 }
-                else
+                else if (symbol->Kind() == SymbolKind::variableGroupSymbol)
                 {
-                    if (symbol->Kind() == SymbolKind::aliasGroupSymbol)
+                    VariableGroupSymbol* variableGroupSymbol = static_cast<VariableGroupSymbol*>(symbol);
+                    bool exact = false;
+                    symbol = variableGroupSymbol->GetVariable(templateArguments, MatchKind::exact, exact);
+                    if (!symbol)
                     {
-                        AliasGroupSymbol* aliasGroupSymbol = static_cast<AliasGroupSymbol*>(symbol);
-                        symbol = aliasGroupSymbol->GetAliasTypeSymbol(templateArguments);
+                        VariableSymbol* variableTemplate = variableGroupSymbol->GetVariableTemplate();
+                        if (variableTemplate)
+                        {
+                            symbol = context->GetSymbolTable()->Instantiate(variableTemplate, templateArguments);
+                        }
                     }
-                    else if (symbol->Kind() == SymbolKind::classGroupSymbol)
-                    {
-                        ClassGroupSymbol* classGroupSymbol = static_cast<ClassGroupSymbol*>(symbol);
-                        bool exact = false;
-                        symbol = classGroupSymbol->GetClass(templateArguments, MatchKind::partial, exact);
-                    }
-                    baseTypeSymbol = static_cast<TypeSymbol*>(symbol);
+                }
+                if (!symbol)
+                {
+                    throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+                }
+                if (!baseTypeOrValue)
+                {
+                    baseTypeOrValue = symbol;
                 }
             }
             else
             {
-                throw Exception("symbol '" + ToUtf8(node.Str()) + "' does not denote a type", node.GetSourcePos(), context);
+                throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
             }
         }
-        else
+        else if (stage == Stage::processDeclarators)
         {
-            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+            if (id.idNode)
+            {
+                throw Exception("duplicate identifier in declarator list", node.GetSourcePos(), context);
+            }
+            id = Id(&node, templateArguments);
+            id.functionName = id.idNode->Str();
+            Symbol* symbol = context->GetSymbolTable()->CurrentScope()->GetSymbol();
+            if (symbol && symbol->Kind() == SymbolKind::classTypeSymbol)
+            {
+                if (id.functionName == symbol->Name())
+                {
+                    constructor = true;
+                    ResolveBaseType(nullptr);
+                }
+            }
         }
     }
-    else if (stage == Stage::processDeclarators)
+    catch (const std::exception& ex)
     {
-        if (node.Str() == U"xyzzy")
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        if (stage == Stage::processDeclSpecifiers)
         {
-            int x = 0;
+            baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
         }
-        if (node.Str() == U"fuzzy")
-        {
-            int x = 0;
-        }
-        if (idNode)
-        {
-            throw Exception("duplicate identifier in declarator list", node.GetSourcePos(), context);
-        }
-        idNode = &node;
     }
 }
 
 void DeclarationProcessorVisitor::Visit(QualifiedIdNode& node)
 {
-    scope = ResolveScope(node.Left(), context);
-    node.Right()->Accept(*this);
+    try
+    {
+        scope = ResolveScope(node.Left(), context);
+        node.Right()->Accept(*this);
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(AbstractDeclaratorNode& node)
 {
-    if (!idNode)
+    try
     {
-        idNode = &node;
+        if (!id.idNode)
+        {
+            id.idNode = &node;
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
 {
-    for (Node* item : node.Items())
+    try
     {
-        type = baseTypeSymbol;
-        idNode = nullptr;
-        scope = context->GetSymbolTable()->CurrentScope();
-        item->Accept(*this);
-        declarations.push_back(GetDeclaration());
+        for (Node* item : node.Items())
+        {
+            typeOrValue = baseTypeOrValue;
+            id = Id();
+            scope = context->GetSymbolTable()->CurrentScope();
+            item->Accept(*this);
+            declarations.push_back(GetDeclaration());
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(InitDeclaratorNode& node)
 {
-    stage = Stage::processDeclarators;
-    node.Left()->Accept(*this);
-    stage = Stage::processInitializer;
-    node.Right()->Accept(*this);
-    stage = Stage::processDeclarators;
+    try
+    {
+        stage = Stage::processDeclarators;
+        node.Left()->Accept(*this);
+        stage = Stage::processInitializer;
+        node.Right()->Accept(*this);
+        stage = Stage::processDeclarators;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(MemberDeclaratorListNode& node)
 {
-    for (Node* item : node.Items())
+    try
     {
-        type = baseTypeSymbol;
-        idNode = nullptr;
-        scope = context->GetSymbolTable()->CurrentScope();
-        item->Accept(*this);
-        declarations.push_back(GetDeclaration());
+        for (Node* item : node.Items())
+        {
+            typeOrValue = baseTypeOrValue;
+            id = Id();
+            scope = context->GetSymbolTable()->CurrentScope();
+            item->Accept(*this);
+            declarations.push_back(GetDeclaration());
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(PtrNode& node)
 {
-    kind = kind & ~DeclarationKind::classDeclaration;
-    type = context->GetSymbolTable()->MakePointerType(type);
+    try
+    {
+        kind = kind & ~DeclarationKind::classDeclaration;
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakePointerType(static_cast<TypeSymbol*>(typeOrValue));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(LvalueRefNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::lvalueRefFlag, "&", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::lvalueRefFlag;
-    type = context->GetSymbolTable()->MakeLvalueRefType(type);
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::lvalueRefFlag, "&", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::lvalueRefFlag;
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakeLvalueRefType(static_cast<TypeSymbol*>(typeOrValue));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(RvalueRefNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::rvalueRefFlag, "&&", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::rvalueRefFlag;
-    type = context->GetSymbolTable()->MakeRvalueRefType(type);
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::rvalueRefFlag, "&&", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::rvalueRefFlag;
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakeRvalueRefType(static_cast<TypeSymbol*>(typeOrValue));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ConstNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::constFlag, "const", node.GetSourcePos(), context);
-    if (stage == Stage::processDeclSpecifiers)
+    try
     {
-        flags = flags | DeclarationFlags::constFlag;
+        CheckDuplicateSpecifier(flags, DeclarationFlags::constFlag, "const", node.GetSourcePos(), context);
+        if (stage == Stage::processDeclSpecifiers)
+        {
+            flags = flags | DeclarationFlags::constFlag;
+        }
+        else if (stage == Stage::processDeclarators)
+        {
+            if (typeOrValue->IsTypeSymbol())
+            {
+                typeOrValue = context->GetSymbolTable()->MakeConstType(static_cast<TypeSymbol*>(typeOrValue));
+            }
+            else
+            {
+                throw Exception("type expected", node.GetSourcePos(), context);
+            }
+        }
     }
-    else if (stage == Stage::processDeclarators)
+    catch (const std::exception& ex)
     {
-        type = context->GetSymbolTable()->MakeConstType(type);
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(VolatileNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::volatileFlag, "volatile", node.GetSourcePos(), context);
-    if (stage == Stage::processDeclSpecifiers)
+    try
     {
-        flags = flags | DeclarationFlags::volatileFlag;
+        CheckDuplicateSpecifier(flags, DeclarationFlags::volatileFlag, "volatile", node.GetSourcePos(), context);
+        if (stage == Stage::processDeclSpecifiers)
+        {
+            flags = flags | DeclarationFlags::volatileFlag;
+        }
+        else if (stage == Stage::processDeclarators)
+        {
+            if (typeOrValue->IsTypeSymbol())
+            {
+                typeOrValue = context->GetSymbolTable()->MakeVolatileType(static_cast<TypeSymbol*>(typeOrValue));
+            }
+            else
+            {
+                throw Exception("type expected", node.GetSourcePos(), context);
+            }
+        }
     }
-    else if (stage == Stage::processDeclarators)
+    catch (const std::exception& ex)
     {
-        type = context->GetSymbolTable()->MakeVolatileType(type);
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
 {
-    if (kind == DeclarationKind::none)
+    try
     {
-        kind = DeclarationKind::functionDeclaration;
+        if (kind == DeclarationKind::none)
+        {
+            kind = DeclarationKind::functionDeclaration;
+        }
+        bool childFirst = false;
+        if (isConversionFunction)
+        {
+            childFirst = true;
+        }
+        else if (!baseTypeOrValue)
+        {
+            childFirst = true;
+        }
+        if (childFirst)
+        {
+            node.Child()->Accept(*this);
+            typeOrValue = baseTypeOrValue;
+            if (isConversionFunction)
+            {
+                id.functionName = U"operator_" + typeOrValue->Name();
+            }
+        }
+        parameters.clear();
+        node.Params()->Accept(*this);
+        std::vector<TypeSymbol*> parameterTypes;
+        for (const auto& param : parameters)
+        {
+            parameterTypes.push_back(param->Type());
+        }
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(static_cast<TypeSymbol*>(typeOrValue), parameterTypes));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+        if (!childFirst)
+        {
+            node.Child()->Accept(*this);
+        }
     }
-    parameters.clear();
-    node.Params()->Accept(*this);
-    std::vector<TypeSymbol*> parameterTypes;
-    for (const auto& param : parameters)
+    catch (const std::exception& ex)
     {
-        parameterTypes.push_back(param->Type());
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
     }
-    type = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(type, parameterTypes));
-    node.Child()->Accept(*this);
+}
+
+void DeclarationProcessorVisitor::Visit(TrailingFunctionDeclaratorNode& node)
+{
+    try
+    {
+        if (kind == DeclarationKind::none)
+        {
+            kind = DeclarationKind::functionDeclaration;
+        }
+        parameters.clear();
+        node.Parameters()->Accept(*this);
+        std::vector<TypeSymbol*> parameterTypes;
+        for (const auto& param : parameters)
+        {
+            parameterTypes.push_back(param->Type());
+        }
+        ProcessDeclarator(node.Declarator());
+        if (baseTypeOrValue && baseTypeOrValue->Kind() == SymbolKind::fundamentalTypeSymbol && baseTypeOrValue->Name() == U"auto")
+        {
+            baseTypeOrValue = nullptr;
+            flags = DeclarationFlags();
+        }
+        ProcessDeclSpecifiers(node.TrailingReturnType());
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(static_cast<TypeSymbol*>(typeOrValue), parameterTypes));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ArrayDeclaratorNode& node)
 {
-    dimension = 0;
-    if (node.Dimension())
+    try
     {
-        node.Dimension()->Accept(*this);
+        dimension = 0;
+        if (node.Dimension())
+        {
+            getDimension = true;
+            node.Dimension()->Accept(*this);
+            getDimension = false;
+        }
+        if (typeOrValue->IsTypeSymbol())
+        {
+            typeOrValue = context->GetSymbolTable()->MakeArrayType(ArrayTypeKey(static_cast<TypeSymbol*>(typeOrValue), dimension));
+        }
+        else
+        {
+            throw Exception("type expected", node.GetSourcePos(), context);
+        }
+        node.Child()->Accept(*this);
     }
-    type = context->GetSymbolTable()->MakeArrayType(ArrayTypeKey(type, dimension));
-    node.Child()->Accept(*this);
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        typeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(IntegerLiteralNode& node)
 {
-    dimension = node.Value();
+    try
+    {
+        if (getDimension)
+        {
+            dimension = node.Value();
+        }
+        else if (stage == Stage::processInitializer)
+        {
+            initializer = GetEvaluationContext().GetIntegerValue(node.Value(), node.Rep());
+        }
+        else
+        {
+            typeOrValue = GetEvaluationContext().GetIntegerValue(node.Value(), node.Rep());
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(BooleanLiteralNode& node)
+{
+    try
+    {
+        if (stage == Stage::processInitializer)
+        {
+            initializer = GetEvaluationContext().GetBoolValue(node.Value());
+        }
+        else
+        {
+            typeOrValue = GetEvaluationContext().GetBoolValue(node.Value());
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(ParenthesizedDeclaratorNode& node)
 {
-    bool alias = false;
-    bool param = false;
-    if (kind == DeclarationKind::aliasDeclararation)
+    try
     {
-        alias = true;
+        bool alias = false;
+        bool param = false;
+        if (kind == DeclarationKind::aliasDeclararation)
+        {
+            alias = true;
+        }
+        else if (kind == DeclarationKind::parameter)
+        {
+            param = true;
+        }
+        ProcessParenthesizedDeclarator(node.Declarator(), typeOrValue, alias, param, context);
+        if (alias || param)
+        {
+            kind = DeclarationKind::skip;
+        }
     }
-    else if (kind == DeclarationKind::parameter)
+    catch (const std::exception& ex)
     {
-        param = true;
-    }
-    ProcessParenthesizedDeclarator(node.Declarator(), type, alias, param, context);
-    if (alias || param)
-    {
-        kind = DeclarationKind::skip;
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void DeclarationProcessorVisitor::Visit(ParameterNode& node)
 {
-    ParameterSymbol* parameterSymbol = ProcessParameter(&node, context);
-    parameters.push_back(std::unique_ptr<ParameterSymbol>(parameterSymbol));
+    try
+    {
+        ParameterSymbol* parameterSymbol = ProcessParameter(&node, context);
+        parameters.push_back(std::unique_ptr<ParameterSymbol>(parameterSymbol));
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(PlaceholderTypeSpecifierNode& node)
 {
-    CheckDuplicateSpecifier(flags, DeclarationFlags::autoFlag, "auto", node.GetSourcePos(), context);
-    flags = flags | DeclarationFlags::autoFlag;
+    try
+    {
+        CheckDuplicateSpecifier(flags, DeclarationFlags::autoFlag, "auto", node.GetSourcePos(), context);
+        flags = flags | DeclarationFlags::autoFlag;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(OperatorFunctionIdNode& node)
+{
+    try
+    {
+        operatorFunctionId = true;
+        node.Right()->Accept(*this);
+        operatorFunctionId = false;
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NewArrayOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator new[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NewOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator new";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DeleteArrayOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator delete[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DeleteOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator delete";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CoAwaitOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator coawait";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(InvokeOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator()";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(SubscriptOpNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ArrowNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator->";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ArrowStarNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator->*";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ComplementNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator~";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NotNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator!";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PlusNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator+";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MinusNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator-";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MulNode& node) 
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator*";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DivNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator/";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ModNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator%";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ExclusiveOrNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator^";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AndNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(InclusiveOrNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator|";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PlusAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator+=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MinusAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator-=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MulAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator*=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DivAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator/=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ModAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator%=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(XorAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator^=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AndAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(OrAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator|=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftLeftAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<<=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftRightAssignNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>>=";
+    }
+
+}
+
+void DeclarationProcessorVisitor::Visit(EqualNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator==";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NotEqualNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator!=";
+    }
+
+}
+
+void DeclarationProcessorVisitor::Visit(LessOrEqualNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(GreaterOrEqualNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CompareNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<=>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(LessNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(GreaterNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ConjunctionNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&&";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DisjunctionNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator||";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftLeftNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<<";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftRightNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PrefixIncNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator++";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PrefixDecNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator--";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CommaNode& node)
+{
+    if (operatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator,";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NoexceptSpecifierNode& node)
+{
+    // no processing
+}
+
+void DeclarationProcessorVisitor::Visit(DestructorIdNode& node)
+{
+    id.idNode = &node;
+    resolveTypeName = true;
+    node.Child()->Accept(*this);
+    resolveTypeName = false;
+    id.functionName = U"~" + typeName;
+    baseTypeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node.GetSourcePos(), context);
 }
 
 void DeclarationProcessorVisitor::Visit(EllipsisNode& node)
 {
-    ParameterSymbol* parameterSymbol = new ParameterSymbol(U"...");
-    parameterSymbol->SetType(context->GetSymbolTable()->MakeVarArgTypeSymbol());
-    parameters.push_back(std::unique_ptr<ParameterSymbol>(parameterSymbol));
+    try
+    {
+        if (kind == DeclarationKind::parameter)
+        {
+            ParameterSymbol* parameterSymbol = new ParameterSymbol(U"...");
+            parameterSymbol->SetType(context->GetSymbolTable()->MakeVarArgTypeSymbol());
+            parameters.push_back(std::unique_ptr<ParameterSymbol>(parameterSymbol));
+        }
+        else
+        {
+            baseTypeOrValue = context->GetSymbolTable()->MakeVarArgTypeSymbol();
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context)
@@ -823,105 +2064,205 @@ void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, cons
 
 void ProcessDeclaration(Declaration& declaration, Context* context)
 {
-    if ((declaration.kind & DeclarationKind::classDeclaration) != DeclarationKind::none)
+    try
     {
-        if (declaration.type->Kind() == SymbolKind::classTypeSymbol)
+        if ((declaration.kind & DeclarationKind::classDeclaration) != DeclarationKind::none)
         {
-            ClassTypeSymbol* classTypeSymbol = static_cast<ClassTypeSymbol*>(declaration.type);
-            if (classTypeSymbol->Level() == 0 && !context->GetFlag(ContextFlags::parsingTemplateDeclaration))
+            if (declaration.typeOrValue->Kind() == SymbolKind::classTypeSymbol)
             {
-                Node* classSpecifierNode = context->GetSymbolTable()->GetNode(classTypeSymbol);
-                ParseInlineMemberFunctions(classSpecifierNode, context);
+                ClassTypeSymbol* classTypeSymbol = static_cast<ClassTypeSymbol*>(declaration.typeOrValue);
+                if (classTypeSymbol->Level() == 0 && !context->GetFlag(ContextFlags::parsingTemplateDeclaration))
+                {
+                    Node* classSpecifierNode = context->GetSymbolTable()->GetNode(classTypeSymbol);
+                    ParseInlineMemberFunctions(classSpecifierNode, context);
+                }
+            }
+        }
+        if ((declaration.kind & DeclarationKind::aliasDeclararation) != DeclarationKind::none)
+        {
+            if (!declaration.id.idNode)
+            {
+                throw Exception("no declarators specified for an alias type", declaration.node->GetSourcePos(), context);
+            }
+            if (declaration.typeOrValue->IsTypeSymbol())
+            {
+                context->GetSymbolTable()->AddAliasType(declaration.id.idNode, declaration.scope, static_cast<TypeSymbol*>(declaration.typeOrValue), context);
+            }
+            else
+            {
+                throw Exception("type expected", declaration.node->GetSourcePos(), context);
+            }
+        }
+        if ((declaration.kind & DeclarationKind::objectDeclaration) != DeclarationKind::none)
+        {
+            if (!declaration.id.idNode)
+            {
+                throw Exception("no declarators specified for a variable", declaration.node->GetSourcePos(), context);
+            }
+            if (declaration.typeOrValue->IsTypeSymbol())
+            {
+                context->GetSymbolTable()->AddVariable(declaration.id.idNode, declaration.id.templateArguments, declaration.initializer, declaration.scope, static_cast<TypeSymbol*>(declaration.typeOrValue),
+                    SymbolKind::variableSymbol, context);
+            }
+            else
+            {
+                throw Exception("type expected", declaration.node->GetSourcePos(), context);
+            }
+        }
+        if (declaration.id.idNode && (declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+        {
+            Scope* scope = declaration.scope;
+            if (declaration.typeOrValue->Kind() == SymbolKind::functionTypeSymbol)
+            {
+                FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.typeOrValue);
+                SourcePos sourcePos = declaration.id.idNode->GetSourcePos();
+                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, scope, functionType, std::move(declaration.parameters), false, sourcePos, declaration.id.functionName, context);
+                context->GetSymbolTable()->EndFunction();
+            }
+            else
+            {
+                throw Exception("function type symbol expected", declaration.node->GetSourcePos(), context);
             }
         }
     }
-    if ((declaration.kind & DeclarationKind::aliasDeclararation) != DeclarationKind::none)
+    catch (const std::exception& ex)
     {
-        if (!declaration.idNode)
-        {
-            throw Exception("no declarators specified for an alias type", declaration.node->GetSourcePos(), context);
-        }
-        context->GetSymbolTable()->AddAliasType(declaration.idNode, declaration.scope, declaration.type, context);
-    }
-    if ((declaration.kind & DeclarationKind::objectDeclaration) != DeclarationKind::none)
-    {
-        if (!declaration.idNode)
-        {
-            throw Exception("no declarators specified for a variable", declaration.node->GetSourcePos(), context);
-        }
-        context->GetSymbolTable()->AddVariable(declaration.idNode, declaration.scope, declaration.type, SymbolKind::variableSymbol, context);
-    }
-    if (declaration.idNode && (declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
-    {
-        Scope* scope = declaration.scope;
-        if (declaration.type->Kind() == SymbolKind::functionTypeSymbol)
-        {
-            FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.type);
-            context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, functionType, std::move(declaration.parameters), false, context);
-            context->GetSymbolTable()->EndFunction();
-        }
-        else
-        {
-            throw Exception("function type symbol expected", declaration.node->GetSourcePos(), context);
-        }
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void ProcessSimpleDeclaration(Node* declaration, Context* context)
 {
-    if (context->GetFlag(ContextFlags::parsingTemplateDeclaration)) return;
-    DeclarationProcessorVisitor visitor(context);
-    declaration->Accept(visitor);
-    std::vector<Declaration> declarations = visitor.GetDeclarations();
-    for (Declaration& declaration : declarations)
+    try
     {
-        ProcessDeclaration(declaration, context);
+        DeclarationProcessorVisitor visitor(context);
+        declaration->Accept(visitor);
+        std::vector<Declaration> declarations = visitor.GetDeclarations();
+        for (Declaration& declaration : declarations)
+        {
+            ProcessDeclaration(declaration, context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
 void ProcessMemberDeclaration(Node* memberDeclaration, Context* context)
 {
-    DeclarationProcessorVisitor visitor(context);
-    memberDeclaration->Accept(visitor);
-    std::vector<Declaration> declarations = visitor.GetDeclarations();
-    for (Declaration& declaration : declarations)
+    try
     {
-        ProcessDeclaration(declaration, context);
+        DeclarationProcessorVisitor visitor(context);
+        if (context->GetBottomUpFlag(ContextFlags::constructor))
+        {
+            visitor.SetConstructor();
+        }
+        if (context->GetBottomUpFlag(ContextFlags::destructor))
+        {
+            visitor.SetDestructor();
+        }
+        memberDeclaration->Accept(visitor);
+        std::vector<Declaration> declarations = visitor.GetDeclarations();
+        for (Declaration& declaration : declarations)
+        {
+            ProcessDeclaration(declaration, context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
     }
 }
 
-bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* context)
+class ConversionFunctionFinderVisitor : public DefaultVisitor
 {
-    DeclarationProcessorVisitor visitor(context);
-    SourcePos sourcePos;
-    if (declSpecifierSeq)
+public:
+    ConversionFunctionFinderVisitor();
+    void Visit(FunctionDeclaratorNode& node) override;
+    void Visit(ConversionFunctionIdNode& node) override;
+    bool Value() const { return value; }
+private:
+    bool value;
+};
+
+ConversionFunctionFinderVisitor::ConversionFunctionFinderVisitor() : value(false)
+{
+}
+
+void ConversionFunctionFinderVisitor::Visit(FunctionDeclaratorNode& node)
+{
+    node.Child()->Accept(*this);
+}
+
+void ConversionFunctionFinderVisitor::Visit(ConversionFunctionIdNode& node)
+{
+    value = true;
+}
+
+bool IsConversionFunction(Node* declarator)
+{
+    ConversionFunctionFinderVisitor visitor;
+    declarator->Accept(visitor);
+    return visitor.Value();
+}
+
+bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, bool constructor, Context* context)
+{
+    try
     {
+        bool isConversionFunction = IsConversionFunction(declarator);
+        DeclarationProcessorVisitor visitor(context);
+        if (isConversionFunction)
+        {
+            visitor.SetConversionFunction();
+        }
+        if (constructor)
+        {
+            visitor.SetConstructor();
+        }
+        if (context->GetBottomUpFlag(ContextFlags::destructor))
+        {
+            visitor.SetDestructor();
+        }
+        SourcePos sourcePos;
         visitor.ProcessDeclSpecifiers(declSpecifierSeq);
-        sourcePos = declSpecifierSeq->GetSourcePos();
+        if (declSpecifierSeq)
+        {
+            sourcePos = declSpecifierSeq->GetSourcePos();
+        }
+        if (declarator)
+        {
+            visitor.ProcessDeclarator(declarator);
+            sourcePos = declarator->GetSourcePos();
+        }
+        Declaration declaration = visitor.GetDeclaration();
+        if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+        {
+            bool definition = true;
+            if (context->GetFlag(ContextFlags::parseMemberFunction))
+            {
+                definition = false;
+            }
+            if (declaration.typeOrValue->Kind() == SymbolKind::functionTypeSymbol)
+            {
+                FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.typeOrValue);
+                if (declaration.id.idNode)
+                {
+                    sourcePos = declaration.id.idNode->GetSourcePos();
+                }
+                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, sourcePos, declaration.id.functionName, context);
+            }
+            else
+            {
+                throw Exception("function type symbol expected", sourcePos, context);
+            }
+            return true;
+        }
     }
-    if (declarator)
+    catch (const std::exception& ex)
     {
-        visitor.ProcessDeclarator(declarator);
-        sourcePos = declarator->GetSourcePos();
-    }
-    Declaration declaration = visitor.GetDeclaration();
-    if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
-    {
-        bool definition = true;
-        if (context->GetFlag(ContextFlags::parseMemberFunction))
-        {
-            definition = false;
-        }
-        if (declaration.type->Kind() == SymbolKind::functionTypeSymbol)
-        {
-            FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.type);
-            context->GetSymbolTable()->BeginFunction(declaration.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, context);
-        }
-        else
-        {
-            throw Exception("function type symbol expected", sourcePos, context);
-        }
-        return true;
+        context->GetSymbolTable()->AddError(ex);
     }
     return false;
 }
@@ -931,6 +2272,24 @@ void EndFunctionDefinition(Context* context)
     context->GetSymbolTable()->EndFunction();
 }
 
+class ContainsFunctionDeclaratorNodeVisitor : public DefaultVisitor
+{
+public:
+    ContainsFunctionDeclaratorNodeVisitor() : value(false) {}
+    void Visit(FunctionDeclaratorNode& node) override { value = true; }
+    void Visit(TrailingFunctionDeclaratorNode& node) override { value = true; }
+    bool Value() const { return value; }
+private:
+    bool value;
+};
+
+bool ContainsFunctionDeclarator(Node* declarator)
+{
+    ContainsFunctionDeclaratorNodeVisitor visitor;
+    declarator->Accept(visitor);
+    return visitor.Value();
+}
+
 void RemoveFunctionDefinition(Context* context)
 {
     context->GetSymbolTable()->RemoveFunction();
@@ -938,10 +2297,17 @@ void RemoveFunctionDefinition(Context* context)
 
 void ProcessAliasDeclaration(Node* usingNode, Context* context)
 {
-    DeclarationProcessorVisitor visitor(context);
-    usingNode->Accept(visitor);
-    Declaration declaration = visitor.GetDeclaration();
-    ProcessDeclaration(declaration, context);
+    try
+    {
+        DeclarationProcessorVisitor visitor(context);
+        usingNode->Accept(visitor);
+        Declaration declaration = visitor.GetDeclaration();
+        ProcessDeclaration(declaration, context);
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context)
@@ -952,16 +2318,23 @@ ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context
     visitor.ProcessDeclarator(parameterNode->Declarator());
     Declaration declaration = visitor.GetDeclaration();
     std::u32string paramName;
-    if (declaration.idNode)
+    if (declaration.id.idNode)
     {
-        paramName = declaration.idNode->Str();
+        paramName = declaration.id.idNode->Str();
     }
     ParameterSymbol* parameterSymbol = new ParameterSymbol(paramName);
-    parameterSymbol->SetType(declaration.type);
+    if (declaration.typeOrValue->IsTypeSymbol())
+    {
+        parameterSymbol->SetType(static_cast<TypeSymbol*>(declaration.typeOrValue));
+    }
+    else
+    {
+        throw Exception("type expected", parameterNode->GetSourcePos(), context);
+    }
     return parameterSymbol;
 }
 
-void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, bool alias, bool param, Context* context)
+void ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, bool alias, bool param, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
     if (alias)
@@ -972,7 +2345,7 @@ void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, bool
     {
         visitor.SetKind(DeclarationKind::parameter);
     }
-    visitor.SetBaseType(baseType);
+    visitor.SetBaseTypeOrValue(baseTypeOrValue);
     visitor.ProcessDeclarator(declarator);
     Declaration declaration = visitor.GetDeclaration();
     ProcessDeclaration(declaration, context);
@@ -990,16 +2363,19 @@ TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* c
     return type;
 }
 
-TypeSymbol* ProcessTypeId(Node* typeIdNode, Context* context)
+Symbol* ProcessTypeIdOrValue(Node* typeIdNode, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
     typeIdNode->Accept(visitor);
     Declaration declaration = visitor.GetDeclaration();
-    if (!declaration.type)
-    {
-        throw Exception("type expected", typeIdNode->GetSourcePos(), context);
-    }
-    return declaration.type;
+    return declaration.typeOrValue;
+}
+
+TypeSymbol* ProcessTypeTemplateId(Node* templateIdNode, Context* context)
+{
+    DeclarationProcessorVisitor visitor(context);
+    templateIdNode->Accept(visitor);
+    return visitor.GetBaseType();
 }
 
 } // sngcpp::symbols

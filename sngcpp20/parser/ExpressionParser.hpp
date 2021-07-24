@@ -61,6 +61,7 @@ struct PARSER_API ExpressionParser
     static soulng::parser::Match PrimaryExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ParenthesizedExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match IdExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match IdExpr(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match FoldExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Ellipsis(CppLexer& lexer);
     static soulng::parser::Match FoldOp(CppLexer& lexer);

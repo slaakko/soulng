@@ -1,0 +1,61 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <classSpecifierNode count="1" pos="(1,1)" type="sequence">
+     <classHeadNode pos="(1,1)" type="compound">
+      <classNode pos="(1,1)" type="single">
+       <keyword pos="(1,1)" value="class"/>
+      </classNode>
+      <identifierNode pos="(1,7)" type="compound">
+       <identifier pos="(1,7)" value="foo"/>
+      </identifierNode>
+     </classHeadNode>
+     <operator pos="(1,11)" value="{"/>
+     <functionDefinitionNode pos="(1,13)" type="compound">
+      <functionDeclaratorNode count="1" pos="(1,13)" type="unary">
+       <identifierNode pos="(1,13)" type="compound">
+        <identifier pos="(1,13)" value="foo"/>
+       </identifierNode>
+      </functionDeclaratorNode>
+      <parameterListNode count="1" pos="(1,16)" type="list">
+       <operator pos="(1,16)" value="("/>
+       <parameterNode pos="(1,17)" type="compound">
+        <declSpecifierSequenceNode count="2" pos="(1,17)" type="sequence">
+         <constNode pos="(1,17)" type="single">
+          <keyword pos="(1,17)" value="const"/>
+         </constNode>
+         <identifierNode pos="(1,23)" type="compound">
+          <identifier pos="(1,23)" value="foo"/>
+         </identifierNode>
+        </declSpecifierSequenceNode>
+        <ptrDeclaratorNode count="2" pos="(1,26)" type="sequence">
+         <lvalueRefNode pos="(1,26)" type="single">
+          <operator pos="(1,26)" value="&amp;"/>
+         </lvalueRefNode>
+         <abstractDeclaratorNode pos="(1,27)" type="single"/>
+        </ptrDeclaratorNode>
+       </parameterNode>
+       <operator pos="(1,27)" value=")"/>
+      </parameterListNode>
+      <defaultedOrDeletedFunctionNode pos="(1,29)" type="compound">
+       <assignNode pos="(1,29)" type="single">
+        <operator pos="(1,29)" value="="/>
+       </assignNode>
+       <deleteNode pos="(1,31)" type="single">
+        <keyword pos="(1,31)" value="delete"/>
+       </deleteNode>
+       <semicolonNode pos="(1,37)" type="single">
+        <operator pos="(1,37)" value=";"/>
+       </semicolonNode>
+      </defaultedOrDeletedFunctionNode>
+     </functionDefinitionNode>
+     <operator pos="(1,39)" value="}"/>
+    </classSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(1,40)" type="single">
+    <operator pos="(1,40)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

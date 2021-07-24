@@ -85,7 +85,7 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"LINECOMMENT"] = 138;
         tokenIdMap[U"LONG"] = 43;
         tokenIdMap[U"LPAREN"] = 123;
-        tokenIdMap[U"MAX"] = 155;
+        tokenIdMap[U"MAX"] = 160;
         tokenIdMap[U"MINUS"] = 117;
         tokenIdMap[U"MINUSMINUS"] = 126;
         tokenIdMap[U"MOD"] = 120;
@@ -159,12 +159,17 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"__CDECL"] = 148;
         tokenIdMap[U"__DECLSPEC"] = 147;
         tokenIdMap[U"__FASTCALL"] = 149;
-        tokenIdMap[U"__INLINE"] = 153;
-        tokenIdMap[U"__INT64"] = 151;
-        tokenIdMap[U"__NULLPTR"] = 154;
+        tokenIdMap[U"__INLINE"] = 158;
+        tokenIdMap[U"__INT16"] = 155;
+        tokenIdMap[U"__INT32"] = 154;
+        tokenIdMap[U"__INT64"] = 153;
+        tokenIdMap[U"__INT8"] = 156;
+        tokenIdMap[U"__NULLPTR"] = 159;
         tokenIdMap[U"__STDCALL"] = 150;
+        tokenIdMap[U"__THISCALL"] = 151;
         tokenIdMap[U"__THREAD"] = 146;
-        tokenIdMap[U"__UNALIGNED"] = 152;
+        tokenIdMap[U"__UNALIGNED"] = 157;
+        tokenIdMap[U"__VECTORCALL"] = 152;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -333,7 +338,12 @@ namespace CppTokenLexerTokens
         "__CDECL",
         "__FASTCALL",
         "__STDCALL",
+        "__THISCALL",
+        "__VECTORCALL",
         "__INT64",
+        "__INT32",
+        "__INT16",
+        "__INT8",
         "__UNALIGNED",
         "__INLINE",
         "__NULLPTR",
@@ -498,7 +508,12 @@ namespace CppTokenLexerTokens
         "'__cdecl'",
         "'__fastcall'",
         "'__stdcall'",
+        "'__thiscall'",
+        "'__vectorcall'",
         "'__int64'",
+        "'__int32'",
+        "'__int16'",
+        "'__int8'",
         "'__unaligned'",
         "'__inline'",
         "'__nullptr'",

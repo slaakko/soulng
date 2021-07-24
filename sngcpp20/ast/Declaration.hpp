@@ -409,6 +409,20 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
+class AST_API ThisCallNode : public Node
+{
+public:
+    ThisCallNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API VectorCallNode : public Node
+{
+public:
+    VectorCallNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
 class AST_API UnalignedNode : public Node
 {
 public:

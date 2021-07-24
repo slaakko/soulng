@@ -15,6 +15,8 @@ using namespace sngcpp::ast;
 
 SYMBOLS_API void BeginTemplateDeclaration(Node* templateHeadNode, Context* context);
 SYMBOLS_API void EndTemplateDeclaration(Context* context);
+SYMBOLS_API void RemoveTemplateDeclaration(Context* context);
+SYMBOLS_API void AddTemplateParameter(Node* templateParameterNode, int index, Context* context);
 
 } // sngcpp::symbols
 

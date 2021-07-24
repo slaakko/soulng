@@ -544,6 +544,11 @@ parser api(PARSER_API) ExpressionParser
         ;
 
     IdExpression(sngcpp::symbols::Context* ctx) : Node*
+        ::= empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
+            IdExpr(ctx):idExpr{ ctx->PopFlags(); return idExpr; } / { ctx->PopFlags(); }
+        ;
+    
+    IdExpr(sngcpp::symbols::Context* ctx) : Node*
         ::= QualifiedId(ctx):qualifiedId{ return qualifiedId; }
         |   UnqualifiedId(ctx):unqualifiedId{ return unqualifiedId; }
         ;

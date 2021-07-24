@@ -21,11 +21,12 @@ class AST_API TemplateHeadNode : public CompoundNode
 {
 public:
     TemplateHeadNode(const SourcePos& sourcePos_);
-    TemplateHeadNode(const SourcePos& sourcePos_, Node* templateParamList_, Node* requiresClause_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
+    void SetTemplateParameterList(Node* templateParamList_);
     Node* TemplateParamList() const { return templateParamList.get(); }
+    void SetRequiresClause(Node* requiresClause_);
     Node* RequiresClause() const { return requiresClause.get(); }
 private:
     std::unique_ptr<Node> templateParamList;

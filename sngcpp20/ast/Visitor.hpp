@@ -104,6 +104,8 @@ class ConstInitNode;
 class CDeclNode;
 class FastCallNode;
 class StdCallNode;
+class ThisCallNode;
+class VectorCallNode;
 class UnalignedNode;
 class DeclSpecNode;
 class InlineNode;
@@ -312,6 +314,9 @@ class FloatNode;
 class DoubleNode;
 class VoidNode;
 class Int64Node;
+class Int32Node;
+class Int16Node;
+class Int8Node;
 // Statement:
 class LabeledStatementNode;
 class CaseStatementNode;
@@ -470,6 +475,8 @@ public:
     virtual void Visit(CDeclNode& node) {}
     virtual void Visit(FastCallNode& node) {}
     virtual void Visit(StdCallNode& node) {}
+    virtual void Visit(ThisCallNode& node) {}
+    virtual void Visit(VectorCallNode& node) {}
     virtual void Visit(UnalignedNode& node) {}
     virtual void Visit(DeclSpecNode& node) {}
     virtual void Visit(InlineNode& node) {}
@@ -678,6 +685,9 @@ public:
     virtual void Visit(DoubleNode& node) {}
     virtual void Visit(VoidNode& node) {}
     virtual void Visit(Int64Node& node) {}
+    virtual void Visit(Int32Node& node) {}
+    virtual void Visit(Int16Node& node) {}
+    virtual void Visit(Int8Node& node) {}
     // Statement:
     virtual void Visit(LabeledStatementNode& node) {}
     virtual void Visit(CaseStatementNode& node) {}
@@ -818,6 +828,8 @@ public:
     void Visit(CDeclNode& node);
     void Visit(FastCallNode& node);
     void Visit(StdCallNode& node);
+    void Visit(ThisCallNode& node);
+    void Visit(VectorCallNode& node);
     void Visit(UnalignedNode& node);
     void Visit(DeclSpecNode& node);
     void Visit(InlineNode& node);
@@ -1026,6 +1038,9 @@ public:
     void Visit(DoubleNode& node);
     void Visit(VoidNode& node);
     void Visit(Int64Node& node);
+    void Visit(Int32Node& node);
+    void Visit(Int16Node& node);
+    void Visit(Int8Node& node);
     // Statement:
     void Visit(LabeledStatementNode& node);
     void Visit(CaseStatementNode& node);

@@ -27,6 +27,13 @@
 
 namespace sngcpp::ast {
 
+NodeDestroyedFunc nodeDestroyedFunc = nullptr;
+
+void SetNodeDestroyedFunc(NodeDestroyedFunc func)
+{
+    nodeDestroyedFunc = func;
+}
+
 std::string NodeTypeStr(NodeType nodeType)
 {
     switch (nodeType)
@@ -78,7 +85,7 @@ const char* nodeKindStr[] =
     "initDeclaratorListNode", "initDeclaratorNode", "trailingFunctionDeclaratorNode", "parenthesizedDeclaratorNode", "abstractDeclaratorNode", "declSpecifierSequenceNode",
     "friendNode", "typedefNode", "constExprNode", "constEvalNode", "constInitNode", "inlineNode", "staticNode", "threadLocalNode", "externNode", "mutableNode", "virtualNode", "explicitNode", 
     "conditionalExplicitNode",
-    "cdeclNode", "fastCallNode", "stdCallNode", "int64Node", "unalignedNode", "declSpecNode",
+    "cdeclNode", "fastCallNode", "stdCallNode", "thisCallNode", "vectorCallNode", "int64Node", "int32Node", "int16Node", "int8Node", "unalignedNode", "declSpecNode",
     "qualifiedPtrNode",
     "typeSpecifierSequenceNode", "typenameSpecifierNode", "typeIdNode", "trailingReturnTypeNode", "elaboratedTypeSpecifierNode", "declTypeSpecifierNode", "placeholderTypeSpecifierNode",
     "classSpecifierNode", "classHeadNode", "baseClauseNode", "baseSpecifierListNode", "baseSpecifierNode", "beginAccessGroupNode", "memberDeclarationNode", "memberDeclaratorListNode", 
@@ -107,6 +114,10 @@ Node::Node(NodeKind kind_, const SourcePos& sourcePos_) : kind(kind_), sourcePos
 
 Node::~Node()
 {
+    if (nodeDestroyedFunc)
+    {
+        nodeDestroyedFunc(this);
+    }
 }
 
 void Node::AddNode(Node* node)
@@ -388,6 +399,8 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::cdeclNode, new NodeFactory<CDeclNode>());
     Register(NodeKind::fastCallNode, new NodeFactory<FastCallNode>());
     Register(NodeKind::stdCallNode, new NodeFactory<StdCallNode>());
+    Register(NodeKind::thisCallNode, new NodeFactory<ThisCallNode>());
+    Register(NodeKind::vectorCallNode, new NodeFactory<VectorCallNode>());
     Register(NodeKind::unalignedNode, new NodeFactory<UnalignedNode>());
     Register(NodeKind::declSpecNode, new NodeFactory<DeclSpecNode>());
     Register(NodeKind::inlineNode, new NodeFactory<InlineNode>());
@@ -593,6 +606,9 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::doubleNode, new NodeFactory<DoubleNode>());
     Register(NodeKind::voidNode, new NodeFactory<VoidNode>());
     Register(NodeKind::int64Node, new NodeFactory<Int64Node>());
+    Register(NodeKind::int32Node, new NodeFactory<Int32Node>());
+    Register(NodeKind::int16Node, new NodeFactory<Int16Node>());
+    Register(NodeKind::int8Node, new NodeFactory<Int8Node>());
     // Statement:
     Register(NodeKind::labeledStatementNode, new NodeFactory<LabeledStatementNode>());
     Register(NodeKind::caseStatmentNode, new NodeFactory<CaseStatementNode>());

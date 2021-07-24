@@ -7,6 +7,7 @@
 #define SNGCPP_SYMBOLS_SYMBOL_TABLE_INCLUDED
 #include <sngcpp20/symbols/ArrayTypeSymbol.hpp>
 #include <sngcpp20/symbols/NamespaceSymbol.hpp>
+#include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
 #include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
@@ -14,6 +15,7 @@
 #include <sngcpp20/ast/Identifier.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <unordered_map>
+#include <map>
 #include <stack>
 
 namespace sngcpp::symbols {
@@ -22,6 +24,9 @@ using namespace sngcpp::ast;
 
 class ParameterSymbol;
 class FunctionTypeSymbol;
+class ClassTypeSymbol;
+class AliasTypeSymbol;
+class Value;
 
 enum class MapKind : int
 {
@@ -47,6 +52,7 @@ class SYMBOLS_API SymbolTable
 {
 public:
     SymbolTable();
+    ~SymbolTable();
     const NamespaceSymbol& GlobalNs() const { return globalNs; }
     NamespaceSymbol& GlobalNs() { return globalNs; }
     Node* GetNodeNothrow(Symbol* symbol) const;
@@ -56,6 +62,7 @@ public:
     void MapNode(Node* node);
     void MapNode(Node* node, Symbol* symbol);
     void MapNode(Node* node, Symbol* symbol, MapKind kind);
+    void UnmapNode(Node* node);
     Symbol* Lookup(const std::u32string& name, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Context* context) const;
     Scope* CurrentScope() const { return currentScope; }
     void SetCurrentScope(Scope* scope) { currentScope = scope; }
@@ -69,7 +76,8 @@ public:
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context);
     void EndEnumType();
-    void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context);
+    void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, const SourcePos& sourcePos, 
+        const std::u32string& functionName, Context* context);
     void EndFunction();
     void RemoveFunction();
     void BeginBlock(const SourcePos& sourcePos, Context* context);
@@ -77,10 +85,13 @@ public:
     void RemoveBlock();
     void AddAliasType(Node* node, Scope* scope, TypeSymbol* type, Context* context);
     void AddConcept(Node* node, Context* context);
-    void AddVariable(Node* node, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context);
+    void AddVariable(Node* node, const std::vector<Symbol*>& templateArguments, Value* value, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();
     void AddTemplateParameter(Node* node, const std::u32string& name, Symbol* constraint, int index, Context* context);
+    ClassTypeSymbol* Instantiate(ClassTypeSymbol* classTemplate, const std::vector<Symbol*>& templateArguments);
+    AliasTypeSymbol* Instantiate(AliasTypeSymbol* aliasTemplate, const std::vector<Symbol*>& templateArguments);
+    VariableSymbol* Instantiate(VariableSymbol* variableTemplate, const std::vector<Symbol*>& templateArguments);
     TypeSymbol* GetFundamentalTypeSymbol(FundamentalTypeKind kind);
     TypeSymbol* MakeConstType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeVolatileType(TypeSymbol* baseTypeSymbol);
@@ -93,6 +104,9 @@ public:
     TypeSymbol* MakeTypeNameConstraintSymbol();
     TypeSymbol* MakeGenericTypeSymbol();
     TypeSymbol* MakeNullPtrTypeSymbol();
+    ErrorSymbol* MakeErrorSymbol(int errorIndex);
+    int AddError(const std::exception& error);
+    const std::exception& GetError(int errorIndex) const;
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
@@ -107,11 +121,16 @@ private:
     std::unordered_map<TypeSymbol*, TypeSymbol*> rvalueRefTypeMap;
     std::unordered_map<FunctionTypeKey, TypeSymbol*, FunctionTypeKeyHash> functionTypeMap;
     std::unordered_map<ArrayTypeKey, TypeSymbol*, ArrayTypeKeyHash> arrayTypeMap;
+    std::map<std::vector<Symbol*>, ClassTypeSymbol*> classSpecializationMap;
+    std::map<std::vector<Symbol*>, AliasTypeSymbol*> aliasTypeSpecializationMap;
+    std::map<std::vector<Symbol*>, VariableSymbol*> variableSpecializationMap;
     TypeSymbol* varArgTypeSymbol;
     TypeSymbol* typenameContraintSymbol;
     TypeSymbol* genericTypeSymbol;
     TypeSymbol* nullPtrTypeSymbol;
     std::vector<std::unique_ptr<TypeSymbol>> types;
+    std::vector<std::unique_ptr<Symbol>> symbols;
+    std::vector<std::exception> errors;
     int blockNumber;
 };
 

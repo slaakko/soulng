@@ -114,6 +114,27 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
+class AST_API Int32Node : public Node
+{
+public:
+    Int32Node(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API Int16Node : public Node
+{
+public:
+    Int16Node(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API Int8Node : public Node
+{
+public:
+    Int8Node(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
 } // namespace sngcpp::ast
 
 #endif // SNGCPP_AST_SIMPLE_TYPE_INCLUDED

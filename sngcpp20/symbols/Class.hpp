@@ -16,6 +16,8 @@ using namespace sngcpp::ast;
 SYMBOLS_API void BeginClass(Node* node, Context* context);
 SYMBOLS_API void EndClass(Context* context);
 SYMBOLS_API void ParseInlineMemberFunctions(Node* classSpecifierNode, Context* context);
+SYMBOLS_API bool IsConstructorName(Node* node, Context* context);
+SYMBOLS_API bool IsQualifiedConstructorName(Node* node, Context* context);
 
 } // sngcpp::symbols
 

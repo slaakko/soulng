@@ -38,6 +38,9 @@ parser api(PARSER_API) SimpleTypeParser
         |   VOID{ return new VoidNode(sourcePos); }
         |   MSVCModeGuard(ctx):msvcMode
             (   __INT64{ return new Int64Node(sourcePos); }
+            |   __INT32{ return new Int32Node(sourcePos); }
+            |   __INT16{ return new Int16Node(sourcePos); }
+            |   __INT8{ return new Int8Node(sourcePos); }
             )
         ;
 }

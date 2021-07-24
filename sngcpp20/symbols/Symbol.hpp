@@ -26,7 +26,7 @@ enum class SymbolKind : int
     valueSymbol, genericTypeSymbol, nullPtrTypeSymbol,
     aliasTypeSymbol, arrayTypeSymbol, blockSymbol, classTypeSymbol, constTypeSymbol, volatileTypeSymbol, pointerTypeSymbol, lvalueRefTypeSymbol, rvalueRefTypeSymbol, 
     conceptSymbol, enumTypeSymbol, enumeratorSymbol, functionSymbol, functionTypeSymbol, fundamentalTypeSymbol, namespaceSymbol, templateDeclarationSymbol, templateParameterSymbol, varArgTypeSymbol,
-    variableSymbol, parameterSymbol
+    variableSymbol, parameterSymbol, errorSymbol
 };
 
 enum class SymbolGroupKind : int
@@ -66,6 +66,8 @@ public:
     virtual bool IsTypeSymbol() const { return false; }
     virtual bool IsContainerSymbol() const { return false; }
     virtual bool IsCompoundTypeSymbol() const { return false; }
+    virtual bool IsConstructorSymbol() const { return false; }
+    virtual bool IsDestructorSymbol() const { return false; }
     virtual Scope* GetScope() { return nullptr; }
     virtual Scope* GetGroupScope() { return nullptr; }
     virtual std::u32string FullName() const;

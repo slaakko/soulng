@@ -20,6 +20,8 @@ class SYMBOLS_API FunctionSymbol : public ContainerSymbol
 public:
     FunctionSymbol(const std::u32string& name_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_, bool definition_);
     std::string SymbolKindStr() const override { return "function symbol"; }
+    bool IsConstructorSymbol() const override;
+    bool IsDestructorSymbol() const override;
     SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::functionSymbolGroup; }
     TemplateDeclarationSymbol* GetTemplateDeclarationSymbol() const { return templateDeclarationSymbol; }
     void SetTemplateDeclarationSymbol(TemplateDeclarationSymbol* templateDeclarationSymbol_) { templateDeclarationSymbol = templateDeclarationSymbol_; }

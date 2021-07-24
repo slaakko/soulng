@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_SYMBOLS_ALIAS_GROUP_SYMBOL_INCLUDED
 #define SNGCPP_SYMBOLS_ALIAS_GROUP_SYMBOL_INCLUDED
-#include <sngcpp20/symbols/Symbol.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
 #include <vector>
 
 namespace sngcpp::symbols {
@@ -21,7 +21,8 @@ public:
     std::string SymbolKindStr() const override { return "alias group symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddAliasTypeSymbol(AliasTypeSymbol* aliasTypeSymbol);
-    AliasTypeSymbol* GetAliasTypeSymbol(const std::vector<Symbol*>& templateArguyments) const;
+    AliasTypeSymbol* GetAliasTypeSymbol(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const;
+    AliasTypeSymbol* AliasTypeTemplate() const;
 private:
     std::vector<AliasTypeSymbol*> aliasTypeSymbols;
 };

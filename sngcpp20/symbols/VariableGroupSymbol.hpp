@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_SYMBOLS_VARIABLE_GROUP_SYMBOL_INCLUDED
 #define SNGCPP_SYMBOLS_VARIABLE_GROUP_SYMBOL_INCLUDED
-#include <sngcpp20/symbols/Symbol.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
 #include <vector>
 
 namespace sngcpp::symbols {
@@ -20,7 +20,8 @@ public:
     SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::variableSymbolGroup; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddVariable(VariableSymbol* variableSymbol);
-    VariableSymbol* GetVariable() const;
+    VariableSymbol* GetVariable(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const;
+    VariableSymbol* GetVariableTemplate() const;
 private:
     std::vector<VariableSymbol*> variables;
 };

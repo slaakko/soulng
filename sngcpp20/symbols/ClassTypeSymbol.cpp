@@ -10,7 +10,7 @@
 namespace sngcpp::symbols {
 
 ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : 
-    TypeSymbol(name_, SymbolKind::classTypeSymbol), idNode(nullptr), classTemplate(nullptr), templateDeclarationSymbol(nullptr), groupScope(nullptr)
+    TypeSymbol(name_, SymbolKind::classTypeSymbol), idNode(nullptr), classTemplate(nullptr), templateDeclarationSymbol(nullptr), groupScope(nullptr), group(nullptr)
 {
     GetScope()->SetKind(ScopeKind::classScope);
 }
@@ -37,10 +37,11 @@ void ClassTypeSymbol::AddToGroup(Scope* groupScope, const SourcePos& sourcePos, 
 {
     this->groupScope = groupScope;
     ClassGroupSymbol* classGroup = groupScope->GetOrInsertClassGroup(Name(), sourcePos, context);
+    group = classGroup;
     classGroup->AddClass(this);
 }
 
-void ClassTypeSymbol::AddBaseClass(ClassTypeSymbol* baseClass, const SourcePos& sourcePos, Context* context)
+void ClassTypeSymbol::AddBaseClass(Symbol* baseClass, const SourcePos& sourcePos, Context* context)
 {
     baseClasses.push_back(baseClass);
     GetScope()->AddBaseScope(baseClass->GetScope(), sourcePos, context);

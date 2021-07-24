@@ -510,9 +510,16 @@ std::string Lexer::GetFarthestError() const
         const char32_t* lineStart = LineStart(start, token.match.begin);
         SourcePos sourcePos(-1, token.line, std::max(1, static_cast<int>(token.match.begin - lineStart)));
         SourceInfo sourceInfo = lineMapper->GetSourceInfo(sourcePos);
-        std::string caretLine = std::string(sourcePos.col - 1, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
-        return "parsing error at '" + sourceInfo.fileName + ":" + std::to_string(sourceInfo.lineNumber) + ":\n" +
-            sourceInfo.sourceLine + caretLine + "\n" + parserStateStr;
+        if (sourceInfo.lineNumber != 0)
+        {
+            std::string caretLine = std::string(sourcePos.col - 1, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
+            return "parsing error at '" + sourceInfo.fileName + ":" + std::to_string(sourceInfo.lineNumber) + ":\n" +
+                sourceInfo.sourceLine + caretLine + "\n" + parserStateStr;
+        }
+        else
+        {
+            return "parsing error at '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr;
+        }
     }
     else
     {

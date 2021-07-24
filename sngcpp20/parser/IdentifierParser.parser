@@ -104,12 +104,10 @@ parser api(PARSER_API) IdentifierParser
         ::= 
         (   empty{ nnsNode.reset(new NestedNameSpecifierNode(sourcePos)); }
             (COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); })?
-            (
-                ID{ idNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } 
-                COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
-            |   
-                (TEMPLATE{ nnsNode->AddNode(new TemplateNode(sourcePos)); })?
+            (   (TEMPLATE{ nnsNode->AddNode(new TemplateNode(sourcePos)); })?
                 SimpleTemplateId(ctx):simpleTemplateId{ idNode.reset(simpleTemplateId); }
+                COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
+            |   ID{ idNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } 
                 COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
             )*
         )

@@ -33,6 +33,7 @@ public:
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddClass(ClassTypeSymbol* classTypeSymbol);
     ClassTypeSymbol* GetClass(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const;
+    ClassTypeSymbol* GetClassTemplate() const;
 private:
     std::vector<ClassTypeSymbol*> classes;
 };

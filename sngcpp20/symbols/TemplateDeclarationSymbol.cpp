@@ -26,7 +26,7 @@ void TemplateDeclarationSymbol::AddSymbol(Symbol* symbol, SymbolGroupKind symbol
     if (symbol->Kind() == SymbolKind::templateParameterSymbol)
     {
         TemplateParameterSymbol* templateParameterSymbol = static_cast<TemplateParameterSymbol*>(symbol);
-        temlateParameters.push_back(templateParameterSymbol);
+        templateParameters.push_back(templateParameterSymbol);
     }
 }
 

@@ -28,8 +28,10 @@ tokens CppTokens
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
     (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSIS, "'...'"),
     (ANGLEHEADERNAME, "'angle header name'"), (QUOTEHEADERNAME, "'quote header name'"),
-    (__THREAD, "'__thread'"), (__DECLSPEC, "'__declspec'"), (__CDECL, "'__cdecl'"), (__FASTCALL, "'__fastcall'"), (__STDCALL, "'__stdcall'"), (__INT64, "'__int64'"), (__UNALIGNED, "'__unaligned'"),
-    (__INLINE, "'__inline'"), (__NULLPTR, "'__nullptr'"),
+    (__THREAD, "'__thread'"), (__DECLSPEC, "'__declspec'"), (__CDECL, "'__cdecl'"), 
+    (__FASTCALL, "'__fastcall'"), (__STDCALL, "'__stdcall'"), (__THISCALL, "'__thiscall'"), (__VECTORCALL, "'__vectorcall'"),
+    (__INT64, "'__int64'"), (__INT32, "'__int32'"), (__INT16, "'__int16'"), (__INT8, "'__int8'"),
+    (__UNALIGNED, "'__unaligned'"), (__INLINE, "'__inline'"), (__NULLPTR, "'__nullptr'"),
     (MAX, "max")
 }
 
@@ -49,8 +51,10 @@ keywords CppKeywords
     ("this", THIS), ("thread_local", THREAD_LOCAL), ("throw", THROW),
     ("true", TRUE), ("try", TRY), ("typedef", TYPEDEF), ("typeid", TYPEID), ("typename", TYPENAME), ("union", UNION), ("unsigned", UNSIGNED), ("using", USING),
     ("virtual", VIRTUAL), ("void", VOID), ("volatile", VOLATILE), ("wchar_t", WCHAR_T), ("while", WHILE),
-    ("__thread", __THREAD), ("__declspec", __DECLSPEC), ("__cdecl", __CDECL), ("__fastcall", __FASTCALL), ("__stdcall", __STDCALL), ("__int64", __INT64), ("__unaligned", __UNALIGNED),
-    ("__inline", __INLINE), ("__nullptr", __NULLPTR)
+    ("__thread", __THREAD), ("__declspec", __DECLSPEC), ("__cdecl", __CDECL), 
+    ("__fastcall", __FASTCALL), ("__stdcall", __STDCALL), ("__thiscall", __THISCALL), ("__vectorcall", __VECTORCALL),
+    ("__int64", __INT64), ("__int32", __INT32), ("__int16", __INT16), ("__int8", __INT8),
+    ("__unaligned", __UNALIGNED), ("__inline", __INLINE), ("__nullptr", __NULLPTR)
 }
 
 expressions

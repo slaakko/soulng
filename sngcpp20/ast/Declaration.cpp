@@ -627,6 +627,24 @@ void StdCallNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+ThisCallNode::ThisCallNode(const SourcePos& sourcePos_) : Node(NodeKind::thisCallNode, sourcePos_)
+{
+}
+
+void ThisCallNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+VectorCallNode::VectorCallNode(const SourcePos& sourcePos_) : Node(NodeKind::vectorCallNode, sourcePos_)
+{
+}
+
+void VectorCallNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 UnalignedNode::UnalignedNode(const SourcePos& sourcePos_) : Node(NodeKind::unalignedNode, sourcePos_)
 {
 }

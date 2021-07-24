@@ -6,6 +6,7 @@
 #include <sngcpp20/pp/PPParser.hpp>
 #include <sngcpp20/pp/PPTokens.hpp>
 #include <sngcpp20/pp/TextTokens.hpp>
+#include <sngcpp20/pp/TextLexer.hpp>
 #include <sngcpp20/pp/Scan.hpp>
 #include <sngcpp20/pp/Util.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -392,6 +393,19 @@ bool ParseReplacementList(PPLexer& lexer, std::vector<Token>& replacementList)
                 lexer.pp->AddError(error);
                 return false;
             }
+        }
+        else if (*lexer == PPTokens::ANGLEHEADERNAME)
+        {
+            Token angleHeaderToken = lexer.GetToken(lexer.GetPos());
+            TextLexer textLexer(angleHeaderToken.match.begin, angleHeaderToken.match.end, "", 0);
+            ++textLexer;
+            while (*textLexer != TextTokens::END)
+            {
+                Token textToken = textLexer.GetToken(textLexer.GetPos());
+                replacementList.push_back(textToken);
+                ++textLexer;
+            }
+            ++lexer;
         }
         else
         {

@@ -4,10 +4,14 @@
 // =================================
 
 #include <sngcpp20/symbols/ScopeResolver.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
+#include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/DeclarationProcessor.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
 #include <sngcpp20/ast/Identifier.hpp>
+#include <sngcpp20/ast/Template.hpp>
 #include <soulng/util/Unicode.hpp>
 
 namespace sngcpp::symbols {
@@ -51,37 +55,82 @@ void ScopeResolverVisitor::Visit(ColonColonNode& node)
 
 void ScopeResolverVisitor::Visit(IdentifierNode& node)
 {
-    first = false;
-    Symbol* symbol = currentScope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisAndBaseScopes, node.GetSourcePos(), context);
-    if (symbol)
+    try
     {
-        Scope* scope = symbol->GetScope();
+        first = false;
+        Symbol* symbol = currentScope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::allScopes, node.GetSourcePos(), context);
+        if (symbol && symbol->Kind() == SymbolKind::classGroupSymbol)
+        {
+            ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);
+            bool exact = false;
+            ClassTypeSymbol* classTypeSymbol = classGroup->GetClass(std::vector<Symbol*>(), MatchKind::exact, exact);
+            if (classTypeSymbol)
+            {
+                symbol = classTypeSymbol;
+            }
+            else
+            {
+                symbol = nullptr;
+            }
+        }
+        if (symbol)
+        {
+            Scope* scope = symbol->GetScope();
+            if (scope)
+            {
+                currentScope = scope;
+            }
+            else
+            {
+                throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not have a scope", node.GetSourcePos(), context);
+            }
+        }
+        else
+        {
+            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found from " + ScopeKindStr(currentScope->Kind()) + " '" + currentScope->FullName() + "'", node.GetSourcePos(), context);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void ScopeResolverVisitor::Visit(TemplateIdNode& node)
+{
+    try
+    {
+        first = false;
+        TypeSymbol* type = ProcessTypeTemplateId(&node, context);
+        Scope* scope = type->GetScope();
         if (scope)
         {
             currentScope = scope;
         }
         else
         {
-            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not have a scope", node.GetSourcePos(), context);
+            throw Exception("symbol '" + ToUtf8(type->FullName()) + "' does not have a scope", node.GetSourcePos(), context);
         }
     }
-    else
+    catch (const std::exception& ex)
     {
-        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found from " + ScopeKindStr(currentScope->Kind()) + " '" + currentScope->FullName() + "'", node.GetSourcePos(), context);
+        context->GetSymbolTable()->AddError(ex);
     }
-}
-
-void ScopeResolverVisitor::Visit(TemplateIdNode& node)
-{
-    first = false;
-    // todo
 }
 
 Scope* ResolveScope(Node* nnsNode, Context* context)
 {
-    ScopeResolverVisitor visitor(context);
-    nnsNode->Accept(visitor);
-    return visitor.GetScope();
+    try
+    {
+        ScopeResolverVisitor visitor(context);
+        nnsNode->Accept(visitor);
+        return visitor.GetScope();
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+    return nullptr;
 }
 
 } // sngcpp::symbols

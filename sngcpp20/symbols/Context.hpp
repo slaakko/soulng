@@ -33,7 +33,12 @@ enum class ContextFlags : int
     parsingTemplateDeclaration = 1 << 3,
     assumeType = 1 << 4,
     hasDefiningTypeSpecifier = 1 << 5,
-    msvcMode = 1 << 6
+    msvcMode = 1 << 6,
+    simpleTypeSpecifierWithoutTypeNameMatched = 1 << 7,
+    parsingParameters = 1 << 8,
+    matchConstructorName = 1 << 9,
+    constructor = 1 << 10,
+    destructor = 1 << 11
 };
 
 SYMBOLS_API inline ContextFlags operator|(ContextFlags left, ContextFlags right)
@@ -62,6 +67,12 @@ public:
     void SetFlag(ContextFlags flag) { flags = flags | flag; }
     bool GetFlag(ContextFlags flag) const { return (flags & flag) != ContextFlags::none; }
     void ResetFlag(ContextFlags flag) { flags = flags & ~flag; }
+    ContextFlags BottomUpFlags() const { return bottomUpFlags; }
+    void SetBottomUpFlag(ContextFlags flag) { bottomUpFlags = bottomUpFlags | flag; }
+    void ResetBottomUpFlag(ContextFlags flag) { bottomUpFlags = bottomUpFlags & ~flag; }
+    bool GetBottomUpFlag(ContextFlags flag) { return (bottomUpFlags & flag) != ContextFlags::none; }
+    void SetBottomUpFlags(ContextFlags bottomUpFlags_) { bottomUpFlags = bottomUpFlags_; }
+    void ResetBottomUpFlags();
     void PushNode(sngcpp::ast::Node* node_);
     void PopNode();
     sngcpp::ast::Node* GetNode() const { return node; }
@@ -71,11 +82,13 @@ public:
     void SetLexer(soulng::lexer::Lexer* lexer_) { lexer = lexer_; }
 private:
     ContextFlags flags;
+    ContextFlags bottomUpFlags;
     std::stack<ContextFlags> flagStack;
     std::stack<sngcpp::ast::Node*> nodeStack;
     sngcpp::ast::Node* node;
     SymbolTable* symbolTable;
     soulng::lexer::Lexer* lexer;
+    bool simpleTypeSpecifierWithoutTypeNameMatched;
 };
 
 SYMBOLS_API std::string MappedFileName(Context* context, const soulng::lexer::SourcePos& sourcePos);

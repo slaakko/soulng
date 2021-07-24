@@ -86,6 +86,7 @@ bool SymbolsEqual(Symbol* left, Symbol* right)
 {
     if (left->IsTypeSymbol() && right->IsTypeSymbol())
     {
+        if (left->Kind() == SymbolKind::errorSymbol && right->Kind() == SymbolKind::errorSymbol) return true;
         if (left->Kind() == SymbolKind::templateParameterSymbol && right->Kind() == SymbolKind::templateParameterSymbol)
         {
             TemplateParameterSymbol* leftTemplateParam = static_cast<TemplateParameterSymbol*>(left);

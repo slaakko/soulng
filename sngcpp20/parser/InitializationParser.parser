@@ -94,6 +94,8 @@ parser api(PARSER_API) InitializationParser
             (InitializerList(ctx, node.get()):initList | DesignatedInitializerList(ctx, node.get()):designatedInitList)
             (Comma:comma{ node->AddNode(comma); })?
             RBrace:rbrace{ node->AddNode(rbrace); }
+        |   LBrace:lbrace{ node.reset(new BracedInitListNode(sourcePos)); node->AddNode(lbrace); }
+            RBrace:rbrace{ node->AddNode(rbrace); }
         )
         {
             return node.release();

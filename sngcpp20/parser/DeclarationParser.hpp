@@ -49,6 +49,8 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match CDecl(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match FastCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match StdCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match ThisCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match VectorCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Unaligned(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclSpec(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclSpecDeprecated(CppLexer& lexer, sngcpp::symbols::Context* ctx);
@@ -59,12 +61,12 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match InitDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Declarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match PtrDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match NoPtrDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match NoPtrDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool trailingDecl);
     static soulng::parser::Match ParametersAndQualifiers(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TrailingReturnType(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match PtrOperator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match AbstractDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match NoPtrAbstractDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match NoPtrAbstractDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool trailingDecl);
     static soulng::parser::Match PtrAbstractDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match AbstractPackDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NoPtrAbstractPackDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);

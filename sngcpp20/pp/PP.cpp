@@ -884,10 +884,6 @@ void PP::AddLogicalPhysicalMapping(std::unique_ptr<LogicalPhysicalMapping>&& map
 
 void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replacementList, const std::u32string& definitionStr)
 {
-    if (name.ToString() == U"__MACHINEARM_ARM64")
-    {
-        int x = 0;
-    }
     Macro* prevMacro = GetMacro(name);
     if (prevMacro)
     {
@@ -1325,10 +1321,6 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
             pp->SetLineIndex(lineIndex);
             pp->SetLine(lineIndex + 1);
             Lexeme line = lines[lineIndex];
-            if (line.ToString().find(U"__dmb") != std::u32string::npos)
-            {
-                int x = 0;
-            }
             std::u32string s = line.ToString();
             if (IsPPLine(line))
             {

@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_SYMBOLS_EXCEPTION_INCLUDED
 #define SNGCPP_SYMBOLS_EXCEPTION_INCLUDED
-#include <sngcpp20/symbols/SymbolsApi.hpp>
+#include <sngcpp20/symbols/TypeSymbol.hpp>
 #include <sngcpp20/symbols/Context.hpp>
 #include <soulng/lexer/SourcePos.hpp>
 #include <stdexcept>
@@ -36,6 +36,16 @@ public:
 private:
     std::string message;
     ErrorContext errorContext;
+};
+
+class SYMBOLS_API ErrorSymbol : public TypeSymbol
+{
+public:
+    ErrorSymbol(int errorIndex_);
+    std::string SymbolKindStr() const override { return "error symbol"; }
+    int ErrorIndex() const { return errorIndex; }
+private:
+    int errorIndex;
 };
 
 } // sngcpp::symbols

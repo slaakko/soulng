@@ -16,6 +16,7 @@
 [cpp]#include <sngcpp20/parser/StatementParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
 [cpp]#include <sngcpp20/symbols/DeclarationProcessor.hpp>
+[cpp]#include <sngcpp20/symbols/SymbolTable.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -49,15 +50,28 @@ parser api(PARSER_API) FunctionParser
         var std::unique_ptr<Node> specifierNode, var bool functionBegan) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ declSpecifierSeqNode.reset(declSpecifiers); if (!s.IsValid()) s = sourcePos; })? 
-            Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; declaratorNode.reset(declarator); }
+            Declarator(ctx):declarator
+            { 
+                if (!s.IsValid()) s = sourcePos; 
+                declaratorNode.reset(declarator); 
+                if (!sngcpp::symbols::ContainsFunctionDeclarator(declaratorNode.get())) 
+                {
+                    pass = false; 
+                }
+            }
             (   VirtSpecifierSeq(ctx):virtSpecifiers{ specifierNode.reset(virtSpecifiers); }
             |   RequiresClause(ctx):requiresClause{ specifierNode.reset(requiresClause); }
             |   empty
-            ){ functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx); }
+            )
+            { 
+                functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor), ctx); 
+            }
             FunctionBody(ctx):functionBody
             {
+                Node* node = new FunctionDefinitionNode(s, attributes, declSpecifierSeqNode.release(), declaratorNode.release(), specifierNode.release(), functionBody);
+                ctx->GetSymbolTable()->MapNode(node, ctx->GetSymbolTable()->CurrentScope()->GetSymbol(), sngcpp::symbols::MapKind::nodeToSymbol);
                 sngcpp::symbols::EndFunctionDefinition(ctx); 
-                return new FunctionDefinitionNode(s, attributes, declSpecifierSeqNode.release(), declaratorNode.release(), specifierNode.release(), functionBody);
+                return node;
             }
             /
             {
@@ -113,8 +127,19 @@ parser api(PARSER_API) FunctionParser
         ;
 
     ParameterDeclarationClause(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
-        ::= ParameterDeclarationList(ctx, container):paramList2 Comma:comma Ellipsis:ellipsis{ container->AddNode(comma); container->AddNode(ellipsis); }
-        |   empty{ container->Clear(); } ParameterDeclarationList(ctx, container):paramList1? (Ellipsis:ellipsis{ container->AddNode(ellipsis); })?
+        ::= empty{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingParameters); }
+        (   ParameterDeclarationList(ctx, container):paramList2 Comma:comma Ellipsis:ellipsis{ container->AddNode(comma); container->AddNode(ellipsis); }
+        |   empty{ container->Clear(); } 
+            ParameterDeclarationList(ctx, container):paramList1? (Ellipsis:ellipsis{ container->AddNode(ellipsis); })? 
+            (Comma:comma Ellipsis:ellipsis{ container->AddNode(comma); container->AddNode(ellipsis); })?
+        )
+        {
+            ctx->PopFlags();
+        }
+        /
+        {
+            ctx->PopFlags();
+        }
         ;
 
     ParameterDeclarationList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
@@ -125,8 +150,8 @@ parser api(PARSER_API) FunctionParser
         ::= COMMA{ return new CommaNode(sourcePos); }
         ;
 
-    ParameterDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<ParameterNode> node) : Node*
-        ::= empty{ node.reset(new ParameterNode(sourcePos)); } 
+    ParameterDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<ParameterNode> node, var sngcpp::symbols::ContextFlags savedBottomUpFlags) : Node*
+        ::= empty{ node.reset(new ParameterNode(sourcePos)); savedBottomUpFlags = ctx->BottomUpFlags(); ctx->ResetBottomUpFlags(); } 
         (   (AttributeSpecifierSeq(ctx):attributes{ node->SetAttributes(attributes); })?
             DeclSpecifierSeq(ctx):declSpecifierSeq{ node->SetDeclSpecifiers(declSpecifierSeq); }
             (   Declarator(ctx):declarator{ node->SetDeclarator(declarator); }
@@ -138,7 +163,12 @@ parser api(PARSER_API) FunctionParser
             )?
         )
         {
+            ctx->SetBottomUpFlags(savedBottomUpFlags); 
             return node.release();
+        }
+        /
+        {
+            ctx->SetBottomUpFlags(savedBottomUpFlags); 
         }
         ;
 
@@ -174,6 +204,7 @@ parser api(PARSER_API) FunctionParser
         |   DeclTypeSpecifier(ctx):declTypeSpecifier{ node.reset(declTypeSpecifier); }
         )
         {
+            ctx->SetBottomUpFlag(sngcpp::symbols::ContextFlags::destructor);
             return new DestructorIdNode(s, node.release());
         }
         ;

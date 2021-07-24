@@ -1,0 +1,34 @@
+parsing error at 'C:/work/soulng/sngcpp20/test/source/2_std/test.cpp:1:
+template <class _Ret, class _Arg0, class... _Types> struct _Is_memfunptr<_Ret (_Arg0::*)(_Types..., ...);
+                                                                                                 ^
+
+Parser state:
+TranslationUnitParser.TranslationUnit
+DeclarationParser.DeclarationSeq
+DeclarationParser.Declaration
+TemplateParser.TemplateDeclaration
+DeclarationParser.Declaration
+DeclarationParser.BlockDeclaration
+DeclarationParser.SimpleDeclaration
+DeclarationParser.DeclSpecifierSeq
+DeclarationParser.DeclSpecifier
+TypeParser.DefiningTypeSpecifier
+ClassParser.ClassSpecifier
+ClassParser.ClassHead
+ClassParser.ClassHeadName
+IdentifierParser.NestedNameSpecifier
+TemplateParser.SimpleTemplateId
+TemplateParser.TemplateArgumentList
+TemplateParser.TemplateArgument
+TypeParser.TypeId
+DeclarationParser.AbstractDeclarator
+DeclarationParser.NoPtrAbstractDeclarator
+DeclarationParser.ParametersAndQualifiers
+FunctionParser.ParameterDeclarationClause
+FunctionParser.ParameterDeclarationList
+FunctionParser.ParameterDeclaration
+DeclarationParser.Declarator
+DeclarationParser.NoPtrDeclarator
+DeclarationParser.DeclaratorId
+ExpressionParser.Ellipsis
+
