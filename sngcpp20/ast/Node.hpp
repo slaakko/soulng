@@ -79,6 +79,7 @@ enum class NodeKind : uint16_t
     typeConstraintNode, requiresClauseNode,
     attributeSpecifierSequenceNode, attributeSpecifierNode, attributeUsingPrefixNode, attrbuteNode, attributeScopedTokenNode, attributeArgumentsNode, balancedTokenSequenceNode, tokenNode,
     lparenNode, rparenNode, lbracketNode, rbracketNode, lbraceNode, rbraceNode, alignmentSpecifierNode,
+    pragmaNode,
     max
 };
 

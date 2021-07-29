@@ -61,7 +61,7 @@ AliasTypeSymbol* AliasGroupSymbol::GetAliasTypeSymbol(const std::vector<Symbol*>
     std::pair<Symbol*, int> first = symbolScores.front();
     if (symbolScores.size() > 1)
     {
-        std::pair<Symbol*, int> second = symbolScores[2];
+        std::pair<Symbol*, int> second = symbolScores[1];
         if (first == second) return nullptr;
         return static_cast<AliasTypeSymbol*>(first.first);
     }

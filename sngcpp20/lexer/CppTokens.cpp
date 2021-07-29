@@ -82,7 +82,7 @@ namespace CppTokens
         tokenIdMap[U"LEQ"] = 110;
         tokenIdMap[U"LONG"] = 43;
         tokenIdMap[U"LPAREN"] = 124;
-        tokenIdMap[U"MAX"] = 154;
+        tokenIdMap[U"MAX"] = 155;
         tokenIdMap[U"MINUS"] = 118;
         tokenIdMap[U"MINUSMINUS"] = 127;
         tokenIdMap[U"MOD"] = 121;
@@ -159,6 +159,7 @@ namespace CppTokens
         tokenIdMap[U"__INT64"] = 147;
         tokenIdMap[U"__INT8"] = 150;
         tokenIdMap[U"__NULLPTR"] = 153;
+        tokenIdMap[U"__PRAGMA"] = 154;
         tokenIdMap[U"__STDCALL"] = 144;
         tokenIdMap[U"__THISCALL"] = 145;
         tokenIdMap[U"__THREAD"] = 140;
@@ -335,6 +336,7 @@ namespace CppTokens
         "__UNALIGNED",
         "__INLINE",
         "__NULLPTR",
+        "__PRAGMA",
         "MAX"
     };
 
@@ -499,6 +501,7 @@ namespace CppTokens
         "'__unaligned'",
         "'__inline'",
         "'__nullptr'",
+        "'__pragma'",
         "max"
     };
 

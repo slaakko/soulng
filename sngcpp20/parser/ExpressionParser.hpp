@@ -32,7 +32,7 @@ struct PARSER_API ExpressionParser
     static soulng::parser::Match EqualityExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match EqualityOp(CppLexer& lexer);
     static soulng::parser::Match RelationalExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match RelationalOp(CppLexer& lexer);
+    static soulng::parser::Match RelationalOp(CppLexer& lexer, bool rejectRAngle);
     static soulng::parser::Match CompareExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ShiftExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ShiftOp(CppLexer& lexer);
@@ -53,6 +53,7 @@ struct PARSER_API ExpressionParser
     static soulng::parser::Match NewPlacement(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NewTypeId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeleteExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match IntrinsicInvokeExpr(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match PostfixExpression(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DotOp(CppLexer& lexer);
     static soulng::parser::Match ArrowOp(CppLexer& lexer);

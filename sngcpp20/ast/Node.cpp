@@ -23,6 +23,7 @@
 #include <sngcpp20/ast/Type.hpp>
 #include <sngcpp20/ast/Writer.hpp>
 #include <sngcpp20/ast/Reader.hpp>
+#include <sngcpp20/ast/Pragma.hpp>
 #include <stdexcept>
 
 namespace sngcpp::ast {
@@ -659,6 +660,8 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::elaboratedTypeSpecifierNode, new NodeFactory<ElaboratedTypeSpecifierNode>());
     Register(NodeKind::declTypeSpecifierNode, new NodeFactory<DeclTypeSpecifierNode>());
     Register(NodeKind::placeholderTypeSpecifierNode, new NodeFactory<PlaceholderTypeSpecifierNode>());
+    // MS:
+    Register(NodeKind::pragmaNode, new NodeFactory<PragmaNode>());
 }
 
 Node* NodeFactoryCollection::CreateNode(NodeKind nodeKind, const SourcePos& sourcePos)

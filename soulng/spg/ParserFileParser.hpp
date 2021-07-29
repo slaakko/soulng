@@ -39,6 +39,7 @@ struct ParserFileParser
     static soulng::parser::Match Sequence(ParserFileLexer& lexer);
     static soulng::parser::Match Difference(ParserFileLexer& lexer);
     static soulng::parser::Match List(ParserFileLexer& lexer);
+    static soulng::parser::Match Prefix(ParserFileLexer& lexer);
     static soulng::parser::Match Postfix(ParserFileLexer& lexer);
     static soulng::parser::Match Primary(ParserFileLexer& lexer);
     static soulng::parser::Match RuleCall(ParserFileLexer& lexer);

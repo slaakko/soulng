@@ -156,11 +156,17 @@ parser ParserFileParser
         ;
 
     List(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
-        ::= (Postfix:left{ value.reset(left); } (REM Postfix:right!{ value.reset(new sng2html::sng2html::ListParser(value.release(), right)); })?)
+        ::= (Prefix:left{ value.reset(left); } (REM Prefix:right!{ value.reset(new sng2html::sng2html::ListParser(value.release(), right)); })?)
         {
             return value.release();
         }
         ;
+
+    Prefix : sng2html::sng2html::Parser*
+        ::= AMP Postfix:lookaheadpf{ return new sng2html::sng2html::LookaheadParser(lookaheadpf); }
+        |   Postfix:postfix{ return postfix; }
+        ;
+
 
     Postfix(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
         ::=

@@ -6,6 +6,12 @@
 #include <sngcpp20/symbols/Template.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/DeclarationProcessor.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
+#include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/AliasGroupSymbol.hpp>
+#include <sngcpp20/symbols/AliasTypeSymbol.hpp>
+#include <sngcpp20/symbols/VariableGroupSymbol.hpp>
+#include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
 #include <sngcpp20/ast/Template.hpp>
 
@@ -78,10 +84,6 @@ void TemplateParameterCreatorVisitor::Visit(TypeParameterNode& node)
 
 void BeginTemplateDeclaration(Node* templateHeadNode, Context* context)
 {
-    if (templateHeadNode->GetSourcePos().line == 11717)
-    {
-        int x = 0;
-    }
     TemplateCreatorVisitor visitor(context);
     templateHeadNode->Accept(visitor);
     context->PushSetFlag(ContextFlags::parsingTemplateDeclaration);
@@ -102,6 +104,161 @@ void AddTemplateParameter(Node* templateParameterNode, int index, Context* conte
 {
     TemplateParameterCreatorVisitor visitor(index, context);
     templateParameterNode->Accept(visitor);
+}
+
+class SetTemplateArgKindVisitor : public DefaultVisitor
+{
+public:
+    SetTemplateArgKindVisitor(Context* context_);
+    void Visit(TemplateIdNode& node) override;
+    void Visit(IdentifierNode& node) override;
+    void Visit(TemplateParameterListNode& node) override;
+    void Visit(TypeParameterNode& node) override;
+    void Visit(ParameterNode& node) override;
+private:
+    Context* context;
+    bool visitingTemplateParameters;
+    std::vector<bool> templateArgKinds;
+};
+
+SetTemplateArgKindVisitor::SetTemplateArgKindVisitor(Context* context_) : context(context_), visitingTemplateParameters(false)
+{
+}
+
+void SetTemplateArgKindVisitor::Visit(TemplateIdNode& node)
+{
+    node.TemplateName()->Accept(*this);
+    node.SetTemplateArgKinds(templateArgKinds);
+}
+
+void SetTemplateArgKindVisitor::Visit(IdentifierNode& node)
+{
+    Symbol* symbol = context->GetSymbolTable()->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup | SymbolGroupKind::variableSymbolGroup, node.GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->Kind() == SymbolKind::classGroupSymbol)
+        {
+            ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);
+            ClassTypeSymbol* classTemplate = classGroup->GetClassTemplate();
+            if (classTemplate)
+            {
+                TemplateDeclarationSymbol* templateDeclarationSymbol = classTemplate->GetTemplateDeclarationSymbol();
+                if (templateDeclarationSymbol)
+                {
+                    Node* n = context->GetSymbolTable()->GetNodeNothrow(templateDeclarationSymbol);
+                    if (n)
+                    {
+                        if (n->Kind() == NodeKind::templateHeadNode)
+                        {
+                            TemplateHeadNode* templateHeadNode = static_cast<TemplateHeadNode*>(n);
+                            templateHeadNode->TemplateParamList()->Accept(*this);
+                        }
+                    }
+                }
+            }
+        }
+        else if (symbol->Kind() == SymbolKind::aliasGroupSymbol)
+        {
+            AliasGroupSymbol* aliasGroup = static_cast<AliasGroupSymbol*>(symbol);
+            AliasTypeSymbol* aliasTemplate = aliasGroup->AliasTypeTemplate();
+            if (aliasTemplate)
+            {
+                TemplateDeclarationSymbol* templateDeclarationSymbol = aliasTemplate->GetTemplateDeclarationSymbol();
+                if (templateDeclarationSymbol)
+                {
+                    Node* n = context->GetSymbolTable()->GetNodeNothrow(templateDeclarationSymbol);
+                    if (n)
+                    {
+                        if (n->Kind() == NodeKind::templateHeadNode)
+                        {
+                            TemplateHeadNode* templateHeadNode = static_cast<TemplateHeadNode*>(n);
+                            templateHeadNode->TemplateParamList()->Accept(*this);
+                        }
+                    }
+                }
+            }
+        }
+        else if (symbol->Kind() == SymbolKind::variableGroupSymbol)
+        {
+            VariableGroupSymbol* variableGroup = static_cast<VariableGroupSymbol*>(symbol);
+            VariableSymbol* variableTemplate = variableGroup->GetVariableTemplate();
+            if (variableTemplate)
+            {
+                TemplateDeclarationSymbol* templateDeclarationSymbol = variableTemplate->GetTemplateDeclarationSymbol();
+                if (templateDeclarationSymbol)
+                {
+                    Node* n = context->GetSymbolTable()->GetNodeNothrow(templateDeclarationSymbol);
+                    if (n)
+                    {
+                        if (n->Kind() == NodeKind::templateHeadNode)
+                        {
+                            TemplateHeadNode* templateHeadNode = static_cast<TemplateHeadNode*>(n);
+                            templateHeadNode->TemplateParamList()->Accept(*this);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void SetTemplateArgKindVisitor::Visit(TemplateParameterListNode& node)
+{
+    visitingTemplateParameters = true;
+    VisitListContent(node);
+    visitingTemplateParameters = false;
+}
+
+void SetTemplateArgKindVisitor::Visit(TypeParameterNode& node)
+{
+    if (visitingTemplateParameters)
+    {
+        templateArgKinds.push_back(true);
+    }
+}
+
+void SetTemplateArgKindVisitor::Visit(ParameterNode& node)
+{
+    if (visitingTemplateParameters)
+    {
+        templateArgKinds.push_back(false);
+    }
+}
+
+void SetTemplateArgKinds(Node* templateIdNode, Context* context)
+{
+    SetTemplateArgKindVisitor visitor(context);
+    templateIdNode->Accept(visitor);
+}
+
+class GetTemplateArgKindVisitor : public DefaultVisitor
+{
+public:
+    GetTemplateArgKindVisitor(int index_);
+    void Visit(TemplateIdNode& node) override;
+    bool CanBeTypeid() const { return canBeTypeId; }
+private:
+    int index;
+    bool canBeTypeId;
+};
+
+GetTemplateArgKindVisitor::GetTemplateArgKindVisitor(int index_) : index(index_), canBeTypeId(true)
+{
+}
+
+void GetTemplateArgKindVisitor::Visit(TemplateIdNode& node)
+{
+    if (index >= 0 && index < node.TemplateArgKinds().size())
+    {
+        canBeTypeId = node.TemplateArgKinds()[index];
+    }
+}
+
+bool TemplateArgCanBeTypeId(Node* templateIdNode, int index)
+{
+    GetTemplateArgKindVisitor visitor(index);
+    templateIdNode->Accept(visitor);
+    return visitor.CanBeTypeid();
 }
 
 } // sngcpp::symbols

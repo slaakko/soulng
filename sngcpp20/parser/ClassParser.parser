@@ -245,7 +245,7 @@ parser api(PARSER_API) ClassParser
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
         |   UsingEnumDeclaration(ctx):usingEnumDeclaration{ return usingEnumDeclaration; }
         |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }
-        |   TemplateDeclaration(ctx):templateDeclaration{ return templateDeclaration; }
+        |   MemberTemplateDeclaration(ctx, matchConstructor):templateDeclaration{ return templateDeclaration; }
         |   ExplicitSpecialization(ctx):explicitSpecialization{ return explicitSpecialization; }
         |   DeductionGuide(ctx):deductionGuide{ return deductionGuide; }
         |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
@@ -261,6 +261,11 @@ parser api(PARSER_API) ClassParser
     MemberFunctionDefinition(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
         ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
             FunctionDefinition(ctx):functionDefinition{ ctx->PopFlags(); return functionDefinition; } / { ctx->PopFlags(); }
+        ;
+
+    MemberTemplateDeclaration(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
+        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+            TemplateDeclaration(ctx):templateDeclaration{ ctx->PopFlags(); return templateDeclaration; } / { ctx->PopFlags(); }
         ;
 
     MemberDeclaratorList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*

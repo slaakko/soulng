@@ -201,6 +201,7 @@ void SymbolTable::EndNamespace(int level)
 
 void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol*>& templateArguments, Context* context)
 {
+    ClassTypeSymbol* classTemplate = nullptr;
     Scope* groupScope = currentScope;
     TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
     if (currentScope->Kind() == ScopeKind::templateDeclarationScope)
@@ -226,6 +227,7 @@ void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol
                 BeginScope(*classTypeSymbol->GetScope());
                 return;
             }
+            classTemplate = classGroup->GetClassTemplate();
         }
         else
         {
@@ -235,6 +237,10 @@ void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
     classTypeSymbol->SetIdNode(node);
     classTypeSymbol->SetTemplateArguments(templateArguments);
+    if (classTemplate)
+    {
+        classTypeSymbol->SetClassTemplate(classTemplate);
+    }
     currentScope->AddSymbol(classTypeSymbol, SymbolGroupKind::typeSymbolGroup, node->GetSourcePos(), groupScope, context);
     if (templateDeclarationSymbol)
     {

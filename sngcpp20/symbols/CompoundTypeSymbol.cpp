@@ -11,23 +11,23 @@ CompoundTypeSymbol::CompoundTypeSymbol(const std::u32string& name_, SymbolKind k
 {
 }
 
-ConstTypeSymbol::ConstTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(std::u32string(), SymbolKind::constTypeSymbol, baseType_)
+ConstTypeSymbol::ConstTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(U"const " + baseType_->Name(), SymbolKind::constTypeSymbol, baseType_)
 {
 }
 
-VolatileTypeSymbol::VolatileTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(std::u32string(), SymbolKind::volatileTypeSymbol, baseType_)
+VolatileTypeSymbol::VolatileTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(U"volatile " + baseType_->Name(), SymbolKind::volatileTypeSymbol, baseType_)
 {
 }
 
-PointerTypeSymbol::PointerTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(std::u32string(), SymbolKind::pointerTypeSymbol, baseType_)
+PointerTypeSymbol::PointerTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(baseType_->Name() + U"*", SymbolKind::pointerTypeSymbol, baseType_)
 {
 }
 
-LvalueRefTypeSymbol::LvalueRefTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(std::u32string(), SymbolKind::lvalueRefTypeSymbol, baseType_)
+LvalueRefTypeSymbol::LvalueRefTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(baseType_->Name() + U"&", SymbolKind::lvalueRefTypeSymbol, baseType_)
 {
 }
 
-RvalueRefTypeSymbol::RvalueRefTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(std::u32string(), SymbolKind::rvalueRefTypeSymbol, baseType_)
+RvalueRefTypeSymbol::RvalueRefTypeSymbol(TypeSymbol* baseType_) : CompoundTypeSymbol(baseType_->Name() + U"&&", SymbolKind::rvalueRefTypeSymbol, baseType_)
 {
 }
 

@@ -4,6 +4,7 @@
 #include <sngcpp20/symbols/Context.hpp>
 #include <sngcpp20/ast/Declaration.hpp>
 #include <sngcpp20/ast/Qualifier.hpp>
+#include <sngcpp20/ast/Pragma.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
@@ -40,6 +41,7 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match StaticAssertDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match StaticAssert(CppLexer& lexer);
     static soulng::parser::Match AliasDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match DefiningTypeIdOrIntrinsic(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match EmptyDeclaration(CppLexer& lexer);
     static soulng::parser::Match AttributeDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclSpecifierSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx);
@@ -79,6 +81,8 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match CVQualifier(CppLexer& lexer);
     static soulng::parser::Match NoexceptSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ThrowSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match MSPragma(CppLexer& lexer);
+    static soulng::parser::Match ParenthesizedTokens(CppLexer& lexer);
 };
 
 #endif // DECLARATIONPARSER_HPP

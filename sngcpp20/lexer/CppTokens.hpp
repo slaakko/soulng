@@ -162,7 +162,8 @@ namespace CppTokens
     const int __UNALIGNED = 151;
     const int __INLINE = 152;
     const int __NULLPTR = 153;
-    const int MAX = 154;
+    const int __PRAGMA = 154;
+    const int MAX = 155;
 
     LEXER_API void InitTokenIdMap();
     LEXER_API int GetTokenId(const std::u32string& tokenName);

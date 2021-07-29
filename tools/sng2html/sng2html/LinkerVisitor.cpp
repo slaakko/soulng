@@ -65,6 +65,11 @@ void LinkerVisitor::Visit(ListParser& parser)
     parser.Child()->Accept(*this);
 }
 
+void LinkerVisitor::Visit(LookaheadParser& parser)
+{
+    parser.Child()->Accept(*this);
+}
+
 void LinkerVisitor::Visit(ActionParser& parser)
 {
     parser.Child()->Accept(*this);

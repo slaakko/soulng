@@ -76,6 +76,7 @@ public:
     Symbol* Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const;
     virtual std::string FullName() const = 0;
     virtual bool IsContainerScope() const { return false; }
+    virtual Scope* GetClassScope() const { return nullptr; }
     virtual Symbol* GetSymbol() { return nullptr; }
     virtual void Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKinds, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
     virtual void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context);
@@ -104,6 +105,7 @@ public:
     Scope* ParentScope() const override { return parentScope; }
     void SetParentScope(Scope* parentScope_) override { parentScope = parentScope_; }
     bool IsContainerScope() const override { return true; }
+    Scope* GetClassScope() const override;
     void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context) override;
     Symbol* GetSymbol() override;
     ContainerSymbol* GetContainerSymbol() const { return containerSymbol; }

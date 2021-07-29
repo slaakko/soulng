@@ -270,6 +270,19 @@ void FirstComputerVisitor::Visit(ListParser& parser)
     }
 }
 
+void FirstComputerVisitor::Visit(LookaheadParser& parser)
+{
+    if (Computed(&parser)) return;
+    SetComputed(&parser);
+    parser.Child()->Accept(*this);
+    TokenSet first = parser.Child()->First();
+    if (first != parser.First())
+    {
+        changed = true;
+        parser.SetFirst(first);
+    }
+}
+
 void FirstComputerVisitor::Visit(ActionParser& parser)
 {
     if (Computed(&parser)) return;

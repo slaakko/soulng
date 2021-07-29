@@ -3,7 +3,7 @@
 #include <sng2html/sng2html/ParserFileLexer.hpp>
 #include <sng2html/sng2html/ParserFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/sng2html/sng2html/ParserIdentifierParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/tools/sng2html/sng2html/ParserIdentifierParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;

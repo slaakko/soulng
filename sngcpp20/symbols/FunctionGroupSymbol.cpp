@@ -20,6 +20,7 @@ bool FunctionGroupSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     switch (scopeKind)
     {
         case ScopeKind::namespaceScope: return true;
+        case ScopeKind::templateDeclarationScope: return true;
         case ScopeKind::classScope: return true;
     }
     return false;

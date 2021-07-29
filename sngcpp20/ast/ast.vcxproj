@@ -171,6 +171,7 @@
     <ClInclude Include="Module.hpp" />
     <ClInclude Include="Node.hpp" />
     <ClInclude Include="NodeList.hpp" />
+    <ClInclude Include="Pragma.hpp" />
     <ClInclude Include="Qualifier.hpp" />
     <ClInclude Include="Reader.hpp" />
     <ClInclude Include="SimpleType.hpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeList.cpp" />
+    <ClCompile Include="Pragma.cpp" />
     <ClCompile Include="Qualifier.cpp" />
     <ClCompile Include="Reader.cpp" />
     <ClCompile Include="SimpleType.cpp" />

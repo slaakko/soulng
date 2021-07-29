@@ -1321,7 +1321,6 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
             pp->SetLineIndex(lineIndex);
             pp->SetLine(lineIndex + 1);
             Lexeme line = lines[lineIndex];
-            std::u32string s = line.ToString();
             if (IsPPLine(line))
             {
                 PPLexer lexer(line.begin, lines.End(), fileName, pp->FileIndex());

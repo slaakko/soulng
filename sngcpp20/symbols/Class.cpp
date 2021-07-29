@@ -8,12 +8,15 @@
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
 #include <sngcpp20/symbols/AliasGroupSymbol.hpp>
 #include <sngcpp20/symbols/AliasTypeSymbol.hpp>
+#include <sngcpp20/symbols/VariableGroupSymbol.hpp>
+#include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/DeclarationProcessor.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/Evaluator.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
 #include <sngcpp20/parser/CompoundStatementRecorder.hpp>
+#include <sngcpp20/ast/Expression.hpp>
 #include <sngcpp20/ast/Literal.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp20/ast/Function.hpp>
@@ -30,7 +33,7 @@ class ClassCreatorVisitor : public DefaultVisitor
 public:
     enum class Stage
     {
-        createClass, addBases
+        createClass, addBases, resolveTemplateArgs
     };
     ClassCreatorVisitor(Context* context_);
     void Visit(ClassSpecifierNode& node) override;
@@ -40,6 +43,7 @@ public:
     void Visit(TemplateIdNode& node) override;
     void Visit(QualifiedIdNode& node) override;
     void Visit(TypeIdNode& node) override;
+    void Visit(InvokeExprNode& node) override;
     void Visit(EllipsisNode& node) override;
     void Visit(IdentifierNode& node) override;
     void Visit(UnnamedNode& node) override;
@@ -52,6 +56,8 @@ private:
     Node* specifierNode;
     ClassTypeSymbol* classTypeSymbol;
     std::vector<Symbol*> templateArguments;
+    std::vector<Symbol*> resolvedTemplateArguments;
+    std::stack<std::vector<Symbol*>> templateArgumentsStack;
 };
 
 ClassCreatorVisitor::ClassCreatorVisitor(Context* context_) : 
@@ -84,13 +90,20 @@ void ClassCreatorVisitor::Visit(ClassHeadNode& node)
 
 void ClassCreatorVisitor::Visit(BaseSpecifierNode& node)
 {
-    templateArguments.clear();
     node.ClassOrDeclType()->Accept(*this);
 }
 
 void ClassCreatorVisitor::Visit(TemplateIdNode& node)
 {
+    templateArgumentsStack.push(templateArguments);
+    templateArguments.clear();
+    Stage prevStage = stage;
+    stage = Stage::resolveTemplateArgs;
     VisitListContent(node);
+    stage = prevStage;
+    resolvedTemplateArguments = templateArguments;
+    templateArguments = templateArgumentsStack.top();
+    templateArgumentsStack.pop();
     node.TemplateName()->Accept(*this);
 }
 
@@ -102,25 +115,49 @@ void ClassCreatorVisitor::Visit(QualifiedIdNode& node)
 
 void ClassCreatorVisitor::Visit(BooleanLiteralNode& node)
 {
-    Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
-    templateArguments.push_back(value);
+    if (stage == Stage::resolveTemplateArgs)
+    {
+        Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
+        templateArguments.push_back(value);
+    }
 }
 
 void ClassCreatorVisitor::Visit(IntegerLiteralNode& node)
 {
-    Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
-    templateArguments.push_back(value);
+    if (stage == Stage::resolveTemplateArgs)
+    {
+        Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
+        templateArguments.push_back(value);
+    }
 }
 
 void ClassCreatorVisitor::Visit(TypeIdNode& node)
 {
-    Symbol* typeOrValue = ProcessTypeIdOrValue(&node, context);
-    templateArguments.push_back(typeOrValue);
+    if (stage == Stage::resolveTemplateArgs)
+    {
+        Symbol* typeOrValue = ProcessTypeIdOrValue(&node, context);
+        templateArguments.push_back(typeOrValue);
+    }
+}
+
+void ClassCreatorVisitor::Visit(InvokeExprNode& node)
+{
+    try
+    {
+        throw Exception("unknown compiler intrinsic", node.GetSourcePos(), context);
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
 }
 
 void ClassCreatorVisitor::Visit(EllipsisNode& node)
 {
-    templateArguments.push_back(context->GetSymbolTable()->MakeVarArgTypeSymbol());
+    if (stage == Stage::resolveTemplateArgs)
+    {
+        templateArguments.push_back(context->GetSymbolTable()->MakeVarArgTypeSymbol());
+    }
 }
 
 void ClassCreatorVisitor::Visit(IdentifierNode& node)
@@ -129,7 +166,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
     {
         if (stage == Stage::createClass)
         {
-            context->GetSymbolTable()->BeginClass(specifierNode, &node, templateArguments, context);
+            context->GetSymbolTable()->BeginClass(specifierNode, &node, resolvedTemplateArguments, context);
             Symbol* symbol = context->GetSymbolTable()->GetSymbol(specifierNode);
             if (symbol->Kind() == SymbolKind::classTypeSymbol)
             {
@@ -147,7 +184,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
             {
                 AliasGroupSymbol* aliasGroup = static_cast<AliasGroupSymbol*>(symbol);
                 bool exact = false;
-                AliasTypeSymbol* aliasType = aliasGroup->GetAliasTypeSymbol(templateArguments, MatchKind::exact, exact);
+                AliasTypeSymbol* aliasType = aliasGroup->GetAliasTypeSymbol(resolvedTemplateArguments, MatchKind::exact, exact);
                 if (aliasType)
                 {
                     classTypeSymbol->AddBaseClass(aliasType, node.GetSourcePos(), context);
@@ -157,7 +194,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
                     AliasTypeSymbol* aliasTemplate = aliasGroup->AliasTypeTemplate();
                     if (aliasTemplate)
                     {
-                        TypeSymbol* baseClass = context->GetSymbolTable()->Instantiate(aliasTemplate, templateArguments);
+                        TypeSymbol* baseClass = context->GetSymbolTable()->Instantiate(aliasTemplate, resolvedTemplateArguments);
                         classTypeSymbol->AddBaseClass(baseClass, node.GetSourcePos(), context);
                     }
                 }
@@ -166,7 +203,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
             {
                 ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);
                 bool exact = false;
-                ClassTypeSymbol* baseClass = classGroup->GetClass(templateArguments, MatchKind::partial, exact);
+                ClassTypeSymbol* baseClass = classGroup->GetClass(resolvedTemplateArguments, MatchKind::partial, exact);
                 if (baseClass)
                 {
                     if (exact)
@@ -175,7 +212,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
                     }
                     else
                     {
-                        ClassTypeSymbol* baseClassInstance = context->GetSymbolTable()->Instantiate(baseClass, templateArguments);
+                        ClassTypeSymbol* baseClassInstance = context->GetSymbolTable()->Instantiate(baseClass, resolvedTemplateArguments);
                         classTypeSymbol->AddBaseClass(baseClassInstance, node.GetSourcePos(), context);
                     }
                 }
@@ -184,10 +221,87 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
                     ClassTypeSymbol* classTemplate = classGroup->GetClassTemplate();
                     if (classTemplate)
                     {
-                        ClassTypeSymbol* baseClass = context->GetSymbolTable()->Instantiate(classTemplate, templateArguments);
+                        ClassTypeSymbol* baseClass = context->GetSymbolTable()->Instantiate(classTemplate, resolvedTemplateArguments);
                         classTypeSymbol->AddBaseClass(baseClass, node.GetSourcePos(), context);
                     }
                 }
+            }
+        }
+        else if (stage == Stage::resolveTemplateArgs)
+        {
+            Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup | SymbolGroupKind::variableSymbolGroup, ScopeLookup::allScopes, node.GetSourcePos(), context);
+            if (symbol && symbol->Kind() == SymbolKind::aliasGroupSymbol)
+            {
+                AliasGroupSymbol* aliasGroup = static_cast<AliasGroupSymbol*>(symbol);
+                bool exact = false;
+                AliasTypeSymbol* aliasType = aliasGroup->GetAliasTypeSymbol(resolvedTemplateArguments, MatchKind::exact, exact);
+                if (aliasType)
+                {
+                    templateArguments.push_back(aliasType);
+                }
+                else
+                {
+                    AliasTypeSymbol* aliasTemplate = aliasGroup->AliasTypeTemplate();
+                    if (aliasTemplate)
+                    {
+                        TypeSymbol* aliasType = context->GetSymbolTable()->Instantiate(aliasTemplate, resolvedTemplateArguments);
+                        templateArguments.push_back(aliasType);
+                    }
+                }
+            }
+            else if (symbol && symbol->Kind() == SymbolKind::classGroupSymbol)
+            {
+                ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);
+                bool exact = false;
+                ClassTypeSymbol* classType = classGroup->GetClass(resolvedTemplateArguments, MatchKind::partial, exact);
+                if (classType)
+                {
+                    if (exact)
+                    {
+                        templateArguments.push_back(classType);
+                    }
+                    else
+                    {
+                        ClassTypeSymbol* classInstance = context->GetSymbolTable()->Instantiate(classType, resolvedTemplateArguments);
+                        templateArguments.push_back(classInstance);
+                    }
+                }
+                else
+                {
+                    ClassTypeSymbol* classTemplate = classGroup->GetClassTemplate();
+                    if (classTemplate)
+                    {
+                        ClassTypeSymbol* classType = context->GetSymbolTable()->Instantiate(classTemplate, resolvedTemplateArguments);
+                        templateArguments.push_back(classType);
+                    }
+                }
+            }
+            else if (symbol && symbol->Kind() == SymbolKind::variableGroupSymbol)
+            {
+                VariableGroupSymbol* variableGroupSymbol = static_cast<VariableGroupSymbol*>(symbol);
+                bool exact = false;
+                symbol = variableGroupSymbol->GetVariable(resolvedTemplateArguments, MatchKind::exact, exact);
+                if (!symbol)
+                {
+                    VariableSymbol* variableTemplate = variableGroupSymbol->GetVariableTemplate();
+                    if (variableTemplate)
+                    {
+                        symbol = context->GetSymbolTable()->Instantiate(variableTemplate, resolvedTemplateArguments);
+                        templateArguments.push_back(symbol);
+                    }
+                }
+                else
+                {
+                    templateArguments.push_back(symbol);
+                }
+            }
+            else if (symbol)
+            {
+                templateArguments.push_back(symbol);
+            }
+            else
+            {
+                throw Exception("symbol not found", node.GetSourcePos(), context);
             }
         }
     }
@@ -230,6 +344,14 @@ void ClassCreatorVisitor::Visit(UnnamedNode& node)
 
 void BeginClass(Node* node, Context* context)
 {
+    if (node->GetSourcePos().line == 12182)
+    {
+        int x = 0;
+    }
+    if (node->GetSourcePos().line == 12184)
+    {
+        int x = 0;
+    }
     ClassCreatorVisitor visitor(context);
     node->Accept(visitor);
     context->PushSetFlag(ContextFlags::parseMemberFunction);
@@ -260,16 +382,7 @@ void InlineMemberFunctionParserVisitor::Visit(FunctionDefinitionNode& node)
     {
         if (node.FunctionBody()->Kind() == NodeKind::functionBodyNode)
         {
-            bool constructor = false;
-            Symbol* symbol = context->GetSymbolTable()->GetSymbolNothrow(&node);
-            if (symbol)
-            {
-                if (symbol->IsConstructorSymbol())
-                {
-                    constructor = true;
-                }
-            } 
-            BeginFunctionDefinition(node.DeclSpecifiers(), node.Declarator(), constructor, context);
+            BeginFunctionDefinition(node.DeclSpecifiers(), node.Declarator(), context);
             try
             {
                 FunctionBodyNode* functionBody = static_cast<FunctionBodyNode*>(node.FunctionBody());
@@ -319,12 +432,17 @@ void ParseInlineMemberFunctions(Node* classSpecifierNode, Context* context)
 
 bool IsConstructorName(Node* node, Context* context)
 {
+    if (node->GetSourcePos().line == 12871)
+    {
+        int x = 0;
+    }
     if (!context->GetFlag(ContextFlags::matchConstructorName)) return false;
     if (context->GetFlag(ContextFlags::parsingParameters)) return false;
-    if (context->GetSymbolTable()->CurrentScope()->Kind() != ScopeKind::classScope) return false;
+    Scope* classScope = context->GetSymbolTable()->CurrentScope()->GetClassScope();
+    if (!classScope) return false;
     Symbol* symbol = context->GetSymbolTable()->GetSymbolNothrow(node);
     if (!symbol) return false;
-    Symbol* currentClassTypeSymbol = context->GetSymbolTable()->CurrentScope()->GetSymbol();
+    Symbol* currentClassTypeSymbol = classScope->GetSymbol();
     if (symbol->Name() != currentClassTypeSymbol->Name()) return false;
     return true;
 }

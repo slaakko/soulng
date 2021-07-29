@@ -105,6 +105,11 @@ void ArrayGeneratorVisitor::Visit(ListParser& parser)
     parser.Child()->Accept(*this);
 }
 
+void ArrayGeneratorVisitor::Visit(LookaheadParser& parser)
+{
+    parser.Child()->Accept(*this);
+}
+
 void ArrayGeneratorVisitor::Visit(ActionParser& parser)
 {
     parser.Child()->Accept(*this);

@@ -7,6 +7,7 @@
 [hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Declaration.hpp>
 [hpp]#include <sngcpp20/ast/Qualifier.hpp>
+[hpp]#include <sngcpp20/ast/Pragma.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/EnumParser.hpp>
@@ -44,6 +45,7 @@ parser api(PARSER_API) DeclarationParser
     using ExpressionParser.ConstantExpression;
     using ExpressionParser.Ellipsis;
     using ExpressionParser.IdExpression;
+    using ExpressionParser.IntrinsicInvokeExpr;
     using FunctionParser.Assign;
     using FunctionParser.Comma;
     using FunctionParser.FunctionDefinition;
@@ -96,6 +98,7 @@ parser api(PARSER_API) DeclarationParser
         |   EmptyDeclaration:emptyDeclaration{ return emptyDeclaration; }
         |   AttributeDeclaration(ctx):attributeDeclaration{ return attributeDeclaration; }
         |   ImportDeclaration(ctx):moduleImportDeclaration{ return moduleImportDeclaration; }
+        |   MSVCModeGuard(ctx):msvcMode MSPragma:mspragma{ return mspragma; }
         ;
 
     BlockDeclaration(sngcpp::symbols::Context* ctx) : Node*
@@ -187,7 +190,7 @@ parser api(PARSER_API) DeclarationParser
         ::= 
         (
             (Inline:inln{ s = sourcePos; })?
-            Namespace:nskw{ if (!s.IsValid()) s = sourcePos; }
+            Namespace:nskw {  if (!s.IsValid()) s = sourcePos; }
             AttributeSpecifierSeq(ctx):attributes?
             Identifier(ctx):nsn{ nsName.reset(nsn); sngcpp::symbols::BeginNamespace(nsName.get(), ctx); }
             LBRACE{ lbPos = sourcePos; }
@@ -385,14 +388,19 @@ parser api(PARSER_API) DeclarationParser
             Identifier(ctx):identifier 
             AttributeSpecifierSeq(ctx):attributes? 
             Assign:assign 
-            DefiningTypeId(ctx):definingTypeId 
+            DefiningTypeIdOrIntrinsic(ctx):definingTypeIdOrIntrinsic 
             Semicolon:semicolon
         )
         {
-            AliasDeclarationNode* node = new AliasDeclarationNode(s, usng, identifier, assign, definingTypeId, attributes, semicolon);
+            AliasDeclarationNode* node = new AliasDeclarationNode(s, usng, identifier, assign, definingTypeIdOrIntrinsic, attributes, semicolon);
             sngcpp::symbols::ProcessAliasDeclaration(node, ctx);
             return node;
         }
+        ;
+
+    DefiningTypeIdOrIntrinsic(sngcpp::symbols::Context* ctx) : Node*
+        ::= DefiningTypeId(ctx):definingTypeId{ return definingTypeId; }
+        |   IntrinsicInvokeExpr(ctx):intrinsic{ return intrinsic; }
         ;
 
     EmptyDeclaration : Node*
@@ -755,7 +763,10 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     Ptr(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
-        ::= MSVCModeGuard(ctx):vc{ s = sourcePos; } CDecl(ctx):cd STAR{ return new PrefixNode(s, cd, new PtrNode(sourcePos)); }
+        ::= MSVCModeGuard(ctx):vc{ s = sourcePos; } 
+            (   CDecl(ctx):cd STAR{ return new PrefixNode(s, cd, new PtrNode(sourcePos)); }
+            |   MSDeclSpecifier(ctx):msds{ return msds; }
+            )
         |   STAR{ return new PtrNode(sourcePos); }
         ;
 
@@ -806,5 +817,19 @@ parser api(PARSER_API) DeclarationParser
         {
             return new ThrowSpecifierNode(s, lpPos, rpPos);
         }
+        ;
+
+    MSPragma : Node*
+        ::= 
+        (
+            __PRAGMA ParenthesizedTokens:ptokens
+        )
+        {
+            return new PragmaNode(sourcePos);
+        }
+        ;
+
+    ParenthesizedTokens
+        ::= LPAREN ((any - (LPAREN | RPAREN)) | ParenthesizedTokens:ptokens)* RPAREN
         ;
 }

@@ -31,7 +31,7 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("FunctionDefinition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 193);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 198);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> declSpecifierSeqNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> declaratorNode = std::unique_ptr<Node>();
@@ -238,7 +238,7 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                     }
                     if (match.hit)
                     {
-                        functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor), ctx);
+                        functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx);
                     }
                     *parentMatch14 = match;
                 }
@@ -309,7 +309,7 @@ soulng::parser::Match FunctionParser::FunctionBody(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("FunctionBody"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 194);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 199);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> assign;
     std::unique_ptr<Node> def;
@@ -586,7 +586,7 @@ soulng::parser::Match FunctionParser::Default(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Default"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 195);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 200);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -634,7 +634,7 @@ soulng::parser::Match FunctionParser::Delete(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Delete"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 196);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 201);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -682,7 +682,7 @@ soulng::parser::Match FunctionParser::NoDeclSpecFunctionDeclaration(CppLexer& le
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("NoDeclSpecFunctionDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 197);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 202);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> declarator;
@@ -806,7 +806,7 @@ soulng::parser::Match FunctionParser::ParameterDeclarationClause(CppLexer& lexer
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ParameterDeclarationClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 198);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 203);
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
@@ -1082,7 +1082,7 @@ soulng::parser::Match FunctionParser::ParameterDeclarationList(CppLexer& lexer, 
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ParameterDeclarationList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 199);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 204);
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
@@ -1190,7 +1190,7 @@ soulng::parser::Match FunctionParser::Comma(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Comma"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 200);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 205);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1238,7 +1238,7 @@ soulng::parser::Match FunctionParser::ParameterDeclaration(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ParameterDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 201);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 206);
     std::unique_ptr<ParameterNode> node = std::unique_ptr<ParameterNode>();
     sngcpp::symbols::ContextFlags savedBottomUpFlags = sngcpp::symbols::ContextFlags();
     std::unique_ptr<Node> attributes;
@@ -1523,7 +1523,7 @@ soulng::parser::Match FunctionParser::Assign(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Assign"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 202);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 207);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1571,7 +1571,7 @@ soulng::parser::Match FunctionParser::OperatorFunctionId(CppLexer& lexer, sngcpp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("OperatorFunctionId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 203);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 208);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> operatorKw;
     std::unique_ptr<Node> op;
@@ -1649,7 +1649,7 @@ soulng::parser::Match FunctionParser::ConversionFunctionId(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConversionFunctionId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 204);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 209);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> operatorKw;
     std::unique_ptr<Node> conversionTypeId;
@@ -1727,7 +1727,7 @@ soulng::parser::Match FunctionParser::DestructorId(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DestructorId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 205);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 210);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     std::unique_ptr<Node> typeName;
@@ -1849,7 +1849,7 @@ soulng::parser::Match FunctionParser::ConversionTypeId(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConversionTypeId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 206);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 211);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> typeSpecifierSeq;
     std::unique_ptr<Node> declarator;
@@ -1940,7 +1940,7 @@ soulng::parser::Match FunctionParser::ConversionDeclarator(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConversionDeclarator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 207);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 212);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> op;
     std::unique_ptr<Node> declarator;
@@ -2031,7 +2031,7 @@ soulng::parser::Match FunctionParser::OperatorKw(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("OperatorKw"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 208);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 213);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -2079,7 +2079,7 @@ soulng::parser::Match FunctionParser::Operator(CppLexer& lexer, sngcpp::symbols:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Operator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 209);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 214);
     SourcePos s = SourcePos();
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
@@ -3955,7 +3955,7 @@ soulng::parser::Match FunctionParser::Noexcept(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Noexcept"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 210);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 215);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -4003,7 +4003,7 @@ soulng::parser::Match FunctionParser::FunctionTryBlock(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("FunctionTryBlock"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 211);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 216);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> ctorInitializer;
     std::unique_ptr<Node> tryBlock;

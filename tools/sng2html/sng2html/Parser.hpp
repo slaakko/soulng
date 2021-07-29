@@ -208,6 +208,14 @@ private:
     Parser* right;
 };
 
+class LookaheadParser : public UnaryParser
+{
+public:
+    LookaheadParser(Parser* child_);
+    Parser* Clone() const override;
+    void Accept(Visitor& visitor) override;
+};
+
 class ActionParser : public UnaryParser
 {
 public:

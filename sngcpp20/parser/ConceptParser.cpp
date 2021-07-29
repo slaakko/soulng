@@ -25,7 +25,7 @@ soulng::parser::Match ConceptParser::ConceptDefinition(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConceptDefinition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 46);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 47);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> conceptName;
     std::unique_ptr<Node> assign;
@@ -159,7 +159,7 @@ soulng::parser::Match ConceptParser::ConceptName(CppLexer& lexer, sngcpp::symbol
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConceptName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 47);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 48);
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -203,7 +203,7 @@ soulng::parser::Match ConceptParser::RequiresExpression(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RequiresExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 48);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 49);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> params;
     std::unique_ptr<Node> body;
@@ -314,7 +314,7 @@ soulng::parser::Match ConceptParser::RequirementParameterList(CppLexer& lexer, s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RequirementParameterList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 49);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 50);
     std::unique_ptr<ParameterListNode> node = std::unique_ptr<ParameterListNode>();
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
@@ -429,7 +429,7 @@ soulng::parser::Match ConceptParser::RequirementBody(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RequirementBody"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 50);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 51);
     std::unique_ptr<RequirementBodyNode> node = std::unique_ptr<RequirementBodyNode>();
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
@@ -544,7 +544,7 @@ soulng::parser::Match ConceptParser::RequirementSeq(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RequirementSeq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 51);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 52);
     std::unique_ptr<Node> requirement;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -630,7 +630,7 @@ soulng::parser::Match ConceptParser::Requirement(CppLexer& lexer, sngcpp::symbol
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Requirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 52);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 53);
     std::unique_ptr<Node> nestedRequirement;
     std::unique_ptr<Node> typeRequirement;
     std::unique_ptr<Node> compoundRequirement;
@@ -776,7 +776,7 @@ soulng::parser::Match ConceptParser::SimpleRequirement(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleRequirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 53);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 54);
     SourcePos s = SourcePos();
     std::unique_ptr<sngcpp::ast::Node> expr;
     std::unique_ptr<Node> semicolon;
@@ -849,7 +849,7 @@ soulng::parser::Match ConceptParser::TypeRequirement(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeRequirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 54);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 55);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> nns;
     std::unique_ptr<Node> typeName;
@@ -1011,7 +1011,7 @@ soulng::parser::Match ConceptParser::CompoundRequirement(CppLexer& lexer, sngcpp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("CompoundRequirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 55);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 56);
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
     std::unique_ptr<sngcpp::ast::Node> expr;
@@ -1201,7 +1201,7 @@ soulng::parser::Match ConceptParser::ReturnTypeRequirement(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ReturnTypeRequirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 56);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 57);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> typeConstraint;
     soulng::parser::Match match(false);
@@ -1282,7 +1282,7 @@ soulng::parser::Match ConceptParser::NestedRequirement(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("NestedRequirement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 57);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 58);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> constraintExpr;
     std::unique_ptr<Node> semicolon;
@@ -1380,7 +1380,7 @@ soulng::parser::Match ConceptParser::TypeConstraint(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeConstraint"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 58);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 59);
     std::unique_ptr<TypeConstraintNode> node = std::unique_ptr<TypeConstraintNode>();
     std::unique_ptr<Node> conceptName = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
@@ -1641,7 +1641,7 @@ soulng::parser::Match ConceptParser::ConstraintExpression(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConstraintExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 59);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 60);
     std::unique_ptr<Node> logicalOrExpr;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -1685,7 +1685,7 @@ soulng::parser::Match ConceptParser::RequiresClause(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RequiresClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 60);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 61);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> orExpr;
     soulng::parser::Match match(false);
@@ -1766,7 +1766,7 @@ soulng::parser::Match ConceptParser::ConstraintLogicalOrExpression(CppLexer& lex
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConstraintLogicalOrExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 61);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 62);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     SourcePos opPos = SourcePos();
@@ -1912,7 +1912,7 @@ soulng::parser::Match ConceptParser::ConstraintLogicalAndExpression(CppLexer& le
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConstraintLogicalAndExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 62);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 63);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     SourcePos opPos = SourcePos();

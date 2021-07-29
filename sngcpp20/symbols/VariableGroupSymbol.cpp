@@ -61,7 +61,7 @@ VariableSymbol* VariableGroupSymbol::GetVariable(const std::vector<Symbol*>& tem
     std::pair<Symbol*, int> first = symbolScores.front();
     if (symbolScores.size() > 1)
     {
-        std::pair<Symbol*, int> second = symbolScores[2];
+        std::pair<Symbol*, int> second = symbolScores[1];
         if (first == second) return nullptr;
         return static_cast<VariableSymbol*>(first.first);
     }

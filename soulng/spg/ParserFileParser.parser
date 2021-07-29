@@ -176,10 +176,15 @@ parser ParserFileParser
         ;
 
     List(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
-        ::= (Postfix:left{ value.reset(left); } (REM Postfix:right!{ value.reset(new soulng::spg::ListParser(value.release(), right)); })?)
+        ::= (Prefix:left{ value.reset(left); } (REM Prefix:right!{ value.reset(new soulng::spg::ListParser(value.release(), right)); })?)
         {
             return value.release();
         }
+        ;
+
+    Prefix : soulng::spg::Parser*
+        ::= AMP Postfix:lookaheadpf{ return new soulng::spg::LookaheadParser(lookaheadpf); }
+        |   Postfix:postfix{ return postfix; }
         ;
 
     Postfix(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*

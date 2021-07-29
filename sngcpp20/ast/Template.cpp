@@ -145,6 +145,11 @@ void TemplateIdNode::Read(Reader& reader)
     raPos = reader.ReadSourcePos();
 }
 
+void TemplateIdNode::SetTemplateArgKinds(const std::vector<bool>& templateArgKinds_)
+{
+    templateArgKinds = templateArgKinds_;
+}
+
 TypenameNode::TypenameNode(const SourcePos& sourcePos_) : Node(NodeKind::typenameNode, sourcePos_)
 {
 }

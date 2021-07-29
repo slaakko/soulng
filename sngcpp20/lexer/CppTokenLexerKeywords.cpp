@@ -104,7 +104,8 @@ namespace CppTokenLexerKeywords
         {U"__int8", __INT8}, 
         {U"__unaligned", __UNALIGNED}, 
         {U"__inline", __INLINE}, 
-        {U"__nullptr", __NULLPTR},
+        {U"__nullptr", __NULLPTR}, 
+        {U"__pragma", __PRAGMA},
         {nullptr, -1}
     };
 

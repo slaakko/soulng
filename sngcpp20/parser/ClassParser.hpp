@@ -35,6 +35,7 @@ struct PARSER_API ClassParser
     static soulng::parser::Match MemberDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool matchConstructor);
     static soulng::parser::Match MemberDeclSpecifiers(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool matchConstructor);
     static soulng::parser::Match MemberFunctionDefinition(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool matchConstructor);
+    static soulng::parser::Match MemberTemplateDeclaration(CppLexer& lexer, sngcpp::symbols::Context* ctx, bool matchConstructor);
     static soulng::parser::Match MemberDeclaratorList(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match MemberDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match CtorInitializer(CppLexer& lexer, sngcpp::symbols::Context* ctx);

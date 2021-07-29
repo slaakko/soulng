@@ -367,6 +367,8 @@ class TrailingReturnTypeNode;
 class ElaboratedTypeSpecifierNode;
 class DeclTypeSpecifierNode;
 class PlaceholderTypeSpecifierNode;
+// MS:
+class PragmaNode;
 
 class AST_API Visitor
 {
@@ -738,6 +740,8 @@ public:
     virtual void Visit(ElaboratedTypeSpecifierNode& node) {}
     virtual void Visit(DeclTypeSpecifierNode& node) {}
     virtual void Visit(PlaceholderTypeSpecifierNode& node) {}
+    // MS:
+    virtual void Visit(PragmaNode& node) {}
 };
 
 class AST_API DefaultVisitor : public Visitor

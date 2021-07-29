@@ -70,7 +70,7 @@ ClassTypeSymbol* ClassGroupSymbol::GetClass(const std::vector<Symbol*>& template
     std::pair<Symbol*, int> first = symbolScores.front();
     if (symbolScores.size() > 1)
     {
-        std::pair<Symbol*, int> second = symbolScores[2];
+        std::pair<Symbol*, int> second = symbolScores[1];
         if (first == second) return nullptr;
         if (first.second == 0) exact = true;
         return static_cast<ClassTypeSymbol*>(first.first);

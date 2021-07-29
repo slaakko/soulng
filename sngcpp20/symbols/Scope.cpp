@@ -178,6 +178,20 @@ ContainerScope::ContainerScope() : Scope(), parentScope(nullptr), usingDeclarati
 {
 }
 
+Scope* ContainerScope::GetClassScope() const
+{
+    if (Kind() == ScopeKind::classScope)
+    {
+        return const_cast<Scope*>(static_cast<const Scope*>(this));
+    }
+    Scope* parentScope = ParentScope();
+    if (parentScope)
+    {
+        return parentScope->GetClassScope();
+    }
+    return nullptr;
+}
+
 void ContainerScope::AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context)
 {
     if (baseScope->IsContainerScope())

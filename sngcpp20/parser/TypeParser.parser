@@ -298,7 +298,7 @@ parser api(PARSER_API) TypeParser
 
     TypenameSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> templateNode, var bool typenameSeen, var std::unique_ptr<Node> leaf) : Node*
         ::= TYPENAME{ s = sourcePos; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assumeType); typenameSeen = true; } 
-            NestedNameSpecifier(ctx):nns 
+            empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::assumeType); } NestedNameSpecifier(ctx):nns{ ctx->PopFlags(); } / { ctx->PopFlags(); }
             (   (Template:t{ templateNode.reset(t); })?
                 SimpleTemplateId(ctx):simpleTemplateId
                 {

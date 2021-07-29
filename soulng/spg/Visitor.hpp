@@ -23,6 +23,7 @@ class SequenceParser;
 class AlternativeParser;
 class DifferenceParser;
 class ListParser;
+class LookaheadParser;
 class ActionParser;
 class NonterminalParser;
 class RuleParser;
@@ -49,6 +50,7 @@ public:
     virtual void Visit(AlternativeParser& parser) {}
     virtual void Visit(DifferenceParser& parser) {}
     virtual void Visit(ListParser& parser) {}
+    virtual void Visit(LookaheadParser& parser) {}
     virtual void Visit(ActionParser& parser) {}
     virtual void Visit(NonterminalParser& parser) {}
     virtual void Visit(RuleParser& parser) {}

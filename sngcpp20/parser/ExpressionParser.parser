@@ -226,7 +226,7 @@ parser api(PARSER_API) ExpressionParser
         (
             CompareExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                RelationalOp:op CompareExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
+                RelationalOp(ctx->GetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId)):op CompareExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -234,9 +234,9 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    RelationalOp : Node*
+    RelationalOp(bool rejectRAngle) : Node*
         ::= LANGLE{ return new LessNode(sourcePos); }
-        |   RANGLE{ return new GreaterNode(sourcePos); }
+        |   empty{ pass = !rejectRAngle; } RANGLE{ return new GreaterNode(sourcePos); }
         |   LEQ{ return new LessOrEqualNode(sourcePos); }
         |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
         ;
@@ -450,11 +450,27 @@ parser api(PARSER_API) ExpressionParser
         )
         ;
 
+    IntrinsicInvokeExpr(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
+            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, node.release())); } 
+            ExpressionList(ctx, invokeNode.get()):args? 
+            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
     PostfixExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
         var SourcePos lbPos, var SourcePos rbPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
-            PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
+            (   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
+            |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
+            |   PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
+            )
             (
                 (   LBRACKET{ lbPos = sourcePos; } ExprOrBracedInitList(ctx):index RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptExprNode(s, node.release(), index, lbPos, rbPos)); }
                 |   LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, node.release())); } 
@@ -475,8 +491,6 @@ parser api(PARSER_API) ExpressionParser
             ExpressionList(ctx, invokeNode.get()):args4? 
             RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
         |   TypenameSpecifier(ctx):typenameSpecifier2 { s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
-        |   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
-        |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
         )
         {
             return node.release();

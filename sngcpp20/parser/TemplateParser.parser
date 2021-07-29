@@ -156,6 +156,7 @@ parser api(PARSER_API) TemplateParser
                 ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); 
                 ctx->ResetBottomUpFlags();
                 node.reset(new TemplateIdNode(s, templateName)); 
+                sngcpp::symbols::SetTemplateArgKinds(node.get(), ctx);
             }
             TemplateArgumentList(ctx, node.get()):templateArgs?
             RANGLE
@@ -181,19 +182,19 @@ parser api(PARSER_API) TemplateParser
         ::= Identifier(ctx):identifier{ return identifier; }
         ;
 
-    TemplateArgumentList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode)
+    TemplateArgumentList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode, var int index)
         ::= 
         (
-            TemplateArgument(ctx):left{ templateIdNode->AddNode(left); }
-            (Comma:comma{ templateIdNode->AddNode(comma); } TemplateArgument(ctx):right{ templateIdNode->AddNode(right); })*
+            TemplateArgument(ctx, templateIdNode, index):left{ templateIdNode->AddNode(left); ++index; }
+            (Comma:comma{ templateIdNode->AddNode(comma); } TemplateArgument(ctx, templateIdNode, index):right{ templateIdNode->AddNode(right); ++index; })*
         )
         (
             ELLIPSIS{ templateIdNode->AddNode(new EllipsisNode(sourcePos)); }
         )?
         ;
 
-    TemplateArgument(sngcpp::symbols::Context* ctx) : Node*
-        ::= TypeId(ctx):typeId
+    TemplateArgument(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode, int index) : Node*
+        ::= empty{ pass = sngcpp::symbols::TemplateArgCanBeTypeId(templateIdNode, index); } TypeId(ctx):typeId TemplateArgNext:next
             { 
                 if (ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::simpleTypeSpecifierWithoutTypeNameMatched)) 
                 {
@@ -207,6 +208,10 @@ parser api(PARSER_API) TemplateParser
             }
         |   ConstantExpression(ctx):constantExpr{ return constantExpr; }
         |   IdExpression(ctx):idExpr{ return idExpr; }
+        ;
+
+    TemplateArgNext
+        ::= &(RANGLE | COMMA | ELLIPSIS)
         ;
 
     DeductionGuide(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> params, var SourcePos lpPos, var SourcePos rpPos) : Node*

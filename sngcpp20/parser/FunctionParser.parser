@@ -64,7 +64,7 @@ parser api(PARSER_API) FunctionParser
             |   empty
             )
             { 
-                functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx->GetBottomUpFlag(sngcpp::symbols::ContextFlags::constructor), ctx); 
+                functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx); 
             }
             FunctionBody(ctx):functionBody
             {

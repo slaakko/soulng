@@ -296,6 +296,22 @@ void LinkerVisitor::Visit(ListParser& parser)
     parser.Child()->Accept(*this);
 }
 
+void LinkerVisitor::Visit(LookaheadParser& parser)
+{
+    if (stage == Stage::resolveRules && domain->Recovery())
+    {
+        if (currentRule)
+        {
+            currentRule->AddParser(&parser);
+        }
+        else
+        {
+            throw std::runtime_error("current rule not set");
+        }
+    }
+    parser.Child()->Accept(*this);
+}
+
 void LinkerVisitor::Visit(ActionParser& parser)
 {
     if (stage == Stage::resolveRules && domain->Recovery())

@@ -260,6 +260,21 @@ void ListParser::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+LookaheadParser::LookaheadParser(Parser* child_) :
+    UnaryParser(U"lookahead", child_)
+{
+}
+
+Parser* LookaheadParser::Clone() const
+{
+    return new LookaheadParser(Child()->Clone());
+}
+
+void LookaheadParser::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 ActionParser::ActionParser(soulng::cppcode::CompoundStatement* successCode_, soulng::cppcode::CompoundStatement* failCode_, Parser* child_) :
     UnaryParser(U"action", child_), successCode(successCode_), failCode(failCode_)
 {

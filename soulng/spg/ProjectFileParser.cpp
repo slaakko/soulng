@@ -91,6 +91,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
                         projectName.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -125,6 +126,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch7 = match;
                         }
                         else
@@ -491,6 +493,7 @@ soulng::parser::Match ProjectFileParser::TokensDeclaration(ProjectFileLexer& lex
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch5 = match;
                 }
                 else
@@ -585,6 +588,7 @@ soulng::parser::Match ProjectFileParser::RuleFileDeclaration(ProjectFileLexer& l
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch5 = match;
                 }
                 else
@@ -656,6 +660,7 @@ soulng::parser::Match ProjectFileParser::RecoveryDeclaration(ProjectFileLexer& l
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -735,6 +740,7 @@ soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, sou
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -771,6 +777,7 @@ soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, sou
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch6 = match;
                 }
                 else

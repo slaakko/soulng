@@ -63,15 +63,6 @@ inline DeclarationKind operator~(DeclarationKind operand)
     return DeclarationKind(~int(operand));
 }
 
-struct Id
-{
-    Id() : idNode(nullptr), templateArguments() {}
-    Id(Node* idNode_, const std::vector<Symbol*>& templateArguments_) : idNode(idNode_), templateArguments(templateArguments_) { }
-    std::u32string functionName;
-    Node* idNode;
-    std::vector<Symbol*> templateArguments;
-};
-
 struct Declaration
 {
     Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
@@ -103,9 +94,6 @@ public:
     std::vector<Declaration> GetDeclarations();
 
     void SetKind(DeclarationKind kind_) { kind = kind_; }
-    void SetConversionFunction() { isConversionFunction = true; }
-    void SetConstructor() { constructor = true; }
-    void SetDestructor() { destructor = true; }
 
     void Visit(SimpleDeclarationNode& node) override;
 
@@ -115,6 +103,7 @@ public:
     void Visit(TypeSpecifierSequenceNode& node) override;
     void Visit(DefiningTypeIdNode& node) override;
     void Visit(TemplateIdNode& node) override;
+    void Visit(InvokeExprNode& node) override;
 
     void Visit(ClassSpecifierNode& node);
     void Visit(EnumSpecifierNode& node);
@@ -182,7 +171,15 @@ public:
     void Visit(EllipsisNode& node) override;
     void Visit(PlaceholderTypeSpecifierNode& node) override;
 
-    void Visit(OperatorFunctionIdNode& node) override;
+    void Visit(NoexceptSpecifierNode& node) override;
+    void Visit(CppCastExprNode& node) override;
+    void Visit(AlignOfExprNode& node) override;
+    void Visit(ConditionalExprNode& node) override;
+
+    void Visit(DestructorIdNode& node) override;
+    void Visit(OperatorFunctionIdNode& node);
+    void Visit(ConversionFunctionIdNode& node) override;
+    void Visit(ConversionDeclaratorNode& node) override;
     void Visit(NewArrayOpNode& node) override;
     void Visit(NewOpNode& node) override;
     void Visit(DeleteArrayOpNode& node) override;
@@ -228,13 +225,10 @@ public:
     void Visit(PrefixDecNode& node) override;
     void Visit(CommaNode& node) override;
 
-    void Visit(NoexceptSpecifierNode& node) override;
-
-    void Visit(DestructorIdNode& node) override;
-
     void ProcessDeclSpecifiers(Node* declSpecifiers);
     void ProcessDeclarator(Node* declarator);
     void ResolveBaseType(Node* node);
+    Symbol* TypeOrValue() const { return typeOrValue; }
     TypeSymbol* GetBaseType() const;
     void SetBaseTypeOrValue(Symbol* baseTypeOrValue_);
 private:
@@ -257,18 +251,14 @@ private:
     std::vector<Declaration> declarations;
     std::vector<Symbol*> templateArguments;
     std::stack<std::vector<Symbol*>> templateArgumentsStack;
-    bool isConversionFunction;
-    bool constructor;
-    bool destructor;
-    bool operatorFunctionId;
     bool getDimension;
-    bool resolveTypeName;
+    bool extractDestructorName;
+    bool extractOperatorFunctionId;
 };
 
 DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : 
     kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeOrValue(nullptr), typeOrValue(nullptr), functionType(nullptr), id(), initializer(nullptr),
-    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr), dimension(0), isConversionFunction(false), constructor(false), destructor(false), 
-    getDimension(false), operatorFunctionId(false), resolveTypeName(false)
+    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr), dimension(0), getDimension(false), extractDestructorName(false), extractOperatorFunctionId(false)
 {
 }
 
@@ -305,7 +295,6 @@ std::vector<Declaration> DeclarationProcessorVisitor::GetDeclarations()
 
 void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
 {
-    kind = DeclarationKind::none;
     this->node = &node;
     ProcessDeclSpecifiers(node.DeclarationSpecifiers());
     if (node.InitDeclaratorList())
@@ -325,7 +314,6 @@ void DeclarationProcessorVisitor::Visit(MemberDeclarationNode& node)
 {
     try
     {
-        kind = DeclarationKind::none;
         this->node = &node;
         ProcessDeclSpecifiers(node.DeclSpecifiers());
         ProcessMemberDeclarators(node.MemberDeclarators());
@@ -340,6 +328,7 @@ void DeclarationProcessorVisitor::Visit(TypeIdNode& node)
 {
     try
     {
+        if (stage == Stage::processInitializer) return;
         node.TypeSpecifiers()->Accept(*this);
         ProcessDeclarator(node.Declarator());
     }
@@ -353,6 +342,7 @@ void DeclarationProcessorVisitor::Visit(TypeSpecifierSequenceNode& node)
 {
     try
     {
+        if (stage == Stage::processInitializer) return;
         if (!this->node)
         {
             this->node = &node;
@@ -386,6 +376,7 @@ void DeclarationProcessorVisitor::Visit(TemplateIdNode& node)
 {
     try
     {
+        if (stage == Stage::processInitializer) return;
         Stage prevStage = stage;
         templateArgumentsStack.push(templateArguments);
         templateArguments.clear();
@@ -417,6 +408,20 @@ void DeclarationProcessorVisitor::Visit(TemplateIdNode& node)
     {
         int errorIndex = context->GetSymbolTable()->AddError(ex);
         baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(InvokeExprNode& node)
+{
+    try
+    {
+        throw Exception("unknown compiler intrinsic", node.GetSourcePos(), context);
+    }
+    catch (const std::exception& ex)
+    {
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+        typeOrValue = baseTypeOrValue;
     }
 }
 
@@ -552,11 +557,6 @@ void DeclarationProcessorVisitor::ResolveBaseType(Node* node)
 {
     try
     {
-        if (isConversionFunction) return;
-        if (constructor || destructor)
-        {
-            baseTypeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node->GetSourcePos(), context);
-        }
         if (!node) return;
         DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
         if (fundamentalTypeFlags != DeclarationFlags::none)
@@ -571,7 +571,7 @@ void DeclarationProcessorVisitor::ResolveBaseType(Node* node)
         {
             if (!baseTypeOrValue)
             {
-                throw Exception("declaration specifier sequence does not contain a type symbol", node->GetSourcePos(), context);
+                baseTypeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node->GetSourcePos(), context);
             }
         }
         if ((flags & DeclarationFlags::constFlag) != DeclarationFlags::none)
@@ -822,6 +822,7 @@ void DeclarationProcessorVisitor::Visit(ConstInitNode& node)
 
 void DeclarationProcessorVisitor::Visit(DeclSpecNode& node)
 {
+    // skip
 }
 
 void DeclarationProcessorVisitor::Visit(CharNode& node)
@@ -1069,9 +1070,8 @@ void DeclarationProcessorVisitor::Visit(IdentifierNode& node)
 {
     try
     {
-        if (resolveTypeName)
+        if (getDimension)
         {
-            typeName = node.Str();
             return;
         }
         if (stage == Stage::processDeclSpecifiers)
@@ -1168,14 +1168,22 @@ void DeclarationProcessorVisitor::Visit(IdentifierNode& node)
                 throw Exception("duplicate identifier in declarator list", node.GetSourcePos(), context);
             }
             id = Id(&node, templateArguments);
-            id.functionName = id.idNode->Str();
-            Symbol* symbol = context->GetSymbolTable()->CurrentScope()->GetSymbol();
-            if (symbol && symbol->Kind() == SymbolKind::classTypeSymbol)
+            if (extractDestructorName)
             {
-                if (id.functionName == symbol->Name())
+                id.idNode = &node;
+                id.functionName = U"~" + node.Str();
+            }
+            else
+            {
+                id.functionName = node.Str();
+                Scope* classScope = context->GetSymbolTable()->CurrentScope()->GetClassScope();
+                if (classScope)
                 {
-                    constructor = true;
-                    ResolveBaseType(nullptr);
+                    Symbol* classTypeSymbol = classScope->GetSymbol();
+                    if (id.functionName == classTypeSymbol->Name())
+                    {
+                        id.functionKind = FunctionKind::constructor;
+                    }
                 }
             }
         }
@@ -1225,8 +1233,8 @@ void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
         for (Node* item : node.Items())
         {
             typeOrValue = baseTypeOrValue;
-            id = Id();
             scope = context->GetSymbolTable()->CurrentScope();
+            id = Id();
             item->Accept(*this);
             declarations.push_back(GetDeclaration());
         }
@@ -1401,24 +1409,6 @@ void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
         {
             kind = DeclarationKind::functionDeclaration;
         }
-        bool childFirst = false;
-        if (isConversionFunction)
-        {
-            childFirst = true;
-        }
-        else if (!baseTypeOrValue)
-        {
-            childFirst = true;
-        }
-        if (childFirst)
-        {
-            node.Child()->Accept(*this);
-            typeOrValue = baseTypeOrValue;
-            if (isConversionFunction)
-            {
-                id.functionName = U"operator_" + typeOrValue->Name();
-            }
-        }
         parameters.clear();
         node.Params()->Accept(*this);
         std::vector<TypeSymbol*> parameterTypes;
@@ -1426,6 +1416,11 @@ void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
         {
             parameterTypes.push_back(param->Type());
         }
+        if (!typeOrValue)
+        {
+            typeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node.GetSourcePos(), context);
+        }
+        Symbol* prevTypeOrValue = typeOrValue;
         if (typeOrValue->IsTypeSymbol())
         {
             typeOrValue = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(static_cast<TypeSymbol*>(typeOrValue), parameterTypes));
@@ -1434,9 +1429,10 @@ void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
         {
             throw Exception("type expected", node.GetSourcePos(), context);
         }
-        if (!childFirst)
+        node.Child()->Accept(*this);
+        if (typeOrValue->Kind() != SymbolKind::functionTypeSymbol && typeOrValue != prevTypeOrValue)
         {
-            node.Child()->Accept(*this);
+            typeOrValue = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(static_cast<TypeSymbol*>(typeOrValue), parameterTypes));
         }
     }
     catch (const std::exception& ex)
@@ -1606,431 +1602,51 @@ void DeclarationProcessorVisitor::Visit(PlaceholderTypeSpecifierNode& node)
     }
 }
 
-void DeclarationProcessorVisitor::Visit(OperatorFunctionIdNode& node)
+void DeclarationProcessorVisitor::Visit(NoexceptSpecifierNode& node)
+{
+    // skip
+}
+
+void DeclarationProcessorVisitor::Visit(CppCastExprNode& node)
 {
     try
     {
-        operatorFunctionId = true;
-        node.Right()->Accept(*this);
-        operatorFunctionId = false;
+        throw Exception("cast expression not implemented in declaration processor", node.GetSourcePos(), context);
     }
     catch (const std::exception& ex)
     {
-        context->GetSymbolTable()->AddError(ex);
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+        typeOrValue = baseTypeOrValue;
     }
 }
 
-void DeclarationProcessorVisitor::Visit(NewArrayOpNode& node)
+void DeclarationProcessorVisitor::Visit(AlignOfExprNode& node)
 {
-    if (operatorFunctionId)
+    try
     {
-        id.idNode = &node;
-        id.functionName = U"operator new[]";
+        throw Exception("alignof expression not implemented in declaration processor", node.GetSourcePos(), context);
     }
-}
-
-void DeclarationProcessorVisitor::Visit(NewOpNode& node)
-{
-    if (operatorFunctionId)
+    catch (const std::exception& ex)
     {
-        id.idNode = &node;
-        id.functionName = U"operator new";
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+        typeOrValue = baseTypeOrValue;
     }
 }
 
-void DeclarationProcessorVisitor::Visit(DeleteArrayOpNode& node)
+void DeclarationProcessorVisitor::Visit(ConditionalExprNode& node)
 {
-    if (operatorFunctionId)
+    try
     {
-        id.idNode = &node;
-        id.functionName = U"operator delete[]";
+        throw Exception("conditional expression processing not implemented in declaration processor", node.GetSourcePos(), context);
     }
-}
-
-void DeclarationProcessorVisitor::Visit(DeleteOpNode& node)
-{
-    if (operatorFunctionId)
+    catch (const std::exception& ex)
     {
-        id.idNode = &node;
-        id.functionName = U"operator delete";
+        int errorIndex = context->GetSymbolTable()->AddError(ex);
+        baseTypeOrValue = context->GetSymbolTable()->MakeErrorSymbol(errorIndex);
+        typeOrValue = baseTypeOrValue;
     }
-}
-
-void DeclarationProcessorVisitor::Visit(CoAwaitOpNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator coawait";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(InvokeOpNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator()";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(SubscriptOpNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator[]";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ArrowNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator->";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ArrowStarNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator->*";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ComplementNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator~";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(NotNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator!";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(PlusNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator+";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(MinusNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator-";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(MulNode& node) 
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator*";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(DivNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator/";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ModNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator%";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ExclusiveOrNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator^";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(AndNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator&";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(InclusiveOrNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator|";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(AssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(PlusAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator+=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(MinusAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator-=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(MulAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator*=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(DivAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator/=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ModAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator%=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(XorAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator^=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(AndAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator&=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(OrAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator|=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ShiftLeftAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator<<=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ShiftRightAssignNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator>>=";
-    }
-
-}
-
-void DeclarationProcessorVisitor::Visit(EqualNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator==";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(NotEqualNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator!=";
-    }
-
-}
-
-void DeclarationProcessorVisitor::Visit(LessOrEqualNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator<=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(GreaterOrEqualNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator>=";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(CompareNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator<=>";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(LessNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator<";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(GreaterNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator>";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ConjunctionNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator&&";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(DisjunctionNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator||";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ShiftLeftNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator<<";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(ShiftRightNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator>>";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(PrefixIncNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator++";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(PrefixDecNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator--";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(CommaNode& node)
-{
-    if (operatorFunctionId)
-    {
-        id.idNode = &node;
-        id.functionName = U"operator,";
-    }
-}
-
-void DeclarationProcessorVisitor::Visit(NoexceptSpecifierNode& node)
-{
-    // no processing
-}
-
-void DeclarationProcessorVisitor::Visit(DestructorIdNode& node)
-{
-    id.idNode = &node;
-    resolveTypeName = true;
-    node.Child()->Accept(*this);
-    resolveTypeName = false;
-    id.functionName = U"~" + typeName;
-    baseTypeOrValue = GetFundamentalType(DeclarationFlags::voidFlag, node.GetSourcePos(), context);
 }
 
 void DeclarationProcessorVisitor::Visit(EllipsisNode& node)
@@ -2051,6 +1667,435 @@ void DeclarationProcessorVisitor::Visit(EllipsisNode& node)
     catch (const std::exception& ex)
     {
         context->GetSymbolTable()->AddError(ex);
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DestructorIdNode& node)
+{
+    id.functionKind = FunctionKind::destructor;
+    extractDestructorName = true;
+    node.Child()->Accept(*this);
+    extractDestructorName = false;
+}
+
+void DeclarationProcessorVisitor::Visit(OperatorFunctionIdNode& node)
+{
+    id.functionKind = FunctionKind::operatorFn;
+    extractOperatorFunctionId = true;
+    node.Right()->Accept(*this);
+    extractOperatorFunctionId = false;
+}
+
+void DeclarationProcessorVisitor::Visit(ConversionFunctionIdNode& node)
+{
+    id.functionKind = FunctionKind::conversionFn;
+    baseTypeOrValue = ProcessTypeSpecifierSequence(node.Right(), context);
+    typeOrValue = baseTypeOrValue;
+    id.idNode = &node;
+    id.functionName = U"operator " + typeOrValue->Name();
+}
+
+void DeclarationProcessorVisitor::Visit(ConversionDeclaratorNode& node)
+{
+    typeOrValue = baseTypeOrValue;
+    DefaultVisitor::Visit(node);
+}
+
+void DeclarationProcessorVisitor::Visit(NewArrayOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator new[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NewOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator new";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DeleteArrayOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator delete[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DeleteOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator delete";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CoAwaitOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator coawait";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(InvokeOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator()";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(SubscriptOpNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator[]";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ArrowNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator->";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ArrowStarNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator->*";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ComplementNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator~";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NotNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator!";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PlusNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator+";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MinusNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator-";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MulNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator*";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DivNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator/";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ModNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator%";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ExclusiveOrNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator^";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AndNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(InclusiveOrNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator|";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PlusAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator+=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MinusAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator-=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(MulAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator*=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DivAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator/=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ModAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator%=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(XorAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator^=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(AndAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(OrAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator|=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftLeftAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<<=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftRightAssignNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>>=";
+    }
+
+}
+
+void DeclarationProcessorVisitor::Visit(EqualNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator==";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(NotEqualNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator!=";
+    }
+
+}
+
+void DeclarationProcessorVisitor::Visit(LessOrEqualNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(GreaterOrEqualNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>=";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CompareNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<=>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(LessNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(GreaterNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ConjunctionNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator&&";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(DisjunctionNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator||";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftLeftNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator<<";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(ShiftRightNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator>>";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PrefixIncNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator++";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(PrefixDecNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator--";
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(CommaNode& node)
+{
+    if (extractOperatorFunctionId)
+    {
+        id.idNode = &node;
+        id.functionName = U"operator,";
     }
 }
 
@@ -2154,14 +2199,6 @@ void ProcessMemberDeclaration(Node* memberDeclaration, Context* context)
     try
     {
         DeclarationProcessorVisitor visitor(context);
-        if (context->GetBottomUpFlag(ContextFlags::constructor))
-        {
-            visitor.SetConstructor();
-        }
-        if (context->GetBottomUpFlag(ContextFlags::destructor))
-        {
-            visitor.SetDestructor();
-        }
         memberDeclaration->Accept(visitor);
         std::vector<Declaration> declarations = visitor.GetDeclarations();
         for (Declaration& declaration : declarations)
@@ -2173,103 +2210,6 @@ void ProcessMemberDeclaration(Node* memberDeclaration, Context* context)
     {
         context->GetSymbolTable()->AddError(ex);
     }
-}
-
-class ConversionFunctionFinderVisitor : public DefaultVisitor
-{
-public:
-    ConversionFunctionFinderVisitor();
-    void Visit(FunctionDeclaratorNode& node) override;
-    void Visit(ConversionFunctionIdNode& node) override;
-    bool Value() const { return value; }
-private:
-    bool value;
-};
-
-ConversionFunctionFinderVisitor::ConversionFunctionFinderVisitor() : value(false)
-{
-}
-
-void ConversionFunctionFinderVisitor::Visit(FunctionDeclaratorNode& node)
-{
-    node.Child()->Accept(*this);
-}
-
-void ConversionFunctionFinderVisitor::Visit(ConversionFunctionIdNode& node)
-{
-    value = true;
-}
-
-bool IsConversionFunction(Node* declarator)
-{
-    ConversionFunctionFinderVisitor visitor;
-    declarator->Accept(visitor);
-    return visitor.Value();
-}
-
-bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, bool constructor, Context* context)
-{
-    try
-    {
-        bool isConversionFunction = IsConversionFunction(declarator);
-        DeclarationProcessorVisitor visitor(context);
-        if (isConversionFunction)
-        {
-            visitor.SetConversionFunction();
-        }
-        if (constructor)
-        {
-            visitor.SetConstructor();
-        }
-        if (context->GetBottomUpFlag(ContextFlags::destructor))
-        {
-            visitor.SetDestructor();
-        }
-        SourcePos sourcePos;
-        visitor.ProcessDeclSpecifiers(declSpecifierSeq);
-        if (declSpecifierSeq)
-        {
-            sourcePos = declSpecifierSeq->GetSourcePos();
-        }
-        if (declarator)
-        {
-            visitor.ProcessDeclarator(declarator);
-            sourcePos = declarator->GetSourcePos();
-        }
-        Declaration declaration = visitor.GetDeclaration();
-        if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
-        {
-            bool definition = true;
-            if (context->GetFlag(ContextFlags::parseMemberFunction))
-            {
-                definition = false;
-            }
-            if (declaration.typeOrValue->Kind() == SymbolKind::functionTypeSymbol)
-            {
-                FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.typeOrValue);
-                if (declaration.id.idNode)
-                {
-                    sourcePos = declaration.id.idNode->GetSourcePos();
-                }
-                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, sourcePos, declaration.id.functionName, context);
-            }
-            else
-            {
-                throw Exception("function type symbol expected", sourcePos, context);
-            }
-            return true;
-        }
-    }
-    catch (const std::exception& ex)
-    {
-        context->GetSymbolTable()->AddError(ex);
-    }
-    return false;
-}
-
-void EndFunctionDefinition(Context* context)
-{
-    context->GetSymbolTable()->EndFunction();
 }
 
 class ContainsFunctionDeclaratorNodeVisitor : public DefaultVisitor
@@ -2288,11 +2228,6 @@ bool ContainsFunctionDeclarator(Node* declarator)
     ContainsFunctionDeclaratorNodeVisitor visitor;
     declarator->Accept(visitor);
     return visitor.Value();
-}
-
-void RemoveFunctionDefinition(Context* context)
-{
-    context->GetSymbolTable()->RemoveFunction();
 }
 
 void ProcessAliasDeclaration(Node* usingNode, Context* context)
@@ -2355,7 +2290,16 @@ TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* c
 {
     DeclarationProcessorVisitor visitor(context);
     typeSpecifierSequence->Accept(visitor);
-    TypeSymbol* type = visitor.GetBaseType();
+    Symbol* tov = visitor.TypeOrValue();
+    TypeSymbol* type = nullptr;
+    if (tov && tov->IsTypeSymbol())
+    {
+        type = static_cast<TypeSymbol*>(tov);
+    }
+    else
+    {
+        type = visitor.GetBaseType();
+    }
     if (!type)
     {
         throw Exception("type expected", typeSpecifierSequence->GetSourcePos(), context);
@@ -2376,6 +2320,64 @@ TypeSymbol* ProcessTypeTemplateId(Node* templateIdNode, Context* context)
     DeclarationProcessorVisitor visitor(context);
     templateIdNode->Accept(visitor);
     return visitor.GetBaseType();
+}
+
+bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* context)
+{
+    try
+    {
+        DeclarationProcessorVisitor visitor(context);
+
+        SourcePos sourcePos;
+        visitor.ProcessDeclSpecifiers(declSpecifierSeq);
+        if (declSpecifierSeq)
+        {
+            sourcePos = declSpecifierSeq->GetSourcePos();
+        }
+        if (declarator)
+        {
+            visitor.ProcessDeclarator(declarator);
+            sourcePos = declarator->GetSourcePos();
+        }
+        Declaration declaration = visitor.GetDeclaration();
+        if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+        {
+            bool definition = true;
+            if (context->GetFlag(ContextFlags::parseMemberFunction))
+            {
+                definition = false;
+            }
+            if (declaration.typeOrValue->Kind() == SymbolKind::functionTypeSymbol)
+            {
+                FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.typeOrValue);
+                if (declaration.id.idNode)
+                {
+                    sourcePos = declaration.id.idNode->GetSourcePos();
+                }
+                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, sourcePos, declaration.id.functionName, context);
+            }
+            else
+            {
+                throw Exception("function type symbol expected", sourcePos, context);
+            }
+            return true;
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        context->GetSymbolTable()->AddError(ex);
+    }
+    return false;
+}
+
+void EndFunctionDefinition(Context* context)
+{
+    context->GetSymbolTable()->EndFunction();
+}
+
+void RemoveFunctionDefinition(Context* context)
+{
+    context->GetSymbolTable()->RemoveFunction();
 }
 
 } // sngcpp::symbols

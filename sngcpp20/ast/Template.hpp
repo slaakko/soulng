@@ -85,10 +85,13 @@ public:
     void SetRAnglePos(const SourcePos& raPos_) { raPos = raPos_; }
     const SourcePos& LAnglePos() const { return laPos; }
     const SourcePos& RAnglePos() const { return raPos; }
+    const std::vector<bool>& TemplateArgKinds() const { return templateArgKinds; }
+    void SetTemplateArgKinds(const std::vector<bool>& templateArgKinds_);
 private:
     std::unique_ptr<Node> templateName;
     SourcePos laPos;
     SourcePos raPos;
+    std::vector<bool> templateArgKinds;
 };
 
 class AST_API TypenameNode : public Node

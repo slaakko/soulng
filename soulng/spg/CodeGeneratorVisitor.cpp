@@ -501,6 +501,35 @@ void CodeGeneratorVisitor::Visit(ListParser& parser)
     parser.Child()->Accept(*this);
 }
 
+void CodeGeneratorVisitor::Visit(LookaheadParser& parser)
+{
+    formatter->WriteLine("soulng::parser::Match match(true);");
+    formatter->WriteLine("int64_t save = lexer.GetPos();");
+    int prevSetParentMatchNumber = setParentMatchNumber;
+    setParentMatchNumber = parentMatchNumber;
+    formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    parser.Child()->Accept(*this);
+    formatter->WriteLine("if (match.hit)");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+    formatter->WriteLine("lexer.SetPos(save);");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    formatter->WriteLine("else");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = soulng::parser::Match(false);");
+    formatter->WriteLine("lexer.SetPos(save);");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    setParentMatchNumber = prevSetParentMatchNumber;
+}
+
 void CodeGeneratorVisitor::Visit(ActionParser& parser)
 {
     if (stage == Stage::generateTokenSwitch)

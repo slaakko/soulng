@@ -32,6 +32,7 @@ public:
     void Visit(AlternativeParser& parser) override;
     void Visit(DifferenceParser& parser) override;
     void Visit(ListParser& parser) override;
+    void Visit(LookaheadParser& parser) override;
     void Visit(ActionParser& parser) override;
     void Visit(NonterminalParser& parser) override;
     void Visit(RuleParser& parser) override;

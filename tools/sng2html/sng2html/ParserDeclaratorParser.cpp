@@ -6,7 +6,7 @@
 #include <sng2html/sng2html/ParserFileTokens.hpp>
 #include <soulng/util/TextUtils.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/sng2html/sng2html/ParserDeclaratorParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/tools/sng2html/sng2html/ParserDeclaratorParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;

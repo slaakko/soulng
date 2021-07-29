@@ -26,7 +26,8 @@ struct PARSER_API TemplateParser
     static soulng::parser::Match SimpleTemplateId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TemplateName(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TemplateArgumentList(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode);
-    static soulng::parser::Match TemplateArgument(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match TemplateArgument(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode, int index);
+    static soulng::parser::Match TemplateArgNext(CppLexer& lexer);
     static soulng::parser::Match DeductionGuide(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Arrow(CppLexer& lexer);
     static soulng::parser::Match ExplicitInstantiation(CppLexer& lexer, sngcpp::symbols::Context* ctx);

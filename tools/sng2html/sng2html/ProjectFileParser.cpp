@@ -3,7 +3,7 @@
 #include <sng2html/sng2html/ProjectFileLexer.hpp>
 #include <sng2html/sng2html/ProjectFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/sng2html/sng2html/ProjectFileParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/tools/sng2html/sng2html/ProjectFileParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -91,6 +91,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
                         projectName.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -125,6 +126,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch7 = match;
                         }
                         else
@@ -412,6 +414,7 @@ soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, sng
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -448,6 +451,7 @@ soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, sng
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch6 = match;
                 }
                 else

@@ -408,6 +408,15 @@ void GrammarHtmlGeneratorVisitor::Visit(ListParser& parser)
     parser.Right()->Accept(*this);
 }
 
+void GrammarHtmlGeneratorVisitor::Visit(LookaheadParser& parser)
+{
+    std::unique_ptr<sngxml::dom::Element> spanElement(new sngxml::dom::Element(U"span"));
+    spanElement->SetAttribute(U"class", U"ruleOp");
+    spanElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(U"&")));
+    ruleBodyElement->AppendChild(std::move(spanElement));
+    parser.Child()->Accept(*this);
+}
+
 void GrammarHtmlGeneratorVisitor::Visit(ActionParser& parser)
 {
     parser.Child()->Accept(*this);

@@ -1,12 +1,12 @@
-parsing error at 'C:/work/soulng/sngcpp20/test/source/2_std/test.cpp:1:
-template <class _Ret, class _Arg0, class... _Types> struct _Is_memfunptr<_Ret (_Arg0::*)(_Types..., ...);
-                                                                                                 ^
+parsing error at 'C:/work/soulng/sngcpp20/test/source/2_std/test.cpp:15:
+    using _Apply =          typename _Select<is_same_v<_Ty, long> || is_same_v<_Ty, unsigned long>>::template _Apply<long, int>;
+                                                                 ^^
 
 Parser state:
 TranslationUnitParser.TranslationUnit
 DeclarationParser.DeclarationSeq
 DeclarationParser.Declaration
-TemplateParser.TemplateDeclaration
+TemplateParser.ExplicitSpecialization
 DeclarationParser.Declaration
 DeclarationParser.BlockDeclaration
 DeclarationParser.SimpleDeclaration
@@ -14,21 +14,26 @@ DeclarationParser.DeclSpecifierSeq
 DeclarationParser.DeclSpecifier
 TypeParser.DefiningTypeSpecifier
 ClassParser.ClassSpecifier
-ClassParser.ClassHead
-ClassParser.ClassHeadName
+ClassParser.MemberSpecification
+ClassParser.MemberDeclaration
+TemplateParser.TemplateDeclaration
+DeclarationParser.Declaration
+DeclarationParser.BlockDeclaration
+DeclarationParser.AliasDeclaration
+TypeParser.DefiningTypeId
+TypeParser.DefiningTypeSpecifierSeq
+TypeParser.DefiningTypeSpecifierReset
+TypeParser.DefiningTypeSpecifier
+TypeParser.TypeSpecifier
+TypeParser.TypenameSpecifier
 IdentifierParser.NestedNameSpecifier
 TemplateParser.SimpleTemplateId
 TemplateParser.TemplateArgumentList
 TemplateParser.TemplateArgument
 TypeParser.TypeId
-DeclarationParser.AbstractDeclarator
-DeclarationParser.NoPtrAbstractDeclarator
-DeclarationParser.ParametersAndQualifiers
-FunctionParser.ParameterDeclarationClause
-FunctionParser.ParameterDeclarationList
-FunctionParser.ParameterDeclaration
-DeclarationParser.Declarator
-DeclarationParser.NoPtrDeclarator
-DeclarationParser.DeclaratorId
-ExpressionParser.Ellipsis
+TypeParser.TypeSpecifierSeq
+TypeParser.TypeSpecifier
+TypeParser.SimpleTypeSpecifier
+IdentifierParser.NestedNameSpecifier
+TemplateParser.SimpleTemplateId
 
