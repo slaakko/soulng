@@ -2030,10 +2030,6 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                                             if (match.hit)
                                             {
                                                 if (!s.IsValid()) s = sourcePos;
-                                                if (sourcePos.line == 13009)
-                                                {
-                                                    int x = 0;
-                                                }
                                             }
                                             *parentMatch12 = match;
                                         }
@@ -4834,7 +4830,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifierSeq(CppLexer& lexer, sngcp
                             soulng::parser::Match match(true);
                             if (match.hit)
                             {
-                                ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier);
+                                ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier | sngcpp::symbols::ContextFlags::friendSpecifier);
                             }
                             *parentMatch5 = match;
                         }
@@ -5208,6 +5204,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer, sngcpp::
                                         }
                                         if (match.hit)
                                         {
+                                            ctx->SetFlag(sngcpp::symbols::ContextFlags::friendSpecifier);
                                             {
                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("DeclSpecifier"));

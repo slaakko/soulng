@@ -1,6 +1,7 @@
-parsing error at 'C:/Program Files (x86)/Windows Kits/10/include/10.0.19041.0/ucrt/corecrt.h:378:
-// _invalid_parameter_noinfo_noreturn() will terminate the application
-                                                                   ^
+parsing error at 'C:/Program Files (x86)/Windows Kits/10/include/10.0.19041.0/ucrt/corecrt.h:641:
+def size_t rsize_t;
+#endif
+             ^^^^^^^
 
 Parser state:
 TranslationUnitParser.TranslationUnit
@@ -11,57 +12,15 @@ DeclarationParser.NamedNamespaceDefinition
 DeclarationParser.NamespaceBody
 DeclarationParser.DeclarationSeq
 DeclarationParser.Declaration
-TemplateParser.TemplateDeclaration
-DeclarationParser.Declaration
 DeclarationParser.BlockDeclaration
 DeclarationParser.SimpleDeclaration
 DeclarationParser.DeclSpecifierSeq
 DeclarationParser.DeclSpecifier
 TypeParser.DefiningTypeSpecifier
-ClassParser.ClassSpecifier
-ClassParser.ClassHead
-ClassParser.ClassHeadName
-IdentifierParser.NestedNameSpecifier
-TemplateParser.SimpleTemplateId
-TemplateParser.TemplateArgumentList
-TemplateParser.TemplateArgument
-TypeParser.TypeId
-TypeParser.TypeSpecifierSeq
 TypeParser.TypeSpecifier
 TypeParser.SimpleTypeSpecifier
 IdentifierParser.NestedNameSpecifier
 TemplateParser.SimpleTemplateId
-TemplateParser.TemplateArgumentList
-TemplateParser.TemplateArgument
-TypeParser.TypeId
-TypeParser.TypeSpecifierSeq
-TypeParser.TypeSpecifier
-TypeParser.SimpleTypeSpecifier
-TypeParser.DeclTypeSpecifier
-ExpressionParser.Expression
-ExpressionParser.AssignmentExpression
-ExpressionParser.LogicalOrExpression
-ExpressionParser.LogicalAndExpression
-ExpressionParser.InclusiveOrExpression
-ExpressionParser.ExclusiveOrExpression
-ExpressionParser.AndExpression
-ExpressionParser.EqualityExpression
-ExpressionParser.RelationalExpression
-ExpressionParser.CompareExpression
-ExpressionParser.ShiftExpression
-ExpressionParser.AdditiveExpression
-ExpressionParser.MultiplicativeExpression
-ExpressionParser.PmExpression
-ExpressionParser.CastExpression
-ExpressionParser.UnaryExpression
-ExpressionParser.PostfixExpression
-ExpressionParser.PrimaryExpression
-ExpressionParser.IdExpression
-ExpressionParser.IdExpr
-IdentifierParser.QualifiedId
-IdentifierParser.NestedNameSpecifier
-TemplateParser.SimpleTemplateId
-TemplateParser.TemplateArgumentList
-TemplateParser.TemplateArgument
-TemplateParser.TemplateArgNext
+TemplateParser.TemplateName
+IdentifierParser.Identifier
 

@@ -44,7 +44,7 @@ parser api(PARSER_API) ExpressionParser
     using TypeParser.TypeId;
     using TemplateParser.Template;
     using TypeParser.TypeSpecifierSeq;
-    using TypeParser.SimpleTypeSpecifier;
+    using TypeParser.SimpleTypeSpecifierReset;
     using TypeParser.TypenameSpecifier;
     using LambdaParser.LambdaExpression;
     using ConceptParser.RequiresExpression;
@@ -469,6 +469,16 @@ parser api(PARSER_API) ExpressionParser
         (
             (   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
             |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
+            |   SimpleTypeSpecifierReset(ctx):simpleTypeSpecifier1{ s = sourcePos; } 
+                LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } 
+                ExpressionList(ctx, invokeNode.get()):args2? 
+                RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+            |   SimpleTypeSpecifierReset(ctx):simpleTypeSpecifier2{ s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } BracedInitList(ctx):args3{ node->AddNode(args3); }
+            |   TypenameSpecifier(ctx):typenameSpecifier1{ s = sourcePos; } 
+                LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, typenameSpecifier1)); } 
+                ExpressionList(ctx, invokeNode.get()):args4? 
+                RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+            |   TypenameSpecifier(ctx):typenameSpecifier2 { s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
             |   PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
             )
             (
@@ -481,16 +491,6 @@ parser api(PARSER_API) ExpressionParser
                 |   MINUSMINUS{ node.reset(new PostfixDecExprNode(s, node.release(), sourcePos)); }
                 )*
             )
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier1{ s = sourcePos; } 
-            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } 
-            ExpressionList(ctx, invokeNode.get()):args2? 
-            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier2{ s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } BracedInitList(ctx):args3{ node->AddNode(args3); }
-        |   TypenameSpecifier(ctx):typenameSpecifier1{ s = sourcePos; } 
-            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, typenameSpecifier1)); } 
-            ExpressionList(ctx, invokeNode.get()):args4? 
-            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
-        |   TypenameSpecifier(ctx):typenameSpecifier2 { s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
         )
         {
             return node.release();

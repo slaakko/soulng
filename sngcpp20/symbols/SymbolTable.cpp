@@ -235,6 +235,10 @@ void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol
         }
     }
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
+    if (classTypeSymbol->Name() == U"bad_array_new_length")
+    {
+        int x = 0;
+    }
     classTypeSymbol->SetIdNode(node);
     classTypeSymbol->SetTemplateArguments(templateArguments);
     if (classTemplate)

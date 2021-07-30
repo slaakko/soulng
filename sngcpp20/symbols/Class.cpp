@@ -344,14 +344,7 @@ void ClassCreatorVisitor::Visit(UnnamedNode& node)
 
 void BeginClass(Node* node, Context* context)
 {
-    if (node->GetSourcePos().line == 12182)
-    {
-        int x = 0;
-    }
-    if (node->GetSourcePos().line == 12184)
-    {
-        int x = 0;
-    }
+    if (context->GetFlag(ContextFlags::friendSpecifier)) return;
     ClassCreatorVisitor visitor(context);
     node->Accept(visitor);
     context->PushSetFlag(ContextFlags::parseMemberFunction);
@@ -359,6 +352,7 @@ void BeginClass(Node* node, Context* context)
 
 void EndClass(Context* context)
 {
+    if (context->GetFlag(ContextFlags::friendSpecifier)) return;
     context->PopFlags();
     context->GetSymbolTable()->EndClass();
 }

@@ -331,6 +331,7 @@ std::vector<const char*> rules = {
 , "TypeParser.DefiningTypeSpecifier"
 , "TypeParser.TypeSpecifier"
 , "TypeParser.ElaboratedTypeSpecifier"
+, "TypeParser.SimpleTypeSpecifierReset"
 , "TypeParser.SimpleTypeSpecifier"
 , "TypeParser.TypeName"
 , "TypeParser.QualifiedTypeName"

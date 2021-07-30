@@ -172,6 +172,11 @@ parser api(PARSER_API) TypeParser
         |   ElaboratedEnumSpecifier(ctx):elaboratedEnumSpecifier{ return elaboratedEnumSpecifier; }
         ;
 
+    SimpleTypeSpecifierReset(sngcpp::symbols::Context* ctx) : Node*
+        ::= empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
+            SimpleTypeSpecifier(ctx):simpleTypeSpecifier{ ctx->PopFlags(); return simpleTypeSpecifier; } / { ctx->PopFlags(); }
+        ;
+
     SimpleTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
         ::= 
         (   SimpleType(ctx):simpleType

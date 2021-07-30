@@ -337,12 +337,13 @@ const int TypeParser_DefiningTypeSpecifierReset = 326;
 const int TypeParser_DefiningTypeSpecifier = 327;
 const int TypeParser_TypeSpecifier = 328;
 const int TypeParser_ElaboratedTypeSpecifier = 329;
-const int TypeParser_SimpleTypeSpecifier = 330;
-const int TypeParser_TypeName = 331;
-const int TypeParser_QualifiedTypeName = 332;
-const int TypeParser_TypeId = 333;
-const int TypeParser_TypenameSpecifier = 334;
-const int TypeParser_DeclTypeSpecifier = 335;
-const int TypeParser_PlaceholderTypeSpecifier = 336;
+const int TypeParser_SimpleTypeSpecifierReset = 330;
+const int TypeParser_SimpleTypeSpecifier = 331;
+const int TypeParser_TypeName = 332;
+const int TypeParser_QualifiedTypeName = 333;
+const int TypeParser_TypeId = 334;
+const int TypeParser_TypenameSpecifier = 335;
+const int TypeParser_DeclTypeSpecifier = 336;
+const int TypeParser_PlaceholderTypeSpecifier = 337;
 
 #endif // RULES_H

@@ -421,7 +421,7 @@ parser api(PARSER_API) DeclarationParser
     DeclSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
-            empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
+            empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier | sngcpp::symbols::ContextFlags::friendSpecifier); }
             DeclSpecifier(ctx):first{ node.reset(new DeclSpecifierSequenceNode(sourcePos)); node->AddNode(first); } 
             (DeclSpecifier(ctx):next{ node->AddNode(next); })*
             (AttributeSpecifierSeq(ctx):attributes{ node->AddNode(attributes); })?
@@ -445,7 +445,7 @@ parser api(PARSER_API) DeclarationParser
         |   DefiningTypeSpecifier(ctx):definingTypeSpecifier{ return definingTypeSpecifier; }
         |   FunctionSpecifier(ctx):functionSpecifier{ return functionSpecifier; }
         |   Inline:inln{ return inln; }
-        |   FRIEND{ return new FriendNode(sourcePos); }
+        |   FRIEND{ ctx->SetFlag(sngcpp::symbols::ContextFlags::friendSpecifier); return new FriendNode(sourcePos); }
         |   TYPEDEF{ return new TypedefNode(sourcePos); }
         |   CONSTEXPR{ return new ConstExprNode(sourcePos); }
         |   CONSTEVAL{ return new ConstEvalNode(sourcePos); }
