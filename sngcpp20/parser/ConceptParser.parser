@@ -42,7 +42,11 @@ parser api(PARSER_API) ConceptParser
     ConceptDefinition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
-            CONCEPT{ s = sourcePos; } ConceptName(ctx):conceptName Assign:assign ConstraintExpression(ctx):constraintExpr Semicolon:semicolon
+            CONCEPT{ s = sourcePos; } 
+            ConceptName(ctx):conceptName 
+            Assign:assign{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingConceptDefinition); }
+            ConstraintExpression(ctx):constraintExpr{ ctx->PopFlags(); } / { ctx->PopFlags(); }
+            Semicolon:semicolon
         )
         {
             ConceptDefinitionNode* conceptDefinitionNode = new ConceptDefinitionNode(s, conceptName, assign, constraintExpr, semicolon);

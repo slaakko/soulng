@@ -235,10 +235,6 @@ void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol
         }
     }
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
-    if (classTypeSymbol->Name() == U"bad_array_new_length")
-    {
-        int x = 0;
-    }
     classTypeSymbol->SetIdNode(node);
     classTypeSymbol->SetTemplateArguments(templateArguments);
     if (classTemplate)
@@ -448,7 +444,7 @@ void SymbolTable::AddAliasType(Node* node, Scope* scope, TypeSymbol* type, Conte
     MapNode(node, aliasTypeSymbol);
 }
 
-void SymbolTable::AddConcept(Node* node, Context* context)
+void SymbolTable::AddConcept(Node* node, std::vector<Symbol*>& templateArguments, Context* context)
 {
     Scope* groupScope = currentScope;
     TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
@@ -463,7 +459,8 @@ void SymbolTable::AddConcept(Node* node, Context* context)
         if (symbol->Kind() == SymbolKind::conceptGroupSymbol)
         {
             ConceptGroupSymbol* conceptGroupSymbol = static_cast<ConceptGroupSymbol*>(symbol);
-            ConceptSymbol* conceptSymbol = conceptGroupSymbol->GetConcept();
+            bool exact = false;
+            ConceptSymbol* conceptSymbol = conceptGroupSymbol->GetConcept(templateArguments, MatchKind::exact, exact);
             if (conceptSymbol)
             {
                 BeginScope(*conceptSymbol->GetScope());
@@ -472,6 +469,11 @@ void SymbolTable::AddConcept(Node* node, Context* context)
         }
     }
     ConceptSymbol* conceptSymbol = new ConceptSymbol(node->Str());
+    if (templateDeclarationSymbol)
+    {
+        conceptSymbol->SetTemplateDeclarationSymbol(templateDeclarationSymbol);
+        conceptSymbol->AddTemplateParameters(templateDeclarationSymbol->TemplateParameters());
+    }
     currentScope->AddSymbol(conceptSymbol, SymbolGroupKind::conceptSymbolGroup, node->GetSourcePos(), groupScope, context);
     MapNode(node, conceptSymbol);
 }

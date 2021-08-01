@@ -35,7 +35,7 @@ soulng::parser::Match TypeParser::TypeSpecifierSeq(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeSpecifierSeq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 323);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 324);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> next;
@@ -193,7 +193,7 @@ soulng::parser::Match TypeParser::DefiningTypeId(CppLexer& lexer, sngcpp::symbol
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DefiningTypeId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 324);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 325);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> definingTypeSpecifierSeq;
     std::unique_ptr<Node> abstractDeclararator;
@@ -284,7 +284,7 @@ soulng::parser::Match TypeParser::DefiningTypeSpecifierSeq(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DefiningTypeSpecifierSeq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 325);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 326);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> next;
@@ -442,7 +442,7 @@ soulng::parser::Match TypeParser::DefiningTypeSpecifierReset(CppLexer& lexer, sn
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DefiningTypeSpecifierReset"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 326);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 327);
     std::unique_ptr<Node> definingTypeSpecifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -516,7 +516,7 @@ soulng::parser::Match TypeParser::DefiningTypeSpecifier(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DefiningTypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 327);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 328);
     std::unique_ptr<Node> classSpecifier;
     std::unique_ptr<Node> enumSpecifier;
     std::unique_ptr<Node> typeSpecifier;
@@ -630,7 +630,7 @@ soulng::parser::Match TypeParser::TypeSpecifier(CppLexer& lexer, sngcpp::symbols
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 328);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 329);
     std::unique_ptr<Node> simpleTypeSpecifier;
     std::unique_ptr<Node> elaboratedTypeSpecifier;
     std::unique_ptr<Node> typenameSpecifier;
@@ -779,7 +779,7 @@ soulng::parser::Match TypeParser::ElaboratedTypeSpecifier(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ElaboratedTypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 329);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 330);
     SourcePos s = SourcePos();
     SourcePos nnsPos = SourcePos();
     SourcePos tmpPos = SourcePos();
@@ -1135,7 +1135,7 @@ soulng::parser::Match TypeParser::SimpleTypeSpecifierReset(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleTypeSpecifierReset"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 330);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 331);
     std::unique_ptr<Node> simpleTypeSpecifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -1209,7 +1209,7 @@ soulng::parser::Match TypeParser::SimpleTypeSpecifier(CppLexer& lexer, sngcpp::s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleTypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 331);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 332);
     SourcePos s = SourcePos();
     SourcePos tmpPos = SourcePos();
     std::unique_ptr<Node> simpleType;
@@ -1672,7 +1672,7 @@ soulng::parser::Match TypeParser::TypeName(CppLexer& lexer, sngcpp::symbols::Con
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 332);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 333);
     std::unique_ptr<Node> templateId;
     std::unique_ptr<Node> typeIdentifier;
     soulng::parser::Match match(false);
@@ -1750,7 +1750,7 @@ soulng::parser::Match TypeParser::QualifiedTypeName(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("QualifiedTypeName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 333);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 334);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> nnsNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> idNode = std::unique_ptr<Node>();
@@ -1863,7 +1863,7 @@ soulng::parser::Match TypeParser::TypeId(CppLexer& lexer, sngcpp::symbols::Conte
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 334);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 335);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> typeSpecifiers;
     std::unique_ptr<Node> declarator;
@@ -1984,7 +1984,7 @@ soulng::parser::Match TypeParser::TypenameSpecifier(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypenameSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 335);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 336);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> templateNode = std::unique_ptr<Node>();
     bool typenameSeen = bool();
@@ -2247,7 +2247,7 @@ soulng::parser::Match TypeParser::DeclTypeSpecifier(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DeclTypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 336);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 337);
     SourcePos s = SourcePos();
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
@@ -2392,7 +2392,7 @@ soulng::parser::Match TypeParser::PlaceholderTypeSpecifier(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PlaceholderTypeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 337);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 338);
     SourcePos s = SourcePos();
     SourcePos dtPos = SourcePos();
     SourcePos autoPos = SourcePos();

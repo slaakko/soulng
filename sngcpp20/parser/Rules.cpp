@@ -223,6 +223,7 @@ std::vector<const char*> rules = {
 , "GuardParser.AssumeTypeGuard"
 , "GuardParser.NotDefiningTypeSpecifierGuard"
 , "GuardParser.MSVCModeGuard"
+, "GuardParser.ConceptGuard"
 , "IdentifierParser.Identifier"
 , "IdentifierParser.TypeIdentifier"
 , "IdentifierParser.TypeIdentifierUnchecked"

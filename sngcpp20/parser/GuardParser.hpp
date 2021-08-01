@@ -18,6 +18,7 @@ struct PARSER_API GuardParser
     static soulng::parser::Match AssumeTypeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NotDefiningTypeSpecifierGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match MSVCModeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match ConceptGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
 };
 
 #endif // GUARDPARSER_HPP

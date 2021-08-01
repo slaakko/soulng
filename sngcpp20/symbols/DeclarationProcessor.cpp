@@ -1565,7 +1565,7 @@ void DeclarationProcessorVisitor::Visit(ParenthesizedDeclaratorNode& node)
             param = true;
         }
         ProcessParenthesizedDeclarator(node.Declarator(), typeOrValue, alias, param, context);
-        if (alias || param)
+        if (param)
         {
             kind = DeclarationKind::skip;
         }
@@ -2129,13 +2129,16 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
             {
                 throw Exception("no declarators specified for an alias type", declaration.node->GetSourcePos(), context);
             }
-            if (declaration.typeOrValue->IsTypeSymbol())
+            if (!declaration.id.idNode->Str().empty())
             {
-                context->GetSymbolTable()->AddAliasType(declaration.id.idNode, declaration.scope, static_cast<TypeSymbol*>(declaration.typeOrValue), context);
-            }
-            else
-            {
-                throw Exception("type expected", declaration.node->GetSourcePos(), context);
+                if (declaration.typeOrValue->IsTypeSymbol())
+                {
+                    context->GetSymbolTable()->AddAliasType(declaration.id.idNode, declaration.scope, static_cast<TypeSymbol*>(declaration.typeOrValue), context);
+                }
+                else
+                {
+                    throw Exception("type expected", declaration.node->GetSourcePos(), context);
+                }
             }
         }
         if ((declaration.kind & DeclarationKind::objectDeclaration) != DeclarationKind::none)

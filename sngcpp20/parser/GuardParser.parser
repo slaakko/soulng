@@ -37,4 +37,8 @@ parser api(PARSER_API) GuardParser
     MSVCModeGuard(sngcpp::symbols::Context* ctx)
         ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::msvcMode); }
         ;
+
+    ConceptGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parsingConceptDefinition); }
+        ;
 }

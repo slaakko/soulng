@@ -126,21 +126,29 @@ void EnumCreatorVisitor::Visit(EnumeratorDefinitionNode& node)
         {
             first = false;
             val = EvaluateConstantExpression(node.Value(), GetEvaluationContext());
-            if (val->GetValueKind() == ValueKind::integerValue)
+            if (val)
             {
-                IntegerValue* integerValue = static_cast<IntegerValue*>(val);
-                value = integerValue->GetValue();
-                rep = val->Rep();
-            }
-            else if (val->GetValueKind() == ValueKind::boolValue)
-            {
-                BoolValue* boolValue = static_cast<BoolValue*>(val);
-                value = boolValue->GetValue();
-                rep = val->Rep();
+                if (val->GetValueKind() == ValueKind::integerValue)
+                {
+                    IntegerValue* integerValue = static_cast<IntegerValue*>(val);
+                    value = integerValue->GetValue();
+                    rep = val->Rep();
+                }
+                else if (val->GetValueKind() == ValueKind::boolValue)
+                {
+                    BoolValue* boolValue = static_cast<BoolValue*>(val);
+                    value = boolValue->GetValue();
+                    rep = val->Rep();
+                }
+                else
+                {
+                    throw Exception("integer or Boolean value expected", node.GetSourcePos(), context);
+                }
             }
             else
             {
-                throw Exception("integer or Boolean value expected", node.GetSourcePos(), context);
+                value = 0;
+                rep = ToUtf32(std::to_string(value));
             }
         }
         else if (first)

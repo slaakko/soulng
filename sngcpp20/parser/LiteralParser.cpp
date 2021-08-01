@@ -25,7 +25,7 @@ soulng::parser::Match LiteralParser::Literal(CppLexer& lexer, sngcpp::symbols::C
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Literal"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 254);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 255);
     std::unique_ptr<Node> udLiteral;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -427,7 +427,7 @@ soulng::parser::Match LiteralParser::UserDefinedLiteral(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("UserDefinedLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 255);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 256);
     SourcePos s = SourcePos();
     int64_t p = int64_t();
     std::unique_ptr<Node> udLiteralNode = std::unique_ptr<Node>();
@@ -701,7 +701,7 @@ soulng::parser::Match LiteralParser::UdSuffix(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("UdSuffix"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 256);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 257);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -749,7 +749,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LiteralOperatorId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 257);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 258);
     SourcePos s = SourcePos();
     SourcePos stringLitPos = SourcePos();
     SourcePos idPos = SourcePos();
@@ -885,7 +885,7 @@ soulng::parser::Match LiteralParser::StringLiteral(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("StringLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 258);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 259);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {

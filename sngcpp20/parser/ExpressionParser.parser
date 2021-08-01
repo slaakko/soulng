@@ -10,6 +10,7 @@
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/InitializationParser.hpp>
 [cpp]#include <sngcpp20/parser/LambdaParser.hpp>
@@ -34,6 +35,9 @@ parser api(PARSER_API) ExpressionParser
     using AttributeParser.LBracket;
     using AttributeParser.RBracket;
     using DeclarationParser.PtrOperator;
+    using DeclarationParser.ParametersAndQualifiers;
+    using FunctionParser.ParameterDeclarationClause;
+    using GuardParser.ConceptGuard;
     using LiteralParser.Literal;
     using IdentifierParser.QualifiedId;
     using IdentifierParser.UnqualifiedId;
@@ -454,9 +458,13 @@ parser api(PARSER_API) ExpressionParser
         ::= 
         (
             PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
-            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, node.release())); } 
-            ExpressionList(ctx, invokeNode.get()):args? 
-            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+            (   LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(sourcePos, node.release())); } 
+                ParameterDeclarationClause(ctx, invokeNode.get()):params 
+                RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+            |   LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, node.release())); } 
+                ExpressionList(ctx, invokeNode.get()):args? 
+                RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+            )
         )
         {
             return node.release();
@@ -465,7 +473,8 @@ parser api(PARSER_API) ExpressionParser
 
     PostfixExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
         var SourcePos lbPos, var SourcePos rbPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
-        ::= 
+        ::= ConceptGuard(ctx):conceptGuard IntrinsicInvokeExpr(ctx):invokeExpr{ return invokeExpr; }
+        |
         (
             (   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
             |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }

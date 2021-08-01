@@ -426,10 +426,6 @@ void ParseInlineMemberFunctions(Node* classSpecifierNode, Context* context)
 
 bool IsConstructorName(Node* node, Context* context)
 {
-    if (node->GetSourcePos().line == 12871)
-    {
-        int x = 0;
-    }
     if (!context->GetFlag(ContextFlags::matchConstructorName)) return false;
     if (context->GetFlag(ContextFlags::parsingParameters)) return false;
     Scope* classScope = context->GetSymbolTable()->CurrentScope()->GetClassScope();

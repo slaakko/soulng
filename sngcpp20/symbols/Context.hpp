@@ -39,7 +39,8 @@ enum class ContextFlags : int
     matchConstructorName = 1 << 9,
     constructor = 1 << 10,
     destructor = 1 << 11,
-    friendSpecifier = 1 << 12
+    friendSpecifier = 1 << 12,
+    parsingConceptDefinition = 1 << 13
 };
 
 SYMBOLS_API inline ContextFlags operator|(ContextFlags left, ContextFlags right)

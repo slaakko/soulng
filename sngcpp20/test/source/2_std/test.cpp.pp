@@ -1,18 +1,10 @@
- template <bool>
-struct _Select {      template <class _Ty1, class>
-    using _Apply = _Ty1;
-};
+template <class _Ty1, class _Ty2>
+concept _Same_impl =      is_same_v<_Ty1, _Ty2>;
 
-template <>
-struct _Select<false> {
-    template <class, class _Ty2>
-    using _Apply = _Ty2;
-};
+template <class _Ty1, class _Ty2>
+concept same_as = _Same_impl<_Ty1, _Ty2> && _Same_impl<_Ty2, _Ty1>;
 
-template <>
-struct _Make_signed2<4> {
-    template <class _Ty>
-    using _Apply =          typename _Select<is_same_v<_Ty, long> || is_same_v<_Ty, unsigned long>>::template _Apply<long, int>;
-};
-
+template <class _Derived, class _Base>
+concept derived_from = __is_base_of(_Base, _Derived)
+    && __is_convertible_to(const volatile _Derived*, const volatile _Base*);
 

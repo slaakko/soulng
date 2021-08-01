@@ -84,7 +84,7 @@ public:
     void EndBlock();
     void RemoveBlock();
     void AddAliasType(Node* node, Scope* scope, TypeSymbol* type, Context* context);
-    void AddConcept(Node* node, Context* context);
+    void AddConcept(Node* node, std::vector<Symbol*>& templateArguments, Context* context);
     void AddVariable(Node* node, const std::vector<Symbol*>& templateArguments, Value* value, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();

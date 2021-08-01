@@ -31,7 +31,8 @@ void ConceptCreatorVisitor::Visit(ConceptDefinitionNode& node)
 
 void ConceptCreatorVisitor::Visit(IdentifierNode& node)
 {
-    context->GetSymbolTable()->AddConcept(&node, context);
+    std::vector<Symbol*> templateArguments;
+    context->GetSymbolTable()->AddConcept(&node, templateArguments, context);
 }
 
 void AddConcept(Node* node, Context* context)

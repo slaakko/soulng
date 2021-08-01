@@ -87,8 +87,18 @@ soulng::parser::Match ConceptParser::ConceptDefinition(CppLexer& lexer, sngcpp::
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch8 = &match;
                         {
-                            soulng::parser::Match match = FunctionParser::Assign(lexer);
-                            assign.reset(static_cast<Node*>(match.value));
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch9 = &match;
+                            {
+                                int64_t pos = lexer.GetPos();
+                                soulng::parser::Match match = FunctionParser::Assign(lexer);
+                                assign.reset(static_cast<Node*>(match.value));
+                                if (match.hit)
+                                {
+                                    ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingConceptDefinition);
+                                }
+                                *parentMatch9 = match;
+                            }
                             *parentMatch8 = match;
                         }
                         *parentMatch4 = match;
@@ -98,11 +108,25 @@ soulng::parser::Match ConceptParser::ConceptDefinition(CppLexer& lexer, sngcpp::
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch9 = &match;
+                    soulng::parser::Match* parentMatch10 = &match;
                     {
-                        soulng::parser::Match match = ConceptParser::ConstraintExpression(lexer, ctx);
-                        constraintExpr.reset(static_cast<Node*>(match.value));
-                        *parentMatch9 = match;
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch11 = &match;
+                        {
+                            int64_t pos = lexer.GetPos();
+                            soulng::parser::Match match = ConceptParser::ConstraintExpression(lexer, ctx);
+                            constraintExpr.reset(static_cast<Node*>(match.value));
+                            if (match.hit)
+                            {
+                                ctx->PopFlags();
+                            }
+                            else
+                            {
+                                ctx->PopFlags();
+                            }
+                            *parentMatch11 = match;
+                        }
+                        *parentMatch10 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -111,11 +135,11 @@ soulng::parser::Match ConceptParser::ConceptDefinition(CppLexer& lexer, sngcpp::
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch10 = &match;
+                soulng::parser::Match* parentMatch12 = &match;
                 {
                     soulng::parser::Match match = StatementParser::Semicolon(lexer);
                     semicolon.reset(static_cast<Node*>(match.value));
-                    *parentMatch10 = match;
+                    *parentMatch12 = match;
                 }
                 *parentMatch2 = match;
             }

@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_SYMBOLS_CONCEP_GROUP_SYMBOL_INCLUDED
 #define SNGCPP_SYMBOLS_CONCEP_GROUP_SYMBOL_INCLUDED
-#include <sngcpp20/symbols/Symbol.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
 #include <vector>
 
 namespace sngcpp::symbols {
@@ -19,7 +19,7 @@ public:
     std::string SymbolKindStr() const override { return "concept group symbol"; }
     SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::conceptSymbolGroup; }
     void AddConcept(ConceptSymbol* conceptSymbol);
-    ConceptSymbol* GetConcept() const;
+    ConceptSymbol* GetConcept(const std::vector<Symbol*>& templateArguments, MatchKind matchKind, bool& exact) const;
 private:
     std::vector<ConceptSymbol*> concepts;
 };
