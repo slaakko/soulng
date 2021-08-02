@@ -1,26 +1,4 @@
-parsing error at 'C:/Program Files (x86)/Windows Kits/10/include/10.0.19041.0/ucrt/corecrt.h:641:
-def size_t rsize_t;
-#endif
-             ^^^^^^^
-
-Parser state:
-TranslationUnitParser.TranslationUnit
-DeclarationParser.DeclarationSeq
-DeclarationParser.Declaration
-DeclarationParser.NamespaceDefinition
-DeclarationParser.NamedNamespaceDefinition
-DeclarationParser.NamespaceBody
-DeclarationParser.DeclarationSeq
-DeclarationParser.Declaration
-DeclarationParser.BlockDeclaration
-DeclarationParser.SimpleDeclaration
-DeclarationParser.DeclSpecifierSeq
-DeclarationParser.DeclSpecifier
-TypeParser.DefiningTypeSpecifier
-TypeParser.TypeSpecifier
-TypeParser.SimpleTypeSpecifier
-IdentifierParser.NestedNameSpecifier
-TemplateParser.SimpleTemplateId
-TemplateParser.TemplateName
-IdentifierParser.Identifier
+error: cannot declare symbol '_Has_ADL_swap_detail' in class scope 'std::_Invoker_functor': C:/work/soulng/sngcpp20/test/source/0_preprocessor/include_algorithm.cpp:13009:
+ namespace _Has_ADL_swap_detail {
+           ^^^^^^^^^^^^^^^^^^^^  
 

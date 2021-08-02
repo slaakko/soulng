@@ -6,11 +6,12 @@
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
 #include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
+#include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
 
 namespace sngcpp::symbols {
 
-FunctionSymbol::FunctionSymbol(const std::u32string& name_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_, bool definition_) : 
-    ContainerSymbol(name_, SymbolKind::functionSymbol), type(nullptr), parameters(std::move(parameters_)), definition(definition_), templateDeclarationSymbol(nullptr), groupScope(nullptr)
+FunctionSymbol::FunctionSymbol(const std::u32string& name_, FunctionTypeSymbol* type_, bool definition_) :
+    ContainerSymbol(name_, SymbolKind::functionSymbol), type(type_), definition(definition_), templateDeclarationSymbol(nullptr), groupScope(nullptr)
 {
     GetScope()->SetKind(ScopeKind::functionScope);
 }
@@ -47,6 +48,22 @@ void FunctionSymbol::RemoveFromGroup(Scope* groupScope, const SourcePos& sourceP
 {
     FunctionGroupSymbol* functionGroup = groupScope->GetOrInsertFunctionGroup(Name(), sourcePos, context);
     functionGroup->RemoveFunction(this);
+}
+
+void FunctionSymbol::SetTemplateArguments(const std::vector<Symbol*>& templateArguments_)
+{
+    templateArguments = templateArguments_;
+}
+
+void FunctionSymbol::AddTemplateParameters(const std::vector<TemplateParameterSymbol*>& templateParameters)
+{
+    if (templateArguments.empty())
+    {
+        for (TemplateParameterSymbol* templateParameter : templateParameters)
+        {
+            templateArguments.push_back(templateParameter);
+        }
+    }
 }
 
 } // sngcpp::symbols

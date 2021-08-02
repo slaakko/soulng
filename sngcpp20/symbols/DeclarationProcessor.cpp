@@ -36,33 +36,6 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
-enum class DeclarationKind : int
-{
-    none, 
-    classDeclaration = 1 << 0, 
-    enumDeclaration = 1 << 1,
-    aliasDeclararation = 1 << 2,
-    objectDeclaration = 1 << 3, 
-    functionDeclaration = 1 << 4, 
-    parameter = 1 << 5,
-    skip  = 1 << 6
-};
-
-inline DeclarationKind operator|(DeclarationKind left, DeclarationKind right)
-{
-    return DeclarationKind(int(left) | int(right));
-}
-
-inline DeclarationKind operator&(DeclarationKind left, DeclarationKind right)
-{
-    return DeclarationKind(int(left) & int(right));
-}
-
-inline DeclarationKind operator~(DeclarationKind operand)
-{
-    return DeclarationKind(~int(operand));
-}
-
 struct Declaration
 {
     Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
@@ -76,7 +49,8 @@ struct Declaration
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
 };
 
-Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
+Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, Symbol* typeOrValue_, Id id_, Value* initializer_, Scope* scope_, Node* node_, 
+    std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
     kind(kind_), flags(flags_), typeOrValue(typeOrValue_), id(id_), initializer(initializer_), scope(scope_), node(node_), parameters(std::move(parameters_))
 {
 }
@@ -231,6 +205,7 @@ public:
     Symbol* TypeOrValue() const { return typeOrValue; }
     TypeSymbol* GetBaseType() const;
     void SetBaseTypeOrValue(Symbol* baseTypeOrValue_);
+    Id GetId() const { return id; }
 private:
     void ProcesInitDeclarators(Node* initDeclaratorList);
     void ProcessMemberDeclarators(Node* memberDeclarators);
@@ -285,7 +260,8 @@ Declaration DeclarationProcessorVisitor::GetDeclaration()
     {
         kind = DeclarationKind::objectDeclaration;
     }
-    return Declaration(kind, flags, typeOrValue, id, initializer, scope, node, std::move(parameters));
+    Declaration declaration(kind, flags, typeOrValue, id, initializer, scope, node, std::move(parameters));
+    return declaration;
 }
 
 std::vector<Declaration> DeclarationProcessorVisitor::GetDeclarations()
@@ -1556,6 +1532,7 @@ void DeclarationProcessorVisitor::Visit(ParenthesizedDeclaratorNode& node)
     {
         bool alias = false;
         bool param = false;
+        bool function = false;
         if (kind == DeclarationKind::aliasDeclararation)
         {
             alias = true;
@@ -1564,7 +1541,22 @@ void DeclarationProcessorVisitor::Visit(ParenthesizedDeclaratorNode& node)
         {
             param = true;
         }
-        ProcessParenthesizedDeclarator(node.Declarator(), typeOrValue, alias, param, context);
+        else if (kind == DeclarationKind::functionDeclaration)
+        {
+            function = true;
+        }
+        auto [parenthesizedId, parenthesizedKind] = ProcessParenthesizedDeclarator(node.Declarator(), typeOrValue, alias, param, function, context);
+        if (kind == DeclarationKind::functionDeclaration)
+        {
+            if (parenthesizedKind == DeclarationKind::functionDeclaration && !parenthesizedId.functionName.empty())
+            {
+                id = parenthesizedId;
+            }
+            else
+            {
+                kind = parenthesizedKind;
+            }
+        }
         if (param)
         {
             kind = DeclarationKind::skip;
@@ -2125,11 +2117,7 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
         }
         if ((declaration.kind & DeclarationKind::aliasDeclararation) != DeclarationKind::none)
         {
-            if (!declaration.id.idNode)
-            {
-                throw Exception("no declarators specified for an alias type", declaration.node->GetSourcePos(), context);
-            }
-            if (!declaration.id.idNode->Str().empty())
+            if (declaration.id.idNode && !declaration.id.idNode->Str().empty())
             {
                 if (declaration.typeOrValue->IsTypeSymbol())
                 {
@@ -2157,19 +2145,19 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
                 throw Exception("type expected", declaration.node->GetSourcePos(), context);
             }
         }
-        if (declaration.id.idNode && (declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+        if (declaration.id.idNode && !declaration.id.idNode->Str().empty() && (declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
         {
             Scope* scope = declaration.scope;
             if (declaration.typeOrValue->Kind() == SymbolKind::functionTypeSymbol)
             {
                 FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.typeOrValue);
                 SourcePos sourcePos = declaration.id.idNode->GetSourcePos();
-                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, scope, functionType, std::move(declaration.parameters), false, sourcePos, declaration.id.functionName, context);
+                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, scope, functionType, false, sourcePos, declaration.id.functionName, context);
                 context->GetSymbolTable()->EndFunction();
             }
             else
             {
-                throw Exception("function type symbol expected", declaration.node->GetSourcePos(), context);
+                declaration.kind = DeclarationKind::objectDeclaration;
             }
         }
     }
@@ -2272,7 +2260,7 @@ ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context
     return parameterSymbol;
 }
 
-void ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, bool alias, bool param, Context* context)
+std::pair<Id, DeclarationKind> ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, bool alias, bool param, bool function, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
     if (alias)
@@ -2283,10 +2271,15 @@ void ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, b
     {
         visitor.SetKind(DeclarationKind::parameter);
     }
+    if (function)
+    {
+        visitor.SetKind(DeclarationKind::functionDeclaration);
+    }
     visitor.SetBaseTypeOrValue(baseTypeOrValue);
     visitor.ProcessDeclarator(declarator);
     Declaration declaration = visitor.GetDeclaration();
     ProcessDeclaration(declaration, context);
+    return std::make_pair(visitor.GetId(), declaration.kind);
 }
 
 TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* context)
@@ -2357,7 +2350,7 @@ bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* 
                 {
                     sourcePos = declaration.id.idNode->GetSourcePos();
                 }
-                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, sourcePos, declaration.id.functionName, context);
+                context->GetSymbolTable()->BeginFunction(declaration.id.idNode, declaration.scope, functionType, definition, sourcePos, declaration.id.functionName, context);
             }
             else
             {

@@ -3,275 +3,367 @@
   <templateDeclarationNode count="2" pos="(1,1)" type="binary">
    <templateHeadNode pos="(1,1)" type="compound">
     <keyword pos="(1,1)" value="template"/>
-    <templateParameterListNode count="3" pos="(1,10)" type="list">
+    <templateParameterListNode count="1" pos="(1,10)" type="list">
      <operator pos="(1,10)" value="&lt;"/>
      <typeParameterNode pos="(1,11)" type="compound">
       <classNode pos="(1,11)" type="single">
        <keyword pos="(1,11)" value="class"/>
       </classNode>
       <identifierNode pos="(1,17)" type="compound">
-       <identifier pos="(1,17)" value="_Ty1"/>
+       <identifier pos="(1,17)" value="_Ty"/>
       </identifierNode>
      </typeParameterNode>
-     <commaNode pos="(1,21)" type="single">
-      <operator pos="(1,21)" value=","/>
-     </commaNode>
-     <typeParameterNode pos="(1,23)" type="compound">
-      <classNode pos="(1,23)" type="single">
-       <keyword pos="(1,23)" value="class"/>
-      </classNode>
-      <identifierNode pos="(1,29)" type="compound">
-       <identifier pos="(1,29)" value="_Ty2"/>
-      </identifierNode>
-     </typeParameterNode>
-     <operator pos="(1,33)" value=">"/>
+     <operator pos="(1,20)" value=">"/>
     </templateParameterListNode>
    </templateHeadNode>
-   <conceptDefinitionNode pos="(2,1)" type="compound">
-    <keyword pos="(2,1)" value="concept"/>
-    <identifierNode pos="(2,9)" type="compound">
-     <identifier pos="(2,9)" value="_Same_impl"/>
-    </identifierNode>
-    <assignNode pos="(2,20)" type="single">
-     <operator pos="(2,20)" value="="/>
-    </assignNode>
-    <templateIdNode count="3" pos="(2,27)" type="list">
-     <identifierNode pos="(2,27)" type="compound">
-      <identifier pos="(2,27)" value="is_same_v"/>
-     </identifierNode>
-     <operator pos="(2,36)" value="&lt;"/>
-     <typeIdNode pos="(2,37)" type="compound">
-      <typeSpecifierSequenceNode count="1" pos="(2,37)" type="sequence">
-       <identifierNode pos="(2,37)" type="compound">
-        <identifier pos="(2,37)" value="_Ty1"/>
+   <simpleDeclarationNode pos="(2,1)" type="compound">
+    <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+     <classSpecifierNode count="1" pos="(2,1)" type="sequence">
+      <classHeadNode pos="(2,1)" type="compound">
+       <structNode pos="(2,1)" type="single">
+        <keyword pos="(2,1)" value="struct"/>
+       </structNode>
+       <identifierNode pos="(2,8)" type="compound">
+        <identifier pos="(2,8)" value="_Identity"/>
        </identifierNode>
-      </typeSpecifierSequenceNode>
-      <abstractDeclaratorNode pos="(2,41)" type="single"/>
-     </typeIdNode>
-     <commaNode pos="(2,41)" type="single">
-      <operator pos="(2,41)" value=","/>
-     </commaNode>
-     <typeIdNode pos="(2,43)" type="compound">
-      <typeSpecifierSequenceNode count="1" pos="(2,43)" type="sequence">
-       <identifierNode pos="(2,43)" type="compound">
-        <identifier pos="(2,43)" value="_Ty2"/>
+      </classHeadNode>
+      <operator pos="(2,18)" value="{"/>
+      <aliasDeclarationNode pos="(3,5)" type="compound">
+       <usingNode pos="(3,5)" type="single">
+        <keyword pos="(3,5)" value="using"/>
+       </usingNode>
+       <identifierNode pos="(3,11)" type="compound">
+        <identifier pos="(3,11)" value="type"/>
        </identifierNode>
-      </typeSpecifierSequenceNode>
-      <abstractDeclaratorNode pos="(2,47)" type="single"/>
-     </typeIdNode>
-     <operator pos="(2,47)" value=">"/>
-    </templateIdNode>
-   </conceptDefinitionNode>
+       <assignNode pos="(3,16)" type="single">
+        <operator pos="(3,16)" value="="/>
+       </assignNode>
+       <definingTypeIdNode pos="(3,18)" type="compound">
+        <definingTypeSpecifierSequenceNode count="1" pos="(3,18)" type="sequence">
+         <identifierNode pos="(3,18)" type="compound">
+          <identifier pos="(3,18)" value="_Ty"/>
+         </identifierNode>
+        </definingTypeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(3,21)" type="single"/>
+       </definingTypeIdNode>
+       <semicolonNode pos="(3,21)" type="single">
+        <operator pos="(3,21)" value=";"/>
+       </semicolonNode>
+      </aliasDeclarationNode>
+      <operator pos="(4,1)" value="}"/>
+     </classSpecifierNode>
+    </declSpecifierSequenceNode>
+    <semicolonNode pos="(4,2)" type="single">
+     <operator pos="(4,2)" value=";"/>
+    </semicolonNode>
+   </simpleDeclarationNode>
   </templateDeclarationNode>
-  <templateDeclarationNode count="2" pos="(4,1)" type="binary">
-   <templateHeadNode pos="(4,1)" type="compound">
-    <keyword pos="(4,1)" value="template"/>
-    <templateParameterListNode count="3" pos="(4,10)" type="list">
-     <operator pos="(4,10)" value="&lt;"/>
-     <typeParameterNode pos="(4,11)" type="compound">
-      <classNode pos="(4,11)" type="single">
-       <keyword pos="(4,11)" value="class"/>
+  <templateDeclarationNode count="2" pos="(6,1)" type="binary">
+   <templateHeadNode pos="(6,1)" type="compound">
+    <keyword pos="(6,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(6,10)" type="list">
+     <operator pos="(6,10)" value="&lt;"/>
+     <typeParameterNode pos="(6,11)" type="compound">
+      <classNode pos="(6,11)" type="single">
+       <keyword pos="(6,11)" value="class"/>
       </classNode>
-      <identifierNode pos="(4,17)" type="compound">
-       <identifier pos="(4,17)" value="_Ty1"/>
+      <identifierNode pos="(6,17)" type="compound">
+       <identifier pos="(6,17)" value="_Ty"/>
       </identifierNode>
      </typeParameterNode>
-     <commaNode pos="(4,21)" type="single">
-      <operator pos="(4,21)" value=","/>
-     </commaNode>
-     <typeParameterNode pos="(4,23)" type="compound">
-      <classNode pos="(4,23)" type="single">
-       <keyword pos="(4,23)" value="class"/>
-      </classNode>
-      <identifierNode pos="(4,29)" type="compound">
-       <identifier pos="(4,29)" value="_Ty2"/>
-      </identifierNode>
-     </typeParameterNode>
-     <operator pos="(4,33)" value=">"/>
+     <operator pos="(6,20)" value=">"/>
     </templateParameterListNode>
    </templateHeadNode>
-   <conceptDefinitionNode pos="(5,1)" type="compound">
-    <keyword pos="(5,1)" value="concept"/>
-    <identifierNode pos="(5,9)" type="compound">
-     <identifier pos="(5,9)" value="same_as"/>
+   <aliasDeclarationNode pos="(7,1)" type="compound">
+    <usingNode pos="(7,1)" type="single">
+     <keyword pos="(7,1)" value="using"/>
+    </usingNode>
+    <identifierNode pos="(7,7)" type="compound">
+     <identifier pos="(7,7)" value="_Identity_t"/>
     </identifierNode>
-    <assignNode pos="(5,17)" type="single">
-     <operator pos="(5,17)" value="="/>
+    <assignNode pos="(7,19)" type="single">
+     <operator pos="(7,19)" value="="/>
     </assignNode>
-    <binaryExprNode count="2" pos="(5,19)" type="binary">
-     <templateIdNode count="3" pos="(5,19)" type="list">
-      <identifierNode pos="(5,19)" type="compound">
-       <identifier pos="(5,19)" value="_Same_impl"/>
-      </identifierNode>
-      <operator pos="(5,29)" value="&lt;"/>
-      <typeIdNode pos="(5,30)" type="compound">
-       <typeSpecifierSequenceNode count="1" pos="(5,30)" type="sequence">
-        <identifierNode pos="(5,30)" type="compound">
-         <identifier pos="(5,30)" value="_Ty1"/>
-        </identifierNode>
-       </typeSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(5,34)" type="single"/>
-      </typeIdNode>
-      <commaNode pos="(5,34)" type="single">
-       <operator pos="(5,34)" value=","/>
-      </commaNode>
-      <typeIdNode pos="(5,36)" type="compound">
-       <typeSpecifierSequenceNode count="1" pos="(5,36)" type="sequence">
-        <identifierNode pos="(5,36)" type="compound">
-         <identifier pos="(5,36)" value="_Ty2"/>
-        </identifierNode>
-       </typeSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(5,40)" type="single"/>
-      </typeIdNode>
-      <operator pos="(5,40)" value=">"/>
-     </templateIdNode>
-     <conjunctionNode pos="(5,42)" type="single">
-      <operator pos="(5,42)" value="&amp;&amp;"/>
-     </conjunctionNode>
-     <templateIdNode count="3" pos="(5,45)" type="list">
-      <identifierNode pos="(5,45)" type="compound">
-       <identifier pos="(5,45)" value="_Same_impl"/>
-      </identifierNode>
-      <operator pos="(5,55)" value="&lt;"/>
-      <typeIdNode pos="(5,56)" type="compound">
-       <typeSpecifierSequenceNode count="1" pos="(5,56)" type="sequence">
-        <identifierNode pos="(5,56)" type="compound">
-         <identifier pos="(5,56)" value="_Ty2"/>
-        </identifierNode>
-       </typeSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(5,60)" type="single"/>
-      </typeIdNode>
-      <commaNode pos="(5,60)" type="single">
-       <operator pos="(5,60)" value=","/>
-      </commaNode>
-      <typeIdNode pos="(5,62)" type="compound">
-       <typeSpecifierSequenceNode count="1" pos="(5,62)" type="sequence">
-        <identifierNode pos="(5,62)" type="compound">
-         <identifier pos="(5,62)" value="_Ty1"/>
-        </identifierNode>
-       </typeSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(5,66)" type="single"/>
-      </typeIdNode>
-      <operator pos="(5,66)" value=">"/>
-     </templateIdNode>
-    </binaryExprNode>
-   </conceptDefinitionNode>
+    <definingTypeIdNode pos="(7,21)" type="compound">
+     <definingTypeSpecifierSequenceNode count="1" pos="(7,21)" type="sequence">
+      <typenameSpecifierNode pos="(7,21)" type="compound">
+       <keyword pos="(7,21)" value="typename"/>
+       <nestedNameSpecifierNode count="2" pos="(7,30)" type="sequence">
+        <templateIdNode count="1" pos="(7,30)" type="list">
+         <identifierNode pos="(7,30)" type="compound">
+          <identifier pos="(7,30)" value="_Identity"/>
+         </identifierNode>
+         <operator pos="(7,39)" value="&lt;"/>
+         <typeIdNode pos="(7,40)" type="compound">
+          <typeSpecifierSequenceNode count="1" pos="(7,40)" type="sequence">
+           <identifierNode pos="(7,40)" type="compound">
+            <identifier pos="(7,40)" value="_Ty"/>
+           </identifierNode>
+          </typeSpecifierSequenceNode>
+          <abstractDeclaratorNode pos="(7,43)" type="single"/>
+         </typeIdNode>
+         <operator pos="(7,43)" value=">"/>
+        </templateIdNode>
+        <colonColonNode pos="(7,44)" type="single">
+         <operator pos="(7,44)" value="::"/>
+        </colonColonNode>
+       </nestedNameSpecifierNode>
+       <identifierNode pos="(7,46)" type="compound">
+        <identifier pos="(7,46)" value="type"/>
+       </identifierNode>
+      </typenameSpecifierNode>
+     </definingTypeSpecifierSequenceNode>
+     <abstractDeclaratorNode pos="(7,50)" type="single"/>
+    </definingTypeIdNode>
+    <semicolonNode pos="(7,50)" type="single">
+     <operator pos="(7,50)" value=";"/>
+    </semicolonNode>
+   </aliasDeclarationNode>
   </templateDeclarationNode>
-  <templateDeclarationNode count="2" pos="(7,1)" type="binary">
-   <templateHeadNode pos="(7,1)" type="compound">
-    <keyword pos="(7,1)" value="template"/>
-    <templateParameterListNode count="3" pos="(7,10)" type="list">
-     <operator pos="(7,10)" value="&lt;"/>
-     <typeParameterNode pos="(7,11)" type="compound">
-      <classNode pos="(7,11)" type="single">
-       <keyword pos="(7,11)" value="class"/>
+  <templateDeclarationNode count="2" pos="(9,1)" type="binary">
+   <templateHeadNode pos="(9,1)" type="compound">
+    <keyword pos="(9,1)" value="template"/>
+    <templateParameterListNode count="3" pos="(9,9)" type="list">
+     <operator pos="(9,9)" value="&lt;"/>
+     <typeParameterNode pos="(9,10)" type="compound">
+      <classNode pos="(9,10)" type="single">
+       <keyword pos="(9,10)" value="class"/>
       </classNode>
-      <identifierNode pos="(7,17)" type="compound">
-       <identifier pos="(7,17)" value="_Derived"/>
+      <identifierNode pos="(9,16)" type="compound">
+       <identifier pos="(9,16)" value="T"/>
       </identifierNode>
      </typeParameterNode>
-     <commaNode pos="(7,25)" type="single">
-      <operator pos="(7,25)" value=","/>
+     <commaNode pos="(9,17)" type="single">
+      <operator pos="(9,17)" value=","/>
      </commaNode>
-     <typeParameterNode pos="(7,27)" type="compound">
-      <classNode pos="(7,27)" type="single">
-       <keyword pos="(7,27)" value="class"/>
+     <typeParameterNode pos="(9,19)" type="compound">
+      <classNode pos="(9,19)" type="single">
+       <keyword pos="(9,19)" value="class"/>
       </classNode>
-      <identifierNode pos="(7,33)" type="compound">
-       <identifier pos="(7,33)" value="_Base"/>
+      <identifierNode pos="(9,25)" type="compound">
+       <identifier pos="(9,25)" value="U"/>
       </identifierNode>
      </typeParameterNode>
-     <operator pos="(7,38)" value=">"/>
+     <operator pos="(9,26)" value=">"/>
     </templateParameterListNode>
    </templateHeadNode>
-   <conceptDefinitionNode pos="(8,1)" type="compound">
-    <keyword pos="(8,1)" value="concept"/>
-    <identifierNode pos="(8,9)" type="compound">
-     <identifier pos="(8,9)" value="derived_from"/>
-    </identifierNode>
-    <assignNode pos="(8,22)" type="single">
-     <operator pos="(8,22)" value="="/>
-    </assignNode>
-    <binaryExprNode count="2" pos="(8,24)" type="binary">
-     <invokeExprNode count="3" pos="(8,36)" type="list">
-      <identifierNode pos="(8,24)" type="compound">
-       <identifier pos="(8,24)" value="__is_base_of"/>
-      </identifierNode>
-      <operator pos="(8,36)" value="("/>
-      <parameterNode pos="(8,37)" type="compound">
-       <declSpecifierSequenceNode count="1" pos="(8,37)" type="sequence">
-        <identifierNode pos="(8,37)" type="compound">
-         <identifier pos="(8,37)" value="_Base"/>
+   <simpleDeclarationNode pos="(10,1)" type="compound">
+    <declSpecifierSequenceNode count="1" pos="(10,1)" type="sequence">
+     <classSpecifierNode count="5" pos="(10,1)" type="sequence">
+      <classHeadNode pos="(10,1)" type="compound">
+       <structNode pos="(10,1)" type="single">
+        <keyword pos="(10,1)" value="struct"/>
+       </structNode>
+       <identifierNode pos="(10,8)" type="compound">
+        <identifier pos="(10,8)" value="pair"/>
+       </identifierNode>
+      </classHeadNode>
+      <operator pos="(11,1)" value="{"/>
+      <aliasDeclarationNode pos="(12,2)" type="compound">
+       <usingNode pos="(12,2)" type="single">
+        <keyword pos="(12,2)" value="using"/>
+       </usingNode>
+       <identifierNode pos="(12,8)" type="compound">
+        <identifier pos="(12,8)" value="first_type"/>
+       </identifierNode>
+       <assignNode pos="(12,19)" type="single">
+        <operator pos="(12,19)" value="="/>
+       </assignNode>
+       <definingTypeIdNode pos="(12,21)" type="compound">
+        <definingTypeSpecifierSequenceNode count="1" pos="(12,21)" type="sequence">
+         <identifierNode pos="(12,21)" type="compound">
+          <identifier pos="(12,21)" value="T"/>
+         </identifierNode>
+        </definingTypeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(12,22)" type="single"/>
+       </definingTypeIdNode>
+       <semicolonNode pos="(12,22)" type="single">
+        <operator pos="(12,22)" value=";"/>
+       </semicolonNode>
+      </aliasDeclarationNode>
+      <aliasDeclarationNode pos="(13,2)" type="compound">
+       <usingNode pos="(13,2)" type="single">
+        <keyword pos="(13,2)" value="using"/>
+       </usingNode>
+       <identifierNode pos="(13,8)" type="compound">
+        <identifier pos="(13,8)" value="second_type"/>
+       </identifierNode>
+       <assignNode pos="(13,20)" type="single">
+        <operator pos="(13,20)" value="="/>
+       </assignNode>
+       <definingTypeIdNode pos="(13,22)" type="compound">
+        <definingTypeSpecifierSequenceNode count="1" pos="(13,22)" type="sequence">
+         <identifierNode pos="(13,22)" type="compound">
+          <identifier pos="(13,22)" value="U"/>
+         </identifierNode>
+        </definingTypeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(13,23)" type="single"/>
+       </definingTypeIdNode>
+       <semicolonNode pos="(13,23)" type="single">
+        <operator pos="(13,23)" value=";"/>
+       </semicolonNode>
+      </aliasDeclarationNode>
+      <templateDeclarationNode count="2" pos="(14,2)" type="binary">
+       <templateHeadNode pos="(14,2)" type="compound">
+        <keyword pos="(14,2)" value="template"/>
+        <templateParameterListNode count="5" pos="(14,10)" type="list">
+         <operator pos="(14,10)" value="&lt;"/>
+         <typeParameterNode pos="(14,11)" type="compound">
+          <classNode pos="(14,11)" type="single">
+           <keyword pos="(14,11)" value="class"/>
+          </classNode>
+          <identifierNode pos="(14,17)" type="compound">
+           <identifier pos="(14,17)" value="Me"/>
+          </identifierNode>
+          <assignNode pos="(14,20)" type="single">
+           <operator pos="(14,20)" value="="/>
+          </assignNode>
+          <typeIdNode pos="(14,22)" type="compound">
+           <typeSpecifierSequenceNode count="1" pos="(14,22)" type="sequence">
+            <identifierNode pos="(14,22)" type="compound">
+             <identifier pos="(14,22)" value="pair"/>
+            </identifierNode>
+           </typeSpecifierSequenceNode>
+           <abstractDeclaratorNode pos="(14,26)" type="single"/>
+          </typeIdNode>
+         </typeParameterNode>
+         <commaNode pos="(14,26)" type="single">
+          <operator pos="(14,26)" value=","/>
+         </commaNode>
+         <parameterNode pos="(14,28)" type="compound">
+          <declSpecifierSequenceNode count="1" pos="(14,28)" type="sequence">
+           <boolNode pos="(14,28)" type="single">
+            <keyword pos="(14,28)" value="bool"/>
+           </boolNode>
+          </declSpecifierSequenceNode>
+          <abstractDeclaratorNode pos="(14,32)" type="single"/>
+         </parameterNode>
+         <commaNode pos="(14,32)" type="single">
+          <operator pos="(14,32)" value=","/>
+         </commaNode>
+         <parameterNode pos="(14,34)" type="compound">
+          <declSpecifierSequenceNode count="1" pos="(14,34)" type="sequence">
+           <intNode pos="(14,34)" type="single">
+            <keyword pos="(14,34)" value="int"/>
+           </intNode>
+          </declSpecifierSequenceNode>
+          <abstractDeclaratorNode pos="(14,38)" type="single"/>
+          <assignNode pos="(14,38)" type="single">
+           <operator pos="(14,38)" value="="/>
+          </assignNode>
+          <integerLiteralNode pos="(14,40)" type="single">
+           <literal pos="(14,40)" value="0"/>
+          </integerLiteralNode>
+         </parameterNode>
+         <operator pos="(14,41)" value=">"/>
+        </templateParameterListNode>
+       </templateHeadNode>
+       <functionDefinitionNode pos="(15,5)" type="compound">
+        <declSpecifierSequenceNode count="2" pos="(15,5)" type="sequence">
+         <constExprNode pos="(15,5)" type="single">
+          <keyword pos="(15,5)" value="constexpr"/>
+         </constExprNode>
+         <identifierNode pos="(15,15)" type="compound">
+          <identifier pos="(15,15)" value="pair"/>
+         </identifierNode>
+        </declSpecifierSequenceNode>
+        <ptrDeclaratorNode count="2" pos="(15,19)" type="sequence">
+         <lvalueRefNode pos="(15,19)" type="single">
+          <operator pos="(15,19)" value="&amp;"/>
+         </lvalueRefNode>
+         <functionDeclaratorNode count="1" pos="(15,21)" type="unary">
+          <operatorFnIdNode count="2" pos="(15,21)" type="binary">
+           <operatorNode pos="(15,21)" type="single">
+            <keyword pos="(15,21)" value="operator"/>
+           </operatorNode>
+           <assignNode pos="(15,29)" type="single">
+            <operator pos="(15,29)" value="="/>
+           </assignNode>
+          </operatorFnIdNode>
+         </functionDeclaratorNode>
+         <parameterListNode count="1" pos="(15,30)" type="list">
+          <operator pos="(15,30)" value="("/>
+          <parameterNode pos="(15,31)" type="compound">
+           <declSpecifierSequenceNode count="1" pos="(15,31)" type="sequence">
+            <templateIdNode count="1" pos="(15,31)" type="list">
+             <identifierNode pos="(15,31)" type="compound">
+              <identifier pos="(15,31)" value="_Identity_t"/>
+             </identifierNode>
+             <operator pos="(15,42)" value="&lt;"/>
+             <typeIdNode pos="(15,43)" type="compound">
+              <typeSpecifierSequenceNode count="2" pos="(15,43)" type="sequence">
+               <constNode pos="(15,43)" type="single">
+                <keyword pos="(15,43)" value="const"/>
+               </constNode>
+               <identifierNode pos="(15,49)" type="compound">
+                <identifier pos="(15,49)" value="Me"/>
+               </identifierNode>
+              </typeSpecifierSequenceNode>
+              <ptrDeclaratorNode count="2" pos="(15,51)" type="sequence">
+               <lvalueRefNode pos="(15,51)" type="single">
+                <operator pos="(15,51)" value="&amp;"/>
+               </lvalueRefNode>
+               <abstractDeclaratorNode pos="(15,52)" type="single"/>
+              </ptrDeclaratorNode>
+             </typeIdNode>
+             <operator pos="(15,52)" value=">"/>
+            </templateIdNode>
+           </declSpecifierSequenceNode>
+           <identifierNode pos="(15,54)" type="compound">
+            <identifier pos="(15,54)" value="_Right"/>
+           </identifierNode>
+          </parameterNode>
+          <operator pos="(15,60)" value=")"/>
+         </parameterListNode>
+         <trailingQualifiersNode count="1" pos="(15,30)" type="sequence">
+          <noexceptSpecifierNode pos="(15,62)" type="compound"/>
+         </trailingQualifiersNode>
+        </ptrDeclaratorNode>
+        <functionBodyNode count="1" pos="(16,2)" type="unary">
+         <compoundStatementNode pos="()" type="sequence">
+          <operator pos="()" value="{"/>
+          <operator pos="()" value="}"/>
+         </compoundStatementNode>
+        </functionBodyNode>
+       </functionDefinitionNode>
+      </templateDeclarationNode>
+      <memberDeclarationNode pos="(21,2)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(21,2)" type="sequence">
+        <identifierNode pos="(21,2)" type="compound">
+         <identifier pos="(21,2)" value="T"/>
         </identifierNode>
        </declSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(8,42)" type="single"/>
-      </parameterNode>
-      <commaNode pos="(8,42)" type="single">
-       <operator pos="(8,42)" value=","/>
-      </commaNode>
-      <parameterNode pos="(8,44)" type="compound">
-       <declSpecifierSequenceNode count="1" pos="(8,44)" type="sequence">
-        <identifierNode pos="(8,44)" type="compound">
-         <identifier pos="(8,44)" value="_Derived"/>
+       <memberDeclaratorListNode count="1" pos="(21,4)" type="list">
+        <identifierNode pos="(21,4)" type="compound">
+         <identifier pos="(21,4)" value="first"/>
+        </identifierNode>
+       </memberDeclaratorListNode>
+       <semicolonNode pos="(21,9)" type="single">
+        <operator pos="(21,9)" value=";"/>
+       </semicolonNode>
+      </memberDeclarationNode>
+      <memberDeclarationNode pos="(22,2)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(22,2)" type="sequence">
+        <identifierNode pos="(22,2)" type="compound">
+         <identifier pos="(22,2)" value="U"/>
         </identifierNode>
        </declSpecifierSequenceNode>
-       <abstractDeclaratorNode pos="(8,52)" type="single"/>
-      </parameterNode>
-      <operator pos="(8,52)" value=")"/>
-     </invokeExprNode>
-     <conjunctionNode pos="(9,5)" type="single">
-      <operator pos="(9,5)" value="&amp;&amp;"/>
-     </conjunctionNode>
-     <invokeExprNode count="3" pos="(9,27)" type="list">
-      <identifierNode pos="(9,8)" type="compound">
-       <identifier pos="(9,8)" value="__is_convertible_to"/>
-      </identifierNode>
-      <operator pos="(9,27)" value="("/>
-      <parameterNode pos="(9,28)" type="compound">
-       <declSpecifierSequenceNode count="3" pos="(9,28)" type="sequence">
-        <constNode pos="(9,28)" type="single">
-         <keyword pos="(9,28)" value="const"/>
-        </constNode>
-        <volatileNode pos="(9,34)" type="single">
-         <keyword pos="(9,34)" value="volatile"/>
-        </volatileNode>
-        <identifierNode pos="(9,43)" type="compound">
-         <identifier pos="(9,43)" value="_Derived"/>
+       <memberDeclaratorListNode count="1" pos="(22,4)" type="list">
+        <identifierNode pos="(22,4)" type="compound">
+         <identifier pos="(22,4)" value="second"/>
         </identifierNode>
-       </declSpecifierSequenceNode>
-       <ptrDeclaratorNode count="2" pos="(9,51)" type="sequence">
-        <ptrNode pos="(9,51)" type="single">
-         <operator pos="(9,51)" value="*"/>
-        </ptrNode>
-        <abstractDeclaratorNode pos="(9,52)" type="single"/>
-       </ptrDeclaratorNode>
-      </parameterNode>
-      <commaNode pos="(9,52)" type="single">
-       <operator pos="(9,52)" value=","/>
-      </commaNode>
-      <parameterNode pos="(9,54)" type="compound">
-       <declSpecifierSequenceNode count="3" pos="(9,54)" type="sequence">
-        <constNode pos="(9,54)" type="single">
-         <keyword pos="(9,54)" value="const"/>
-        </constNode>
-        <volatileNode pos="(9,60)" type="single">
-         <keyword pos="(9,60)" value="volatile"/>
-        </volatileNode>
-        <identifierNode pos="(9,69)" type="compound">
-         <identifier pos="(9,69)" value="_Base"/>
-        </identifierNode>
-       </declSpecifierSequenceNode>
-       <ptrDeclaratorNode count="2" pos="(9,74)" type="sequence">
-        <ptrNode pos="(9,74)" type="single">
-         <operator pos="(9,74)" value="*"/>
-        </ptrNode>
-        <abstractDeclaratorNode pos="(9,75)" type="single"/>
-       </ptrDeclaratorNode>
-      </parameterNode>
-      <operator pos="(9,75)" value=")"/>
-     </invokeExprNode>
-    </binaryExprNode>
-   </conceptDefinitionNode>
+       </memberDeclaratorListNode>
+       <semicolonNode pos="(22,10)" type="single">
+        <operator pos="(22,10)" value=";"/>
+       </semicolonNode>
+      </memberDeclarationNode>
+      <operator pos="(23,1)" value="}"/>
+     </classSpecifierNode>
+    </declSpecifierSequenceNode>
+    <semicolonNode pos="(23,2)" type="single">
+     <operator pos="(23,2)" value=";"/>
+    </semicolonNode>
+   </simpleDeclarationNode>
   </templateDeclarationNode>
  </declarationSequenceNode>
 </translationUnitNode>

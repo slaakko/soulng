@@ -97,7 +97,7 @@ void EndTemplateDeclaration(Context* context)
 
 void RemoveTemplateDeclaration(Context* context)
 {
-    int x = 0;
+    context->GetSymbolTable()->RemoveTemplateDeclaration();
 }
 
 void AddTemplateParameter(Node* templateParameterNode, int index, Context* context)

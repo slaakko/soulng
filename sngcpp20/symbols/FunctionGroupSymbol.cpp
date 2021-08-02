@@ -5,6 +5,7 @@
 
 #include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
+#include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
 #include <sngcpp20/symbols/TypeSymbol.hpp>
 #include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/Scope.hpp>
@@ -40,17 +41,17 @@ void FunctionGroupSymbol::RemoveFunction(FunctionSymbol* function)
     }
 }
 
-FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<std::unique_ptr<ParameterSymbol>>& parameters) const
+FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<TypeSymbol*>& parameterTypes) const
 {
-    int n = parameters.size();
+    int n = parameterTypes.size();
     for (FunctionSymbol* functionSymbol : functions)
     {
-        if (functionSymbol->Parameters().size() == n)
+        if (functionSymbol->Type()->Key().parameterTypes.size() == n)
         {
             bool matched = true;
             for (int i = 0; i < n; ++i)
             {
-                if (!SymbolsEqual(functionSymbol->Parameters()[i]->Type(), parameters[i]->Type()))
+                if (!SymbolsEqual(functionSymbol->Type()->Key().parameterTypes[i], parameterTypes[i]))
                 {
                     matched = false;
                     break;

@@ -24,6 +24,7 @@ std::string ScopeKindStr(ScopeKind kind)
 {
     switch (kind)
     {
+        case ScopeKind::templateDeclarationScope: return "template declaration scope";
         case ScopeKind::namespaceScope: return "namespace scope";
         case ScopeKind::classScope: return "class scope";
         case ScopeKind::enumerationScope: return "enumeration scope";

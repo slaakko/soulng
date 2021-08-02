@@ -49,6 +49,10 @@ void NamespaceCreatorVisitor::Visit(IdentifierNode& node)
 
 void BeginNamespace(Node* node, Context* context)
 {
+    if (node->GetSourcePos().line == 15750)
+    {
+        int x = 0;
+    }
     NamespaceCreatorVisitor visitor(context);
     node->Accept(visitor);
 }

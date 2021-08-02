@@ -254,17 +254,29 @@ parser api(PARSER_API) ClassParser
         ;
 
     MemberDeclSpecifiers(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
-        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+        ::= empty
+            { 
+                ctx->ResetBottomUpFlags(); 
+                if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); 
+            }
             DeclSpecifierSeq(ctx):declSpecifiers{ ctx->PopFlags(); return declSpecifiers; } / { ctx->PopFlags(); }
         ;
 
     MemberFunctionDefinition(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
-        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+        ::= empty
+            { 
+                ctx->ResetBottomUpFlags(); 
+                if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); 
+            }
             FunctionDefinition(ctx):functionDefinition{ ctx->PopFlags(); return functionDefinition; } / { ctx->PopFlags(); }
         ;
 
     MemberTemplateDeclaration(sngcpp::symbols::Context* ctx, bool matchConstructor) : Node*
-        ::= empty{ ctx->ResetBottomUpFlags(); if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushFlags(); }
+        ::= empty
+            { 
+                ctx->ResetBottomUpFlags(); 
+                if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); 
+            }
             TemplateDeclaration(ctx):templateDeclaration{ ctx->PopFlags(); return templateDeclaration; } / { ctx->PopFlags(); }
         ;
 

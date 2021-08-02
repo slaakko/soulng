@@ -184,6 +184,10 @@ void EnumCreatorVisitor::Visit(IntegerLiteralNode& node)
 
 void BeginEnumType(Node* node, Context* context)
 {
+    if (node->GetSourcePos().line == 12515)
+    {
+        int x = 0;
+    }
     EnumCreatorVisitor visitor(EnumCreatorVisitor::Stage::createEnumType, context);
     node->Accept(visitor);
 }

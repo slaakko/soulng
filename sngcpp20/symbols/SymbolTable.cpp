@@ -293,8 +293,7 @@ void SymbolTable::EndEnumType()
     EndScope();
 }
 
-void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, const SourcePos& sourcePos, 
-    const std::u32string& functionName, Context* context)
+void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, bool definition, const SourcePos& sourcePos, const std::u32string& functionName, Context* context)
 {
     Scope* groupScope = scope;
     TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
@@ -309,7 +308,7 @@ void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* fu
         if (symbol->Kind() == SymbolKind::functionGroupSymbol)
         {
             FunctionGroupSymbol* functionGroupSymbol = static_cast<FunctionGroupSymbol*>(symbol);
-            FunctionSymbol* functionSymbol = functionGroupSymbol->GetFunction(parameters);
+            FunctionSymbol* functionSymbol = functionGroupSymbol->GetFunction(functionType->Key().parameterTypes);
             if (functionSymbol)
             {
                 if (!SymbolsEqual(functionSymbol->Type()->Key().returnType, functionType->Key().returnType))
@@ -337,12 +336,12 @@ void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* fu
             }
         }
     }
-    FunctionSymbol* functionSymbol = new FunctionSymbol(functionName, std::move(parameters), definition); 
-    functionSymbol->SetType(functionType);
+    FunctionSymbol* functionSymbol = new FunctionSymbol(functionName, functionType, definition); 
     currentScope->AddSymbol(functionSymbol, SymbolGroupKind::functionSymbolGroup, sourcePos, groupScope, context);
     if (templateDeclarationSymbol)
     {
         functionSymbol->SetTemplateDeclarationSymbol(templateDeclarationSymbol);
+        functionSymbol->AddTemplateParameters(templateDeclarationSymbol->TemplateParameters());
     }
     if (node)
     {
@@ -488,8 +487,8 @@ void SymbolTable::AddVariable(Node* node, const std::vector<Symbol*>& templateAr
         groupScope = scope->ParentScope();
     }
     VariableSymbol* variableSymbol = new VariableSymbol(node->Str(), kind);
-    variableSymbol->SetTemplateArguments(templateArguments);
     variableSymbol->SetType(type);
+    variableSymbol->SetTemplateArguments(templateArguments);
     variableSymbol->SetValue(value);
     if (templateDeclarationSymbol)
     {
@@ -511,6 +510,51 @@ void SymbolTable::BeginTemplateDeclaration(Node* node, Context* context)
 void SymbolTable::EndTemplateDeclaration()
 {
     EndScope();
+}
+
+void SymbolTable::RemoveTemplateDeclaration()
+{
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    Scope* scope = currentScope;
+    if (scope->IsContainerScope())
+    {
+        ContainerScope* containerScope = static_cast<ContainerScope*>(scope);
+        ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
+        if (containerSymbol->Kind() == SymbolKind::templateDeclarationSymbol)
+        {
+            templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(containerSymbol);
+        }
+    }
+    PopScope();
+    if (templateDeclarationSymbol)
+    {
+        if (currentScope->IsContainerScope())
+        {
+            ContainerScope* containerScope = static_cast<ContainerScope*>(currentScope);
+            ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
+            containerSymbol->RemoveSymbol(templateDeclarationSymbol, SymbolGroupKind::blockSymbolGroup);
+        }
+    }
+}
+
+std::vector<TemplateDeclarationSymbol*> SymbolTable::GetTemplateDeclarationSymbols() const
+{
+    std::vector<TemplateDeclarationSymbol*> templateDeclarationSymbols;
+    Scope* scope = currentScope;
+    while (scope)
+    {
+        if (scope->IsContainerScope())
+        {
+            ContainerScope* containerScope = static_cast<ContainerScope*>(scope);
+            ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
+            if (containerSymbol->Kind() == SymbolKind::templateDeclarationSymbol)
+            {
+                templateDeclarationSymbols.push_back(static_cast<TemplateDeclarationSymbol*>(containerSymbol));
+            }
+        }
+        scope = scope->ParentScope();
+    }
+    return templateDeclarationSymbols;
 }
 
 void SymbolTable::AddTemplateParameter(Node* node, const std::u32string& name, Symbol* contstraint, int index, Context* context)

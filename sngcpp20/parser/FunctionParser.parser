@@ -70,7 +70,10 @@ parser api(PARSER_API) FunctionParser
             {
                 Node* node = new FunctionDefinitionNode(s, attributes, declSpecifierSeqNode.release(), declaratorNode.release(), specifierNode.release(), functionBody);
                 ctx->GetSymbolTable()->MapNode(node, ctx->GetSymbolTable()->CurrentScope()->GetSymbol(), sngcpp::symbols::MapKind::nodeToSymbol);
-                sngcpp::symbols::EndFunctionDefinition(ctx); 
+                if (functionBegan)
+                {
+                    sngcpp::symbols::EndFunctionDefinition(ctx); 
+                }
                 return node;
             }
             /

@@ -1,10 +1,24 @@
-template <class _Ty1, class _Ty2>
-concept _Same_impl =      is_same_v<_Ty1, _Ty2>;
+template <class _Ty>
+struct _Identity {
+    using type = _Ty;
+};
 
-template <class _Ty1, class _Ty2>
-concept same_as = _Same_impl<_Ty1, _Ty2> && _Same_impl<_Ty2, _Ty1>;
+template <class _Ty>
+using _Identity_t = typename _Identity<_Ty>::type;
 
-template <class _Derived, class _Base>
-concept derived_from = __is_base_of(_Base, _Derived)
-    && __is_convertible_to(const volatile _Derived*, const volatile _Base*);
+template<class T, class U>
+struct pair
+{
+	using first_type = T;
+	using second_type = U;
+	template<class Me = pair, bool, int = 0>
+    constexpr pair& operator=(_Identity_t<const Me&> _Right) noexcept
+	{
+        first  = _Right.first;
+        second = _Right.second;
+        return *this;
+    }
+	T first;
+	U second;
+};
 

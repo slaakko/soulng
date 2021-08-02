@@ -76,7 +76,7 @@ public:
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context);
     void EndEnumType();
-    void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, const SourcePos& sourcePos, 
+    void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, bool definition, const SourcePos& sourcePos,
         const std::u32string& functionName, Context* context);
     void EndFunction();
     void RemoveFunction();
@@ -88,6 +88,8 @@ public:
     void AddVariable(Node* node, const std::vector<Symbol*>& templateArguments, Value* value, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();
+    void RemoveTemplateDeclaration();
+    std::vector<TemplateDeclarationSymbol*> GetTemplateDeclarationSymbols() const;
     void AddTemplateParameter(Node* node, const std::u32string& name, Symbol* constraint, int index, Context* context);
     ClassTypeSymbol* Instantiate(ClassTypeSymbol* classTemplate, const std::vector<Symbol*>& templateArguments);
     AliasTypeSymbol* Instantiate(AliasTypeSymbol* aliasTemplate, const std::vector<Symbol*>& templateArguments);

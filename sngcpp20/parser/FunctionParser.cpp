@@ -263,7 +263,10 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                 {
                     Node * node = new FunctionDefinitionNode(s, attributes.release(), declSpecifierSeqNode.release(), declaratorNode.release(), specifierNode.release(), functionBody.release());
                     ctx->GetSymbolTable()->MapNode(node, ctx->GetSymbolTable()->CurrentScope()->GetSymbol(), sngcpp::symbols::MapKind::nodeToSymbol);
-                    sngcpp::symbols::EndFunctionDefinition(ctx);
+                    if (functionBegan)
+                    {
+                        sngcpp::symbols::EndFunctionDefinition(ctx);
+                    }
                     {
                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionDefinition"));

@@ -51,6 +51,7 @@ parser api(PARSER_API) TemplateParser
         ::= TemplateHead(ctx, true):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; }
             (   ConceptDefinition(ctx):concepDefinition{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), concepDefinition); }
             |   Declaration(ctx):declaration{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), declaration); }
+            |   empty{ sngcpp::symbols::RemoveTemplateDeclaration(ctx); pass = false; }
             )
         ;
 
@@ -69,6 +70,7 @@ parser api(PARSER_API) TemplateParser
     TemplateParameterList(sngcpp::symbols::Context* ctx, var int index, var std::unique_ptr<Node> templateParameterNode, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
+            empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName); }
             LANGLE{ node.reset(new TemplateParameterListNode(sourcePos)); laPos = sourcePos; } 
             TemplateParameter(ctx):first
             { 
@@ -87,9 +89,14 @@ parser api(PARSER_API) TemplateParser
             RANGLE{ raPos = sourcePos; }
         )
         {
+            ctx->PopFlags();
             node->SetLAnglePos(laPos);
             node->SetRAnglePos(raPos);
             return node.release();
+        }
+        /
+        {
+            ctx->PopFlags();
         }
         ;
 

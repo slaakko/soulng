@@ -438,7 +438,8 @@ parser api(PARSER_API) ExpressionParser
     NewTypeId(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
             (LPAREN{ lpPos = sourcePos; s = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }){ return new ParenNewTypeIdNode(s, typeId, lpPos, rpPos); }
-        |   TypeSpecifierSeq(ctx):typeSpecifierSeq{ s = sourcePos; } 
+        |   empty{ ctx->PushResetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
+            TypeSpecifierSeq(ctx):typeSpecifierSeq{ s = sourcePos; ctx->PopFlags(); } / { ctx->PopFlags(); }
                 (   NewDeclarator(ctx):newDeclarator{ return new NewTypeIdNode(s, typeSpecifierSeq, newDeclarator); }
                 |   empty{ return new NewTypeIdNode(s, typeSpecifierSeq, nullptr); }
                 )
@@ -473,8 +474,7 @@ parser api(PARSER_API) ExpressionParser
 
     PostfixExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
         var SourcePos lbPos, var SourcePos rbPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
-        ::= ConceptGuard(ctx):conceptGuard IntrinsicInvokeExpr(ctx):invokeExpr{ return invokeExpr; }
-        |
+        ::= 
         (
             (   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
             |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
@@ -488,6 +488,7 @@ parser api(PARSER_API) ExpressionParser
                 ExpressionList(ctx, invokeNode.get()):args4? 
                 RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
             |   TypenameSpecifier(ctx):typenameSpecifier2 { s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
+            |   ConceptGuard(ctx):conceptGuard IntrinsicInvokeExpr(ctx):invokeExpr{ node.reset(invokeExpr); }
             |   PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
             )
             (
@@ -576,22 +577,22 @@ parser api(PARSER_API) ExpressionParser
         |   UnqualifiedId(ctx):unqualifiedId{ return unqualifiedId; }
         ;
 
-    FoldExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<FoldExprNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    FoldExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<FoldExprNode> node, var std::unique_ptr<Node> op2Node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (   LPAREN{ lpPos = sourcePos; node.reset(new FoldExprNode(sourcePos)); }
             (   
                 (
                     CastExpression(ctx):castExpr1 FoldOp:op1 Ellipsis:ellipsis1
-                    (   FoldOp:op2 CastExpression(ctx):castExpr2
+                    (   FoldOp:op2{ op2Node.reset(op2); } CastExpression(ctx):castExpr2
                     )?
                 )
                 {
                     node->AddNode(castExpr1);
                     node->AddNode(op1);
                     node->AddNode(ellipsis1);
-                    if (op2)
+                    if (op2Node)
                     {
-                        node->AddNode(op2);
+                        node->AddNode(op2Node.release());
                         node->AddNode(castExpr2);
                     }
                 }

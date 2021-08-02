@@ -19,15 +19,41 @@ enum class FunctionKind
     regular, constructor, destructor, operatorFn, conversionFn
 };
 
+enum class DeclarationKind : int
+{
+    none,
+    classDeclaration = 1 << 0,
+    enumDeclaration = 1 << 1,
+    aliasDeclararation = 1 << 2,
+    objectDeclaration = 1 << 3,
+    functionDeclaration = 1 << 4,
+    parameter = 1 << 5,
+    skip = 1 << 6
+};
+
+inline DeclarationKind operator|(DeclarationKind left, DeclarationKind right)
+{
+    return DeclarationKind(int(left) | int(right));
+}
+
+inline DeclarationKind operator&(DeclarationKind left, DeclarationKind right)
+{
+    return DeclarationKind(int(left) & int(right));
+}
+
+inline DeclarationKind operator~(DeclarationKind operand)
+{
+    return DeclarationKind(~int(operand));
+}
+
 struct SYMBOLS_API Id
 {
-    Id() : idNode(nullptr), templateArguments(), functionKind(FunctionKind::regular), returnType(nullptr) {}
-    Id(Node* idNode_, const std::vector<Symbol*>& templateArguments_) : idNode(idNode_), templateArguments(templateArguments_), functionKind(FunctionKind::regular), returnType(nullptr) {}
+    Id() : idNode(nullptr), functionKind(FunctionKind::regular) {}
+    Id(Node* idNode_, const std::vector<Symbol*>& templateArguments_) : idNode(idNode_), functionKind(FunctionKind::regular), templateArguments(templateArguments_) {}
     std::u32string functionName;
     Node* idNode;
-    std::vector<Symbol*> templateArguments;
     FunctionKind functionKind;
-    TypeSymbol* returnType;
+    std::vector<Symbol*> templateArguments;
 };
 
 SYMBOLS_API void ProcessSimpleDeclaration(Node* declaration, Context* context);
@@ -35,11 +61,10 @@ SYMBOLS_API void ProcessMemberDeclaration(Node* memberDeclaration, Context* cont
 SYMBOLS_API bool BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* context);
 SYMBOLS_API void EndFunctionDefinition(Context* context);
 SYMBOLS_API bool ContainsFunctionDeclarator(Node* declarator);
-SYMBOLS_API Id GetFunctionName(Node* declarator, Context* context);
 SYMBOLS_API void RemoveFunctionDefinition(Context* context);
 SYMBOLS_API void ProcessAliasDeclaration(Node* usingNode, Context* context);
 SYMBOLS_API ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context);
-SYMBOLS_API void ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, bool alias, bool param, Context* context);
+SYMBOLS_API std::pair<Id, DeclarationKind> ProcessParenthesizedDeclarator(Node* declarator, Symbol* baseTypeOrValue, bool alias, bool param, bool function, Context* context);
 SYMBOLS_API void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context);
 SYMBOLS_API TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* context);
 SYMBOLS_API Symbol* ProcessTypeIdOrValue(Node* typeIdNode, Context* context);

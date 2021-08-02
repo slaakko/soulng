@@ -10,6 +10,7 @@
 
 namespace sngcpp::symbols {
 
+class Symbol;
 class TypeSymbol;
 class FunctionTypeSymbol;
 class TemplateDeclarationSymbol;
@@ -18,7 +19,7 @@ class TemplateParameterSymbol;
 class SYMBOLS_API FunctionSymbol : public ContainerSymbol
 {
 public:
-    FunctionSymbol(const std::u32string& name_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_, bool definition_);
+    FunctionSymbol(const std::u32string& name_, FunctionTypeSymbol* type_, bool definition_);
     std::string SymbolKindStr() const override { return "function symbol"; }
     bool IsConstructorSymbol() const override;
     bool IsDestructorSymbol() const override;
@@ -29,14 +30,15 @@ public:
     bool CanInstall() const override { return false; }
     void AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context) override;
     void RemoveFromGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context) override;
-    void SetType(FunctionTypeSymbol* type_) { type = type_;  }
-    FunctionTypeSymbol* Type() const { return type; }
-    const std::vector<std::unique_ptr<ParameterSymbol>>& Parameters() const { return parameters; }
     bool Definition() const { return definition; }
     void SetDefinition() { definition = true; }
+    FunctionTypeSymbol* Type() const { return type; }
+    const std::vector<Symbol*>& TemplateArguments() const { return templateArguments; }
+    void SetTemplateArguments(const std::vector<Symbol*>& templateArguments_);
+    void AddTemplateParameters(const std::vector<TemplateParameterSymbol*>& templateParameters);
 private:
+    std::vector<Symbol*> templateArguments;
     FunctionTypeSymbol* type;
-    std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     bool definition;
     TemplateDeclarationSymbol* templateDeclarationSymbol;
     Scope* groupScope;

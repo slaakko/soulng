@@ -2973,7 +2973,7 @@ soulng::parser::Match ClassParser::MemberDeclSpecifiers(CppLexer& lexer, sngcpp:
             {
                 ctx->ResetBottomUpFlags();
                 if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
-                else ctx->PushFlags();
+                else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
             }
             *parentMatch1 = match;
         }
@@ -3049,7 +3049,7 @@ soulng::parser::Match ClassParser::MemberFunctionDefinition(CppLexer& lexer, sng
             {
                 ctx->ResetBottomUpFlags();
                 if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
-                else ctx->PushFlags();
+                else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
             }
             *parentMatch1 = match;
         }
@@ -3125,7 +3125,7 @@ soulng::parser::Match ClassParser::MemberTemplateDeclaration(CppLexer& lexer, sn
             {
                 ctx->ResetBottomUpFlags();
                 if (matchConstructor) ctx->PushSetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
-                else ctx->PushFlags();
+                else ctx->PushResetFlag(sngcpp::symbols::ContextFlags::matchConstructorName);
             }
             *parentMatch1 = match;
         }
