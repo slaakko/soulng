@@ -1,4 +1,4 @@
-<package appName="soulng" compression="deflate" id="bd63fbcb-9ebd-4d08-b287-1b1a517b4b66" includeUninstaller="true" name="soulng" publisher="Seppo Laakko" sourceRootDir="C:/work/soulng" targetRootDir="C:/soulng" version="4.0.0">
+<package appName="soulng" compression="deflate" id="bd63fbcb-9ebd-4d08-b287-1b1a517b4b66" includeUninstaller="true" name="soulng" publisher="Seppo Laakko" sourceRootDir="C:/work/soulng" targetRootDir="C:/soulng" version="3.1.0">
  <component name="root">
   <file name="README.md"/>
   <file name="soulng_all.sln"/>
@@ -20,6 +20,7 @@
    <exclude file="*"/>
    <include file="inst.bat"/>
   </directory>
+  <directory name="nmake"/>
  </component>
  <component name="sources">
   <directory name="sngcm">
@@ -66,7 +67,12 @@
   </directory>
  </component>
  <component name="unicode">
-  <directory name="unicode"/>
+  <directory name="unicode">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
  </component>
  <component name="setup">
   <directory name="setup">
