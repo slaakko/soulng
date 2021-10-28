@@ -23,12 +23,13 @@ soulng.package.bin
 soulng.package.index.xml
 soulng.package.info.xml
 unicode.zip
+inst/*.exe
+inst/*.dll
 Express
 deployment
 cmajor/unitTest
 cmajor/test
 packages
-unicode.zip
 ucd.all.flat.xml
 fs
 build
