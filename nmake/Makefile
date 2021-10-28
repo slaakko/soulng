@@ -3,6 +3,7 @@
 # Run with nmake from Visual Studio 2019 x64 Native Tools Command Prompt
 
 all: makedirs soulng_all install unicode
+	echo make succeeded.
 
 makedirs:
 	makedirs.bat
