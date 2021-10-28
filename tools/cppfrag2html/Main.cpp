@@ -13,19 +13,11 @@
 #include <fstream>
 #include <stdexcept>
 
-struct InitDone
+void InitApplication()
 {
-    InitDone()
-    {
-        soulng::util::Init();
-        sngxml::xpath::Init();
-    }
-    ~InitDone()
-    {
-        sngxml::xpath::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    sngxml::xpath::Init();
+}
 
 using namespace soulng::unicode;
 using namespace soulng::util;
@@ -218,9 +210,9 @@ void PrintHelp()
 
 int main(int argc, const char** argv)
 {
-    InitDone initDone;
     try
     {
+        InitApplication();
         std::vector<std::string> files;
         bool verbose = false;
         bool out = false;

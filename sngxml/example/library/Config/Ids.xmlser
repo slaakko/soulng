@@ -1,0 +1,22 @@
+[hpp]#include <Config/Api.hpp>
+[cpp]#include <boost/uuid/random_generator.hpp>
+
+class api(CONFIG_API) Ids
+{
+<%
+    uuid Get(int index);
+%>
+    uuid[] ids;
+}
+
+<%
+    uuid Ids::Get(int index)
+    {
+        while (index >= ids.size())
+        {        
+            boost::uuids::uuid id = boost::uuids::random_generator()();
+            ids.push_back(id);
+        }
+        return ids[index];
+    }
+%>

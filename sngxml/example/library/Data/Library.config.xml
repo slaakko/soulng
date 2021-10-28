@@ -1,0 +1,8 @@
+<configuration classId="-1" className="Configuration" objectId="00000000-0000-0000-0000-000000000000">
+ <serverPortNumber value="55000"/>
+ <libraries>
+  <item value="helsinki"/>
+  <item value="tampere"/>
+  <item value="oulu"/>
+ </libraries>
+</configuration>

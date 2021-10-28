@@ -15,23 +15,36 @@ Visitor::~Visitor()
 
 void DefaultVisitor::Visit(SourceFileNode& node)
 {
-    for (const std::unique_ptr<ClassNode>& classNode : node.Classes())
+    node.GlobalNs()->Accept(*this);
+}
+
+void DefaultVisitor::Visit(NamespaceNode& node) 
+{
+    for (const std::unique_ptr<Node>& n : node.Nodes())
     {
-        classNode->Accept(*this);
+        n->Accept(*this);
     }
 }
 
 void DefaultVisitor::Visit(ClassNode& node)
 {
-    for (const std::unique_ptr<MemberVariableNode>& memberVariableNode : node.MemberVariables())
+    for (const std::unique_ptr<Node>& node: node.Nodes())
     {
-        memberVariableNode->Accept(*this);
+        node->Accept(*this);
     }
 }
 
 void DefaultVisitor::Visit(MemberVariableNode& node)
 {
     node.Type()->Accept(*this);
+}
+
+void DefaultVisitor::Visit(EnumTypeNode& node)
+{
+    for (const std::unique_ptr<EnumConstantNode>& enumConstantNode : node.EnumConstants())
+    {
+        enumConstantNode->Accept(*this);
+    }
 }
 
 void DefaultVisitor::Visit(ArrayNode& node)

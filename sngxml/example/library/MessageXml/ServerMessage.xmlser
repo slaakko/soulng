@@ -1,0 +1,23 @@
+[hpp]#include <MessageXml/Api.hpp>
+[hpp]#include <Query/QueryExpr.hpp>
+[hpp]#include <LibraryXml/Object.hpp>
+[hpp]#include <LibraryXml/Library.hpp>
+
+namespace message_xml {
+
+using QueryExprNode = query::QueryExprNode;
+using Object = library_xml::Object;
+
+class api(MESSAGE_XML_API) QueryRequest
+{
+    xml_ptr<QueryExprNode> query;
+}
+
+class api(MESSAGE_XML_API) QueryReply
+{
+    xml_ptr<Object>[] objects;
+    int count;
+    string[] errors;
+}
+
+} // message_xml

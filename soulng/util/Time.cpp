@@ -326,6 +326,13 @@ Timestamp GetCurrentTimestamp()
     return TimestampProvider::Instance().GetCurrentTimestamp();
 }
 
+Timestamp ParseTimestamp(const std::string& timestampStr)
+{
+    DateTime dateTime = ParseDateTime(timestampStr.substr(0, 19));
+    int32_t nanosecs = boost::lexical_cast<int>(timestampStr.substr(20));
+    return Timestamp(dateTime, nanosecs);
+}
+
 std::int64_t CurrentMs()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - std::chrono::steady_clock::time_point()).count();
@@ -388,6 +395,21 @@ std::string DurationStr(const std::chrono::nanoseconds& duration)
     s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(us / 10 % 10)));
     s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(us % 10)));
     return s;
+}
+
+std::time_t Time()
+{
+    std::time_t time = std::time(nullptr);
+    return time;
+}
+
+std::string TimeToString(std::time_t time)
+{
+    std::tm* ptm = std::localtime(&time);
+    char buffer[20];
+    // Format: 15.06.2009 20:20:00
+    std::strftime(buffer, 20, "%d.%m.%Y %H:%M:%S", ptm);
+    return buffer;
 }
 
 void TimeInit()

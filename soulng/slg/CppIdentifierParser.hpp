@@ -4,7 +4,7 @@
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppIdentifierParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppIdentifierParser.parser' using soulng parser generator spg version 3.1.0
 
 class LexerFileLexer;
 

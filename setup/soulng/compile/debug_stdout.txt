@@ -1,0 +1,7 @@
+Microsoft (R) Build Engine version 16.11.1+3e40a09f8 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  data.cpp
+  main.cpp
+  Generating Code...
+  setup.vcxproj -> C:\work\soulng\setup\soulng\program\x64\Debug\setupd.exe

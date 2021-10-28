@@ -1,0 +1,56 @@
+[hpp]#include <LibraryXml/Artwork.hpp>
+[cpp]#include <LibraryXml/Piece.hpp>
+[cpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+    
+class Piece;
+
+class api(LIBRARY_XML_API) Record : Artwork
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void AddPiece(Piece* piece);
+%>
+    xml_ptr<Piece>[] pieces;
+}
+
+<%
+std::string Record::QueryClassName() const 
+{
+    return "record";
+}
+
+void Record::Select(query::QueryContext& context, const std::u32string& cls)  const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"record"));
+}
+
+void Record::Member(query::QueryContext& context, const std::u32string& memberId) const 
+{
+    if (memberId == U"pieces")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Piece>& piece : pieces)
+        {
+            list.push_back(piece.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else
+    {
+        Artwork::Member(context, memberId);
+    }
+}
+
+void Record::AddPiece(Piece* piece)
+{
+    piece->AddRecord(this);
+    pieces.push_back(xml_ptr<Piece>(piece));
+}
+%>
+
+} // library_xml

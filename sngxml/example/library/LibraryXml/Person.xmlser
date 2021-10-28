@@ -1,0 +1,102 @@
+[hpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Book.hpp>
+[cpp]#include <LibraryXml/Film.hpp>
+[cpp]#include <LibraryXml/Group.hpp>
+[cpp]#include <LibraryXml/Record.hpp>
+[cpp]#include <LibraryXml/Piece.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+
+class Group;
+class Book;
+class Film;
+class Piece;
+class Record;
+
+class api(LIBRARY_XML_API) Person : Author
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void AddBook(Book* book);
+    void AddFile(Film* film);
+    void AddPiece(Piece* piece);
+    void AddRecord(Record* record);
+    void AddGroup(Group* group);
+    std::vector<Group*> Groups() const;
+%>
+    date dateOfBirth;
+    xml_ptr<Group>[] groups;
+}
+
+<%
+std::string Person::QueryClassName() const 
+{
+    return "person";
+}
+
+void Person::Select(query::QueryContext& context, const std::u32string& cls)  const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"person"));
+}
+
+void Person::Member(query::QueryContext& context, const std::u32string& memberId) const 
+{
+    if (memberId == U"dateOfBirth")
+    {
+        context.Stack().Push(new query::DateQueryValue(dateOfBirth));
+    }
+    else if (memberId == U"groups")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Group>& group : groups)
+        {
+            list.push_back(group.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else
+    {
+        Author::Member(context, memberId);
+    }
+}
+
+void Person::AddBook(Book* book)
+{
+    AddArtwork(book);
+}
+
+void Person::AddFile(Film* film)
+{
+    AddArtwork(film);
+}
+
+void Person::AddPiece(Piece* piece)
+{
+    AddArtwork(piece);
+}
+
+void Person::AddRecord(Record* record)
+{
+    AddArtwork(record);
+}
+
+void Person::AddGroup(Group* group)
+{
+    groups.push_back(xml_ptr<Group>(group));
+}
+
+std::vector<Group*> Person::Groups() const
+{
+    std::vector<Group*> g;
+    for (const xml_ptr<Group>& group : groups)
+    {
+        g.push_back(group.Get());
+    }
+    return g;
+}
+%>
+
+} // library_xml

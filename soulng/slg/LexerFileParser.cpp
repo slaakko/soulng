@@ -5,7 +5,7 @@
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/LexerFileParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/LexerFileParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -453,6 +453,7 @@ soulng::parser::Match LexerFileParser::ClassMap(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -493,6 +494,7 @@ soulng::parser::Match LexerFileParser::ClassMap(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch7 = match;
                     }
                     else
@@ -576,6 +578,7 @@ soulng::parser::Match LexerFileParser::Prefix(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -616,6 +619,7 @@ soulng::parser::Match LexerFileParser::Prefix(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch7 = match;
                     }
                     else
@@ -716,6 +720,7 @@ soulng::parser::Match LexerFileParser::Include(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch5 = match;
                     }
                     else
@@ -809,6 +814,7 @@ soulng::parser::Match LexerFileParser::Tokens(LexerFileLexer& lexer)
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch6 = match;
                                 }
                                 else
@@ -849,6 +855,7 @@ soulng::parser::Match LexerFileParser::Tokens(LexerFileLexer& lexer)
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch9 = match;
                             }
                             else
@@ -995,6 +1002,7 @@ soulng::parser::Match LexerFileParser::Tokens(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch22 = match;
                     }
                     else
@@ -1086,6 +1094,7 @@ soulng::parser::Match LexerFileParser::Token(LexerFileLexer& lexer)
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch6 = match;
                                 }
                                 else
@@ -1122,6 +1131,7 @@ soulng::parser::Match LexerFileParser::Token(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch8 = match;
                         }
                         else
@@ -1156,6 +1166,7 @@ soulng::parser::Match LexerFileParser::Token(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch11 = match;
                         }
                         else
@@ -1196,6 +1207,7 @@ soulng::parser::Match LexerFileParser::Token(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch14 = match;
                     }
                     else
@@ -1288,6 +1300,7 @@ soulng::parser::Match LexerFileParser::Keywords(LexerFileLexer& lexer)
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch6 = match;
                                 }
                                 else
@@ -1328,6 +1341,7 @@ soulng::parser::Match LexerFileParser::Keywords(LexerFileLexer& lexer)
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch9 = match;
                             }
                             else
@@ -1474,6 +1488,7 @@ soulng::parser::Match LexerFileParser::Keywords(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch22 = match;
                     }
                     else
@@ -1564,6 +1579,7 @@ soulng::parser::Match LexerFileParser::Keyword(LexerFileLexer& lexer)
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch6 = match;
                                 }
                                 else
@@ -1600,6 +1616,7 @@ soulng::parser::Match LexerFileParser::Keyword(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch8 = match;
                         }
                         else
@@ -1635,6 +1652,7 @@ soulng::parser::Match LexerFileParser::Keyword(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch11 = match;
                         }
                         else
@@ -1675,6 +1693,7 @@ soulng::parser::Match LexerFileParser::Keyword(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch14 = match;
                     }
                     else
@@ -1770,6 +1789,7 @@ soulng::parser::Match LexerFileParser::Expressions(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch5 = match;
                         }
                         else
@@ -1852,6 +1872,7 @@ soulng::parser::Match LexerFileParser::Expressions(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch12 = match;
                     }
                     else
@@ -1964,6 +1985,7 @@ soulng::parser::Match LexerFileParser::Expression(LexerFileLexer& lexer, int ind
                         exprValue.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch7 = match;
                         }
                         else
@@ -2004,6 +2026,7 @@ soulng::parser::Match LexerFileParser::Expression(LexerFileLexer& lexer, int ind
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch10 = match;
                     }
                     else
@@ -2158,6 +2181,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch8 = match;
                                 }
                                 else
@@ -2198,6 +2222,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch11 = match;
                             }
                             else
@@ -2274,6 +2299,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
                     }
                     if (match.hit)
                     {
+                        lexer.ResetRecovered();
                         *parentMatch17 = match;
                     }
                     else
@@ -2382,6 +2408,7 @@ soulng::parser::Match LexerFileParser::Api(LexerFileLexer& lexer)
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch7 = match;
                             }
                             else
@@ -2422,6 +2449,7 @@ soulng::parser::Match LexerFileParser::Api(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch10 = match;
                         }
                         else
@@ -2562,6 +2590,7 @@ soulng::parser::Match LexerFileParser::LexerClause(LexerFileLexer& lexer, soulng
                                 stmt.reset(static_cast<soulng::cppcode::CompoundStatement*>(match.value));
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch9 = match;
                                 }
                                 else
@@ -2667,6 +2696,7 @@ soulng::parser::Match LexerFileParser::Variables(LexerFileLexer& lexer, soulng::
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -2744,6 +2774,7 @@ soulng::parser::Match LexerFileParser::Variables(LexerFileLexer& lexer, soulng::
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch10 = match;
                 }
                 else
@@ -2911,6 +2942,7 @@ soulng::parser::Match LexerFileParser::Actions(LexerFileLexer& lexer, soulng::sl
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch4 = match;
                         }
                         else
@@ -3001,6 +3033,7 @@ soulng::parser::Match LexerFileParser::Actions(LexerFileLexer& lexer, soulng::sl
                                                     stmt.reset(static_cast<soulng::cppcode::CompoundStatement*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch15 = match;
                                                     }
                                                     else
@@ -3057,6 +3090,7 @@ soulng::parser::Match LexerFileParser::Actions(LexerFileLexer& lexer, soulng::sl
                 }
                 if (match.hit)
                 {
+                    lexer.ResetRecovered();
                     *parentMatch17 = match;
                 }
                 else
@@ -3139,6 +3173,7 @@ soulng::parser::Match LexerFileParser::Action(LexerFileLexer& lexer)
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch7 = match;
                                     }
                                     else
@@ -3173,6 +3208,7 @@ soulng::parser::Match LexerFileParser::Action(LexerFileLexer& lexer)
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch10 = match;
                                     }
                                     else
@@ -3209,6 +3245,7 @@ soulng::parser::Match LexerFileParser::Action(LexerFileLexer& lexer)
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch12 = match;
                             }
                             else

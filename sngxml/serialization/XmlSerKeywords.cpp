@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'C:/work/soulng/sngxml/serialization/XmlSerLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/cmajorm/cmajor/sngxml/serialization/XmlSerLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <sngxml/serialization/XmlSerKeywords.hpp>
 #include <sngxml/serialization/XmlSerTokens.hpp>
@@ -12,6 +12,7 @@ namespace XmlSerKeywords
     {
         {U"api", API}, 
         {U"class", CLASS}, 
+        {U"enum", ENUM}, 
         {U"base", BASE}, 
         {U"bool", BOOL}, 
         {U"sbyte", SBYTE}, 
@@ -33,9 +34,12 @@ namespace XmlSerKeywords
         {U"ustring", USTRING}, 
         {U"date", DATE}, 
         {U"datetime", DATETIME}, 
+        {U"timestamp", TIMESTAMP}, 
         {U"time_point", TIME_POINT}, 
         {U"duration", DURATION}, 
-        {U"include", INCLUDE},
+        {U"include", INCLUDE}, 
+        {U"namespace", NAMESPACE}, 
+        {U"using", USING},
         {nullptr, -1}
     };
 

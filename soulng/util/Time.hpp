@@ -177,6 +177,8 @@ UTIL_API inline bool operator>=(const Timestamp& left, const Timestamp& right)
 
 UTIL_API Timestamp GetCurrentTimestamp();
 
+UTIL_API Timestamp ParseTimestamp(const std::string& timestampStr);
+
 UTIL_API DateTime ParseDateTime(const std::string& dateTimeStr);
 
 UTIL_API std::string FormatTimeMs(int32_t milliseconds);
@@ -186,6 +188,10 @@ UTIL_API std::int64_t CurrentMs();
 UTIL_API int64_t GetCurrentTime();
 
 UTIL_API std::string DurationStr(const std::chrono::nanoseconds& duration);
+
+UTIL_API std::time_t Time();
+
+UTIL_API std::string TimeToString(std::time_t time);
 
 UTIL_API void TimeInit();
 UTIL_API void TimeDone();

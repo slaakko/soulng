@@ -59,15 +59,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -102,17 +106,17 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;UTIL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;_DEBUG;UTIL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>../..;$(BOOST_INCLUDE_DIR)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);C:\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);$(BOOST_LIB_DIR)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,35 +141,48 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;UTIL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0601;NDEBUG;UTIL_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>../..;$(BOOST_INCLUDE_DIR)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);C:\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);$(BOOST_LIB_DIR)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryReader.cpp" />
+    <ClCompile Include="BinaryStreamReader.cpp" />
+    <ClCompile Include="BinaryStreamWriter.cpp" />
     <ClCompile Include="BinaryWriter.cpp" />
+    <ClCompile Include="BufferedStream.cpp" />
     <ClCompile Include="CodeFormatter.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="InitDone.cpp" />
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MappedInputFile.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
+    <ClCompile Include="MemoryStream.cpp" />
     <ClCompile Include="MemoryWriter.cpp" />
     <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Prime.cpp" />
+    <ClCompile Include="Process.cpp" />
+    <ClCompile Include="ProcessImpl.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Sha1.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="SocketFwd.cpp" />
+    <ClCompile Include="Stream.cpp" />
+    <ClCompile Include="SynchronizedQueue.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="TextUtils.cpp" />
     <ClCompile Include="Time.cpp" />
@@ -175,23 +192,36 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryReader.hpp" />
+    <ClInclude Include="BinaryStreamReader.hpp" />
+    <ClInclude Include="BinaryStreamWriter.hpp" />
     <ClInclude Include="BinaryWriter.hpp" />
+    <ClInclude Include="BufferedStream.hpp" />
     <ClInclude Include="CodeFormatter.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Container.hpp" />
     <ClInclude Include="Defines.hpp" />
     <ClInclude Include="Error.hpp" />
+    <ClInclude Include="FileStream.hpp" />
     <ClInclude Include="Handle.hpp" />
     <ClInclude Include="InitDone.hpp" />
     <ClInclude Include="Json.hpp" />
     <ClInclude Include="Log.hpp" />
     <ClInclude Include="MappedInputFile.hpp" />
     <ClInclude Include="MemoryReader.hpp" />
+    <ClInclude Include="MemoryStream.hpp" />
     <ClInclude Include="MemoryWriter.hpp" />
     <ClInclude Include="Mutex.hpp" />
     <ClInclude Include="Path.hpp" />
     <ClInclude Include="Prime.hpp" />
+    <ClInclude Include="Process.hpp" />
+    <ClInclude Include="ProcessImpl.hpp" />
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="Sha1.hpp" />
+    <ClInclude Include="Socket.hpp" />
+    <ClInclude Include="SocketFwd.hpp" />
+    <ClInclude Include="Stream.hpp" />
     <ClInclude Include="String.hpp" />
+    <ClInclude Include="SynchronizedQueue.hpp" />
     <ClInclude Include="System.hpp" />
     <ClInclude Include="TextUtils.hpp" />
     <ClInclude Include="Time.hpp" />

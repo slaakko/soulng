@@ -8,7 +8,7 @@
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -251,6 +251,7 @@ soulng::parser::Match CppExpressionParser::AssignmentExpression(LexerFileLexer& 
                             right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch7 = match;
                             }
                             else
@@ -601,6 +602,7 @@ soulng::parser::Match CppExpressionParser::ConditionalExpression(LexerFileLexer&
                                                 ifExpr.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                 if (match.hit)
                                                 {
+                                                    lexer.ResetRecovered();
                                                     *parentMatch11 = match;
                                                 }
                                                 else
@@ -648,6 +650,7 @@ soulng::parser::Match CppExpressionParser::ConditionalExpression(LexerFileLexer&
                                             thenExpr.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                             if (match.hit)
                                             {
+                                                lexer.ResetRecovered();
                                                 *parentMatch15 = match;
                                             }
                                             else
@@ -869,6 +872,7 @@ soulng::parser::Match CppExpressionParser::LogicalOrExpression(LexerFileLexer& l
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1012,6 +1016,7 @@ soulng::parser::Match CppExpressionParser::LogicalAndExpression(LexerFileLexer& 
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1155,6 +1160,7 @@ soulng::parser::Match CppExpressionParser::InclusiveOrExpression(LexerFileLexer&
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1298,6 +1304,7 @@ soulng::parser::Match CppExpressionParser::ExclusiveOrExpression(LexerFileLexer&
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1441,6 +1448,7 @@ soulng::parser::Match CppExpressionParser::AndExpression(LexerFileLexer& lexer)
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1581,6 +1589,7 @@ soulng::parser::Match CppExpressionParser::EqualityExpression(LexerFileLexer& le
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -1779,6 +1788,7 @@ soulng::parser::Match CppExpressionParser::RelationalExpression(LexerFileLexer& 
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -2003,6 +2013,7 @@ soulng::parser::Match CppExpressionParser::ShiftExpression(LexerFileLexer& lexer
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -2201,6 +2212,7 @@ soulng::parser::Match CppExpressionParser::AdditiveExpression(LexerFileLexer& le
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -2399,6 +2411,7 @@ soulng::parser::Match CppExpressionParser::MultiplicativeExpression(LexerFileLex
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -2610,6 +2623,7 @@ soulng::parser::Match CppExpressionParser::PmExpression(LexerFileLexer& lexer)
                                                     right.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -3007,6 +3021,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                                 u1.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                                 if (match.hit)
                                                                 {
+                                                                    lexer.ResetRecovered();
                                                                     *parentMatch17 = match;
                                                                 }
                                                                 else
@@ -3064,6 +3079,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                             u2.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                             if (match.hit)
                                                             {
+                                                                lexer.ResetRecovered();
                                                                 *parentMatch22 = match;
                                                             }
                                                             else
@@ -3117,6 +3133,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                         castExpr.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                         if (match.hit)
                                                         {
+                                                            lexer.ResetRecovered();
                                                             *parentMatch27 = match;
                                                         }
                                                         else
@@ -3193,6 +3210,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                     typeId.reset(static_cast<soulng::cppcode::TypeId*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch34 = match;
                                                     }
                                                     else
@@ -3227,6 +3245,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                     }
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch37 = match;
                                                     }
                                                     else
@@ -3284,6 +3303,7 @@ soulng::parser::Match CppExpressionParser::UnaryExpression(LexerFileLexer& lexer
                                                 u3.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                                 if (match.hit)
                                                 {
+                                                    lexer.ResetRecovered();
                                                     *parentMatch42 = match;
                                                 }
                                                 else
@@ -3619,6 +3639,7 @@ soulng::parser::Match CppExpressionParser::PostfixExpression(LexerFileLexer& lex
                                                                             }
                                                                             if (match.hit)
                                                                             {
+                                                                                lexer.ResetRecovered();
                                                                                 *parentMatch18 = match;
                                                                             }
                                                                             else
@@ -3709,6 +3730,7 @@ soulng::parser::Match CppExpressionParser::PostfixExpression(LexerFileLexer& lex
                                                                                 }
                                                                                 if (match.hit)
                                                                                 {
+                                                                                    lexer.ResetRecovered();
                                                                                     *parentMatch26 = match;
                                                                                 }
                                                                                 else
@@ -3760,6 +3782,7 @@ soulng::parser::Match CppExpressionParser::PostfixExpression(LexerFileLexer& lex
                                                                                 dotMember.reset(static_cast<soulng::cppcode::IdExpr*>(match.value));
                                                                                 if (match.hit)
                                                                                 {
+                                                                                    lexer.ResetRecovered();
                                                                                     *parentMatch31 = match;
                                                                                 }
                                                                                 else
@@ -3817,6 +3840,7 @@ soulng::parser::Match CppExpressionParser::PostfixExpression(LexerFileLexer& lex
                                                                             arrowMember.reset(static_cast<soulng::cppcode::IdExpr*>(match.value));
                                                                             if (match.hit)
                                                                             {
+                                                                                lexer.ResetRecovered();
                                                                                 *parentMatch36 = match;
                                                                             }
                                                                             else
@@ -4208,6 +4232,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                             }
                                             if (match.hit)
                                             {
+                                                lexer.ResetRecovered();
                                                 *parentMatch20 = match;
                                             }
                                             else
@@ -4234,6 +4259,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                         typeId.reset(static_cast<soulng::cppcode::TypeId*>(match.value));
                                         if (match.hit)
                                         {
+                                            lexer.ResetRecovered();
                                             *parentMatch22 = match;
                                         }
                                         else
@@ -4264,6 +4290,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch24 = match;
                                     }
                                     else
@@ -4294,6 +4321,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                 }
                                 if (match.hit)
                                 {
+                                    lexer.ResetRecovered();
                                     *parentMatch26 = match;
                                 }
                                 else
@@ -4320,6 +4348,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                             expr.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch28 = match;
                             }
                             else
@@ -4354,6 +4383,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                             }
                             if (match.hit)
                             {
+                                lexer.ResetRecovered();
                                 *parentMatch31 = match;
                             }
                             else
@@ -4417,6 +4447,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                         }
                                         if (match.hit)
                                         {
+                                            lexer.ResetRecovered();
                                             *parentMatch37 = match;
                                         }
                                         else
@@ -4443,6 +4474,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                     typeIdExpr.reset(static_cast<soulng::cppcode::CppObject*>(match.value));
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch39 = match;
                                     }
                                     else
@@ -4477,6 +4509,7 @@ soulng::parser::Match CppExpressionParser::PostCastExpression(LexerFileLexer& le
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch42 = match;
                                     }
                                     else
@@ -4755,6 +4788,7 @@ soulng::parser::Match CppExpressionParser::PrimaryExpression(LexerFileLexer& lex
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.ResetRecovered();
                                         *parentMatch12 = match;
                                     }
                                     else

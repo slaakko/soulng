@@ -9,7 +9,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ModuleParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ModuleParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::ast;

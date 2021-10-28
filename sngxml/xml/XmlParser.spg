@@ -1,2 +1,3 @@
 project XmlParser;
 source <XmlParser.parser>;
+rules <Rules>;

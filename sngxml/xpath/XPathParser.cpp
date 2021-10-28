@@ -4,7 +4,7 @@
 #include <sngxml/xpath/XPathTokens.hpp>
 #include <sngxml/xpath/XPathTokenValueParsers.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace XPathTokens;
@@ -512,6 +512,7 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch15 = match;
                                                     }
                                                     else
@@ -773,6 +774,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch21 = match;
                                                     }
                                                     else
@@ -974,6 +976,7 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch15 = match;
                                                     }
                                                     else
@@ -1185,6 +1188,7 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch15 = match;
                                                     }
                                                     else
@@ -3269,6 +3273,7 @@ soulng::parser::Match XPathParser::AbbreviatedStep(XPathLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -3326,6 +3331,7 @@ soulng::parser::Match XPathParser::Literal(XPathLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

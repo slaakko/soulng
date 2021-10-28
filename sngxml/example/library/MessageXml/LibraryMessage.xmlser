@@ -1,0 +1,36 @@
+[hpp]#include <MessageXml/Api.hpp>
+[hpp]#include <LibraryXml/Library.hpp>
+
+namespace message_xml {
+
+using Library = library_xml::Library;
+
+class api(MESSAGE_XML_API) HelloLibraryRequest
+{
+    string libraryName;
+}
+
+class api(MESSAGE_XML_API) HelloLibraryReply
+{
+    string libraryName;
+}
+
+class api(MESSAGE_XML_API) InitLibraryRequest
+{
+    xml_ptr<Library> library;
+}
+
+class api(MESSAGE_XML_API) InitLibraryReply
+{
+    string libraryName;
+}
+
+class api(MESSAGE_XML_API) StopLibraryRequest
+{
+}
+
+class api(MESSAGE_XML_API) StopLibraryReply
+{
+}
+
+} // message_xml

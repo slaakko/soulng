@@ -14,9 +14,11 @@
 #define SNGXML_SERIALIZATION_API __declspec(dllimport)
 
 #ifdef NDEBUG
-#pragma comment(lib, "sngxmlser.lib")
+#pragma comment(lib, "cmsngxmlser.lib")
+#elif defined(TRACE)
+#pragma comment(lib, "cmsngxmlsert.lib")
 #else
-#pragma comment(lib, "sngxmlserd.lib")
+#pragma comment(lib, "cmsngxmlserd.lib")
 #endif
 
 #endif

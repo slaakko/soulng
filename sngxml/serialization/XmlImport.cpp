@@ -10,6 +10,7 @@
 #include <soulng/util/Unicode.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/nil_generator.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 namespace sngxml { namespace xmlser {
 
@@ -97,16 +98,7 @@ char32_t ParseUChar(const std::string& str)
 
 boost::uuids::uuid ParseUuid(const std::string& str)
 {
-    if (str.length() != boost::uuids::uuid::static_size() * 2) throw std::runtime_error("cannot parse uuid from string '" + str + "'");
-    boost::uuids::uuid x = boost::uuids::nil_uuid();
-    for (boost::uuids::uuid::size_type i = 0; i < boost::uuids::uuid::static_size(); ++i)
-    {
-        std::string s;
-        s.append(1, str[2 * i]);
-        s.append(1, str[2 * i + 1]);
-        x.data[i] = ParseHexByte(s);
-    }
-    return x;
+    return boost::lexical_cast<boost::uuids::uuid>(str);
 }
 
 date ParseDate(const std::string& str)
@@ -141,202 +133,303 @@ sngxml::dom::Element* GetXmlFieldElement(const std::string& fieldName, sngxml::d
     return nullptr;
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, bool& value)
+void FromXml(sngxml::dom::Element* element, bool& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
     if (element)
     {
         value = ParseBool(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int8_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, bool& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, int8_t& value)
+{
     if (element)
     {
         value = ParseSByte(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint8_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int8_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, uint8_t& value)
+{
     if (element)
     {
         value = ParseByte(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int16_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint8_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, int16_t& value)
+{
     if (element)
     {
         value = ParseShort(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint16_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int16_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, uint16_t& value)
+{
     if (element)
     {
         value = ParseUShort(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int32_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint16_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, int32_t& value)
+{
     if (element)
     {
         value = ParseInt(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint32_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int32_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, uint32_t& value)
+{
     if (element)
     {
         value = ParseUInt(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int64_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint32_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, int64_t& value)
+{
     if (element)
     {
         value = ParseLong(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint64_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, int64_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, uint64_t& value)
+{
     if (element)
     {
         value = ParseULong(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, float& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uint64_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, float& value)
+{
     if (element)
     {
         value = ParseFloat(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, double& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, float& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, double& value)
+{
     if (element)
     {
         value = ParseDouble(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, double& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, char& value)
+{
     if (element)
     {
         value = ParseChar(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char16_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, char16_t& value)
+{
     if (element)
     {
         value = ParseWChar(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char32_t& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char16_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, char32_t& value)
+{
     if (element)
     {
         value = ParseUChar(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::string& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, char32_t& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, std::string& value)
+{
     if (element)
     {
         value = ToUtf8(element->GetAttribute(U"value"));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::u16string& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::string& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, std::u16string& value)
+{
     if (element)
     {
         value = ToUtf16(element->GetAttribute(U"value"));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::u32string& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::u16string& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, std::u32string& value)
+{
     if (element)
     {
         value = element->GetAttribute(U"value");
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uuid& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, std::u32string& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, uuid& value)
+{
     if (element)
     {
         value = ParseUuid(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, date& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, uuid& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, date& value)
+{
     if (element)
     {
         value = ParseDate(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, datetime& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, date& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, datetime& value)
+{
     if (element)
     {
         value = ParseDateTime(ToUtf8(element->GetAttribute(U"value")));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, time_point& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, datetime& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, timestamp& value)
+{
+    if (element)
+    {
+        value = ParseTimestamp(ToUtf8(element->GetAttribute(U"value")));
+    }
+}
+
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, timestamp& value)
+{
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, time_point& value)
+{
     if (element)
     {
         value = time_point(duration(ParseLong(ToUtf8(element->GetAttribute(U"value")))));
     }
 }
 
-void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, duration& value)
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, time_point& value)
 {
-    sngxml::dom::Element* element = GetXmlFieldElement(fieldName, parentElement);
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
+}
+
+void FromXml(sngxml::dom::Element* element, duration& value)
+{
     if (element)
     {
         value = duration(ParseLong(ToUtf8(element->GetAttribute(U"value"))));
     }
+}
+
+void FromXml(sngxml::dom::Element* parentElement, const std::string& fieldName, duration& value)
+{
+    FromXml(GetXmlFieldElement(fieldName, parentElement), value);
 }
 
 } } // namespace sngxml::xmlser

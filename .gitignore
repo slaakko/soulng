@@ -19,6 +19,9 @@ Debug
 Release
 cmajor_ucd.bin
 soulng_ucd.bin
+soulng.package.bin
+soulng.package.index.xml
+soulng.package.info.xml
 unicode.zip
 Express
 deployment

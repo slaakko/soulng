@@ -1,0 +1,235 @@
+<xmlBundle rootObjectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882">
+ <object classId="6" className="Person" objectId="bc2ccc08-100b-4493-a119-61ab73f2fd3c">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Alfred V. Aho"/>
+  <artworks/>
+  <dateOfBirth value="1941-08-09"/>
+  <groups>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+  </groups>
+ </object>
+ <object classId="5" className="Library" objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882">
+  <library objectId="00000000-0000-0000-0000-000000000000" value="null"/>
+  <name value="tampere"/>
+  <objects>
+   <item objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+   <item objectId="bc2ccc08-100b-4493-a119-61ab73f2fd3c"/>
+   <item objectId="264a1ff3-aac3-43a7-ba99-e3169ff2cded"/>
+   <item objectId="1c7dd482-646a-43b8-afb3-f98e5e687e91"/>
+   <item objectId="75237b54-8702-4295-8346-301d3906b419"/>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="f158d273-e302-468b-a1c9-b1b63d71bf11"/>
+   <item objectId="a4440458-e354-495f-8570-a13457289351"/>
+   <item objectId="65048992-c961-4272-96a8-ca7ed653482d"/>
+   <item objectId="718a8755-a9d2-41ab-9402-3b3492d3c984"/>
+   <item objectId="0e1c7733-671f-493d-b52f-4cb6d8fd8a2d"/>
+   <item objectId="cab10ba8-3311-483f-8d57-be9f037a27cb"/>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+   <item objectId="66f6b4fe-9364-4c5b-a5ee-cd931578e9ce"/>
+   <item objectId="c1aafd03-9144-4705-be22-50f783bc7781"/>
+   <item objectId="3686e712-c9a9-46ec-ac52-c66be3a4bd0e"/>
+   <item objectId="bd2f0edb-e999-497c-964e-da024ddacb37"/>
+  </objects>
+  <books>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="f158d273-e302-468b-a1c9-b1b63d71bf11"/>
+   <item objectId="a4440458-e354-495f-8570-a13457289351"/>
+  </books>
+  <films/>
+  <pieces>
+   <item objectId="66f6b4fe-9364-4c5b-a5ee-cd931578e9ce"/>
+   <item objectId="c1aafd03-9144-4705-be22-50f783bc7781"/>
+   <item objectId="3686e712-c9a9-46ec-ac52-c66be3a4bd0e"/>
+   <item objectId="bd2f0edb-e999-497c-964e-da024ddacb37"/>
+  </pieces>
+  <records>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+  </records>
+  <people>
+   <item objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+   <item objectId="bc2ccc08-100b-4493-a119-61ab73f2fd3c"/>
+   <item objectId="264a1ff3-aac3-43a7-ba99-e3169ff2cded"/>
+   <item objectId="1c7dd482-646a-43b8-afb3-f98e5e687e91"/>
+   <item objectId="75237b54-8702-4295-8346-301d3906b419"/>
+   <item objectId="65048992-c961-4272-96a8-ca7ed653482d"/>
+   <item objectId="718a8755-a9d2-41ab-9402-3b3492d3c984"/>
+   <item objectId="0e1c7733-671f-493d-b52f-4cb6d8fd8a2d"/>
+   <item objectId="cab10ba8-3311-483f-8d57-be9f037a27cb"/>
+  </people>
+  <groups>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="1c7dd482-646a-43b8-afb3-f98e5e687e91">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Ravi Sethi"/>
+  <artworks/>
+  <dateOfBirth value="1947-01-01"/>
+  <groups>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Bjarne Stroustrup"/>
+  <artworks>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="f158d273-e302-468b-a1c9-b1b63d71bf11"/>
+  </artworks>
+  <dateOfBirth value="1950-12-30"/>
+  <groups/>
+ </object>
+ <object classId="6" className="Person" objectId="75237b54-8702-4295-8346-301d3906b419">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Jeffrey D. Ullman"/>
+  <artworks/>
+  <dateOfBirth value="1942-10-22"/>
+  <groups>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+  </groups>
+ </object>
+ <object classId="3" className="Book" objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="The C++ Programming Language"/>
+  <created value="2013-01-01"/>
+  <author objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+ </object>
+ <object classId="9" className="Record" objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Hotel California"/>
+  <created value="1976-01-01"/>
+  <author objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  <pieces>
+   <item objectId="66f6b4fe-9364-4c5b-a5ee-cd931578e9ce"/>
+   <item objectId="c1aafd03-9144-4705-be22-50f783bc7781"/>
+   <item objectId="3686e712-c9a9-46ec-ac52-c66be3a4bd0e"/>
+   <item objectId="bd2f0edb-e999-497c-964e-da024ddacb37"/>
+  </pieces>
+ </object>
+ <object classId="3" className="Book" objectId="f158d273-e302-468b-a1c9-b1b63d71bf11">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="A Tour of C++"/>
+  <created value="2018-01-01"/>
+  <author objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+ </object>
+ <object classId="6" className="Person" objectId="264a1ff3-aac3-43a7-ba99-e3169ff2cded">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Monica S. Lam"/>
+  <artworks/>
+  <dateOfBirth value="1900-01-01"/>
+  <groups>
+   <item objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+  </groups>
+ </object>
+ <object classId="7" className="Group" objectId="b5448c97-d440-4d2e-851e-46303bac1974">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="compilers writers"/>
+  <artworks>
+   <item objectId="a4440458-e354-495f-8570-a13457289351"/>
+  </artworks>
+  <members>
+   <item objectId="bc2ccc08-100b-4493-a119-61ab73f2fd3c"/>
+   <item objectId="264a1ff3-aac3-43a7-ba99-e3169ff2cded"/>
+   <item objectId="1c7dd482-646a-43b8-afb3-f98e5e687e91"/>
+   <item objectId="75237b54-8702-4295-8346-301d3906b419"/>
+  </members>
+ </object>
+ <object classId="3" className="Book" objectId="a4440458-e354-495f-8570-a13457289351">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Compilers: Principles, Techniques &amp; Tools"/>
+  <created value="1986-01-01"/>
+  <author objectId="b5448c97-d440-4d2e-851e-46303bac1974"/>
+ </object>
+ <object classId="6" className="Person" objectId="65048992-c961-4272-96a8-ca7ed653482d">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Glenn Frey"/>
+  <artworks/>
+  <dateOfBirth value="1948-11-06"/>
+  <groups>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  </groups>
+ </object>
+ <object classId="8" className="Piece" objectId="3686e712-c9a9-46ec-ac52-c66be3a4bd0e">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Life in the Fast Lane"/>
+  <created value="1976-01-01"/>
+  <author objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  <records>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+  </records>
+ </object>
+ <object classId="7" className="Group" objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Eagles"/>
+  <artworks>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+   <item objectId="66f6b4fe-9364-4c5b-a5ee-cd931578e9ce"/>
+   <item objectId="c1aafd03-9144-4705-be22-50f783bc7781"/>
+   <item objectId="3686e712-c9a9-46ec-ac52-c66be3a4bd0e"/>
+   <item objectId="bd2f0edb-e999-497c-964e-da024ddacb37"/>
+  </artworks>
+  <members>
+   <item objectId="65048992-c961-4272-96a8-ca7ed653482d"/>
+   <item objectId="718a8755-a9d2-41ab-9402-3b3492d3c984"/>
+   <item objectId="0e1c7733-671f-493d-b52f-4cb6d8fd8a2d"/>
+   <item objectId="cab10ba8-3311-483f-8d57-be9f037a27cb"/>
+  </members>
+ </object>
+ <object classId="8" className="Piece" objectId="66f6b4fe-9364-4c5b-a5ee-cd931578e9ce">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Hotel California"/>
+  <created value="1976-01-01"/>
+  <author objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  <records>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+  </records>
+ </object>
+ <object classId="8" className="Piece" objectId="c1aafd03-9144-4705-be22-50f783bc7781">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="New Kid in Town"/>
+  <created value="1976-01-01"/>
+  <author objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  <records>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+  </records>
+ </object>
+ <object classId="8" className="Piece" objectId="bd2f0edb-e999-497c-964e-da024ddacb37">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Wasted Time"/>
+  <created value="1976-01-01"/>
+  <author objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  <records>
+   <item objectId="b944e4d5-544f-495c-acb1-b632e01ec2f4"/>
+  </records>
+ </object>
+ <object classId="6" className="Person" objectId="718a8755-a9d2-41ab-9402-3b3492d3c984">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Don Henley"/>
+  <artworks/>
+  <dateOfBirth value="1947-08-22"/>
+  <groups>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="0e1c7733-671f-493d-b52f-4cb6d8fd8a2d">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Joe Walsh"/>
+  <artworks/>
+  <dateOfBirth value="1947-11-20"/>
+  <groups>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="cab10ba8-3311-483f-8d57-be9f037a27cb">
+  <library objectId="d1baf191-76d3-4a51-8f9f-b6e8fc2bf882"/>
+  <name value="Timothy B. Schmit"/>
+  <artworks/>
+  <dateOfBirth value="1947-10-30"/>
+  <groups>
+   <item objectId="2b0d2f18-45d1-4e27-9d03-019c62c21d1f"/>
+  </groups>
+ </object>
+</xmlBundle>

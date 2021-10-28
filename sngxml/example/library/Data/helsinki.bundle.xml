@@ -1,0 +1,131 @@
+<xmlBundle rootObjectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68">
+ <object classId="5" className="Library" objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68">
+  <library objectId="00000000-0000-0000-0000-000000000000" value="null"/>
+  <name value="helsinki"/>
+  <objects>
+   <item objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+   <item objectId="86e8487e-8f55-49b5-8d28-d631b2c4ca0c"/>
+   <item objectId="af0d9f48-3725-41a1-99ce-235fbd68f216"/>
+   <item objectId="f3e65a63-ec39-4783-bc38-ad0fbb19e715"/>
+   <item objectId="17b0addc-70cf-4a3c-843a-05971266b450"/>
+   <item objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="19e76343-ef8b-41a2-a818-adf928b4605f"/>
+   <item objectId="d49fb15b-3aa9-4672-ac3b-7e4140be648c"/>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+  </objects>
+  <books>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="19e76343-ef8b-41a2-a818-adf928b4605f"/>
+   <item objectId="d49fb15b-3aa9-4672-ac3b-7e4140be648c"/>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+  </books>
+  <films/>
+  <pieces/>
+  <records/>
+  <people>
+   <item objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+   <item objectId="86e8487e-8f55-49b5-8d28-d631b2c4ca0c"/>
+   <item objectId="af0d9f48-3725-41a1-99ce-235fbd68f216"/>
+   <item objectId="f3e65a63-ec39-4783-bc38-ad0fbb19e715"/>
+   <item objectId="17b0addc-70cf-4a3c-843a-05971266b450"/>
+   <item objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+  </people>
+  <groups>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Bjarne Stroustrup"/>
+  <artworks>
+   <item objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04"/>
+   <item objectId="19e76343-ef8b-41a2-a818-adf928b4605f"/>
+  </artworks>
+  <dateOfBirth value="1950-12-30"/>
+  <groups/>
+ </object>
+ <object classId="7" className="Group" objectId="2c29fd38-134e-460c-8861-c6360f12fcf0">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="GoF"/>
+  <artworks>
+   <item objectId="d49fb15b-3aa9-4672-ac3b-7e4140be648c"/>
+  </artworks>
+  <members>
+   <item objectId="86e8487e-8f55-49b5-8d28-d631b2c4ca0c"/>
+   <item objectId="af0d9f48-3725-41a1-99ce-235fbd68f216"/>
+   <item objectId="f3e65a63-ec39-4783-bc38-ad0fbb19e715"/>
+   <item objectId="17b0addc-70cf-4a3c-843a-05971266b450"/>
+  </members>
+ </object>
+ <object classId="3" className="Book" objectId="e8b75ef8-5234-44e1-a275-0ab088e05e04">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="The C++ Programming Language"/>
+  <created value="2013-01-01"/>
+  <author objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+ </object>
+ <object classId="3" className="Book" objectId="19e76343-ef8b-41a2-a818-adf928b4605f">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Programming: Principles and Pactice Using C++"/>
+  <created value="2009-01-01"/>
+  <author objectId="b28526bd-6ff7-4a6f-bc4e-85b562144287"/>
+ </object>
+ <object classId="6" className="Person" objectId="86e8487e-8f55-49b5-8d28-d631b2c4ca0c">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Eric Gamma"/>
+  <artworks/>
+  <dateOfBirth value="1961-01-01"/>
+  <groups>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="af0d9f48-3725-41a1-99ce-235fbd68f216">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Richard Helm"/>
+  <artworks/>
+  <dateOfBirth value="1901-01-01"/>
+  <groups>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+  </groups>
+ </object>
+ <object classId="3" className="Book" objectId="d49fb15b-3aa9-4672-ac3b-7e4140be648c">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Design Patterns"/>
+  <created value="1995-01-01"/>
+  <author objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+ </object>
+ <object classId="6" className="Person" objectId="f3e65a63-ec39-4783-bc38-ad0fbb19e715">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Ralph Johnson"/>
+  <artworks/>
+  <dateOfBirth value="1955-07-10"/>
+  <groups>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="17b0addc-70cf-4a3c-843a-05971266b450">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="John Vlissides"/>
+  <artworks/>
+  <dateOfBirth value="1961-08-02"/>
+  <groups>
+   <item objectId="2c29fd38-134e-460c-8861-c6360f12fcf0"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="b38a0960-6501-4480-a1b3-37131a603d3f">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="Donald Knuth"/>
+  <artworks>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+  </artworks>
+  <dateOfBirth value="1938-01-10"/>
+  <groups/>
+ </object>
+ <object classId="3" className="Book" objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb">
+  <library objectId="74b8d5c5-f98f-4759-8f68-15ee71ad7c68"/>
+  <name value="The Art of Computer Programming"/>
+  <created value="1997-01-01"/>
+  <author objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+ </object>
+</xmlBundle>

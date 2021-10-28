@@ -8,6 +8,7 @@
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/InitDone.hpp>
+#include <soulng/util/Unicode.hpp>
 #include <sngxml/xpath/InitDone.hpp>
 #include <sngcpp/pp/InitDone.hpp>
 #include <sngcpp/ast/InitDone.hpp>
@@ -47,30 +48,28 @@ void PrintUsage()
     std::cout << "  Run in single process." << std::endl;
 }
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        sngxml::xpath::Init();
-        sngcpp::pp::Init();
-        sngcpp::ast::Init();
-        gendoc::html::InitHeaderElementNames();
-    }
-    ~Initializer()
-    {
-        sngcpp::ast::Done();
-        sngcpp::pp::Done();
-        sngxml::xpath::Done();
-        soulng::util::Done();
-    }
+    soulng::util::Init();
+    sngxml::xpath::Init();
+    sngcpp::pp::Init();
+    sngcpp::ast::Init();
+    gendoc::html::InitHeaderElementNames();
+}
+
+void DoneApplication()
+{
+    sngcpp::ast::Done();
+    sngcpp::pp::Done();
+    sngxml::xpath::Done();
+    soulng::util::Done();
 };
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         bool verbose = false;
         bool rebuild = false;
         bool clean = false;
@@ -210,5 +209,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

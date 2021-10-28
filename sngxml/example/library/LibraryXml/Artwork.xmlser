@@ -1,0 +1,60 @@
+[hpp]#include <LibraryXml/Object.hpp>
+[hpp]#include <soulng/util/Component.hpp>
+[cpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+[cpp]#include <soulng/util/Unicode.hpp>
+
+namespace library_xml {
+
+class Author; 
+class Library;
+
+using Component = soulng::util::Component;
+
+class api(LIBRARY_XML_API) Artwork : Object, base(Component)
+{
+<%
+    std::string QueryClassName() const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void SetAuthor(Author* author_)
+    {
+        author.Reset(author_);
+    }
+    Author* GetAuthor() const
+    {
+        return author.Get();
+    }
+%>
+    string name;
+    date created;
+    xml_ptr<Author> author;
+}
+
+<%
+std::string Artwork::QueryClassName() const
+{
+    return "artwork";
+}
+
+void Artwork::Member(query::QueryContext& context, const std::u32string& memberId) const
+{
+    if (memberId == U"name")
+    {
+        context.Stack().Push(new query::StringQueryValue(soulng::unicode::ToUtf32(name)));
+    }
+    else if (memberId == U"created")
+    {
+        context.Stack().Push(new query::DateQueryValue(created));
+    }
+    else if (memberId == U"author")
+    {
+        context.Stack().Push(new query::TargetQueryValue(author.Get()));
+    }
+    else
+    {
+        Object::Member(context, memberId);
+    }
+}
+%>
+
+} // library_xml

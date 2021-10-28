@@ -60,6 +60,8 @@ UTIL_API std::string Format(const std::string& s, int width, FormatJustify justi
 UTIL_API std::string Format(const std::string& s, int width, FormatWidth fw);
 UTIL_API std::string Format(const std::string& s, int width, FormatWidth fw, FormatJustify justify);
 UTIL_API std::string Format(const std::string& s, int width, FormatWidth fw, FormatJustify justify, char fillChar);
+UTIL_API std::string PlatformStringToUtf8(const std::string& platformString);
+UTIL_API std::string Utf8StringToPlatformString(const std::string& utf8String);
 
 } } // namespace soulng::util
 

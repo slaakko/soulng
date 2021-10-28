@@ -1,0 +1,74 @@
+[hpp]#include <LibraryXml/Object.hpp>
+[hpp]#include <soulng/util/Component.hpp>
+[cpp]#include <LibraryXml/Artwork.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+[cpp]#include <soulng/util/Unicode.hpp>
+
+namespace library_xml {
+
+class Artwork;
+class Library;
+
+using Component = soulng::util::Component;
+
+class api(LIBRARY_XML_API) Author : Object, base(Component)
+{
+<%
+    std::string QueryClassName() const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void AddArtwork(Artwork* artwork);
+    std::vector<Artwork*> GetArtworks() const;
+%>
+    string name;
+    xml_ptr<Artwork>[] artworks;
+}
+
+<%
+std::string Author::QueryClassName() const
+{
+    return "author";
+}
+
+void Author::Member(query::QueryContext& context, const std::u32string& memberId) const
+{
+    if (memberId == U"name")
+    {
+        context.Stack().Push(new query::StringQueryValue(soulng::unicode::ToUtf32(name)));
+    }
+    else if (memberId == U"artworks")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Artwork>& artwork : artworks)
+        {
+            list.push_back(artwork.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else
+    {
+        Object::Member(context, memberId);
+    }
+}
+
+void Author::AddArtwork(Artwork* artwork)
+{
+    artwork->SetAuthor(this);
+    for (const xml_ptr<Artwork>& a : artworks)
+    {
+        if (a.Get() == artwork) return;
+    }
+    artworks.push_back(xml_ptr<Artwork>(artwork));
+}
+
+std::vector<Artwork*> Author::GetArtworks() const
+{
+    std::vector<Artwork*> a;
+    for (const xml_ptr<Artwork>& artwork : artworks)
+    {
+        a.push_back(artwork.Get());
+    }
+    return a;
+}
+%>
+
+} // library_xml

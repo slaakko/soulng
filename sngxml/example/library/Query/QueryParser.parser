@@ -1,0 +1,111 @@
+// ===================================
+// Object Query Language (OQL) Parser
+// ===================================
+
+[hpp]#include <Query/Api.hpp>
+[hpp]#include <Query/QueryExpr.hpp>
+[cpp]#include <Query/QueryLexer.hpp>
+[cpp]#include <Query/QueryTokens.hpp>
+[cpp]#include <Query/Factory.hpp>
+
+using namespace QueryTokens;
+
+parser api(QUERY_API) QueryParser
+{
+    main;
+    uselexer QueryLexer;
+    state;
+    farthest_error;
+
+    Query(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= GetQuery(container):getQuery{ return getQuery; }
+        ;
+
+    GetQuery(sngxml::xmlser::XmlContainer* container, var std::u32string cls) : query::QueryExprNode*
+        ::= (GET ID{ cls = lexer.GetMatch(span); } (WHERE BooleanExpr(container):expr)? SEMICOLON){ return query::MakeGetQueryExprNode(cls, expr, container); }
+        ;
+
+    BooleanExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= OrExpr(container):orExpr{ return orExpr; }
+        ;
+
+    OrExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= (AndExpr(container):left{ expr.reset(left); } (OR AndExpr(container):right{ expr.reset(query::MakeOrQueryExprNode(expr.release(), right, container)); })*)
+        {
+            return expr.release();
+        }
+        ;
+
+    AndExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= (MatchExpr(container):left{ expr.reset(left); } (AND MatchExpr(container):right{ expr.reset(query::MakeAndQueryExprNode(expr.release(), right, container)); })*)
+        {
+            return expr.release();
+        }
+        ;
+
+    MatchExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= (RelationalExpr(container):left{ expr.reset(left); } (MATCH RelationalExpr(container):right{ expr.reset(query::MakeMatchQueryExprNode(expr.release(), right, container)); })*)
+        {
+            return expr.release();
+        }
+        ;
+
+    RelationalExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= (PrefixExpr(container):left{ expr.reset(left); } (RelOp:op PrefixExpr(container):right{ expr.reset(query::MakeRelationalQueryExprNode(expr.release(), right, op, container)); })*)
+        {
+            return expr.release();
+        }
+        ;
+
+    RelOp : query::Operator
+        ::= EQ{ return query::Operator::eq; }
+        |   NE{ return query::Operator::ne; }
+        |   LT{ return query::Operator::lt; }
+        |   GT{ return query::Operator::gt; }
+        |   LE{ return query::Operator::le; }
+        |   GE{ return query::Operator::ge; }
+        ;
+
+    PrefixExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= EXCLAMATION PrefixExpr(container):subject{ return query::MakeNotQueryExprNode(subject, container); }
+        |   PostfixExpr(container):postfix{ return postfix; }
+        ;
+
+    PostfixExpr(sngxml::xmlser::XmlContainer* container, var std::unique_ptr<query::QueryExprNode> expr) : query::QueryExprNode*
+        ::= 
+        (   PrimaryExpr(container):primary{ expr.reset(primary); }
+            (
+                DOT ID{ expr.reset(query::MakeMemberSelectionQueryExprNode(expr.release(), lexer.GetMatch(span), container)); }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    PrimaryExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= LPAREN BooleanExpr(container):booleanExpr RPAREN{ return query::MakeParenthesizedQueryExprNode(booleanExpr, container); }
+        |   LiteralExpr(container):literalExpr{ return literalExpr; }
+        |   ID{ return query::MakeIdentifierQueryExprNode(lexer.GetMatch(span), container); }
+        ;
+
+    LiteralExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= BooleanLiteralExpr(container):booleanLiteral{ return booleanLiteral; }
+        |   IntegerLiteralExpr(container):integerLiteral{ return integerLiteral; }
+        |   StringLiteralExpr(container):stringLiteral{ return stringLiteral; }
+        ;
+
+    BooleanLiteralExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= TRUE{ return query::MakeBooleanLiteralQueryExprNode(true, container); }
+        |   FALSE{ return query::MakeBooleanLiteralQueryExprNode(false, container); }
+        ;
+
+    IntegerLiteralExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= INTEGER{ std::u32string match = lexer.GetMatch(span); return query::MakeIntegerLiteralQueryExprNode(match, container); }
+        ;
+
+    StringLiteralExpr(sngxml::xmlser::XmlContainer* container) : query::QueryExprNode*
+        ::= DQ_STRING{ std::u32string match = lexer.GetMatch(span); return query::MakeStringLiteralQueryExprNode(match.substr(1, match.length() - 2), container); }
+        |   SQ_STRING{ std::u32string match = lexer.GetMatch(span); return query::MakeStringLiteralQueryExprNode(match.substr(1, match.length() - 2), container); }
+        ;
+}

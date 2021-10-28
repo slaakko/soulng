@@ -1,0 +1,27 @@
+[hpp]#include <LibraryXml/Artwork.hpp>
+[cpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+
+class api(LIBRARY_XML_API) Film : Artwork
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+%>
+}
+
+<%
+std::string Film::QueryClassName() const 
+{
+    return "film";
+}
+
+void Film::Select(query::QueryContext& context, const std::u32string& cls)  const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"film"));
+}
+%>
+
+} // library_xml

@@ -1,0 +1,50 @@
+// ==================================
+// Object Query Language (OQL) Lexer
+// ==================================
+
+#include <Query/Api.hpp>
+
+classmap QueryClassMap;
+
+prefix "Query";
+
+tokens QueryTokens
+{
+    (ID, "'id'"), (DQ_STRING, "'dq_string'"), (SQ_STRING, "'sq_string'"), (INTEGER, "'integer'"), (TRUE, "'true'"), (FALSE, "'false'"),
+    (GET, "'get'"), (WHERE, "'where'"), (MATCH, "'match'"), (AND, "'and'"), (OR, "'or'"), (NOT, "'not'"),
+    (EQ, "=="), (NE, "!="), (LT, "'<"), (GT, "'>"), (LE, "'<='"), (GE, "'>='"), (DOT, "'.'"), (EXCLAMATION, "'!'"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
+}
+
+keywords QueryKeywords
+{
+    ("true", TRUE), ("false", FALSE), ("get", GET), ("where", WHERE), ("match", MATCH), ("and", AND), ("or", OR), ("not", NOT)
+}
+
+expressions 
+{
+    ws = "[ \t\r\n]+";
+    id = "{idstart}{idcont}*";
+    integer = "[0-9]+";
+    dq_string = "\"[^\"\r\n]*\"";
+    sq_string = "'[^'\r\n]*'";
+}
+
+lexer api(QUERY_API) QueryLexer
+{
+    "{ws}" {}
+    "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+    "{dq_string}" { return DQ_STRING; }
+    "{sq_string}" { return SQ_STRING; }
+    "{integer}" { return INTEGER; }
+    "=" { return EQ; }
+    "<>" { return NE; }
+    "<" { return LT; }
+    ">" { return GT; }
+    "<=" { return LE; }
+    ">=" { return GE; }
+    "\." { return DOT; }
+    "!" { return EXCLAMATION; }
+    "\(" { return LPAREN; }
+    "\)" { return RPAREN; }
+    ";" { return SEMICOLON; }
+}

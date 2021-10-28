@@ -1,7 +1,7 @@
 #ifndef XmlSerTokens_HPP
 #define XmlSerTokens_HPP
 
-// this file has been automatically generated from 'C:/work/soulng/sngxml/serialization/XmlSerLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/cmajorm/cmajor/sngxml/serialization/XmlSerLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <sngxml/serialization/XmlSerApi.hpp>
 #include <string>
@@ -12,41 +12,52 @@ namespace XmlSerTokens
     const int API = 1;
     const int ID = 2;
     const int CLASS = 3;
-    const int BASE = 4;
-    const int BOOL = 5;
-    const int SBYTE = 6;
-    const int BYTE = 7;
-    const int SHORT = 8;
-    const int USHORT = 9;
-    const int INT = 10;
-    const int UINT = 11;
-    const int LONG = 12;
-    const int ULONG = 13;
-    const int FLOAT = 14;
-    const int DOUBLE = 15;
-    const int CHAR = 16;
-    const int WCHAR = 17;
-    const int UCHAR = 18;
-    const int UUID = 19;
-    const int STRING = 20;
-    const int WSTRING = 21;
-    const int USTRING = 22;
-    const int DATE = 23;
-    const int DATETIME = 24;
-    const int TIME_POINT = 25;
-    const int DURATION = 26;
-    const int LBRACKET = 27;
-    const int RBRACKET = 28;
-    const int LBRACE = 29;
-    const int RBRACE = 30;
-    const int SEMICOLON = 31;
-    const int COLON = 32;
-    const int AST = 33;
-    const int LPAREN = 34;
-    const int RPAREN = 35;
-    const int HASH = 36;
-    const int INCLUDE = 37;
-    const int FILEPATH = 38;
+    const int ENUM = 4;
+    const int BASE = 5;
+    const int BOOL = 6;
+    const int SBYTE = 7;
+    const int BYTE = 8;
+    const int SHORT = 9;
+    const int USHORT = 10;
+    const int INT = 11;
+    const int UINT = 12;
+    const int LONG = 13;
+    const int ULONG = 14;
+    const int FLOAT = 15;
+    const int DOUBLE = 16;
+    const int CHAR = 17;
+    const int WCHAR = 18;
+    const int UCHAR = 19;
+    const int UUID = 20;
+    const int STRING = 21;
+    const int WSTRING = 22;
+    const int USTRING = 23;
+    const int DATE = 24;
+    const int DATETIME = 25;
+    const int TIMESTAMP = 26;
+    const int TIME_POINT = 27;
+    const int DURATION = 28;
+    const int LBRACKET = 29;
+    const int RBRACKET = 30;
+    const int LBRACE = 31;
+    const int RBRACE = 32;
+    const int SEMICOLON = 33;
+    const int COLON = 34;
+    const int AST = 35;
+    const int LPAREN = 36;
+    const int RPAREN = 37;
+    const int COMMA = 38;
+    const int ASSIGN = 39;
+    const int STARTCPP = 40;
+    const int ENDCPP = 41;
+    const int LANGLE = 42;
+    const int RANGLE = 43;
+    const int COLONCOLON = 44;
+    const int HASH = 45;
+    const int INCLUDE = 46;
+    const int FILEPATH = 47;
+    const int NAMESPACE = 48;
+    const int USING = 49;
 
     SNGXML_SERIALIZATION_API void InitTokenIdMap();
     SNGXML_SERIALIZATION_API int GetTokenId(const std::u32string& tokenName);

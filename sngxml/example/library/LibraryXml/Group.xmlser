@@ -1,0 +1,57 @@
+[hpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Person.hpp>
+[cpp]#include <LibraryXml/Record.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+
+class Person;
+class Record;
+
+class api(LIBRARY_XML_API) Group : Author
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void AddMember(Person* member);
+%>
+    xml_ptr<Person>[] members;
+}
+
+<%
+std::string Group::QueryClassName() const 
+{
+    return "group";
+}
+
+void Group::Select(query::QueryContext& context, const std::u32string& cls) const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"group"));
+}
+
+void Group::Member(query::QueryContext& context, const std::u32string& memberId) const 
+{
+    if (memberId == U"members")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Person>& member : members)
+        {
+            list.push_back(member.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else
+    {
+        QueryTarget::Member(context, memberId);
+    }
+}
+
+void Group::AddMember(Person* member)
+{
+    member->AddGroup(this);
+    members.push_back(xml_ptr<Person>(member));
+}
+%>
+
+} // library_xml

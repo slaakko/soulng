@@ -1,0 +1,3 @@
+project QueryParser;
+source <QueryParser.parser>;
+rules <Rules>;

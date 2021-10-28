@@ -5,11 +5,61 @@
 
 #include <sngxml/serialization/XmlSerAst.hpp>
 #include <sngxml/serialization/XmlSerVisitor.hpp>
+#include <stdexcept>
 
 namespace sngxml { namespace xmlser {
 
 Node::~Node()
 {
+}
+
+IncludeDirectiveNode::IncludeDirectiveNode(const std::string& fileTag_, const std::string& filePath_) : fileTag(fileTag_), filePath(filePath_)
+{
+}
+
+void IncludeDirectiveNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+ForwardClassDeclarationNode::ForwardClassDeclarationNode(const std::string& classId_) : classId(classId_)
+{
+}
+
+void ForwardClassDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+AliasDeclarationNode::AliasDeclarationNode(const std::string& name_, const std::string& subject_) : name(name_), subject(subject_)
+{
+}
+
+void AliasDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+BaseClassNode::BaseClassNode(const std::string& id_) : id(id_)
+{
+}
+
+ExternalBaseClassNode::ExternalBaseClassNode(const std::string& id_) : BaseClassNode(id_)
+{
+}
+
+void ExternalBaseClassNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+InternalBaseClassNode::InternalBaseClassNode(const std::string& id_) : BaseClassNode(id_)
+{
+}
+
+void InternalBaseClassNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 void BoolNode::Accept(Visitor& visitor)
@@ -112,6 +162,11 @@ void DateTimeNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+void TimestampNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 void TimePointNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
@@ -149,6 +204,15 @@ void ArrayNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+TemplateIdNode::TemplateIdNode(const std::string& typeId_, const std::string& typeParamId_) : typeId(typeId_), typeParamId(typeParamId_)
+{
+}
+
+void TemplateIdNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 MemberVariableNode::MemberVariableNode(TypeNode* type_, const std::string& id_) : type(type_), id(id_)
 {
 }
@@ -158,7 +222,30 @@ void MemberVariableNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ClassNode::ClassNode(Key key_, const std::string& api_, const std::string& id_) : key(key_), api(api_), id(id_)
+NamespaceNode::NamespaceNode(const std::string& id_) : id(id_)
+{
+}
+
+void NamespaceNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void NamespaceNode::AddNode(Node* node)
+{
+    nodes.push_back(std::unique_ptr<Node>(node));
+}
+
+bool NamespaceNode::ContainsNamespaces() const
+{
+    for (const std::unique_ptr<Node>& node : nodes)
+    {
+        if (node->IsNamespaceNode() || node->ContainsNamespaces()) return true;
+    }
+    return false;
+}
+
+ClassNode::ClassNode(Key key_, const std::string& api_, const std::string& id_) : key(key_), api(api_), id(id_), internalBaseClass(nullptr)
 {
 }
 
@@ -167,18 +254,81 @@ void ClassNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-void ClassNode::SetBaseClassId(const std::string& baseClassId_)
+void ClassNode::AddBaseClass(BaseClassNode* baseClass)
 {
-    baseClassId = baseClassId_;
+    if (baseClass->IsInternal())
+    {
+        if (internalBaseClass)
+        {
+            throw std::runtime_error("at most one internal base class allowed");
+        }
+        internalBaseClass = baseClass;
+    }
+    bases.push_back(std::unique_ptr<BaseClassNode>(baseClass));
+}
+
+std::vector<BaseClassNode*> ClassNode::ExternalBaseClasses() const
+{
+    std::vector<BaseClassNode*> externalBases;
+    for (const auto& baseClass : bases)
+    {
+        if (baseClass->IsExternal())
+        {
+            externalBases.push_back(baseClass.get());
+        }
+    }
+    return externalBases;
 }
 
 void ClassNode::AddMemberVariable(MemberVariableNode* memberVariable)
 {
-    memberVariables.push_back(std::unique_ptr<MemberVariableNode>(memberVariable));
+    nodes.push_back(std::unique_ptr<Node>(memberVariable));
 }
 
-SourceFileNode::SourceFileNode()
+void ClassNode::AddCppBlock(CppBlockNode* cppBlock)
 {
+    nodes.push_back(std::unique_ptr<Node>(cppBlock));
+}
+
+EnumConstantNode::EnumConstantNode(const std::string& id_) : id(id_)
+{
+}
+
+void EnumConstantNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+EnumTypeNode::EnumTypeNode(const std::string& id_) : id(id_)
+{
+}
+
+void EnumTypeNode::AddEnumConstant(EnumConstantNode* enumConstant)
+{
+    enumConstants.push_back(std::unique_ptr<EnumConstantNode>(enumConstant));
+}
+
+void EnumTypeNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+SourceFileNode::SourceFileNode() : globalNs(std::string())
+{
+}
+
+NamespaceNode* SourceFileNode::GlobalNs()
+{
+    return &globalNs;
+}
+
+CppBlockNode::CppBlockNode(const std::string& cppText_) : cppText(cppText_), source(false)
+{
+}
+
+void CppBlockNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 void SourceFileNode::Accept(Visitor& visitor)
@@ -186,14 +336,9 @@ void SourceFileNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-void SourceFileNode::AddInclude(const std::string& includeDir)
+void SourceFileNode::AddIncludeDirective(IncludeDirectiveNode* includeDirectiveNode)
 {
-    includeDirs.push_back(includeDir);
-}
-
-void SourceFileNode::AddClass(ClassNode* classNode)
-{
-    classes.push_back(std::unique_ptr<ClassNode>(classNode));
+    includeDirectives.push_back(std::unique_ptr<IncludeDirectiveNode>(includeDirectiveNode));
 }
 
 } } // namespace sngxml::xmlser

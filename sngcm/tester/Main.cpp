@@ -18,19 +18,11 @@
 #include <fstream>
 #include <string>
 
-struct InitDone
+void InitApplication()
 {
-    InitDone()
-    {
-        soulng::util::Init();
-        sngcm::ast::Init();
-    }
-    ~InitDone()
-    {
-        sngcm::ast::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    sngcm::ast::Init();
+}
 
 void PrintUsage()
 {
@@ -44,9 +36,9 @@ void PrintUsage()
 
 int main(int argc, const char** argv)
 {
-    InitDone initDone;
     try
     {
+        InitApplication();
         if (argc < 2)
         {
             PrintUsage();

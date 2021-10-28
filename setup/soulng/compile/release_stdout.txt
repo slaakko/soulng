@@ -1,0 +1,10 @@
+Microsoft (R) Build Engine version 16.11.1+3e40a09f8 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  data.cpp
+  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 13992 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  setup.vcxproj -> C:\work\soulng\setup\soulng\program\x64\Release\setup.exe

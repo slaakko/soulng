@@ -33,7 +33,7 @@ public:
     void Comment(const std::u32string& comment) override;
     void PI(const std::u32string& target, const std::u32string& data) override;
     void CDataSection(const std::u32string& data) override;
-    void StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const Attributes& attributes) override;
+    void StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const Attributes& attributes, const SourcePos& sourcePos) override;
     void EndElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName) override;
     void SkippedEntity(const std::u32string& entityName) override;
 private:
@@ -149,7 +149,7 @@ void DomDocumentHandler::CDataSection(const std::u32string& data)
     }
 }
 
-void DomDocumentHandler::StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const Attributes& attributes)
+void DomDocumentHandler::StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const Attributes& attributes, const SourcePos& sourcePos)
 {
     AddTextContent(true);
     elementStack.push(std::move(currentElement));
@@ -159,6 +159,7 @@ void DomDocumentHandler::StartElement(const std::u32string& namespaceUri, const 
         attrs[attr.QualifiedName()] = std::unique_ptr<Attr>(new Attr(attr.QualifiedName(), attr.Value()));
     }
     currentElement.reset(new Element(qualifiedName, std::move(attrs)));
+    currentElement->SetSourcePos(sourcePos);
     currentElement->InternalSetOwnerDocument(document.get());
     if (!namespaceUri.empty())
     {

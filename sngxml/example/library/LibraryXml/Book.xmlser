@@ -1,0 +1,27 @@
+[hpp]#include <LibraryXml/Artwork.hpp>
+[cpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+
+class api(LIBRARY_XML_API) Book : Artwork
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+%>
+}
+
+<%
+std::string Book::QueryClassName() const 
+{
+    return "book";
+}
+
+void Book::Select(query::QueryContext& context, const std::u32string& cls)  const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"book"));
+}
+%>
+
+} // library_xml

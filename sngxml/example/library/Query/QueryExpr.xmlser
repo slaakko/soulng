@@ -1,0 +1,427 @@
+[hpp]#include <Query/Api.hpp>
+[hpp]#include <Query/QueryValue.hpp>
+[cpp]#include <soulng/rex/Nfa.hpp>
+[cpp]#include <soulng/rex/Match.hpp>
+[cpp]#include <Query/QueryTarget.hpp>
+
+namespace query {
+
+enum Operator
+{
+    eq, ne, lt, gt, le, ge
+}
+
+enum QueryExprNodeKind
+{
+    stringConv, get, or_, and_, match, relational, not_, member, paren, booleanLiteral, integerLiteral, stringLiteral, identifier
+}
+
+class api(QUERY_API) QueryExprNode
+{
+<%
+    virtual void Evaluate(QueryContext& context) {}
+    QueryExprNodeKind Kind() const { return kind; }
+%>
+    QueryExprNodeKind kind;
+}
+
+class api(QUERY_API) UnaryQueryExprNode : QueryExprNode
+{
+<%
+    QueryExprNode* Child() const { return child.Get(); }
+%>
+    unique_xml_ptr<QueryExprNode> child;
+}
+
+class api(QUERY_API) BinaryQueryExprNode : QueryExprNode
+{
+<%
+    QueryExprNode* Left() const { return left.Get(); }
+    QueryExprNode* Right() const { return right.Get(); }
+%>
+    unique_xml_ptr<QueryExprNode> left;
+    unique_xml_ptr<QueryExprNode> right;
+}
+
+class api(QUERY_API) StringConversionQueryExprNode : UnaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) GetQueryExprNode : QueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+    void Select(QueryTarget* object, QueryContext& context, std::vector<QueryTarget*>& result);
+%>
+    ustring cls;
+    unique_xml_ptr<QueryExprNode> cond;
+}
+
+class api(QUERY_API) OrQueryExprNode : BinaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) AndQueryExprNode : BinaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) MatchQueryExprNode : BinaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) RelationalQueryExprNode : BinaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+    Operator op;
+}
+
+class api(QUERY_API) NotQueryExprNode : UnaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) MemberSelectionQueryExprNode : UnaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+    ustring id;
+}
+
+class api(QUERY_API) ParenthesizedQueryExprNode : UnaryQueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+}
+
+class api(QUERY_API) BooleanLiteralQueryExprNode : QueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+    bool value;
+}
+
+class api(QUERY_API) IntegerLiteralQueryExprNode : QueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+    int value;
+}
+
+class api(QUERY_API) StringLiteralQueryExprNode : QueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+    const std::u32string& Value() const { return value; }
+%>
+    ustring value;
+}
+
+class api(QUERY_API) IdentifierQueryExprNode : QueryExprNode
+{
+<%
+    void Evaluate(QueryContext& context) override;
+%>
+    ustring value;
+}
+
+<%
+using namespace soulng::unicode;
+
+template<class T>
+bool Compare(QueryValue* left, QueryValue* right, Operator op)
+{
+    T* l = static_cast<T*>(left);
+    T* r = static_cast<T*>(right);
+    switch (op)
+    {
+        case Operator::eq: return l->Value() == r->Value();
+        case Operator::ne: return l->Value() != r->Value();
+        case Operator::lt: return l->Value() < r->Value();
+        case Operator::gt: return l->Value() > r->Value();
+        case Operator::le: return l->Value() <= r->Value();
+        case Operator::ge: return l->Value() >= r->Value();
+    }
+    throw std::runtime_error("unknown operator");
+}
+
+void StringConversionQueryExprNode::Evaluate(QueryContext& context) 
+{
+    Child()->Evaluate(context);
+    std::unique_ptr<QueryValue> child = context.Stack().Pop();
+    std::u32string strValue;
+    switch (child->Kind())
+    {
+        case QueryValueKind::boolean: strValue = static_cast<BooleanQueryValue*>(child.get())->Value() ? U"true" : U"false"; break;
+        case QueryValueKind::integer: strValue = ToUtf32(std::to_string(static_cast<IntegerQueryValue*>(child.get())->Value())); break;
+        case QueryValueKind::string: strValue = static_cast<StringQueryValue*>(child.get())->Value(); break;
+        case QueryValueKind::date: strValue = ToUtf32(static_cast<DateQueryValue*>(child.get())->Value().ToString()); break;
+        default: throw std::runtime_error("invalid string conversion operand type: " + QueryValueKindStr(child->Kind()));
+    }
+    context.Stack().Push(new StringQueryValue(strValue));
+}
+
+void GetQueryExprNode::Evaluate(QueryContext& context)
+{
+    std::unique_ptr<QueryValue> value = context.Stack().Pop();
+    if (value->Kind() == QueryValueKind::target)
+    {
+        TargetQueryValue* target = static_cast<TargetQueryValue*>(value.get());
+        target->Value()->Member(context, U"objects");
+        std::unique_ptr<QueryValue> objectsValue = context.Stack().Pop();
+        if (objectsValue->Kind() == QueryValueKind::list)
+        {
+            ListQueryValue* list = static_cast<ListQueryValue*>(objectsValue.get());
+            std::vector<QueryTarget*> result;
+            for (QueryTarget* object : list->Value())
+            {
+                Select(object, context, result);
+            }
+            context.Stack().Push(new ListQueryValue(result));
+        }
+    }
+}
+
+void GetQueryExprNode::Select(QueryTarget* object, QueryContext& context, std::vector<QueryTarget*>& result)
+{
+    object->Select(context, cls);
+    std::unique_ptr<QueryValue> value = context.Stack().Pop();
+    if (value->Kind() == QueryValueKind::boolean)
+    {
+        BooleanQueryValue* booleanValue = static_cast<BooleanQueryValue*>(value.get());
+        if (booleanValue->Value())
+        {
+            context.SetVariable(cls, object);
+            bool select = true;
+            if (cond.Get())
+            {
+                cond->Evaluate(context);
+                std::unique_ptr<QueryValue> value = context.Stack().Pop();
+                if (value->Kind() == QueryValueKind::boolean)
+                {
+                    BooleanQueryValue* booleanValue = static_cast<BooleanQueryValue*>(value.get());
+                    select = booleanValue->Value();
+                }
+                else
+                {
+                    throw std::runtime_error("boolean result expected");
+                }
+            }
+            if (select)
+            {
+                result.push_back(object);
+            }
+        }
+    }
+    else
+    {
+        throw std::runtime_error("boolean result expected");
+    }
+}
+
+void OrQueryExprNode::Evaluate(QueryContext& context)
+{
+    Left()->Evaluate(context);
+    std::unique_ptr<QueryValue> left = context.Stack().Pop();
+    if (left->Kind() == QueryValueKind::boolean)
+    {
+        BooleanQueryValue* leftValue = static_cast<BooleanQueryValue*>(left.get());
+        if (leftValue->Value())
+        {
+            context.Stack().Push(new BooleanQueryValue(true));
+        }
+        else
+        {
+            Right()->Evaluate(context);
+            std::unique_ptr<QueryValue> right = context.Stack().Pop();
+            if (right->Kind() == QueryValueKind::boolean)
+            {
+                BooleanQueryValue* rightValue = static_cast<BooleanQueryValue*>(right.get());
+                context.Stack().Push(new BooleanQueryValue(rightValue->Value()));
+            }
+            else
+            {
+                throw std::runtime_error("boolean expression expected");
+            }
+        }
+    }
+    else
+    {
+        throw std::runtime_error("boolean expression expected");
+    }
+}
+
+void AndQueryExprNode::Evaluate(QueryContext& context)
+{
+    Left()->Evaluate(context);
+    std::unique_ptr<QueryValue> left = context.Stack().Pop();
+    if (left->Kind() == QueryValueKind::boolean)
+    {
+        BooleanQueryValue* leftValue = static_cast<BooleanQueryValue*>(left.get());
+        if (!leftValue->Value())
+        {
+            context.Stack().Push(new BooleanQueryValue(false));
+        }
+        else
+        {
+            Right()->Evaluate(context);
+            std::unique_ptr<QueryValue> right = context.Stack().Pop();
+            if (right->Kind() == QueryValueKind::boolean)
+            {
+                BooleanQueryValue* rightValue = static_cast<BooleanQueryValue*>(right.get());
+                context.Stack().Push(new BooleanQueryValue(rightValue->Value()));
+            }
+            else
+            {
+                throw std::runtime_error("boolean expression expected");
+            }
+        }
+    }
+    else
+    {
+        throw std::runtime_error("boolean expression expected");
+    }
+}
+
+void MatchQueryExprNode::Evaluate(QueryContext& context)
+{
+    if (Right()->Kind() == QueryExprNodeKind::stringLiteral)
+    {
+        StringLiteralQueryExprNode* slit = static_cast<StringLiteralQueryExprNode*>(Right());
+        soulng::rex::Nfa nfa = soulng::rex::CompileFilePattern(context.RexContext(), slit->Value());
+        context.Stack().Push(new BooleanQueryValue(soulng::rex::PatternMatch(slit->Value(), nfa)));
+    }
+    else
+    {
+        throw std::runtime_error("right of match must be a string literal");
+    }
+}
+
+void RelationalQueryExprNode::Evaluate(QueryContext& context)
+{
+    Left()->Evaluate(context);
+    std::unique_ptr<QueryValue> left = context.Stack().Pop();
+    Right()->Evaluate(context);
+    std::unique_ptr<QueryValue> right = context.Stack().Pop();
+    if (left->Kind() == QueryValueKind::boolean && right->Kind() == QueryValueKind::boolean)
+    {
+        context.Stack().Push(new BooleanQueryValue(Compare<BooleanQueryValue>(left.get(), right.get(), op)));
+    }
+    else if (left->Kind() == QueryValueKind::integer && right->Kind() == QueryValueKind::integer)
+    {
+        context.Stack().Push(new BooleanQueryValue(Compare<IntegerQueryValue>(left.get(), right.get(), op)));
+    }
+    else if (left->Kind() == QueryValueKind::string && right->Kind() == QueryValueKind::string)
+    {
+        context.Stack().Push(new BooleanQueryValue(Compare<StringQueryValue>(left.get(), right.get(), op)));
+    }
+    else if (left->Kind() == QueryValueKind::date && right->Kind() == QueryValueKind::date)
+    {
+        context.Stack().Push(new BooleanQueryValue(Compare<DateQueryValue>(left.get(), right.get(), op)));
+    }
+    else if (left->Kind() == QueryValueKind::list && right->Kind() == QueryValueKind::list)
+    {
+        context.Stack().Push(new BooleanQueryValue(Compare<ListQueryValue>(left.get(), right.get(), op)));
+    }
+    else
+    {
+        throw std::runtime_error("invalid comparison argument types: " + QueryValueKindStr(left->Kind()) + " and " + QueryValueKindStr(right->Kind()));
+    }
+}
+
+void NotQueryExprNode::Evaluate(QueryContext& context)
+{
+    Child()->Evaluate(context);
+    std::unique_ptr<QueryValue> child = context.Stack().Pop();
+    if (child->Kind() == QueryValueKind::boolean)
+    {
+        context.Stack().Push(new BooleanQueryValue(!static_cast<BooleanQueryValue*>(child.get())->Value()));
+    }
+    else
+    {
+        throw std::runtime_error("invalid 'not' expression argument type");
+    }
+}
+
+void MemberSelectionQueryExprNode::Evaluate(QueryContext& context)
+{
+    Child()->Evaluate(context);
+    std::unique_ptr<QueryValue> child = context.Stack().Pop();
+    if (child->Kind() == QueryValueKind::target)
+    {
+        TargetQueryValue* targetValue = static_cast<TargetQueryValue*>(child.get());
+        QueryTarget* target = targetValue->Value();
+        target->Member(context, id);
+    }
+    else if (child->Kind() == QueryValueKind::list)
+    {
+        if (id == U"count")
+        {
+            ListQueryValue* listValue = static_cast<ListQueryValue*>(child.get());
+            context.Stack().Push(new IntegerQueryValue(listValue->Value().size()));
+        }
+        else
+        {
+            throw std::runtime_error("count expected when selecting a list");
+        }
+    }
+    else
+    {
+        throw std::runtime_error("target or list expected");
+    }
+}
+
+void ParenthesizedQueryExprNode::Evaluate(QueryContext& context)
+{
+    Child()->Evaluate(context);
+}
+
+void BooleanLiteralQueryExprNode::Evaluate(QueryContext& context)
+{
+    context.Stack().Push(new BooleanQueryValue(value));
+}
+
+void IntegerLiteralQueryExprNode::Evaluate(QueryContext& context)
+{
+    context.Stack().Push(new IntegerQueryValue(value));
+}
+
+void StringLiteralQueryExprNode::Evaluate(QueryContext& context)
+{
+    context.Stack().Push(new StringQueryValue(value));
+}
+
+void IdentifierQueryExprNode::Evaluate(QueryContext& context)
+{
+    QueryTarget* target = context.GetVariable(value);
+    if (target)
+    {
+        context.Stack().Push(new TargetQueryValue(target));
+    }
+    else
+    {
+        throw std::runtime_error("variable '" + ToUtf8(value) + "' not found");
+    }
+}
+%>
+
+} // query

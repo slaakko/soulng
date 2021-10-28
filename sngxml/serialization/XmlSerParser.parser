@@ -7,33 +7,67 @@
 [hpp]#include <sngxml/serialization/XmlSerAst.hpp>
 [cpp]#include <sngxml/serialization/XmlSerTokens.hpp>
 [cpp]#include <sngxml/serialization/XmlSerAst.hpp>
+[cpp]#include <sngxml/serialization/XmlSerScan.hpp>
 
 using namespace XmlSerTokens;
 
 parser api(SNGXML_SERIALIZATION_API) XmlSerParser
 {
     uselexer XmlSerLexer;
+    state;
+    farthest_error;
     main;
 
     SourceFile(var std::unique_ptr<sngxml::xmlser::SourceFileNode> sourceFile) : sngxml::xmlser::SourceFileNode*
         ::= (empty{ sourceFile.reset(new sngxml::xmlser::SourceFileNode()); } 
             empty{ lexer.parsingIncludeDeclaration = true; } 
-            (IncludeDirective:id{ sourceFile->AddInclude(id); })*
+            (IncludeDirective:includeDirective{ sourceFile->AddIncludeDirective(includeDirective); })*
             empty{ lexer.parsingIncludeDeclaration = false; } 
-            (Class:cls{ sourceFile->AddClass(cls); })*)
+            NamespaceContent(sourceFile->GlobalNs()):nsContent)
         {
             return sourceFile.release();
         }
         ;
 
-    IncludeDirective : std::string
-        ::= HASH INCLUDE FILEPATH{ return ToUtf8(lexer.GetMatch(span)); }
+    IncludeDirective(var std::string fileTag) : sngxml::xmlser::IncludeDirectiveNode*
+        ::= (FileTag:tag{ fileTag = tag; })? HASH INCLUDE FILEPATH{ return new sngxml::xmlser::IncludeDirectiveNode(fileTag, ToUtf8(lexer.GetMatch(span))); }
+        ;
+
+    FileTag(var std::string fileTag) : std::string
+        ::= (LBRACKET ID{ fileTag = ToUtf8(lexer.GetMatch(span)); } RBRACKET){ return fileTag; }
+        ;
+
+    NamespaceContent(sngxml::xmlser::NamespaceNode* ownerNs)
+        ::= (Declaration:declaration{ ownerNs->AddNode(declaration); } | Definition:definition{ ownerNs->AddNode(definition); })*
+        ;
+
+    Declaration(var std::string classId , var std::string id) : sngxml::xmlser::Node*
+        ::= (CLASS ID{ classId = ToUtf8(lexer.GetMatch(span)); } SEMICOLON){ return new sngxml::xmlser::ForwardClassDeclarationNode(classId); }
+        |   (USING ID{ id = ToUtf8(lexer.GetMatch(span)); } ASSIGN QualifiedId:subject SEMICOLON){ return new sngxml::xmlser::AliasDeclarationNode(id, subject); }
+        ;
+
+    QualifiedId(var std::string id) : std::string
+        ::= (ID{ id = ToUtf8(lexer.GetMatch(span)); } (COLONCOLON ID{ id.append("::").append(ToUtf8(lexer.GetMatch(span))); })*){ return id; }
+        ;
+        
+    Definition(var std::unique_ptr<sngxml::xmlser::CppBlockNode> cppBlockNode) : sngxml::xmlser::Node*
+        ::= Class:cls{ return cls;}
+        |   Enum:enm{ return enm; }
+        |   Namespace:ns{ return ns; }
+        |   CppBlock:cppBlock{ cppBlockNode.reset(cppBlock); cppBlockNode->SetSource(); return cppBlockNode.release(); }
+        ;
+
+    Namespace(var std::unique_ptr<sngxml::xmlser::NamespaceNode> ns) : sngxml::xmlser::NamespaceNode*
+        ::= (NAMESPACE ID{ ns.reset(new sngxml::xmlser::NamespaceNode(ToUtf8(lexer.GetMatch(span)))); } LBRACE NamespaceContent(ns.get()):nsContent RBRACE)
+        {
+            return ns.release();
+        }
         ;
 
     Class(var std::unique_ptr<sngxml::xmlser::ClassNode> classNode, var std::string api_) : sngxml::xmlser::ClassNode*
-        ::= (ClassKey:clsKey (Api:a{ api_ = a; })? ID{ classNode.reset(new sngxml::xmlser::ClassNode(clsKey, api_, ToUtf8(lexer.GetMatch(span)))); } 
-            (Inheritance:inheritance{ classNode->SetBaseClassId(inheritance); })? 
-            LBRACE ClassContent(classNode.get()):classContent RBRACE)
+        ::= ClassKey:clsKey (Api:a{ api_ = a; })? ID{ classNode.reset(new sngxml::xmlser::ClassNode(clsKey, api_, ToUtf8(lexer.GetMatch(span)))); } 
+            (Inheritance(classNode.get()):inheritance)? 
+            LBRACE ClassContent(classNode.get()):classContent RBRACE
         {
             return classNode.release();
         }
@@ -48,12 +82,17 @@ parser api(SNGXML_SERIALIZATION_API) XmlSerParser
         |   CLASS{ return sngxml::xmlser::ClassNode::Key::class_; }
         ;
 
-    Inheritance : std::string
-        ::= COLON ID{ return ToUtf8(lexer.GetMatch(span)); }
+    Inheritance(sngxml::xmlser::ClassNode* classNode) 
+        ::= COLON BaseClass(classNode):first (COMMA BaseClass(classNode):next)*
+        ;
+
+    BaseClass(sngxml::xmlser::ClassNode* classNode, var std::string baseClassId)
+        ::= BASE LPAREN ID{ baseClassId = ToUtf8(lexer.GetMatch(span)); } RPAREN{ classNode->AddBaseClass(new sngxml::xmlser::ExternalBaseClassNode(baseClassId)); }
+        |   ID{ classNode->AddBaseClass(new sngxml::xmlser::InternalBaseClassNode(ToUtf8(lexer.GetMatch(span)))); }
         ;
 
     ClassContent(sngxml::xmlser::ClassNode* classNode)
-        ::= (MemberVariable:memberVariable{ classNode->AddMemberVariable(memberVariable); })*
+        ::= (MemberVariable:memberVariable{ classNode->AddMemberVariable(memberVariable); } | CppBlock:cppBlock{ classNode->AddCppBlock(cppBlock); })*
         ;
 
     MemberVariable(var std::string memberVarId) : sngxml::xmlser::MemberVariableNode*
@@ -63,8 +102,27 @@ parser api(SNGXML_SERIALIZATION_API) XmlSerParser
         }
         ;
 
+    Enum(var std::unique_ptr<sngxml::xmlser::EnumTypeNode> enumTypeNode) : sngxml::xmlser::EnumTypeNode*
+        ::= 
+        (
+            ENUM ID{ enumTypeNode.reset(new sngxml::xmlser::EnumTypeNode(ToUtf8(lexer.GetMatch(span)))); }
+            LBRACE EnumContent(enumTypeNode.get()):enumContent RBRACE
+        )
+        {
+            return enumTypeNode.release();
+        }
+        ;
+
+    EnumContent(sngxml::xmlser::EnumTypeNode* enumTypeNode)
+        ::= (EnumConstant:first{ enumTypeNode->AddEnumConstant(first); } (COMMA EnumConstant:next{ enumTypeNode->AddEnumConstant(next); })*)?
+        ;
+
+    EnumConstant : sngxml::xmlser::EnumConstantNode*
+        ::= ID{ return new sngxml::xmlser::EnumConstantNode(ToUtf8(lexer.GetMatch(span))); }
+        ;
+
     Type(var std::unique_ptr<sngxml::xmlser::TypeNode> typeNode) : sngxml::xmlser::TypeNode*
-        ::= ((ScalarType:scalarType{ typeNode.reset(scalarType); } | ClassType:classType{ typeNode.reset(classType); } 
+        ::= (((ScalarType:scalarType{ typeNode.reset(scalarType); } | TemplateType:templateType{ typeNode.reset(templateType); } | ClassType:classType{ typeNode.reset(classType); })
             (AST{ typeNode.reset(new sngxml::xmlser::PointerNode(typeNode.release())); })?) 
             (LBRACKET RBRACKET{ typeNode.reset(new sngxml::xmlser::ArrayNode(typeNode.release())); })?)
         {
@@ -93,11 +151,20 @@ parser api(SNGXML_SERIALIZATION_API) XmlSerParser
         |   USTRING{ return new sngxml::xmlser::UStringNode(); }
         |   DATE{ return new sngxml::xmlser::DateNode(); }
         |   DATETIME{ return new sngxml::xmlser::DateTimeNode(); }
+        |   TIMESTAMP{ return new sngxml::xmlser::TimestampNode(); }
         |   TIME_POINT{ return new sngxml::xmlser::TimePointNode(); }
         |   DURATION{ return new sngxml::xmlser::DurationNode(); }
         ;
 
     ClassType : sngxml::xmlser::TypeNode*
         ::= ID{ return new sngxml::xmlser::ClassIdNode(ToUtf8(lexer.GetMatch(span))); }
+        ;
+
+    TemplateType(var std::string typeId, var std::string typeParamId) : sngxml::xmlser::TypeNode*
+        ::= ID{ typeId = ToUtf8(lexer.GetMatch(span)); } LANGLE ID{ typeParamId = ToUtf8(lexer.GetMatch(span)); } RANGLE{ return new sngxml::xmlser::TemplateIdNode(typeId, typeParamId); }
+        ;
+
+    CppBlock(var std::string cppText) : sngxml::xmlser::CppBlockNode*
+        ::= STARTCPP{ cppText = sngxml::xmlser::ScanEndCpp(lexer); return new sngxml::xmlser::CppBlockNode(cppText); } 
         ;
 }

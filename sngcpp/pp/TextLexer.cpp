@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp/pp/TextLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp/pp/TextLexer.lexer' using soulng lexer generator slg version 3.1.0
 
 #include <sngcpp/pp/TextLexer.hpp>
 #include <soulng/lexer/Token.hpp>

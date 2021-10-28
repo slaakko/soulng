@@ -4,6 +4,7 @@
 #include <sngxml/xpath/InitDone.hpp>
 #include <sngxml/xpath/XPathEvaluate.hpp>
 #include <sngxml/xpath/XPathDebug.hpp>
+#include <soulng/lexer/SourcePos.hpp>
 #include <soulng/lexer/TrivialLexer.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/CodeFormatter.hpp>
@@ -12,6 +13,8 @@
 #include <iostream>
 
 using namespace soulng::unicode;
+
+using soulng::lexer::SourcePos;
 
 class ContentHandler : public sngxml::xml::XmlContentHandler
 {
@@ -58,7 +61,7 @@ public:
     {
         formatter.WriteLine("CDATA: " + ToUtf8(cdata));
     }
-    void StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const sngxml::xml::Attributes& attributes) override
+    void StartElement(const std::u32string& namespaceUri, const std::u32string& localName, const std::u32string& qualifiedName, const sngxml::xml::Attributes& attributes, const SourcePos& sourcePos) override
     {
         formatter.WriteLine("start element:");
         formatter.IncIndent();

@@ -1,0 +1,342 @@
+[hpp]#include <LibraryXml/Object.hpp>
+[hpp]#include <sngxml/serialization/XmlContainer.hpp>
+[hpp]#include <sngxml/serialization/XmlBundle.hpp>
+[hpp]#include <soulng/util/Component.hpp>
+[hpp]#include <soulng/util/Container.hpp>
+[cpp]#include <LibraryXml/Artwork.hpp>
+[cpp]#include <LibraryXml/Author.hpp>
+[cpp]#include <LibraryXml/Book.hpp>
+[cpp]#include <LibraryXml/Film.hpp>
+[cpp]#include <LibraryXml/Group.hpp>
+[cpp]#include <LibraryXml/Person.hpp>
+[cpp]#include <LibraryXml/Piece.hpp>
+[cpp]#include <LibraryXml/Record.hpp>
+[cpp]#include <stdexcept>
+
+namespace library_xml {
+
+class Book;
+class Film;
+class Piece;
+class Record;
+class Author;
+class Person;
+class Group;
+
+using Component = soulng::util::Component;
+
+class api(LIBRARY_XML_API) Library : Object, base(Component)
+{
+<%
+    std::string QueryClassName() const override;
+    void Select(query::QueryContext& context, const std::u32string& cls) const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void Add(Book* book);
+    Book* GetBook(const uuid& id) const;
+    void Add(Film* film);
+    Film* GetFilm(const uuid& id) const;
+    void Add(Piece* piece);
+    Piece* GetPiece(const uuid& id) const;
+    void Add(Record* record);
+    Record* GetRecord(const uuid& id) const;
+    void Add(Person* person);
+    Person* GetPerson(const uuid& id) const;
+    void Add(Group* group);
+    Group* GetGroup(const uuid& id) const;
+    sngxml::xmlser::XmlContainer xmlContainer;
+    std::unique_ptr<soulng::util::Container> objectContainer;
+%>
+    string name;
+    xml_ptr<Object>[] objects;
+    xml_ptr<Book>[] books;
+    xml_ptr<Film>[] films;
+    xml_ptr<Piece>[] pieces;
+    xml_ptr<Record>[] records;
+    xml_ptr<Person>[] people;
+    xml_ptr<Group>[] groups;
+}
+
+<%
+std::string Library::QueryClassName() const 
+{
+    return "library";
+}
+
+void Library::Member(query::QueryContext& context, const std::u32string& memberId) const
+{
+    if (memberId == U"name")
+    {
+        context.Stack().Push(new query::StringQueryValue(soulng::unicode::ToUtf32(name)));
+    }
+    else if (memberId == U"objects")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Object>& object : objects)
+        {
+            list.push_back(object.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"books")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Book>& book : books)
+        {
+            list.push_back(book.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"films")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Film>& film : films)
+        {
+            list.push_back(film.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"pieces")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Piece>& piece : pieces)
+        {
+            list.push_back(piece.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"records")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Record>& record : records)
+        {
+            list.push_back(record.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"people")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Person>& person : people)
+        {
+            list.push_back(person.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else if (memberId == U"groups")
+    {
+        std::vector<QueryTarget*> list;
+        for (const xml_ptr<Group>& group : groups)
+        {
+            list.push_back(group.Get());
+        }
+        context.Stack().Push(new query::ListQueryValue(list));
+    }
+    else
+    {
+        Object::Member(context, memberId);
+    }
+}
+
+void Library::Select(query::QueryContext& context, const std::u32string& cls) const
+{
+    context.Stack().Push(new query::BooleanQueryValue(cls == U"library"));
+}
+
+void Library::Add(Book* book)
+{
+    xmlContainer.Add(book);
+    books.push_back(xml_ptr<Book>(book));
+    Author* author = book->GetAuthor();
+    if (author)
+    {
+        author->AddArtwork(book);
+    }
+    xmlContainer.AddOrReplace(author);
+    objectContainer->AddChild(book);
+    book->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(book));
+}
+
+Book* Library::GetBook(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Book* book = dynamic_cast<Book*>(s))
+        {
+            return book;
+        }
+        else
+        {
+            throw std::runtime_error("book expected");
+        }
+    }
+    throw std::runtime_error("book not found");
+}
+
+void Library::Add(Film* film)
+{
+    xmlContainer.Add(film);
+    films.push_back(xml_ptr<Film>(film));
+    Author* author = film->GetAuthor();
+    if (author)
+    {
+        author->AddArtwork(film);
+    }
+    xmlContainer.AddOrReplace(author);
+    objectContainer->AddChild(film);
+    film->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(film));
+}
+
+Film* Library::GetFilm(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Film* film = dynamic_cast<Film*>(s))
+        {
+            return film;
+        }
+        else
+        {
+            throw std::runtime_error("film expected");
+        }
+    }
+    throw std::runtime_error("film not found");
+}
+
+void Library::Add(Record* record)
+{
+    xmlContainer.Add(record);
+    records.push_back(xml_ptr<Record>(record));
+    Author* author = record->GetAuthor();
+    if (author)
+    {
+        author->AddArtwork(record);
+    }
+    xmlContainer.AddOrReplace(author);
+    for (const auto& ptr : record->pieces)
+    {
+        xmlContainer.AddOrReplace(ptr.Get());
+    }
+    objectContainer->AddChild(record);
+    record->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(record));
+}
+
+Record* Library::GetRecord(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Record* record = dynamic_cast<Record*>(s))
+        {
+            return record;
+        }
+        else
+        {
+            throw std::runtime_error("record expected");
+        }
+    }
+    throw std::runtime_error("record not found");
+}
+
+void Library::Add(Piece* piece)
+{
+    xmlContainer.Add(piece);
+    pieces.push_back(xml_ptr<Piece>(piece));
+    Author* author = piece->GetAuthor();
+    if (author)
+    {
+        author->AddArtwork(piece);
+    }
+    xmlContainer.AddOrReplace(author);
+    objectContainer->AddChild(piece);
+    piece->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(piece));
+}
+
+Piece* Library::GetPiece(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Piece* piece = dynamic_cast<Piece*>(s))
+        {
+            return piece;
+        }
+        else
+        {
+            throw std::runtime_error("piece expected");
+        }
+    }
+    throw std::runtime_error("piece not found");
+}
+
+void Library::Add(Person* person)
+{
+    xmlContainer.Add(person);
+    people.push_back(xml_ptr<Person>(person));
+    for (const auto& ptr : person->artworks)
+    {
+        xmlContainer.AddOrReplace(ptr.Get());
+    }
+    objectContainer->AddChild(person);
+    person->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(person));
+}
+
+Person* Library::GetPerson(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Person* person = dynamic_cast<Person*>(s))
+        {
+            return person;
+        }
+        else
+        {
+            throw std::runtime_error("person expected");
+        }
+    }
+    throw std::runtime_error("person not found");
+}
+
+void Library::Add(Group* group)
+{
+    xmlContainer.Add(group);
+    groups.push_back(xml_ptr<Group>(group));
+    for (const auto& ptr : group->members)
+    {
+        xmlContainer.AddOrReplace(ptr.Get());
+    }
+    for (const auto& ptr : group->artworks)
+    {
+        xmlContainer.AddOrReplace(ptr.Get());
+    }
+    objectContainer->AddChild(group);
+    group->SetLibrary(this);
+    objects.push_back(xml_ptr<Object>(group));
+}
+
+Group* Library::GetGroup(const uuid& id) const
+{
+    XmlSerializable* s = xmlContainer.Get(id);
+    if (s)
+    {
+        if (Group* group = dynamic_cast<Group*>(s))
+        {
+            return group;
+        }
+        else
+        {
+            throw std::runtime_error("group expected");
+        }
+    }
+    throw std::runtime_error("group not found");
+}
+%>
+
+} // library_xml

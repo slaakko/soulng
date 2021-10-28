@@ -1,7 +1,7 @@
 #ifndef RegExLexer_HPP
 #define RegExLexer_HPP
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/RegExLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/RegExLexer.lexer' using soulng lexer generator slg version 3.1.0
 
 #include <soulng/lexer/Lexer.hpp>
 

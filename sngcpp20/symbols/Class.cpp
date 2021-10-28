@@ -15,7 +15,6 @@
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/Evaluator.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
-#include <sngcpp20/parser/CompoundStatementRecorder.hpp>
 #include <sngcpp20/ast/Expression.hpp>
 #include <sngcpp20/ast/Literal.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -27,6 +26,21 @@
 namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
+
+RecordedParseFn recordedParseFn = nullptr;
+
+void SetRecordedParseFn(RecordedParseFn fn)
+{
+    recordedParseFn = fn;
+}
+
+void RecordedParse(sngcpp::ast::CompoundStatementNode* compoundStatementNode, Context* context)
+{
+    if (recordedParseFn)
+    {
+        recordedParseFn(compoundStatementNode, context);
+    }
+}
 
 class ClassCreatorVisitor : public DefaultVisitor
 {
@@ -381,7 +395,7 @@ void InlineMemberFunctionParserVisitor::Visit(FunctionDefinitionNode& node)
             {
                 FunctionBodyNode* functionBody = static_cast<FunctionBodyNode*>(node.FunctionBody());
                 CompoundStatementNode* compoundStatementNode = static_cast<CompoundStatementNode*>(functionBody->Child());
-                sngcpp::par::RecordedParse(compoundStatementNode, context);
+                RecordedParse(compoundStatementNode, context);
                 EndFunctionDefinition(context);
             }
             catch (const std::exception& ex)

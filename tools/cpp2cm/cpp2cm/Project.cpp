@@ -29,6 +29,7 @@
 #include <soulng/util/Util.hpp>
 #include <boost/filesystem.hpp>
 #include <iostream>
+#include <algorithm>
 
 namespace cpp2cm {
 

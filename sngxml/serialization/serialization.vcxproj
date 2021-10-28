@@ -17,6 +17,14 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Trace|Win32">
+      <Configuration>Trace</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Trace|x64">
+      <Configuration>Trace</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -32,6 +40,12 @@
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Trace|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -40,6 +54,12 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Trace|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
@@ -59,18 +79,34 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Trace|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Trace|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\config\build.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>serialization</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Trace|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>serialization</TargetName>
   </PropertyGroup>
@@ -80,13 +116,30 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>sngxmlserd</TargetName>
+    <TargetName>cmsngxmlserd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Trace|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>cmsngxmlsert</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <TargetName>sngxmlser</TargetName>
+    <TargetName>cmsngxmlser</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SERIALIZATION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Trace|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -122,7 +175,25 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;SNGXML_SERIALIZATION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;$(BOOST_INCLUDE_DIR)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>$(OutDir);$(BOOST_LIB_DIR):..\..\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Trace|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>TRACE;_DEBUG;SNGXML_SERIALIZATION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../..;$(BOOST_INCLUDE_DIR)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -142,9 +213,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;SNGXML_SERIALIZATION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;$(BOOST_INCLUDE_DIR)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,36 +223,50 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);$(BOOST_LIB_DIR);..\..\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="InitDone.hpp" />
+    <ClInclude Include="XmlBundle.hpp" />
     <ClInclude Include="XmlClassRegistry.hpp" />
+    <ClInclude Include="XmlContainer.hpp" />
     <ClInclude Include="XmlExport.hpp" />
     <ClInclude Include="XmlImport.hpp" />
+    <ClInclude Include="XmlPtr.hpp" />
     <ClInclude Include="XmlSerApi.hpp" />
     <ClInclude Include="XmlSerAst.hpp" />
     <ClInclude Include="XmlSerClassMap.hpp" />
     <ClInclude Include="XmlSerGen.hpp" />
+    <ClInclude Include="XmlSerializable.hpp" />
+    <ClInclude Include="XmlSerializationContext.hpp" />
     <ClInclude Include="XmlSerKeywords.hpp" />
     <ClInclude Include="XmlSerLexer.hpp" />
     <ClInclude Include="XmlSerParser.hpp" />
+    <ClInclude Include="XmlSerRules.hpp" />
+    <ClInclude Include="XmlSerScan.hpp" />
     <ClInclude Include="XmlSerTokens.hpp" />
     <ClInclude Include="XmlSerVisitor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InitDone.cpp" />
+    <ClCompile Include="XmlBundle.cpp" />
     <ClCompile Include="XmlClassRegistry.cpp" />
+    <ClCompile Include="XmlContainer.cpp" />
     <ClCompile Include="XmlExport.cpp" />
     <ClCompile Include="XmlImport.cpp" />
+    <ClCompile Include="XmlPtr.cpp" />
     <ClCompile Include="XmlSerApi.cpp" />
     <ClCompile Include="XmlSerAst.cpp" />
     <ClCompile Include="XmlSerClassMap.cpp" />
     <ClCompile Include="XmlSerGen.cpp" />
+    <ClCompile Include="XmlSerializable.cpp" />
+    <ClCompile Include="XmlSerializationContext.cpp" />
     <ClCompile Include="XmlSerKeywords.cpp" />
     <ClCompile Include="XmlSerLexer.cpp" />
     <ClCompile Include="XmlSerParser.cpp" />
+    <ClCompile Include="XmlSerRules.cpp" />
+    <ClCompile Include="XmlSerScan.cpp" />
     <ClCompile Include="XmlSerTokens.cpp" />
     <ClCompile Include="XmlSerVisitor.cpp" />
   </ItemGroup>

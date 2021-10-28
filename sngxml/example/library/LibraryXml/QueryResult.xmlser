@@ -1,0 +1,17 @@
+[hpp]#include <LibraryXml/Api.hpp>
+[cpp]#include <LibraryXml/Object.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+
+namespace library_xml {
+
+class Object;
+class Library;
+
+class api(LIBRARY_XML_API) QueryResult 
+{
+    xml_ptr<Object>[] objects;
+    int count;
+    string error;
+}
+
+} // library_xml

@@ -23,7 +23,7 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return "4.0.0";
+    return "3.1.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_) :

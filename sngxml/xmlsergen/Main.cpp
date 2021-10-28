@@ -23,23 +23,16 @@ void PrintHelp()
     std::cout << "  Be verbose." << std::endl;
 }
 
-struct InitDone
+void InitApplication()
 {
-    InitDone()
-    {
-        soulng::util::Init();
-    }
-    ~InitDone()
-    {
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+}
 
 int main(int argc, const char** argv)
 {
-    InitDone initDone;
     try
     {
+        InitApplication();
         bool verbose = false;
         std::vector<std::string> filePaths;
         for (int i = 1; i < argc; ++i)

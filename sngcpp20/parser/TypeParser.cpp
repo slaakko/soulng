@@ -17,7 +17,7 @@
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TypeParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TypeParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::ast;

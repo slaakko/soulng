@@ -1,0 +1,48 @@
+[hpp]#include <LibraryXml/Api.hpp>
+[hpp]#include <Query/QueryTarget.hpp>
+[cpp]#include <LibraryXml/Library.hpp>
+[cpp]#include <soulng/util/Unicode.hpp>
+
+namespace library_xml {
+    
+class Library;
+
+using QueryTarget = query::QueryTarget;
+
+class api(LIBRARY_XML_API) Object : base(QueryTarget)
+{
+<%
+    std::string QueryClassName() const override;
+    void Member(query::QueryContext& context, const std::u32string& memberId) const override;
+    void SetLibrary(Library* library_)
+    {
+        library.Reset(library_);
+    }
+    Library* GetLibrary() const
+    {
+        return library.Get();
+    }
+%>
+    xml_ptr<Library> library;
+}
+
+<%
+std::string Object::QueryClassName() const
+{
+    return "object";
+}
+    
+void Object::Member(query::QueryContext& context, const std::u32string& memberId) const
+{
+    if (memberId == U"library")
+    {
+        context.Stack().Push(new query::TargetQueryValue(library.Get()));
+    }
+    else
+    {
+        QueryTarget::Member(context, memberId);
+    }
+}
+%>
+
+} // library_xml

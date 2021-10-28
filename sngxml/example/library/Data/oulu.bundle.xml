@@ -1,0 +1,147 @@
+<xmlBundle rootObjectId="4f87e68d-9911-4789-9008-8d32449322ee">
+ <object classId="6" className="Person" objectId="718c87ba-be11-4023-9c02-b17a16c4567d">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Oiva Lohtander"/>
+  <artworks/>
+  <dateOfBirth value="1942-04-15"/>
+  <groups>
+   <item objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+  </groups>
+ </object>
+ <object classId="5" className="Library" objectId="4f87e68d-9911-4789-9008-8d32449322ee">
+  <library objectId="00000000-0000-0000-0000-000000000000" value="null"/>
+  <name value="oulu"/>
+  <objects>
+   <item objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+   <item objectId="495256e9-1e72-44f7-88cd-447a52d5058b"/>
+   <item objectId="718c87ba-be11-4023-9c02-b17a16c4567d"/>
+   <item objectId="807638ea-0ad2-4bee-afc8-7d0c371f79a4"/>
+   <item objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+   <item objectId="0acb4adb-afda-4fc6-af16-3aefe0f2ac72"/>
+   <item objectId="ee942d81-9105-4795-804d-9e4516a115dd"/>
+   <item objectId="47a64252-348e-48f5-bb95-f85007c960c2"/>
+   <item objectId="e53fe1a8-28b9-4322-af5f-5c7982ff4e1e"/>
+   <item objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+   <item objectId="381f715c-af57-4d05-aef5-8e3ef269d6ab"/>
+  </objects>
+  <books>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+  </books>
+  <films>
+   <item objectId="0acb4adb-afda-4fc6-af16-3aefe0f2ac72"/>
+   <item objectId="381f715c-af57-4d05-aef5-8e3ef269d6ab"/>
+  </films>
+  <pieces/>
+  <records/>
+  <people>
+   <item objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+   <item objectId="495256e9-1e72-44f7-88cd-447a52d5058b"/>
+   <item objectId="718c87ba-be11-4023-9c02-b17a16c4567d"/>
+   <item objectId="807638ea-0ad2-4bee-afc8-7d0c371f79a4"/>
+   <item objectId="ee942d81-9105-4795-804d-9e4516a115dd"/>
+   <item objectId="47a64252-348e-48f5-bb95-f85007c960c2"/>
+   <item objectId="e53fe1a8-28b9-4322-af5f-5c7982ff4e1e"/>
+  </people>
+  <groups>
+   <item objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+   <item objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="b38a0960-6501-4480-a1b3-37131a603d3f">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Donald Knuth"/>
+  <artworks>
+   <item objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb"/>
+  </artworks>
+  <dateOfBirth value="1938-01-10"/>
+  <groups/>
+ </object>
+ <object classId="3" className="Book" objectId="53b59bdf-7f07-4f1a-912c-22c794d7a3eb">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="The Art of Computer Programming"/>
+  <created value="1997-01-01"/>
+  <author objectId="b38a0960-6501-4480-a1b3-37131a603d3f"/>
+ </object>
+ <object classId="6" className="Person" objectId="495256e9-1e72-44f7-88cd-447a52d5058b">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Kai Lehtinen"/>
+  <artworks/>
+  <dateOfBirth value="1958-07-31"/>
+  <groups>
+   <item objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+  </groups>
+ </object>
+ <object classId="7" className="Group" objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Raid team"/>
+  <artworks>
+   <item objectId="0acb4adb-afda-4fc6-af16-3aefe0f2ac72"/>
+  </artworks>
+  <members>
+   <item objectId="495256e9-1e72-44f7-88cd-447a52d5058b"/>
+   <item objectId="718c87ba-be11-4023-9c02-b17a16c4567d"/>
+   <item objectId="807638ea-0ad2-4bee-afc8-7d0c371f79a4"/>
+  </members>
+ </object>
+ <object classId="6" className="Person" objectId="807638ea-0ad2-4bee-afc8-7d0c371f79a4">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Tapio Piirainen"/>
+  <artworks/>
+  <dateOfBirth value="1954-01-01"/>
+  <groups>
+   <item objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+  </groups>
+ </object>
+ <object classId="4" className="Film" objectId="0acb4adb-afda-4fc6-af16-3aefe0f2ac72">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Raid"/>
+  <created value="2000-01-01"/>
+  <author objectId="16dcac7a-fd62-4fef-9bc3-fe5c3d8af5ab"/>
+ </object>
+ <object classId="6" className="Person" objectId="ee942d81-9105-4795-804d-9e4516a115dd">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Tom Hanks"/>
+  <artworks/>
+  <dateOfBirth value="1956-07-09"/>
+  <groups>
+   <item objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+  </groups>
+ </object>
+ <object classId="7" className="Group" objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Forrest Gump team"/>
+  <artworks>
+   <item objectId="381f715c-af57-4d05-aef5-8e3ef269d6ab"/>
+  </artworks>
+  <members>
+   <item objectId="ee942d81-9105-4795-804d-9e4516a115dd"/>
+   <item objectId="47a64252-348e-48f5-bb95-f85007c960c2"/>
+   <item objectId="e53fe1a8-28b9-4322-af5f-5c7982ff4e1e"/>
+  </members>
+ </object>
+ <object classId="4" className="Film" objectId="381f715c-af57-4d05-aef5-8e3ef269d6ab">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Forrest Gump"/>
+  <created value="1994-07-06"/>
+  <author objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+ </object>
+ <object classId="6" className="Person" objectId="47a64252-348e-48f5-bb95-f85007c960c2">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Hanna R. Hall"/>
+  <artworks/>
+  <dateOfBirth value="1984-07-09"/>
+  <groups>
+   <item objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+  </groups>
+ </object>
+ <object classId="6" className="Person" objectId="e53fe1a8-28b9-4322-af5f-5c7982ff4e1e">
+  <library objectId="4f87e68d-9911-4789-9008-8d32449322ee"/>
+  <name value="Gary Sinise"/>
+  <artworks/>
+  <dateOfBirth value="1955-03-17"/>
+  <groups>
+   <item objectId="6dc0c945-2441-40c5-8207-2c77ea7a4cb8"/>
+  </groups>
+ </object>
+</xmlBundle>

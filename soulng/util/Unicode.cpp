@@ -13,7 +13,7 @@ namespace soulng { namespace unicode {
 
 std::string SoulNGVersionStr()
 {
-    return "3.10.0";
+    return "3.1.0";
 }
 
 UnicodeException::UnicodeException(const std::string& message_) : std::runtime_error(message_)
@@ -2039,7 +2039,7 @@ std::unique_ptr<CharacterTable> CharacterTable::instance;
 
 const uint8_t headerMagic[8] =
 {
-    static_cast<uint8_t>('C'), static_cast<uint8_t>('M'), static_cast<uint8_t>('A'), static_cast<uint8_t>('J'),
+    static_cast<uint8_t>('S'), static_cast<uint8_t>('O'), static_cast<uint8_t>('U'), static_cast<uint8_t>('L'),
     static_cast<uint8_t>('U'), static_cast<uint8_t>('C'), static_cast<uint8_t>('D'), current_soulng_ucd_version
 };
 
@@ -2118,7 +2118,7 @@ void CharacterTable::ReadHeader(BinaryReader& reader)
     {
         if (magic[i] != headerMagic[i])
         {
-            throw UnicodeException("invalid soulng_ucd.bin header magic: 'CMAJUCD' expected");
+            throw UnicodeException("invalid soulng_ucd.bin header magic: 'SOULUCD' expected");
         }
     }
     if (magic[7] != headerMagic[7])

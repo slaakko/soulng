@@ -6,6 +6,7 @@
 #include <sngcpp20/project/Project.hpp>
 #include <sngcpp20/driver/Interface.hpp>
 #include <sngcpp20/parser/ClassParser.hpp>
+#include <sngcpp20/parser/InitDone.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/InitDone.hpp>
 #include <sngcpp20/symbols/Value.hpp>
@@ -40,9 +41,8 @@ using namespace soulng::unicode;
 
 const char* Version()
 {
-    return "4.0.0";
+    return "3.1.0";
 }
-
 
 void PrintHelp()
 {
@@ -502,31 +502,20 @@ bool ProcessProject(const Project& project, Options options, bool out, bool verb
     return processingResult;
 }
 
-struct InitDone
+void InitApplication()
 {
-    InitDone()
-    {
-        soulng::util::Init();
-        sngxml::xpath::Init();
-        sngcpp::ast::Init();
-        sngcpp::symbols::Init();
-        sngcpp::pp::Init();
-    }
-    ~InitDone()
-    {
-        sngcpp::pp::Done();
-        sngcpp::symbols::Done();
-        sngcpp::ast::Done();
-        sngxml::xpath::Done();
-        soulng::util::Done();
-    }
-};
-
+    soulng::util::Init();
+    sngxml::xpath::Init();
+    sngcpp::ast::Init();
+    sngcpp::symbols::Init();
+    sngcpp::par::Init();
+    sngcpp::pp::Init();
+}
 int main(int argc, const char** argv)
 {
-    InitDone initDone;
     try
     {
+        InitApplication();
         std::string config;
         std::string patterns = "*.c;*.h;*.cpp;*.hpp;*.cxx;*.hxx;*.ixx";
         std::vector<std::string> paths;

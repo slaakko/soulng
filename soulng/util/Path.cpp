@@ -173,40 +173,42 @@ std::string Path::MakeCanonical(const std::string& path)
 
 std::string Path::ChangeExtension(const std::string& path, const std::string& extension)
 {
+    std::string p = MakeCanonical(path);
+    std::string::size_type lastSlashPos = p.rfind('/');
     std::string::size_type lastDotPos = path.rfind('.');
     if (extension.empty())
     {
-        if (lastDotPos != std::string::npos)
+        if (lastDotPos != std::string::npos && lastDotPos > lastSlashPos)
         {
-            return path.substr(0, lastDotPos);
+            return p.substr(0, lastDotPos);
         }
         else
         {
-            return path;
+            return p;
         }
     }
     else
     {
-        if (lastDotPos == std::string::npos)
+        if (lastDotPos == std::string::npos || (lastSlashPos != std::string::npos && lastDotPos < lastSlashPos))
         {
             if (extension[0] == '.')
             {
-                return path + extension;
+                return p + extension;
             }
             else
             {
-                return path + "." + extension;
+                return p + "." + extension;
             }
         }
         else
         {
             if (extension[0] == '.')
             {
-                return path.substr(0, lastDotPos) + extension;
+                return p.substr(0, lastDotPos) + extension;
             }
             else
             {
-                return path.substr(0, lastDotPos + 1) + extension;
+                return p.substr(0, lastDotPos + 1) + extension;
             }
         }
     }
@@ -330,7 +332,19 @@ std::string Path::GetDirectoryName(const std::string& path)
         std::string::size_type lastDirSepPos = path.rfind('/');
         if (lastDirSepPos != std::string::npos)
         {
-            return path.substr(0, lastDirSepPos);
+            std::string dir = path.substr(0, lastDirSepPos);
+#ifdef _WIN32
+            if (dir.length() == 2 && std::isalpha(dir[0]) && dir[1] == ':')
+            {
+                dir.append(1, '/');
+            }
+#else
+            if (dir.empty())
+            {
+                dir.append(1, '/');
+            }
+#endif
+            return dir;
         }
         else
         {

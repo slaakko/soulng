@@ -1,0 +1,86 @@
+<package appName="soulng" compression="deflate" id="bd63fbcb-9ebd-4d08-b287-1b1a517b4b66" includeUninstaller="true" name="soulng" publisher="Seppo Laakko" sourceRootDir="C:/work/soulng" targetRootDir="C:/soulng" version="4.0.0">
+ <component name="root">
+  <file name="README.md"/>
+  <file name="soulng_all.sln"/>
+ </component>
+ <component name="binaries">
+  <directory name="bin"/>
+ </component>
+ <component name="libraries">
+  <directory name="lib"/>
+ </component>
+ <component name="configuration">
+  <directory name="config"/>
+ </component>
+ <component name="documentation">
+  <directory name="doc"/>
+ </component>
+ <component name="install">
+  <directory name="inst">
+   <exclude file="*"/>
+   <include file="inst.bat"/>
+  </directory>
+ </component>
+ <component name="sources">
+  <directory name="sngcm">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="sngcpp">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="sngcpp20">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="sngjson">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="sngxml">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="soulng">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+  <directory name="tools">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
+ </component>
+ <component name="unicode">
+  <directory name="unicode"/>
+ </component>
+ <component name="setup">
+  <directory name="setup">
+   <exclude dir="*"/>
+   <include dir="soulng">
+    <exclude dir="*"/>
+    <exclude file="*"/>
+    <include file="soulng.package.xml"/>
+   </include>
+  </directory>
+ </component>
+ <environment>
+  <variable name="SOULNG_ROOT" value="$TARGET_ROOT_DIR$"/>
+  <pathDirectory value="$TARGET_ROOT_DIR$/bin"/>
+ </environment>
+ <links/>
+</package>

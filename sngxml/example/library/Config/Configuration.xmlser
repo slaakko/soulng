@@ -1,0 +1,7 @@
+[hpp]#include <Config/Api.hpp>
+
+class api(CONFIG_API) Configuration
+{
+    int serverPortNumber;
+    string[] libraries;
+}

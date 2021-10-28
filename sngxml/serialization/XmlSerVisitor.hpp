@@ -29,14 +29,25 @@ class WStringNode;
 class UStringNode;
 class DateNode;
 class DateTimeNode;
+class TimestampNode;
 class TimePointNode;
 class DurationNode;
 class ClassIdNode;
 class PointerNode;
 class ArrayNode;
 class MemberVariableNode;
+class NamespaceNode;
 class ClassNode;
+class TemplateIdNode;
+class EnumTypeNode;
+class EnumConstantNode;
 class SourceFileNode;
+class ForwardClassDeclarationNode;
+class AliasDeclarationNode;
+class IncludeDirectiveNode;
+class CppBlockNode;
+class ExternalBaseClassNode;
+class InternalBaseClassNode;
 
 class Visitor
 {
@@ -62,22 +73,35 @@ public:
     virtual void Visit(UStringNode& node) {}
     virtual void Visit(DateNode& node) {}
     virtual void Visit(DateTimeNode& node) {}
+    virtual void Visit(TimestampNode& node) {}
     virtual void Visit(TimePointNode& node) {}
     virtual void Visit(DurationNode& node) {}
     virtual void Visit(ClassIdNode& node) {}
     virtual void Visit(PointerNode& node) {}
     virtual void Visit(ArrayNode& node) {}
     virtual void Visit(MemberVariableNode& node) {}
+    virtual void Visit(NamespaceNode& node) {}
     virtual void Visit(ClassNode& node) {}
+    virtual void Visit(TemplateIdNode& node) {}
+    virtual void Visit(EnumTypeNode& node) {}
+    virtual void Visit(EnumConstantNode& node) {}
     virtual void Visit(SourceFileNode& node) {}
+    virtual void Visit(ForwardClassDeclarationNode& node) {}
+    virtual void Visit(AliasDeclarationNode& node) {}
+    virtual void Visit(IncludeDirectiveNode& node) {}
+    virtual void Visit(CppBlockNode& node) {}
+    virtual void Visit(ExternalBaseClassNode& node) {}
+    virtual void Visit(InternalBaseClassNode& node) {}
 };
 
 class DefaultVisitor : public Visitor
 {
 public:
     void Visit(SourceFileNode& node) override;
+    void Visit(NamespaceNode& node) override;
     void Visit(ClassNode& node) override;
     void Visit(MemberVariableNode& node) override;
+    void Visit(EnumTypeNode& node) override;
     void Visit(ArrayNode& node) override;
     void Visit(PointerNode& node) override;
 };

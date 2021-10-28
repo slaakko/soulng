@@ -3,7 +3,7 @@
 #include <soulng/slg/RegExLexer.hpp>
 #include <soulng/slg/RegExTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/RegExParser.parser' using soulng parser generator spg version 4.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/RegExParser.parser' using soulng parser generator spg version 3.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -172,6 +172,7 @@ soulng::parser::Match RegExParser::Alternative(RegExLexer& lexer, soulng::slg::L
                                                     right.reset(static_cast<soulng::parser::Value<soulng::slg::Nfa>*>(match.value));
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch10 = match;
                                                     }
                                                     else
@@ -596,6 +597,7 @@ soulng::parser::Match RegExParser::Primary(RegExLexer& lexer, soulng::slg::Lexer
                                                             alt.reset(static_cast<soulng::parser::Value<soulng::slg::Nfa>*>(match.value));
                                                             if (match.hit)
                                                             {
+                                                                lexer.ResetRecovered();
                                                                 *parentMatch13 = match;
                                                             }
                                                             else
@@ -632,6 +634,7 @@ soulng::parser::Match RegExParser::Primary(RegExLexer& lexer, soulng::slg::Lexer
                                                     }
                                                     if (match.hit)
                                                     {
+                                                        lexer.ResetRecovered();
                                                         *parentMatch15 = match;
                                                     }
                                                     else
@@ -1021,6 +1024,7 @@ soulng::parser::Match RegExParser::Class(RegExLexer& lexer, soulng::slg::LexerCo
                         }
                         if (match.hit)
                         {
+                            lexer.ResetRecovered();
                             *parentMatch16 = match;
                         }
                         else
