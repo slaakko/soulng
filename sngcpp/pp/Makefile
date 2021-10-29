@@ -1,6 +1,7 @@
 include ../Makefile.common
 
-OBJECTS = Evaluator.o File.o InitDone.o PP.o PPClassMap.o PPKeywords.o PPLexer.o PPParser.o PPTokens.o TextClassMap.o TextLexer.o TextTokens.o
+OBJECTS = Evaluator.o File.o InitDone.o PP.o PPClassMap.o PPKeywords.o PPLexer.o PPParser.o \
+PPTokens.o TextClassMap.o TextLexer.o TextTokens.o
 
 %o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

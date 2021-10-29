@@ -4,12 +4,16 @@ all:
 	$(MAKE) -C xml
 	$(MAKE) -C dom
 	$(MAKE) -C xpath
+	$(MAKE) -C serialization
+	$(MAKE) -C xmlsergen
 	$(MAKE) -C tester
 	
 clean:
 	$(MAKE) -C xml clean
 	$(MAKE) -C dom clean
 	$(MAKE) -C xpath clean
+	$(MAKE) -C serialization clean
+	$(MAKE) -C xmlsergen clean
 	$(MAKE) -C tester clean
 
 sources:
@@ -25,8 +29,10 @@ install:
 	mkdir -p $(prefix)/include/sngxml/xml
 	mkdir -p $(prefix)/include/sngxml/dom
 	mkdir -p $(prefix)/include/sngxml/xpath
+	mkdir -p $(prefix)/include/sngxml/serialization
 	cp ../bin/* $(prefix)/bin
 	cp ../lib/* $(prefix)/lib
 	cp xml/*.hpp $(prefix)/include/sngxml/xml
 	cp dom/*.hpp $(prefix)/include/sngxml/dom
 	cp xpath/*.hpp $(prefix)/include/sngxml/xpath
+	cp serialization/*.hpp $(prefix)/include/sngxml/serialization

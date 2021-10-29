@@ -1,6 +1,7 @@
 include ../Makefile.common
 
-OBJECTS = CppClassMap.o CppKeywords.o CppLexer.o CppTokenLexer.o CppTokenLexerClassMap.o CppTokenLexerKeywords.o CppTokenLexerTokens.o CppTokens.o
+OBJECTS = CppClassMap.o CppKeywords.o CppLexer.o CppTokenLexer.o CppTokenLexerClassMap.o \
+CppTokenLexerKeywords.o CppTokenLexerTokens.o CppTokens.o
 
 %o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

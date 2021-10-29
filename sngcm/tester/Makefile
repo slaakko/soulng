@@ -15,7 +15,10 @@ exename=sngcmtester
 endif
 
 ../../bin/$(exename): $(OBJECTS) $(LIBRARIES)
-	$(CXX) $(CXXFLAGS) -o ../../bin/$(exename) $(OBJECTS) -lsngcmcmparser -lsngcmcmlexer -lsngcmast -lsngrex -lsngparser -lsnglexer -lsngcppcode -lsngutil -lboost_filesystem -lboost_iostreams -lboost_system
+	$(CXX) $(CXXFLAGS) -o ../../bin/$(exename) $(OBJECTS) \
+-lsngcmcmparser -lsngcmcmlexer -lsngcmast \
+-lsngrex -lsngparser -lsnglexer -lsngcppcode -lsngutil \
+-lboost_filesystem -lboost_iostreams -lboost_system
 	
 clean:
 	rm -f *.o
