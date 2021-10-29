@@ -1,4 +1,6 @@
 all:
+	mkdir -p bin
+	mkdir -p lib
 	$(MAKE) -C soulng
 	$(MAKE) -C examples
 	$(MAKE) -C sngxml
