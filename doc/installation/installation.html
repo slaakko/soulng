@@ -24,6 +24,13 @@
 
 	<h3>Installation from sources</h3>
 	
+	<h4>Requirements</h4>
+	
+	<p>
+		Requires Visual C++ version 19.29.30136 for x64 (or later).
+		Executing command 'cl /?' from the x64 Native Tools Command Prompt for VS 2019 prints the Visual C++ version number.
+	</p>
+	
 	<p>
 		Requires Boost C++ libraries. The exact version does not matter as far as it is a reasonably recent version. 
 		The soulng binaries have been built using Boost version is 1.77.
@@ -58,32 +65,50 @@
 
     <h2>Installation on Linux / on WSL</h2>
 
+	<h3>Requirements</h3>
+	
+	<p>
+		Requires g++ version 10.3.0 or later (executing command 'g++ --version' prints the version number).
+		Here's how to obtain it on Ubuntu Linux 20.04:
+		<ul>
+			<li>installation:</li>
+			<pre>
+			sudo apt install gcc-10 g++-10
+			</pre>
+			
+			<li>making it default:</li>
+			<pre>
+			sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+			</pre>
+		</ul>
+	</p>
+
     <h3>
         Building and installing the binaries
     </h3>
 
     <ul>
-        <li><a href="../download/download.html">Download</a> the SoulNG 3.0.0 Source Package.</li>
-        <li>Extract it to a directory of your choice here called <strong>soulng-3.0.0</strong></li>
+        <li><a href="../download/download.html">Download</a> the SoulNG 3.1.0 Source Package.</li>
+        <li>Extract it to a directory of your choice here called <strong>soulng-3.1.0</strong></li>
         <li>
             change to the <strong>soulng</strong> subdirectory:
             <pre>
-                slaakko@pluto:~/soulng-3.0.0$ cd soulng
+                slaakko@pluto:~/soulng-3.1.0$ cd soulng
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-3.0.0/soulng$ make
+                slaakko@pluto:~/soulng-3.1.0/soulng$ make
             </pre>
         </li>
         <li>
-            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-3.0.0</strong> directory.
+            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-3.1.0</strong> directory.
             <pre>
-                slaakko@pluto:~/soulng-3.0.0/soulng$ export SOULNG_ROOT=~/soulng-3.0.0
+                slaakko@pluto:~/soulng-3.1.0/soulng$ export SOULNG_ROOT=~/soulng-3.1.0
             </pre>
             You have to put it to your profile script to make it permanent.
-            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-3.0.0/unicode</strong> subdirectory.
+            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-3.1.0/unicode</strong> subdirectory.
         </li>
         <li>
             run [sudo] make install

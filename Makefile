@@ -20,3 +20,13 @@ install:
 	$(MAKE) -C sngxml install
 	$(MAKE) -C sngcpp install
 	$(MAKE) -C sngcm install
+
+SRCDIR = ~/soulng-3.1.0-src
+SRCDIRNAME = soulng-3.1.0-src
+SRCPACKAGE = soulng-3.1.0-src.tar.bz2
+
+srcpackage:
+	mkdir -p ~/$(SRCDIR)
+	cd ~/soulng && git archive master | tar -x -C $(SRCDIR)
+	cp /mnt/c/work/soulng/unicode/soulng_ucd.bin $(SRCDIR)/unicode
+	cd ~ && tar cjf $(SRCPACKAGE) $(SRCDIRNAME)
