@@ -82,9 +82,9 @@
 
         int main(int argc, const char** argv)
         {
-            Initializer initializer;
             try
             {
+                InitApplication();
                 std::vector<std::string> files;
                 Command command = Command::print;
                 bool debug = false;
@@ -183,6 +183,7 @@
                 std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
                 return 1;
             }
+            DoneApplication();
             return 0;
         }
     </pre>

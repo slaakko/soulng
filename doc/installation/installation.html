@@ -26,15 +26,19 @@
 	
 	<h4>Requirements</h4>
 	
-	<p>
+	<ul>
+	
+	<li>
 		Requires Visual C++ version 19.29.30136 for x64 (or later).
 		Executing command 'cl /?' from the x64 Native Tools Command Prompt for VS 2019 prints the Visual C++ version number.
-	</p>
+	</li>
 	
-	<p>
+	<li>
 		Requires Boost C++ libraries. The exact version does not matter as far as it is a reasonably recent version. 
-		The soulng binaries have been built using Boost version is 1.77.
-	</p>
+		The soulng binaries have been built using Boost version 1.77.
+	</li>
+	
+	</ul>
 	
 	<h4>Download</h4>
 	
@@ -67,133 +71,81 @@
 
 	<h3>Requirements</h3>
 	
-	<p>
+	<ul>
+	
+	<li>
 		Requires g++ version 10.3.0 or later (executing command 'g++ --version' prints the version number).
 		Here's how to obtain it on Ubuntu Linux 20.04:
 		<ul>
 			<li>installation:</li>
 			<pre>
-			sudo apt install gcc-10 g++-10
+                 sudo apt install gcc-10 g++-10
 			</pre>
 			
 			<li>making it default:</li>
 			<pre>
-			sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+                 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
 			</pre>
 		</ul>
-	</p>
+	</li>
+	
+	<li>
+		Requires Boost C++ libraries.
+		The exact version does not matter as long as it is reasonably recent. 
+		The setup has been tested using Boost version 1.71.0.<br/>
+		Here's how obtain the Boost version number on Ubuntu Linux:
+        <pre>
+            dpkg -s libboost-dev | grep 'Version'
+            Version: 1.71.0.0ubuntu2
+		</pre>
+		You can use your package manager to install Boost if you do not have it already.
+	</li>
+
+	</ul>
 
     <h3>
-        Building and installing the binaries
+        Building and installing 
     </h3>
 
     <ul>
         <li><a href="../download/download.html">Download</a> the SoulNG 3.1.0 Source Package.</li>
-        <li>Extract it to a directory of your choice here called <strong>soulng-3.1.0</strong></li>
-        <li>
-            change to the <strong>soulng</strong> subdirectory:
+        <li>Extract it to a directory of your choice here called <strong>soulng-3.1.0-src</strong>:</li>
             <pre>
-                slaakko@pluto:~/soulng-3.1.0$ cd soulng
+                slaakko@pluto:~$ tar xjf soulng-3.1.0-src.tar.bz2
+            </pre>
+        <li>
+            change to the <strong>soulng-3.1.0-src</strong> directory:
+            <pre>
+                slaakko@pluto:~$ cd soulng-3.1.0-src
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-3.1.0/soulng$ make
+                slaakko@pluto:~/soulng-3.1.0-src$ make
             </pre>
         </li>
         <li>
-            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-3.1.0</strong> directory.
+            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-3.1.0-src</strong> directory.
             <pre>
-                slaakko@pluto:~/soulng-3.1.0/soulng$ export SOULNG_ROOT=~/soulng-3.1.0
+                slaakko@pluto:~/soulng-3.1.0-src$ export SOULNG_ROOT=~/soulng-3.1.0-src
             </pre>
             You have to put it to your profile script to make it permanent.
-            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-3.1.0/unicode</strong> subdirectory.
+            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-3.1.0-src/unicode</strong> subdirectory.
         </li>
         <li>
             run [sudo] make install
             <pre>
-                slaakko@pluto:~/soulng-3.0.0/soulng$ sudo make install
+                slaakko@pluto:~/soulng-3.1.0-src$ sudo make install
             </pre>
-            The binaries are installed by default to the <strong>/usr/local/bin</strong>,
-            libraries to the <strong>/usr/local/lib</strong>,
-            and headers to the <strong>/usr/local/include/soulng</strong> directory.
+            The binaries are installed by default to the <strong>/usr/local/bin</strong> directory,
+            libraries to the <strong>/usr/local/lib</strong> directory,
+            and headers to the <strong>/usr/local/include/soulng</strong>, 
+			<strong>/usr/local/include/sngxml</strong>,
+			<strong>/usr/local/include/sngcpp</strong> and
+			<strong>/usr/local/include/sngcm</strong> directories.
             You can set the installation location by giving the <strong>prefix</strong> argument:<br />
             <strong>[sudo] make prefix=</strong><em>/where/to/install</em> <strong>install</strong>.
-        </li>
-    </ul>
-
-    <h3>
-        Building and installing the examples
-    </h3>
-
-    <ul>
-        <li>
-            change to the <strong>examples</strong> subdirectory:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0$ cd examples
-            </pre>
-        </li>
-        <li>
-            run make:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/examples$ make
-            </pre>
-        </li>
-        <li>
-            run [sudo] make install:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/examples$ sudo make install
-            </pre>
-            The example binaries <strong>minilang</strong> and <strong>cmajortester</strong> are installed by default to the <strong>/usr/local/bin</strong> directory.
-            You can set the installation location by giving the <strong>prefix</strong> argument:<br />
-            <strong>[sudo] make prefix=</strong><em>/where/to/install</em> <strong>install</strong>.
-        </li>
-    </ul>
-    
-    <h3>Building and installing XML processing libraries (optional)</h3>
-    
-    <ul>
-        <li>
-            change to the <strong>sngxml</strong> subdirectory:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0$ cd sngxml
-            </pre>
-        </li>
-        <li>
-            run make:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/sngxml$ make
-            </pre>
-        </li>
-        <li>
-            run [sudo] make install:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/sngxml$ sudo make install
-            </pre>
-        </li>
-    </ul>
-    
-    <h3>Building and installing C++ front-end libraries (optional)</h3>
-    
-    <ul>
-        <li>
-            change to the <strong>sngcpp</strong> subdirectory:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0$ cd sngcpp
-            </pre>
-        </li>
-        <li>
-            run make:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/sngcpp$ make
-            </pre>
-        </li>
-        <li>
-            run [sudo] make install:
-            <pre>
-                slaakko@pluto:~/soulng-3.0.0/sngcpp$ sudo make install
-            </pre>
         </li>
     </ul>
 </body>

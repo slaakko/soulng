@@ -124,25 +124,24 @@ enum class Command
     none, content, dom, xpath
 };
 
-struct Initializer
+
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        sngxml::xpath::Init();
-    }
-    ~Initializer()
-    {
-        sngxml::xpath::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    sngxml::xpath::Init();
+}
+
+void DoneApplication()
+{
+    sngxml::xpath::Done();
+    soulng::util::Done();
+}
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         std::vector<std::string> args;
         bool debug = false;
         Command command = Command::none;
@@ -300,5 +299,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

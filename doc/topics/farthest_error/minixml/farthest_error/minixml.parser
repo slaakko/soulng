@@ -1,0 +1,49 @@
+[cpp]#include <soulng/parser/Range.hpp>
+[cpp]#include <soulng/lexer/TrivialLexer.hpp>
+
+parser minixml
+{
+    uselexer TrivialLexer;
+	farthest_error;
+    main;
+	
+    document
+        ::= spaces:s1? element:e spaces:s2?
+        ;
+		
+    element
+        ::= '<' name:n1
+        (   '>'
+            element_content:ec
+            "</" name:n2 '>'
+        |   "/>"
+        )
+        ;
+
+    spaces
+        ::= "[ \t\r\n]"+
+    ;
+
+    name
+        ::= name_start_char:nsc name_char:nc*
+        ;
+
+    name_start_char
+        ::= "[A-Za-z_]"
+        ;
+
+    name_char
+        ::= name_start_char:nsc | "[0-9]"
+        ;
+
+    element_content
+        ::= 
+        (   element:e
+        |   text:t
+        )*
+        ;
+
+    text
+        ::= "[^<]"+
+        ;
+}

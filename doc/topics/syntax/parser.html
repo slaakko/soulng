@@ -31,6 +31,12 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5.1 <a href="#use-lexer-declaration-example">Example</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;4.6 <a href="#rule-info-declaration">Rule Info Declaration</a><br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.6.1 <a href="#rule-info-declaration-example">Example</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;4.7 <a href="#farthest-error-declaration">Farthest Error Declaration</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.7.1 <a href="#farthest-error-declaration-example">Example</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;4.8 <a href="#state-declaration">State Declaration</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.8.1 <a href="#state-declaration-example">Example</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;4.9 <a href="#nothrow-declaration">Nothrow Declaration</a><br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9.1 <a href="#nothrow-declaration-example">Example</a><br />
         5 <a href="#keywords">Keywords</a><br />
     </div>
 
@@ -231,7 +237,10 @@
                 <span class="rule"><a href="#rule.main-declaration">main&#8209;declaration</a></span> |
                 <span class="rule"><a href="#rule.using-declaration">using&#8209;declaration</a></span> |
                 <span class="rule"><a href="#rule.use-lexer-declaration">use&#8209;lexer&#8209;declaration</a></span> |
-                <span class="rule"><a href="#rule.rule-info-declaration">rule&#8209;info&#8209;declaration</a></span>
+                <span class="rule"><a href="#rule.rule-info-declaration">rule&#8209;info&#8209;declaration</a></span> |
+				<span class="rule"><a href="#rule.farthest-error-declaration">farthest&#8209;error&#8209;declaration</a></span> |
+				<span class="rule"><a href="#rule.state-declaration">state&#8209;declaration</a></span> | 
+				<span class="rule"><a href="#rule.nothrow-declaration">nothrow&#8209;declaration</a></span>
             </td>
         </tr>
     </table>
@@ -631,7 +640,7 @@
         </tr>
     </table>
 
-    <h5>Expectation expression</h5>
+    <h5 id="expectation">Expectation expression</h5>
 
     <p>
         Let <em>a</em> be a primary parsing expression. Then <em>a!</em> is a parsing expression, an <em>expectation</em> expression.
@@ -974,6 +983,87 @@
             }
         }
     </pre>
+	
+	<h3 id="farthest-error-declaration">4.7 Farthest Error Declaration</h3>
+
+	<p>
+        A <em>farthest-error-declaration</em> consists of the keyword <strong>farthest_error</strong> and a semicolon.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.farthest-error-declaration">farthest&#8209;error&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">farthest_error</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <h4 id="farthest-error-declaration-example">4.7.1 Example</h4>
+
+    <p>
+        The following example parser contains a <em>farthest_error</em> declaration:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+    
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+            farthest_error;
+            main;
+            // ...
+        }
+    </pre>
+
+	<p>
+		See <a href="../farthest_error/farthest_error.html">Farthest error document</a> for a usage example.
+	</p>
+
+	<h3 id="state-declaration">4.8 State Declaration</h3>
+	
+	<p>
+        A <em>state-declaration</em> consists of the keyword <strong>state</strong> and a semicolon.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.state-declaration">state&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">state</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+	
+	<p>
+		// todo
+	</p>
+
+	<h3 id="nothrow-declaration">4.9 Nothrow Declaration</h3>
+	
+	<p>
+        A <em>nothrow-declaration</em> consists of the keyword <strong>nothrow</strong> and a semicolon.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.nothrow-declaration">nothrow&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">nothrow</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+	
+	<p>
+		// todo
+	</p>
 
     <h2 id="keywords">
         5 Keywords
@@ -989,12 +1079,17 @@
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="cpp.html#rule.cppkeyword">cppkeyword</a></span> |
+				<span class="kw">any</span> |
                 <span class="kw">api</span> |
                 <span class="kw">empty</span> |
+				<span class="kw">farthest_error</span> |
                 <span class="kw">include</span> |
                 <span class="kw">main</span> |
+				<span class="kw">nothrow</span> |
                 <span class="kw">parser</span> |
                 <span class="kw">ruleinfo</span> |
+				<span class="kw">start</span> |
+				<span class="kw">state</span> |
                 <span class="kw">uselexer</span> |
                 <span class="kw">var</span>
             </td>

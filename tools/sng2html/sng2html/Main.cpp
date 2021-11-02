@@ -6,29 +6,27 @@
 #include <iostream>
 #include <stdexcept>
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        soulng::cppcode::Init();
-        sngxml::xpath::Init();
-    }
-    ~Initializer()
-    {
-        sngxml::xpath::Done();
-        soulng::cppcode::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    soulng::cppcode::Init();
+    sngxml::xpath::Init();
+}
+
+void DoneApplication()
+{
+    sngxml::xpath::Done();
+    soulng::cppcode::Done();
+    soulng::util::Done();
+}
 
 using namespace soulng::util;
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         bool verbose = false;
         std::vector<std::string> xmlFilePaths;
         for (int i = 1; i < argc; ++i)
@@ -76,5 +74,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

@@ -34,25 +34,23 @@ void PrintUsage()
     std::cout << "  No predefined identifier classes" << std::endl;
 }
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        soulng::cppcode::Init();
-    }
-    ~Initializer()
-    {
-        soulng::cppcode::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    soulng::cppcode::Init();
+}
+
+void DoneApplication()
+{
+    soulng::cppcode::Done();
+    soulng::util::Done();
+}
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         bool verbose = false;
         bool debug = false;
         soulng::slg::IdentifierClassKind identifierClassKind = soulng::slg::IdentifierClassKind::unicode;
@@ -154,5 +152,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

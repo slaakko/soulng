@@ -38,37 +38,24 @@
         #include &lt;soulng/util/InitDone.hpp>
         #include &lt;iostream>
 
-        struct Initializer
+        void InitApplication()
         {
-            Initializer()
-            {
-                soulng::util::Init();
-            }
-            ~Initializer()
-            {
-                soulng::util::Done();
-            }
-        };
-
-        int main()
-        {
-            Initializer initializer;
-            return 0;
+            soulng::util::Init();
         }
-    </pre>
 
-    <p>
-        We have added a class named <em>Initializer</em> that takes care of library initialization in its constructor and clean up in its destructor.
-        By adding a variable <em>initializer</em> of type <em>Initializer</em> in the <storng>main</storng> function, the initialization and tear down code is run
-        in the start and end of the program.
-    </p>
-
+        void DoneApplication()
+        {
+            soulng::util::Done();
+        }
+	</pre>
+	
     <h3>
         Error Handling
     </h3>
 
     <p>
         The <strong>soulng</strong> libraries report errors by throwing exceptions of type std::runtime_error, so the next thing to do is to handle standard exceptions:
+		I have placed the initialization inside a try block because it can throw an exception. (Got this wrong in the previous versions of this project.)
     </p>
 
     <pre>
@@ -76,29 +63,18 @@
         #include &lt;iostream>
         #include &lt;stdexcept>
 
-        struct Initializer
-        {
-            Initializer()
-            {
-                soulng::util::Init();
-            }
-            ~Initializer()
-            {
-                soulng::util::Done();
-            }
-        };
-
         int main()
         {
-            Initializer initializer;
             try
             {
+                InitApplication();
             }
             catch (const std::exception& ex)
             {
                 std::cerr << ex.what() << std::endl;
                 return 1;
             }
+            DoneApplication();
             return 0;
         }
     </pre>
@@ -292,9 +268,9 @@
 
         int main(int argc, const char** argv)
         {
-            Initializer initializer;
             try
             {
+                InitApplication();
                 std::vector<std::string> files;
                 Command command = Command::none;
                 for (int i = 1; i < argc; ++i)
@@ -368,6 +344,7 @@
                 std::cerr << ex.what() << std::endl;
                 return 1;
             }
+			DoneApplication();
             return 0;
         }
     </pre>
@@ -403,17 +380,15 @@
             std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
         }
 
-        struct Initializer
+        void InitApplication()
         {
-            Initializer()
-            {
-                soulng::util::Init();
-            }
-            ~Initializer()
-            {
-                soulng::util::Done();
-            }
-        };
+            soulng::util::Init();
+        }
+
+        void DoneApplication()
+        {
+            soulng::util::Done();
+        }
 
         void PrintUsage()
         {
@@ -432,9 +407,9 @@
 
         int main(int argc, const char** argv)
         {
-            Initializer initializer;
             try
             {
+                InitApplication();
                 std::vector<std::string> files;
                 Command command = Command::none;
                 for (int i = 1; i < argc; ++i)
@@ -508,6 +483,7 @@
                 std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
                 return 1;
             }
+            DoneApplication();
             return 0;
         }
     </pre>

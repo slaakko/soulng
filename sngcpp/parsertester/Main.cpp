@@ -31,27 +31,25 @@ void PrintUsage()
     std::cout << "  Debug parsing." << std::endl;
 }
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        sngcpp::pp::Init();
-        sngcpp::ast::Init();
-    }
-    ~Initializer()
-    {
-        sngcpp::ast::Done();
-        sngcpp::pp::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    sngcpp::pp::Init();
+    sngcpp::ast::Init();
+}
+
+void DoneApplication()
+{
+    sngcpp::ast::Done();
+    sngcpp::pp::Done();
+    soulng::util::Done();
+}
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         bool verbose = false;
         bool debug = false;
         std::string root;
@@ -186,5 +184,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

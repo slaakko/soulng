@@ -53,31 +53,29 @@ std::string SystemDirectoryPath()
     return GetFullPath(Path::Combine(soulngRootDir, "tools/cpp2cm/system"));
 }
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-        sngxml::xpath::Init();
-        sngcpp::pp::Init();
-        sngcpp::ast::Init();
-        sngcm::ast::Init();
-    }
-    ~Initializer()
-    {
-        sngcm::ast::Done();
-        sngcpp::ast::Done();
-        sngcpp::pp::Done();
-        sngxml::xpath::Done();
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+    sngxml::xpath::Init();
+    sngcpp::pp::Init();
+    sngcpp::ast::Init();
+    sngcm::ast::Init();
+}
+
+void DoneApplication()
+{
+    sngcm::ast::Done();
+    sngcpp::ast::Done();
+    sngcpp::pp::Done();
+    sngxml::xpath::Done();
+    soulng::util::Done();
+}
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         bool verbose = false;
         bool system = false;
         cpp2cm::ProcessType processType = cpp2cm::ProcessType::stage;
@@ -167,5 +165,6 @@ int main(int argc, const char** argv)
         std::cerr << ex.what() << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }

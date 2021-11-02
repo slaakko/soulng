@@ -56,17 +56,15 @@ void PrintMinilangCode(const std::string& minilangFilePath)
 	sourceFile->Accept(visitor);
 }
 
-struct Initializer
+void InitApplication()
 {
-    Initializer()
-    {
-        soulng::util::Init();
-    }
-    ~Initializer()
-    {
-        soulng::util::Done();
-    }
-};
+    soulng::util::Init();
+}
+
+void DoneApplication()
+{
+    soulng::util::Done();
+}
 
 void PrintUsage()
 {
@@ -89,9 +87,9 @@ enum class Command
 
 int main(int argc, const char** argv)
 {
-    Initializer initializer;
     try
     {
+        InitApplication();
         std::vector<std::string> files;
 		Command command = Command::print;
         bool debug = false;
@@ -190,5 +188,6 @@ int main(int argc, const char** argv)
         std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
         return 1;
     }
+    DoneApplication();
     return 0;
 }
