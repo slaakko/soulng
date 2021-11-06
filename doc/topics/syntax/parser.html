@@ -1040,7 +1040,7 @@
         </tr>
     </table>
 
-	    <h4 id="state-declaration-example">4.8.1 Example</h4>
+	<h4 id="state-declaration-example">4.8.1 Example</h4>
 
     <p>
         The following example parser contains a <em>state</em> declaration:
@@ -1080,8 +1080,26 @@
         </tr>
     </table>
 	
+	<h4 id="nothrow-declaration-example">4.9.1 Example</h4>
+
+    <p>
+        The following example parser contains a <em>nothrow</em> declaration:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+    
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+            nothrow;
+            main;
+            // ...
+        }
+    </pre>
+
 	<p>
-		// todo
+		See <a href="../nothrow_parser/nothrow_parser.html">Nothrow parser document</a> for an example.
 	</p>
 
     <h2 id="keywords">
