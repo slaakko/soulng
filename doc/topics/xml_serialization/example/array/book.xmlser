@@ -1,0 +1,17 @@
+// book.xmlser:
+
+enum Color
+{
+    black, white, blue
+}
+
+class Book
+{
+    string name;
+    string isbn;
+    string author;
+    int published;
+    string publisher;
+    float price;
+    Color color;
+}

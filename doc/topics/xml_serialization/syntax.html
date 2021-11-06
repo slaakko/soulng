@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>XML Serialization Description File Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        5 XML Serialization Description File Syntax
+    </h1>
+	
+	<p>
+		An XML serialization description file, <em>xmlser</em> file for short, consists of 
+		include directives and other content:
+	</p>
+
+	<table class="grammar">
+        <tr>
+            <td class="rule" id="rule.xml-serialization-description-file">xml&#8209;serialization&#8209;description&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.include-directives">include&#8209;directives</a></span>
+				<span class="rule"><a href="#rule.namespace-content">namespace&#8209;content</a></span>
+            </td>
+        </tr>
+	</table>
+	
+	<h2 id="includes">
+		5.1 Include directives
+	</h2>
+	
+	<p>
+		<strong>xmlsergen</strong> puts include directives beginning with the <strong>[hpp]</strong> file tag 
+		to the generated header file, and include directives beginning with the <strong>[cpp]</strong> file tag
+		to the generated source file. Include directives that have no file tag are put to the generated header file.
+	</p>
+	
+	<table class="grammar">
+        <tr>
+            <td class="rule" id="rule.include-directives">include&#8209;directives</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.include-directive">include&#8209;directive</a></span>*
+            </td>
+        </tr>
+		<tr>
+            <td class="rule" id="rule.include-directive">include&#8209;directive</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.file-tag">file&#8209;tag</a></span>?
+				<span class="mono">#</span>
+				<span class="kw">include</span>
+				<span class="rule"><a href="../syntax/common.html#rule.file-path">file&#8209;path</a></span>
+            </td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.file-tag">file&#8209;tag</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">[</span>
+				(<span class="mono">cpp</span> | <span class="mono">hpp</span>)
+				<span class="mono">]</span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="namespace-content">
+		5.2 Namespace Content
+	</h2>
+
+	<p>
+		Other content of the xmlser file consists of <em>declaration</em>s and <em>definition</em>s:
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.namespace-content">namespace&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.declaration">declaration</a></span> |
+				 <span class="rule"><a href="#rule.definition">definition</a></span>)*
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="declarations">
+		5.3 Declarations
+	</h2>
+	
+	<p>
+		There can be two kinds of declarations: <em>forward-class-declaration</em>s and <em>using-alias-declaration</em>s.
+	</p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.declaration">declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#forward-class-declaration">forward&#8209;class&#8209;declaration</a></span> |
+				<span class="rule"><a href="#rule.using-alias-declaration">using&#8209;alias&#8209;declaration</a></span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="forward-class-declaration">
+		5.4 Forward Class Declaration
+	</h2>
+	
+	<p>
+		A <em>forward-class-declaration</em> consists of the keyword <strong>class</strong> followed by a class 
+		identifier followed by a semicolon:
+	<p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.forward-class-declaration">forward&#8209;class&#8209;declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">class</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">;</span>
+			</td>
+		</tr>
+	</table>
+
+	<p>
+		<strong>xmlsergen</strong> puts the <em>forward-class-declaration</em>s to the generated header file.
+	</p>
+
+	<h2 id="using-alias-declaration">
+		5.5 Using Alias Declaration
+	</h2>
+
+	<p>
+		A <em>using-alias-declaration</em> consists of the keyword <strong>using</strong> followed by 
+		an identifier followed by an assignment symbol followed by a 
+		a nonempty sequence of identifiers seperated by two colons followed by a semicolon:
+	</p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.using-alias-declaration">using&#8209;alias&#8209;declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">using</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">=</span> 
+				<span class="rule"><a href="#rule.qualified-id">qualified&#8209;id</a></span>
+				<span class="mono">;</span
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.qualified-id">qualified&#8209;id</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				(<span class="mono">::</span> 
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>)*
+			</td>
+		</tr>
+	</table>
+
+	<p>
+		<strong>xmlsergen</strong> puts the <em>using-alias-declaration</em>s to the generated header file.
+	</p>
+
+	<h2 id="definitions">
+		5.6 Definitions
+	</h2>
+	
+	<p>
+		There are four kinds of definitions: <em>class</em>, <em>enum</em>, <em>namespace</em> and <em>C++ block</em>
+		definitions:
+	</p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.definition">definition</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#rule.class">class</a></span> |
+				<span class="rule"><a href="#rule.enum">enum</a></span> |
+				<span class="rule"><a href="#rule.namespace">namespace</a></span> |
+				<span class="rule"><a href="#rule.cpp-block">cpp&#8209;block</a></span>
+			</td>
+		</tr>
+	</table>
+	
+	<h2 id="class-definition">
+		5.7 Class Definition
+	</h2>
+
+	<p>
+		A class definition consists of a keyword <strong>class</strong> followed by an optional <em>api</em> declaration 
+		followed by an identifier followed by optional class <em>inheritance</em> followed by class content 
+		within pair of braces.
+	</p>
+
+	<p>
+		A class <em>inheritance</em> consists of a colon followed a list of base classes separated by commas.
+	</p>
+	
+	<p>
+		There are two kinds of class inheritance: <em>internal</em> and <em>external</em>.
+		An <em>internal</em> inheritance is denoted by a single class identifier. 
+		That class must be defined within this or another xmlser file. 
+		There can be at most one internal base class for a class.
+		An <em>external</em> inheritance is denoted by the keyword <strong>base</strong> followed by a class 
+		identifier within pair of parenthesis. That class should not be defined in any xmlser file, 
+		it should be an <em>external</em> class. There can be any number of external base classes for a class.
+	</p>
+
+	<p>
+		The class content consists of member variables and C++ code blocks. 
+		<strong>xmlsergen</strong> places C++ code blocks defined inside a class to the generated header file inside the corresponding 
+		generated C++ class.
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.class">class</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">class</span>
+				<span class="rule"><a href="../syntax/common.html#rule.api">api</a></span>?
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="rule"><a href="#rule.inheritance">inheritance</a></span>?
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.class-content">class&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.inheritance">inheritance</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">:</span>
+				<span class="rule"><a href="#rule.base-class">base&#8209;class</a></span>
+				(	<span class="mono">,</span>
+					<span class="rule"><a href="#rule.base-class">base&#8209;class</a></span>
+				)*
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.base-class">base&#8209;class</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">base</span>
+				<span class="mono">(</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">)</span> |
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.class-content">class&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.member-variable">member&#8209;variable</a></span> |
+				<span class="rule"><a href="#rule.cpp-block">cpp&#8209;block</a></span>)*
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="member-variables">
+		5.8 Member variables
+	</h2>
+
+	<p>
+		A member variable declaration consists of the <em>type</em> of the member variable followed by the 
+		<em>name</em> of the member variable followed by a semicolon:
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.member-variable">member&#8209;variable</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#rule.type">type</a></span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">;</span>
+			</td>
+		</tr>
+	</table>
+	
+	<p>
+		<strong>xmlsergen</strong> places member variable declarations within the generated class to the generated header file.
+		It generates default initialization for each member variable in the generated class constructor and places it to the 
+		generated source file.
+	</p>
+	
+	<h2 id="cpp-blocks">
+		5.9 C++ Code Blocks
+	</h2>
+	
+	<p>
+		A C++ code block consists of arbitrary content within pair of &lt;% and %> delimiters.
+		<strong>xmlsergen</strong> places code blocks inside a class to the generated header file within the class.
+		It places code blocks following classes in a xmlser file to the end of the generated source file.
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.cpp-block">cpp&#8209;block</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">&lt;%</span>
+				(<span class="mono">.</span> - <span class="mono">%></span>)*
+				<span class="mono">%></span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="enumerations">
+		5.10 Enumerations
+	</h2>
+	
+	<p>
+		An enumerated type definition consists of the keyword <strong>enum</strong> followed by an identifier followed
+		by enumeration content within pair of braces.
+	</p>
+	
+	<p>
+		An enumeration content consists of a list of enumeration constants separated by commas.
+	</p>
+	
+	<p>
+		An enumeration constant is denoted by an identifier.
+	</p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.enum">enum</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">enum</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.enum-content">enum&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.enum-content">enum&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.enum-constant">enum&#8209;constant</a></span>
+				(<span class="mono">,</span> <span class="rule"><a href="#rule.enum-constant">enum&#8209;constant</a></span>)*)?
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.enum-constant">enum&#8209;constant</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+	</table>
+
+	<p>
+		<strong>xmlsergen</strong> places enumerated type definitions to the generated header file.
+	</p>
+
+	<h2 id="namespace-definition">
+		5.11 Namespace Definition
+	</h2>
+
+	<p>
+		A namespace definition consists of the keyword <strong>namespace</strong> followed by an identifier followed 
+		by namespace content within pair of braces:
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.namespace">namespace</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">namespace</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.namespace-content">namespace&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="type-declarations">
+		5.12 Type Declarations
+	</h2>
+
+	<p>
+		A <em>type</em> declaration consists of a <em>scalar</em>, <em>class</em> or <em>template</em> type 
+		followed by optional pointer type symbol, an asterisk, followed by optional array type symbol, 
+		a pair of square brackets:
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.type">type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.scalar-type">scalar&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.class-type">class&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.template-type">template&#8209;type</a></span>)
+				<span class="mono">*</span>?
+				(<span class="mono">[]</span>)?
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="scalar-types">
+		5.13 Scalar types
+	</h2>
+	
+	<p>
+		A scalar type has a single keyword and a corresponding C++ type.
+		The C++ type may be a fundamental C++ type, such as <strong>bool</strong>:
+		a type defined in the C++ standard library, 
+		such as <strong>time_point</strong>: <strong>std::chrono::steady_clock::time_point</strong>,
+		a type defined in the Boost library, 
+		such as <strong>uuid</strong>: <strong>boost::uuids::uuid</strong> or
+		a type defined in soulng::util library, 
+		such as <strong>date</strong>: <strong>soulng::util::Date</strong>.
+	</p>
+	
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.scalar-type">scalar&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">bool</span> |
+				<span class="kw">sbyte</span> |
+				<span class="kw">byte</span> |
+				<span class="kw">short</span> |
+				<span class="kw">ushort</span> |
+				<span class="kw">int</span> |
+				<span class="kw">uint</span> |
+				<span class="kw">long</span> |
+				<span class="kw">ulong</span> |
+				<span class="kw">float</span> |
+				<span class="kw">double</span> |
+				<span class="kw">char</span> |
+				<span class="kw">wchar</span> |
+				<span class="kw">uchar</span> |
+				<span class="kw">uuid</span> |
+				<span class="kw">string</span> |
+				<span class="kw">wstring</span> |
+				<span class="kw">ustring</span> |
+				<span class="kw">date</span> |
+				<span class="kw">datetime</span> |
+				<span class="kw">timestamp</span> |
+				<span class="kw">time_point</span> |
+				<span class="kw">duration</span>
+			</td>
+		</tr>
+	</table>
+
+	<p>
+		<strong>xmlsergen</strong> converts the scalar type denoted by a soulng keyword to the corresponding C++ type and places the 
+		C++ declaration to the generated header file within a class definition.
+	</p>
+	
+	<h2 id="class-types">
+		5.14 Class Types
+	</h2>
+	
+	<p>
+		A class type is denoted by a class identifier:
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.class-type">class&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="template-types">
+		5.15 Template Types
+	</h2>
+
+	<p>
+		<strong>xmlsergen</strong> recognizes two kinds of template types: <em>xml_ptr&lt;T></em> and 
+		<em>unique_xml_ptr&lt;T></em>.
+	</p>
+
+	<p>
+		<em>xml_ptr</em> is an alias to the <strong>serialization</strong> library 
+		<em>sngxml::xmlser::XmlPtr</em> class template.
+	</p>
+
+	<p>
+		<em>unique_xml_ptr</em> is an alias to the <strong>serialization</strong> library 
+		<em>sngxml::xmlser::UniqueXmlPtr</em> class template.
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.template-type">template&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">&lt;</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">></span>
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="compound-types">
+		5.16 Compound Types
+	</h2>
+
+	<p>
+		A pointer type is denoted by an asterisk following a base type.
+		<strong>xmlsergen</strong> converts the pointer type to <strong>std::unique_ptr&lt;T></strong> where T is the base type.
+	</p>
+	
+	<p>
+		An array type is denoted by a pair of square brackets following a base type.
+		<strong>xmlsergen</strong> converts the array type to <strong>std::vector&lt;T></strong> where T is the base type.
+	</p>
+
+	<table class="grammar">
+		<tr>
+			<td class="rule" id="rule.type">type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.scalar-type">scalar&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.class-type">class&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.template-type">template&#8209;type</a></span>)
+				<span class="mono">*</span>?
+				(<span class="mono">[]</span>)?
+			</td>
+		</tr>
+	</table>
+
+	<h2 id="summary">
+		5.17 Syntax Summary
+	</h2>
+	
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.xml-serialization-description-file">xml&#8209;serialization&#8209;description&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.include-directives">include&#8209;directives</a></span>
+				<span class="rule"><a href="#rule.namespace-content">namespace&#8209;content</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.include-directives">include&#8209;directives</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.include-directive">include&#8209;directive</a></span>*
+            </td>
+        </tr>
+		<tr>
+            <td class="rule" id="rule.include-directive">include&#8209;directive</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.file-tag">file&#8209;tag</a></span>?
+				<span class="mono">#</span>
+				<span class="kw">include</span>
+				<span class="rule"><a href="../syntax/common.html#rule.file-path">file&#8209;path</a></span>
+            </td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.file-tag">file&#8209;tag</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">[</span>
+				(<span class="mono">cpp</span> | <span class="mono">hpp</span>)
+				<span class="mono">]</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.namespace-content">namespace&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.declaration">declaration</a></span> |
+				 <span class="rule"><a href="#rule.definition">definition</a></span>)*
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.declaration">declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#forward-class-declaration">forward&#8209;class&#8209;declaration</a></span> |
+				<span class="rule"><a href="#rule.using-alias-declaration">using&#8209;alias&#8209;declaration</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.forward-class-declaration">forward&#8209;class&#8209;declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">class</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">;</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.using-alias-declaration">using&#8209;alias&#8209;declaration</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">using</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">=</span> 
+				<span class="rule"><a href="#rule.qualified-id">qualified&#8209;id</a></span>
+				<span class="mono">;</span
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.qualified-id">qualified&#8209;id</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				(<span class="mono">::</span> 
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>)*
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.definition">definition</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#rule.class">class</a></span> |
+				<span class="rule"><a href="#rule.enum">enum</a></span> |
+				<span class="rule"><a href="#rule.namespace">namespace</a></span> |
+				<span class="rule"><a href="#rule.cpp-block">cpp&#8209;block</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.class">class</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">class</span>
+				<span class="rule"><a href="../syntax/common.html#rule.api">api</a></span>?
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="rule"><a href="#rule.inheritance">inheritance</a></span>?
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.class-content">class&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.inheritance">inheritance</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">:</span>
+				<span class="rule"><a href="#rule.base-class">base&#8209;class</a></span>
+				(	<span class="mono">,</span>
+					<span class="rule"><a href="#rule.base-class">base&#8209;class</a></span>
+				)*
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.base-class">base&#8209;class</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">base</span>
+				<span class="mono">(</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">)</span> |
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.class-content">class&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.member-variable">member&#8209;variable</a></span> |
+				<span class="rule"><a href="#rule.cpp-block">cpp&#8209;block</a></span>)*
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.member-variable">member&#8209;variable</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="#rule.type">type</a></span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">;</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.cpp-block">cpp&#8209;block</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="mono">&lt;%</span>
+				(<span class="mono">.</span> - <span class="mono">%></span>)*
+				<span class="mono">%></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.enum">enum</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">enum</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.enum-content">enum&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.enum-content">enum&#8209;content</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.enum-constant">enum&#8209;constant</a></span>
+				(<span class="mono">,</span> <span class="rule"><a href="#rule.enum-constant">enum&#8209;constant</a></span>)*)?
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.enum-constant">enum&#8209;constant</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.namespace">namespace</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">namespace</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">{</span>
+				<span class="rule"><a href="#rule.namespace-content">namespace&#8209;content</a></span>
+				<span class="mono">}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.type">type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				(<span class="rule"><a href="#rule.scalar-type">scalar&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.class-type">class&#8209;type</a></span> |
+				<span class="rule"><a href="#rule.template-type">template&#8209;type</a></span>)
+				<span class="mono">*</span>?
+				(<span class="mono">[]</span>)?
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.scalar-type">scalar&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="kw">bool</span> |
+				<span class="kw">sbyte</span> |
+				<span class="kw">byte</span> |
+				<span class="kw">short</span> |
+				<span class="kw">ushort</span> |
+				<span class="kw">int</span> |
+				<span class="kw">uint</span> |
+				<span class="kw">long</span> |
+				<span class="kw">ulong</span> |
+				<span class="kw">float</span> |
+				<span class="kw">double</span> |
+				<span class="kw">char</span> |
+				<span class="kw">wchar</span> |
+				<span class="kw">uchar</span> |
+				<span class="kw">uuid</span> |
+				<span class="kw">string</span> |
+				<span class="kw">wstring</span> |
+				<span class="kw">ustring</span> |
+				<span class="kw">date</span> |
+				<span class="kw">datetime</span> |
+				<span class="kw">timestamp</span> |
+				<span class="kw">time_point</span> |
+				<span class="kw">duration</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.class-type">class&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="rule" id="rule.template-type">template&#8209;type</td>
+			<td class="sep">&rarr;</td>
+			<td class="rcontent">
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">&lt;</span>
+				<span class="rule"><a href="../syntax/common.html#rule.identifier">identifier</a></span>
+				<span class="mono">></span>
+			</td>
+		</tr>
+    </table>
+</body>
+</html>

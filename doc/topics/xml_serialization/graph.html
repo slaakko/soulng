@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Serializing Object Graph</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>
+        4 Serializing Object Graph
+    </h2>
+
+    <h3 id="xmlser">
+        4.1 Serialization Description Files
+    </h3>
+
+    <p>
+        This time I have represented the author of a book as a separate Author class:
+    </p>
+
+    <pre>
+        // book.xmlser:
+
+        [cpp]#include &lt;author.hpp>
+
+        enum Color
+        {
+            black, white, blue
+        }
+
+        class Author;
+
+        class Book
+        {
+        <%
+            void SetAuthor(Author* author_);
+            Author* GetAuthor() const 
+            {
+                return author.Get();
+            }
+        %>
+            string name;
+            string isbn;
+            xml_ptr&lt;Author> author;
+            int published;
+            string publisher;
+            float price;
+            Color color;
+        }
+
+        <%
+            void Book::SetAuthor(Author* author_)
+            {
+                author.Reset(author_);
+            }
+        %>
+	</pre>
+
+    <p>
+        The type of the author is an <strong>xml_ptr</strong> that is like an ordinary pointer with a <strong>uuid</strong>, an id of the object pointed to.
+    </p>
+
+    <p>
+        The author class represents an author of a book that can be a person or a group of persons:
+    </p>
+
+    <pre>
+        // author.xmlser:
+
+        class Author
+        {
+            string name;
+        }
+
+        // person.xmlser:
+
+        [hpp]#include &lt;author.hpp>
+        [cpp]#include &lt;group.hpp>
+
+        class Group;
+
+        class Person : Author
+        {
+        <%
+            void AddGroup(Group* group);
+        %>    
+            xml_ptr&lt;Group>[] groups;
+        }
+
+        <%
+            void Person::AddGroup(Group* group)
+            {
+                groups.push_back(xml_ptr&lt;Group>(group));
+            }
+        %>
+
+        // group.xmlser:
+
+        [hpp]#include &lt;author.hpp>
+        [cpp]#include &lt;person.hpp>
+
+        class Person;
+
+        class Group : Author
+        {
+        <%
+            void AddMember(Person* member);
+        %>
+            xml_ptr&lt;Person>[] members;
+        }
+
+        <%
+            void Group::AddMember(Person* member)
+            {
+                members.push_back(xml_ptr&lt;Person>(member));
+                member->AddGroup(this);
+            }
+        %>
+    </pre>
+
+    <p>
+        A person has an array of groups it belongs to and a group have an array of group members.
+    </p>
+
+    <p>
+        A bookshelf owns author and book objects.
+        They are represented as <strong>unique_xml_ptr</strong>s that are like unique_ptrs with a <strong>uuid</strong>, an id of the pointed-to object:
+    </p>
+
+    <pre>
+        [cpp]#include &lt;author.hpp>
+        [cpp]#include &lt;book.hpp>
+
+        class Author;
+        class Book;
+
+        class Bookshelf
+        {
+        <%
+            void AddAuthor(Author* author);
+            void AddBook(Book* book);
+        %>
+            unique_xml_ptr&lt;Author>[] authors;
+            unique_xml_ptr&lt;Book>[] books;
+        }
+
+        <%
+            void Bookshelf::AddAuthor(Author* author)
+            {
+                authors.push_back(unique_xml_ptr&lt;Author>(author));
+            }
+            void Bookshelf::AddBook(Book* book)
+            {
+                books.push_back(unique_xml_ptr&lt;Book>(book));
+            }
+        %>
+    </pre>
+
+    <h3 id="main">
+        4.2 Main Program
+    </h3>
+
+    <p>
+        This time I serialize a bookshelf containing books and book authors as an <em>XML bundle</em>.
+        In a bundle each object is identified by a unique object ID, a <strong>uuid</strong>.
+        Objects can refer to each other by <strong>xml_ptr</strong>s and <strong>unique_ptr</strong>s
+        that are serialized as object IDs.
+    </p>
+
+    <pre>
+        // graph: main.cpp:
+
+        #include &lt;person.hpp>
+        #include &lt;group.hpp>
+        #include &lt;book.hpp>
+        #include &lt;bookshelf.hpp>
+        #include &lt;sngxml/serialization/XmlContainer.hpp>
+        #include &lt;sngxml/serialization/XmlBundle.hpp>
+        #include &lt;sngxml/dom/Document.hpp>
+        #include &lt;sngxml/dom/Parser.hpp>
+        #include &lt;sngxml/serialization/InitDone.hpp>
+        #include &lt;sngxml/xpath/InitDone.hpp>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;soulng/util/Unicode.hpp>
+        #include &lt;iostream>
+
+        void InitApplication()
+        {
+            soulng::util::Init();
+            sngxml::xpath::Init();
+            sngxml::xmlser::Init();
+        }
+
+        void DoneApplication()
+        {
+            sngxml::xmlser::Done();
+            sngxml::xpath::Done();
+            soulng::util::Done();
+        }
+    </pre>
+
+    <p>
+        On the reading side the objects are created by the system based on unique class IDs that are ordinary integers.
+        Thus in the main program the classes are <em>registered</em> with the system using a static <strong>Register</strong> member function:
+    </p>
+
+    <pre>
+        const int bookshelfClassId = 0;
+        const int personClassId = 1;
+        const int groupClassId = 2;
+        const int bookClassId = 3;
+
+        int main()
+        {
+            try
+            {
+                InitApplication();
+
+                Bookshelf::Register(bookshelfClassId);
+                Person::Register(personClassId);
+                Group::Register(groupClassId);
+                Book::Register(bookClassId);
+    </pre>
+
+    <p>
+        In order to create a bundle of objects, the objects must be put to an <em>XML container</em>.
+        The XML container does not own the objects, it is more like a map from object IDs to objects.
+        Each object is assigned a random ID by calling the <strong>SetRandomObjectId</strong> member function:
+    </p>
+
+    <pre>
+                sngxml::xmlser::XmlContainer container;
+
+                unique_xml_ptr&lt;Bookshelf> bookshelf(new Bookshelf());
+                bookshelf->SetRandomObjectId();
+                container.Add(bookshelf.Get());
+
+                unique_xml_ptr&lt;Person> person1(new Person());
+                person1->name = "Bjarne Stroustrup";
+                person1->SetRandomObjectId();
+                container.Add(person1.Get());
+
+                unique_xml_ptr&lt;Person> person2(new Person());
+                person2->name = "Donald E. Knuth";
+                person2->SetRandomObjectId();
+                container.Add(person2.Get());
+
+                unique_xml_ptr&lt;Person> person3(new Person());
+                person3->name = "Erich Gamma";
+                person3->SetRandomObjectId();
+                container.Add(person3.Get());
+
+                unique_xml_ptr&lt;Person> person4(new Person());
+                person4->name = "Richard Helm";
+                person4->SetRandomObjectId();
+                container.Add(person4.Get());
+
+                unique_xml_ptr&lt;Person> person5(new Person());
+                person5->name = "Ralph Johnson";
+                person5->SetRandomObjectId();
+                container.Add(person5.Get());
+
+                unique_xml_ptr&lt;Person> person6(new Person());
+                person6->name = "John Vlissides";
+                person6->SetRandomObjectId();
+                container.Add(person6.Get());
+
+                unique_xml_ptr&lt;Group> group1(new Group());
+                group1->name = "GoF";
+                group1->SetRandomObjectId();
+                group1->AddMember(person3.Get());
+                group1->AddMember(person4.Get());
+                group1->AddMember(person5.Get());
+                group1->AddMember(person6.Get());
+                container.Add(group1.Get());
+
+                unique_xml_ptr&lt;Book> book1(new Book());
+                book1->name = "The C++ Programming Language, 4th Edition";
+                book1->SetRandomObjectId();
+                book1->isbn = "0-321-56384-0";
+                book1->SetAuthor(person1.Get());
+                book1->published = 2013;
+                book1->publisher = "Pearson Education";
+                book1->price = 61.88f;
+                book1->color = Color::blue;
+                container.Add(book1.Get());
+
+                unique_xml_ptr&lt;Book> book2(new Book());
+                book2->name = "The Art of Computer Programming";
+                book2->SetRandomObjectId();
+                book2->isbn = "0-201-89683-4";
+                book2->SetAuthor(person2.Get());
+                book2->published = 1997;
+                book2->publisher = "Addison Wesley";
+                book2->price = 187.99f;
+                book2->color = Color::white;
+                container.Add(book2.Get());
+
+                unique_xml_ptr&lt;Book> book3(new Book());
+                book3->name = "Design Patterns";
+                book3->SetRandomObjectId();
+                book3->isbn = "0-201-63361-2";
+                book3->SetAuthor(group1.Get());
+                book3->published = 1995;
+                book3->publisher = "Addison Wesley";
+                book3->price = 33.0f;
+                book3->color = Color::white;
+                container.Add(book3.Get());
+
+                bookshelf->AddAuthor(person1.Release());
+                bookshelf->AddAuthor(person2.Release());
+                bookshelf->AddAuthor(person3.Release());
+                bookshelf->AddAuthor(person4.Release());
+                bookshelf->AddAuthor(person5.Release());
+                bookshelf->AddAuthor(person6.Release());
+                bookshelf->AddAuthor(group1.Release());
+
+                bookshelf->AddBook(book1.Release());
+                bookshelf->AddBook(book2.Release());
+                bookshelf->AddBook(book3.Release());
+    </pre>
+
+    <p>
+        The bundle is created by calling the <strong>CreateBundle</strong> member functions of the XML container.
+        There are two kinds of bundles, <strong>deep</strong> and <strong>shallow</strong>.
+        Deep bundles contain a <em>closure</em> of objects reachable from the object we have created the bundle from.
+        A shallow bundle contains just one object. Other objects pointed by the that object are represented as object IDs.
+    </p>
+
+    <pre>
+                std::unique_ptr&lt;sngxml::xmlser::XmlBundle> bundle = container.CreateBundle(bookshelf.Get(), sngxml::xmlser::XmlBundleKind::deep);
+    </pre>
+
+    <p>
+        A bundle can be serialized as a string or an XML document. This time I have serialized it to a string:
+    </p>
+
+    <pre>
+                std::string str = bundle->ToXmlString();
+                std::cout &lt;&lt; str &lt;&lt; std::endl;
+    </pre>
+
+    <p>
+        When reading objects from a bundle, I have called the <strong>ToXmlBundle</strong> function that
+        takes an XML string:
+    </p>
+
+    <pre>
+                std::unique_ptr&lt;sngxml::xmlser::XmlBundle> bundleRead = sngxml::xmlser::ToXmlBundle(str);
+    </pre>
+
+    <p>
+        One of the objects in the bundle is the <em>root</em> object that is the object from which the bundle is created.
+        I have checked that the root object is of the right type, the Bookshelf class:
+    </p>
+
+    <pre>
+                sngxml::xmlser::XmlSerializable* root = bundleRead->Root();
+
+                if (root->ClassId() == bookshelfClassId)
+                {
+                    Bookshelf* bookshelf = static_cast&lt;Bookshelf*>(root);
+                    std::cout &lt;&lt; "bookshelf contains " &lt;&lt; bookshelf->books.size() &lt;&lt; " books" &lt;&lt; std::endl;
+                    // use bookshelf...
+                }
+                else
+                {
+                    throw std::runtime_error("Bookshelf expected");
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr &lt;&lt; ex.what() &lt;&lt; std::endl;
+                return 1;
+            }
+            DoneApplication();
+            return 0;
+        }
+    </pre>
+
+    <h3 id="output">
+        4.3 Program Output
+    </h3>
+
+    <p>
+        The output of the program looks like this:
+    </p>
+
+    <pre>
+        &lt;xmlBundle rootObjectId="ab85734b-b402-41c9-9f7e-1918f5d24d07">
+          &lt;object classId="1" className="Person" objectId="c09df10e-3163-4025-918f-c5a4f610d71c">
+            &lt;name value="Richard Helm" />
+            &lt;groups>
+             &lt;item objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+           &lt;/groups>
+         &lt;/object>
+         &lt;object classId="2" className="Group" objectId="8ffc9038-592a-499c-8254-2983364e0dcc">
+          &lt;name value="GoF" />
+          &lt;members>
+            &lt;item objectId="e39258a2-4917-4501-b691-5a98d3823d1d" />
+            &lt;item objectId="c09df10e-3163-4025-918f-c5a4f610d71c" />
+            &lt;item objectId="6a31295b-0923-4706-a092-57524cd33390" />
+            &lt;item objectId="4816c87a-a567-4cd7-a573-a7417974e31e" />
+          &lt;/members>
+         &lt;/object>
+         &lt;object classId="0" className="Bookshelf" objectId="ab85734b-b402-41c9-9f7e-1918f5d24d07">
+          &lt;authors>
+           &lt;item objectId="9e0313a9-3195-422f-9d46-b0c050248604" />
+           &lt;item objectId="11251d66-1fd3-46bd-9f1c-981c52eb9dde" />
+           &lt;item objectId="e39258a2-4917-4501-b691-5a98d3823d1d" />
+           &lt;item objectId="c09df10e-3163-4025-918f-c5a4f610d71c" />
+           &lt;item objectId="6a31295b-0923-4706-a092-57524cd33390" />
+           &lt;item objectId="4816c87a-a567-4cd7-a573-a7417974e31e" />
+           &lt;item objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+          &lt;/authors>
+          &lt;books>
+           &lt;item objectId="982d3bde-3e4d-4153-9ce4-1b0c80c09c83" />
+           &lt;item objectId="fced1faf-e43a-4c62-85d0-9d3976f2c774" />
+           &lt;item objectId="f5d449e8-43f3-4ff7-a34d-9bfdf0d2bffb" />
+          &lt;/books>
+         &lt;/object>
+         &lt;object classId="1" className="Person" objectId="9e0313a9-3195-422f-9d46-b0c050248604">
+          &lt;name value="Bjarne Stroustrup" />
+          &lt;groups />
+         &lt;/object>
+         &lt;object classId="1" className="Person" objectId="4816c87a-a567-4cd7-a573-a7417974e31e">
+          &lt;name value="John Vlissides" />
+          &lt;groups>
+           &lt;item objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+          &lt;/groups>
+         &lt;/object>
+         &lt;object classId="1" className="Person" objectId="11251d66-1fd3-46bd-9f1c-981c52eb9dde">
+          &lt;name value="Donald E. Knuth" />
+          &lt;groups />
+         &lt;/object>
+         &lt;object classId="1" className="Person" objectId="e39258a2-4917-4501-b691-5a98d3823d1d">
+          &lt;name value="Erich Gamma" />
+          &lt;groups>
+           &lt;item objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+          &lt;/groups>
+         &lt;/object>
+         &lt;object classId="1" className="Person" objectId="6a31295b-0923-4706-a092-57524cd33390">
+          &lt;name value="Ralph Johnson" />
+          &lt;groups>
+           &lt;item objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+          &lt;/groups>
+         &lt;/object>
+         &lt;object classId="3" className="Book" objectId="982d3bde-3e4d-4153-9ce4-1b0c80c09c83">
+          &lt;name value="The C++ Programming Language, 4th Edition" />
+          &lt;isbn value="0-321-56384-0" />
+          &lt;author objectId="9e0313a9-3195-422f-9d46-b0c050248604" />
+          &lt;published value="2013" />
+          &lt;publisher value="Pearson Education" />
+          &lt;price value="61.880001" />
+          &lt;color value="2" />
+         &lt;/object>
+         &lt;object classId="3" className="Book" objectId="fced1faf-e43a-4c62-85d0-9d3976f2c774">
+          &lt;name value="The Art of Computer Programming" />
+          &lt;isbn value="0-201-89683-4" />
+          &lt;author objectId="11251d66-1fd3-46bd-9f1c-981c52eb9dde" />
+          &lt;published value="1997" />
+          &lt;publisher value="Addison Wesley" />
+          &lt;price value="187.990005" />
+          &lt;color value="1" />
+         &lt;/object>
+         &lt;object classId="3" className="Book" objectId="f5d449e8-43f3-4ff7-a34d-9bfdf0d2bffb">
+          &lt;name value="Design Patterns" />
+          &lt;isbn value="0-201-63361-2" />
+          &lt;author objectId="8ffc9038-592a-499c-8254-2983364e0dcc" />
+          &lt;published value="1995" />
+          &lt;publisher value="Addison Wesley" />
+          &lt;price value="33.000000" />
+          &lt;color value="1" />
+         &lt;/object>
+        &lt;/xmlBundle>
+
+        bookshelf contains 3 books    
+    </pre>
+</body>
+</html>

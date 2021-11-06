@@ -1,0 +1,26 @@
+[cpp]#include <author.hpp>
+[cpp]#include <book.hpp>
+
+class Author;
+class Book;
+
+class Bookshelf
+{
+<%
+    void AddAuthor(Author* author);
+    void AddBook(Book* book);
+%>
+    unique_xml_ptr<Author>[] authors;
+    unique_xml_ptr<Book>[] books;
+}
+
+<%
+    void Bookshelf::AddAuthor(Author* author)
+    {
+        authors.push_back(unique_xml_ptr<Author>(author));
+    }
+    void Bookshelf::AddBook(Book* book)
+    {
+        books.push_back(unique_xml_ptr<Book>(book));
+    }
+%>

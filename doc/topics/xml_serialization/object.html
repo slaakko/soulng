@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Single Object as XML</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>
+        2 Single Object as XML
+    </h2>
+	
+	<h3 id="xmlser">
+        2.1 Serialization Description File
+    </h3>
+
+    <p>
+        The serialization description file contains
+        the class with data to be serialized:
+    </p>
+
+    <pre>
+        // book.xmlser:
+
+        enum Color
+        {
+            black, white, blue
+        }
+
+        class Book
+        {
+            string name;
+            string isbn;
+            string author;
+            int published;
+            string publisher;
+            float price;
+            Color color;
+        }
+	</pre>
+
+    <p>
+        I have used extensions .xmlser and .xml-schema for these kind of files.
+    </p>
+
+    <h3 id="xmlsergen">
+        2.2 Running xmlsergen
+    </h3>
+
+    <p>
+        The next step is to run the <strong>xmlsergen</strong> tool with serialization description file as input:
+    </p>
+
+    <pre>
+        >xmlsergen -v book.xmlser
+        > book.xmlser
+        ==> book.hpp
+        ==> book.cpp
+    </pre>
+
+    <p>
+        The <strong>xmlsergen</strong> tool generates XML serializable C++ classes from classes in the serialization description file and puts their definitions to the generated .cpp and .hpp files.
+    </p>
+
+    <h3 id="main">
+        2.3 Creating Main Program
+    </h3>
+
+	<p>
+		Because the XML serialization library uses C++ concepts that are recently added to the C++ standard, 
+		the program should be compiled with <strong>/std:c++20</strong>.
+	</p>
+
+    <p>
+        The main program:
+    </p>
+
+    <ul>
+        <li>Initializes the application.</li>
+        <li>Creates an object to be serialized and initializes it.</li>
+        <li>Calls the <strong>ToXml</strong> member function of the object that serializes to object to an XML element.</li>
+        <li>Puts the generated XML element to an XML document.</li>
+        <li>Serializes the XML document.</li>
+        <li>Parses the XML document.</li>
+        <li>Creates an object.</li>
+        <li>Calls the <strong>FromXml</strong> member function of the object that reads the XML data to the object.</li>
+        <li>Finalizes the application.</li>
+    </ul>
+
+    <pre>
+        // object: main.cpp:
+
+        #include &lt;book.hpp>
+        #include &lt;sngxml/dom/Document.hpp>
+        #include &lt;sngxml/dom/Parser.hpp>
+        #include &lt;sngxml/xpath/InitDone.hpp>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;soulng/util/Unicode.hpp>
+        #include &lt;iostream>
+
+        void InitApplication()
+        {
+            soulng::util::Init();
+            sngxml::xpath::Init();
+        }
+
+        void DoneApplication()
+        {
+            sngxml::xpath::Done();
+            soulng::util::Done();
+        }
+
+        int main()
+        {
+            try
+            {
+                InitApplication();
+
+                Book book;
+                book.name = "The C++ Programming Language, 4th Edition";
+                book.isbn = "0-321-56384-0";
+                book.author = "Bjarne Stroustrup";
+                book.published = 2013;
+                book.publisher = "Pearson Education";
+                book.price = 61.88f;
+                book.color = Color::blue;
+
+                std::unique_ptr&lt;sngxml::dom::Element> element = book.ToXml("book");
+                sngxml::dom::Document doc;
+                doc.AppendChild(std::unique_ptr&lt;sngxml::dom::Node>(element.release()));
+                std::stringstream strStream;
+                soulng::util::CodeFormatter formatter(strStream);
+                doc.Write(formatter);
+                std::string str = strStream.str();
+                std::cout &lt;&lt; str &lt;&lt; std::endl;
+
+                std::u32string content = soulng::unicode::ToUtf32(str);
+                std::unique_ptr&lt;sngxml::dom::Document> docRead = sngxml::dom::ParseDocument(content, "string");
+
+                Book bookRead;
+                bookRead.FromXml(docRead->DocumentElement());
+                std::cout &lt;&lt; bookRead.name &lt;&lt; std::endl;
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr &lt;&lt; ex.what() &lt;&lt; std::endl;
+                return 1;
+            }
+            DoneApplication();
+            return 0;
+        }    
+    </pre>
+
+    <h3 id="output">
+        2.4 Program Output
+    </h3>
+
+    <p>
+        The output of the program looks like this:
+    </p>
+
+    <pre>
+        &lt;book classId="-1" className="Book" objectId="00000000-0000-0000-0000-000000000000">
+            &lt;name value="The C++ Programming Language, 4th Edition"/>
+            &lt;isbn value="0-321-56384-0"/>
+            &lt;author value="Bjarne Stroustrup"/>
+            &lt;published value="2013"/>
+            &lt;publisher value="Pearson Education"/>
+            &lt;price value="61.880001"/>
+            &lt;color value="2"/>
+        &lt;/book>	
+
+        The C++ Programming Language, 4th Edition
+	</pre>
+</body>
+</html>

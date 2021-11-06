@@ -1,0 +1,21 @@
+// person.xmlser:
+
+[hpp]#include <author.hpp>
+[cpp]#include <group.hpp>
+
+class Group;
+
+class Person : Author
+{
+<%
+    void AddGroup(Group* group);
+%>    
+    xml_ptr<Group>[] groups;
+}
+
+<%
+    void Person::AddGroup(Group* group)
+    {
+        groups.push_back(xml_ptr<Group>(group));
+    }
+%>

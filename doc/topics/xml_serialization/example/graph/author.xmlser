@@ -1,0 +1,6 @@
+// author.xmlser:
+
+class Author
+{
+    string name;
+}

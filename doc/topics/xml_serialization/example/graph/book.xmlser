@@ -1,0 +1,35 @@
+// book.xmlser:
+
+[cpp]#include <author.hpp>
+
+enum Color
+{
+    black, white, blue
+}
+
+class Author;
+
+class Book
+{
+<%
+    void SetAuthor(Author* author_);
+    Author* GetAuthor() const 
+    {
+        return author.Get();
+    }
+%>
+    string name;
+    string isbn;
+    xml_ptr<Author> author;
+    int published;
+    string publisher;
+    float price;
+    Color color;
+}
+
+<%
+    void Book::SetAuthor(Author* author_)
+    {
+        author.Reset(author_);
+    }
+%>

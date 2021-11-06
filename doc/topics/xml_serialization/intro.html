@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Serializing Object Graph</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h2>Introduction</h2>
+	
+	<p>
+		SoulNG contains support for serializing class objects as XML. 
+		The XML serialization support is based on a C++ source-to-source tool called <strong>xmlsergen</strong> and a
+		C++20 <strong>serialization</strong> library.
+		The xmlsergen tool takes an <a href="syntax.html">XML serialization description file</a>, <em>.xmlser</em> file, 
+		as input and generates C++ header and source files that contain C++ classes to be serialized.
+		Each class provides <strong>ToXml</strong> and <strong>FromXml</strong> member functions that write the
+		member variables of the class to XML elements, and read data from XML elements to the member variables 
+		respectively.
+	</p>
+	
+	<p>
+	</p>
+</body>
+</html>

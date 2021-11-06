@@ -1020,7 +1020,7 @@
     </pre>
 
 	<p>
-		See <a href="../farthest_error/farthest_error.html">Farthest error document</a> for a usage example.
+		See <a href="../farthest_error/farthest_error_and_state.html">Farthest Error and State document</a> for a usage example.
 	</p>
 
 	<h3 id="state-declaration">4.8 State Declaration</h3>
@@ -1039,9 +1039,28 @@
             </td>
         </tr>
     </table>
-	
+
+	    <h4 id="state-declaration-example">4.8.1 Example</h4>
+
+    <p>
+        The following example parser contains a <em>state</em> declaration:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+    
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+            farthest_error;
+            state;
+            main;
+            // ...
+        }
+    </pre>
+
 	<p>
-		// todo
+		See <a href="../farthest_error/farthest_error_and_state.html">Farthest Error and State document</a> for a usage example.
 	</p>
 
 	<h3 id="nothrow-declaration">4.9 Nothrow Declaration</h3>

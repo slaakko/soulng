@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Serializing an Array</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>
+        3 Serializing an Array
+    </h2>
+
+    <h3 id="xmlser">
+        3.1 Serialization Description File
+    </h3>
+
+    <p>
+        Serialization description file for a class containing an array and some C++ code blocks:
+    </p>
+
+    <pre>
+        // bookshelf.xmlser:
+
+        [hpp]#include &lt;book.hpp>
+
+        class Bookshelf
+        {
+        &lt;%
+            int BookCount() const
+            {
+                return books.size();
+            }
+            void AddBook(const Book& book);
+        %>
+            Book[] books;
+        }
+
+        &lt;%
+            void Bookshelf::AddBook(const Book& book)
+            {
+                books.push_back(book);
+            }
+        %>
+    </pre>
+
+    <p>
+        An array is denoted by square brackets. The C++ type for it is <strong>std::vector</strong>.
+    </p>
+
+    <p>
+        You can put arbitrary C++ code in a C++ code block delimited by &lt;% and %>.
+        A code block within a class is placed to the generated header file.
+        A code block after classes is placed to the generated source file.
+    </p>
+
+    <h3 id="main">
+        3.2 Main Program
+    </h3>
+
+    <p>
+        I have added another book and placed the books to an array of books inside a bookshelf object:
+    </p>
+
+    <pre>
+        // ...
+
+        Book book;
+        book.name = "The C++ Programming Language, 4th Edition";
+        book.isbn = "0-321-56384-0";
+        book.author = "Bjarne Stroustrup";
+        book.published = 2013;
+        book.publisher = "Pearson Education";
+        book.price = 61.88f;
+        book.color = Color::blue;
+
+        Book anotherBook;
+        anotherBook.name = "The Art of Computer Programming";
+        anotherBook.isbn = "0-201-89683-4";
+        anotherBook.author = "Donald E. Knuth";
+        anotherBook.published = 1997;
+        anotherBook.publisher = "Addison Wesley Longman";
+        anotherBook.price = 187.99f;
+        anotherBook.color = Color::white;
+
+        Bookshelf bookshelf;
+        bookshelf.AddBook(book);
+        bookshelf.AddBook(anotherBook);
+
+        std::unique_ptr&lt;sngxml::dom::Element> element = bookshelf.ToXml("bookshelf");
+
+        // ...
+
+        Bookshelf bookshelfRead;
+        bookshelfRead.FromXml(docRead->DocumentElement());
+        std::cout &lt;&lt; bookshelfRead.BookCount() &lt;&lt; std::endl;
+
+        // ...
+    </pre>
+
+    <h3 id="output">
+        3.3 Program Output
+    </h3>
+
+    <p>
+        The program output looks like this:
+    </p>
+
+    <pre>
+        &lt;bookshelf classId="-1" className="Bookshelf" objectId="00000000-0000-0000-0000-000000000000">
+            &lt;books>
+                &lt;item classId="-1" className="Book" objectId="00000000-0000-0000-0000-000000000000">
+                    &lt;name value="The C++ Programming Language, 4th Edition" />
+                    &lt;isbn value="0-321-56384-0" />
+                    &lt;author value="Bjarne Stroustrup" />
+                    &lt;published value="2013" />
+                    &lt;publisher value="Pearson Education" />
+                    &lt;price value="61.880001" />
+                    &lt;color value="2" />
+                &lt;/item>
+                &lt;item classId="-1" className="Book" objectId="00000000-0000-0000-0000-000000000000">
+                    &lt;name value="The Art of Computer Programming" />
+                    &lt;isbn value="0-201-89683-4" />
+                    &lt;author value="Donald E. Knuth" />
+                    &lt;published value="1997" />
+                    &lt;publisher value="Addison Wesley" />
+                    &lt;price value="187.990005" />
+                    &lt;color value="1" />
+                &lt;/item>
+            &lt;/books>
+        &lt;/bookshelf>
+
+        2
+    </pre>
+</body>
+</html>

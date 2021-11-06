@@ -274,6 +274,7 @@
     <None Include="XmlSerLexer.lexer" />
     <None Include="XmlSerParser.parser" />
     <None Include="XmlSerParser.spg" />
+    <None Include="XmlSerTokens.tokens" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

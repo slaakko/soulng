@@ -1,0 +1,22 @@
+// bookshelf.xmlser:
+
+[hpp]#include <book.hpp>
+
+class Bookshelf
+{
+<%
+    int BookCount() const
+    {
+        return books.size();
+    }
+    void AddBook(const Book& book);
+%>
+    Book[] books;
+}
+
+<%
+    void Bookshelf::AddBook(const Book& book)
+    {
+        books.push_back(book);
+    }
+%>
