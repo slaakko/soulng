@@ -13,7 +13,12 @@
   <directory name="config"/>
  </component>
  <component name="documentation">
-  <directory name="doc"/>
+  <directory name="doc">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
  </component>
  <component name="install">
   <directory name="inst">
@@ -23,6 +28,12 @@
   <directory name="nmake"/>
  </component>
  <component name="sources">
+  <directory name="examples">
+   <exclude cascade="true" dir="Debug"/>
+   <exclude cascade="true" dir="Release"/>
+   <exclude cascade="true" dir="x64"/>
+   <exclude cascade="true" dir=".vs"/>
+  </directory>
   <directory name="sngcm">
    <exclude cascade="true" dir="Debug"/>
    <exclude cascade="true" dir="Release"/>
