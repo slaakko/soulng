@@ -1,5 +1,5 @@
 // =================================
-// Copyright (c) 2021 Seppo Laakko
+// Copyright (c) 2022 Seppo Laakko
 // Distributed under the MIT license
 // =================================
 
@@ -25,6 +25,10 @@ void CodeModifyVisitor::Visit(soulng::cppcode::ReturnStatement& object)
     if (!valueOfPtrType)
     {
         soulng::cppcode::TypeId* typeId = new soulng::cppcode::TypeId();
+        if (!returnType)
+        {
+            throw std::runtime_error("return type is null");
+        }
         typeId->Add(new soulng::cppcode::TypeSpecifier(U"soulng::parser::Value<" + returnType->ToString() + U">"));
         soulng::cppcode::NewExpr* newExpr = new soulng::cppcode::NewExpr(false);
         newExpr->SetTypeId(typeId);

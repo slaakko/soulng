@@ -681,153 +681,160 @@ void CodeGeneratorVisitor::Visit(NonterminalParser& parser)
 
 void CodeGeneratorVisitor::Visit(RuleParser& parser)
 {
-    parentMatchNumber = 0;
-    setParentMatchNumber = -1;
-    currentRule = &parser;
-    if (stage == Stage::generateHeader)
+    try
     {
-        formatter->Write("static soulng::parser::Match " + ToUtf8(parser.Name()) + "(" + lexerTypeName + "& lexer");
-        for (const auto& param : parser.Parameters())
+        parentMatchNumber = 0;
+        setParentMatchNumber = -1;
+        currentRule = &parser;
+        if (stage == Stage::generateHeader)
         {
-            formatter->Write(", ");
-            param->type->Print(*formatter);
-            formatter->Write(" ");
-            formatter->Write(ToUtf8(param->name));
-        }
-        formatter->WriteLine(");");
-    }
-    else if (stage == Stage::generateSource)
-    {
-        bool first = false;
-        if (!currentParser->Rules().empty())
-        {
-            if (currentParser->Rules().front().get() == &parser)
+            formatter->Write("static soulng::parser::Match " + ToUtf8(parser.Name()) + "(" + lexerTypeName + "& lexer");
+            for (const auto& param : parser.Parameters())
             {
-                first = true;
+                formatter->Write(", ");
+                param->type->Print(*formatter);
+                formatter->Write(" ");
+                formatter->Write(ToUtf8(param->name));
             }
+            formatter->WriteLine(");");
         }
-        if (!first)
+        else if (stage == Stage::generateSource)
         {
-            formatter->WriteLine();
-        }
-        formatter->Write("soulng::parser::Match " + ToUtf8(parser.Parent()->Name()) + "::" + ToUtf8(parser.Name()) + "(" + lexerTypeName + "& lexer");
-        for (const auto& param : parser.Parameters())
-        {
-            formatter->Write(", ");
-            param->type->Print(*formatter);
-            formatter->Write(" ");
-            formatter->Write(ToUtf8(param->name));
-        }
-        formatter->WriteLine(")");
-        formatter->WriteLine("{");
-        formatter->IncIndent();
-        if (!noParserDebugSupport)
-        {
-            formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
-            formatter->WriteLine("soulng::lexer::Span parser_debug_match_span;");
-            formatter->WriteLine("bool parser_debug_write_to_log = lexer.Log() != nullptr;");
-            formatter->WriteLine("if (parser_debug_write_to_log)");
-            formatter->WriteLine("{");
-            formatter->IncIndent();
-            formatter->WriteLine("parser_debug_match_span = lexer.GetSpan();");
-            formatter->WriteLine("soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
-            formatter->DecIndent();
-            formatter->WriteLine("}");
-            formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
-        }
-        if (parser.IsState() && parser.Id() != -1)
-        {
-            formatter->WriteLine("soulng::lexer::RuleGuard ruleGuard(lexer, " + std::to_string(parser.Id()) + ");");
-        }
-        for (const auto& variable : parser.Variables())
-        {
-            variable->type->Print(*formatter);
-            formatter->Write(" ");
-            formatter->Write(ToUtf8(variable->name));
-            formatter->Write(" = ");
-            if (variable->type->IsPtrType())
+            bool first = false;
+            if (!currentParser->Rules().empty())
             {
-                formatter->WriteLine("nullptr;");
-            }
-            else
-            {
-                variable->type->Print(*formatter);
-                formatter->WriteLine("();");
-            }
-        }
-        nonterminalInfos.clear();
-        for (const auto& nonterminal : parser.Nonterminals())
-        {
-            bool found = false;
-            for (const auto& info : nonterminalInfos)
-            {
-                if (info.name == nonterminal->Name())
+                if (currentParser->Rules().front().get() == &parser)
                 {
-                    found = true;
-                    break;
+                    first = true;
                 }
             }
-            if (found) continue;
-            RuleParser* calledRule = nonterminal->Rule();
-            Assert(calledRule, "rule not set");
-            if (calledRule->ReturnType() != nullptr)
+            if (!first)
             {
-                if (calledRule->ReturnType()->IsPtrType())
+                formatter->WriteLine();
+            }
+            formatter->Write("soulng::parser::Match " + ToUtf8(parser.Parent()->Name()) + "::" + ToUtf8(parser.Name()) + "(" + lexerTypeName + "& lexer");
+            for (const auto& param : parser.Parameters())
+            {
+                formatter->Write(", ");
+                param->type->Print(*formatter);
+                formatter->Write(" ");
+                formatter->Write(ToUtf8(param->name));
+            }
+            formatter->WriteLine(")");
+            formatter->WriteLine("{");
+            formatter->IncIndent();
+            if (!noParserDebugSupport)
+            {
+                formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+                formatter->WriteLine("soulng::lexer::Span parser_debug_match_span;");
+                formatter->WriteLine("bool parser_debug_write_to_log = lexer.Log() != nullptr;");
+                formatter->WriteLine("if (parser_debug_write_to_log)");
+                formatter->WriteLine("{");
+                formatter->IncIndent();
+                formatter->WriteLine("parser_debug_match_span = lexer.GetSpan();");
+                formatter->WriteLine("soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+                formatter->DecIndent();
+                formatter->WriteLine("}");
+                formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+            }
+            if (parser.IsState() && parser.Id() != -1)
+            {
+                formatter->WriteLine("soulng::lexer::RuleGuard ruleGuard(lexer, " + std::to_string(parser.Id()) + ");");
+            }
+            for (const auto& variable : parser.Variables())
+            {
+                variable->type->Print(*formatter);
+                formatter->Write(" ");
+                formatter->Write(ToUtf8(variable->name));
+                formatter->Write(" = ");
+                if (variable->type->IsPtrType())
                 {
-                    formatter->Write("std::unique_ptr<");
-                    calledRule->ReturnType()->PrintNonPtrType(*formatter);
-                    formatter->Write(">");
-                    nonterminalInfos.push_back(NonterminalInfo(nonterminal->Name(), true));
+                    formatter->WriteLine("nullptr;");
                 }
                 else
                 {
-                    formatter->Write("std::unique_ptr<soulng::parser::Value<");
-                    calledRule->ReturnType()->Print(*formatter);
-                    formatter->Write(">>");
-                    nonterminalInfos.push_back(NonterminalInfo(nonterminal->Name(), false));
+                    variable->type->Print(*formatter);
+                    formatter->WriteLine("();");
                 }
-                formatter->WriteLine(" " + ToUtf8(nonterminal->Name()) + ";");
             }
-        }
-        if (parser.Definition()->IsTokenSwitch())
-        {
-            formatter->WriteLine("soulng::parser::Match match(false);");
-        }
-        parser.Definition()->Accept(*this);
-        if (!noParserDebugSupport)
-        {
-            formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
-            formatter->WriteLine("if (parser_debug_write_to_log)");
+            nonterminalInfos.clear();
+            for (const auto& nonterminal : parser.Nonterminals())
+            {
+                bool found = false;
+                for (const auto& info : nonterminalInfos)
+                {
+                    if (info.name == nonterminal->Name())
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) continue;
+                RuleParser* calledRule = nonterminal->Rule();
+                Assert(calledRule, "rule not set");
+                if (calledRule->ReturnType() != nullptr)
+                {
+                    if (calledRule->ReturnType()->IsPtrType())
+                    {
+                        formatter->Write("std::unique_ptr<");
+                        calledRule->ReturnType()->PrintNonPtrType(*formatter);
+                        formatter->Write(">");
+                        nonterminalInfos.push_back(NonterminalInfo(nonterminal->Name(), true));
+                    }
+                    else
+                    {
+                        formatter->Write("std::unique_ptr<soulng::parser::Value<");
+                        calledRule->ReturnType()->Print(*formatter);
+                        formatter->Write(">>");
+                        nonterminalInfos.push_back(NonterminalInfo(nonterminal->Name(), false));
+                    }
+                    formatter->WriteLine(" " + ToUtf8(nonterminal->Name()) + ";");
+                }
+            }
+            if (parser.Definition()->IsTokenSwitch())
+            {
+                formatter->WriteLine("soulng::parser::Match match(false);");
+            }
+            parser.Definition()->Accept(*this);
+            if (!noParserDebugSupport)
+            {
+                formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+                formatter->WriteLine("if (parser_debug_write_to_log)");
+                formatter->WriteLine("{");
+                formatter->IncIndent();
+                formatter->WriteLine("if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+                formatter->WriteLine("else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+                formatter->DecIndent();
+                formatter->WriteLine("}");
+                formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+            }
+            formatter->WriteLine("if (!match.hit)");
             formatter->WriteLine("{");
             formatter->IncIndent();
-            formatter->WriteLine("if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
-            formatter->WriteLine("else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+            formatter->WriteLine("match.value = nullptr;");
             formatter->DecIndent();
             formatter->WriteLine("}");
-            formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
-        }
-        formatter->WriteLine("if (!match.hit)");
-        formatter->WriteLine("{");
-        formatter->IncIndent();
-        formatter->WriteLine("match.value = nullptr;");
-        formatter->DecIndent();
-        formatter->WriteLine("}");
-        formatter->WriteLine("return match;");
-        formatter->DecIndent();
-        formatter->WriteLine("}");
-        for (const auto& info : nonterminalInfos)
-        {
-            if (info.ptrType && info.count > 1)
+            formatter->WriteLine("return match;");
+            formatter->DecIndent();
+            formatter->WriteLine("}");
+            for (const auto& info : nonterminalInfos)
             {
-                std::cout << "warning: unique pointer value of nonterminal '" + ToUtf8(info.name) + "' used " + std::to_string(info.count) + " times in semantic actions of rule '" + ToUtf8(parser.Name()) +
-                    "' of parser '" + ToUtf8(parser.Parent()->Name()) << "'" << std::endl;
+                if (info.ptrType && info.count > 1)
+                {
+                    std::cout << "warning: unique pointer value of nonterminal '" + ToUtf8(info.name) + "' used " + std::to_string(info.count) + " times in semantic actions of rule '" + ToUtf8(parser.Name()) +
+                        "' of parser '" + ToUtf8(parser.Parent()->Name()) << "'" << std::endl;
+                }
+            }
+            if (parser.ReturnType() != nullptr && !parser.HasReturn())
+            {
+                std::cout << "warning: rule '" + ToUtf8(parser.Name()) +
+                    "' of parser '" + ToUtf8(parser.Parent()->Name()) << "' returns value, but no semantic action has a return statement." << std::endl;
             }
         }
-        if (parser.ReturnType() != nullptr && !parser.HasReturn())
-        {
-            std::cout << "warning: rule '" + ToUtf8(parser.Name()) +
-                "' of parser '" + ToUtf8(parser.Parent()->Name()) << "' returns value, but no semantic action has a return statement." << std::endl;
-        }
+    }
+    catch (const std::exception& ex)
+    {
+        throw std::runtime_error(std::string(ex.what()) + ", detected in rule '" + ToUtf8(parser.Name()));
     }
 }
 
